@@ -1,0 +1,6 @@
+
+
+qmake Warnungen wegen fehlenden qm Dateien beseitigen
+http://doc.qt.digia.com/4.3/qmake-advanced-usage.html#conditional-functions
+http://doc.qt.digia.com/4.3/qmake-manual.html
+http://www.qtforum.de/forum/viewtopic.php?p=36056

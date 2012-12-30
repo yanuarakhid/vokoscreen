@@ -1,0 +1,25 @@
+
+REQUIREMENTS:
+  - QT 4 (required)
+  - ffmpeg (required)
+  - pulseaudio (required)
+  - pulsaudio-utils (required)
+  - alsa (required)
+  - alsa-utils (required)
+  - lame (required)
+  - libmp3lame0 (required)
+  - v4l-utils
+  - mkvtoolnix
+
+Compile:
+  - extract vokoscren-<version>.tar
+  - change in the vokoscreen-<version> directory
+  - make
+
+openSUSE:
+Install Schemata: QT 4-Development
+  
+Hint:
+To check that all external programs are installed,
+please vokoscreen on the console to run and control
+the output section ---Begin Search external tools--- 

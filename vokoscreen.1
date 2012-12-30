@@ -1,0 +1,31 @@
+'\" t
+.\" ** The above line should force tbl to be a preprocessor **
+.\" Man page for vokoscreen
+.\"
+.\" Copyright (C), 2012, Dominique Lasserre
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the main
+.\" distribution.
+.\"
+.TH VOKOSCREEN 1 "2012-04-03" "vokoscreen Manual"
+.SH NAME
+vokoscreen \- simple screencast creator
+.SH SYNOPSIS
+Usage: \fBvokoscreen\fR
+.SH DESCRIPTION
+\fPvokoscreen\fP is an easy to use screencast creator to record educational
+videos, live recordings of browser, installation, videoconferences, etc.
+It uses ffgtk functionality and also supports recording of audio (over pulse or
+alsa).
+.SH FILES
+Settings are stored under $XDG_CONFIG_HOME which is generally $HOME. In this
+documentation ~ is used.
+.TP
+.I ~/vokoscreen/vokoscreen.conf
+Configuration file stores audio settings, standard player, video path.
+.TP
+.I ~/vokoscreen/vokoscreen.log
+Log file stores information of last successful recording.
+.SH BUGS
+Report bugs to <tux@vodafone.de>.

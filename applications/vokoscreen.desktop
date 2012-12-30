@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=screencast
+Comment[de]=screencast
+Exec=vokoscreen
+GenericName=vokoscreen
+GenericName[de]=vokoscreen
+Icon=vokoscreen
+MimeType=
+Name=vokoscreen
+Name[de]=
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=AudioVideo;Recorder;
