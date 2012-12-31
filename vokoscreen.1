@@ -8,7 +8,7 @@
 .\" License as specified in the file COPYING that comes with the main
 .\" distribution.
 .\"
-.TH VOKOSCREEN 1 "2012-04-03" "vokoscreen Manual"
+.TH VOKOSCREEN 1 "2012-12-31" "vokoscreen Manual"
 .SH NAME
 vokoscreen \- simple screencast creator
 .SH SYNOPSIS
@@ -16,16 +16,16 @@ Usage: \fBvokoscreen\fR
 .SH DESCRIPTION
 \fPvokoscreen\fP is an easy to use screencast creator to record educational
 videos, live recordings of browser, installation, videoconferences, etc.
-It uses ffgtk functionality and also supports recording of audio (over pulse or
+It uses ffgtk functionality and also supports recording of audio (over pulseaudio or
 alsa).
 .SH FILES
 Settings are stored under $XDG_CONFIG_HOME which is generally $HOME. In this
 documentation ~ is used.
 .TP
-.I ~/vokoscreen/vokoscreen.conf
+.I ~/.config/vokoscreen/vokoscreen.conf
 Configuration file stores audio settings, standard player, video path.
 .TP
-.I ~/vokoscreen/vokoscreen.log
-Log file stores information of last successful recording.
+.I ~/.config/vokoscreen/vokoscreen.log
+Log file stores information about the last execution of vokoscreen.
 .SH BUGS
 Report bugs to <tux@vodafone.de>.
