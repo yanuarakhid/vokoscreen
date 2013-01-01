@@ -9,6 +9,6 @@ INCLUDEPATH += .
 
 # Input
 HEADERS += qxtglobal.h qxtwindowsystem.h qxtglobalshortcut.h qxtglobalshortcut_p.h 
-SOURCES += qxtglobal.cpp qxtwindowsystem_x11.cpp qxtglobalshortcut_x11.cpp QxtGlobalShortcut.cpp
+SOURCES += qxtglobal.cpp qxtwindowsystem_x11.cpp qxtglobalshortcut_x11.cpp qxtglobalshortcut.cpp
 
 LIBS += -lX11
