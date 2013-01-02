@@ -99,7 +99,6 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "Qt Version: " << qVersion();
     qDebug();
     
-    
     searchExternalProgramms();
     
     pause = false;
@@ -1102,7 +1101,7 @@ void screencast::Pause()
     shortcutStop->setEnabled( true );
     PauseButton->setText( "Pause" );
     startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
-    //windowMoveTimer->start();
+    windowMoveTimer->start();
   }
 }
 
