@@ -111,7 +111,7 @@ screencast::screencast()
     this->setCentralWidget( centralWidget );
 
     QTabWidget *tabWidget = new QTabWidget( centralWidget );
-    tabWidget->setGeometry( 120, 0, 450, 210 );
+    tabWidget->setGeometry( 120, 0, 450, 190 );
     tabWidget->setIconSize( QSize( 40, 40 ) );
 
     // Tab 1 Screenrecord ***************************************************
@@ -307,11 +307,11 @@ screencast::screencast()
     AreaRadioButton->setGeometry(QRect( 20, 65, 85, 21) );
     AreaRadioButton->setText( tr( "Area" ) );
     
-    recordButton = new QPushButton( frame );
+    recordButton = new QPushButton( centralWidget );
     recordButton->setText( "Start" );
     recordButton->setToolTip( "CTRL+SHIFT+F10" );
     recordButton->setFont( QFont( "Times", 12, QFont::Bold ) );
-    recordButton->setGeometry( 110, 110, 70, 30 );
+    recordButton->setGeometry( 210, 200, 70, 30 );
     recordButton->show();
 
     recordTimeLabel = new QLabel(frame);
@@ -322,27 +322,27 @@ screencast::screencast()
     recordTimeLabel->show();
     recordTimeLabel->setVisible(false);
 
-    StopButton = new QPushButton(frame);
+    StopButton = new QPushButton( centralWidget );
     StopButton->setText( "Stop" );
     StopButton->setToolTip( "STRG+SHIFT+F11" );
     StopButton->setFont( QFont( "Times", 12, QFont::Bold ) );
-    StopButton->setGeometry( 180, 110, 70, 30 );
+    StopButton->setGeometry( 280, 200, 70, 30 );
     StopButton->setEnabled( false );
     StopButton->show();  
     
-    PauseButton = new QPushButton( frame );
+    PauseButton = new QPushButton( centralWidget );
     PauseButton->setText( "Pause" );
     PauseButton->setToolTip( "STRG+SHIFT+F12" );
     PauseButton->setFont( QFont( "Times", 12, QFont::Bold ) );
-    PauseButton->setGeometry( 250, 110, 70, 30 );
+    PauseButton->setGeometry( 350, 200, 70, 30 );
     PauseButton->setCheckable( true );
     PauseButton->setEnabled( false );
     PauseButton->show();
 
-    PlayButton = new QPushButton( frame );
+    PlayButton = new QPushButton( centralWidget );
     PlayButton->setText( "Play" );
     PlayButton->setFont( QFont( "Times", 12, QFont::Bold ) );
-    PlayButton->setGeometry( 320, 110, 70, 30 );
+    PlayButton->setGeometry( 420, 200, 70, 30 );
     PlayButton->show();
     if ( isScreencastFileAvailable() )
       PlayButton->setEnabled( true );
