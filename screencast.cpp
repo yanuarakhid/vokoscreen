@@ -515,19 +515,19 @@ screencast::screencast()
 
    // Abfrage einbauen ob Systemtray existiert
 
-   SystemTrayIconGreen = new QSystemTrayIcon( QIcon ( ":/pictures/green.png" ) );
+   SystemTrayIconGreen = new QSystemTrayIcon( QIcon ( ":/pictures/start.png" ) );
    SystemTrayIconGreen->show();
    SystemTrayIconGreen->setToolTip( tr( "Start" ) );
 
-   SystemTrayIconRed = new QSystemTrayIcon( QIcon ( ":/pictures/red.png" ) );
+   SystemTrayIconRed = new QSystemTrayIcon( QIcon ( ":/pictures/stop.png" ) );
    SystemTrayIconRed->hide();
    SystemTrayIconRed->setToolTip( tr( "Stop" ) );
    
-   SystemTrayIconYellow = new QSystemTrayIcon( QIcon ( ":/pictures/yellow.png" ) );
+   SystemTrayIconYellow = new QSystemTrayIcon( QIcon ( ":/pictures/pause.png" ) );
    SystemTrayIconYellow->hide();
    SystemTrayIconYellow->setToolTip( "Pause" );
 
-   SystemTrayIconBlue = new QSystemTrayIcon( QIcon ( ":/pictures/blue.png" ) );
+   SystemTrayIconBlue = new QSystemTrayIcon( QIcon ( ":/pictures/go.png" ) );
    SystemTrayIconBlue->hide();
    SystemTrayIconBlue->setToolTip( "Go" );
 

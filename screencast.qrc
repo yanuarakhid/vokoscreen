@@ -7,10 +7,15 @@
     <file>pictures/micro.png</file>
     <file>pictures/videooptionen.png</file>
     <file>pictures/VokoCola.png</file>
-    <file>pictures/red.png</file>
-    <file>pictures/green.png</file>
-    <file>pictures/yellow.png</file>
-    <file>pictures/blue.png</file>
+    
+    <file>pictures/stop.png</file>
+    
+    <file>pictures/start.png</file>
+
+    <file>pictures/pause.png</file>
+    
+    <file>pictures/go.png</file>
+    
     <file>language/vokoscreen_de_AT.qm</file>
     <file>language/vokoscreen_de_CH.qm</file>
     <file>language/vokoscreen_de_DE.qm</file>
