@@ -536,9 +536,12 @@ screencast::screencast()
    connect( SystemTrayIconYellow, SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayPause( QSystemTrayIcon::ActivationReason ) ) );
    connect( SystemTrayIconBlue,   SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayGo( QSystemTrayIcon::ActivationReason ) ) ); 
    
+   shortcutLupe = new QxtGlobalShortcut( this );
+   connect( shortcutLupe, SIGNAL( activated() ), this, SLOT( ShortcutLupe() ) );
+   shortcutLupe->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
 
    shortcutStart = new QxtGlobalShortcut( this );
-   connect( shortcutStart, SIGNAL( activated() ), this, SLOT( record() ) );
+   connect( shortcutStart, SIGNAL( activated() ), this, SLOT( preRecord() ) );// record()
    shortcutStart->setShortcut( QKeySequence( "Ctrl+Shift+F10" ) );
    
    shortcutStop = new QxtGlobalShortcut( this );
@@ -549,6 +552,7 @@ screencast::screencast()
    shortcutPause = new QxtGlobalShortcut( this );
    connect( shortcutPause, SIGNAL( activated() ), this, SLOT( ShortcutPause() ) );
    shortcutPause->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
+   
 }
 
 
@@ -621,6 +625,11 @@ void screencast::saveSettings()
   settings.endGroup();
 }
 
+
+void screencast::ShortcutLupe()
+{
+  LupeCheckBox->click();
+}
 
 void screencast::ShortcutPause()
 {
@@ -1086,22 +1095,46 @@ void screencast::moveWindowGo()
 
 void screencast::Pause()
 {
-  pause = true;
-  if ( PauseButton->isChecked() )
+  if ( FullScreenRadioButton->isChecked() or AreaRadioButton->isChecked() )
   {
-    shortcutStop->setEnabled( false );
-    windowMoveTimer->stop();
-    PauseButton->setText( "Go" );
-    SystemCall->terminate();
-    SystemCall->waitForFinished();
-    pulseUnloadModule();
+    pause = true;
+    if ( PauseButton->isChecked() )
+    {
+      shortcutStop->setEnabled( false );
+      windowMoveTimer->stop();
+      PauseButton->setText( "Go" );
+      SystemCall->terminate();
+      SystemCall->waitForFinished();
+      pulseUnloadModule();
+    }
+    else
+    {
+      shortcutStop->setEnabled( true );
+      PauseButton->setText( "Pause" );
+      startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
+    }
   }
-  else
+  
+  
+  if ( WindowRadioButton->isChecked() )
   {
-    shortcutStop->setEnabled( true );
-    PauseButton->setText( "Pause" );
-    startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
-    windowMoveTimer->start();
+    pause = true;
+    if ( PauseButton->isChecked() )
+    {
+      shortcutStop->setEnabled( false );
+      windowMoveTimer->stop();
+      PauseButton->setText( "Go" );
+      SystemCall->terminate();
+      SystemCall->waitForFinished();
+      pulseUnloadModule();
+    }
+    else
+    {
+      shortcutStop->setEnabled( true );
+      PauseButton->setText( "Pause" );
+      startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
+      windowMoveTimer->start();
+    }
   }
 }
 

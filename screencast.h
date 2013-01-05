@@ -145,6 +145,7 @@ public slots:
     void showWebcamDialog();
 
     void ShortcutPause();
+    void ShortcutLupe();
 
     
 private:
@@ -192,9 +193,10 @@ private:
     regionselection *myregionselection;
     QvkWebcam *webcam;
     
-    QxtGlobalShortcut* shortcutPause;
-    QxtGlobalShortcut* shortcutStart;
-    QxtGlobalShortcut* shortcutStop;
+    QxtGlobalShortcut *shortcutLupe;
+    QxtGlobalShortcut *shortcutPause;
+    QxtGlobalShortcut *shortcutStart;
+    QxtGlobalShortcut *shortcutStop;
     
     QvkWinInfo *vkWinInfo;
     WId moveWindowID;
