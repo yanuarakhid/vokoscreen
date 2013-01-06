@@ -3,16 +3,19 @@
 #include <QTimer>
 #include <QPaintEvent>
 #include <QPainter>
+#include <QDesktopServices>
+#include <QDesktopWidget>
+#include <QApplication>
 
 using namespace std;
 
 QvkWinInfo::QvkWinInfo()
 {
   
-  myX = "";
-  myY = "";
-  myWidth = "";
-  myHeight = "";
+  myX = 0;
+  myY = 0;
+  myWidth = 0;
+  myHeight = 0;
   
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
 
@@ -110,10 +113,10 @@ void QvkWinInfo::selectWindow()
   {
     windowTimer->stop();
     mouseTimer->stop();
-    myX =  QString::number( QxtWindowSystem::windowGeometry( newWinID ).x() );
-    myY = QString::number( QxtWindowSystem::windowGeometry( newWinID ).y() );
-    myWidth = QString::number( QxtWindowSystem::windowGeometry( newWinID ).width() );
-    myHeight = QString::number( QxtWindowSystem::windowGeometry( newWinID ).height() );
+    myX = QxtWindowSystem::windowGeometry( newWinID ).x();
+    myY = QxtWindowSystem::windowGeometry( newWinID ).y();
+    myWidth = QxtWindowSystem::windowGeometry( newWinID ).width();
+    myHeight = QxtWindowSystem::windowGeometry( newWinID ).height();
     emit windowChanged();
     this->close();
     delete this;
@@ -123,25 +126,25 @@ void QvkWinInfo::selectWindow()
 
 QString QvkWinInfo::x()
 {
-  return myX;
+  return QString::number( myX );
 }
 
 
 QString QvkWinInfo::y()
 {
-  return myY;
+  return QString::number( myY );
 }
 
 
 QString QvkWinInfo::width()
 {
-  return myWidth;
+  return QString::number( myWidth );
 }
 
 
 QString QvkWinInfo::height()
 {
-  return myHeight;
+  return QString::number( myHeight );
 }
 
 

@@ -249,13 +249,19 @@ screencast::screencast()
     tabWidget->addTab( TabWidgetSocialFrame, "" );
     tabWidget->setTabIcon( 4, QIcon( ":/pictures/sem_soc_net.png" ) );
     
-    QString emaildeveloper1 = "<a href ='mailto:vkohaupt@freenet.de?subject=Das ist ein Test ";
-    emaildeveloper1 = emaildeveloper1.append( "&body=asasas jkkkj &attachment=file://home/vk/rsync.log" ).append( "'" ).append( ">vkohaupt@freenet.de</a>" );
+    mailPushButton = new QPushButton( centralWidget );
+    mailPushButton->setGeometry( 490, 200, 70, 30 );
+    mailPushButton->setFont( QFont( "Times", 12, QFont::Bold ) );
+    mailPushButton->setText( "Send" );
+    mailPushButton->hide();
+    connect( mailPushButton, SIGNAL( clicked() ), SLOT( mailSend() ) );
+   
+    mailOnOffCheckbox = new QCheckBox( TabWidgetSocialFrame );
+    mailOnOffCheckbox->setGeometry( 20, 20, 200, 30 );
+    mailOnOffCheckbox->setText( "Send last video by mail " );
+    connect( mailOnOffCheckbox, SIGNAL( clicked() ), SLOT( mailOnOff() ) );
 
-    QLabel *myLabel = new QLabel( TabWidgetSocialFrame );
-    myLabel->setText( emaildeveloper1 );
-    myLabel->setGeometry( 30, 30, 200, 20 );
-    myLabel->setOpenExternalLinks( true );
+    
     
     
      // Tab 6 About *********************************************************
@@ -639,6 +645,29 @@ void screencast::saveSettings()
     settings.setValue( "Format", VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", HideMouseCheckbox->checkState() );    
   settings.endGroup();
+}
+
+
+void screencast::mailSend()
+{
+  QDialog * dialog = new QDialog();
+  dialog->resize( 300, 300 );
+  QLabel * label = new QLabel( dialog );
+  label->setGeometry( 100, 100, 100, 30 );
+  label->setText( "In work :>)" );
+  label->show();
+  
+  dialog->exec();
+  
+}
+
+
+void screencast::mailOnOff()
+{
+  if ( mailOnOffCheckbox->isChecked() )
+    mailPushButton->show();
+  else
+    mailPushButton->hide();
 }
 
 
@@ -2003,21 +2032,13 @@ QString screencast::myAcodec()
 {
   QString acodec;
   if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( AlsaRadioButton->isChecked() ) and ( AlsaHwComboBox->currentText() > "" ) )
-  {
-     acodec = " -acodec libmp3lame";
-  }
-  else
-     acodec = "";
+     return " -acodec libmp3lame";
 
   
   if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( PulseDeviceRadioButton->isChecked() ) and ( myPulseDevice() > "" ) )
-  {
-     acodec = " -acodec libmp3lame";
-  }
-  else
-     acodec = "";
+     return " -acodec libmp3lame";
  
-  return acodec;
+  return "";
 }
 
 

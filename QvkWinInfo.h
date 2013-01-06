@@ -1,5 +1,5 @@
-#ifndef QvkAlsa_H
-#define QvkAlsa_H
+#ifndef QvkWinInfo_H
+#define QvkWinInfo_H
 
 #include <QObject>
 #include "qxtwindowsystem.h"
@@ -43,10 +43,10 @@ private:
   WId lastWinID;
   WId newWinID;
   
-  QString myX;
-  QString myY;
-  QString myWidth;
-  QString myHeight;
+  int myX;
+  int myY;
+  int myWidth;
+  int myHeight;
   void paintEvent(QPaintEvent *event);
   
 };

@@ -148,6 +148,9 @@ public slots:
     void ShortcutLupe();
 
     
+    void mailOnOff();
+    void mailSend();
+
 private:
     QPushButton *StopButton;
     QPushButton *recordButton;
@@ -202,7 +205,10 @@ private:
     QvkWinInfo *vkWinInfo;
     WId moveWindowID;
     
-    
+    QPushButton *mailPushButton;
+    QCheckBox *mailOnOffCheckbox;
+
+
  protected:
     void closeEvent( QCloseEvent * event );
 	
