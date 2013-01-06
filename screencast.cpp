@@ -242,12 +242,28 @@ screencast::screencast()
     MinimizedCheckBox->setText( tr( "Vokoscreen minimized when recording starts" ) );
     MinimizedCheckBox->show();
     
-     // Tab 5 About *********************************************************
+    // Tab 5 Social ************************************************************
+    TabWidgetSocialFrame = new QFrame( this );
+    TabWidgetSocialFrame->setGeometry( 120, 0, 300, 200 );
+    TabWidgetSocialFrame->show();
+    tabWidget->addTab( TabWidgetSocialFrame, "" );
+    tabWidget->setTabIcon( 4, QIcon( ":/pictures/sem_soc_net.png" ) );
+    
+    QString emaildeveloper1 = "<a href ='mailto:vkohaupt@freenet.de?subject=Das ist ein Test ";
+    emaildeveloper1 = emaildeveloper1.append( "&body=asasas jkkkj &attachment=file://home/vk/rsync.log" ).append( "'" ).append( ">vkohaupt@freenet.de</a>" );
+
+    QLabel *myLabel = new QLabel( TabWidgetSocialFrame );
+    myLabel->setText( emaildeveloper1 );
+    myLabel->setGeometry( 30, 30, 200, 20 );
+    myLabel->setOpenExternalLinks( true );
+    
+    
+     // Tab 6 About *********************************************************
     QFrame *TabWidgetAboutFrame = new QFrame(this);
     TabWidgetAboutFrame->setGeometry(120,0,300,200);
     TabWidgetAboutFrame->show();
     tabWidget->addTab(TabWidgetAboutFrame,"");
-    tabWidget->setTabIcon(4,QIcon(":/pictures/about.png"));
+    tabWidget->setTabIcon(5,QIcon(":/pictures/about.png"));
     tabWidget->show();
 
     QLabel* labelAutor = new QLabel( TabWidgetAboutFrame );
