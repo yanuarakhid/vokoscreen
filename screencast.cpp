@@ -75,7 +75,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.4.2";
+    Version = "1.4.4";
     Version = Beta + Version;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -346,7 +346,7 @@ screencast::screencast()
 
     StopButton = new QPushButton( centralWidget );
     StopButton->setText( "Stop" );
-    StopButton->setToolTip( "STRG+SHIFT+F11" );
+    StopButton->setToolTip( "CTRL+SHIFT+F11" );
     StopButton->setFont( QFont( "Times", 12, QFont::Bold ) );
     StopButton->setGeometry( 280, 200, 70, 30 );
     StopButton->setEnabled( false );
@@ -354,7 +354,7 @@ screencast::screencast()
     
     PauseButton = new QPushButton( centralWidget );
     PauseButton->setText( "Pause" );
-    PauseButton->setToolTip( "STRG+SHIFT+F12" );
+    PauseButton->setToolTip( "CTRL+SHIFT+F12" );
     PauseButton->setFont( QFont( "Times", 12, QFont::Bold ) );
     PauseButton->setGeometry( 350, 200, 70, 30 );
     PauseButton->setCheckable( true );
@@ -374,6 +374,7 @@ screencast::screencast()
     LupeCheckBox = new QCheckBox( frame );
     LupeCheckBox->setText( tr( "Magnification" ) );
     LupeCheckBox->setGeometry( QRect( 160, 15, 120, 21 ) );
+    LupeCheckBox->setToolTip( "CTRL+SHIFT+F9" );
     LupeCheckBox->show();
     
     webcamCheckBox = new QCheckBox( frame );
@@ -574,7 +575,6 @@ screencast::screencast()
    shortcutPause = new QxtGlobalShortcut( this );
    connect( shortcutPause, SIGNAL( activated() ), this, SLOT( ShortcutPause() ) );
    shortcutPause->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
-   
 }
 
 
@@ -1109,15 +1109,16 @@ bool screencast::needProgramm( QString ProgName )
     QStringList pathList = resultString.split( ":" );
       for ( int i = 0; i < pathList.size(); ++i )
       {
-	prog = pathList.at( i ) + QDir::separator() + ProgName;
-	if ( QFile::exists(prog ) )
-	{
-	  find = true;
-	  break;
-	}
+        prog = pathList.at( i ) + QDir::separator() + ProgName;
+        if ( QFile::exists(prog ) )
+        {
+          find = true;
+          break;
+        }
       }
     return find;
 }
+
 
 void screencast::moveWindowPause()
 {
@@ -1342,6 +1343,7 @@ void screencast::windowMove()
   deltaXMove = x;
   deltaYMove = y; 
 }
+
 
 /**
  * Return Alsa Device hw:x,x
@@ -2167,6 +2169,13 @@ void screencast::record()
 
   nameInMoviesLocation = NameInMoviesLocation();
 
+  
+  QString quality;
+  if ( getFfmpegVersion() < "01.01.00" )
+    quality = " -sameq ";
+  else
+    quality = " -qscale 0 ";
+
   ffmpegString = "/usr/bin/ffmpeg "
                + myReport
                + myAlsa()
@@ -2185,8 +2194,10 @@ void screencast::record()
 	       + " -vcodec "
 	       + myVcodec
        	       + myAcodec()
-      	       + " -ar " + mySample() + " "
-       	       + "-sameq ";
+      	       + " -ar " + mySample()
+	       + quality;
+	       //+ " -qscale 0 ";
+       	       //+ " -sameq ";
 	       	            
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   
