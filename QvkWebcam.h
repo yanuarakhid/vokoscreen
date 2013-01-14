@@ -53,7 +53,7 @@ public slots:
   void reStartWebcam1( int );
   void reStartWebcam2( int );
   void reStartWebcam3( int );
-
+  
 protected:  
 
 

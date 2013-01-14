@@ -83,7 +83,6 @@ QvkWebcam::QvkWebcam( QCheckBox *widget )
   connect( webcam2QComboBox, SIGNAL( activated( int ) ),this, SLOT( reStartWebcam2( int ) ) );
   connect( webcam3QComboBox, SIGNAL( activated( int ) ),this, SLOT( reStartWebcam3( int ) ) );
 
-  
 }
 
 
