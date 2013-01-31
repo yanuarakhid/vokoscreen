@@ -16,9 +16,13 @@
  */
 #include "screencast.h"
 #include "regionselection.h"
+
 #include "QvkLupe.h"
 #include "QvkWebcam.h"
 #include "QvkWinInfo.h"
+#include "QvkAlsaDevice.h"
+#include "QvkAlsaWatcher.h"
+
 
 #include "qxtwindowsystem.h"
 #include <QxtGlobalShortcut> 
@@ -67,16 +71,16 @@ using namespace std;
 
 screencast::screencast()
 {
-    bool beta = false;
+    bool beta = true;
     QString Beta;
     if ( beta )
-      Beta = "Beta";
+      Beta = "Beta 1";
     else
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.4.5";
-    Version = Beta + Version;
+    Version = "1.4.6";
+    Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
     
@@ -89,14 +93,17 @@ screencast::screencast()
     else 
       screencast::setWindowTitle( ProgName + " " + Version );
     
+    QString mailingliste = "<a href ='mailto:vokoscreen@googlegroups.com'>vokoscreen@googlegroups.com</a>";
+    
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     screencast::setWindowIcon( icon );    
 
-    qDebug();
     qDebug() << "[vokoscreen]" << "Version:" << Version;
-    qDebug();
     qDebug() << "[vokoscreen]" << "Qt Version: " << qVersion();
+    QvkAlsaDevice inBox ;
+    qDebug() << "[vokoscreen]" << "asoundlib Version:" << inBox.getAlsaVersion();
+    
     qDebug();
     
     searchExternalProgramms();
@@ -104,8 +111,6 @@ screencast::screencast()
     pause = false;
     firststartWininfo = false;
     
-    usbCounter = 0;
-
     QWidget *centralWidget = new QWidget( this );
     centralWidget->setObjectName( QString::fromUtf8( "centralWidget" ) );
     this->setCentralWidget( centralWidget );
@@ -243,60 +248,62 @@ screencast::screencast()
     MinimizedCheckBox->show();
     
     // Tab 5 Social ************************************************************
-    TabWidgetSocialFrame = new QFrame( this );
-    TabWidgetSocialFrame->setGeometry( 120, 0, 300, 200 );
-    TabWidgetSocialFrame->show();
-    tabWidget->addTab( TabWidgetSocialFrame, "" );
-    tabWidget->setTabIcon( 4, QIcon( ":/pictures/sem_soc_net.png" ) );
+//    TabWidgetSocialFrame = new QFrame( this );
+//    TabWidgetSocialFrame->setGeometry( 120, 0, 300, 200 );
+//    TabWidgetSocialFrame->show();
+//    tabWidget->addTab( TabWidgetSocialFrame, "" );
+//    tabWidget->setTabIcon( 4, QIcon( ":/pictures/sem_soc_net.png" ) );
     
-    mailPushButton = new QPushButton( centralWidget );
-    mailPushButton->setGeometry( 490, 200, 70, 30 );
-    mailPushButton->setFont( QFont( "Times", 12, QFont::Bold ) );
-    mailPushButton->setText( "Send" );
-    mailPushButton->hide();
-    connect( mailPushButton, SIGNAL( clicked() ), SLOT( mailSend() ) );
-   
-    mailOnOffCheckbox = new QCheckBox( TabWidgetSocialFrame );
-    mailOnOffCheckbox->setGeometry( 20, 20, 200, 30 );
-    mailOnOffCheckbox->setText( "Send last video by mail " );
-    connect( mailOnOffCheckbox, SIGNAL( clicked() ), SLOT( mailOnOff() ) );
-
-    
-    
+//    mailPushButton = new QPushButton( centralWidget );
+//    mailPushButton->setGeometry( 490, 200, 70, 30 );
+//    mailPushButton->setFont( QFont( "Times", 12, QFont::Bold ) );
+//    mailPushButton->setText( "Send" );
+//    connect( mailPushButton, SIGNAL( clicked() ), SLOT( mailSend() ) );
     
      // Tab 6 About *********************************************************
     QFrame *TabWidgetAboutFrame = new QFrame(this);
-    TabWidgetAboutFrame->setGeometry(120,0,300,200);
+    TabWidgetAboutFrame->setGeometry( 120, 0, 300, 200 );
     TabWidgetAboutFrame->show();
-    tabWidget->addTab(TabWidgetAboutFrame,"");
-    tabWidget->setTabIcon(5,QIcon(":/pictures/about.png"));
+    tabWidget->addTab( TabWidgetAboutFrame, "" );
+    tabWidget->setTabIcon( 4, QIcon( ":/pictures/about.png" ) );
     tabWidget->show();
-
+    
     QLabel* labelAutor = new QLabel( TabWidgetAboutFrame );
     labelAutor->setText( ProgName + " " + Version );
     labelAutor->setGeometry( QRect( 0, 10, 400, 22 ) );
     labelAutor->setAlignment( Qt::AlignCenter );
     labelAutor->show();
 
+    QLabel* labelMailingliste = new QLabel( TabWidgetAboutFrame );
+    labelMailingliste->setText( "Mailingliste" );
+    labelMailingliste->setGeometry( 70, 32, 400, 22 );
+    labelMailingliste->show();
+
+    QLabel* labelMailinglisteMail = new QLabel( TabWidgetAboutFrame );
+    labelMailinglisteMail->setText( mailingliste );
+    labelMailinglisteMail->setGeometry( 160, 32, 400, 22 );
+    labelMailinglisteMail->setOpenExternalLinks( true );
+    labelMailinglisteMail->show();
+
+    
     QLabel* labelWeb = new QLabel( TabWidgetAboutFrame );
-    labelWeb->setGeometry( QRect( 80, 42, 400, 22 ) );
+    labelWeb->setGeometry( QRect( 70, 54, 400, 22 ) );
     labelWeb->setText( "Homepage" );
     labelWeb->show();
     
     QLabel* labelWebSite = new QLabel( TabWidgetAboutFrame );
-    labelWebSite->setGeometry( QRect( 170, 42, 400, 22 ) );
+    labelWebSite->setGeometry( QRect( 160, 54, 400, 22 ) );
     labelWebSite->setText( homepage );
-    //labelWebSite->setAlignment(Qt::AlignCenter);
     labelWebSite->setOpenExternalLinks( true );
     labelWebSite->show();
     
     QLabel* labelMailSupport = new QLabel( TabWidgetAboutFrame );
-    labelMailSupport->setGeometry( QRect( 80, 64, 400, 22 ) );
+    labelMailSupport->setGeometry( QRect( 70, 76, 400, 22 ) );
     labelMailSupport->setText( "Support" );
     labelMailSupport->show();
  
     QLabel* labelMail = new QLabel( TabWidgetAboutFrame );
-    labelMail->setGeometry( QRect( 170, 64, 400, 22 ) );
+    labelMail->setGeometry( QRect( 160, 76, 400, 22 ) );
     labelMail->setText( email );
     //labelMail->setAlignment( Qt::AlignCenter );
     labelMail->setOpenExternalLinks( true );
@@ -304,12 +311,12 @@ screencast::screencast()
 
     QLabel* labelDeveLoper = new QLabel( TabWidgetAboutFrame );
     labelDeveLoper->setText( "Developer" );
-    labelDeveLoper->setGeometry( QRect( 80, 86, 400, 22 ) );
+    labelDeveLoper->setGeometry( QRect( 70, 98, 400, 22 ) );
     labelDeveLoper->show();
 
     QLabel* labelDeveLoperMail = new QLabel( TabWidgetAboutFrame );
     labelDeveLoperMail->setText( emaildeveloper );
-    labelDeveLoperMail->setGeometry( QRect( 170, 86, 400, 22 ) );
+    labelDeveLoperMail->setGeometry( QRect( 160, 98, 400, 22 ) );
     labelDeveLoperMail->setOpenExternalLinks( true );
     labelDeveLoperMail->show();
 
@@ -442,11 +449,8 @@ screencast::screencast()
       AudioOnOffCheckbox->setCheckState( Qt::CheckState( settings.value( "AudioOnOff", 2 ).toUInt() ) );
     settings.endGroup();
 
-    settings.beginGroup("Alsa");
+    settings.beginGroup("Alsa" );
       AlsaRadioButton->setChecked( settings.value( "Alsa", false ).toBool() );
-      int x = AlsaHwComboBox->findText(settings.value("NameCaptureCard").toString(),Qt::MatchExactly);
-      AlsaHwComboBox->setCurrentIndex(x);
-      channels = settings.value("channels").toString();
     settings.endGroup();
 
     settings.beginGroup("Pulse");
@@ -465,7 +469,7 @@ screencast::screencast()
       else
 	PathMoviesLocation();
 
-      x = VideoplayerComboBox->findText( settings.value( "Videoplayer" ).toString(),Qt::MatchExactly );
+      int x = VideoplayerComboBox->findText( settings.value( "Videoplayer" ).toString(),Qt::MatchExactly );
       if ( x == -1 )
         VideoplayerComboBox->setCurrentIndex( 0 );
       else
@@ -483,8 +487,7 @@ screencast::screencast()
 
     SystemCall = new QProcess( this );
     
-    //connect( recordButton, SIGNAL( clicked() ), SLOT( record() ) );
-    connect( recordButton, SIGNAL( clicked() ), SLOT( preRecord() ) );//*******************************************************************************
+    connect( recordButton, SIGNAL( clicked() ), SLOT( preRecord() ) );
     connect( StopButton,   SIGNAL( clicked() ), SLOT( Stop() ) );
     connect( PauseButton,  SIGNAL( clicked() ), SLOT( Pause() ) );
     connect( PlayButton,   SIGNAL( clicked() ), SLOT( play() ) );
@@ -492,7 +495,6 @@ screencast::screencast()
     connect( AudioOnOffCheckbox,     SIGNAL( clicked() ),              SLOT( AudioOnOff() ) );
     connect( AlsaRadioButton,        SIGNAL( clicked() ),              SLOT( AudioOnOff() ) );
     connect( PulseDeviceRadioButton, SIGNAL( clicked() ),              SLOT( AudioOnOff() ) );
-    connect( AlsaHwComboBox,         SIGNAL( activated( int ) ), this, SLOT( getChannelCount( int ) ) );
     
     connect( SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
 
@@ -506,10 +508,6 @@ screencast::screencast()
     
     windowMoveTimer = new QTimer( this );
     connect( windowMoveTimer, SIGNAL( timeout() ), this, SLOT( windowMove() ) );
-    
-    usbTimer = new QTimer( this );
-    connect( usbTimer, SIGNAL( timeout() ), this, SLOT( usb() ) );
-    usbTimer->start( 20 );
 
     // Area ein-ausblenden wenn Radiobutton immer wieder angecklickt wird
     connect( AreaRadioButton,       SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
@@ -575,11 +573,61 @@ screencast::screencast()
    shortcutPause = new QxtGlobalShortcut( this );
    connect( shortcutPause, SIGNAL( activated() ), this, SLOT( ShortcutPause() ) );
    shortcutPause->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
+   
+   QvkAlsaWatcher * myAlsaWatcher = new QvkAlsaWatcher();
+   connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( AlsaWatcherEvent( QStringList ) ) );
+   
 }
 
 
 screencast::~screencast()
 {
+}
+
+/*
+QString boolToStr( bool boo )
+{
+  return ( ( true == boo ) ? "true" : "false" );
+}
+*/
+
+/**
+ * CardxList beinhaltet "card0", "card1" ...
+ * */
+void screencast::AlsaWatcherEvent( QStringList CardxList )
+{
+  qDebug();
+  qDebug() << "[vokoscreen] Find" << CardxList;
+  qDebug();
+
+  AlsaHwComboBox->clear();
+  AlsaDeviceList.clear();
+  
+  // Für jede card wird eine Instanz erzeugt und in AlsaDeviceList abgelegt
+  for( int i = 0; i <= CardxList.count() - 1; i++ )
+  {
+    QvkAlsaDevice * alsaDevice = new QvkAlsaDevice( CardxList[ i ] );
+    AlsaDeviceList.append( alsaDevice );
+    AlsaHwComboBox->addItem( AlsaDeviceList.at( i )->getAlsaName() , i );
+  }
+
+  QSettings settings( ProgName, ProgName );
+  settings.beginGroup("Alsa" );
+    int x = AlsaHwComboBox->findText( settings.value( "NameCaptureCard" ).toString(),Qt::MatchExactly );
+    AlsaHwComboBox->setCurrentIndex( x );
+  settings.endGroup();
+  
+  settings.beginGroup( "Pulse" );
+    PulseMultipleChoice();
+    for ( int x = 0; x < 10; x++ )
+       for ( int i = 0; i < getPulseInputDevicesCount(); i++ )
+       {
+          QCheckBox *aa = getCheckBoxPulseDevice( i );
+          if ( aa->text() == settings.value( "NameCaptureCard-" + QString::number( x + 1 ) ).toString() )
+            aa->setCheckState( Qt::Checked );
+       }  
+  settings.endGroup();
+
 }
 
 
@@ -619,7 +667,6 @@ void screencast::saveSettings()
   settings.beginGroup( "Alsa" );
     settings.setValue( "Alsa", AlsaRadioButton->isChecked() );
     settings.setValue( "NameCaptureCard", AlsaHwComboBox->currentText() );
-    settings.setValue( "channels", channels );
   settings.endGroup();
 
   settings.beginGroup( "Pulse" );
@@ -650,24 +697,22 @@ void screencast::saveSettings()
 
 void screencast::mailSend()
 {
-  QDialog * dialog = new QDialog();
-  dialog->resize( 300, 300 );
-  QLabel * label = new QLabel( dialog );
-  label->setGeometry( 100, 100, 100, 30 );
-  label->setText( "In work :>)" );
-  label->show();
+  QDialog * dialog = new QDialog( this );
+  dialog->resize( 300, 200 );
   
+  QPushButton * pushbutton = new QPushButton( dialog );
+  pushbutton->setGeometry( 10, 10, 100, 30 );
+  pushbutton->setText( "Send email" );
+  pushbutton->show();
   dialog->exec();
   
-}
-
-
-void screencast::mailOnOff()
-{
-  if ( mailOnOffCheckbox->isChecked() )
-    mailPushButton->show();
-  else
-    mailPushButton->hide();
+  if ( dialog->Rejected )
+  {
+    QProcess Process;
+    Process.startDetached("thunderbird -compose attachment=/home/vk/Videos/screencast-104.avi");
+    Process.close();
+  }
+  
 }
 
 
@@ -675,6 +720,7 @@ void screencast::ShortcutLupe()
 {
   LupeCheckBox->click();
 }
+
 
 void screencast::ShortcutPause()
 {
@@ -751,45 +797,6 @@ void screencast::AreaOnOff()
 
 
 /**
- * Ermittelt die Audioaufnahmegeräte und schreibt sie in die Widget,
- * anschließend wird die vokoscreen.conf ausgelesen und die dort stehende
- * Geräte im Widget gesetzt.
- */
-void screencast::usb()
-{
-  usbTimer->stop();
-
-  int value = getCountAlsaCaptureDevice();
-  
-  if ( usbCounter != value )
-  {
-    usbCounter = value;
-    alsaDevice();
-    PulseMultipleChoice();
-
-    QSettings settings( ProgName, ProgName );
-
-    settings.beginGroup( "Alsa" );
-      int x = AlsaHwComboBox->findText( settings.value( "NameCaptureCard" ).toString(), Qt::MatchExactly );
-      AlsaHwComboBox->setCurrentIndex( x );
-      channels = settings.value( "channels" ).toString();
-    settings.endGroup();
-
-    settings.beginGroup( "Pulse" );
-      for ( int x = 0; x < 10; x++ )
-	for ( int i = 0; i < getPulseInputDevicesCount(); i++ )
-	{
-           QCheckBox *aa = getCheckBoxPulseDevice( i );
-	   if ( aa->text() == settings.value( "NameCaptureCard-" + QString::number( x + 1 ) ).toString() )
-	     aa->setCheckState( Qt::Checked );
-	}  
-    settings.endGroup();
-  }
-  usbTimer->start();
-}
-
-
-/**
  * Looking for external programs
  */
 void screencast::searchExternalProgramms()
@@ -799,11 +806,6 @@ void screencast::searchExternalProgramms()
      qDebug() << "[vokoscreen]" << "Find ffmpeg" << "Version:" << getFfmpegVersion();
   else
      qDebug() << "[vokoscreen]" << "Error: ffmpeg is not found, this is an ffmpeg tool. Please install ffmpeg";
-  
-  if ( needProgramm("arecord") )
-     qDebug() << "[vokoscreen]" << "Find arecord";
-  else
-     qDebug() << "[vokoscreen]" << "Error: arecord is not found, this is an alsa-utils tool. Please install arecord";
 
   if ( needProgramm("pactl") )
      qDebug() << "[vokoscreen]" << "Find pactl";
@@ -1155,6 +1157,17 @@ void screencast::Pause()
     }
     else
     {
+      QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
+      QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
+      if ( inBox->isbusy() and AlsaRadioButton->isChecked() )
+      {
+        QMessageBox msgBox;
+        msgBox.setText( QString::fromUtf8( "Das von Ihnen ausgewählte Alsa Audio Gerät ist belegt." ) );
+        msgBox.exec();
+	PauseButton->click();
+        return;
+      }
+      
       shortcutStop->setEnabled( true );
       PauseButton->setText( "Pause" );
       startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
@@ -1176,6 +1189,16 @@ void screencast::Pause()
     }
     else
     {
+      QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
+      QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
+      if ( inBox->isbusy() and AlsaRadioButton->isChecked() )
+      {
+        QMessageBox msgBox;
+        msgBox.setText( QString::fromUtf8( "Das von Ihnen ausgewählte Alsa Audio Gerät ist belegt." ) );
+        msgBox.exec();
+	PauseButton->click();
+        return;
+      }
       shortcutStop->setEnabled( true );
       PauseButton->setText( "Pause" );
       startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
@@ -1295,6 +1318,7 @@ QString screencast::getFfmpegVersion()
 /**
  * Return number of Alsa Capture Devices
  */
+/*
 int screencast::getCountAlsaCaptureDevice()
 {
   QProcess *Process = new QProcess( this );
@@ -1312,7 +1336,7 @@ int screencast::getCountAlsaCaptureDevice()
 
   return list.count();
 }
-
+*/
 
 void screencast::windowMove()
 {
@@ -1326,7 +1350,7 @@ void screencast::windowMove()
   if ( ( deltaXMove == x ) and ( deltaYMove == y ) )
     if ( ( SystemCall->state() == QProcess::NotRunning ) )
     {
-      QStringList result = ffmpegString.split( ":0" );
+      QStringList result = ffmpegString.split( ":0." );
       QString str1 = result[ 0 ];
       QString str2 = result[ 1 ];
       result.clear();
@@ -1342,97 +1366,6 @@ void screencast::windowMove()
 
   deltaXMove = x;
   deltaYMove = y; 
-}
-
-
-/**
- * Return Alsa Device hw:x,x
- */
-QString screencast::getAlsaHwCaptureDevice( int value )
-{
-  QProcess *Process = new QProcess( this );
-  Process->start( "arecord -l" );
-  Process->waitForFinished();
-  QString output = Process->readAllStandardOutput();
-  Process->close();
-
-  QStringList list = output.split( "\n" );
-  
-  for( int i = list.count() - 1; i >= 0; i-- )
-    if ( list[i].startsWith( " " ) || list[i].startsWith( "*" ) )
-      list.removeAt ( i );
-
-  QString cardLine = list[ value - 1 ];
-  QStringList Cardlist = cardLine.split( " " );
-  cardLine = Cardlist[ 1 ];
-  Cardlist.clear();
-  Cardlist = cardLine.split( ":" );
-  QString alsaCard = Cardlist[ 0 ];
-  
-  cardLine = list[ value - 1 ];
-  Cardlist = cardLine.split( "," );
-  cardLine = Cardlist[ 1 ].trimmed().replace(":", "");
-  Cardlist.clear();
-  Cardlist = cardLine.split( " " );
-  QString alsadevice = Cardlist[ 1 ];
-  
-  QString ret = "hw:" + alsaCard + "," + alsadevice;
-    
-  return ret;
-}
-
-
-/**
- * Return Alsaname 
- */
-QString screencast::getNameCaptureCard( int value )
-{
-  QProcess *Process = new QProcess( this );
-  Process->start( "arecord -l" );
-  Process->waitForFinished();
-  QString output = Process->readAllStandardOutput();
-  Process->close();
-  delete Process;
- 
-  QStringList list = output.split( "\n" );
-  
-  for( int i = list.count() - 1; i >= 0; i-- )
-    if ( list[i].startsWith( " " ) || list[i].startsWith( "*" ) )
-      list.removeAt ( i );
-  
-  QString cardLine= list[ value - 1 ];
-  QStringList nameCardList = cardLine.split( "[" );
-  cardLine = nameCardList[ 1 ];
-  nameCardList.clear();
-  nameCardList = cardLine.split( "]" );
-  QString alsaCardName = nameCardList[ 0 ];
-  alsaCardName = alsaCardName.replace( " ", "-");
-  
-  QString deviceLine= list[ value - 1 ];
-  QStringList nameDeviceList = deviceLine.split( "[" );
-  deviceLine = nameDeviceList[ 2 ];
-  nameDeviceList.clear();
-  nameDeviceList = deviceLine.split( "]" );
-  QString alsaDeviceName = nameDeviceList[ 0 ];
-  alsaDeviceName = alsaDeviceName.replace( " ", "-");
-
-  QString ret = "[" + getAlsaHwCaptureDevice( value ) + "]" + " " + alsaCardName + " " + alsaDeviceName;
-  return ret;
-}
-
-
-/**
- * Returns the number of channels ALSA
- */
-void screencast::getChannelCount( int value )
-{
-    (void)value;
-    QVariant aa = AlsaHwComboBox->itemData(AlsaHwComboBox->currentIndex()); // get userdata(Alsa device) from ComboBox
-    QString alsaDevice = aa.toString();
-    alsaDevice = alsaDevice.replace( "\n", "" ); 
-    qDebug() << "[vokoscreen]" << "AlsaDevice :" << alsaDevice;
-    channels = getChannelCount( alsaDevice );
-    qDebug() << "[vokoscreen]" << "Channels :" << channels;  
 }
 
 
@@ -1616,32 +1549,6 @@ void screencast::AudioOnOff()
 
 
 /**
- * Write Alsa Device in Combobox
- */
-void screencast::alsaDevice()
-{
-  AlsaHwComboBox->clear();
-  
-  qDebug() << "[vokoscreen]" << "---Begin search Alsa Capture Devices---";
-  
-  int count = getCountAlsaCaptureDevice();
-  
-  for( int i = 1; i <= count; i++ )
-  {
-    QString Name = getNameCaptureCard( i );
-    
-    QString Hw = getAlsaHwCaptureDevice( i );
-
-    qDebug() << "[vokoscreen]" << "Find CaptureCard:" << Name;
-
-    AlsaHwComboBox->addItem(Name, Hw);
-  }
-  qDebug() << "[vokoscreen]" << "---End search Alsa Capture Devices---";
-  qDebug();
-}
-
-
-/**
  * Erstellt eine Scrollarea mit einem Frame
  * in dem die Checkboxen gesetzt werden
  * 
@@ -1686,86 +1593,6 @@ void screencast::PulseMultipleChoice()
   
   qDebug() << "[vokoscreen]" << "---End search PulseAudio Capture Devices---";
   qDebug();
-}
-
-
-QString screencast::getChannelCount( QString device )
-{
-  QProcess Process;
-  
-  // SampleFormat ermitteln bei der -v nicht ausgegeben wird [hw:0,2]
-  Process.setProcessChannelMode( QProcess::MergedChannels );
-  Process.start( "arecord -v -d 1 -D " + device );
-  Process.waitForFinished();
-  QString output = Process.readAllStandardOutput();;
-  Process.close();
-
-  QStringList list = output.split( "\n" );
-
-  QStringList result = list.filter( "- ", Qt::CaseInsensitive );
-  QString SampleFormat;
-  if (not result.empty() )
-  {
-    SampleFormat = result[ 0 ];
-    result.clear();
-    result = SampleFormat.split( " " );
-    SampleFormat = result[ 1 ];
-  }
-  //SampleFormat ermitteln bei der -v ausgegeben wird
-  if ( SampleFormat == "" )
-  {
-      result = list.filter( "  format", Qt::CaseInsensitive );
-      SampleFormat = result[ 0 ];
-      result.clear();
-      result = SampleFormat.split( ":" );
-      SampleFormat = result[ 1 ].trimmed();
-  }
-
-  // channels ermitteln bei der -v ausgegeben wird  
-  Process.setProcessChannelMode( QProcess::MergedChannels );
-  Process.start( "arecord -v -f " + SampleFormat + " -d 1 -D " + device );
-  Process.waitForFinished();
-  output = Process.readAllStandardOutput();;
-  Process.close();
-
-  list.clear();
-  list = output.split( "\n" );
-  result.clear();
-  result = list.filter( "channels", Qt::CaseInsensitive );
-  QString channels;
-  if ( not result.empty() )
-  {
-    channels = result[ 0 ];
-    list.clear();
-    list = channels.split( ":" );
-    channels = list[ 1 ].trimmed();
-  }
-  // channels ermitteln bei der -v nicht ausgegeben wird
-  if ( channels == "")
-  {
-    for ( int i = 1; i <= 32; i++ )
-    {
-      Process.setProcessChannelMode( QProcess::MergedChannels );
-      Process.start( "arecord -v -f " + SampleFormat + " -c " + QString().number( i ) + " -d 1 -D " + device );
-      Process.waitForFinished();
-      output = Process.readAllStandardOutput();;
-      Process.close();
-
-      list.clear();
-      list = output.split( "\n" );
-      result.clear();
-      result = list.filter( "channels", Qt::CaseInsensitive );
-      if ( not result.empty() )
-      {
-        channels = result[ 0 ];
-        list.clear();
-        list = channels.split( ":" );
-        channels = list[ 1 ].trimmed();
-	break;
-      }
-    }
-  }
-  return channels;
 }
 
 
@@ -1835,7 +1662,7 @@ QString screencast::NameInMoviesLocation()
  */
 QString screencast::PauseNameInTmpLocation()
 {
-  QString myFilename =  "screencast-pause";
+  QString myFilename = "screencast-pause";
   QString myFilenameExtension = "." + VideoContainerComboBox->currentText();
   QString myName = PathTempLocation() + QDir::separator() + myFilename + myFilenameExtension;
 
@@ -1859,12 +1686,16 @@ QString screencast::myAlsa()
   {
     if ( AlsaRadioButton->isChecked() )  
     {
+      /*
       QVariant aa = AlsaHwComboBox->itemData(AlsaHwComboBox->currentIndex()); // get userdata(Alsa device) from ComboBox
       QString alsaDevice = aa.toString();
       alsaDevice = alsaDevice.replace( "\n", "" ); 
-  
+      */
+      QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
+      QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
       if ( AlsaHwComboBox->currentIndex() > -1 )
-        value = "-f alsa -ac " + channels + " -i " + alsaDevice + " ";
+        //value = "-f alsa -ac " + channels + " -i " + alsaDevice + " ";
+        value = "-f alsa -ac " + inBox->getChannel() + " -i " + inBox->getAlsaHw() + " ";
       else
         value = "";
     }
@@ -2055,6 +1886,16 @@ QString screencast::noMouse()
 
 void screencast::preRecord()
 {
+  QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
+  QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
+  if ( inBox->isbusy() and AlsaRadioButton->isChecked() )
+  {
+    QMessageBox msgBox;
+    msgBox.setText( QString::fromUtf8( "Das von Ihnen ausgewählte Alsa Audio Gerät ist belegt." ) );
+    msgBox.exec();
+    return;
+  }
+  
   if ( WindowRadioButton->isChecked() )
     if ( firststartWininfo == false )
     {
@@ -2073,8 +1914,6 @@ void screencast::record()
    
   if ( MinimizedCheckBox->checkState() == Qt::Checked )
     WindowMinimized();
-  
-  usbTimer->stop();
   
   QString RecordX;
   QString RecordY;
@@ -2169,7 +2008,6 @@ void screencast::record()
 
   nameInMoviesLocation = NameInMoviesLocation();
 
-  
   QString quality;
   if ( getFfmpegVersion() < "01.01.00" )
     quality = " -sameq ";
@@ -2217,6 +2055,8 @@ void screencast::record()
 
 void screencast::startRecord( QString RecordPathName )
 {
+  
+ 
   qDebug() << "[vokoscreen]"<< "ffmpegstring :" << ffmpegString + RecordPathName;
 
   if ( PulseDeviceRadioButton->isChecked() )
@@ -2319,7 +2159,6 @@ void screencast::Stop()
 
   pulseUnloadModule();
   
-  usbTimer->start();
 }
 
 //#include "screencast.moc"

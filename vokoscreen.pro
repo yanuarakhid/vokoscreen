@@ -59,9 +59,15 @@ include(QtSingleApplication/qtsingleapplication.pri)
 # libqxt
 include(libqxt/libqxt.pri)
 
+# audio
+include(audio/audio.pri)
+
 #include(QtZip-src/QtZip.pri)
 # -lz wird benötigt für QtZip, dies benötigt libz.so
 #LIBS += -lz
 
 CONFIG  += qtestlib
 #system( ls )
+
+LIBS += -lasound
+

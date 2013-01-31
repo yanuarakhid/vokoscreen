@@ -1,2 +1,4 @@
-
+1.4.6 Rewriting the Alsamodul through their own routines. The package "alsa-utils" is no longer needed.
+1.4.5 Relaese
+1.4.4 Alsa Bug behoben
 1.4.2 Eigene xwininfo Routine eingebaut

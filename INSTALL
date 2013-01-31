@@ -1,15 +1,18 @@
-REQUIREMENTS:
-  - QT 4 (required)
-  - ffmpeg (required)
-  - pulseaudio (required)
-  - pulsaudio-utils (required)
-  - alsa (required)
-  - alsa-utils (required)
-  - lame (required)
-  - libmp3lame0 (required)
+Requires:
+  - Qt 4
+  - ffmpeg
+  - pulseaudio
+  - pulsaudio-utils
+  - alsa
+  - lame
+  - libmp3lame0
   - v4l-utils
   - mkvtoolnix
 
+BuildRequires:
+  - libqt4-devel
+  - alsa-devel
+  
 Compile:
   - get sources
     - extract vokoscren-<version>.tar

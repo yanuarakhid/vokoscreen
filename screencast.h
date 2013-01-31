@@ -36,6 +36,7 @@
 #include "regionselection.h"
 #include "QvkLupe.h"
 #include "QvkWebcam.h"
+#include "QvkAlsaDevice.h"
 
 #include <QxtGlobalShortcut> 
 
@@ -53,7 +54,7 @@ public:
     QString Version;
     QString email;
     QString homepage;
-    QString channels;
+    //QString channels;
     QString ffmpegString;
     QString nameInMoviesLocation;
     QString winID;
@@ -63,21 +64,22 @@ public:
     QStringList MoveWindowlist;
     bool firststartWininfo;
     bool moveWindow;
-    int usbCounter;
     
     
 public slots:
+  
+private slots:
     void Stop(void);
     void record(void);
     void play();
     bool isScreencastFileAvailable();
     
-    void alsaDevice();
+    //void alsaDevice();
     void PulseMultipleChoice();
 
     void AudioOnOff();
-    void getChannelCount( int value );
-    QString getChannelCount( QString device );
+    //void getChannelCount( int value );
+    //QString getChannelCount( QString device );
     
     void Pause();
     void startRecord( QString RecordPathName );
@@ -85,14 +87,14 @@ public slots:
     
     QString myAcodec();
     void searchExternalProgramms();
-    int getCountAlsaCaptureDevice();
+    //int getCountAlsaCaptureDevice();
    // QString getFfmpegVersionMinor();
    // QString winInfo();
     //QString winInfo(); //***************************************************************************
     void preRecord(); //********************************************************************
 
-    QString getAlsaHwCaptureDevice(int value);
-    QString getNameCaptureCard(int value);
+    //QString getAlsaHwCaptureDevice(int value);
+    //QString getNameCaptureCard(int value);
     
     const QString myPulseDevice();
     int getCountCheckedPulseDevices();
@@ -105,7 +107,7 @@ public slots:
     void pulseUnloadModule();
     QString mySample();
 
-    void usb();
+    //void usb();
 
     QString noMouse();
     
@@ -148,9 +150,12 @@ public slots:
     void ShortcutLupe();
 
     
-    void mailOnOff();
     void mailSend();
 
+    void AlsaWatcherEvent( QStringList CardxList );
+    
+    
+    
 private:
     QPushButton *StopButton;
     QPushButton *recordButton;
@@ -182,7 +187,6 @@ private:
     QCheckBox *MinimizedCheckBox;
     
     QTimer *windowMoveTimer;
-    QTimer *usbTimer;
     
     QFrame *Pulseframe;
     QScrollArea *scrollAreaPulse;
@@ -208,6 +212,7 @@ private:
     QPushButton *mailPushButton;
     QCheckBox *mailOnOffCheckbox;
 
+    QList<QvkAlsaDevice *> AlsaDeviceList;
 
  protected:
     void closeEvent( QCloseEvent * event );
