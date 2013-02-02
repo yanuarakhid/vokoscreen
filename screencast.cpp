@@ -64,6 +64,7 @@
 #include <QDialog>
 #include <QTime>
 #include <QDate>
+#include <QFileSystemWatcher>
 
 #include <QTest>
 
@@ -79,7 +80,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.4.6";
+    Version = "1.4.7";
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -373,10 +374,6 @@ screencast::screencast()
     PlayButton->setFont( QFont( "Times", 12, QFont::Bold ) );
     PlayButton->setGeometry( 420, 200, 70, 30 );
     PlayButton->show();
-    if ( isScreencastFileAvailable() )
-      PlayButton->setEnabled( true );
-    else
-      PlayButton->setEnabled( false );
 
     LupeCheckBox = new QCheckBox( frame );
     LupeCheckBox->setText( tr( "Magnification" ) );
@@ -395,7 +392,7 @@ screencast::screencast()
     
     QLabel* label = new QLabel(centralWidget);
     label->setText("");
-    label->setGeometry( QRect( 0, 0, 123, 210) );
+    label->setGeometry( QRect( 0, 0, 123, 240) );
     label->setAlignment( Qt::AlignCenter );
     label->show();
     QImage* qImage = new QImage( ":/pictures/VokoCola.png" );
@@ -576,7 +573,11 @@ screencast::screencast()
    
    QvkAlsaWatcher * myAlsaWatcher = new QvkAlsaWatcher();
    connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( AlsaWatcherEvent( QStringList ) ) );
-   
+
+   QFileSystemWatcher * VideoFileSystemWatcher = new QFileSystemWatcher();
+   VideoFileSystemWatcher->addPath( SaveVideoPathLineEdit->displayText() );
+   connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
+   myVideoFileSystemWatcher( "" );
 }
 
 
@@ -584,12 +585,30 @@ screencast::~screencast()
 {
 }
 
+
+void screencast::myVideoFileSystemWatcher( const QString & path )
+{
+  (void)path;
+  QDir Dira( PathMoviesLocation() );
+  QStringList filters;
+  filters << "screencast*";
+  QStringList List = Dira.entryList( filters, QDir::Files, QDir::Time );
+  
+  if ( List.isEmpty() )
+    PlayButton->setEnabled( false );
+  else
+    PlayButton->setEnabled( true );
+}
+
+
+
 /*
 QString boolToStr( bool boo )
 {
   return ( ( true == boo ) ? "true" : "false" );
 }
 */
+
 
 /**
  * CardxList beinhaltet "card0", "card1" ...
@@ -949,8 +968,6 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       StopButton->setEnabled(false);
       PauseButton->setEnabled(false);
       recordButton->setEnabled(true);
-      if ( isScreencastFileAvailable() )
-        PlayButton->setEnabled(true);
       FullScreenRadioButton->setEnabled( true );
       WindowRadioButton->setEnabled( true );
       AreaRadioButton->setEnabled( true );
@@ -1013,8 +1030,6 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       StopButton->setEnabled(false);
       PauseButton->setEnabled(false);
       recordButton->setEnabled(true);
-      if ( isScreencastFileAvailable() )
-        PlayButton->setEnabled(true);
       FullScreenRadioButton->setEnabled( true );
       WindowRadioButton->setEnabled( true );
       AreaRadioButton->setEnabled( true );
@@ -1239,27 +1254,6 @@ void screencast::play()
 
 
 /**
- * 
- * 
- */
-bool screencast::isScreencastFileAvailable()
-{
-  QDir Dira( PathMoviesLocation() );
-  QStringList filters;
-  filters << "screencast*";
-  QStringList List = Dira.entryList( filters, QDir::Files, QDir::Time );
-  
-  bool ret;
-  if ( List.isEmpty() )
-    ret = false;
-  else
-    ret = true;
-  
-  return ret;
-}
-
-
-/**
  * Versionsnummer von ffmpeg aufbereiten so diese mit "kleiner gleich" bzw. "größer gleich" ausgewertet werden kann
  */
 QString screencast::getFfmpegVersion()
@@ -1314,29 +1308,6 @@ QString screencast::getFfmpegVersion()
   return major + "." + minor + "." + patch;
 }
 
-
-/**
- * Return number of Alsa Capture Devices
- */
-/*
-int screencast::getCountAlsaCaptureDevice()
-{
-  QProcess *Process = new QProcess( this );
-  Process->start( "arecord -l" );
-  Process->waitForFinished();
-  QString value = Process->readAllStandardOutput();
-  Process->close();
-  delete Process;
-  
-  QStringList list = value.split( "\n" );
-
-  for( int i = list.count() - 1; i >= 0; i-- )
-    if ( list[i].startsWith( " " ) || list[i].startsWith( "*" ) || list.value(i) == "" )
-      list.removeAt ( i );
-
-  return list.count();
-}
-*/
 
 void screencast::windowMove()
 {
@@ -2154,8 +2125,6 @@ void screencast::Stop()
   pause = false;
   windowMoveTimer->stop();
   firststartWininfo = false;
-  if ( isScreencastFileAvailable() )
-     PlayButton->setEnabled( true );
 
   pulseUnloadModule();
   

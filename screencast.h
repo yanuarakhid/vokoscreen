@@ -72,7 +72,7 @@ private slots:
     void Stop(void);
     void record(void);
     void play();
-    bool isScreencastFileAvailable();
+    //bool isScreencastFileAvailable();
     
     //void alsaDevice();
     void PulseMultipleChoice();
@@ -153,6 +153,7 @@ private slots:
     void mailSend();
 
     void AlsaWatcherEvent( QStringList CardxList );
+    void myVideoFileSystemWatcher( const QString & path );
     
     
     
