@@ -11,10 +11,11 @@
 
 using namespace std;
 
-QvkWebcam::QvkWebcam( QCheckBox *widget )
+QvkWebcam::QvkWebcam( QCheckBox *webcamCheckBox, QPushButton *webcamDialogPushButton ) //***************************************************
 {
   //ist das Widget im vokoscreen Fenster
-  myWidget = widget;
+  myWidget = webcamCheckBox;
+  myWebcamDialogPushButton = webcamDialogPushButton;
   
   setWindowTitle( tr( "Webcam Settings" ) );
   setModal( true );
@@ -64,8 +65,6 @@ QvkWebcam::QvkWebcam( QCheckBox *widget )
   webcam3QComboBox->setGeometry( 220, 100, 120, 30 );
   webcam3QComboBox->show();
 
-  
-  
   QFileSystemWatcher * fileSystemWatcher = new QFileSystemWatcher();
   fileSystemWatcher->addPath( "/dev/" );
   connect( fileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myfileSystemWatcher( const QString ) ) );
@@ -129,9 +128,13 @@ void QvkWebcam::myfileSystemWatcher( const QString & path )
     ProcessCammera1->terminate();
     myWidget->setCheckState( Qt::Unchecked );
     myWidget->setEnabled( false );
+    myWebcamDialogPushButton->setEnabled( false );
   }
   else
+  {
     myWidget->setEnabled( true );
+    myWebcamDialogPushButton->setEnabled( true );
+  }
 
  
   if ( deviceList.count() >= 1 )

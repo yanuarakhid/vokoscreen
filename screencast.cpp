@@ -1,5 +1,5 @@
 /* vokoscreen - A desktop recorder
- * Copyright (C) 2011-2012 Volker Kohaupt
+ * Copyright (C) 2011-2013 Volker Kohaupt
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -72,7 +72,7 @@ using namespace std;
 
 screencast::screencast()
 {
-    bool beta = true;
+    bool beta = false;
     QString Beta;
     if ( beta )
       Beta = "Beta 1";
@@ -80,7 +80,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.4.10";
+    Version = "1.4.11";
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -343,6 +343,10 @@ screencast::screencast()
     recordButton->setFont( QFont( "Times", 12, QFont::Bold ) );
     recordButton->setGeometry( 210, 200, 70, 30 );
     recordButton->show();
+    if ( needProgramm( "ffmpeg" ) )
+      recordButton->setEnabled( true );
+    else
+      recordButton->setEnabled( false );
 
     recordTimeLabel = new QLabel(frame);
     recordTimeLabel->setText("00:00:00");
@@ -517,7 +521,7 @@ screencast::screencast()
     lupe = new QvkLupe();
     lupe->close();
 
-    webcam = new QvkWebcam( webcamCheckBox );
+    webcam = new QvkWebcam( webcamCheckBox, webcamDialogPushButton );  //*****************************************************************************************
     connect( webcamCheckBox, SIGNAL( clicked() ), this, SLOT( showWebcam() ) );
     connect( webcamDialogPushButton, SIGNAL( clicked() ), this, SLOT( showWebcamDialog() ) );
    
@@ -578,6 +582,7 @@ screencast::screencast()
    VideoFileSystemWatcher->addPath( SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
    myVideoFileSystemWatcher( "" );
+ 
 }
 
 

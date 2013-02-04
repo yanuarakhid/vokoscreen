@@ -6,12 +6,14 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QLabel>
+#include <QPushButton>
 
 class QvkWebcam : public QDialog
 { 
 Q_OBJECT
 public:
-  QvkWebcam( QCheckBox *widget );
+  QvkWebcam( QCheckBox *widget, QPushButton *webcamDialogPushButton ); //***************************************************
+  //QvkWebcam( QCheckBox *widget );
   virtual ~QvkWebcam();
   
   QStringList deviceList;
@@ -59,7 +61,7 @@ protected:
 
   
 private:
-
+  QPushButton * myWebcamDialogPushButton;
   
 };
 

@@ -1,5 +1,5 @@
 /* vokoscreen - A desktop recorder
- * Copyright (C) 2011-2012 Volker Kohaupt
+ * Copyright (C) 2011-2013 Volker Kohaupt
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
