@@ -12,8 +12,8 @@ class QvkWebcam : public QDialog
 { 
 Q_OBJECT
 public:
-  QvkWebcam( QCheckBox *widget, QPushButton *webcamDialogPushButton ); //***************************************************
-  //QvkWebcam( QCheckBox *widget );
+  QvkWebcam( QCheckBox *widget, QPushButton *webcamDialogPushButton );
+  
   virtual ~QvkWebcam();
   
   QStringList deviceList;

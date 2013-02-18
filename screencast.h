@@ -37,6 +37,7 @@
 #include "QvkLupe.h"
 #include "QvkWebcam.h"
 #include "QvkAlsaDevice.h"
+#include "QvkMail.h"
 
 #include <QxtGlobalShortcut> 
 
@@ -72,14 +73,10 @@ private slots:
     void Stop(void);
     void record(void);
     void play();
-    //bool isScreencastFileAvailable();
     
-    //void alsaDevice();
     void PulseMultipleChoice();
 
     void AudioOnOff();
-    //void getChannelCount( int value );
-    //QString getChannelCount( QString device );
     
     void Pause();
     void startRecord( QString RecordPathName );
@@ -87,15 +84,8 @@ private slots:
     
     QString myAcodec();
     void searchExternalProgramms();
-    //int getCountAlsaCaptureDevice();
-   // QString getFfmpegVersionMinor();
-   // QString winInfo();
-    //QString winInfo(); //***************************************************************************
-    void preRecord(); //********************************************************************
+    void preRecord();
 
-    //QString getAlsaHwCaptureDevice(int value);
-    //QString getNameCaptureCard(int value);
-    
     const QString myPulseDevice();
     int getCountCheckedPulseDevices();
     QString getPulseDeviceName( int value );
@@ -106,8 +96,6 @@ private slots:
     QString getPulseSample( int value );
     void pulseUnloadModule();
     QString mySample();
-
-    //void usb();
 
     QString noMouse();
     
@@ -148,14 +136,11 @@ private slots:
 
     void ShortcutPause();
     void ShortcutLupe();
-
     
-    void mailSend();
+    void send();
 
     void AlsaWatcherEvent( QStringList CardxList );
     void myVideoFileSystemWatcher( const QString & path );
-    
-
     
 private:
     QPushButton *StopButton;
@@ -210,8 +195,8 @@ private:
     QvkWinInfo *vkWinInfo;
     WId moveWindowID;
     
-    QPushButton *mailPushButton;
-    QCheckBox *mailOnOffCheckbox;
+    QPushButton *sendPushButton;
+    //QCheckBox *mailOnOffCheckbox;
 
     QList<QvkAlsaDevice *> AlsaDeviceList;
 

@@ -6,14 +6,14 @@ HEADERS += screencast.h \
            regionselection.h \
            QvkLupe.h \
            QvkWebcam.h \
-           QvkWinInfo.h
+           QvkWinInfo.h \
            
 SOURCES += main.cpp \
            screencast.cpp \
            regionselection.cpp \
            QvkLupe.cpp \
            QvkWebcam.cpp \
-           QvkWinInfo.cpp
+           QvkWinInfo.cpp \
 
 RESOURCES += screencast.qrc
                         
@@ -61,6 +61,9 @@ include(libqxt/libqxt.pri)
 
 # audio
 include(audio/audio.pri)
+
+# send
+include(send/send.pri)
 
 #include(QtZip-src/QtZip.pri)
 # -lz wird benötigt für QtZip, dies benötigt libz.so

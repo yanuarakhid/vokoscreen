@@ -17,7 +17,7 @@ QvkAlsaWatcher::QvkAlsaWatcher()
     AlsaCardCounter = -1;
     QTimer *timer = new QTimer( this );
     connect( timer, SIGNAL( timeout() ), this, SLOT( AlsaWatcherTimer() ) );
-    timer->start( 500);
+    timer->start( 500 );
 }
 
 
@@ -55,19 +55,3 @@ void QvkAlsaWatcher::AlsaWatcherTimer()
    }
 }
 
-/*
-void QvkAlsaWatcher::AlsaWatcherTimer()
-{
-    QDir dir( "/proc/asound/" );
-    QStringList filters;
-    filters << "card*";
-
-    QStringList deviceList = dir.entryList( filters, QDir::Dirs );
-    
-    if ( AlsaCardCounter != deviceList.count() )
-    {
-        AlsaCardCounter = deviceList.count() ;
-	emit changed( deviceList );
-    }
-}
-*/

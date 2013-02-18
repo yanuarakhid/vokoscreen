@@ -2,17 +2,18 @@
 
 #include <QDebug>
 #include <QDir>
-
+#include <QDesktopServices>
 #include <QFileInfo>
-
+#include <QProcess>
 #include <stdio.h>
 #include <string.h>
 #include <alsa/asoundlib.h>
 
 
+#include "alsa_device.h"
+
 
 using namespace std;
-
 
 QvkAlsaDevice::QvkAlsaDevice( QString value )
 {
@@ -21,6 +22,7 @@ QvkAlsaDevice::QvkAlsaDevice( QString value )
   setChannel();
   setAlsaName();
   setAlsaSample();
+  qDebug() << "[vokoscreen] Find CaptureCard:" << getAlsaName() << "with channel:" << getChannel() << "and" << getAlsaSample() << "Hz";
 }
 
 
@@ -44,7 +46,6 @@ QString QvkAlsaDevice::getAlsaVersion()
 
 void QvkAlsaDevice::setAlsaSample()
 {
-  
   AlsaSample = "48000";
   QString cardNumber = getCard().remove( "card" );
 
@@ -92,6 +93,11 @@ QString QvkAlsaDevice::getAlsaSample()
 }
 
 
+/**
+ *  BUG 
+ *  Wenn Ordner nicht existiert dann kommt Dialog "Gerät belegt"
+ */
+/*
 bool QvkAlsaDevice::isbusy()
 {
     QString cardNumber = getCard().remove( "card" );
@@ -123,6 +129,24 @@ bool QvkAlsaDevice::isbusy()
     
     return busy;
 }
+*/
+
+bool QvkAlsaDevice::isbusy()
+{
+  std::string stdString( getAlsaHw().toStdString() );
+  const char *device_name = stdString.c_str();
+  
+  bool rc;
+  alsa_device_busy( device_name );
+  if ( rcBusy == 0 )
+    rc = false;
+  else
+    rc = true;
+    
+  return rc;
+    
+}
+
 
 
 void QvkAlsaDevice::setAlsaName()
@@ -168,70 +192,8 @@ void QvkAlsaDevice::setAlsaName()
    }
    
    AlsaName = "[" + getAlsaHw() + "] " + alsaName;
-      
 }  
 
-/*
-void QvkAlsaDevice::setAlsaName()
-{
-  QString cardNumber = getCard().remove( "card" );
-  
-  
-  // Begin Geräte Name auslesen
-  
-  QFile file( "/proc/asound/card" + cardNumber + "/pcm0c/info" );
-
-  if ( file.exists() )
-  {
-    file.open ( QIODevice::ReadOnly );
-
-    QTextStream textStream( &file );
-    QString line = textStream.readLine();
-    
-    QStringList stringlist;
-    stringlist.append( line + "\n");
-  
-    while ( !line.isNull() )
-    {
-      line = textStream.readLine();
-      stringlist.append( line + "\n" );
-    }
-
-    file.close();
-  
-    QRegExp rx("^name:");
-    QStringList alsaNameList = stringlist.filter( rx ).replaceInStrings( "\n", "");
-    QString alsaName = alsaNameList[ 0 ].remove( "name:" );
-    
-    // End Geräte Name auslesen
-    
-
-    
-    
-    // Begin usbid auslesen  
-    
-    QString usbid = "";
-    QString lineUsbid;
-    QString usbFile = "/proc/asound/card" + cardNumber + "/usbid";
-    QFile fileUsbid( usbFile );
-    if ( fileUsbid.exists() )
-    {
-      fileUsbid.open ( QIODevice::ReadOnly );
-      QTextStream textStreamUsbid( &fileUsbid );
-      lineUsbid = textStreamUsbid.readLine();
-    }
-  
-    fileUsbid.close();
-    
-    // End usbid auslesen  
-    
-
-    AlsaName = "[" + getAlsaHw() + "]" + alsaName + " " + lineUsbid;
-  }
-  else
-    AlsaName = "unknown";
-}
-*/
 
 
 QString QvkAlsaDevice::getAlsaName()
@@ -240,17 +202,26 @@ QString QvkAlsaDevice::getAlsaName()
 }
 
 
+/**
+ *
+ * 
+ * */
+
 void QvkAlsaDevice::setChannel()
 {
-  QString cardNumber = getCard().remove( "card" );
+  std::string stdString( getAlsaHw().toStdString() );
+  const char *device_name = stdString.c_str();
+  int i;
+  for ( i = 1; i <= 255; i++ )
+  {
+    alsa_device_open( device_name, i );
+    if ( rc == 1 )
+    {
+      AlsaCannel = QString::number( i );
+      break;
+    }
+  }
   
-  QDir dir( "/proc/asound/card" + cardNumber + "/pcm0c/" );
-  
-  QStringList filters;
-  filters << "sub*";
-  QStringList cannelList = dir.entryList( filters, QDir::Dirs, QDir::Time );
-  
-  AlsaCannel = QString::number( cannelList.count() );
 }
 
 
@@ -302,7 +273,8 @@ void QvkAlsaDevice::setAlsaHw()
          break;
       }
 
-      if ( devNum < 0 ) break;
+      if ( devNum < 0 )
+	break;
  
       AlsaHw = "hw:" + QString::number( cardNum ) + "," + QString::number( devNum );
     }
@@ -310,40 +282,6 @@ void QvkAlsaDevice::setAlsaHw()
    snd_config_update_free_global();
 }
 
-
-/*
-void QvkAlsaDevice::setAlsaHw()
-{
-  QString cardNumber = getCard().remove( "card" );
-
-  QFile file( "/proc/asound/card" + cardNumber + "/pcm0c/info" );***************************** es kann vokommen das dieser Ordner nicht befüllt wird.
-  if ( file.exists() )
-  {
-    file.open ( QIODevice::ReadOnly );
-    QTextStream textStream( &file );
-
-    QString line = textStream.readLine();
-    QStringList stringlist;
-    
-    stringlist.append( line + "\n");
-    
-    while ( !line.isNull() )
-    {
-      line = textStream.readLine();
-      stringlist.append( line + "\n" );
-    }
-
-    file.close();
-
-    QRegExp rx("^device:");
-    QStringList captureList = stringlist.filter( rx ).replaceInStrings( "\n", "").replaceInStrings( " ", "");
-    QString deviceNumber = captureList[ 0 ].remove( "device:" );
-    AlsaHw = "hw:" + cardNumber + "," + deviceNumber;
-  }
-  else
-    AlsaHw = "unknown";
-}
-*/
 
 QString QvkAlsaDevice::getAlsaHw()
 {

@@ -22,7 +22,7 @@
 #include "QvkWinInfo.h"
 #include "QvkAlsaDevice.h"
 #include "QvkAlsaWatcher.h"
-
+#include "QvkMail.h"
 
 #include "qxtwindowsystem.h"
 #include <QxtGlobalShortcut> 
@@ -72,15 +72,15 @@ using namespace std;
 
 screencast::screencast()
 {
-    bool beta = false;
+    bool beta = true;
     QString Beta;
     if ( beta )
-      Beta = "Beta 1";
+      Beta = "Beta 2";
     else
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.4.11";
+    Version = "1.4.13";
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -104,7 +104,7 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "Qt Version: " << qVersion();
     QvkAlsaDevice inBox ;
     qDebug() << "[vokoscreen]" << "asoundlib Version:" << inBox.getAlsaVersion();
-    
+    qDebug() << "[vokoscreen]" << "ffmpeg Version:" << getFfmpegVersion();
     qDebug();
     
     searchExternalProgramms();
@@ -248,18 +248,15 @@ screencast::screencast()
     MinimizedCheckBox->setText( tr( "Vokoscreen minimized when recording starts" ) );
     MinimizedCheckBox->show();
     
-    // Tab 5 Social ************************************************************
-//    TabWidgetSocialFrame = new QFrame( this );
-//    TabWidgetSocialFrame->setGeometry( 120, 0, 300, 200 );
-//    TabWidgetSocialFrame->show();
-//    tabWidget->addTab( TabWidgetSocialFrame, "" );
-//    tabWidget->setTabIcon( 4, QIcon( ":/pictures/sem_soc_net.png" ) );
-    
-//    mailPushButton = new QPushButton( centralWidget );
-//    mailPushButton->setGeometry( 490, 200, 70, 30 );
-//    mailPushButton->setFont( QFont( "Times", 12, QFont::Bold ) );
-//    mailPushButton->setText( "Send" );
-//    connect( mailPushButton, SIGNAL( clicked() ), SLOT( mailSend() ) );
+    sendPushButton = new QPushButton( centralWidget );
+    sendPushButton->setGeometry( 490, 200, 70, 30 );
+    sendPushButton->setFont( QFont( "Times", 12, QFont::Bold ) );
+    sendPushButton->setText( "Send" );
+    connect( sendPushButton, SIGNAL( clicked() ), SLOT( send() ) );
+    if ( needProgramm( "xdg-email" ) )
+      sendPushButton->setEnabled( true );
+    else
+      sendPushButton->setEnabled( false );
     
      // Tab 6 About *********************************************************
     QFrame *TabWidgetAboutFrame = new QFrame(this);
@@ -276,7 +273,7 @@ screencast::screencast()
     labelAutor->show();
 
     QLabel* labelMailingliste = new QLabel( TabWidgetAboutFrame );
-    labelMailingliste->setText( "Mailingliste" );
+    labelMailingliste->setText( "Mailinglist" );
     labelMailingliste->setGeometry( 70, 32, 400, 22 );
     labelMailingliste->show();
 
@@ -521,7 +518,7 @@ screencast::screencast()
     lupe = new QvkLupe();
     lupe->close();
 
-    webcam = new QvkWebcam( webcamCheckBox, webcamDialogPushButton );  //*****************************************************************************************
+    webcam = new QvkWebcam( webcamCheckBox, webcamDialogPushButton );
     connect( webcamCheckBox, SIGNAL( clicked() ), this, SLOT( showWebcam() ) );
     connect( webcamDialogPushButton, SIGNAL( clicked() ), this, SLOT( showWebcamDialog() ) );
    
@@ -591,6 +588,13 @@ screencast::~screencast()
 }
 
 
+void screencast::send()
+{
+  QvkMail *vkMail = new QvkMail( this );
+  (void)vkMail;
+}
+
+
 void screencast::myVideoFileSystemWatcher( const QString & path )
 {
   (void)path;
@@ -620,9 +624,7 @@ QString boolToStr( bool boo )
  * */
 void screencast::AlsaWatcherEvent( QStringList CardxList )
 {
-  qDebug();
-  qDebug() << "[vokoscreen] Find" << CardxList;
-  qDebug();
+  qDebug() << "[vokoscreen] ---Begin search Alsa capture device---";
 
   AlsaHwComboBox->clear();
   AlsaDeviceList.clear();
@@ -633,6 +635,8 @@ void screencast::AlsaWatcherEvent( QStringList CardxList )
     QvkAlsaDevice * alsaDevice = new QvkAlsaDevice( CardxList[ i ] );
     AlsaDeviceList.append( alsaDevice );
     AlsaHwComboBox->addItem( AlsaDeviceList.at( i )->getAlsaName() , i );
+    if ( AlsaDeviceList.at( i )->getChannel() == "")
+      QMessageBox::information( this, tr( "Info" ), tr( "Channels from the new device was not detected,\nplease restart again vokoscreen" ) );
   }
 
   QSettings settings( ProgName, ProgName );
@@ -640,7 +644,9 @@ void screencast::AlsaWatcherEvent( QStringList CardxList )
     int x = AlsaHwComboBox->findText( settings.value( "NameCaptureCard" ).toString(),Qt::MatchExactly );
     AlsaHwComboBox->setCurrentIndex( x );
   settings.endGroup();
-  
+  qDebug() << "[vokoscreen] ---End search Alsa capture device---";
+  qDebug();
+
   settings.beginGroup( "Pulse" );
     PulseMultipleChoice();
     for ( int x = 0; x < 10; x++ )
@@ -651,7 +657,6 @@ void screencast::AlsaWatcherEvent( QStringList CardxList )
             aa->setCheckState( Qt::Checked );
        }  
   settings.endGroup();
-
 }
 
 
@@ -716,27 +721,6 @@ void screencast::saveSettings()
     settings.setValue( "Format", VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", HideMouseCheckbox->checkState() );    
   settings.endGroup();
-}
-
-
-void screencast::mailSend()
-{
-  QDialog * dialog = new QDialog( this );
-  dialog->resize( 300, 200 );
-  
-  QPushButton * pushbutton = new QPushButton( dialog );
-  pushbutton->setGeometry( 10, 10, 100, 30 );
-  pushbutton->setText( "Send email" );
-  pushbutton->show();
-  dialog->exec();
-  
-  if ( dialog->Rejected )
-  {
-    QProcess Process;
-    Process.startDetached("thunderbird -compose attachment=/home/vk/Videos/screencast-104.avi");
-    Process.close();
-  }
-  
 }
 
 
@@ -827,7 +811,7 @@ void screencast::searchExternalProgramms()
 {
   qDebug() << "[vokoscreen]" << "---Begin Search external tools---";
   if ( needProgramm("ffmpeg") )
-     qDebug() << "[vokoscreen]" << "Find ffmpeg" << "Version:" << getFfmpegVersion();
+     qDebug() << "[vokoscreen]" << "Find ffmpeg";
   else
      qDebug() << "[vokoscreen]" << "Error: ffmpeg is not found, this is an ffmpeg tool. Please install ffmpeg";
 
@@ -1182,7 +1166,7 @@ void screencast::Pause()
       if ( inBox->isbusy() and AlsaRadioButton->isChecked() )
       {
         QMessageBox msgBox;
-        msgBox.setText( QString::fromUtf8( "Das von Ihnen ausgewählte Alsa Audio Gerät ist belegt." ) );
+        msgBox.setText( tr( "Device is busy" ) ) ;
         msgBox.exec();
 	PauseButton->click();
         return;
@@ -1214,7 +1198,7 @@ void screencast::Pause()
       if ( inBox->isbusy() and AlsaRadioButton->isChecked() )
       {
         QMessageBox msgBox;
-        msgBox.setText( QString::fromUtf8( "Das von Ihnen ausgewählte Alsa Audio Gerät ist belegt." ) );
+        msgBox.setText( tr( "Device is busy" ) );
         msgBox.exec();
 	PauseButton->click();
         return;
@@ -1396,7 +1380,7 @@ QString screencast::getPulseInputName( int value )
 
 
 /**
- * Get Pulse Devicename
+ * Get Pulse Devicname
  */
 QString screencast::getPulseInputDevices( int value )
 {
@@ -1662,15 +1646,9 @@ QString screencast::myAlsa()
   {
     if ( AlsaRadioButton->isChecked() )  
     {
-      /*
-      QVariant aa = AlsaHwComboBox->itemData(AlsaHwComboBox->currentIndex()); // get userdata(Alsa device) from ComboBox
-      QString alsaDevice = aa.toString();
-      alsaDevice = alsaDevice.replace( "\n", "" ); 
-      */
       QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
       QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
       if ( AlsaHwComboBox->currentIndex() > -1 )
-        //value = "-f alsa -ac " + channels + " -i " + alsaDevice + " ";
         value = "-f alsa -ac " + inBox->getChannel() + " -i " + inBox->getAlsaHw() + " ";
       else
         value = "";
@@ -1867,7 +1845,7 @@ void screencast::preRecord()
   if ( inBox->isbusy() and AlsaRadioButton->isChecked() )
   {
     QMessageBox msgBox;
-    msgBox.setText( QString::fromUtf8( "Das von Ihnen ausgewählte Alsa Audio Gerät ist belegt." ) );
+    msgBox.setText( tr( "Device is busy" ) );
     msgBox.exec();
     return;
   }
@@ -1994,7 +1972,7 @@ void screencast::record()
                + myReport
                + myAlsa()
 	       + "-f x11grab "
-	       + "-isync " 
+	       //+ "-isync " 
 	       + "-r " 
 	       + frame
 	       + " -s "
@@ -2010,8 +1988,6 @@ void screencast::record()
        	       + myAcodec()
       	       + " -ar " + mySample()
 	       + quality;
-	       //+ " -qscale 0 ";
-       	       //+ " -sameq ";
 	       	            
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   
@@ -2033,7 +2009,7 @@ void screencast::startRecord( QString RecordPathName )
 {
   
  
-  qDebug() << "[vokoscreen]"<< "ffmpegstring :" << ffmpegString + RecordPathName;
+  qDebug() << "[vokoscreen]"<< "ffmpegcommand :" << ffmpegString + RecordPathName;
 
   if ( PulseDeviceRadioButton->isChecked() )
   {
