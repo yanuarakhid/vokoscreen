@@ -75,12 +75,12 @@ screencast::screencast()
     bool beta = true;
     QString Beta;
     if ( beta )
-      Beta = "Beta 2";
+      Beta = "Beta 3";
     else
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.4.13";
+    Version = "1.4.14";
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -628,15 +628,12 @@ void screencast::AlsaWatcherEvent( QStringList CardxList )
 
   AlsaHwComboBox->clear();
   AlsaDeviceList.clear();
-  
   // Für jede card wird eine Instanz erzeugt und in AlsaDeviceList abgelegt
   for( int i = 0; i <= CardxList.count() - 1; i++ )
   {
     QvkAlsaDevice * alsaDevice = new QvkAlsaDevice( CardxList[ i ] );
     AlsaDeviceList.append( alsaDevice );
     AlsaHwComboBox->addItem( AlsaDeviceList.at( i )->getAlsaName() , i );
-    if ( AlsaDeviceList.at( i )->getChannel() == "")
-      QMessageBox::information( this, tr( "Info" ), tr( "Channels from the new device was not detected,\nplease restart again vokoscreen" ) );
   }
 
   QSettings settings( ProgName, ProgName );
@@ -1166,7 +1163,11 @@ void screencast::Pause()
       if ( inBox->isbusy() and AlsaRadioButton->isChecked() )
       {
         QMessageBox msgBox;
-        msgBox.setText( tr( "Device is busy" ) ) ;
+        QString message;
+        message.append( tr( "Device " ) );
+        message.append( inBox->getAlsaHw() );
+        message.append( tr( " is busy" ) );
+        msgBox.setText( message );
         msgBox.exec();
 	PauseButton->click();
         return;
@@ -1198,7 +1199,11 @@ void screencast::Pause()
       if ( inBox->isbusy() and AlsaRadioButton->isChecked() )
       {
         QMessageBox msgBox;
-        msgBox.setText( tr( "Device is busy" ) );
+        QString message;
+        message.append( tr( "Device " ) );
+        message.append( inBox->getAlsaHw() );
+        message.append( tr( " is busy" ) );
+        msgBox.setText( message );
         msgBox.exec();
 	PauseButton->click();
         return;
@@ -1840,16 +1845,51 @@ QString screencast::noMouse()
 
 void screencast::preRecord()
 {
+  if ( AlsaRadioButton->isChecked() )
+  {
+    qDebug() << "*******************************************";
+    QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
+    QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
+    if ( inBox->isbusy() )
+    {
+      QMessageBox msgBox;
+      QString message;
+      message.append( tr( "Device " ) );
+      message.append( inBox->getAlsaHw() );
+      message.append( tr( " is busy" ) );
+      msgBox.setText( message );
+      msgBox.exec();
+      return;
+    }
+    else
+    {
+      // Kanäle werden kurz vor der Aufnahme ermittelt
+      inBox->setChannel();
+    }
+  }
+  
+  
+/*  
   QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
   QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
   if ( inBox->isbusy() and AlsaRadioButton->isChecked() )
   {
     QMessageBox msgBox;
-    msgBox.setText( tr( "Device is busy" ) );
+    QString message;
+    message.append( tr( "Device " ) );
+    message.append( inBox->getAlsaHw() );
+    message.append( tr( " is busy" ) );
+    msgBox.setText( message );
     msgBox.exec();
     return;
   }
-  
+  else
+  {
+    // Kanäle werden kurz vor der Aufnahme ermittelt
+    inBox->setChannel();
+  }
+*/
+
   if ( WindowRadioButton->isChecked() )
     if ( firststartWininfo == false )
     {

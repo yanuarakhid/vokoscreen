@@ -19,10 +19,10 @@ QvkAlsaDevice::QvkAlsaDevice( QString value )
 {
   setCard( value );
   setAlsaHw();
-  setChannel();
+  //setChannel();
   setAlsaName();
   setAlsaSample();
-  qDebug() << "[vokoscreen] Find CaptureCard:" << getAlsaName() << "with channel:" << getChannel() << "and" << getAlsaSample() << "Hz";
+  qDebug() << "[vokoscreen] Find CaptureCard:" << getAlsaName();//<< "with channel:" << getChannel() << "and" << getAlsaSample() << "Hz";
 }
 
 
@@ -93,44 +93,6 @@ QString QvkAlsaDevice::getAlsaSample()
 }
 
 
-/**
- *  BUG 
- *  Wenn Ordner nicht existiert dann kommt Dialog "Gerät belegt"
- */
-/*
-bool QvkAlsaDevice::isbusy()
-{
-    QString cardNumber = getCard().remove( "card" );
-  
-    QFile file( "/proc/asound/card" + cardNumber + "/pcm0c/sub0/status" );
-    
-    file.open ( QIODevice::ReadOnly );
-
-    QTextStream textStream( &file );
-    QString line = textStream.readLine();
-    
-    QStringList stringlist;
-    stringlist.append( line + "\n");
-  
-    while ( !line.isNull() )
-    {
-      line = textStream.readLine();
-      stringlist.append( line + "\n" );
-    }
-
-    file.close();
-  
-    bool busy;
-    QStringList closedList = stringlist.filter( "closed", Qt::CaseInsensitive );
-    if ( closedList.count() == 1 )
-      busy = false;
-    else
-      busy = true;
-    
-    return busy;
-}
-*/
-
 bool QvkAlsaDevice::isbusy()
 {
   std::string stdString( getAlsaHw().toStdString() );
@@ -144,9 +106,7 @@ bool QvkAlsaDevice::isbusy()
     rc = true;
     
   return rc;
-    
 }
-
 
 
 void QvkAlsaDevice::setAlsaName()
@@ -202,26 +162,25 @@ QString QvkAlsaDevice::getAlsaName()
 }
 
 
-/**
- *
- * 
- * */
-
 void QvkAlsaDevice::setChannel()
 {
-  std::string stdString( getAlsaHw().toStdString() );
-  const char *device_name = stdString.c_str();
-  int i;
-  for ( i = 1; i <= 255; i++ )
-  {
-    alsa_device_open( device_name, i );
-    if ( rc == 1 )
+  // Beim Start von vokoscreen könnte ein Gerät belegt sein
+  // Die Kanäle werden kurz vor der Aufnahme ermittelt.
+  if ( isbusy() == false )  
+  {  
+    std::string stdString( getAlsaHw().toStdString() );
+    const char *device_name = stdString.c_str();
+    int i;
+    for ( i = 1; i <= 255; i++ )
     {
-      AlsaCannel = QString::number( i );
-      break;
-    }
+      alsa_device_open( device_name, i );
+      if ( rc == 1 )
+      {
+        AlsaCannel = QString::number( i );
+        break;
+      }
+    }  
   }
-  
 }
 
 

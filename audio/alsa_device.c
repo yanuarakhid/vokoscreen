@@ -33,6 +33,7 @@
 #include "alsa_device.h"
 #include <stdlib.h>
 #include <alsa/asoundlib.h>
+//#include <time.h>
 
 struct AlsaDevice_ {
    char *device_name;
@@ -43,61 +44,65 @@ struct AlsaDevice_ {
    struct pollfd *read_fd, *write_fd;
 };
 
-
+//http://www.willemer.de/informatik/cpp/timelib.htm
 AlsaDevice *alsa_device_open( const char *device_name, int channels )
 {
    int err;
    snd_pcm_hw_params_t *hw_params;
    static snd_output_t *jcd_out;
-   AlsaDevice *dev = malloc(sizeof(*dev));
-   if (!dev)
+   AlsaDevice *dev = malloc( sizeof( *dev ) );
+   if ( !dev )
       return NULL;
-   dev->device_name = malloc(1+strlen(device_name));
-   if (!dev->device_name)
+   dev->device_name = malloc( 1 + strlen( device_name ) );
+   if ( !dev->device_name )
    {
       free(dev);
       return NULL;
    }
    strcpy(dev->device_name, device_name);
    dev->channels = channels;
-   err = snd_output_stdio_attach(&jcd_out, stdout, 0);
+   err = snd_output_stdio_attach( &jcd_out, stdout, 0 );
 
-   //printf( "11111111111111111111111111111111111111\n" );
-   if ( ( err = snd_pcm_open ( &dev->capture_handle, dev->device_name, SND_PCM_STREAM_CAPTURE, 0 ) ) < 0 )
+   int okOpen = 0;
+   while ( okOpen == 0 )
    {
-      fprintf (stderr, "cannot open audio device %s (%s)\n", dev->device_name, snd_strerror (err));
-      rc = 0;
-      return NULL;
+     if ( ( err = snd_pcm_open ( &dev->capture_handle, dev->device_name, SND_PCM_STREAM_CAPTURE, 0 ) ) < 0 )
+     {
+        rc = 0;
+     }
+     else
+     {
+        rc = 1;
+	okOpen = 1;
+     }
    }
-   else
-      rc = 1;
-   
-   //printf( "222222222222222222222222222222222222222\n" );
+ 
+
    if ( ( err = snd_pcm_hw_params_malloc ( &hw_params ) ) < 0 )
    {
-      fprintf (stderr, "cannot allocate hardware parameter structure (%s)\n", snd_strerror (err));
+      fprintf (stderr, "cannot allocate hardware parameter structure (%s)\n", snd_strerror( err ) );
    }
 
-   //printf( "33333333333333333333333333333333333333\n" );
    if ((err = snd_pcm_hw_params_any (dev->capture_handle, hw_params)) < 0)
    {
-      fprintf (stderr, "cannot initialize hardware parameter structure (%s)\n", snd_strerror (err));
+      fprintf (stderr, "cannot initialize hardware parameter structure (%s)\n", snd_strerror( err ) );
    }
 
-   //printf( "44444444444444444444444444444444444444\n" );
    if ( ( err = snd_pcm_hw_params_set_channels( dev->capture_handle, hw_params, channels ) ) < 0 )
    {
       //fprintf( stderr, "cannot set channel count (%s)\n", snd_strerror( err ) );
+      //fprintf( stderr, "cannot set channel count:(%i) for device (%s) (%s)\n", channels, dev->device_name, snd_strerror( err ) );
       rc = 0;
    }
    else
+   {
       rc = 1;
-   
-   snd_pcm_close(dev->capture_handle);
-   free(dev->device_name);
-   free(dev);
-   
-   snd_pcm_hw_params_free (hw_params);
+   }
+
+   snd_pcm_close( dev->capture_handle );
+   free( dev->device_name );
+   free( dev );
+   //snd_pcm_hw_params_free ( hw_params );
    return dev;
 }
 
@@ -105,7 +110,6 @@ AlsaDevice *alsa_device_open( const char *device_name, int channels )
 AlsaDevice *alsa_device_busy( const char *device_name )
 {
    int err;
-   snd_pcm_hw_params_t *hw_params;
    static snd_output_t *jcd_out;
    AlsaDevice *dev = malloc(sizeof(*dev));
    if (!dev)
@@ -122,7 +126,7 @@ AlsaDevice *alsa_device_busy( const char *device_name )
    //printf( "11111111111111111111111111111111111111\n" );
    if ( ( err = snd_pcm_open ( &dev->capture_handle, dev->device_name, SND_PCM_STREAM_CAPTURE, 0 ) ) < 0 )
    {
-      fprintf (stderr, "cannot open audio device %s (%s)\n", dev->device_name, snd_strerror (err));
+      fprintf (stderr, "[vokoscreen] alsa_device_busy() in alsadevice.c: cannot open audio device %s (%s)\n", dev->device_name, snd_strerror (err));
       rcBusy = 1;
       return NULL;
    }

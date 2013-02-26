@@ -35,12 +35,12 @@ public slots:
   QString getAlsaSample();
   QString getAlsaVersion(); // libasound
   bool isbusy();            // libasound
-  
+  void setChannel();
+
   
 private slots:
   void setCard( QString string );
   void setAlsaHw();
-  void setChannel();
   void setAlsaName();
   void setAlsaSample();
 
