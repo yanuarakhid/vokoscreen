@@ -25,6 +25,7 @@ using namespace std;
 
 regionselection::regionselection( int x, int y, int width, int height, int framewidth )
 {
+
   setGeometry( x, y, width, height );
   border = framewidth;
   setWindowFlags( Qt::FramelessWindowHint );
@@ -34,7 +35,6 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   QColor Col( Qt::red );
   Pal.setColor( QPalette::Background, Col );
   this->setPalette( Pal ); 
-  
   
   //Top
   borderTop = new QLabel( this );
@@ -46,7 +46,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   QPalette labPal( borderTop->palette() );
   QColor bgCol( Qt::blue );
   labPal.setColor( QPalette::Background, bgCol );
-  borderTop->setPalette( labPal ); 
+  borderTop->setPalette( labPal );
   
   //Bottom
   borderBottom = new QLabel( this );
@@ -58,7 +58,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   QPalette borderBottomPal( borderBottom->palette() );
   QColor borderBottomBgCol( Qt::blue );
   borderBottomPal.setColor( QPalette::Background, borderBottomBgCol );
-  borderBottom->setPalette( borderBottomPal);  
+  borderBottom->setPalette( borderBottomPal);
 
   //Left
   borderLeft = new QLabel( this );
@@ -70,7 +70,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   QPalette borderLeftPal( borderLeft->palette() );
   QColor borderLeftBgCol( Qt::blue );
   borderLeftPal.setColor( QPalette::Background, borderLeftBgCol );
-  borderLeft->setPalette( borderLeftPal);  
+  borderLeft->setPalette( borderLeftPal);
 
   //Right
   borderRight = new QLabel( this );
@@ -82,28 +82,42 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   QPalette borderRightPal( borderRight->palette() );
   QColor borderRightBgCol( Qt::blue );
   borderRightPal.setColor( QPalette::Background, borderRightBgCol );
-  borderRight->setPalette( borderRightPal);  
+  borderRight->setPalette( borderRightPal);
   
 
-  QRegion maskedRegion1( 0, 
-			 0, 
-			 this->width(),
-			 this->height(),
-			 QRegion::Rectangle );
+  QRegion maskedRegion1( 0,
+             0,
+             this->width(),
+             this->height(),
+             QRegion::Rectangle );
     
   // Dieser Teil wird abgezogen
   QRegion maskedRegion( border,
-			border,
-			this->width() - 2 * border,
-			this->height() - 2 *border,
-			QRegion::Rectangle );
+            border,
+            this->width() - 2 * border,
+            this->height() - 2 *border,
+            QRegion::Rectangle );
     
   this->setMask( maskedRegion1.subtract( maskedRegion ) );
+
+    //Framelock
+    lockFrame(false);
 }
 
 
 regionselection::~regionselection()
 {
+}
+
+void regionselection::lockFrame(bool status)
+{
+    frameLocked = status;
+    handlingFrameLock();
+}
+
+bool regionselection::isFrameLocked()
+{
+    return frameLocked;
 }
 
 
@@ -151,7 +165,7 @@ void regionselection::setAllBorder()
 			   border,
 			   widgetHeight - 20 );
   
-  borderRight->setGeometry( widgetWidth - border, 
+  borderRight->setGeometry( widgetWidth - border,
 			    10,
 			    border,
 			    widgetHeight - 20 );
@@ -329,7 +343,11 @@ void regionselection::moveRight( QMouseEvent *event )
 
 void regionselection::mouseMoveEvent( QMouseEvent *event )
 {
-  
+    if(frameLocked){
+        return;
+    }
+
+    qDebug() << "Mouse move event";
   if ( borderTop->underMouse() )
   {
     moveTop( event );
@@ -354,4 +372,17 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     return;
   }
   
+}
+
+void regionselection::handlingFrameLock()
+{
+    if(frameLocked){
+        borderLeft->setGeometry( 0, 0, border, this->height());
+        borderRight->setGeometry( this->width()-border,0, border, this->height() );
+        borderBottom->setGeometry(0, this->height() - border, this->width(), border );
+        borderTop->setGeometry( 0, 0, this->width(), border );
+    }
+    else {
+        setAllBorder();
+    }
 }

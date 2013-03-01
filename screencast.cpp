@@ -423,13 +423,16 @@ screencast::screencast()
       for ( int i = 0; i < pathList.size(); ++i )
       {
         playerName = pathList.at( i );
-	playerName = playerName.append( QDir::separator() ).append( playerList.at( x ) );
-	if ( QFile::exists( playerName ) )
-	{
-	  qDebug() << "[vokoscreen]" << "Find Videoplayer :" << playerName;
-	  VideoplayerComboBox->addItem( playerList.at( x ), playerName );
-	  break;
-	}
+        playerName = playerName.append( QDir::separator() ).append( playerList.at( x ) );
+        if ( QFile::exists( playerName ) )
+        {
+            qDebug() << "[vokoscreen]" << playerName << "Found";
+             VideoplayerComboBox->addItem( playerList.at( x ), playerName );
+            break;
+        }
+        else {
+           qDebug() << "[vokoscreen]" << playerName << "Not found";
+        }
       }
     }
     qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
