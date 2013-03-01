@@ -112,6 +112,7 @@ regionselection::~regionselection()
 void regionselection::lockFrame(bool status)
 {
     frameLocked = status;
+    qDebug() << "[vokoscreen][Regional selection] Frame locked:" << status;
     handlingFrameLock();
 }
 
