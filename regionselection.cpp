@@ -347,7 +347,6 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
         return;
     }
 
-    qDebug() << "Mouse move event";
   if ( borderTop->underMouse() )
   {
     moveTop( event );
