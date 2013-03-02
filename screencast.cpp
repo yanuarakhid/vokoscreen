@@ -419,21 +419,21 @@ screencast::screencast()
     QString resultString( qgetenv( "PATH" ) );
     QStringList pathList = resultString.split( ":" );
     for ( int x = 0; x < playerList.size(); ++x )
-    {
-      for ( int i = 0; i < pathList.size(); ++i )
-      {
-        playerName = pathList.at( i );
-	playerName = playerName.append( QDir::separator() ).append( playerList.at( x ) );
-	if ( QFile::exists( playerName ) )
-	{
-	  qDebug() << "[vokoscreen]" << "Find Videoplayer :" << playerName;
-	  VideoplayerComboBox->addItem( playerList.at( x ), playerName );
-	  break;
-	}
-      }
-    }
-    qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
-    qDebug();
+     {
+       for ( int i = 0; i < pathList.size(); ++i )
+       {
+         playerName = pathList.at( i );
+     playerName = playerName.append( QDir::separator() ).append( playerList.at( x ) );
+     if ( QFile::exists( playerName ) )
+     {
+       qDebug() << "[vokoscreen]" << "Find Videoplayer :" << playerName;
+       VideoplayerComboBox->addItem( playerList.at( x ), playerName );
+       break;
+     }
+       }
+     }
+     qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
+     qDebug();
 
     // Einstellungen aus .conf einlesen
     QSettings settings( ProgName, ProgName );
@@ -503,7 +503,7 @@ screencast::screencast()
     connect( SystemCall, SIGNAL( error(QProcess::ProcessError) ),         this, SLOT( error( QProcess::ProcessError) ) );
     connect( SystemCall, SIGNAL( readyReadStandardError() ),              this, SLOT( readyReadStandardError() ) );
     connect( SystemCall, SIGNAL( readyReadStandardOutput() ),             this, SLOT( readyReadStandardOutput() ) );
-    
+
     windowMoveTimer = new QTimer( this );
     connect( windowMoveTimer, SIGNAL( timeout() ), this, SLOT( windowMove() ) );
 
@@ -1040,6 +1040,9 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
     {
       qDebug();
       qDebug() << "[vokoscreen] ffmpeg is not running";
+
+      //Enables the customarea rectangle again. (Is diabled in record() )
+      myregionselection->lockFrame(false);
     }
 }
 
@@ -1944,6 +1947,9 @@ void screencast::record()
     RecordY = QString().number( myregionselection->getHeight() );
     deltaX  = QString().number( myregionselection->getX() );
     deltaY  = QString().number( myregionselection->getY() );
+
+    //Makes the rectangle unmovable and unresizeable (Is enabled yet again when process finished)
+    myregionselection->lockFrame(true);
   }
   
   // -report wird erst ab ffmpeg version 0.9 unterstützt

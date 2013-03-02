@@ -27,7 +27,9 @@ Q_OBJECT
 public:
   regionselection( int x, int y, int width, int height, int border );
   virtual ~regionselection();
-  
+  void lockFrame(bool status=true);
+  bool isFrameLocked();
+
   
 public slots:
   void moveTop( QMouseEvent *event );
@@ -51,7 +53,10 @@ private:
   QLabel *borderBottom;
   QLabel *borderLeft;
   QLabel *borderRight;
+
+  bool frameLocked;
   
+  void handlingFrameLock();
 };
 
 
