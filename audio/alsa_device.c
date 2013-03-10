@@ -73,7 +73,7 @@ AlsaDevice *alsa_device_open( const char *device_name, int channels )
      else
      {
         rc = 1;
-	okOpen = 1;
+        okOpen = 1;
      }
    }
  

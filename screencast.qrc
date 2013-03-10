@@ -12,6 +12,7 @@
     <file>pictures/start.png</file>
     <file>pictures/pause.png</file>
     <file>pictures/go.png</file>
+    <file>language/vokoscreen_da_DK.qm</file>
     <file>language/vokoscreen_de_AT.qm</file>
     <file>language/vokoscreen_de_CH.qm</file>
     <file>language/vokoscreen_de_DE.qm</file>
@@ -20,6 +21,7 @@
     <file>language/vokoscreen_it_IT.qm</file>
     <file>language/vokoscreen_nl_NL.qm</file>
     <file>language/vokoscreen_pl_PL.qm</file>
-    <file>language/vokoscreen_sv_SE.qm</file> 
+    <file>language/vokoscreen_pt_BR.qm</file>
+    <file>language/vokoscreen_sv_SE.qm</file>
 </qresource>
 </RCC> 

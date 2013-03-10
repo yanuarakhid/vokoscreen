@@ -35,7 +35,7 @@
 
 #include "regionselection.h"
 #include "QvkLupe.h"
-#include "QvkWebcam.h"
+#include "QvkWebcamController.h"
 #include "QvkAlsaDevice.h"
 #include "QvkMail.h"
 
@@ -131,8 +131,8 @@ private slots:
 
     void AreaOnOff();
     void showLupe();
-    void showWebcam();
-    void showWebcamDialog();
+    //void showWebcam();
+    //void showWebcamDialog();
 
     void ShortcutPause();
     void ShortcutLupe();
@@ -153,7 +153,8 @@ private:
     QRadioButton * WindowRadioButton;
     QRadioButton *AreaRadioButton;
     QCheckBox *LupeCheckBox;
-    QCheckBox *webcamCheckBox;
+    QvkWebcamController *webcamCheckBox;
+
     QLabel *ChannelLabel;
     QComboBox *VideoplayerComboBox;
     QPushButton *PlayButton;
@@ -196,7 +197,6 @@ private:
     WId moveWindowID;
     
     QPushButton *sendPushButton;
-    //QCheckBox *mailOnOffCheckbox;
 
     QList<QvkAlsaDevice *> AlsaDeviceList;
 

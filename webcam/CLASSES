@@ -1,0 +1,12 @@
+
+
+
+     Qvkwebcam       QvkwebcamWatcher
+         |                   |
+         ---------------------
+                  |
+                  |
+          QvkWebcamController
+                  |
+                  |
+              vokoscreen

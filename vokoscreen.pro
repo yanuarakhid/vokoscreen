@@ -5,15 +5,13 @@ TARGET = vokoscreen
 HEADERS += screencast.h \
            regionselection.h \
            QvkLupe.h \
-           QvkWebcam.h \
-           QvkWinInfo.h \
-           
+           QvkWinInfo.h 
+
 SOURCES += main.cpp \
            screencast.cpp \
            regionselection.cpp \
            QvkLupe.cpp \
-           QvkWebcam.cpp \
-           QvkWinInfo.cpp \
+           QvkWinInfo.cpp 
 
 RESOURCES += screencast.qrc
                         
@@ -61,9 +59,16 @@ include(libqxt/libqxt.pri)
 
 # audio
 include(audio/audio.pri)
+LIBS += -lasound
 
 # send
 include(send/send.pri)
+
+#webcam
+INCLUDEPATH += /usr/include/opencv/ \
+               /usr/include/opencv2
+include(webcam/webcam.pri)
+LIBS += -lopencv_core -lopencv_highgui
 
 #include(QtZip-src/QtZip.pri)
 # -lz wird benötigt für QtZip, dies benötigt libz.so
@@ -72,5 +77,4 @@ include(send/send.pri)
 CONFIG  += qtestlib
 #system( ls )
 
-LIBS += -lasound
 

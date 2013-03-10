@@ -18,7 +18,6 @@
 #include "regionselection.h"
 
 #include "QvkLupe.h"
-#include "QvkWebcam.h"
 #include "QvkWinInfo.h"
 #include "QvkAlsaDevice.h"
 #include "QvkAlsaWatcher.h"
@@ -75,12 +74,12 @@ screencast::screencast()
     bool beta = true;
     QString Beta;
     if ( beta )
-      Beta = "Beta 3";
+      Beta = "Beta 4";
     else
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.4.14";
+    Version = "1.4.15";
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -208,7 +207,7 @@ screencast::screencast()
     VideocodecStandardButton->show();
     
     HideMouseCheckbox = new QCheckBox( TabWidgetVideoOptionFrame );
-    HideMouseCheckbox->setGeometry( 20, 70, 250, 25 );
+    HideMouseCheckbox->setGeometry( 20, 70, 300, 25 );
     HideMouseCheckbox->setText( tr( "Mouse cursor not recording" ) );
     HideMouseCheckbox->show();
 
@@ -225,12 +224,12 @@ screencast::screencast()
     SaveVideoPathLabel->show();
     
     SaveVideoPathLineEdit = new QLineEdit(TabWidgetMiscellaneousFrame);
-    SaveVideoPathLineEdit->setGeometry(110,30,210,25);
+    SaveVideoPathLineEdit->setGeometry(140,30,210,25);
     SaveVideoPathLineEdit->setReadOnly(true);
     SaveVideoPathLineEdit->show();
     
     QPushButton *SaveVideoPathPushButton = new QPushButton(TabWidgetMiscellaneousFrame);
-    SaveVideoPathPushButton->setGeometry(320,30,20,25);
+    SaveVideoPathPushButton->setGeometry(350,30,20,25);
     SaveVideoPathPushButton->setText("...");
     SaveVideoPathPushButton->show();
     
@@ -240,7 +239,7 @@ screencast::screencast()
     VideoPlayerLabel->show();
     
     VideoplayerComboBox = new QComboBox(TabWidgetMiscellaneousFrame);
-    VideoplayerComboBox->setGeometry(110,60,210,25);
+    VideoplayerComboBox->setGeometry(140,60,210,25);
     VideoplayerComboBox->show();
 
     MinimizedCheckBox = new QCheckBox( TabWidgetMiscellaneousFrame );
@@ -382,14 +381,8 @@ screencast::screencast()
     LupeCheckBox->setToolTip( "CTRL+SHIFT+F9" );
     LupeCheckBox->show();
     
-    webcamCheckBox = new QCheckBox( frame );
-    webcamCheckBox->setText( tr( "Webcam" ) );
-    webcamCheckBox->setGeometry( QRect( 160, 40, 120, 21 ) );
-
-    QPushButton *webcamDialogPushButton = new QPushButton( frame );
-    webcamDialogPushButton->setGeometry( 250, 40, 20, 21 );
-    webcamDialogPushButton->setText( "..." );
-    webcamDialogPushButton->show();
+    webcamCheckBox = new QvkWebcamController( frame );
+    webcamCheckBox->setGeometry( 160, 40, 120, 21 );
     
     QLabel* label = new QLabel(centralWidget);
     label->setText("");
@@ -423,13 +416,13 @@ screencast::screencast()
        for ( int i = 0; i < pathList.size(); ++i )
        {
          playerName = pathList.at( i );
-     playerName = playerName.append( QDir::separator() ).append( playerList.at( x ) );
-     if ( QFile::exists( playerName ) )
-     {
-       qDebug() << "[vokoscreen]" << "Find Videoplayer :" << playerName;
-       VideoplayerComboBox->addItem( playerList.at( x ), playerName );
-       break;
-     }
+         playerName = playerName.append( QDir::separator() ).append( playerList.at( x ) );
+         if ( QFile::exists( playerName ) )
+         {
+           qDebug() << "[vokoscreen]" << "Find Videoplayer :" << playerName;
+           VideoplayerComboBox->addItem( playerList.at( x ), playerName );
+           break;
+         }
        }
      }
      qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
@@ -518,10 +511,6 @@ screencast::screencast()
     lupe = new QvkLupe();
     lupe->close();
 
-    webcam = new QvkWebcam( webcamCheckBox, webcamDialogPushButton );
-    connect( webcamCheckBox, SIGNAL( clicked() ), this, SLOT( showWebcam() ) );
-    connect( webcamDialogPushButton, SIGNAL( clicked() ), this, SLOT( showWebcamDialog() ) );
-   
     // Clean vokoscreen temp
     QDir dir( PathTempLocation() );
     QStringList stringList = dir.entryList( QDir::Files, QDir::Time | QDir::Reversed );
@@ -673,6 +662,8 @@ void screencast::closeEvent( QCloseEvent * event )
   saveSettings();
   myregionselection->close();
   lupe->close();
+  if ( webcamCheckBox->ifWebcamShow  )
+    webcamCheckBox->webcamClose();
 }
 
 
@@ -773,21 +764,6 @@ void screencast::showLupe()
 }
 
 
-void screencast::showWebcam()
-{
-  if ( webcamCheckBox->isChecked() )
-    webcam->startWebcam(); 
-  else
-    webcam->stopWebcam();
-}
-
-
-void screencast::showWebcamDialog()
-{
-  webcam->showWebcamDialog();
-}
-
-
 void screencast::AreaOnOff()
 {
   if ( FullScreenRadioButton->isChecked() or WindowRadioButton->isChecked() )
@@ -815,18 +791,8 @@ void screencast::searchExternalProgramms()
   if ( needProgramm("pactl") )
      qDebug() << "[vokoscreen]" << "Find pactl";
   else
-     qDebug() << "vokoscreen" << "Error: pactl is not found, this is an PulseAudio-utils tool. Please install pactl";
+     qDebug() << "[vokoscreen]" << "Error: pactl is not found, this is an PulseAudio-utils tool. Please install pactl";
   
-  if ( needProgramm("v4l2-ctl") )
-     qDebug() << "[vokoscreen]" << "Find v4l2-ctl";
-  else
-     qDebug() << "[vokoscreen]" << "Error: v4l2-ctl is not found, this is an v4l-utils tool. Please install v4l2-ctl";
-  
-  if ( needProgramm("ffplay") )
-     qDebug() << "[vokoscreen]" << "Find ffplay";
-  else
-     qDebug() << "[vokoscreen]" << "Error: ffplay is not found, this is an ffmpeg tool. Please install ffplay";
-
   if ( needProgramm("mkvmerge") )
      qDebug() << "[vokoscreen]" << "Find mkvmerge";
   else
@@ -843,7 +809,7 @@ void screencast::searchExternalProgramms()
 void screencast::setVideocodecStandardComboBox()
 {
   VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( "libx264", Qt::MatchExactly ) );
-  VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( "avi", Qt::MatchExactly ) );
+  VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( "mkv", Qt::MatchExactly ) );
 }
 
 
@@ -1827,10 +1793,12 @@ QString screencast::myAcodec()
 {
   QString acodec;
   if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( AlsaRadioButton->isChecked() ) and ( AlsaHwComboBox->currentText() > "" ) )
+     //return " -acodec libvorbis";
      return " -acodec libmp3lame";
 
   
   if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( PulseDeviceRadioButton->isChecked() ) and ( myPulseDevice() > "" ) )
+     //return " -acodec libvorbis";
      return " -acodec libmp3lame";
  
   return "";
@@ -1850,7 +1818,6 @@ void screencast::preRecord()
 {
   if ( AlsaRadioButton->isChecked() )
   {
-    qDebug() << "*******************************************";
     QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
     QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
     if ( inBox->isbusy() )
@@ -1871,28 +1838,6 @@ void screencast::preRecord()
     }
   }
   
-  
-/*  
-  QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
-  QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
-  if ( inBox->isbusy() and AlsaRadioButton->isChecked() )
-  {
-    QMessageBox msgBox;
-    QString message;
-    message.append( tr( "Device " ) );
-    message.append( inBox->getAlsaHw() );
-    message.append( tr( " is busy" ) );
-    msgBox.setText( message );
-    msgBox.exec();
-    return;
-  }
-  else
-  {
-    // Kanäle werden kurz vor der Aufnahme ermittelt
-    inBox->setChannel();
-  }
-*/
-
   if ( WindowRadioButton->isChecked() )
     if ( firststartWininfo == false )
     {

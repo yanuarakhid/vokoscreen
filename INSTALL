@@ -1,17 +1,21 @@
 Requires:
   - Qt 4
-  - ffmpeg
-  - pulseaudio
-  - pulsaudio-utils
   - alsa
+  - libX11
+  - opencv
+  - ffmpeg
   - lame
   - libmp3lame0
-  - v4l-utils
   - mkvtoolnix
 
+Optional:
+  - pulseaudio and pulsaudio-utils
+  
 BuildRequires:
   - libqt4-devel
   - alsa-devel
+  - libX11-devel
+  - opencv-devel
   
 Compile:
   - get sources
