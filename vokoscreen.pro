@@ -51,6 +51,8 @@ INSTALLS += target image desktop man
 # Clean target
 QMAKE_CLEAN += $$TARGET
 
+CONFIG += link_pkgconfig
+
 # QtSingleApplication
 include(QtSingleApplication/qtsingleapplication.pri)
 
@@ -59,20 +61,17 @@ include(libqxt/libqxt.pri)
 
 # audio
 include(audio/audio.pri)
-LIBS += -lasound
+PKGCONFIG += alsa
 
 # send
 include(send/send.pri)
 
 #webcam
-INCLUDEPATH += /usr/include/opencv/ \
-               /usr/include/opencv2
 include(webcam/webcam.pri)
-LIBS += -lopencv_core -lopencv_highgui
+PKGCONFIG += opencv
 
 #include(QtZip-src/QtZip.pri)
-# -lz wird benötigt für QtZip, dies benötigt libz.so
-#LIBS += -lz
+#PKGCONFIG += zlib
 
 CONFIG  += qtestlib
 #system( ls )

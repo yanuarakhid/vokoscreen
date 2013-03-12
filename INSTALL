@@ -12,6 +12,7 @@ Optional:
   - pulseaudio and pulsaudio-utils
   
 BuildRequires:
+  - pkgconfig
   - libqt4-devel
   - alsa-devel
   - libX11-devel
