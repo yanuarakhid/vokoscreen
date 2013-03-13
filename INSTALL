@@ -4,7 +4,6 @@ Requires:
   - libX11
   - opencv
   - ffmpeg
-  - lame
   - libmp3lame0
   - mkvtoolnix
 
