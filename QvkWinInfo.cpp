@@ -63,7 +63,7 @@ QvkWinInfo::QvkWinInfo()
   QRegion r4 = r3.QRegion::subtract( Rechteck_LU );
   QRegion r5 = r4.QRegion::subtract( Rechteck_RU );
   this->setMask( r5 );
-  
+
   lastWinID = this->winId();
   //qDebug() << "lastWinID:" << lastWinID;
   

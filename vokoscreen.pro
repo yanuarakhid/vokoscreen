@@ -66,7 +66,7 @@ PKGCONFIG += alsa
 # send
 include(send/send.pri)
 
-#webcam
+# webcam
 include(webcam/webcam.pri)
 PKGCONFIG += opencv
 

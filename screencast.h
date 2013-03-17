@@ -167,7 +167,8 @@ private:
     QFrame *TabWidgetMiscellaneousFrame;
     QFrame *TabWidgetVideoOptionFrame;
     QFrame *TabWidgetSocialFrame;
-    QSpinBox *FrameSpinBox;
+    //QSpinBox *FrameSpinBox;
+    QComboBox *FrameComboBox;
     QComboBox *VideocodecComboBox;
     QComboBox *VideoContainerComboBox;
     QCheckBox *HideMouseCheckbox;

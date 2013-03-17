@@ -74,12 +74,12 @@ screencast::screencast()
     bool beta = true;
     QString Beta;
     if ( beta )
-      Beta = "Beta 4";
+      Beta = "Beta 5";
     else
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.4.15";
+    Version = "1.4.16";
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -165,7 +165,7 @@ screencast::screencast()
     VideoOptionLabel->setGeometry( 20, 10, 80, 25 );
     VideoOptionLabel->setText( tr( "Frames:" ) );
     VideoOptionLabel->show();
-
+/*
     FrameSpinBox = new QSpinBox( TabWidgetVideoOptionFrame );
     FrameSpinBox->setGeometry( QRect( 80, 10, 50, 25 ) );
     FrameSpinBox->setMinimum( 1 );
@@ -173,6 +173,17 @@ screencast::screencast()
     FrameSpinBox->setSingleStep( 1 );
     FrameSpinBox->setValue( 25 );
     FrameSpinBox->show();
+*/    
+    FrameComboBox = new QComboBox( TabWidgetVideoOptionFrame );
+    FrameComboBox->setGeometry( 80, 10, 80, 25 );
+    FrameComboBox->addItem( "Auto");
+    for ( int x = 1; x < 101; x++ )
+    {
+       FrameComboBox->addItem( QString::number( x ) );
+       if ( x % 5 == 0 )
+          FrameComboBox->addItem( "Auto");
+    }
+    FrameComboBox->show();
     
     QPushButton *FrameStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
     FrameStandardButton->setText( tr( "Standard" ) );
@@ -470,7 +481,8 @@ screencast::screencast()
     settings.endGroup();
     
     settings.beginGroup( "Videooptions" );
-      FrameSpinBox->setValue( settings.value( "Frames", 25 ).toInt() );
+      //FrameSpinBox->setValue( settings.value( "Frames", 25 ).toInt() );//*******************************************************************************************************
+      FrameComboBox->setCurrentIndex( FrameComboBox->findText( settings.value( "Frames", "Auto" ).toString() ) );
       VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( settings.value( "Videocodec", "libx264" ).toString() ) );
       VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( settings.value( "Format", "avi" ).toString() ) );
       HideMouseCheckbox->setCheckState( Qt::CheckState( settings.value( "HideMouse").toUInt() ) );
@@ -704,7 +716,8 @@ void screencast::saveSettings()
   settings.endGroup();
 
   settings.beginGroup( "Videooptions" );
-    settings.setValue( "Frames", FrameSpinBox->value() );
+    //settings.setValue( "Frames", FrameSpinBox->value() );//************************************************************************************************
+    settings.setValue( "Frames", FrameComboBox->currentText() );
     settings.setValue( "Videocodec", VideocodecComboBox->currentText() );
     settings.setValue( "Format", VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", HideMouseCheckbox->checkState() );    
@@ -818,7 +831,8 @@ void screencast::setVideocodecStandardComboBox()
  */
 void screencast::setFrameStandardSpinbox()
 {
-  FrameSpinBox->setValue( 25 );
+  //FrameSpinBox->setValue( 25 );//*************************************************************************************************************
+  FrameComboBox->setCurrentIndex( FrameComboBox->findText( "Auto") );  
 }
 
 
@@ -1932,8 +1946,13 @@ void screencast::record()
      dir.remove( PathTempLocation().append(QDir::separator() ).append(stringList.at( i ) ) );
 
   // frame rate
-  QString frame = QString().number( FrameSpinBox->value() );
-
+  //QString frame = QString().number( FrameSpinBox->value() );//***************************************************************************************************
+  QString frame = FrameComboBox->currentText();
+  if ( frame == "Auto" )
+    frame = "";
+  else
+    frame = "-r " + frame;
+     
   // Videocodec
   QString myVcodec = VideocodecComboBox->currentText();
   if ( myVcodec == "libx264" )
@@ -1964,7 +1983,7 @@ void screencast::record()
                + myAlsa()
 	       + "-f x11grab "
 	       //+ "-isync " 
-	       + "-r " 
+	       //+ "-r " 
 	       + frame
 	       + " -s "
 	       + RecordX
