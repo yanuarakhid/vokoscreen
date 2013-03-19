@@ -1022,7 +1022,9 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       qDebug() << "[vokoscreen] ffmpeg is not running";
 
       //Enables the customarea rectangle again. (Is diabled in record() )
-      myregionselection->lockFrame(false);
+        if(!PauseButton->isChecked()){
+            myregionselection->lockFrame(false);
+        }
     }
 }
 
