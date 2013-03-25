@@ -106,6 +106,7 @@ private slots:
     // Tab Videooptionen
     void setFrameStandardSpinbox();
     void setVideocodecStandardComboBox();
+    void setFramesAutoOnOffCheckBox();
 
     QString PathMoviesLocation();
     QString PathTempLocation();
@@ -136,6 +137,8 @@ private slots:
 
     void ShortcutPause();
     void ShortcutLupe();
+    void uncheckLupe();
+    
     
     void send();
 
@@ -167,8 +170,8 @@ private:
     QFrame *TabWidgetMiscellaneousFrame;
     QFrame *TabWidgetVideoOptionFrame;
     QFrame *TabWidgetSocialFrame;
-    //QSpinBox *FrameSpinBox;
-    QComboBox *FrameComboBox;
+    QSpinBox *FrameSpinBox;
+    QCheckBox *FramesAutoOnOffCheckBox;
     QComboBox *VideocodecComboBox;
     QComboBox *VideoContainerComboBox;
     QCheckBox *HideMouseCheckbox;

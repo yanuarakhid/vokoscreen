@@ -17,8 +17,17 @@ public slots:
   int NewDistanzXLeft();
   int NewDistanzXRight();
 
+  
+private slots:
+  void closeEvent( QCloseEvent * event );
+  
+  
 protected:  
 
+  
+signals:
+    void closeLupe();
+  
   
 private:
   QLabel *label;

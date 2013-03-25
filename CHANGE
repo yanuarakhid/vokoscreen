@@ -1,4 +1,4 @@
-
+1.5.0 Relaese
 1.4.15 Rewriting the webcam modul. The package "v4l2-ctl" is no longer needed.
 1.4.6 Rewriting the Alsamodul through their own routines. The package "alsa-utils" is no longer needed.
 1.4.5 Relaese

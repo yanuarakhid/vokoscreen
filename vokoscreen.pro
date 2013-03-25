@@ -49,7 +49,7 @@ target.path = /usr/bin
 INSTALLS += target image desktop man
 
 # Clean target
-QMAKE_CLEAN += $$TARGET
+QMAKE_CLEAN += $$TARGET */*~
 
 CONFIG += link_pkgconfig
 

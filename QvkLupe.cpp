@@ -34,6 +34,12 @@ QvkLupe::QvkLupe()
 }
 
 
+void QvkLupe::closeEvent( QCloseEvent * event )
+{
+  emit closeLupe();
+}
+
+
 int QvkLupe::NewDistanzXLeft()
 {
   QCursor cursor;
