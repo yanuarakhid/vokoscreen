@@ -1,5 +1,4 @@
 #include "QvkWebcam.h"
-#include <QDebug>
 
 using namespace std;
 

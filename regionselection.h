@@ -17,9 +17,11 @@
 
 #ifndef regionselection_H
 #define regionselection_H
+
 #include <QDialog>
 #include <QLabel>
 #include <QMouseEvent>
+#include <QDebug>
 
 class regionselection : public QDialog
 { 

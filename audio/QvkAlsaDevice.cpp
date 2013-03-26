@@ -1,17 +1,6 @@
 #include "QvkAlsaDevice.h"
 
-#include <QDebug>
-#include <QDir>
-#include <QDesktopServices>
-#include <QFileInfo>
-#include <QProcess>
-#include <stdio.h>
-#include <string.h>
-#include <alsa/asoundlib.h>
-
-
 #include "alsa_device.h"
-
 
 using namespace std;
 

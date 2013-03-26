@@ -1,8 +1,12 @@
 #ifndef QvkAlsaWatcher_H
 #define QvkAlsaWatcher_H
 
+#include <alsa/asoundlib.h>
+
 #include <QObject>
 #include <QStringList>
+#include <QTimer>
+#include <QDebug>
 
 class QvkAlsaWatcher: public QObject
 { 

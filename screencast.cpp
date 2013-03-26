@@ -15,17 +15,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 #include "screencast.h"
-#include "regionselection.h"
-
-#include "QvkLupe.h"
-#include "QvkWinInfo.h"
-#include "QvkAlsaDevice.h"
-#include "QvkAlsaWatcher.h"
-#include "QvkMail.h"
-
-#include "qxtwindowsystem.h"
-#include <QxtGlobalShortcut> 
-
+/*
 #include <QtGui/QLabel>
 #include <QtGui/QAction>
 #include <QtGui/QPushButton>
@@ -66,7 +56,7 @@
 #include <QFileSystemWatcher>
 
 #include <QTest>
-
+*/
 using namespace std;
 
 screencast::screencast()
@@ -88,10 +78,8 @@ screencast::screencast()
     emaildeveloper = emaildeveloper.append( Version ).append( "'" ).append( ">vkohaupt@freenet.de</a>" );
     
     homepage = "<a href='http://www.kohaupt-online.de/hp'>www.kohaupt-online.de/hp</a>";
-    if ( beta )
-      screencast::setWindowTitle( ProgName + " " + Version );
-    else 
-      screencast::setWindowTitle( ProgName + " " + Version );
+
+    screencast::setWindowTitle( ProgName + " " + Version );
     
     QString mailingliste = "<a href ='mailto:vokoscreen@googlegroups.com'>vokoscreen@googlegroups.com</a>";
     

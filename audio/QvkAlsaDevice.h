@@ -2,7 +2,13 @@
 #define QvkAlsaDevice_H
 
 #include <QObject>
-
+#include <QDebug>
+#include <QDir>
+#include <QDesktopServices>
+#include <QFileInfo>
+#include <QProcess>
+#include <stdio.h>
+#include <string.h>
 
 #include <stdlib.h>
 #include <alsa/asoundlib.h>

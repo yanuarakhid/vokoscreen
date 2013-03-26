@@ -18,6 +18,9 @@ QvkWebcamController::QvkWebcamController( QWidget * value )
     checkBox->setEnabled( false );
 
   ifWebcamShow = false;
+  
+  //gpu::DeviceInfo::majorVersion()
+  
 }
 
 

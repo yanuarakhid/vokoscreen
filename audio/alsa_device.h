@@ -35,6 +35,8 @@
 #define ALSA_DEVICE_H
 
 #include <sys/poll.h>
+#include <stdlib.h>
+#include <alsa/asoundlib.h>
 
 #ifdef __cplusplus
 extern "C" {

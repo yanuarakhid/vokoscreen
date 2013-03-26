@@ -17,32 +17,29 @@
 
 #ifndef screencast_H
 #define screencast_H
-#include <QtGui/QMainWindow>
-#include <QtGui/QPushButton>
-#include <QtGui/QLabel>
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QToolButton>
-#include <QtGui/QApplication>
-#include <QtGui/QDesktopWidget>
-#include <QProcess>
-#include <QList>
+
+#include <QMainWindow>
+#include <QPushButton>
+#include <QComboBox>
 #include <QSpinBox>
 #include <QRadioButton>
-#include <QFrame>
 #include <QScrollArea>
 #include <QSystemTrayIcon>
+#include <QMessageBox>
+#include <QSettings>
+#include <QLineEdit>
+#include <QFileDialog>
+#include <QDate>
 
 #include "regionselection.h"
 #include "QvkLupe.h"
 #include "QvkWebcamController.h"
 #include "QvkAlsaDevice.h"
 #include "QvkMail.h"
-
-#include <QxtGlobalShortcut> 
-
+#include "QvkAlsaWatcher.h"
 #include "QvkWinInfo.h"
 
+#include <QxtGlobalShortcut> 
 
 class screencast : public QMainWindow
 { 
@@ -55,7 +52,6 @@ public:
     QString Version;
     QString email;
     QString homepage;
-    //QString channels;
     QString ffmpegString;
     QString nameInMoviesLocation;
     QString winID;
@@ -132,13 +128,10 @@ private slots:
 
     void AreaOnOff();
     void showLupe();
-    //void showWebcam();
-    //void showWebcamDialog();
 
     void ShortcutPause();
     void ShortcutLupe();
     void uncheckLupe();
-    
     
     void send();
 

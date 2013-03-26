@@ -1,9 +1,4 @@
 #include "QvkLupe.h"
-#include <QPixmap>
-#include <QDesktopWidget>
-#include <QDebug>
-#include <QApplication>
-#include <QTimer>
 
 using namespace std;
 
@@ -36,6 +31,7 @@ QvkLupe::QvkLupe()
 
 void QvkLupe::closeEvent( QCloseEvent * event )
 {
+  (void)event;
   emit closeLupe();
 }
 

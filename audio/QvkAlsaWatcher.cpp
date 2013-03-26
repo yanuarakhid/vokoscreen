@@ -1,13 +1,6 @@
 
 #include "QvkAlsaWatcher.h"
 
-#include <QTimer>
-#include <QDir>
-#include <QDebug>
-
-#include <stdio.h>
-#include <string.h>
-#include <alsa/asoundlib.h>
 
 using namespace std;
 

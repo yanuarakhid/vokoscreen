@@ -1,12 +1,11 @@
 #ifndef QvkWinInfo_H
 #define QvkWinInfo_H
 
-#include <QObject>
 #include "qxtwindowsystem.h"
 #include <QDialog>
-#include <QMainWindow>
+#include <QTimer>
+#include <QPainter>
 
-//class QvkWinInfo: public QMainWindow
 class QvkWinInfo: public QDialog
 { 
 Q_OBJECT

@@ -1,7 +1,13 @@
 #ifndef QvkLupe_H
 #define QvkLupe_H
+
 #include <QDialog>
 #include <QLabel>
+#include <QPixmap>
+#include <QDesktopWidget>
+#include <QDebug>
+#include <QApplication>
+#include <QTimer>
 
 class QvkLupe: public QDialog
 { 

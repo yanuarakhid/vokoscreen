@@ -1,11 +1,4 @@
 #include "QvkWinInfo.h"
-#include <QDebug>
-#include <QTimer>
-#include <QPaintEvent>
-#include <QPainter>
-#include <QDesktopServices>
-#include <QDesktopWidget>
-#include <QApplication>
 
 using namespace std;
 

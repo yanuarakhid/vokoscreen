@@ -8,6 +8,7 @@
 #include <QLabel>
 #include <QMenu>
 #include <QContextMenuEvent>
+#include <QDebug>
 
 class QvkWebcam : public QMainWindow
 {

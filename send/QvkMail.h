@@ -2,9 +2,13 @@
 #define QvkMail_H
 
 #include <QObject>
-#include <QDialog>
-#include <QStringList>
 #include <QRadioButton>
+#include <QProcess>
+#include <QPushButton>
+#include <QDebug>
+#include <QDesktopServices>
+#include <QFileDialog>
+
 
 class QvkMail: public QObject
 { 

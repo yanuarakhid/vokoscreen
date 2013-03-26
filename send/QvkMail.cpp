@@ -1,16 +1,6 @@
 
 #include "QvkMail.h"
 
-#include <QDialog>
-#include <QProcess>
-#include <QPushButton>
-#include <QRadioButton>
-#include <QDir>
-#include <QFile>
-#include <QDebug>
-#include <QDesktopServices>
-#include <QIcon>
-#include <QFileDialog>
 
 using namespace std;
 

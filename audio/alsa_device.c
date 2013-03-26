@@ -31,9 +31,6 @@
 */
 
 #include "alsa_device.h"
-#include <stdlib.h>
-#include <alsa/asoundlib.h>
-//#include <time.h>
 
 struct AlsaDevice_ {
    char *device_name;

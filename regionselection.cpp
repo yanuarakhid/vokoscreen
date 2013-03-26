@@ -17,10 +17,6 @@
 
 #include "regionselection.h"
 
-#include <QLabel>
-#include <QDebug>
-#include <QMouseEvent>
-
 using namespace std;
 
 regionselection::regionselection( int x, int y, int width, int height, int framewidth )
