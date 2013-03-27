@@ -1,4 +1,4 @@
-#include "QvkWebcamController.h"
+#include "QvkWebcamController.h" 
 
 QvkWebcamController::QvkWebcamController( QWidget * value )
 {

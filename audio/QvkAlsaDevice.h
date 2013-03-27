@@ -1,4 +1,4 @@
-#ifndef QvkAlsaDevice_H
+#ifndef QvkAlsaDevice_H 
 #define QvkAlsaDevice_H
 
 #include <QObject>

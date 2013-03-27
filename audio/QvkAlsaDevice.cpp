@@ -1,6 +1,6 @@
 #include "QvkAlsaDevice.h"
 
-#include "alsa_device.h"
+#include "alsa_device.h" 
 
 using namespace std;
 

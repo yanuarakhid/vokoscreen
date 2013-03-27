@@ -1,4 +1,4 @@
-#include "QvkWebcam.h"
+#include "QvkWebcam.h" 
 #include <QDebug>
 #include <QProcess>
 #include <QLabel>

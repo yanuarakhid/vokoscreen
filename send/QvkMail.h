@@ -1,4 +1,4 @@
-#ifndef QvkMail_H
+#ifndef QvkMail_H 
 #define QvkMail_H
 
 #include <QObject>

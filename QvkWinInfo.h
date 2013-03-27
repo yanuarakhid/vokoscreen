@@ -1,4 +1,4 @@
-#ifndef QvkWinInfo_H
+#ifndef QvkWinInfo_H 
 #define QvkWinInfo_H
 
 #include "qxtwindowsystem.h"

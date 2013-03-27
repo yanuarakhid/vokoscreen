@@ -31,7 +31,7 @@
  
 */
 
-#ifndef ALSA_DEVICE_H
+#ifndef ALSA_DEVICE_H 
 #define ALSA_DEVICE_H
 
 #include <sys/poll.h>

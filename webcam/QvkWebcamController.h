@@ -1,4 +1,4 @@
-#ifndef QvkWebcamController_H
+#ifndef QvkWebcamController_H 
 #define QvkWebcamController_H
 
 #include "QvkWebcam.h"

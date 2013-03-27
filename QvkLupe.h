@@ -1,4 +1,4 @@
-#ifndef QvkLupe_H
+#ifndef QvkLupe_H 
 #define QvkLupe_H
 
 #include <QDialog>

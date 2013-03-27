@@ -1,4 +1,4 @@
-#include "QvkWebcamWatcher.h"
+#include "QvkWebcamWatcher.h" 
 #include <QDebug>
 using namespace std;
 

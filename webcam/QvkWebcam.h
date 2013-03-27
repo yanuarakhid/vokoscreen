@@ -1,4 +1,4 @@
-#ifndef QvkWebcam_H
+#ifndef QvkWebcam_H 
 #define QvkWebcam_H
 
 #include <cv.h>

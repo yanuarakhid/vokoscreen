@@ -1,4 +1,4 @@
-#ifndef QvkAlsaWatcher_H
+#ifndef QvkAlsaWatcher_H 
 #define QvkAlsaWatcher_H
 
 #include <alsa/asoundlib.h>

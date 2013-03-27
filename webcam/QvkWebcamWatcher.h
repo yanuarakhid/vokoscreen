@@ -1,4 +1,4 @@
-#ifndef QvkWebcamWatcher_H
+#ifndef QvkWebcamWatcher_H 
 #define QvkWebcamWatcher_H
 
 #include <QStringList>
