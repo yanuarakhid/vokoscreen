@@ -2,6 +2,8 @@
 
 QvkWebcamController::QvkWebcamController( QWidget * value )
 {
+  qDebug() << "Begin QvkWebcamController::QvkWebcamController( QWidget * value ) ***************************";
+  
   checkBox = new QCheckBox( value );
   checkBox->setText( "Webcam" );
   checkBox->show();
@@ -17,15 +19,23 @@ QvkWebcamController::QvkWebcamController( QWidget * value )
   if ( myWebcamWatcher->getWebcamCount() == 0 )
     checkBox->setEnabled( false );
 
-  ifWebcamShow = false;
+  //ifWebcamShow = false;
   
-  //gpu::DeviceInfo::majorVersion()
+  vkWebcam = new QvkWebcam( 0 );
+  connect( vkWebcam, SIGNAL( closeWebcam() ), this, SLOT( webcamCloseEvent() ) );
+  qDebug() << "End QvkWebcamController::QvkWebcamController( QWidget * value ) ***************************";
   
 }
 
 
-QvkWebcamController::~QvkWebcamController(void)
+QvkWebcamController::~QvkWebcamController( void )
 {
+}
+
+
+void QvkWebcamController::saveSettings()
+{
+  vkWebcam->saveSettings(); 
 }
 
 
@@ -35,6 +45,9 @@ void QvkWebcamController::setGeometry( int x, int y, int width, int height )
 }
 
 
+/**
+ * Wird vom Destruktor von vokoscreen aufgerufen
+ */
 void QvkWebcamController::webcamClose()
 {
   checkBox->click();
@@ -50,6 +63,7 @@ void QvkWebcamController::webcamAddedEvent( QStringList deviceList, QStringList 
   qDebug() << "[vokoscreen] webcam added:" << addedDevices;
 }
 
+
 /**
  * Wird aufgerufen wenn ein Gerät entfernt wird
  */
@@ -57,9 +71,19 @@ void QvkWebcamController::webcamRemovedEvent( QStringList deviceList, QString re
 {
   (void)deviceList;
   qDebug() << "[vokoscreen] webcam removed:" << removedDevice;
-  
+
+  /*
   if ( ifWebcamShow )
     vkWebcam->close();
+  */
+  if ( vkWebcam->isVisible() )
+    vkWebcam->close();
+}
+
+
+bool QvkWebcamController::isVisible()
+{
+  return vkWebcam->isVisible();
 }
 
 
@@ -81,14 +105,16 @@ void QvkWebcamController::webcamChangedEvent( QStringList deviceList )
 
 
 /**
- * Wird aufgerufen wenn das Fenster geschloßen wird
- * siehe Methode wecam()
+ * Wird aufgerufen wenn das Webcam Fenster geschloßen und dabei
+ * das SIGNAL closeWebcam in der Klasse QvkWebcam ausgelösst wird
  */
 void QvkWebcamController::webcamCloseEvent()
 {
+  qDebug() << "Begin void QvkWebcamController::webcamCloseEvent() ***************************";
+  vkWebcam->setClose();
   checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
-  delete vkWebcam;
-  ifWebcamShow = false;
+  //ifWebcamShow = false;
+  qDebug() << "End   void QvkWebcamController::webcamCloseEvent() ***************************";
 }
 
 
@@ -97,17 +123,35 @@ void QvkWebcamController::webcamCloseEvent()
  */
 void QvkWebcamController::webcam()
 {
+  qDebug() << "Begin void QvkWebcamController::webcam() ***************************";
+  
+  if ( vkWebcam->isVisible() )
+  {
+  }
+  else
+    if ( vkWebcam->isBusy() )
+    {
+      QMessageBox msgBox;
+      QString message;
+      message.append( tr( "Device is busy" ) );
+      msgBox.setText( message );
+      msgBox.exec();
+
+      checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );    
+      return;
+    }
+  
   if ( checkBox->isChecked() )
   {
-    vkWebcam = new QvkWebcam( 0 );
-    connect( vkWebcam, SIGNAL( closeWebcam() ), this, SLOT( webcamCloseEvent() ) );
     vkWebcam->showWebcam();
     vkWebcam->show();
-    ifWebcamShow = true;
+    //ifWebcamShow = true;
   }
   else
   {
     vkWebcam->close();
-    ifWebcamShow = false;
+    //ifWebcamShow = false;
   }
+  qDebug() << "End   void QvkWebcamController::webcam() ***************************";
+  
 }

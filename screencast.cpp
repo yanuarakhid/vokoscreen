@@ -15,61 +15,20 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 #include "screencast.h"  
-/*
-#include <QtGui/QLabel>
-#include <QtGui/QAction>
-#include <QtGui/QPushButton>
-#include <QtGui/QMessageBox>
-#include <QtGui/QApplication>
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QImage>
-#include <QtGui/QPicture>
-#include <QtGui/QTabWidget>
-#include <QtGui/QIcon>
-#include <QSettings>
-#include <QDesktopServices>
-#include <QFileInfo>
-#include <QtGlobal>
-#include <QFile>
-#include <QDebug>
-#include <QDir>
-#include <QMessageBox>
-#include <QWidget>
-#include <QLineEdit>
-#include <QFileDialog>
-#include <Qt>
-#include <QSpinBox>
-#include <QMenu>
-#include <QAction>
-#include <QVBoxLayout>
-#include <QTimer>
-#include <QMouseEvent>
-#include <QtGui/QScrollArea>
-#include <QListWidget>
-#include <QSystemTrayIcon>
-#include <QApplication>
-#include <QCursor>
-#include <QDialog>
-#include <QTime>
-#include <QDate>
-#include <QFileSystemWatcher>
 
-#include <QTest>
-*/
 using namespace std;
 
 screencast::screencast()
 {
-    bool beta = false;
+    bool beta = true;
     QString Beta;
     if ( beta )
-      Beta = "Beta 5";
+      Beta = "Beta";
     else
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.5.0"; 
+    Version = "1.5.2"; 
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -662,14 +621,15 @@ void screencast::closeEvent( QCloseEvent * event )
   saveSettings();
   myregionselection->close();
   lupe->close();
-  if ( webcamCheckBox->ifWebcamShow  )
-    webcamCheckBox->webcamClose();
+  //if ( webcamCheckBox->ifWebcamShow  )
+  if ( webcamCheckBox->isVisible()  )
+     webcamCheckBox->webcamClose();
 }
 
 
 void screencast::saveSettings()
 {
-  QSettings settings(ProgName, ProgName);
+  QSettings settings( ProgName, ProgName );
   
   settings.clear();
 
@@ -710,6 +670,10 @@ void screencast::saveSettings()
     settings.setValue( "Format", VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", HideMouseCheckbox->checkState() );    
   settings.endGroup();
+  
+  
+  webcamCheckBox->saveSettings();
+  
 }
 
 

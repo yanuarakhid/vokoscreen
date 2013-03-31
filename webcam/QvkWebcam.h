@@ -9,6 +9,7 @@
 #include <QMenu>
 #include <QContextMenuEvent>
 #include <QDebug>
+#include <QSettings>
 
 class QvkWebcam : public QMainWindow
 {
@@ -28,13 +29,41 @@ private:
     CvCapture *source;
     int deviceNumber;
     void setDeviceNumber( int value );
+    int idTimer;
+    
+    bool border;
+    int X;
+    int Y;
+    int Width;
+    int Height;
+    
+    
+public slots:
+    void setClose();
+    bool isBusy();
+    void saveSettings();
 
     
 private slots:
     void set160x120();
     void set320x240();
     void set640x480();
- 
+    void setNoBorder();
+    void setBorder();
+    void closeMenue();
+
+    void setValueBorder( bool value );
+    void setValueX( int value );
+    void setValueY( int value );
+    void setValueWidth( int value );
+    void setValueHeight( int value );
+    
+    bool getValueBorder();
+    int getValueX();
+    int getValueY();
+    int getValueWidth();
+    int getValueHeight();
+    
 
 protected:
     void timerEvent( QTimerEvent* );
@@ -44,7 +73,8 @@ protected:
     void closeEvent( QCloseEvent * event );
     void contextMenuEvent( QContextMenuEvent *event );
 
-    
+    void moveEvent( QMoveEvent * event );
+
 signals:
     void closeWebcam();
 

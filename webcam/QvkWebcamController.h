@@ -6,6 +6,7 @@
 
 #include <QCheckBox>
 #include <QDebug>
+#include <QMessageBox>
 
 class QvkWebcamController : public QObject
 {
@@ -15,7 +16,7 @@ public:
   QvkWebcamController( QWidget * frame );
   virtual ~QvkWebcamController();
   QvkWebcamWatcher * myWebcamWatcher;
-  bool ifWebcamShow;
+  //bool ifWebcamShow;
 
   
 public slots:
@@ -24,7 +25,10 @@ public slots:
   void webcamRemovedEvent( QStringList deviceList, QString removedDevice );
   void setGeometry( int x, int y, int width, int height);
   void webcamClose();
-    
+  bool isVisible();
+  void saveSettings();
+  
+  
 private slots:
   void webcam();
   void webcamCloseEvent();
