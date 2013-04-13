@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.5.2"; 
+    Version = "1.5.3"; 
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -1952,7 +1952,7 @@ void screencast::record()
                + myReport
                + myAlsa()
 	       + "-f x11grab "
-	       + frame
+	       //+ frame
 	       + " -s "
 	       + RecordX
 	       + "x"
@@ -1965,7 +1965,8 @@ void screencast::record()
 	       + myVcodec
        	       + myAcodec()
       	       + " -ar " + mySample()
-	       + quality;
+	       + quality
+	       + frame + " ";
 	       	            
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   

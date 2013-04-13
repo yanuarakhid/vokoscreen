@@ -2,7 +2,7 @@
 
 QvkWebcamController::QvkWebcamController( QWidget * value )
 {
-  qDebug() << "Begin QvkWebcamController::QvkWebcamController( QWidget * value ) ***************************";
+  //qDebug() << "Begin QvkWebcamController::QvkWebcamController( QWidget * value ) ***************************";
   
   checkBox = new QCheckBox( value );
   checkBox->setText( "Webcam" );
@@ -23,7 +23,7 @@ QvkWebcamController::QvkWebcamController( QWidget * value )
   
   vkWebcam = new QvkWebcam( 0 );
   connect( vkWebcam, SIGNAL( closeWebcam() ), this, SLOT( webcamCloseEvent() ) );
-  qDebug() << "End QvkWebcamController::QvkWebcamController( QWidget * value ) ***************************";
+  //qDebug() << "End QvkWebcamController::QvkWebcamController( QWidget * value ) ***************************";
   
 }
 
@@ -60,7 +60,7 @@ void QvkWebcamController::webcamClose()
 void QvkWebcamController::webcamAddedEvent( QStringList deviceList, QStringList addedDevices )
 {
   (void)deviceList;
-  qDebug() << "[vokoscreen] webcam added:" << addedDevices;
+  //qDebug() << "[vokoscreen] webcam added:" << addedDevices;
 }
 
 
@@ -70,7 +70,7 @@ void QvkWebcamController::webcamAddedEvent( QStringList deviceList, QStringList 
 void QvkWebcamController::webcamRemovedEvent( QStringList deviceList, QString removedDevice )
 {
   (void)deviceList;
-  qDebug() << "[vokoscreen] webcam removed:" << removedDevice;
+  //qDebug() << "[vokoscreen] webcam removed:" << removedDevice;
 
   /*
   if ( ifWebcamShow )
@@ -100,7 +100,7 @@ void QvkWebcamController::webcamChangedEvent( QStringList deviceList )
   else
     checkBox->setEnabled( true );
 
-  qDebug() << "[vokoscreen] changed";
+  //qDebug() << "[vokoscreen] changed";
 }
 
 
@@ -110,11 +110,11 @@ void QvkWebcamController::webcamChangedEvent( QStringList deviceList )
  */
 void QvkWebcamController::webcamCloseEvent()
 {
-  qDebug() << "Begin void QvkWebcamController::webcamCloseEvent() ***************************";
+  //qDebug() << "Begin void QvkWebcamController::webcamCloseEvent() ***************************";
   vkWebcam->setClose();
   checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
   //ifWebcamShow = false;
-  qDebug() << "End   void QvkWebcamController::webcamCloseEvent() ***************************";
+  //qDebug() << "End   void QvkWebcamController::webcamCloseEvent() ***************************";
 }
 
 
@@ -123,7 +123,7 @@ void QvkWebcamController::webcamCloseEvent()
  */
 void QvkWebcamController::webcam()
 {
-  qDebug() << "Begin void QvkWebcamController::webcam() ***************************";
+  //qDebug() << "Begin void QvkWebcamController::webcam() ***************************";
   
   if ( vkWebcam->isVisible() )
   {
@@ -152,6 +152,6 @@ void QvkWebcamController::webcam()
     vkWebcam->close();
     //ifWebcamShow = false;
   }
-  qDebug() << "End   void QvkWebcamController::webcam() ***************************";
+  //qDebug() << "End   void QvkWebcamController::webcam() ***************************";
   
 }

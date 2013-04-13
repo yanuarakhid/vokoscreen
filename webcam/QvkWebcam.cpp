@@ -165,7 +165,7 @@ bool QvkWebcam::isBusy()
 
 void QvkWebcam::showWebcam()
 {
-  qDebug() << "Begin void QvkWebcam::showWebcam() *****************************";
+  //qDebug() << "Begin void QvkWebcam::showWebcam() *****************************";
   
   source = cvCaptureFromCAM( getDeviceNumber() );
   idTimer = startTimer( 25 );
