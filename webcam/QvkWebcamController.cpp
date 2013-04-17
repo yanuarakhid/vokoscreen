@@ -60,6 +60,7 @@ void QvkWebcamController::webcamClose()
 void QvkWebcamController::webcamAddedEvent( QStringList deviceList, QStringList addedDevices )
 {
   (void)deviceList;
+  (void)addedDevices;
   //qDebug() << "[vokoscreen] webcam added:" << addedDevices;
 }
 
@@ -70,12 +71,9 @@ void QvkWebcamController::webcamAddedEvent( QStringList deviceList, QStringList 
 void QvkWebcamController::webcamRemovedEvent( QStringList deviceList, QString removedDevice )
 {
   (void)deviceList;
+  (void)removedDevice;
   //qDebug() << "[vokoscreen] webcam removed:" << removedDevice;
 
-  /*
-  if ( ifWebcamShow )
-    vkWebcam->close();
-  */
   if ( vkWebcam->isVisible() )
     vkWebcam->close();
 }

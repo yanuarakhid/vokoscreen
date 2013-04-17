@@ -66,19 +66,47 @@ screencast::screencast()
     tabWidget->setGeometry( 120, 0, 450, 190 );
     tabWidget->setIconSize( QSize( 40, 40 ) );
 
-    // Tab 1 Screenrecord ***************************************************
+    // Tab 1 Screen options ***************************************************
     QFrame *frame = new QFrame( this );
     frame->setGeometry( 120, 10, 300, 200 );
     frame->show();
     tabWidget->addTab( frame, "" );
     tabWidget->setTabIcon( 0, QIcon( ":/pictures/monitor.png" ) );
-
-    // Tab 2 Audio recording devices ****************************************
+    QFont qfont = frame->font();
+    qfont.setPixelSize( 12 );
+    frame->setFont( qfont );
+ 
+    FullScreenRadioButton = new QRadioButton( frame );
+    FullScreenRadioButton->setGeometry( QRect( 20, 15, 120, 21 ) );
+    FullScreenRadioButton->setText( tr( "Fullscreen" ) );
+    FullScreenRadioButton->setChecked( true );
+    
+    WindowRadioButton = new QRadioButton( frame );
+    WindowRadioButton->setGeometry(QRect(20, 40, 85, 21));
+    WindowRadioButton->setText( tr( "Window" ) );
+  
+    AreaRadioButton = new QRadioButton( frame );
+    AreaRadioButton->setGeometry(QRect( 20, 65, 85, 21) );
+    AreaRadioButton->setText( tr( "Area" ) );
+    
+    LupeCheckBox = new QCheckBox( frame );
+    LupeCheckBox->setText( tr( "Magnification" ) );
+    LupeCheckBox->setGeometry( QRect( 160, 15, 120, 21 ) );
+    LupeCheckBox->setToolTip( "CTRL+SHIFT+F9" );
+    LupeCheckBox->show();
+    
+    webcamCheckBox = new QvkWebcamController( frame );
+    webcamCheckBox->setGeometry( 160, 40, 120, 21 );
+    
+    // Tab 2 Audio options ****************************************
     TabWidgetAudioFrame = new QFrame( this );
     TabWidgetAudioFrame->setGeometry( 120, 0, 300, 290 );
     TabWidgetAudioFrame->show();
     tabWidget->addTab( TabWidgetAudioFrame, "" );
     tabWidget->setTabIcon( 1, QIcon( ":/pictures/micro.png" ) );
+    qfont = TabWidgetAudioFrame->font();
+    qfont.setPixelSize( 12 );
+    TabWidgetAudioFrame->setFont( qfont );
 
     AudioOnOffCheckbox = new QCheckBox( TabWidgetAudioFrame );
     AudioOnOffCheckbox->setGeometry( 10, 0, 100, 25 );
@@ -101,12 +129,16 @@ screencast::screencast()
     PulseDeviceRadioButton->setText( tr( "Pulse" ) );
     PulseDeviceRadioButton->show();
 
-    // Tab 3 Videooptionen **************************************************
+
+    // Tab 3 Video options **************************************************
     TabWidgetVideoOptionFrame = new QFrame( this );
     TabWidgetVideoOptionFrame->setGeometry( 120, 0, 300, 200 );
     TabWidgetVideoOptionFrame->show();
     tabWidget->addTab( TabWidgetVideoOptionFrame, "" );
     tabWidget->setTabIcon( 2, QIcon( ":/pictures/videooptionen.png" ) );
+    qfont = TabWidgetVideoOptionFrame->font();
+    qfont.setPixelSize( 12 );
+    TabWidgetVideoOptionFrame->setFont( qfont );
 
     FramesAutoOnOffCheckBox = new QCheckBox( TabWidgetVideoOptionFrame );
     FramesAutoOnOffCheckBox->setGeometry( 20, 10, 120, 25 );
@@ -158,12 +190,16 @@ screencast::screencast()
     HideMouseCheckbox->setText( tr( "Mouse cursor not recording" ) );
     HideMouseCheckbox->show();
 
-    // Tab 4 Miscellaneous **************************************************
+    // Tab 4 Miscellaneous options **************************************************
     TabWidgetMiscellaneousFrame = new QFrame(this);
     TabWidgetMiscellaneousFrame->setGeometry(120,0,300,200);
     TabWidgetMiscellaneousFrame->show();
     tabWidget->addTab(TabWidgetMiscellaneousFrame,"");
     tabWidget->setTabIcon(3,QIcon(":/pictures/tools.png"));
+    qfont = TabWidgetMiscellaneousFrame->font();
+    qfont.setPixelSize( 12 );
+    TabWidgetMiscellaneousFrame->setFont( qfont );
+    
 
     QLabel *SaveVideoPathLabel = new QLabel(TabWidgetMiscellaneousFrame);
     SaveVideoPathLabel->setGeometry(30,30,210,25);
@@ -193,24 +229,17 @@ screencast::screencast()
     MinimizedCheckBox->setGeometry( 30, 90, 350, 25 );
     MinimizedCheckBox->setText( tr( "Vokoscreen minimized when recording starts" ) );
     MinimizedCheckBox->show();
-    
-    sendPushButton = new QPushButton( centralWidget );
-    sendPushButton->setGeometry( 490, 200, 70, 30 );
-    sendPushButton->setFont( QFont( "Times", 12, QFont::Bold ) );
-    sendPushButton->setText( "Send" );
-    connect( sendPushButton, SIGNAL( clicked() ), SLOT( send() ) );
-    if ( needProgramm( "xdg-email" ) )
-      sendPushButton->setEnabled( true );
-    else
-      sendPushButton->setEnabled( false );
-    
-     // Tab 6 About *********************************************************
+
+    // Tab 6 About *********************************************************
     QFrame *TabWidgetAboutFrame = new QFrame(this);
     TabWidgetAboutFrame->setGeometry( 120, 0, 300, 200 );
     TabWidgetAboutFrame->show();
     tabWidget->addTab( TabWidgetAboutFrame, "" );
     tabWidget->setTabIcon( 4, QIcon( ":/pictures/about.png" ) );
     tabWidget->show();
+    qfont = TabWidgetAboutFrame->font();
+    qfont.setPixelSize( 12 );
+    TabWidgetAboutFrame->setFont( qfont );
     
     QLabel* labelAutor = new QLabel( TabWidgetAboutFrame );
     labelAutor->setText( ProgName + " " + Version );
@@ -228,7 +257,6 @@ screencast::screencast()
     labelMailinglisteMail->setGeometry( 160, 32, 400, 22 );
     labelMailinglisteMail->setOpenExternalLinks( true );
     labelMailinglisteMail->show();
-
     
     QLabel* labelWeb = new QLabel( TabWidgetAboutFrame );
     labelWeb->setGeometry( QRect( 70, 54, 400, 22 ) );
@@ -263,27 +291,16 @@ screencast::screencast()
     labelDeveLoperMail->setGeometry( QRect( 160, 98, 400, 22 ) );
     labelDeveLoperMail->setOpenExternalLinks( true );
     labelDeveLoperMail->show();
-
     
     // End Tabs *************************************************************
 
-    FullScreenRadioButton = new QRadioButton( frame );
-    FullScreenRadioButton->setGeometry( QRect( 20, 15, 120, 21 ) );
-    FullScreenRadioButton->setText( tr( "Fullscreen" ) );
-    FullScreenRadioButton->setChecked( true );
-
-    WindowRadioButton = new QRadioButton( frame );
-    WindowRadioButton->setGeometry(QRect(20, 40, 85, 21));
-    WindowRadioButton->setText( tr( "Window" ) );
-  
-    AreaRadioButton = new QRadioButton( frame );
-    AreaRadioButton->setGeometry(QRect( 20, 65, 85, 21) );
-    AreaRadioButton->setText( tr( "Area" ) );
-    
     recordButton = new QPushButton( centralWidget );
     recordButton->setText( "Start" );
     recordButton->setToolTip( "CTRL+SHIFT+F10" );
-    recordButton->setFont( QFont( "Times", 12, QFont::Bold ) );
+    qfont = recordButton->font();
+    qfont.setPixelSize( 14 );
+    qfont.setBold( true );
+    recordButton->setFont( qfont );
     recordButton->setGeometry( 210, 200, 70, 30 );
     recordButton->show();
     if ( needProgramm( "ffmpeg" ) )
@@ -302,7 +319,10 @@ screencast::screencast()
     StopButton = new QPushButton( centralWidget );
     StopButton->setText( "Stop" );
     StopButton->setToolTip( "CTRL+SHIFT+F11" );
-    StopButton->setFont( QFont( "Times", 12, QFont::Bold ) );
+    qfont = StopButton->font();
+    qfont.setPixelSize( 14 );
+    qfont.setBold( true );
+    StopButton->setFont( qfont );
     StopButton->setGeometry( 280, 200, 70, 30 );
     StopButton->setEnabled( false );
     StopButton->show();  
@@ -310,7 +330,10 @@ screencast::screencast()
     PauseButton = new QPushButton( centralWidget );
     PauseButton->setText( "Pause" );
     PauseButton->setToolTip( "CTRL+SHIFT+F12" );
-    PauseButton->setFont( QFont( "Times", 12, QFont::Bold ) );
+    qfont = PauseButton->font();
+    qfont.setPixelSize( 14 );
+    qfont.setBold( true );
+    PauseButton->setFont( qfont );
     PauseButton->setGeometry( 350, 200, 70, 30 );
     PauseButton->setCheckable( true );
     PauseButton->setEnabled( false );
@@ -318,20 +341,27 @@ screencast::screencast()
 
     PlayButton = new QPushButton( centralWidget );
     PlayButton->setText( "Play" );
-    PlayButton->setFont( QFont( "Times", 12, QFont::Bold ) );
+    qfont = PlayButton->font();
+    qfont.setPixelSize( 14 );
+    qfont.setBold( true );
+    PlayButton->setFont( qfont );
     PlayButton->setGeometry( 420, 200, 70, 30 );
     PlayButton->show();
 
-    LupeCheckBox = new QCheckBox( frame );
-    LupeCheckBox->setText( tr( "Magnification" ) );
-    LupeCheckBox->setGeometry( QRect( 160, 15, 120, 21 ) );
-    LupeCheckBox->setToolTip( "CTRL+SHIFT+F9" );
-    LupeCheckBox->show();
+    sendPushButton = new QPushButton( centralWidget );
+    sendPushButton->setGeometry( 490, 200, 70, 30 );
+    qfont = sendPushButton->font();
+    qfont.setPixelSize( 14 );
+    qfont.setBold( true );
+    sendPushButton->setFont( qfont );
+    sendPushButton->setText( "Send" );
+    connect( sendPushButton, SIGNAL( clicked() ), SLOT( send() ) );
+    if ( needProgramm( "xdg-email" ) )
+      sendPushButton->setEnabled( true );
+    else
+      sendPushButton->setEnabled( false );
     
-    webcamCheckBox = new QvkWebcamController( frame );
-    webcamCheckBox->setGeometry( 160, 40, 120, 21 );
-    
-    QLabel* label = new QLabel(centralWidget);
+    QLabel* label = new QLabel( centralWidget );
     label->setText("");
     label->setGeometry( QRect( 0, 0, 123, 240) );
     label->setAlignment( Qt::AlignCenter );
@@ -420,8 +450,8 @@ screencast::screencast()
       FramesAutoOnOffCheckBox->setCheckState( Qt::CheckState( settings.value( "Auto-Frame", 2 ).toUInt() ) );
       setFramesAutoOnOffCheckBox();
       FrameSpinBox->setValue( settings.value( "Frames", 25 ).toInt() );
-      VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( settings.value( "Videocodec", "libx264" ).toString() ) );
-      VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( settings.value( "Format", "avi" ).toString() ) );
+      VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( settings.value( "Videocodec", "mpeg4" ).toString() ) );
+      VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( settings.value( "Format", "mkv" ).toString() ) );
       HideMouseCheckbox->setCheckState( Qt::CheckState( settings.value( "HideMouse").toUInt() ) );
     settings.endGroup();
 
@@ -463,7 +493,6 @@ screencast::screencast()
 
     connect( lupe, SIGNAL( closeLupe() ), SLOT( uncheckLupe() ) ); //***********************************************
     
-    
     // Clean vokoscreen temp
     QDir dir( PathTempLocation() );
     QStringList stringList = dir.entryList( QDir::Files, QDir::Time | QDir::Reversed );
@@ -502,7 +531,7 @@ screencast::screencast()
    shortcutLupe->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
 
    shortcutStart = new QxtGlobalShortcut( this );
-   connect( shortcutStart, SIGNAL( activated() ), this, SLOT( preRecord() ) );// record()
+   connect( shortcutStart, SIGNAL( activated() ), this, SLOT( preRecord() ) );
    shortcutStart->setShortcut( QKeySequence( "Ctrl+Shift+F10" ) );
    
    shortcutStop = new QxtGlobalShortcut( this );
@@ -780,7 +809,7 @@ void screencast::searchExternalProgramms()
  */
 void screencast::setVideocodecStandardComboBox()
 {
-  VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( "libx264", Qt::MatchExactly ) );
+  VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( "mpeg4", Qt::MatchExactly ) );
   VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( "mkv", Qt::MatchExactly ) );
 }
 
@@ -1937,7 +1966,9 @@ void screencast::record()
     if ( ( intRecordY % 2 ) == 1 )
       RecordY = QString().number( --intRecordY );
     
-    myVcodec = "libx264 -preset medium";
+    //myVcodec = "libx264 -preset medium";
+    myVcodec = "libx264 -preset veryfast";
+    
   }  
 
   nameInMoviesLocation = NameInMoviesLocation();

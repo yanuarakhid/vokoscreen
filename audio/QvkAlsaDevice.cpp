@@ -32,7 +32,7 @@ QString QvkAlsaDevice::getAlsaVersion()
   return version;
 }
 
-
+// Wird nicht Aufgerufen 
 void QvkAlsaDevice::setAlsaSample()
 {
   AlsaSample = "48000";
