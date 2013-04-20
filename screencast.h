@@ -128,6 +128,8 @@ private slots:
 
     void AreaOnOff();
     void showLupe();
+    void LupeDialog();
+    
 
     void ShortcutPause();
     void ShortcutLupe();

@@ -8,6 +8,8 @@
 #include <QDebug>
 #include <QApplication>
 #include <QTimer>
+#include <QObject>
+#include <QRadioButton>
 
 class QvkLupe: public QDialog
 { 
@@ -16,18 +18,26 @@ public:
   QvkLupe();
   virtual ~QvkLupe();
   
-  
+   //QDialog *dialog;
+   
 public slots:
-  void mytimer();  
-  void setLupe();
-  int NewDistanzXLeft();
-  int NewDistanzXRight();
+  void getDialogLupe( QWidget *parent );
 
   
 private slots:
   void closeEvent( QCloseEvent * event );
+  int NewDistanzXLeft();
+  int NewDistanzXRight();
+  void mytimer();  
+  void setLupe();
+  void Lupe200x200();
+  void Lupe400x200();
+  void Lupe600x200();
   
-  
+  int getDistanzX();
+  int getDistanzY();
+
+
 protected:  
 
   
@@ -40,6 +50,11 @@ private:
   int border;
   int distanzX;
   int distanzY;
+  QRadioButton *radioButton1;
+  QRadioButton *radioButton2;
+  QRadioButton *radioButton3;
+  int faktor;
+  int formValue;
 };
 
 

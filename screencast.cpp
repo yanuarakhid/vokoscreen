@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.5.3"; 
+    Version = "1.5.6"; 
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -94,6 +94,13 @@ screencast::screencast()
     LupeCheckBox->setGeometry( QRect( 160, 15, 120, 21 ) );
     LupeCheckBox->setToolTip( "CTRL+SHIFT+F9" );
     LupeCheckBox->show();
+    
+    QPushButton *LupeDialogPushButton = new QPushButton( frame );
+    LupeDialogPushButton->setGeometry( 250, 15, 20, 21 );
+    LupeDialogPushButton->setText( "..." );
+    LupeDialogPushButton->show();
+    connect( LupeDialogPushButton, SIGNAL( clicked() ), SLOT( LupeDialog() ) );
+    
     
     webcamCheckBox = new QvkWebcamController( frame );
     webcamCheckBox->setGeometry( 160, 40, 120, 21 );
@@ -491,7 +498,7 @@ screencast::screencast()
     lupe = new QvkLupe();
     lupe->close();
 
-    connect( lupe, SIGNAL( closeLupe() ), SLOT( uncheckLupe() ) ); //***********************************************
+    connect( lupe, SIGNAL( closeLupe() ), SLOT( uncheckLupe() ) );
     
     // Clean vokoscreen temp
     QDir dir( PathTempLocation() );
@@ -563,6 +570,12 @@ void screencast::send()
 {
   QvkMail *vkMail = new QvkMail( this );
   (void)vkMail;
+}
+
+
+void screencast::LupeDialog()
+{
+  lupe->getDialogLupe( this );
 }
 
 
@@ -1966,8 +1979,8 @@ void screencast::record()
     if ( ( intRecordY % 2 ) == 1 )
       RecordY = QString().number( --intRecordY );
     
-    //myVcodec = "libx264 -preset medium";
-    myVcodec = "libx264 -preset veryfast";
+    myVcodec = "libx264 -preset medium";
+    //myVcodec = "libx264 -preset veryfast";
     
   }  
 
