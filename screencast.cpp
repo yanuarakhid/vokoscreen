@@ -53,7 +53,7 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "ffmpeg Version:" << getFfmpegVersion();
     qDebug();
     
-    searchExternalProgramms();
+    searchExternalPrograms();
     
     pause = false;
     firststartWininfo = false;
@@ -821,7 +821,7 @@ void screencast::AreaOnOff()
 /**
  * Looking for external programs
  */
-void screencast::searchExternalProgramms()
+void screencast::searchExternalPrograms()
 {
   qDebug() << "[vokoscreen]" << "---Begin Search external tools---";
   if ( needProgram("ffmpeg") )

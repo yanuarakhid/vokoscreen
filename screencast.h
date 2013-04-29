@@ -80,7 +80,7 @@ private slots:
     QString myAlsa();
     
     QString myAcodec();
-    void searchExternalProgramms();
+    void searchExternalPrograms();
     void preRecord();
 
     const QString myPulseDevice();
