@@ -16,7 +16,6 @@ public:
   QvkWebcamController( QWidget * frame );
   virtual ~QvkWebcamController();
   QvkWebcamWatcher * myWebcamWatcher;
-  //bool ifWebcamShow;
 
   
 public slots:
@@ -37,7 +36,7 @@ private slots:
 private:
   QvkWebcam * vkWebcam;
   QCheckBox *checkBox;
-
+  QComboBox *comboBoxCount;
   
 protected:
   
