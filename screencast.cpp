@@ -96,7 +96,7 @@ screencast::screencast()
     MagnifierCheckBox->show();
     
     QPushButton *MagnifierDialogPushButton = new QPushButton( frame );
-    MagnifierDialogPushButton->setGeometry( 250, 15, 20, 21 );
+    MagnifierDialogPushButton->setGeometry( 270, 15, 20, 21 );
     MagnifierDialogPushButton->setText( "..." );
     MagnifierDialogPushButton->show();
     connect( MagnifierDialogPushButton, SIGNAL( clicked() ), SLOT( MagnifierDialog() ) );
