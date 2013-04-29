@@ -1,18 +1,18 @@
-#include "QvkLupe.h" 
+#include "QvkMagnifier.h" 
 
 using namespace std;
 
 
 // Lupe Rund, Qadratisch, Oval
 
-//QvkLupe::QvkLupe( int width, int height, int framewidth )
-QvkLupe::QvkLupe()
+//QvkMagnifier::QvkMagnifier( int width, int height, int framewidth )
+QvkMagnifier::QvkMagnifier()
 {
-  QString lupeVersion = "1.0.5";
+  QString magnifierVersion = "1.0.5";
   faktor = 2;
   label = new QLabel( this );
 
-  Lupe400x200();
+  Magnifier400x200();
 
   resize( 2 * distanzX * faktor, 2 * distanzY * faktor );
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
@@ -29,14 +29,14 @@ QvkLupe::QvkLupe()
 }
 
 
-void QvkLupe::closeEvent( QCloseEvent * event )
+void QvkMagnifier::closeEvent( QCloseEvent * event )
 {
   (void)event;
-  emit closeLupe();
+  emit closeMagnifier();
 }
 
 
-void QvkLupe::getDialogLupe( QWidget *parent )
+void QvkMagnifier::getDialogMagnifier( QWidget *parent )
 {
   QDialog *dialog = new QDialog( parent );
   dialog->resize( 300, 200 );
@@ -54,7 +54,7 @@ void QvkLupe::getDialogLupe( QWidget *parent )
   radioButton1->setGeometry( 170, 50, 200, 21 );
   radioButton1->setText( "200 x 200" );
   radioButton1->show();
-  connect( radioButton1, SIGNAL( clicked() ), SLOT( Lupe200x200() ) );
+  connect( radioButton1, SIGNAL( clicked() ), SLOT( Magnifier200x200() ) );
   if ( formValue == 1 )
     radioButton1->setChecked( true );
   
@@ -62,7 +62,7 @@ void QvkLupe::getDialogLupe( QWidget *parent )
   radioButton2->setGeometry( 170, 80, 200, 21 );
   radioButton2->setText( "400 x 200" );
   radioButton2->show();
-  connect( radioButton2, SIGNAL( clicked() ), SLOT( Lupe400x200() ) );
+  connect( radioButton2, SIGNAL( clicked() ), SLOT( Magnifier400x200() ) );
   if ( formValue == 2 )
     radioButton2->setChecked( true );
   
@@ -70,7 +70,7 @@ void QvkLupe::getDialogLupe( QWidget *parent )
   radioButton3->setGeometry( 170, 110, 200, 21 );
   radioButton3->setText( "600 x 200" );
   radioButton3->show();
-  connect( radioButton3, SIGNAL( clicked() ), SLOT( Lupe600x200() ) );
+  connect( radioButton3, SIGNAL( clicked() ), SLOT( Magnifier600x200() ) );
   if ( formValue == 3 )
     radioButton3->setChecked( true );
 
@@ -78,7 +78,7 @@ void QvkLupe::getDialogLupe( QWidget *parent )
 }
 
 
-void QvkLupe::Lupe200x200()
+void QvkMagnifier::Magnifier200x200()
 {
   distanzX = 50;
   distanzY = 50;
@@ -88,7 +88,7 @@ void QvkLupe::Lupe200x200()
 }
 
 
-void QvkLupe::Lupe400x200()
+void QvkMagnifier::Magnifier400x200()
 {
   distanzX = 100;
   distanzY = 50;
@@ -98,7 +98,7 @@ void QvkLupe::Lupe400x200()
 }
 
 
-void QvkLupe::Lupe600x200()
+void QvkMagnifier::Magnifier600x200()
 {
   distanzX = 150;
   distanzY = 50;
@@ -109,19 +109,19 @@ void QvkLupe::Lupe600x200()
 
 
 
-int QvkLupe::getDistanzX()
+int QvkMagnifier::getDistanzX()
 {
   return distanzX;
 }
 
 
-int QvkLupe::getDistanzY()
+int QvkMagnifier::getDistanzY()
 {
   return distanzY; 
 }
 
 
-int QvkLupe::NewDistanzXLeft()
+int QvkMagnifier::NewDistanzXLeft()
 {
   QCursor cursor;
   QDesktopWidget *desk = QApplication::desktop();
@@ -134,7 +134,7 @@ int QvkLupe::NewDistanzXLeft()
 }
 
 
-int QvkLupe::NewDistanzXRight()
+int QvkMagnifier::NewDistanzXRight()
 {
   QCursor cursor;
   QDesktopWidget *desk = QApplication::desktop();
@@ -147,11 +147,11 @@ int QvkLupe::NewDistanzXRight()
 }
 
 
-QvkLupe::~QvkLupe()
+QvkMagnifier::~QvkMagnifier()
 {
 }
 
-void QvkLupe::setLupe()
+void QvkMagnifier::setMagnifier()
 {
   QCursor cursor;
   QDesktopWidget *desk = QApplication::desktop();
@@ -260,13 +260,13 @@ void QvkLupe::setLupe()
 }
 
 
-void QvkLupe::mytimer()
+void QvkMagnifier::mytimer()
 {
   QCursor cursor;
   QDesktopWidget *desk = QApplication::desktop();
 //    Qt::Window | Qt::WindowStaysOnTopHint
 
-  setLupe();
+  setMagnifier();
 
   // Obere linke Ecke
   if ( ( cursor.pos().x() < distanzX ) and ( cursor.pos().y() <  distanzY ) )

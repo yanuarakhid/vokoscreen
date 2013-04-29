@@ -33,7 +33,7 @@
 #include <QStatusBar>
 
 #include "regionselection.h"
-#include "QvkLupe.h"
+#include "QvkMagnifier.h"
 #include "QvkWebcamController.h"
 #include "QvkAlsaDevice.h"
 #include "QvkMail.h"
@@ -128,13 +128,13 @@ private slots:
     void SystemTrayGo( QSystemTrayIcon::ActivationReason reason );
 
     void AreaOnOff();
-    void showLupe();
-    void LupeDialog();
+    void showMagnifier();
+    void MagnifierDialog();
     
 
     void ShortcutPause();
-    void ShortcutLupe();
-    void uncheckLupe();
+    void ShortcutMagnifier();
+    void uncheckMagnifier();
     
     void send();
 
@@ -151,7 +151,7 @@ private:
     QRadioButton * FullScreenRadioButton;
     QRadioButton * WindowRadioButton;
     QRadioButton *AreaRadioButton;
-    QCheckBox *LupeCheckBox;
+    QCheckBox *MagnifierCheckBox;
     QvkWebcamController *webcamCheckBox;
 
     QLabel *ChannelLabel;
@@ -184,11 +184,11 @@ private:
     QSystemTrayIcon *SystemTrayIconYellow;
     QSystemTrayIcon *SystemTrayIconBlue;
     
-    QvkLupe *lupe;
+    QvkMagnifier *magnifier;
     regionselection *myregionselection;
     QvkWebcam *webcam;
     
-    QxtGlobalShortcut *shortcutLupe;
+    QxtGlobalShortcut *shortcutMagnifier;
     QxtGlobalShortcut *shortcutPause;
     QxtGlobalShortcut *shortcutStart;
     QxtGlobalShortcut *shortcutStop;

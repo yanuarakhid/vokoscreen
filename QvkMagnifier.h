@@ -1,5 +1,5 @@
-#ifndef QvkLupe_H 
-#define QvkLupe_H
+#ifndef QvkMagnifier_H 
+#define QvkMagnifier_H
 
 #include <QDialog>
 #include <QLabel>
@@ -11,17 +11,17 @@
 #include <QObject>
 #include <QRadioButton>
 
-class QvkLupe: public QDialog
+class QvkMagnifier: public QDialog
 { 
 Q_OBJECT
 public:
-  QvkLupe();
-  virtual ~QvkLupe();
+  QvkMagnifier();
+  virtual ~QvkMagnifier();
   
    //QDialog *dialog;
    
 public slots:
-  void getDialogLupe( QWidget *parent );
+  void getDialogMagnifier( QWidget *parent );
 
   
 private slots:
@@ -29,10 +29,10 @@ private slots:
   int NewDistanzXLeft();
   int NewDistanzXRight();
   void mytimer();  
-  void setLupe();
-  void Lupe200x200();
-  void Lupe400x200();
-  void Lupe600x200();
+  void setMagnifier();
+  void Magnifier200x200();
+  void Magnifier400x200();
+  void Magnifier600x200();
   
   int getDistanzX();
   int getDistanzY();
@@ -42,7 +42,7 @@ protected:
 
   
 signals:
-    void closeLupe();
+    void closeMagnifier();
   
   
 private:

@@ -4,13 +4,13 @@ TARGET = vokoscreen
 # Input
 HEADERS += screencast.h \
            regionselection.h \
-           QvkLupe.h \
+           QvkMagnifier.h \
            QvkWinInfo.h 
 
 SOURCES += main.cpp \
            screencast.cpp \
            regionselection.cpp \
-           QvkLupe.cpp \
+           QvkMagnifier.cpp \
            QvkWinInfo.cpp 
 
 RESOURCES += screencast.qrc

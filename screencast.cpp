@@ -89,17 +89,17 @@ screencast::screencast()
     AreaRadioButton->setGeometry(QRect( 20, 65, 85, 21) );
     AreaRadioButton->setText( tr( "Area" ) );
     
-    LupeCheckBox = new QCheckBox( frame );
-    LupeCheckBox->setText( tr( "Magnification" ) );
-    LupeCheckBox->setGeometry( QRect( 160, 15, 120, 21 ) );
-    LupeCheckBox->setToolTip( "CTRL+SHIFT+F9" );
-    LupeCheckBox->show();
+    MagnifierCheckBox = new QCheckBox( frame );
+    MagnifierCheckBox->setText( tr( "Magnification" ) );
+    MagnifierCheckBox->setGeometry( QRect( 160, 15, 120, 21 ) );
+    MagnifierCheckBox->setToolTip( "CTRL+SHIFT+F9" );
+    MagnifierCheckBox->show();
     
-    QPushButton *LupeDialogPushButton = new QPushButton( frame );
-    LupeDialogPushButton->setGeometry( 250, 15, 20, 21 );
-    LupeDialogPushButton->setText( "..." );
-    LupeDialogPushButton->show();
-    connect( LupeDialogPushButton, SIGNAL( clicked() ), SLOT( LupeDialog() ) );
+    QPushButton *MagnifierDialogPushButton = new QPushButton( frame );
+    MagnifierDialogPushButton->setGeometry( 250, 15, 20, 21 );
+    MagnifierDialogPushButton->setText( "..." );
+    MagnifierDialogPushButton->show();
+    connect( MagnifierDialogPushButton, SIGNAL( clicked() ), SLOT( MagnifierDialog() ) );
     
     
     webcamCheckBox = new QvkWebcamController( frame );
@@ -521,11 +521,11 @@ screencast::screencast()
     myregionselection = new regionselection( 200, 200, 400, 400, 5 );
     myregionselection->close();
     
-    connect( LupeCheckBox, SIGNAL( clicked() ), SLOT( showLupe() ) );
-    lupe = new QvkLupe();
-    lupe->close();
+    connect( MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );
+    magnifier = new QvkMagnifier();
+    magnifier->close();
 
-    connect( lupe, SIGNAL( closeLupe() ), SLOT( uncheckLupe() ) );
+    connect( magnifier, SIGNAL( closeMagnifier() ), SLOT( uncheckMagnifier() ) );
     
     // Clean vokoscreen temp
     QDir dir( PathTempLocation() );
@@ -560,9 +560,9 @@ screencast::screencast()
    connect( SystemTrayIconYellow, SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayPause( QSystemTrayIcon::ActivationReason ) ) );
    connect( SystemTrayIconBlue,   SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayGo( QSystemTrayIcon::ActivationReason ) ) ); 
    
-   shortcutLupe = new QxtGlobalShortcut( this );
-   connect( shortcutLupe, SIGNAL( activated() ), this, SLOT( ShortcutLupe() ) );
-   shortcutLupe->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
+   shortcutMagnifier = new QxtGlobalShortcut( this );
+   connect( shortcutMagnifier, SIGNAL( activated() ), this, SLOT( ShortcutMagnifier() ) );
+   shortcutMagnifier->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
 
    shortcutStart = new QxtGlobalShortcut( this );
    connect( shortcutStart, SIGNAL( activated() ), this, SLOT( preRecord() ) );
@@ -600,9 +600,9 @@ void screencast::send()
 }
 
 
-void screencast::LupeDialog()
+void screencast::MagnifierDialog()
 {
-  lupe->getDialogLupe( this );
+  magnifier->getDialogMagnifier( this );
 }
 
 
@@ -689,7 +689,7 @@ void screencast::closeEvent( QCloseEvent * event )
   Stop();
   saveSettings();
   myregionselection->close();
-  lupe->close();
+  magnifier->close();
   //if ( webcamCheckBox->ifWebcamShow  )
   if ( webcamCheckBox->isVisible()  )
      webcamCheckBox->webcamClose();
@@ -746,25 +746,25 @@ void screencast::saveSettings()
 }
 
 
-void screencast::ShortcutLupe()
+void screencast::ShortcutMagnifier()
 {
-  LupeCheckBox->click();
+  MagnifierCheckBox->click();
 }
 
 
-void screencast::showLupe()
+void screencast::showMagnifier()
 {
-  if ( LupeCheckBox->isChecked() )
-    lupe->show();
+  if ( MagnifierCheckBox->isChecked() )
+    magnifier->show();
   else
-    lupe->close(); 
+    magnifier->close(); 
 }
 
 
-void screencast::uncheckLupe()
+void screencast::uncheckMagnifier()
 {
-  if ( LupeCheckBox->checkState() == Qt::Checked )
-    LupeCheckBox->click();
+  if ( MagnifierCheckBox->checkState() == Qt::Checked )
+    MagnifierCheckBox->click();
 }
 
 
@@ -998,8 +998,8 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       SystemTrayIconRed->hide();      
       SystemTrayIconBlue->hide();
       
-      if ( LupeCheckBox->isChecked() )
-	LupeCheckBox->click();
+      if ( MagnifierCheckBox->isChecked() )
+	MagnifierCheckBox->click();
     }
     
     if ((newState == QProcess::NotRunning) and (pause == true) and ( PauseButton->isChecked() ))
@@ -1259,8 +1259,8 @@ void screencast::Pause()
 void screencast::play()
 {
   
-  if ( LupeCheckBox->isChecked() )
-	LupeCheckBox->click();
+  if ( MagnifierCheckBox->isChecked() )
+	MagnifierCheckBox->click();
  
   QVariant aa = VideoplayerComboBox->itemData( VideoplayerComboBox->currentIndex() ); // get userdata from ComboBox
   QString player = aa.toString();
