@@ -29,7 +29,7 @@ Q_OBJECT
 public:
   regionselection( int x, int y, int width, int height, int border );
   virtual ~regionselection();
-  void lockFrame(bool status=true);
+  void lockFrame( bool status = true );
   bool isFrameLocked();
 
   
@@ -43,11 +43,15 @@ public slots:
   int getY();
   int getHeight();
   int getWidth();
+  void printSize();
 
   
 protected:  
   void mouseMoveEvent( QMouseEvent *event );
-  
+  void moveEvent( QMoveEvent * event );
+  void hideEvent( QHideEvent * event );
+  void showEvent( QShowEvent * event );
+
   
 private:
   int border;
@@ -59,6 +63,10 @@ private:
   bool frameLocked;
   
   void handlingFrameLock();
+  
+  QLabel *labelSize;
+
+  
 };
 
 

@@ -51,7 +51,7 @@ int main(int argc, char** argv)
     
     QDesktopWidget *desk = QApplication::desktop();
     int vokoscreenWidth = 580;
-    int vokoscreenHeight = 210 + 30;
+    int vokoscreenHeight = 210 + 30 + 20 ;
     int x = ( desk->screenGeometry().width() / 2 ) - ( vokoscreenWidth / 2 );
     int y = ( desk->screenGeometry().height() / 2 ) -( vokoscreenHeight / 2 );
     

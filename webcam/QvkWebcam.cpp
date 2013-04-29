@@ -175,10 +175,10 @@ void QvkWebcam::showWebcam()
   else
     setNoBorder();
     
-    setGeometry( getValueX(),
-                 getValueY(),
-                 getValueWidth(),
-                 getValueHeight() );
+  setGeometry( getValueX(),
+               getValueY(),
+               getValueWidth(),
+               getValueHeight() );
    
   //qDebug() << "End   void QvkWebcam::showWebcam() *****************************";
 }

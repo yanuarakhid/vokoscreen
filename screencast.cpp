@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.5.6"; 
+    Version = "1.5.7"; 
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -376,6 +376,33 @@ screencast::screencast()
     QImage* qImage = new QImage( ":/pictures/VokoCola.png" );
     label->setPixmap(QPixmap::fromImage(*qImage, Qt::AutoColor));
     label->setScaledContents(true);
+    
+    
+    // Statusbar
+    statusBarLabelTime = new QLabel();
+    statusBarLabelTime->setText( "00:00:00" );
+    statusBarLabelTime->setFrameStyle(QFrame::Panel | QFrame::Raised);
+    statusBarLabelTime->setToolTip( tr ( "Recording time" ) );
+
+    statusBarLabelFps = new QLabel();
+    statusBarLabelFps->setText( "0" );
+    statusBarLabelFps->setFrameStyle(QFrame::Panel | QFrame::Raised);
+    statusBarLabelFps->setToolTip( tr( "Frames per second" ) );
+
+    statusBarLabelSize = new QLabel();
+    statusBarLabelSize->setText( "0" );
+    statusBarLabelSize->setFrameStyle(QFrame::Panel | QFrame::Raised);
+    statusBarLabelSize->setToolTip( tr( "Size in KB" ) );
+    
+    QStatusBar *statusBar = new QStatusBar( this );
+    setStatusBar( statusBar );
+    statusBar->addPermanentWidget( statusBarLabelTime, 0);
+    statusBar->addPermanentWidget( statusBarLabelFps, 0 );
+    statusBar->addPermanentWidget( statusBarLabelSize, 0 );
+    statusBar->show();
+    qfont = statusBar->font();
+    qfont.setPixelSize( 12 );
+    statusBar->setFont( qfont );
     
     qDebug() << "[vokoscreen]" << "---Begin search Videoplayer---";
     QStringList playerList = QStringList()  << "kaffeine"
@@ -899,13 +926,26 @@ void screencast::saveVideoPath()
 
 void screencast::readyReadStandardError()
 {
-  QString recordTime = SystemCall->readAllStandardError();
-  if ( recordTime.contains( "time", Qt::CaseInsensitive ) )
+  QString output = SystemCall->readAllStandardError();
+  if ( output.contains( "time", Qt::CaseInsensitive ) )
   {
-    int x = recordTime.indexOf( "time" );
-    recordTime = recordTime.mid( x + 5, 8 );
-    recordTimeLabel->setText( recordTime );
+    int x = output.indexOf( "time=" );
+    statusBarLabelTime->setText( output.mid( x + 5, 8 ) );
   }
+
+  if ( output.contains( "fps=", Qt::CaseInsensitive ) )
+  {
+    int x = output.indexOf( "fps" );
+    statusBarLabelFps->setText( output.mid( x + 4, 3 ) );
+  }
+
+  if ( output.contains( "size=", Qt::CaseInsensitive ) )
+  {
+    int x = output.indexOf( "size" );
+    statusBarLabelSize->setText( output.mid( x + 5, 8 ) );
+  }
+  
+  
 }
 
 
@@ -1979,8 +2019,8 @@ void screencast::record()
     if ( ( intRecordY % 2 ) == 1 )
       RecordY = QString().number( --intRecordY );
     
-    myVcodec = "libx264 -preset medium";
-    //myVcodec = "libx264 -preset veryfast";
+    //myVcodec = "libx264 -preset medium";
+    myVcodec = "libx264 -preset veryfast";
     
   }  
 
@@ -1996,7 +2036,6 @@ void screencast::record()
                + myReport
                + myAlsa()
 	       + "-f x11grab "
-	       //+ frame
 	       + " -s "
 	       + RecordX
 	       + "x"
@@ -2030,8 +2069,6 @@ void screencast::record()
 
 void screencast::startRecord( QString RecordPathName )
 {
-  
- 
   qDebug() << "[vokoscreen]"<< "ffmpegcommand :" << ffmpegString + RecordPathName;
 
   if ( PulseDeviceRadioButton->isChecked() )

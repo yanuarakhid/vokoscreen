@@ -21,10 +21,15 @@ using namespace std;
 
 regionselection::regionselection( int x, int y, int width, int height, int framewidth )
 {
-
+  
+  labelSize = new QLabel();
+  labelSize->setGeometry( x + width/2, y + height/2, 100, 30 );
+  labelSize->setAlignment ( Qt::AlignHCenter | Qt::AlignVCenter );
+  labelSize->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+  
   setGeometry( x, y, width, height );
   border = framewidth;
-  setWindowFlags( Qt::FramelessWindowHint );
+  setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
   setAttribute ( Qt::WA_AlwaysShowToolTips, true );
   
   QPalette Pal( this->palette() );
@@ -62,7 +67,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   borderLeft->show();
   borderLeft->setAutoFillBackground( true );
   borderLeft->setCursor( Qt::SizeHorCursor );
-  // hintergrundfarbe für borderLedt
+  // hintergrundfarbe für borderLeft
   QPalette borderLeftPal( borderLeft->palette() );
   QColor borderLeftBgCol( Qt::blue );
   borderLeftPal.setColor( QPalette::Background, borderLeftBgCol );
@@ -74,7 +79,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   borderRight->show();
   borderRight->setAutoFillBackground( true );
   borderRight->setCursor( Qt::SizeHorCursor );
-  // hintergrundfarbe für borderLedt
+  // hintergrundfarbe für borderLeft
   QPalette borderRightPal( borderRight->palette() );
   QColor borderRightBgCol( Qt::blue );
   borderRightPal.setColor( QPalette::Background, borderRightBgCol );
@@ -96,8 +101,9 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
     
   this->setMask( maskedRegion1.subtract( maskedRegion ) );
 
-    //Framelock
-    lockFrame(false);
+  // Framelock
+  lockFrame( false );
+  labelSize->hide();
 }
 
 
@@ -105,13 +111,40 @@ regionselection::~regionselection()
 {
 }
 
-void regionselection::lockFrame(bool status)
+
+void regionselection::hideEvent( QHideEvent * event )
+{
+  (void) event;
+  labelSize->hide();
+}
+
+
+void regionselection::showEvent( QShowEvent * event )
+{
+  (void) event;
+  labelSize->show();
+}
+
+
+void regionselection::printSize()
+{
+  labelSize->setGeometry( getX() + getWidth() / 2 - labelSize->width() / 2, 
+			  getY() + getHeight() / 2 - labelSize->height() / 2 ,
+			  labelSize->width(),
+			  labelSize->height() );
+  
+  labelSize->setText( QString::number( getWidth() ) + " x " + QString::number( getHeight() ) );
+}
+
+
+void regionselection::lockFrame( bool status )
 {
     frameLocked = status;
     qDebug() << "[vokoscreen][Regional selection] Frame locked:" << status;
     qDebug();
     handlingFrameLock();
 }
+
 
 bool regionselection::isFrameLocked()
 {
@@ -167,6 +200,8 @@ void regionselection::setAllBorder()
 			    10,
 			    border,
 			    widgetHeight - 20 );
+  
+  printSize();
   
 }
 
@@ -339,11 +374,17 @@ void regionselection::moveRight( QMouseEvent *event )
 }
 
 
+void regionselection::moveEvent( QMoveEvent * event )
+{
+  (void) event;
+  printSize();
+}
+
+
 void regionselection::mouseMoveEvent( QMouseEvent *event )
 {
-    if(frameLocked){
-        return;
-    }
+  if( frameLocked )
+    return;
 
   if ( borderTop->underMouse() )
   {
@@ -371,6 +412,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
   
 }
 
+
 void regionselection::handlingFrameLock()
 {
     if(frameLocked){
@@ -378,8 +420,10 @@ void regionselection::handlingFrameLock()
         borderRight->setGeometry( this->width()-border,0, border, this->height() );
         borderBottom->setGeometry(0, this->height() - border, this->width(), border );
         borderTop->setGeometry( 0, 0, this->width(), border );
+	labelSize->hide();
     }
     else {
         setAllBorder();
+	labelSize->show();
     }
 }

@@ -30,6 +30,7 @@
 #include <QLineEdit>
 #include <QFileDialog>
 #include <QDate>
+#include <QStatusBar>
 
 #include "regionselection.h"
 #include "QvkLupe.h"
@@ -199,6 +200,10 @@ private:
 
     QList<QvkAlsaDevice *> AlsaDeviceList;
 
+    QLabel * statusBarLabelTime;
+    QLabel * statusBarLabelFps;
+    QLabel * statusBarLabelSize;
+    
  protected:
     void closeEvent( QCloseEvent * event );
 	
