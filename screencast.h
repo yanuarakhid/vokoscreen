@@ -112,7 +112,7 @@ private slots:
     void saveVideoPath();
     void makeAsoundrc();
     
-    bool needProgramm( QString ProgName );
+    bool needProgram( QString ProgName );
     void stateChanged( QProcess::ProcessState newState );
     void error ( QProcess::ProcessError error );
     void readyReadStandardError();
