@@ -2,11 +2,10 @@
 
 using namespace std;
 
-QvkWebcam::QvkWebcam( int deviceNumber )
+QvkWebcam::QvkWebcam()
 {
   //qDebug() << "Begin QvkWebcam::QvkWebcam( int deviceNumber ) *****************************";
   
-  setDeviceNumber( deviceNumber );
   setWindowTitle( "vokoscreen webcam");
 
   label = new QLabel( this );
@@ -17,10 +16,11 @@ QvkWebcam::QvkWebcam( int deviceNumber )
   QSettings settings( "vokoscreen", "vokoscreen" );   
   settings.beginGroup( "Webcam" );
     setValueBorder( settings.value( "Border", true ).toBool() );
-    setValueX( settings.value( "X", 100).toUInt() );
-    setValueY( settings.value( "Y", 100).toUInt() );
-    setValueWidth( settings.value( "Width", 320).toUInt() );
-    setValueHeight( settings.value( "Height", 240).toUInt() );
+    setValueX( settings.value( "X", 100 ).toUInt() );
+    setValueY( settings.value( "Y", 100 ).toUInt() );
+    setValueWidth( settings.value( "Width", 320 ).toUInt() );
+    setValueHeight( settings.value( "Height", 240 ).toUInt() );
+    setDeviceNumber( settings.value( "Number", 0 ).toUInt() );
   settings.endGroup();
 
   setGeometry( getValueX(),
@@ -81,7 +81,7 @@ int QvkWebcam::getValueHeight()
 }
 
 /**
- * Wird von vokoscreen.cpp aufgerufen
+ * Wird von vokoscreen.cpp -> QvkWebcamController aufgerufen
  */
 void QvkWebcam::saveSettings()
 {
@@ -92,6 +92,7 @@ void QvkWebcam::saveSettings()
     settings.setValue( "Y", y() );
     settings.setValue( "Width", width() );
     settings.setValue( "Height", height() );
+    settings.setValue( "Number", getDeviceNumber() );
   settings.endGroup();
 }
 

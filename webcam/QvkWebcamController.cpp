@@ -7,21 +7,35 @@ QvkWebcamController::QvkWebcamController( QWidget * value )
   checkBox = new QCheckBox( value );
   checkBox->setText( "Webcam" );
   checkBox->show();
-
   connect( checkBox, SIGNAL( clicked() ), SLOT( webcam() ) );
+
+  comboBoxCount = new QComboBox( value );
+  comboBoxCount->setGeometry( 250, 40, 40, 21 );
+  comboBoxCount->setToolTip( "Select webcam" );
+  comboBoxCount->show();
   
   myWebcamWatcher = new QvkWebcamWatcher();
   connect( myWebcamWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( webcamChangedEvent( QStringList ) ) );
   connect( myWebcamWatcher, SIGNAL( added( QStringList, QStringList ) ), this, SLOT( webcamAddedEvent( QStringList, QStringList ) ) );
   connect( myWebcamWatcher, SIGNAL( removed( QStringList, QString ) ), this, SLOT( webcamRemovedEvent( QStringList, QString ) ) );
   myWebcamWatcher->myfileSystemWatcher( "/dev/" );
-  
-  if ( myWebcamWatcher->getWebcamCount() == 0 )
-    checkBox->setEnabled( false );
 
-  //ifWebcamShow = false;
+  if ( myWebcamWatcher->getWebcamCount() == 0 )
+  {
+    checkBox->setEnabled( false );
+    comboBoxCount->setEnabled( false );
+  }
+
+  vkWebcam = new QvkWebcam();
+  QSettings settings( "vokoscreen", "vokoscreen" );   
+  settings.beginGroup( "Webcam" );
+    vkWebcam->setDeviceNumber( settings.value( "Number", 0 ).toUInt() );
+    comboBoxCount->setCurrentIndex( vkWebcam->getDeviceNumber() );
+  settings.endGroup();
   
-  vkWebcam = new QvkWebcam( 0 );
+  //vkWebcam->setDeviceNumber( comboBoxCount->currentText().toUInt() );
+  //comboBoxCount->setCurrentIndex( vkWebcam->getDeviceNumber() );
+  
   connect( vkWebcam, SIGNAL( closeWebcam() ), this, SLOT( webcamCloseEvent() ) );
   //qDebug() << "End QvkWebcamController::QvkWebcamController( QWidget * value ) ***************************";
   
@@ -90,13 +104,23 @@ bool QvkWebcamController::isVisible()
  */
 void QvkWebcamController::webcamChangedEvent( QStringList deviceList )
 {
+  comboBoxCount->clear();
+  for( int x = 0; x < myWebcamWatcher->getWebcamCount(); x++ )
+  {
+    comboBoxCount->addItem( QString::number( x ) );
+  }
+
   if ( deviceList.empty() )
   {
     checkBox->setEnabled( false );
     checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
+    comboBoxCount->setEnabled( false );
   }
   else
+  {
     checkBox->setEnabled( true );
+    comboBoxCount->setEnabled( true );
+  }
 
   //qDebug() << "[vokoscreen] changed";
 }
@@ -111,7 +135,6 @@ void QvkWebcamController::webcamCloseEvent()
   //qDebug() << "Begin void QvkWebcamController::webcamCloseEvent() ***************************";
   vkWebcam->setClose();
   checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
-  //ifWebcamShow = false;
   //qDebug() << "End   void QvkWebcamController::webcamCloseEvent() ***************************";
 }
 
@@ -141,14 +164,15 @@ void QvkWebcamController::webcam()
   
   if ( checkBox->isChecked() )
   {
+    comboBoxCount->setEnabled( false );
+    vkWebcam->setDeviceNumber( comboBoxCount->currentText().toUInt() );
     vkWebcam->showWebcam();
     vkWebcam->show();
-    //ifWebcamShow = true;
   }
   else
   {
+    comboBoxCount->setEnabled( true );
     vkWebcam->close();
-    //ifWebcamShow = false;
   }
   //qDebug() << "End   void QvkWebcamController::webcam() ***************************";
   

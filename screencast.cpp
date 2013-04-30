@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.5.7"; 
+    Version = "1.5.9"; 
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -690,7 +690,6 @@ void screencast::closeEvent( QCloseEvent * event )
   saveSettings();
   myregionselection->close();
   magnifier->close();
-  //if ( webcamCheckBox->ifWebcamShow  )
   if ( webcamCheckBox->isVisible()  )
      webcamCheckBox->webcamClose();
 }

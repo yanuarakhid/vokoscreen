@@ -424,6 +424,5 @@ void regionselection::handlingFrameLock()
     }
     else {
         setAllBorder();
-	labelSize->show();
     }
 }

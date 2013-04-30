@@ -10,6 +10,7 @@
 #include <QContextMenuEvent>
 #include <QDebug>
 #include <QSettings>
+#include <QComboBox>
 
 class QvkWebcam : public QMainWindow
 {
@@ -17,18 +18,19 @@ class QvkWebcam : public QMainWindow
 
     
 public:
-    QvkWebcam( int value );
+//    QvkWebcam( int value );
+    QvkWebcam();
     virtual ~QvkWebcam();
     void showWebcam();
     int getDeviceNumber();
-    
+    void setDeviceNumber( int value );
+
 private:
     QLabel *label;
     QImage ConvertImage( IplImage *source );
     IplImage *image;
     CvCapture *source;
     int deviceNumber;
-    void setDeviceNumber( int value );
     int idTimer;
     
     bool border;
