@@ -310,7 +310,7 @@ screencast::screencast()
     recordButton->setFont( qfont );
     recordButton->setGeometry( 210, 200, 70, 30 );
     recordButton->show();
-    if ( needProgramm( "ffmpeg" ) )
+    if ( needProgram( "ffmpeg" ) )
       recordButton->setEnabled( true );
     else
       recordButton->setEnabled( false );
@@ -363,7 +363,7 @@ screencast::screencast()
     sendPushButton->setFont( qfont );
     sendPushButton->setText( "Send" );
     connect( sendPushButton, SIGNAL( clicked() ), SLOT( send() ) );
-    if ( needProgramm( "xdg-email" ) )
+    if ( needProgram( "xdg-email" ) )
       sendPushButton->setEnabled( true );
     else
       sendPushButton->setEnabled( false );
@@ -823,17 +823,17 @@ void screencast::AreaOnOff()
 void screencast::searchExternalProgramms()
 {
   qDebug() << "[vokoscreen]" << "---Begin Search external tools---";
-  if ( needProgramm("ffmpeg") )
+  if ( needProgram("ffmpeg") )
      qDebug() << "[vokoscreen]" << "Find ffmpeg";
   else
      qDebug() << "[vokoscreen]" << "Error: ffmpeg is not found, this is an ffmpeg tool. Please install ffmpeg";
 
-  if ( needProgramm("pactl") )
+  if ( needProgram("pactl") )
      qDebug() << "[vokoscreen]" << "Find pactl";
   else
      qDebug() << "[vokoscreen]" << "Error: pactl is not found, this is an PulseAudio-utils tool. Please install pactl";
   
-  if ( needProgramm("mkvmerge") )
+  if ( needProgram("mkvmerge") )
      qDebug() << "[vokoscreen]" << "Find mkvmerge";
   else
      qDebug() << "[vokoscreen]" << "Error: mkvmerge is not found, this is an mkvtoolnix tool. Please install mkvmerge";
@@ -1139,7 +1139,7 @@ void screencast::error( QProcess::ProcessError error )
 /**
  * Search program foo in PATH
  */
-bool screencast::needProgramm( QString ProgName )
+bool screencast::needProgram( QString ProgName )
 {
     bool find = false;
     QString prog;
