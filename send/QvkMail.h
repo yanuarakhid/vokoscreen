@@ -8,7 +8,7 @@
 #include <QDebug>
 #include <QDesktopServices>
 #include <QFileDialog>
-
+#include <QLabel>
 
 class QvkMail: public QObject
 { 

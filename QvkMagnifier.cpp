@@ -5,10 +5,8 @@ using namespace std;
 
 // Lupe Rund, Qadratisch, Oval
 
-//QvkMagnifier::QvkMagnifier( int width, int height, int framewidth )
 QvkMagnifier::QvkMagnifier()
 {
-  QString magnifierVersion = "1.0.5";
   faktor = 2;
   label = new QLabel( this );
 
@@ -39,7 +37,11 @@ void QvkMagnifier::closeEvent( QCloseEvent * event )
 void QvkMagnifier::getDialogMagnifier( QWidget *parent )
 {
   QDialog *dialog = new QDialog( parent );
-  dialog->resize( 300, 200 );
+  dialog->setFixedSize( 300, 200 );
+
+  QFont qfont = dialog->font();
+  qfont.setPixelSize( 12 );
+  dialog->setFont( qfont );
 
   QLabel* label = new QLabel( dialog );
   label->setText("");
@@ -47,8 +49,8 @@ void QvkMagnifier::getDialogMagnifier( QWidget *parent )
   label->setAlignment( Qt::AlignCenter );
   label->show();
   QImage* qImage = new QImage( ":/pictures/magnifier.png" );
-  label->setPixmap(QPixmap::fromImage(*qImage, Qt::AutoColor));
-  label->setScaledContents(true);
+  label->setPixmap( QPixmap::fromImage( *qImage, Qt::AutoColor ) );
+  label->setScaledContents( true );
 
   radioButton1 = new QRadioButton( dialog );
   radioButton1->setGeometry( 170, 50, 200, 21 );

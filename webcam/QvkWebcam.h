@@ -1,7 +1,7 @@
 #ifndef QvkWebcam_H 
 #define QvkWebcam_H
 
-#include <cv.h>
+//#include <cv.h>
 #include <highgui.h>
 
 #include <QMainWindow>
@@ -18,7 +18,6 @@ class QvkWebcam : public QMainWindow
 
     
 public:
-//    QvkWebcam( int value );
     QvkWebcam();
     virtual ~QvkWebcam();
     void showWebcam();
