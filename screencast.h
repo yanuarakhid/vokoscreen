@@ -141,6 +141,22 @@ private slots:
     void AlsaWatcherEvent( QStringList CardxList );
     void myVideoFileSystemWatcher( const QString & path );
     
+    void currentIndexChangedCodec( int index );
+    void currentIndexChangedFormat( int index );
+
+    void stateChangedAudio( int state );
+    void clickedAudioAlsa( bool checked );
+    void clickedAudioPulse( bool checked );
+    void stateChangedAutoFrames( int state);;
+    void valueChangedFrames( int i );
+    void clickedScreenSize();
+    void clickedRecordButtonScreenSize();
+
+    void setRecordWidth( QString value );
+    QString getRecordWidth();
+    void setRecordHeight( QString value );
+    QString getRecordHeight();
+
 private:
     QPushButton *StopButton;
     QPushButton *recordButton;
@@ -203,6 +219,15 @@ private:
     QLabel * statusBarLabelTime;
     QLabel * statusBarLabelFps;
     QLabel * statusBarLabelSize;
+    QLabel * statusBarLabelCodec;
+    QLabel * statusBarLabelFormat;
+    QLabel * statusBarLabelAudio;
+    QLabel * statusBarLabelFpsSettings;
+    QLabel * statusbarLabelScreenSize;
+    
+    QString screenRecordWidth;
+    QString screenRecordHeight;
+    
     
  protected:
     void closeEvent( QCloseEvent * event );

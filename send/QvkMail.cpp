@@ -13,15 +13,28 @@ QvkMail::QvkMail()
 QvkMail::QvkMail( QWidget *object )
 {
   dialog = new QDialog( object );
-  dialog->resize( 500, 200 );
+  dialog->setFixedSize( 450, 200 );
+  
+  QFont qfont = dialog->font();
+  qfont.setPixelSize( 12 );
+  dialog->setFont( qfont );
+  
+  QLabel* label = new QLabel( dialog );
+  label->setText("");
+  label->setGeometry( QRect( 20, 30, 150, 150) );
+  label->setAlignment( Qt::AlignCenter );
+  label->show();
+  QImage* qImage = new QImage( ":pictures/sem_soc_net.png" );
+  label->setPixmap( QPixmap::fromImage( *qImage, Qt::AutoColor ) );
+  label->setScaledContents( true );
   
   mailRadioButton = new QRadioButton( dialog );
-  mailRadioButton->setGeometry( QRect( 20, 15, 200, 21 ) );
+  mailRadioButton->setGeometry( QRect( 200, 60, 200, 21 ) );
   mailRadioButton->setText( tr( "Mail last Video" ) );
   mailRadioButton->setChecked( true );
   
   mailSelectedRadioButton = new QRadioButton( dialog );
-  mailSelectedRadioButton->setGeometry( QRect( 20, 36, 300, 21 ) );
+  mailSelectedRadioButton->setGeometry( QRect( 200, 90, 300, 21 ) );
   mailSelectedRadioButton->setText( tr( "Mail on or more selected Video" ) );
   
   QPushButton * sendPushbutton = new QPushButton( dialog );

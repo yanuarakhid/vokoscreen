@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.5.9"; 
+    Version = "1.5.11"; 
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -80,14 +80,17 @@ screencast::screencast()
     FullScreenRadioButton->setGeometry( QRect( 20, 15, 120, 21 ) );
     FullScreenRadioButton->setText( tr( "Fullscreen" ) );
     FullScreenRadioButton->setChecked( true );
-    
+    connect( FullScreenRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
+
     WindowRadioButton = new QRadioButton( frame );
     WindowRadioButton->setGeometry(QRect(20, 40, 85, 21));
     WindowRadioButton->setText( tr( "Window" ) );
-  
+    connect( WindowRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
+
     AreaRadioButton = new QRadioButton( frame );
     AreaRadioButton->setGeometry(QRect( 20, 65, 85, 21) );
     AreaRadioButton->setText( tr( "Area" ) );
+    connect( AreaRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
     
     MagnifierCheckBox = new QCheckBox( frame );
     MagnifierCheckBox->setText( tr( "Magnification" ) );
@@ -119,11 +122,13 @@ screencast::screencast()
     AudioOnOffCheckbox->setGeometry( 10, 0, 100, 25 );
     AudioOnOffCheckbox->setText( tr( "Audio" ) );
     AudioOnOffCheckbox->show();
+    connect( AudioOnOffCheckbox,  SIGNAL( stateChanged( int ) ), SLOT( stateChangedAudio( int ) ) );
 
     AlsaRadioButton= new QRadioButton( TabWidgetAudioFrame );
     AlsaRadioButton->setGeometry( 25, 110, 100, 25 );
     AlsaRadioButton->setText( tr( "Alsa" ) );
     AlsaRadioButton->show();
+    connect( AlsaRadioButton,  SIGNAL( clicked( bool )  ), SLOT( clickedAudioAlsa( bool ) ) );
     
     AlsaHwComboBox = new QComboBox( TabWidgetAudioFrame );
     AlsaHwComboBox->setGeometry( 90, 110, 345, 25 );
@@ -135,6 +140,7 @@ screencast::screencast()
     PulseDeviceRadioButton->setGeometry( 25, 20, 345, 25 );
     PulseDeviceRadioButton->setText( tr( "Pulse" ) );
     PulseDeviceRadioButton->show();
+    connect( PulseDeviceRadioButton,  SIGNAL( clicked( bool )  ), SLOT( clickedAudioPulse( bool ) ) );
 
 
     // Tab 3 Video options **************************************************
@@ -151,6 +157,7 @@ screencast::screencast()
     FramesAutoOnOffCheckBox->setGeometry( 20, 10, 120, 25 );
     FramesAutoOnOffCheckBox->setText( "Auto-Frame" );
     FramesAutoOnOffCheckBox->show();
+    connect( FramesAutoOnOffCheckBox,  SIGNAL( stateChanged ( int ) ), SLOT( stateChangedAutoFrames ( int ) ) );
 
     FrameSpinBox = new QSpinBox( TabWidgetVideoOptionFrame );
     FrameSpinBox->setGeometry( QRect( 120, 10, 50, 25 ) );
@@ -159,6 +166,7 @@ screencast::screencast()
     FrameSpinBox->setSingleStep( 1 );
     FrameSpinBox->setValue( 25 );
     FrameSpinBox->show();
+    connect( FrameSpinBox,  SIGNAL( valueChanged( int ) ), SLOT( valueChangedFrames( int ) ) );
 
     QPushButton *FrameStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
     FrameStandardButton->setText( tr( "Standard" ) );
@@ -175,7 +183,8 @@ screencast::screencast()
     VideocodecComboBox->show();
     VideocodecComboBox->addItem( "mpeg4" );
     VideocodecComboBox->addItem( "libx264" );
-
+    connect( VideocodecComboBox,  SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
+    
     QLabel *VideoContainerLabel = new QLabel(TabWidgetVideoOptionFrame );
     VideoContainerLabel->setGeometry( 175, 40, 50, 25 );
     VideoContainerLabel->setText( "Format:" );
@@ -186,6 +195,7 @@ screencast::screencast()
     VideoContainerComboBox->addItem( "avi" );
     VideoContainerComboBox->addItem( "mkv" );
     VideoContainerComboBox->show();
+    connect( VideoContainerComboBox,  SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedFormat( int ) ) );
     
     QPushButton *VideocodecStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
     VideocodecStandardButton->setText( tr( "Standard" ) );
@@ -308,20 +318,13 @@ screencast::screencast()
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
     recordButton->setFont( qfont );
-    recordButton->setGeometry( 210, 200, 70, 30 );
+    recordButton->setGeometry( 170, 200, 70, 30 );
     recordButton->show();
     if ( needProgram( "ffmpeg" ) )
       recordButton->setEnabled( true );
     else
       recordButton->setEnabled( false );
-
-    recordTimeLabel = new QLabel(frame);
-    recordTimeLabel->setText("00:00:00");
-    //recordTime->setFont(QFont("Times", 16, QFont::Bold));
-    recordTimeLabel->setGeometry(110, 70, 70, 20);
-    recordTimeLabel->setAlignment(Qt::AlignCenter);
-    recordTimeLabel->show();
-    recordTimeLabel->setVisible(false);
+    //connect( recordButton, SIGNAL( clicked() ), SLOT( clickedRecordButtonScreenSize() ) );
 
     StopButton = new QPushButton( centralWidget );
     StopButton->setText( "Stop" );
@@ -330,7 +333,7 @@ screencast::screencast()
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
     StopButton->setFont( qfont );
-    StopButton->setGeometry( 280, 200, 70, 30 );
+    StopButton->setGeometry( 240, 200, 70, 30 );
     StopButton->setEnabled( false );
     StopButton->show();  
     
@@ -341,7 +344,7 @@ screencast::screencast()
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
     PauseButton->setFont( qfont );
-    PauseButton->setGeometry( 350, 200, 70, 30 );
+    PauseButton->setGeometry( 310, 200, 70, 30 );
     PauseButton->setCheckable( true );
     PauseButton->setEnabled( false );
     PauseButton->show();
@@ -352,11 +355,11 @@ screencast::screencast()
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
     PlayButton->setFont( qfont );
-    PlayButton->setGeometry( 420, 200, 70, 30 );
+    PlayButton->setGeometry( 380, 200, 70, 30 );
     PlayButton->show();
 
     sendPushButton = new QPushButton( centralWidget );
-    sendPushButton->setGeometry( 490, 200, 70, 30 );
+    sendPushButton->setGeometry( 450, 200, 70, 30 );
     qfont = sendPushButton->font();
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
@@ -377,28 +380,63 @@ screencast::screencast()
     label->setPixmap(QPixmap::fromImage(*qImage, Qt::AutoColor));
     label->setScaledContents(true);
     
-    
     // Statusbar
     statusBarLabelTime = new QLabel();
     statusBarLabelTime->setText( "00:00:00" );
-    statusBarLabelTime->setFrameStyle(QFrame::Panel | QFrame::Raised);
+    statusBarLabelTime->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusBarLabelTime->setToolTip( tr ( "Recording time" ) );
 
     statusBarLabelFps = new QLabel();
     statusBarLabelFps->setText( "0" );
-    statusBarLabelFps->setFrameStyle(QFrame::Panel | QFrame::Raised);
-    statusBarLabelFps->setToolTip( tr( "Frames per second" ) );
+    statusBarLabelFps->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
+    statusBarLabelFps->setToolTip( tr( "Aktual frames per second" ) );
 
     statusBarLabelSize = new QLabel();
     statusBarLabelSize->setText( "0" );
-    statusBarLabelSize->setFrameStyle(QFrame::Panel | QFrame::Raised);
+    statusBarLabelSize->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusBarLabelSize->setToolTip( tr( "Size in KB" ) );
     
+    statusBarLabelCodec = new QLabel();
+    statusBarLabelCodec->setText( VideocodecComboBox->currentText() );
+    statusBarLabelCodec->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
+    statusBarLabelCodec->setToolTip( tr( "Codec" ) );
+    
+    statusBarLabelFormat = new QLabel();
+    statusBarLabelFormat->setText( VideoContainerComboBox->currentText() );
+    statusBarLabelFormat->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
+    statusBarLabelFormat->setToolTip( tr( "Format" ) );
+
+    statusBarLabelAudio = new QLabel();
+    statusBarLabelAudio->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
+    statusBarLabelAudio->setToolTip( "Audio" );
+    
+    statusBarLabelFpsSettings = new QLabel();
+    statusBarLabelFpsSettings->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
+    statusBarLabelFpsSettings->setToolTip( "Settings fps" );
+    
+    statusbarLabelScreenSize = new QLabel();
+    statusbarLabelScreenSize->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
+    statusbarLabelScreenSize->setToolTip( "Recording screensize" );
+
     QStatusBar *statusBar = new QStatusBar( this );
     setStatusBar( statusBar );
-    statusBar->addPermanentWidget( statusBarLabelTime, 0);
-    statusBar->addPermanentWidget( statusBarLabelFps, 0 );
-    statusBar->addPermanentWidget( statusBarLabelSize, 0 );
+    
+    QLabel * LabelTemp = new QLabel();
+    statusBar->addWidget( LabelTemp, 120 );
+    
+    statusBar->addWidget( statusBarLabelTime, 0);
+    statusBar->addWidget( statusBarLabelFps, 0 );
+    statusBar->addWidget( statusBarLabelSize, 0 );
+    statusBar->addWidget( statusbarLabelScreenSize, 0 );
+    
+    statusBar->addWidget( statusBarLabelCodec, 0 );
+    statusBar->addWidget( statusBarLabelFormat, 0 );
+    statusBar->addWidget( statusBarLabelAudio, 0 );
+    statusBar->addWidget( statusBarLabelFpsSettings, 0 );
+    
+    QLabel * LabelTemp1 = new QLabel();
+    statusBar->addWidget( LabelTemp1, 40 );
+    
     statusBar->show();
     qfont = statusBar->font();
     qfont.setPixelSize( 12 );
@@ -462,6 +500,7 @@ screencast::screencast()
     settings.beginGroup("Record");
       FullScreenRadioButton->setChecked( settings.value( "FullScreen", true ).toBool() );
       WindowRadioButton->setChecked( settings.value( "Window", false ).toBool() );
+      AreaRadioButton->setChecked( settings.value( "Area", false ).toBool() );
     settings.endGroup();
 
     settings.beginGroup( "Miscellaneous" );
@@ -489,6 +528,15 @@ screencast::screencast()
       HideMouseCheckbox->setCheckState( Qt::CheckState( settings.value( "HideMouse").toUInt() ) );
     settings.endGroup();
 
+    // Statusbar
+    stateChangedAudio( AudioOnOffCheckbox->checkState() );
+    if ( FramesAutoOnOffCheckBox->checkState() == Qt::Checked )
+      statusBarLabelFpsSettings->setText( "Auto" );
+    else
+      statusBarLabelFpsSettings->setText( QString::number( FrameSpinBox->value() ) );
+    
+    
+    
     SystemCall = new QProcess( this );
     
     connect( recordButton, SIGNAL( clicked() ), SLOT( preRecord() ) );
@@ -507,7 +555,7 @@ screencast::screencast()
     connect( VideocodecStandardButton, SIGNAL( clicked() ), SLOT( setVideocodecStandardComboBox() ) );
 
     connect( SystemCall, SIGNAL( stateChanged ( QProcess::ProcessState) ),this, SLOT( stateChanged( QProcess::ProcessState) ) );
-    connect( SystemCall, SIGNAL( error(QProcess::ProcessError) ),         this, SLOT( error( QProcess::ProcessError) ) );
+    connect( SystemCall, SIGNAL( error( QProcess::ProcessError) ),         this, SLOT( error( QProcess::ProcessError) ) );
     connect( SystemCall, SIGNAL( readyReadStandardError() ),              this, SLOT( readyReadStandardError() ) );
     connect( SystemCall, SIGNAL( readyReadStandardOutput() ),             this, SLOT( readyReadStandardOutput() ) );
 
@@ -584,6 +632,9 @@ screencast::screencast()
    VideoFileSystemWatcher->addPath( SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
    myVideoFileSystemWatcher( "" );
+   
+   clickedScreenSize();
+   AreaOnOff();
  
 }
 
@@ -597,6 +648,117 @@ void screencast::send()
 {
   QvkMail *vkMail = new QvkMail( this );
   (void)vkMail;
+}
+
+
+void screencast::clickedRecordButtonScreenSize()
+{
+  if ( FullScreenRadioButton->isChecked() )
+    statusbarLabelScreenSize->setText( "F:" + getRecordWidth() + "x" + getRecordHeight() );
+  
+  if ( WindowRadioButton->isChecked() )
+    statusbarLabelScreenSize->setText( "W:" + getRecordWidth() + "x" + getRecordHeight() );
+  
+  if ( AreaRadioButton->isChecked() )
+    statusbarLabelScreenSize->setText( "A:" + getRecordWidth() + "x" + getRecordHeight() );
+}
+
+
+/**
+ * Statusbar
+ */
+void screencast::clickedScreenSize()
+{
+  if ( FullScreenRadioButton->isChecked() )
+    statusbarLabelScreenSize->setText( "F" );
+  
+  if ( WindowRadioButton->isChecked() )
+    statusbarLabelScreenSize->setText( "W" );
+  
+  if ( AreaRadioButton->isChecked() )
+    statusbarLabelScreenSize->setText( "A" );
+}
+
+
+/**
+ * Statusbar
+ */
+void screencast::valueChangedFrames( int i ) 
+{
+  (void)i;
+  statusBarLabelFpsSettings->setText( QString::number( FrameSpinBox->value() ) );
+}
+  
+
+/**
+ * Statusbar
+ */
+void screencast::stateChangedAutoFrames( int state )
+{
+   (void)state;
+   if ( FramesAutoOnOffCheckBox->checkState() == Qt::Checked )
+     statusBarLabelFpsSettings->setText( "Auto" );
+   else
+     statusBarLabelFpsSettings->setText( QString::number( FrameSpinBox->value() ) );
+}
+
+
+/**
+ * Statusbar
+ */
+void screencast::stateChangedAudio( int state )
+{
+  if ( state == Qt::Unchecked )
+     statusBarLabelAudio->setText( "off" );
+
+  if ( state == Qt::Checked )
+  {
+     if ( AlsaRadioButton->isChecked() )    
+       statusBarLabelAudio->setText( "Alsa" );
+     
+     if ( PulseDeviceRadioButton->isChecked() )
+       statusBarLabelAudio->setText( "Pulse" );
+  }
+}
+
+
+/**
+ * Statusbar
+ */
+void screencast::clickedAudioAlsa( bool checked ) 
+{
+  if ( checked )
+     statusBarLabelAudio->setText( "Alsa" );
+}
+
+
+/**
+ * Statusbar
+ */
+void screencast::clickedAudioPulse( bool checked )
+{
+  if ( checked == true ) 
+    statusBarLabelAudio->setText( "Pulse" );
+}
+
+
+/**
+ * Statusbar
+ */
+void screencast::currentIndexChangedCodec( int index )
+{
+  (void)index;
+  statusBarLabelCodec->setText( VideocodecComboBox->currentText() );  
+}
+
+
+/**
+ * Statusbar
+ */
+void screencast::currentIndexChangedFormat( int index )
+{
+ (void)index;
+ statusBarLabelFormat->setText( VideoContainerComboBox->currentText() );
 }
 
 
@@ -723,6 +885,7 @@ void screencast::saveSettings()
   settings.beginGroup( "Record" );
     settings.setValue( "FullScreen", FullScreenRadioButton->isChecked() );
     settings.setValue( "Window", WindowRadioButton->isChecked() );
+    settings.setValue( "Area", AreaRadioButton->isChecked() );
   settings.endGroup();
 
   settings.beginGroup( "Miscellaneous" );
@@ -738,7 +901,6 @@ void screencast::saveSettings()
     settings.setValue( "Format", VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", HideMouseCheckbox->checkState() );    
   settings.endGroup();
-  
   
   webcamCheckBox->saveSettings();
   
@@ -935,13 +1097,13 @@ void screencast::readyReadStandardError()
   if ( output.contains( "fps=", Qt::CaseInsensitive ) )
   {
     int x = output.indexOf( "fps" );
-    statusBarLabelFps->setText( output.mid( x + 4, 3 ) );
+    statusBarLabelFps->setText( output.mid( x + 4, 3 ).replace( " ", "" ) );
   }
 
   if ( output.contains( "size=", Qt::CaseInsensitive ) )
   {
     int x = output.indexOf( "size" );
-    statusBarLabelSize->setText( output.mid( x + 5, 8 ) );
+    statusBarLabelSize->setText( output.mid( x + 5, 8 ).replace( " ", "" ) );
   }
   
   
@@ -1915,6 +2077,29 @@ void screencast::preRecord()
 }
 
 
+void screencast::setRecordWidth( QString value )
+{
+  screenRecordWidth = value; 
+}
+
+
+QString screencast::getRecordWidth()
+{
+  return screenRecordWidth; 
+}
+
+void screencast::setRecordHeight( QString value )
+{
+  screenRecordHeight = value; 
+}
+
+
+QString screencast::getRecordHeight()
+{
+  return screenRecordHeight; 
+}
+
+
 void screencast::record()
 {
   shortcutStart->setEnabled( false );
@@ -1923,13 +2108,16 @@ void screencast::record()
   if ( MinimizedCheckBox->checkState() == Qt::Checked )
     WindowMinimized();
   
-  QString RecordX;
-  QString RecordY;
+  //QString RecordX;
+  //QString RecordY;
   if ( FullScreenRadioButton->isChecked() )
   {
     QDesktopWidget *desk = QApplication::desktop();
-    RecordX = tr( "%1" ).arg(desk->screenGeometry().width());
-    RecordY = tr( "%1" ).arg(desk->screenGeometry().height());
+    //RecordX = tr( "%1" ).arg(desk->screenGeometry().width());
+    setRecordWidth( tr( "%1" ).arg( desk->screenGeometry().width() ) );
+    //RecordY = tr( "%1" ).arg(desk->screenGeometry().height());
+    setRecordHeight( tr( "%1" ).arg( desk->screenGeometry().height() ) );
+    
   }
 
   QString deltaX = "0";
@@ -1937,8 +2125,11 @@ void screencast::record()
   if ( WindowRadioButton->isChecked() )
     if ( firststartWininfo == false )
     {
-      RecordX = vkWinInfo->width();;
-      RecordY = vkWinInfo->height();
+      //RecordX = vkWinInfo->width();
+      setRecordWidth( vkWinInfo->width() );
+      //RecordY = vkWinInfo->height();
+      setRecordHeight( vkWinInfo->height() );
+      
       deltaX  = vkWinInfo->x();
       deltaY  = vkWinInfo->y();
       winID   = vkWinInfo->WinID();
@@ -1954,8 +2145,11 @@ void screencast::record()
   
   if ( AreaRadioButton->isChecked() )
   {
-    RecordX = QString().number( myregionselection->getWidth() );
-    RecordY = QString().number( myregionselection->getHeight() );
+    //RecordX = QString().number( myregionselection->getWidth() );
+    setRecordWidth( QString().number( myregionselection->getWidth() ) );
+    //RecordY = QString().number( myregionselection->getHeight() );
+    setRecordHeight( QString().number( myregionselection->getHeight() ) );
+
     deltaX  = QString().number( myregionselection->getX() );
     deltaY  = QString().number( myregionselection->getY() );
 
@@ -2009,17 +2203,25 @@ void screencast::record()
   if ( myVcodec == "libx264" )
   {
     // Number of pixels must be divisible by two
-    int intRecordX = RecordX.toInt();
+    //int intRecordX = RecordX.toInt();
+    //if ( ( intRecordX % 2 ) == 1 )
+      //RecordX = QString().number( --intRecordX );
+
+    int intRecordX = getRecordWidth().toInt();
     if ( ( intRecordX % 2 ) == 1 )
-      RecordX = QString().number( --intRecordX );
+      setRecordWidth( QString().number( --intRecordX ) );
 
     // Number of pixels must be divisible by two
-    int intRecordY = RecordY.toInt();
+    //int intRecordY = RecordY.toInt();
+    //if ( ( intRecordY % 2 ) == 1 )
+      //RecordY = QString().number( --intRecordY );
+
+    int intRecordY = getRecordHeight().toInt();
     if ( ( intRecordY % 2 ) == 1 )
-      RecordY = QString().number( --intRecordY );
+      setRecordHeight( QString().number( --intRecordY ) );
     
-    //myVcodec = "libx264 -preset medium";
-    myVcodec = "libx264 -preset veryfast";
+    myVcodec = "libx264 -preset medium";
+    //myVcodec = "libx264 -preset veryfast";
     
   }  
 
@@ -2030,15 +2232,22 @@ void screencast::record()
     quality = " -sameq ";
   else
     quality = " -qscale 0 ";
-
+/*
+  setRecordWidth( RecordX );
+  setRecordHeight( RecordY );
+*/  
+  clickedRecordButtonScreenSize();
+  
   ffmpegString = "/usr/bin/ffmpeg "
                + myReport
                + myAlsa()
 	       + "-f x11grab "
 	       + " -s "
-	       + RecordX
+	       //+ RecordX
+	       + getRecordWidth()
 	       + "x"
-	       + RecordY
+	       //+ RecordY
+	       + getRecordHeight()
 	       + " -i :0.0+"
 	       + deltaX + "," 
 	       + deltaY
@@ -2053,12 +2262,12 @@ void screencast::record()
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   
   QFile FileVokoscreenLog(settingsPath.absolutePath() + QDir::separator() + ProgName + ".log");
-  if (!FileVokoscreenLog.open (QIODevice::WriteOnly)) 
+  if ( !FileVokoscreenLog.open( QIODevice::WriteOnly ) ) 
     qDebug() << "Datei konnte nicht angelegt werden: " << FileVokoscreenLog.errorString();
   
-  QTextStream stream(&FileVokoscreenLog);
+  QTextStream stream( &FileVokoscreenLog );
   stream << ProgName << " Version: " << Version << "\n";
-  stream << "Record resolution: " << RecordX << "x" << RecordY << "\n";
+  stream << "Record resolution: " << getRecordWidth() << "x" << getRecordHeight() << "\n";
   stream << "Alsa string: " << myAlsa() << "\n";
   stream << "Qt Version: " << qVersion() << "\n";
   stream << "ffmpeg Version: " << getFfmpegVersion() << "\n";
