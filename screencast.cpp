@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.5.11"; 
+    Version = "1.5.12"; 
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -162,7 +162,7 @@ screencast::screencast()
     FrameSpinBox = new QSpinBox( TabWidgetVideoOptionFrame );
     FrameSpinBox->setGeometry( QRect( 120, 10, 50, 25 ) );
     FrameSpinBox->setMinimum( 1 );
-    FrameSpinBox->setMaximum( 100 );
+    FrameSpinBox->setMaximum( 30 );
     FrameSpinBox->setSingleStep( 1 );
     FrameSpinBox->setValue( 25 );
     FrameSpinBox->show();
@@ -257,42 +257,36 @@ screencast::screencast()
     qfont = TabWidgetAboutFrame->font();
     qfont.setPixelSize( 12 );
     TabWidgetAboutFrame->setFont( qfont );
-    
-    QLabel* labelAutor = new QLabel( TabWidgetAboutFrame );
-    labelAutor->setText( ProgName + " " + Version );
-    labelAutor->setGeometry( QRect( 0, 10, 400, 22 ) );
-    labelAutor->setAlignment( Qt::AlignCenter );
-    labelAutor->show();
 
     QLabel* labelMailingliste = new QLabel( TabWidgetAboutFrame );
     labelMailingliste->setText( "Mailinglist" );
-    labelMailingliste->setGeometry( 70, 32, 400, 22 );
+    labelMailingliste->setGeometry( 70, 10, 400, 22 );
     labelMailingliste->show();
 
     QLabel* labelMailinglisteMail = new QLabel( TabWidgetAboutFrame );
     labelMailinglisteMail->setText( mailingliste );
-    labelMailinglisteMail->setGeometry( 160, 32, 400, 22 );
+    labelMailinglisteMail->setGeometry( 180, 10, 400, 22 );
     labelMailinglisteMail->setOpenExternalLinks( true );
     labelMailinglisteMail->show();
     
     QLabel* labelWeb = new QLabel( TabWidgetAboutFrame );
-    labelWeb->setGeometry( QRect( 70, 54, 400, 22 ) );
+    labelWeb->setGeometry( QRect( 70, 30, 400, 22 ) );
     labelWeb->setText( "Homepage" );
     labelWeb->show();
     
     QLabel* labelWebSite = new QLabel( TabWidgetAboutFrame );
-    labelWebSite->setGeometry( QRect( 160, 54, 400, 22 ) );
+    labelWebSite->setGeometry( QRect( 180, 30, 400, 22 ) );
     labelWebSite->setText( homepage );
     labelWebSite->setOpenExternalLinks( true );
     labelWebSite->show();
     
     QLabel* labelMailSupport = new QLabel( TabWidgetAboutFrame );
-    labelMailSupport->setGeometry( QRect( 70, 76, 400, 22 ) );
+    labelMailSupport->setGeometry( QRect( 70, 50, 400, 22 ) );
     labelMailSupport->setText( "Support" );
     labelMailSupport->show();
  
     QLabel* labelMail = new QLabel( TabWidgetAboutFrame );
-    labelMail->setGeometry( QRect( 160, 76, 400, 22 ) );
+    labelMail->setGeometry( QRect( 180, 50, 400, 22 ) );
     labelMail->setText( email );
     //labelMail->setAlignment( Qt::AlignCenter );
     labelMail->setOpenExternalLinks( true );
@@ -300,14 +294,36 @@ screencast::screencast()
 
     QLabel* labelDeveLoper = new QLabel( TabWidgetAboutFrame );
     labelDeveLoper->setText( "Developer" );
-    labelDeveLoper->setGeometry( QRect( 70, 98, 400, 22 ) );
+    labelDeveLoper->setGeometry( QRect( 70, 70, 400, 22 ) );
     labelDeveLoper->show();
 
     QLabel* labelDeveLoperMail = new QLabel( TabWidgetAboutFrame );
     labelDeveLoperMail->setText( emaildeveloper );
-    labelDeveLoperMail->setGeometry( QRect( 160, 98, 400, 22 ) );
+    labelDeveLoperMail->setGeometry( QRect( 180, 70, 400, 22 ) );
     labelDeveLoperMail->setOpenExternalLinks( true );
     labelDeveLoperMail->show();
+    
+    QLabel* labelOpensuseBeta = new QLabel( TabWidgetAboutFrame );
+    labelOpensuseBeta->setText( "Beta" );
+    labelOpensuseBeta->setGeometry( QRect( 70, 90, 400, 22 ) );
+    labelOpensuseBeta->show();
+
+    QLabel* labelOpensuseBetaUrl = new QLabel( TabWidgetAboutFrame );
+    labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>openSUSE</a>" );
+    labelOpensuseBetaUrl->setGeometry( QRect( 180, 90, 400, 22 ) );
+    labelOpensuseBetaUrl->setOpenExternalLinks( true );
+    labelOpensuseBetaUrl->show();
+
+    QLabel* labelUbuntuBeta = new QLabel( TabWidgetAboutFrame );
+    labelUbuntuBeta->setText( "Beta" );
+    labelUbuntuBeta->setGeometry( QRect( 70, 110, 400, 22 ) );
+    labelUbuntuBeta->show();
+
+    QLabel* labelUbuntuBetaUrl = new QLabel( TabWidgetAboutFrame );
+    labelUbuntuBetaUrl->setText( "<a href='http://ppa.launchpad.net/vokoscreen-dev/vokoscreen-daily/ubuntu/pool/main/v/vokoscreen/'>Ubuntu</a>" );
+    labelUbuntuBetaUrl->setGeometry( QRect( 180, 110, 400, 22 ) );
+    labelUbuntuBetaUrl->setOpenExternalLinks( true );
+    labelUbuntuBetaUrl->show();
     
     // End Tabs *************************************************************
 
@@ -2108,14 +2124,10 @@ void screencast::record()
   if ( MinimizedCheckBox->checkState() == Qt::Checked )
     WindowMinimized();
   
-  //QString RecordX;
-  //QString RecordY;
   if ( FullScreenRadioButton->isChecked() )
   {
     QDesktopWidget *desk = QApplication::desktop();
-    //RecordX = tr( "%1" ).arg(desk->screenGeometry().width());
     setRecordWidth( tr( "%1" ).arg( desk->screenGeometry().width() ) );
-    //RecordY = tr( "%1" ).arg(desk->screenGeometry().height());
     setRecordHeight( tr( "%1" ).arg( desk->screenGeometry().height() ) );
     
   }
@@ -2125,9 +2137,7 @@ void screencast::record()
   if ( WindowRadioButton->isChecked() )
     if ( firststartWininfo == false )
     {
-      //RecordX = vkWinInfo->width();
       setRecordWidth( vkWinInfo->width() );
-      //RecordY = vkWinInfo->height();
       setRecordHeight( vkWinInfo->height() );
       
       deltaX  = vkWinInfo->x();
@@ -2145,9 +2155,7 @@ void screencast::record()
   
   if ( AreaRadioButton->isChecked() )
   {
-    //RecordX = QString().number( myregionselection->getWidth() );
     setRecordWidth( QString().number( myregionselection->getWidth() ) );
-    //RecordY = QString().number( myregionselection->getHeight() );
     setRecordHeight( QString().number( myregionselection->getHeight() ) );
 
     deltaX  = QString().number( myregionselection->getX() );
@@ -2203,25 +2211,17 @@ void screencast::record()
   if ( myVcodec == "libx264" )
   {
     // Number of pixels must be divisible by two
-    //int intRecordX = RecordX.toInt();
-    //if ( ( intRecordX % 2 ) == 1 )
-      //RecordX = QString().number( --intRecordX );
-
     int intRecordX = getRecordWidth().toInt();
     if ( ( intRecordX % 2 ) == 1 )
       setRecordWidth( QString().number( --intRecordX ) );
 
     // Number of pixels must be divisible by two
-    //int intRecordY = RecordY.toInt();
-    //if ( ( intRecordY % 2 ) == 1 )
-      //RecordY = QString().number( --intRecordY );
-
     int intRecordY = getRecordHeight().toInt();
     if ( ( intRecordY % 2 ) == 1 )
       setRecordHeight( QString().number( --intRecordY ) );
     
-    myVcodec = "libx264 -preset medium";
-    //myVcodec = "libx264 -preset veryfast";
+    //myVcodec = "libx264 -preset medium";
+    myVcodec = "libx264 -preset veryfast";
     
   }  
 
@@ -2232,10 +2232,7 @@ void screencast::record()
     quality = " -sameq ";
   else
     quality = " -qscale 0 ";
-/*
-  setRecordWidth( RecordX );
-  setRecordHeight( RecordY );
-*/  
+
   clickedRecordButtonScreenSize();
   
   ffmpegString = "/usr/bin/ffmpeg "
@@ -2243,10 +2240,8 @@ void screencast::record()
                + myAlsa()
 	       + "-f x11grab "
 	       + " -s "
-	       //+ RecordX
 	       + getRecordWidth()
 	       + "x"
-	       //+ RecordY
 	       + getRecordHeight()
 	       + " -i :0.0+"
 	       + deltaX + "," 
