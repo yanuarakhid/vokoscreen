@@ -1,0 +1,9 @@
+Liberate from extern Program ffmpeg
+ 
+Library:
+libavutil51 --> openSUSE
+libavutil-devel - Development files for libavutil
+ 
+Example:
+/usr/share/ffmpeg/examples/decoding_encoding.c in package libffmpeg-devel
+
