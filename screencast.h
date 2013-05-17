@@ -64,6 +64,7 @@ public:
     bool moveWindow;
     
     
+    
 public slots:
   
 private slots:
@@ -227,6 +228,9 @@ private:
     
     QString screenRecordWidth;
     QString screenRecordHeight;
+    
+    
+    QDateTime beginTime;
     
     
  protected:

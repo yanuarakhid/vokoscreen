@@ -20,7 +20,7 @@ using namespace std;
 
 screencast::screencast()
 {
-    bool beta = false;
+    bool beta = true;
     QString Beta;
     if ( beta )
       Beta = "Beta";
@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.6.1";  
+    Version = "1.6.2";  
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -652,6 +652,8 @@ screencast::screencast()
    clickedScreenSize();
    AreaOnOff();
  
+   
+   
 }
 
 
@@ -1103,26 +1105,23 @@ void screencast::saveVideoPath()
 
 void screencast::readyReadStandardError()
 {
-  QString output = SystemCall->readAllStandardError();
-  if ( output.contains( "time", Qt::CaseInsensitive ) )
-  {
-    int x = output.indexOf( "time=" );
-    statusBarLabelTime->setText( output.mid( x + 5, 8 ) );
-  }
+  int s = beginTime.secsTo( QDateTime::currentDateTime() );
+  int HH = s / 3600;
+  int MM = ( s- ( s / 3600 ) * 3600 ) / 60;
+  int SS = s % 60;
+  QTime myTime( HH, MM, SS);
+  QString time = myTime.toString ( "hh:mm:ss");
+  statusBarLabelTime->setText( time );
 
+  QString output = SystemCall->readAllStandardError();
   if ( output.contains( "fps=", Qt::CaseInsensitive ) )
   {
     int x = output.indexOf( "fps" );
     statusBarLabelFps->setText( output.mid( x + 4, 3 ).replace( " ", "" ) );
   }
 
-  if ( output.contains( "size=", Qt::CaseInsensitive ) )
-  {
-    int x = output.indexOf( "size" );
-    statusBarLabelSize->setText( output.mid( x + 5, 8 ).replace( " ", "" ) );
-  }
-  
-  
+  QFileInfo fileInfo( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
+  statusBarLabelSize->setText( QString::number( fileInfo.size() / 1024 ) );
 }
 
 
@@ -2322,6 +2321,9 @@ void screencast::startRecord( QString RecordPathName )
   }
   
   SystemCall->start( ffmpegString + RecordPathName );
+
+  // Recordtime Statusbar
+  beginTime  = QDateTime::currentDateTime();
 
 }
 

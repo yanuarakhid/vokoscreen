@@ -1,0 +1,816 @@
+ffmpeg started on 2013-05-16 at 23:18:32
+Report written to "ffmpeg-20130516-231832.log"
+Command line:
+/usr/bin/ffmpeg -report -f x11grab -s 1680x1050 -i :0.0+0,0 -vcodec libx264 -preset veryfast -ar 48000 -sameq -r 30 /tmp/screencast-94.mkv
+ffmpeg version 1.0.6 Copyright (c) 2000-2013 the FFmpeg developers
+  built on Apr 11 2013 18:03:32 with gcc 4.7 (SUSE Linux)
+  configuration: --shlibdir=/usr/lib64 --prefix=/usr --mandir=/usr/share/man --libdir=/usr/lib64 --enable-shared --disable-static --enable-debug --disable-stripping --extra-cflags='-fmessage-length=0 -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g -fPIC -I/usr/include/gsm' --enable-gpl --enable-x11grab --enable-version3 --enable-pthreads --enable-avfilter --enable-libpulse --enable-libvpx --enable-libopus --enable-libass --enable-libmp3lame --enable-libvorbis --enable-libtheora --enable-libspeex --enable-libxvid --enable-libx264 --enable-libschroedinger --enable-libgsm --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-postproc --enable-libdc1394 --enable-librtmp --enable-libfreetype --enable-avresample --enable-libtwolame --enable-libvo-aacenc
+  libavutil      51. 73.101 / 51. 73.101
+  libavcodec     54. 59.100 / 54. 59.100
+  libavformat    54. 29.104 / 54. 29.104
+  libavdevice    54.  2.101 / 54.  2.101
+  libavfilter     3. 17.100 /  3. 17.100
+  libswscale      2.  1.101 /  2.  1.101
+  libswresample   0. 15.100 /  0. 15.100
+  libpostproc    52.  0.100 / 52.  0.100
+[x11grab @ 0xdead20] device: :0.0+0,0 -> display: :0.0 x: 0 y: 0 width: 1680 height: 1050
+[x11grab @ 0xdead20] shared memory extension found
+[x11grab @ 0xdead20] All info found
+[x11grab @ 0xdead20] Estimating duration from bitrate, this may be inaccurate
+Input #0, x11grab, from ':0.0+0,0':
+  Duration: N/A, start: 1368739112.662361, bitrate: 1691748 kb/s
+    Stream #0:0, 1, 1/1000000: Video: rawvideo (BGR[0] / 0x524742), bgr0, 1680x1050, 1691748 kb/s, 29.97 tbr, 1000k tbn, 29.97 tbc
+Setting entry with key 'video_size' to value '1680x1050'
+[buffer @ 0xdf93c0] Setting entry with key 'pix_fmt' to value '298'
+[buffer @ 0xdf93c0] Setting entry with key 'time_base' to value '1/1000000'
+[buffer @ 0xdf93c0] Setting entry with key 'pixel_aspect' to value '0/1'
+[buffer @ 0xdf93c0] Setting entry with key 'sws_param' to value 'flags=2'
+[buffer @ 0xdf93c0] Setting entry with key 'frame_rate' to value '30000/1001'
+[graph 0 input from stream 0:0 @ 0xde7420] w:1680 h:1050 pixfmt:bgr0 tb:1/1000000 fr:30000/1001 sar:0/1 sws_param:flags=2
+[format @ 0xdf95c0] auto-inserting filter 'auto-inserted scaler 0' between the filter 'Parsed_null_0' and the filter 'format'
+[auto-inserted scaler 0 @ 0xde75c0] picking yuv444p out of 4 ref:bgr0 alpha:0
+[auto-inserted scaler 0 @ 0xde75c0] w:1680 h:1050 fmt:bgr0 sar:0/1 -> w:1680 h:1050 fmt:yuv444p sar:0/1 flags:0x4
+[libx264 @ 0xdf8400] using mv_range_thread = 88
+[libx264 @ 0xdf8400] using cpu capabilities: MMX2 SSE2Fast SSSE3 FastShuffle SSE4.2 AVX
+[libx264 @ 0xdf8400] profile High 4:4:4 Predictive, level 4.0, 4:4:4 8-bit
+[libx264 @ 0xdf8400] 264 - core 129 - H.264/MPEG-4 AVC codec - Copyleft 2003-2013 - http://www.videolan.org/x264.html - options: cabac=1 ref=1 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=2 psy=1 psy_rd=1.00:0.00 mixed_ref=0 me_range=16 chroma_me=1 trellis=0 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=6 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=10 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, matroska, to '/tmp/screencast-94.mkv':
+  Metadata:
+    encoder         : Lavf54.29.104
+    Stream #0:0, 0, 1/1000: Video: h264 (H264 / 0x34363248), yuv444p, 1680x1050, q=-1--1, 1k tbn, 30 tbc
+Stream mapping:
+  Stream #0:0 -> #0:0 (rawvideo -> libx264)
+Press [q] to stop, [?] for help
+*** drop!
+*** drop!
+*** drop!
+*** drop!
+*** drop!
+*** drop!
+*** drop!
+*** drop!
+*** drop!
+*** drop!
+*** drop!
+*** drop!
+*** drop!
+*** drop!
+frame=   19 fps=0.0 q=0.0 size=       1kB time=00:00:00.00 bitrate=   0.0kbits/s dup=0 drop=14    frame=   0 QP=16.17 NAL=3 Slice:I Poc:0   I:6930 P:0    SKIP:0    size=156129 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 574, size 156803, pts 0, dts -1533, duration 33, flags 128
+[libx264 @ 0xdf8400] frame=   1 QP=26.66 NAL=2 Slice:P Poc:4   I:464  P:490  SKIP:5976 size=48355 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 157386, size 48355, pts 1533, dts -33, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=   2 QP=31.46 NAL=0 Slice:B Poc:2   I:204  P:341  SKIP:6249 size=21675 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 205749, size 21675, pts 1500, dts 0, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=   3 QP=25.81 NAL=2 Slice:P Poc:12  I:79   P:272  SKIP:6579 size=3748 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 227432, size 3748, pts 1667, dts 1500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=   4 QP=29.11 NAL=2 Slice:B Poc:8   I:22   P:114  SKIP:6792 size=235 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 231187, size 235, pts 1600, dts 1533, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=   5 QP=31.00 NAL=0 Slice:B Poc:6   I:0    P:3    SKIP:6927 size=61 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 231429, size 61, pts 1567, dts 1567, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=   6 QP=31.00 NAL=0 Slice:B Poc:10  I:10   P:109  SKIP:6811 size=125 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 231496, size 125, pts 1633, dts 1600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=   7 QP=25.61 NAL=2 Slice:P Poc:20  I:37   P:147  SKIP:6746 size=2375 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 231628, size 2375, pts 1800, dts 1633, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=   8 QP=29.12 NAL=2 Slice:B Poc:16  I:15   P:19   SKIP:6896 size=147 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 234010, size 147, pts 1733, dts 1667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=   9 QP=31.26 NAL=0 Slice:B Poc:14  I:0    P:21   SKIP:6909 size=89 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 234164, size 89, pts 1700, dts 1700, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  10 QP=31.00 NAL=0 Slice:B Poc:18  I:0    P:2    SKIP:6928 size=60 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 234259, size 60, pts 1767, dts 1733, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  11 QP=24.69 NAL=2 Slice:P Poc:28  I:23   P:25   SKIP:6882 size=290 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 234325, size 290, pts 1933, dts 1767, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  12 QP=29.34 NAL=2 Slice:B Poc:24  I:14   P:1    SKIP:6914 size=129 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 234622, size 129, pts 1867, dts 1800, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  13 QP=31.12 NAL=0 Slice:B Poc:22  I:0    P:2    SKIP:6928 size=116 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 234758, size 116, pts 1833, dts 1833, duration 33, flags 0
+frame=   34 fps= 33 q=29.0 size=     225kB time=00:00:01.86 bitrate= 985.3kbits/s dup=0 drop=14    frame=  14 QP=31.26 NAL=0 Slice:B Poc:26  I:0    P:1    SKIP:6929 size=91 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 234880, size 91, pts 1900, dts 1867, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  15 QP=24.89 NAL=2 Slice:P Poc:36  I:20   P:17   SKIP:6893 size=278 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 234977, size 278, pts 2067, dts 1900, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  16 QP=29.00 NAL=2 Slice:B Poc:32  I:13   P:6    SKIP:6911 size=87 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 235262, size 87, pts 2000, dts 1933, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  17 QP=31.26 NAL=0 Slice:B Poc:30  I:0    P:7    SKIP:6923 size=97 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 235355, size 97, pts 1967, dts 1967, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  18 QP=31.00 NAL=0 Slice:B Poc:34  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 235458, size 59, pts 2033, dts 2000, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  19 QP=24.54 NAL=2 Slice:P Poc:44  I:131  P:245  SKIP:6554 size=4975 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 235523, size 4975, pts 2200, dts 2033, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  20 QP=29.42 NAL=2 Slice:B Poc:40  I:11   P:171  SKIP:6747 size=153 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 240505, size 153, pts 2133, dts 2067, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  21 QP=31.00 NAL=0 Slice:B Poc:38  I:7    P:125  SKIP:6798 size=138 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 240665, size 138, pts 2100, dts 2100, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  22 QP=31.00 NAL=0 Slice:B Poc:42  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 240810, size 59, pts 2167, dts 2133, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  23 QP=25.77 NAL=2 Slice:P Poc:52  I:9    P:32   SKIP:6889 size=255 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 240875, size 255, pts 2333, dts 2167, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  24 QP=29.00 NAL=2 Slice:B Poc:48  I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 241137, size 78, pts 2267, dts 2200, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  25 QP=31.00 NAL=0 Slice:B Poc:46  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 241221, size 59, pts 2233, dts 2233, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  26 QP=31.00 NAL=0 Slice:B Poc:50  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 241286, size 59, pts 2300, dts 2267, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  27 QP=25.22 NAL=2 Slice:P Poc:60  I:9    P:6    SKIP:6915 size=126 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 241351, size 126, pts 2467, dts 2300, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  28 QP=29.00 NAL=2 Slice:B Poc:56  I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 241484, size 78, pts 2400, dts 2333, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  29 QP=31.00 NAL=0 Slice:B Poc:54  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 241568, size 59, pts 2367, dts 2367, duration 33, flags 0
+frame=   50 fps= 32 q=29.0 size=     225kB time=00:00:02.40 bitrate= 766.5kbits/s dup=0 drop=14    frame=  30 QP=31.00 NAL=0 Slice:B Poc:58  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 241633, size 59, pts 2433, dts 2400, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  31 QP=25.00 NAL=2 Slice:P Poc:68  I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 241698, size 77, pts 2600, dts 2433, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  32 QP=29.00 NAL=2 Slice:B Poc:64  I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 241781, size 78, pts 2533, dts 2467, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  33 QP=31.00 NAL=0 Slice:B Poc:62  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 241865, size 59, pts 2500, dts 2500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  34 QP=31.00 NAL=0 Slice:B Poc:66  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 241930, size 59, pts 2567, dts 2533, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  35 QP=25.27 NAL=2 Slice:P Poc:76  I:10   P:50   SKIP:6870 size=1029 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 241995, size 1029, pts 2733, dts 2567, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  36 QP=29.00 NAL=2 Slice:B Poc:72  I:9    P:41   SKIP:6880 size=97 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 243031, size 97, pts 2667, dts 2600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  37 QP=31.00 NAL=0 Slice:B Poc:70  I:0    P:42   SKIP:6888 size=75 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 243134, size 75, pts 2633, dts 2633, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  38 QP=31.00 NAL=0 Slice:B Poc:74  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 243215, size 59, pts 2700, dts 2667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  39 QP=25.21 NAL=2 Slice:P Poc:84  I:9    P:4    SKIP:6917 size=104 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 243280, size 104, pts 2867, dts 2700, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  40 QP=29.00 NAL=2 Slice:B Poc:80  I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 243390, size 78, pts 2800, dts 2733, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  41 QP=31.00 NAL=0 Slice:B Poc:78  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 243474, size 59, pts 2767, dts 2767, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  42 QP=31.00 NAL=0 Slice:B Poc:82  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 243539, size 59, pts 2833, dts 2800, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  43 QP=25.26 NAL=2 Slice:P Poc:92  I:9    P:6    SKIP:6915 size=123 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 243604, size 123, pts 3000, dts 2833, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  44 QP=29.00 NAL=2 Slice:B Poc:88  I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 243734, size 78, pts 2933, dts 2867, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  45 QP=31.00 NAL=0 Slice:B Poc:86  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 243818, size 59, pts 2900, dts 2900, duration 33, flags 0
+frame=   66 fps= 32 q=29.0 size=     225kB time=00:00:02.93 bitrate= 627.2kbits/s dup=0 drop=14    frame=  46 QP=31.00 NAL=0 Slice:B Poc:90  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 243883, size 59, pts 2967, dts 2933, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  47 QP=25.02 NAL=2 Slice:P Poc:100 I:9    P:3    SKIP:6918 size=151 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 243948, size 151, pts 3133, dts 2967, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  48 QP=29.00 NAL=2 Slice:B Poc:96  I:9    P:3    SKIP:6918 size=81 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 244106, size 81, pts 3067, dts 3000, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  49 QP=31.00 NAL=0 Slice:B Poc:94  I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 244193, size 59, pts 3033, dts 3033, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  50 QP=31.00 NAL=0 Slice:B Poc:98  I:0    P:3    SKIP:6927 size=61 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 244258, size 61, pts 3100, dts 3067, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  51 QP=25.26 NAL=2 Slice:P Poc:108 I:9    P:20   SKIP:6901 size=613 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 244325, size 613, pts 3267, dts 3100, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  52 QP=29.00 NAL=2 Slice:B Poc:104 I:9    P:15   SKIP:6906 size=88 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 244945, size 88, pts 3200, dts 3133, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  53 QP=31.00 NAL=0 Slice:B Poc:102 I:0    P:15   SKIP:6915 size=67 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 245039, size 67, pts 3167, dts 3167, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  54 QP=31.00 NAL=0 Slice:B Poc:106 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 245112, size 59, pts 3233, dts 3200, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  55 QP=25.00 NAL=2 Slice:P Poc:116 I:9    P:1    SKIP:6920 size=91 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 245177, size 91, pts 3400, dts 3233, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  56 QP=29.00 NAL=2 Slice:B Poc:112 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 245274, size 78, pts 3333, dts 3267, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  57 QP=31.00 NAL=0 Slice:B Poc:110 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 245358, size 59, pts 3300, dts 3300, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  58 QP=31.00 NAL=0 Slice:B Poc:114 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 245423, size 59, pts 3367, dts 3333, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  59 QP=25.00 NAL=2 Slice:P Poc:124 I:10   P:0    SKIP:6920 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 245488, size 78, pts 3533, dts 3367, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  60 QP=29.00 NAL=2 Slice:B Poc:120 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 245572, size 78, pts 3467, dts 3400, duration 33, flags 0
+frame=   81 fps= 31 q=29.0 size=     225kB time=00:00:03.43 bitrate= 535.8kbits/s dup=0 drop=14    frame=  61 QP=31.00 NAL=0 Slice:B Poc:118 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 245656, size 59, pts 3433, dts 3433, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  62 QP=31.00 NAL=0 Slice:B Poc:122 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 245721, size 59, pts 3500, dts 3467, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  63 QP=25.48 NAL=2 Slice:P Poc:132 I:9    P:10   SKIP:6911 size=141 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 245786, size 141, pts 3667, dts 3500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  64 QP=29.00 NAL=2 Slice:B Poc:128 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 245934, size 78, pts 3600, dts 3533, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  65 QP=31.00 NAL=0 Slice:B Poc:126 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 246018, size 59, pts 3567, dts 3567, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  66 QP=31.00 NAL=0 Slice:B Poc:130 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 246083, size 59, pts 3633, dts 3600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  67 QP=25.26 NAL=2 Slice:P Poc:140 I:10   P:13   SKIP:6907 size=494 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 246148, size 494, pts 3800, dts 3633, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  68 QP=29.00 NAL=2 Slice:B Poc:136 I:9    P:12   SKIP:6909 size=86 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 246649, size 86, pts 3733, dts 3667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  69 QP=31.00 NAL=0 Slice:B Poc:134 I:0    P:12   SKIP:6918 size=66 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 246741, size 66, pts 3700, dts 3700, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  70 QP=31.00 NAL=0 Slice:B Poc:138 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 246813, size 59, pts 3767, dts 3733, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  71 QP=25.14 NAL=2 Slice:P Poc:148 I:9    P:2    SKIP:6919 size=90 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 246878, size 90, pts 3933, dts 3767, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  72 QP=29.00 NAL=2 Slice:B Poc:144 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 246974, size 78, pts 3867, dts 3800, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  73 QP=31.00 NAL=0 Slice:B Poc:142 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 247058, size 59, pts 3833, dts 3833, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  74 QP=31.00 NAL=0 Slice:B Poc:146 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 247123, size 59, pts 3900, dts 3867, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  75 QP=25.00 NAL=2 Slice:P Poc:156 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 247188, size 77, pts 4067, dts 3900, duration 33, flags 0
+frame=   96 fps= 31 q=29.0 size=     225kB time=00:00:03.93 bitrate= 467.7kbits/s dup=0 drop=14    frame=  76 QP=29.00 NAL=2 Slice:B Poc:152 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 247271, size 78, pts 4000, dts 3933, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  77 QP=31.00 NAL=0 Slice:B Poc:150 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 247355, size 59, pts 3967, dts 3967, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  78 QP=31.00 NAL=0 Slice:B Poc:154 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 247420, size 59, pts 4033, dts 4000, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  79 QP=25.23 NAL=2 Slice:P Poc:164 I:9    P:18   SKIP:6903 size=581 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 247485, size 581, pts 4200, dts 4033, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  80 QP=29.00 NAL=2 Slice:B Poc:160 I:9    P:17   SKIP:6904 size=91 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 248073, size 91, pts 4133, dts 4067, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  81 QP=31.00 NAL=0 Slice:B Poc:158 I:0    P:2    SKIP:6928 size=61 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 248170, size 61, pts 4100, dts 4100, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  82 QP=31.00 NAL=0 Slice:B Poc:162 I:0    P:15   SKIP:6915 size=68 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 248237, size 68, pts 4167, dts 4133, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  83 QP=25.35 NAL=2 Slice:P Poc:172 I:9    P:2    SKIP:6919 size=86 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 248311, size 86, pts 4333, dts 4167, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  84 QP=29.00 NAL=2 Slice:B Poc:168 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 248403, size 78, pts 4267, dts 4200, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  85 QP=31.00 NAL=0 Slice:B Poc:166 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 248487, size 59, pts 4233, dts 4233, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  86 QP=31.00 NAL=0 Slice:B Poc:170 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 248552, size 59, pts 4300, dts 4267, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  87 QP=25.00 NAL=2 Slice:P Poc:180 I:9    P:1    SKIP:6920 size=86 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 248617, size 86, pts 4467, dts 4300, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  88 QP=29.00 NAL=2 Slice:B Poc:176 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 248709, size 78, pts 4400, dts 4333, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  89 QP=31.00 NAL=0 Slice:B Poc:174 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 248793, size 59, pts 4367, dts 4367, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  90 QP=31.00 NAL=0 Slice:B Poc:178 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 248858, size 59, pts 4433, dts 4400, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  91 QP=25.00 NAL=2 Slice:P Poc:188 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 248923, size 77, pts 4600, dts 4433, duration 33, flags 0
+frame=  112 fps= 31 q=29.0 size=     225kB time=00:00:04.46 bitrate= 411.8kbits/s dup=0 drop=14    frame=  92 QP=29.00 NAL=2 Slice:B Poc:184 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 249006, size 78, pts 4533, dts 4467, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  93 QP=31.00 NAL=0 Slice:B Poc:182 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 249090, size 59, pts 4500, dts 4500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  94 QP=31.00 NAL=0 Slice:B Poc:186 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 249155, size 59, pts 4567, dts 4533, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  95 QP=25.26 NAL=2 Slice:P Poc:196 I:10   P:13   SKIP:6907 size=463 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 249220, size 463, pts 4733, dts 4567, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  96 QP=29.00 NAL=2 Slice:B Poc:192 I:9    P:12   SKIP:6909 size=88 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 249690, size 88, pts 4667, dts 4600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  97 QP=31.00 NAL=0 Slice:B Poc:190 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 249784, size 59, pts 4633, dts 4633, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  98 QP=31.00 NAL=0 Slice:B Poc:194 I:0    P:12   SKIP:6918 size=66 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 249849, size 66, pts 4700, dts 4667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame=  99 QP=25.14 NAL=2 Slice:P Poc:204 I:9    P:1    SKIP:6920 size=84 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 249921, size 84, pts 4867, dts 4700, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 100 QP=29.00 NAL=2 Slice:B Poc:200 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 250011, size 78, pts 4800, dts 4733, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 101 QP=31.00 NAL=0 Slice:B Poc:198 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 250095, size 59, pts 4767, dts 4767, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 102 QP=31.00 NAL=0 Slice:B Poc:202 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 250160, size 59, pts 4833, dts 4800, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 103 QP=25.00 NAL=2 Slice:P Poc:212 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 250225, size 77, pts 5000, dts 4833, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 104 QP=29.00 NAL=2 Slice:B Poc:208 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 250308, size 78, pts 4933, dts 4867, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 105 QP=31.00 NAL=0 Slice:B Poc:206 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 250392, size 59, pts 4900, dts 4900, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 106 QP=31.00 NAL=0 Slice:B Poc:210 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 250457, size 59, pts 4967, dts 4933, duration 33, flags 0
+frame=  127 fps= 31 q=29.0 size=     225kB time=00:00:04.96 bitrate= 370.3kbits/s dup=0 drop=14    frame= 107 QP=25.06 NAL=2 Slice:P Poc:220 I:9    P:4    SKIP:6917 size=136 bytes
+[matroska @ 0xdf7aa0] Starting new cluster at offset 250522 bytes, pts 5133
+[matroska @ 0xdf7aa0] Writing block at offset 250538, size 136, pts 5133, dts 4967, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 108 QP=29.00 NAL=2 Slice:B Poc:216 I:9    P:3    SKIP:6918 size=81 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 250681, size 81, pts 5067, dts 5000, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 109 QP=31.00 NAL=0 Slice:B Poc:214 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 250768, size 59, pts 5033, dts 5033, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 110 QP=31.00 NAL=0 Slice:B Poc:218 I:0    P:2    SKIP:6928 size=61 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 250833, size 61, pts 5100, dts 5067, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 111 QP=25.12 NAL=2 Slice:P Poc:228 I:10   P:14   SKIP:6906 size=578 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 250900, size 578, pts 5267, dts 5100, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 112 QP=29.00 NAL=2 Slice:B Poc:224 I:9    P:13   SKIP:6908 size=88 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 251485, size 88, pts 5200, dts 5133, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 113 QP=31.00 NAL=0 Slice:B Poc:222 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 251579, size 59, pts 5167, dts 5167, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 114 QP=31.00 NAL=0 Slice:B Poc:226 I:0    P:13   SKIP:6917 size=66 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 251644, size 66, pts 5233, dts 5200, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 115 QP=25.00 NAL=2 Slice:P Poc:236 I:9    P:1    SKIP:6920 size=88 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 251716, size 88, pts 5400, dts 5233, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 116 QP=29.00 NAL=2 Slice:B Poc:232 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 251810, size 78, pts 5333, dts 5267, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 117 QP=31.00 NAL=0 Slice:B Poc:230 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 251894, size 59, pts 5300, dts 5300, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 118 QP=31.00 NAL=0 Slice:B Poc:234 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 251959, size 59, pts 5367, dts 5333, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 119 QP=25.00 NAL=2 Slice:P Poc:244 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 252024, size 77, pts 5533, dts 5367, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 120 QP=29.00 NAL=2 Slice:B Poc:240 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 252107, size 78, pts 5467, dts 5400, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 121 QP=31.00 NAL=0 Slice:B Poc:238 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 252191, size 59, pts 5433, dts 5433, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 122 QP=31.00 NAL=0 Slice:B Poc:242 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 252256, size 59, pts 5500, dts 5467, duration 33, flags 0
+frame=  143 fps= 31 q=29.0 size=     245kB time=00:00:05.50 bitrate= 364.4kbits/s dup=0 drop=14    frame= 123 QP=25.00 NAL=2 Slice:P Poc:252 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 252321, size 77, pts 5667, dts 5500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 124 QP=29.00 NAL=2 Slice:B Poc:248 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 252404, size 78, pts 5600, dts 5533, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 125 QP=31.00 NAL=0 Slice:B Poc:246 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 252488, size 59, pts 5567, dts 5567, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 126 QP=31.00 NAL=0 Slice:B Poc:250 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 252553, size 59, pts 5633, dts 5600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 127 QP=25.26 NAL=2 Slice:P Poc:260 I:9    P:12   SKIP:6909 size=481 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 252618, size 481, pts 5800, dts 5633, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 128 QP=29.00 NAL=2 Slice:B Poc:256 I:9    P:11   SKIP:6910 size=85 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 253106, size 85, pts 5733, dts 5667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 129 QP=31.00 NAL=0 Slice:B Poc:254 I:0    P:11   SKIP:6919 size=66 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 253197, size 66, pts 5700, dts 5700, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 130 QP=31.00 NAL=0 Slice:B Poc:258 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 253269, size 59, pts 5767, dts 5733, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 131 QP=25.20 NAL=2 Slice:P Poc:268 I:9    P:3    SKIP:6918 size=96 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 253334, size 96, pts 5933, dts 5767, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 132 QP=29.00 NAL=2 Slice:B Poc:264 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 253436, size 78, pts 5867, dts 5800, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 133 QP=31.00 NAL=0 Slice:B Poc:262 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 253520, size 59, pts 5833, dts 5833, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 134 QP=31.00 NAL=0 Slice:B Poc:266 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 253585, size 59, pts 5900, dts 5867, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 135 QP=25.00 NAL=2 Slice:P Poc:276 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 253650, size 77, pts 6067, dts 5900, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 136 QP=29.00 NAL=2 Slice:B Poc:272 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 253733, size 78, pts 6000, dts 5933, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 137 QP=31.00 NAL=0 Slice:B Poc:270 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 253817, size 59, pts 5967, dts 5967, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 138 QP=31.00 NAL=0 Slice:B Poc:274 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 253882, size 59, pts 6033, dts 6000, duration 33, flags 0
+frame=  159 fps= 31 q=29.0 size=     245kB time=00:00:06.03 bitrate= 332.2kbits/s dup=0 drop=14    frame= 139 QP=25.02 NAL=2 Slice:P Poc:284 I:9    P:4    SKIP:6917 size=152 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 253947, size 152, pts 6200, dts 6033, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 140 QP=29.00 NAL=2 Slice:B Poc:280 I:9    P:3    SKIP:6918 size=81 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 254106, size 81, pts 6133, dts 6067, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 141 QP=31.00 NAL=0 Slice:B Poc:278 I:0    P:3    SKIP:6927 size=61 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 254193, size 61, pts 6100, dts 6100, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 142 QP=31.00 NAL=0 Slice:B Poc:282 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 254260, size 59, pts 6167, dts 6133, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 143 QP=25.20 NAL=2 Slice:P Poc:292 I:9    P:16   SKIP:6905 size=595 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 254325, size 595, pts 6333, dts 6167, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 144 QP=29.00 NAL=2 Slice:B Poc:288 I:9    P:14   SKIP:6907 size=88 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 254927, size 88, pts 6267, dts 6200, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 145 QP=31.00 NAL=0 Slice:B Poc:286 I:0    P:14   SKIP:6916 size=69 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255021, size 69, pts 6233, dts 6233, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 146 QP=31.00 NAL=0 Slice:B Poc:290 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255096, size 59, pts 6300, dts 6267, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 147 QP=25.00 NAL=2 Slice:P Poc:300 I:9    P:1    SKIP:6920 size=84 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255161, size 84, pts 6467, dts 6300, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 148 QP=29.00 NAL=2 Slice:B Poc:296 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255251, size 78, pts 6400, dts 6333, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 149 QP=31.00 NAL=0 Slice:B Poc:294 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255335, size 59, pts 6367, dts 6367, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 150 QP=31.00 NAL=0 Slice:B Poc:298 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255400, size 59, pts 6433, dts 6400, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 151 QP=25.00 NAL=2 Slice:P Poc:308 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255465, size 77, pts 6600, dts 6433, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 152 QP=29.00 NAL=2 Slice:B Poc:304 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255548, size 78, pts 6533, dts 6467, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 153 QP=31.00 NAL=0 Slice:B Poc:302 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255632, size 59, pts 6500, dts 6500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 154 QP=31.00 NAL=0 Slice:B Poc:306 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255697, size 59, pts 6567, dts 6533, duration 33, flags 0
+frame=  175 fps= 30 q=29.0 size=     245kB time=00:00:06.56 bitrate= 305.2kbits/s dup=0 drop=14    frame= 155 QP=25.00 NAL=2 Slice:P Poc:316 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255762, size 77, pts 6733, dts 6567, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 156 QP=29.00 NAL=2 Slice:B Poc:312 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255845, size 78, pts 6667, dts 6600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 157 QP=31.00 NAL=0 Slice:B Poc:310 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255929, size 59, pts 6633, dts 6633, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 158 QP=31.00 NAL=0 Slice:B Poc:314 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 255994, size 59, pts 6700, dts 6667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 159 QP=25.20 NAL=2 Slice:P Poc:324 I:9    P:14   SKIP:6907 size=508 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 256059, size 508, pts 6867, dts 6700, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 160 QP=29.00 NAL=2 Slice:B Poc:320 I:9    P:12   SKIP:6909 size=86 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 256574, size 86, pts 6800, dts 6733, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 161 QP=31.00 NAL=0 Slice:B Poc:318 I:0    P:11   SKIP:6919 size=66 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 256666, size 66, pts 6767, dts 6767, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 162 QP=31.00 NAL=0 Slice:B Poc:322 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 256738, size 59, pts 6833, dts 6800, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 163 QP=25.25 NAL=2 Slice:P Poc:332 I:9    P:1    SKIP:6920 size=93 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 256803, size 93, pts 7000, dts 6833, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 164 QP=29.00 NAL=2 Slice:B Poc:328 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 256902, size 78, pts 6933, dts 6867, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 165 QP=31.00 NAL=0 Slice:B Poc:326 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 256986, size 59, pts 6900, dts 6900, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 166 QP=31.00 NAL=0 Slice:B Poc:330 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 257051, size 59, pts 6967, dts 6933, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 167 QP=25.02 NAL=2 Slice:P Poc:340 I:9    P:4    SKIP:6917 size=137 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 257116, size 137, pts 7133, dts 6967, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 168 QP=29.00 NAL=2 Slice:B Poc:336 I:9    P:1    SKIP:6920 size=79 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 257260, size 79, pts 7067, dts 7000, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 169 QP=31.00 NAL=0 Slice:B Poc:334 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 257345, size 59, pts 7033, dts 7033, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 170 QP=31.00 NAL=0 Slice:B Poc:338 I:0    P:1    SKIP:6929 size=60 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 257410, size 60, pts 7100, dts 7067, duration 33, flags 0
+frame=  191 fps= 30 q=29.0 size=     245kB time=00:00:07.10 bitrate= 282.3kbits/s dup=0 drop=14    frame= 171 QP=25.00 NAL=2 Slice:P Poc:348 I:9    P:1    SKIP:6920 size=88 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 257476, size 88, pts 7267, dts 7100, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 172 QP=29.00 NAL=2 Slice:B Poc:344 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 257570, size 78, pts 7200, dts 7133, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 173 QP=31.00 NAL=0 Slice:B Poc:342 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 257654, size 59, pts 7167, dts 7167, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 174 QP=31.00 NAL=0 Slice:B Poc:346 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 257719, size 59, pts 7233, dts 7200, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 175 QP=25.26 NAL=2 Slice:P Poc:356 I:9    P:17   SKIP:6904 size=471 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 257784, size 471, pts 7400, dts 7233, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 176 QP=29.00 NAL=2 Slice:B Poc:352 I:9    P:11   SKIP:6910 size=86 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 258262, size 86, pts 7333, dts 7267, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 177 QP=31.00 NAL=0 Slice:B Poc:350 I:0    P:11   SKIP:6919 size=68 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 258354, size 68, pts 7300, dts 7300, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 178 QP=31.00 NAL=0 Slice:B Poc:354 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 258428, size 59, pts 7367, dts 7333, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 179 QP=25.00 NAL=2 Slice:P Poc:364 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 258493, size 77, pts 7533, dts 7367, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 180 QP=29.00 NAL=2 Slice:B Poc:360 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 258576, size 78, pts 7467, dts 7400, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 181 QP=31.00 NAL=0 Slice:B Poc:358 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 258660, size 59, pts 7433, dts 7433, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 182 QP=31.00 NAL=0 Slice:B Poc:362 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 258725, size 59, pts 7500, dts 7467, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 183 QP=25.00 NAL=2 Slice:P Poc:372 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 258790, size 77, pts 7667, dts 7500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 184 QP=29.00 NAL=2 Slice:B Poc:368 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 258873, size 78, pts 7600, dts 7533, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 185 QP=31.00 NAL=0 Slice:B Poc:366 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 258957, size 59, pts 7567, dts 7567, duration 33, flags 0
+frame=  206 fps= 30 q=29.0 size=     245kB time=00:00:07.60 bitrate= 263.7kbits/s dup=0 drop=14    frame= 186 QP=31.00 NAL=0 Slice:B Poc:370 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 259022, size 59, pts 7633, dts 7600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 187 QP=25.00 NAL=2 Slice:P Poc:380 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 259087, size 77, pts 7800, dts 7633, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 188 QP=29.00 NAL=2 Slice:B Poc:376 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 259170, size 78, pts 7733, dts 7667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 189 QP=31.00 NAL=0 Slice:B Poc:374 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 259254, size 59, pts 7700, dts 7700, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 190 QP=31.00 NAL=0 Slice:B Poc:378 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 259319, size 59, pts 7767, dts 7733, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 191 QP=25.20 NAL=2 Slice:P Poc:388 I:10   P:13   SKIP:6907 size=491 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 259384, size 491, pts 7933, dts 7767, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 192 QP=29.00 NAL=2 Slice:B Poc:384 I:9    P:12   SKIP:6909 size=86 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 259882, size 86, pts 7867, dts 7800, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 193 QP=31.00 NAL=0 Slice:B Poc:382 I:0    P:11   SKIP:6919 size=66 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 259974, size 66, pts 7833, dts 7833, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 194 QP=31.00 NAL=0 Slice:B Poc:386 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 260046, size 59, pts 7900, dts 7867, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 195 QP=25.25 NAL=2 Slice:P Poc:396 I:9    P:1    SKIP:6920 size=87 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 260111, size 87, pts 8067, dts 7900, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 196 QP=29.00 NAL=2 Slice:B Poc:392 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 260204, size 78, pts 8000, dts 7933, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 197 QP=31.00 NAL=0 Slice:B Poc:390 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 260288, size 59, pts 7967, dts 7967, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 198 QP=31.00 NAL=0 Slice:B Poc:394 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 260353, size 59, pts 8033, dts 8000, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 199 QP=25.06 NAL=2 Slice:P Poc:404 I:9    P:4    SKIP:6917 size=198 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 260418, size 198, pts 8200, dts 8033, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 200 QP=29.00 NAL=2 Slice:B Poc:400 I:9    P:4    SKIP:6917 size=81 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 260623, size 81, pts 8133, dts 8067, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 201 QP=31.00 NAL=0 Slice:B Poc:398 I:0    P:3    SKIP:6927 size=62 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 260710, size 62, pts 8100, dts 8100, duration 33, flags 0
+frame=  222 fps= 30 q=29.0 size=     245kB time=00:00:08.13 bitrate= 246.4kbits/s dup=0 drop=14    frame= 202 QP=31.00 NAL=0 Slice:B Poc:402 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 260778, size 59, pts 8167, dts 8133, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 203 QP=25.00 NAL=2 Slice:P Poc:412 I:9    P:2    SKIP:6919 size=101 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 260843, size 101, pts 8333, dts 8167, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 204 QP=29.00 NAL=2 Slice:B Poc:408 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 260950, size 78, pts 8267, dts 8200, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 205 QP=31.00 NAL=0 Slice:B Poc:406 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 261034, size 59, pts 8233, dts 8233, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 206 QP=31.00 NAL=0 Slice:B Poc:410 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 261099, size 59, pts 8300, dts 8267, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 207 QP=25.20 NAL=2 Slice:P Poc:420 I:9    P:13   SKIP:6908 size=421 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 261164, size 421, pts 8467, dts 8300, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 208 QP=29.00 NAL=2 Slice:B Poc:416 I:9    P:12   SKIP:6909 size=86 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 261592, size 86, pts 8400, dts 8333, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 209 QP=31.00 NAL=0 Slice:B Poc:414 I:0    P:12   SKIP:6918 size=66 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 261684, size 66, pts 8367, dts 8367, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 210 QP=31.00 NAL=0 Slice:B Poc:418 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 261756, size 59, pts 8433, dts 8400, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 211 QP=25.25 NAL=2 Slice:P Poc:428 I:9    P:3    SKIP:6918 size=96 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 261821, size 96, pts 8600, dts 8433, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 212 QP=29.00 NAL=2 Slice:B Poc:424 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 261923, size 78, pts 8533, dts 8467, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 213 QP=31.00 NAL=0 Slice:B Poc:422 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 262007, size 59, pts 8500, dts 8500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 214 QP=31.00 NAL=0 Slice:B Poc:426 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 262072, size 59, pts 8567, dts 8533, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 215 QP=25.00 NAL=2 Slice:P Poc:436 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 262137, size 77, pts 8733, dts 8567, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 216 QP=29.00 NAL=2 Slice:B Poc:432 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 262220, size 78, pts 8667, dts 8600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 217 QP=31.00 NAL=0 Slice:B Poc:430 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 262304, size 59, pts 8633, dts 8633, duration 33, flags 0
+frame=  238 fps= 30 q=29.0 size=     245kB time=00:00:08.66 bitrate= 231.2kbits/s dup=0 drop=14    frame= 218 QP=31.00 NAL=0 Slice:B Poc:434 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 262369, size 59, pts 8700, dts 8667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 219 QP=25.00 NAL=2 Slice:P Poc:444 I:9    P:1    SKIP:6920 size=83 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 262434, size 83, pts 8867, dts 8700, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 220 QP=29.00 NAL=2 Slice:B Poc:440 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 262523, size 78, pts 8800, dts 8733, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 221 QP=31.00 NAL=0 Slice:B Poc:438 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 262607, size 59, pts 8767, dts 8767, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 222 QP=31.00 NAL=0 Slice:B Poc:442 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 262672, size 59, pts 8833, dts 8800, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 223 QP=25.26 NAL=2 Slice:P Poc:452 I:9    P:14   SKIP:6907 size=549 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 262737, size 549, pts 9000, dts 8833, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 224 QP=29.00 NAL=2 Slice:B Poc:448 I:9    P:12   SKIP:6909 size=86 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 263293, size 86, pts 8933, dts 8867, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 225 QP=31.00 NAL=0 Slice:B Poc:446 I:0    P:12   SKIP:6918 size=66 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 263385, size 66, pts 8900, dts 8900, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 226 QP=31.00 NAL=0 Slice:B Poc:450 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 263457, size 59, pts 8967, dts 8933, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 227 QP=25.02 NAL=2 Slice:P Poc:460 I:9    P:3    SKIP:6918 size=131 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 263522, size 131, pts 9133, dts 8967, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 228 QP=29.00 NAL=2 Slice:B Poc:456 I:9    P:3    SKIP:6918 size=81 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 263660, size 81, pts 9067, dts 9000, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 229 QP=31.00 NAL=0 Slice:B Poc:454 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 263747, size 59, pts 9033, dts 9033, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 230 QP=31.00 NAL=0 Slice:B Poc:458 I:0    P:2    SKIP:6928 size=61 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 263812, size 61, pts 9100, dts 9067, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 231 QP=25.00 NAL=2 Slice:P Poc:468 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 263879, size 77, pts 9267, dts 9100, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 232 QP=29.00 NAL=2 Slice:B Poc:464 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 263962, size 78, pts 9200, dts 9133, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 233 QP=31.00 NAL=0 Slice:B Poc:462 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 264046, size 59, pts 9167, dts 9167, duration 33, flags 0
+frame=  254 fps= 30 q=29.0 size=     245kB time=00:00:09.20 bitrate= 217.8kbits/s dup=0 drop=14    frame= 234 QP=31.00 NAL=0 Slice:B Poc:466 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 264111, size 59, pts 9233, dts 9200, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 235 QP=25.00 NAL=2 Slice:P Poc:476 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 264176, size 77, pts 9400, dts 9233, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 236 QP=29.00 NAL=2 Slice:B Poc:472 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 264259, size 78, pts 9333, dts 9267, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 237 QP=31.00 NAL=0 Slice:B Poc:470 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 264343, size 59, pts 9300, dts 9300, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 238 QP=31.00 NAL=0 Slice:B Poc:474 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 264408, size 59, pts 9367, dts 9333, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 239 QP=25.26 NAL=2 Slice:P Poc:484 I:10   P:13   SKIP:6907 size=451 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 264473, size 451, pts 9533, dts 9367, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 240 QP=29.00 NAL=2 Slice:B Poc:480 I:9    P:12   SKIP:6909 size=86 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 264931, size 86, pts 9467, dts 9400, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 241 QP=31.00 NAL=0 Slice:B Poc:478 I:0    P:12   SKIP:6918 size=66 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 265023, size 66, pts 9433, dts 9433, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 242 QP=31.00 NAL=0 Slice:B Poc:482 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 265095, size 59, pts 9500, dts 9467, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 243 QP=25.00 NAL=2 Slice:P Poc:492 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 265160, size 77, pts 9667, dts 9500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 244 QP=29.00 NAL=2 Slice:B Poc:488 I:9    P:0    SKIP:6921 size=78 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 265243, size 78, pts 9600, dts 9533, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 245 QP=31.00 NAL=0 Slice:B Poc:486 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 265327, size 59, pts 9567, dts 9567, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 246 QP=31.00 NAL=0 Slice:B Poc:490 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 265392, size 59, pts 9633, dts 9600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 247 QP=31.00 NAL=2 Slice:P Poc:498 I:0    P:0    SKIP:6930 size=61 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 265457, size 61, pts 9767, dts 9633, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 248 QP=29.00 NAL=2 Slice:B Poc:496 I:9    P:0    SKIP:6921 size=77 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 265524, size 77, pts 9733, dts 9667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 249 QP=31.00 NAL=0 Slice:B Poc:494 I:0    P:0    SKIP:6930 size=59 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 265607, size 59, pts 9700, dts 9700, duration 33, flags 0
+frame=  270 fps= 30 q=29.0 size=     245kB time=00:00:09.73 bitrate= 205.9kbits/s dup=0 drop=14    frame= 250 QP=19.80 NAL=3 Slice:I Poc:0   I:6930 P:0    SKIP:0    size=141395 bytes
+[matroska @ 0xdf7aa0] Starting new cluster at offset 265672 bytes, pts 9800
+[matroska @ 0xdf7aa0] Writing block at offset 265688, size 141395, pts 9800, dts 9733, duration 33, flags 128
+[libx264 @ 0xdf8400] frame= 251 QP=27.49 NAL=2 Slice:P Poc:8   I:80   P:306  SKIP:6544 size=1791 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 407091, size 1791, pts 9933, dts 9767, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 252 QP=29.00 NAL=2 Slice:B Poc:4   I:54   P:22   SKIP:6854 size=151 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 408889, size 151, pts 9867, dts 9800, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 253 QP=31.00 NAL=0 Slice:B Poc:2   I:0    P:9    SKIP:6921 size=63 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 409047, size 63, pts 9833, dts 9833, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 254 QP=31.00 NAL=0 Slice:B Poc:6   I:0    P:13   SKIP:6917 size=65 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 409116, size 65, pts 9900, dts 9867, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 255 QP=27.35 NAL=2 Slice:P Poc:16  I:58   P:52   SKIP:6820 size=746 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 409187, size 746, pts 10067, dts 9900, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 256 QP=29.00 NAL=2 Slice:B Poc:12  I:56   P:12   SKIP:6862 size=138 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 409940, size 138, pts 10000, dts 9933, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 257 QP=31.00 NAL=0 Slice:B Poc:10  I:52   P:12   SKIP:6866 size=132 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 410085, size 132, pts 9967, dts 9967, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 258 QP=31.00 NAL=0 Slice:B Poc:14  I:52   P:0    SKIP:6878 size=123 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 410224, size 123, pts 10033, dts 10000, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 259 QP=26.64 NAL=2 Slice:P Poc:24  I:58   P:22   SKIP:6850 size=277 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 410354, size 277, pts 10200, dts 10033, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 260 QP=29.00 NAL=2 Slice:B Poc:20  I:54   P:2    SKIP:6874 size=129 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 410638, size 129, pts 10133, dts 10067, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 261 QP=31.00 NAL=0 Slice:B Poc:18  I:52   P:2    SKIP:6876 size=125 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 410774, size 125, pts 10100, dts 10100, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 262 QP=31.00 NAL=0 Slice:B Poc:22  I:54   P:0    SKIP:6876 size=126 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 410906, size 126, pts 10167, dts 10133, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 263 QP=25.03 NAL=2 Slice:P Poc:32  I:71   P:3    SKIP:6856 size=137 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 411039, size 137, pts 10333, dts 10167, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 264 QP=29.00 NAL=2 Slice:B Poc:28  I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 411183, size 112, pts 10267, dts 10200, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 265 QP=31.00 NAL=0 Slice:B Poc:26  I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 411301, size 112, pts 10233, dts 10233, duration 33, flags 0
+frame=  286 fps= 30 q=29.0 size=     387kB time=00:00:10.26 bitrate= 309.1kbits/s dup=0 drop=14    frame= 266 QP=31.00 NAL=0 Slice:B Poc:30  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 411419, size 110, pts 10300, dts 10267, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 267 QP=25.00 NAL=2 Slice:P Poc:40  I:43   P:0    SKIP:6887 size=100 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 411535, size 100, pts 10467, dts 10300, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 268 QP=29.00 NAL=2 Slice:B Poc:36  I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 411641, size 112, pts 10400, dts 10333, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 269 QP=31.00 NAL=0 Slice:B Poc:34  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 411759, size 110, pts 10367, dts 10367, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 270 QP=31.00 NAL=0 Slice:B Poc:38  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 411875, size 110, pts 10433, dts 10400, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 271 QP=25.26 NAL=2 Slice:P Poc:48  I:43   P:14   SKIP:6873 size=492 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 411991, size 492, pts 10600, dts 10433, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 272 QP=29.00 NAL=2 Slice:B Poc:44  I:41   P:12   SKIP:6877 size=121 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 412490, size 121, pts 10533, dts 10467, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 273 QP=31.00 NAL=0 Slice:B Poc:42  I:39   P:12   SKIP:6879 size=118 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 412617, size 118, pts 10500, dts 10500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 274 QP=31.00 NAL=0 Slice:B Poc:46  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 412741, size 110, pts 10567, dts 10533, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 275 QP=25.00 NAL=2 Slice:P Poc:56  I:43   P:0    SKIP:6887 size=100 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 412857, size 100, pts 10733, dts 10567, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 276 QP=29.00 NAL=2 Slice:B Poc:52  I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 412963, size 112, pts 10667, dts 10600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 277 QP=31.00 NAL=0 Slice:B Poc:50  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 413081, size 110, pts 10633, dts 10633, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 278 QP=31.00 NAL=0 Slice:B Poc:54  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 413197, size 110, pts 10700, dts 10667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 279 QP=25.00 NAL=2 Slice:P Poc:64  I:43   P:0    SKIP:6887 size=100 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 413313, size 100, pts 10867, dts 10700, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 280 QP=29.00 NAL=2 Slice:B Poc:60  I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 413419, size 112, pts 10800, dts 10733, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 281 QP=31.00 NAL=0 Slice:B Poc:58  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 413537, size 110, pts 10767, dts 10767, duration 33, flags 0
+frame=  302 fps= 30 q=29.0 size=     387kB time=00:00:10.80 bitrate= 293.9kbits/s dup=0 drop=14    frame= 282 QP=31.00 NAL=0 Slice:B Poc:62  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 413653, size 110, pts 10833, dts 10800, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 283 QP=25.00 NAL=2 Slice:P Poc:72  I:43   P:0    SKIP:6887 size=100 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 413769, size 100, pts 11000, dts 10833, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 284 QP=29.00 NAL=2 Slice:B Poc:68  I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 413875, size 112, pts 10933, dts 10867, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 285 QP=31.00 NAL=0 Slice:B Poc:66  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 413993, size 110, pts 10900, dts 10900, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 286 QP=31.00 NAL=0 Slice:B Poc:70  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 414109, size 110, pts 10967, dts 10933, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 287 QP=25.16 NAL=2 Slice:P Poc:80  I:43   P:23   SKIP:6864 size=761 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 414225, size 761, pts 11133, dts 10967, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 288 QP=29.00 NAL=2 Slice:B Poc:76  I:41   P:20   SKIP:6869 size=127 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 414993, size 127, pts 11067, dts 11000, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 289 QP=31.00 NAL=0 Slice:B Poc:74  I:39   P:17   SKIP:6874 size=120 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 415127, size 120, pts 11033, dts 11033, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 290 QP=31.00 NAL=0 Slice:B Poc:78  I:39   P:3    SKIP:6888 size=113 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 415253, size 113, pts 11100, dts 11067, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 291 QP=25.29 NAL=2 Slice:P Poc:88  I:43   P:2    SKIP:6885 size=118 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 415372, size 118, pts 11267, dts 11100, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 292 QP=29.00 NAL=2 Slice:B Poc:84  I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 415496, size 112, pts 11200, dts 11133, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 293 QP=31.00 NAL=0 Slice:B Poc:82  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 415614, size 110, pts 11167, dts 11167, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 294 QP=31.00 NAL=0 Slice:B Poc:86  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 415730, size 110, pts 11233, dts 11200, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 295 QP=25.00 NAL=2 Slice:P Poc:96  I:43   P:1    SKIP:6886 size=109 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 415846, size 109, pts 11400, dts 11233, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 296 QP=29.00 NAL=2 Slice:B Poc:92  I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 415961, size 112, pts 11333, dts 11267, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 297 QP=31.00 NAL=0 Slice:B Poc:90  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 416079, size 110, pts 11300, dts 11300, duration 33, flags 0
+frame=  318 fps= 30 q=29.0 size=     387kB time=00:00:11.33 bitrate= 280.1kbits/s dup=0 drop=14    frame= 298 QP=31.00 NAL=0 Slice:B Poc:94  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 416195, size 110, pts 11367, dts 11333, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 299 QP=25.00 NAL=2 Slice:P Poc:104 I:43   P:0    SKIP:6887 size=100 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 416311, size 100, pts 11533, dts 11367, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 300 QP=29.00 NAL=2 Slice:B Poc:100 I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 416417, size 112, pts 11467, dts 11400, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 301 QP=31.00 NAL=0 Slice:B Poc:98  I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 416535, size 110, pts 11433, dts 11433, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 302 QP=31.00 NAL=0 Slice:B Poc:102 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 416651, size 110, pts 11500, dts 11467, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 303 QP=25.20 NAL=2 Slice:P Poc:112 I:43   P:14   SKIP:6873 size=513 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 416767, size 513, pts 11667, dts 11500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 304 QP=29.00 NAL=2 Slice:B Poc:108 I:41   P:13   SKIP:6876 size=121 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 417287, size 121, pts 11600, dts 11533, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 305 QP=31.00 NAL=0 Slice:B Poc:106 I:39   P:13   SKIP:6878 size=118 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 417414, size 118, pts 11567, dts 11567, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 306 QP=31.00 NAL=0 Slice:B Poc:110 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 417538, size 110, pts 11633, dts 11600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 307 QP=25.00 NAL=2 Slice:P Poc:120 I:43   P:0    SKIP:6887 size=100 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 417654, size 100, pts 11800, dts 11633, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 308 QP=29.00 NAL=2 Slice:B Poc:116 I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 417760, size 112, pts 11733, dts 11667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 309 QP=31.00 NAL=0 Slice:B Poc:114 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 417878, size 110, pts 11700, dts 11700, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 310 QP=31.00 NAL=0 Slice:B Poc:118 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 417994, size 110, pts 11767, dts 11733, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 311 QP=25.00 NAL=2 Slice:P Poc:128 I:43   P:0    SKIP:6887 size=100 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 418110, size 100, pts 11933, dts 11767, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 312 QP=29.00 NAL=2 Slice:B Poc:124 I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 418216, size 112, pts 11867, dts 11800, duration 33, flags 0
+frame=  333 fps= 30 q=29.0 size=     387kB time=00:00:11.83 bitrate= 268.2kbits/s dup=0 drop=14    frame= 313 QP=31.00 NAL=0 Slice:B Poc:122 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 418334, size 110, pts 11833, dts 11833, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 314 QP=31.00 NAL=0 Slice:B Poc:126 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 418450, size 110, pts 11900, dts 11867, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 315 QP=25.00 NAL=2 Slice:P Poc:136 I:43   P:0    SKIP:6887 size=100 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 418566, size 100, pts 12067, dts 11900, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 316 QP=29.00 NAL=2 Slice:B Poc:132 I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 418672, size 112, pts 12000, dts 11933, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 317 QP=31.00 NAL=0 Slice:B Poc:130 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 418790, size 110, pts 11967, dts 11967, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 318 QP=31.00 NAL=0 Slice:B Poc:134 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 418906, size 110, pts 12033, dts 12000, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 319 QP=25.16 NAL=2 Slice:P Poc:144 I:44   P:17   SKIP:6869 size=548 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 419022, size 548, pts 12200, dts 12033, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 320 QP=29.00 NAL=2 Slice:B Poc:140 I:41   P:16   SKIP:6873 size=125 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 419577, size 125, pts 12133, dts 12067, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 321 QP=31.00 NAL=0 Slice:B Poc:138 I:39   P:14   SKIP:6877 size=120 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 419709, size 120, pts 12100, dts 12100, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 322 QP=31.00 NAL=0 Slice:B Poc:142 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 419835, size 110, pts 12167, dts 12133, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 323 QP=25.14 NAL=2 Slice:P Poc:152 I:43   P:1    SKIP:6886 size=107 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 419951, size 107, pts 12333, dts 12167, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 324 QP=29.00 NAL=2 Slice:B Poc:148 I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 420064, size 112, pts 12267, dts 12200, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 325 QP=31.00 NAL=0 Slice:B Poc:146 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 420182, size 110, pts 12233, dts 12233, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 326 QP=31.00 NAL=0 Slice:B Poc:150 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 420298, size 110, pts 12300, dts 12267, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 327 QP=25.25 NAL=2 Slice:P Poc:160 I:43   P:2    SKIP:6885 size=121 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 420414, size 121, pts 12467, dts 12300, duration 33, flags 0
+frame=  348 fps= 30 q=29.0 size=     387kB time=00:00:12.33 bitrate= 257.4kbits/s dup=0 drop=14    frame= 328 QP=29.00 NAL=2 Slice:B Poc:156 I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 420541, size 112, pts 12400, dts 12333, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 329 QP=31.00 NAL=0 Slice:B Poc:154 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 420659, size 110, pts 12367, dts 12367, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 330 QP=31.00 NAL=0 Slice:B Poc:158 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 420775, size 110, pts 12433, dts 12400, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 331 QP=25.20 NAL=2 Slice:P Poc:168 I:43   P:11   SKIP:6876 size=369 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 420891, size 369, pts 12600, dts 12433, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 332 QP=29.00 NAL=2 Slice:B Poc:164 I:41   P:8    SKIP:6881 size=121 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 421267, size 121, pts 12533, dts 12467, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 333 QP=31.00 NAL=0 Slice:B Poc:162 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 421394, size 110, pts 12500, dts 12500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 334 QP=31.00 NAL=0 Slice:B Poc:166 I:39   P:8    SKIP:6883 size=117 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 421510, size 117, pts 12567, dts 12533, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 335 QP=25.25 NAL=2 Slice:P Poc:176 I:43   P:1    SKIP:6886 size=111 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 421633, size 111, pts 12733, dts 12567, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 336 QP=29.00 NAL=2 Slice:B Poc:172 I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 421750, size 112, pts 12667, dts 12600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 337 QP=31.00 NAL=0 Slice:B Poc:170 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 421868, size 110, pts 12633, dts 12633, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 338 QP=31.00 NAL=0 Slice:B Poc:174 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 421984, size 110, pts 12700, dts 12667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 339 QP=25.00 NAL=2 Slice:P Poc:184 I:43   P:0    SKIP:6887 size=100 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 422100, size 100, pts 12867, dts 12700, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 340 QP=29.00 NAL=2 Slice:B Poc:180 I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 422206, size 112, pts 12800, dts 12733, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 341 QP=31.00 NAL=0 Slice:B Poc:178 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 422324, size 110, pts 12767, dts 12767, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 342 QP=31.00 NAL=0 Slice:B Poc:182 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 422440, size 110, pts 12833, dts 12800, duration 33, flags 0
+frame=  363 fps= 30 q=29.0 size=     387kB time=00:00:12.83 bitrate= 247.3kbits/s dup=0 drop=14    frame= 343 QP=25.00 NAL=2 Slice:P Poc:192 I:43   P:0    SKIP:6887 size=100 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 422556, size 100, pts 13000, dts 12833, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 344 QP=29.00 NAL=2 Slice:B Poc:188 I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 422662, size 112, pts 12933, dts 12867, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 345 QP=31.00 NAL=0 Slice:B Poc:186 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 422780, size 110, pts 12900, dts 12900, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 346 QP=31.00 NAL=0 Slice:B Poc:190 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 422896, size 110, pts 12967, dts 12933, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 347 QP=25.16 NAL=2 Slice:P Poc:200 I:44   P:14   SKIP:6872 size=514 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 423012, size 514, pts 13133, dts 12967, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 348 QP=29.00 NAL=2 Slice:B Poc:196 I:41   P:14   SKIP:6875 size=126 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 423533, size 126, pts 13067, dts 13000, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 349 QP=31.00 NAL=0 Slice:B Poc:194 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 423666, size 110, pts 13033, dts 13033, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 350 QP=31.00 NAL=0 Slice:B Poc:198 I:39   P:14   SKIP:6877 size=120 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 423782, size 120, pts 13100, dts 13067, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 351 QP=25.00 NAL=2 Slice:P Poc:208 I:43   P:2    SKIP:6885 size=111 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 423908, size 111, pts 13267, dts 13100, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 352 QP=29.00 NAL=2 Slice:B Poc:204 I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 424025, size 112, pts 13200, dts 13133, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 353 QP=31.00 NAL=0 Slice:B Poc:202 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 424143, size 110, pts 13167, dts 13167, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 354 QP=31.00 NAL=0 Slice:B Poc:206 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 424259, size 110, pts 13233, dts 13200, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 355 QP=25.00 NAL=2 Slice:P Poc:216 I:43   P:0    SKIP:6887 size=100 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 424375, size 100, pts 13400, dts 13233, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 356 QP=29.00 NAL=2 Slice:B Poc:212 I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 424481, size 112, pts 13333, dts 13267, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 357 QP=31.00 NAL=0 Slice:B Poc:210 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 424599, size 110, pts 13300, dts 13300, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 358 QP=31.00 NAL=0 Slice:B Poc:214 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 424715, size 110, pts 13367, dts 13333, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 359 QP=25.00 NAL=2 Slice:P Poc:224 I:43   P:0    SKIP:6887 size=100 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 424831, size 100, pts 13533, dts 13367, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 360 QP=29.00 NAL=2 Slice:B Poc:220 I:41   P:0    SKIP:6889 size=112 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 424937, size 112, pts 13467, dts 13400, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 361 QP=31.00 NAL=0 Slice:B Poc:218 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 425055, size 110, pts 13433, dts 13433, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 362 QP=31.00 NAL=0 Slice:B Poc:222 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 425171, size 110, pts 13500, dts 13467, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 363 QP=27.20 NAL=2 Slice:P Poc:232 I:41   P:11   SKIP:6878 size=347 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 425287, size 347, pts 13667, dts 13500, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 364 QP=29.00 NAL=2 Slice:B Poc:228 I:41   P:10   SKIP:6879 size=120 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 425641, size 120, pts 13600, dts 13533, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 365 QP=31.00 NAL=0 Slice:B Poc:226 I:39   P:9    SKIP:6882 size=118 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 425767, size 118, pts 13567, dts 13567, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 366 QP=31.00 NAL=0 Slice:B Poc:230 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 425891, size 110, pts 13633, dts 13600, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 367 QP=31.00 NAL=2 Slice:P Poc:238 I:39   P:0    SKIP:6891 size=95 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 426007, size 95, pts 13767, dts 13633, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 368 QP=31.00 NAL=2 Slice:B Poc:236 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 426108, size 110, pts 13733, dts 13667, duration 33, flags 0
+[libx264 @ 0xdf8400] frame= 369 QP=31.00 NAL=0 Slice:B Poc:234 I:39   P:0    SKIP:6891 size=110 bytes
+[matroska @ 0xdf7aa0] Writing block at offset 426224, size 110, pts 13700, dts 13700, duration 33, flags 0
+end duration = 13800
+frame=  370 fps= 30 q=32766.0 Lsize=     416kB time=00:00:13.73 bitrate= 248.4kbits/s dup=0 drop=14    
+video:414kB audio:0kB subtitle:0 global headers:0kB muxing overhead 0.683372%
+[libx264 @ 0xdf8400] frame I:2     Avg QP:17.99  size:148762
+[libx264 @ 0xdf8400] frame P:93    Avg QP:25.34  size:   865
+[libx264 @ 0xdf8400] frame B:275   Avg QP:30.35  size:   163
+[libx264 @ 0xdf8400] consecutive B-frames:  0.5%  0.5%  1.6% 97.3%
+[libx264 @ 0xdf8400] mb I  I16..4: 71.2%  1.7% 27.1%
+[libx264 @ 0xdf8400] mb P  I16..4:  0.4%  0.0%  0.0%  P16..4:  0.2%  0.0%  0.0%  0.0%  0.0%    skip:99.3%
+[libx264 @ 0xdf8400] mb B  I16..4:  0.2%  0.0%  0.0%  B16..8:  0.1%  0.0%  0.0%  direct: 0.0%  skip:99.7%  L0:40.4% L1:56.3% BI: 3.3%
+[libx264 @ 0xdf8400] 8x8 transform intra:1.1% inter:4.6%
+[libx264 @ 0xdf8400] coded y,u,v intra: 15.7% 2.9% 2.7% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0xdf8400] i16 v,h,dc,p: 48% 51%  0%  0%
+[libx264 @ 0xdf8400] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 11% 63% 18%  1%  1%  0%  1%  0%  5%
+[libx264 @ 0xdf8400] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 34% 28% 17%  3%  4%  3%  5%  3%  4%
+[libx264 @ 0xdf8400] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0xdf8400] kb/s:245.09
