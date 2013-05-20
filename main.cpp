@@ -34,7 +34,7 @@ int main(int argc, char** argv)
     }
     
 /**
- * qt_ muß um z.b "de" erweitert werden und nicht um "de_DE" dann sollte es funktionieren
+ * qt_ muß um z.b mit "de" erweitert werden und nicht um "de_DE" dann sollte es funktionieren
  */    
 /*    
     // Dies sollte für die fertigen qt-Dialoge sein, funktioniert aber nicht.

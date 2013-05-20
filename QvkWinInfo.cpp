@@ -1,5 +1,5 @@
 #include "QvkWinInfo.h" 
-
+#include <QDebug>
 using namespace std;
 
 QvkWinInfo::QvkWinInfo()

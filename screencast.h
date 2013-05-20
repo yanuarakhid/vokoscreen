@@ -158,6 +158,7 @@ private slots:
     void setRecordHeight( QString value );
     QString getRecordHeight();
 
+    
 private:
     QPushButton *StopButton;
     QPushButton *recordButton;
@@ -228,7 +229,8 @@ private:
     
     QString screenRecordWidth;
     QString screenRecordHeight;
-    
+    int leftFrameBorder;
+    int topFrameBorder;
     
     QDateTime beginTime;
     

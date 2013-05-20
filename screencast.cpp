@@ -653,7 +653,6 @@ screencast::screencast()
    AreaOnOff();
  
    
-   
 }
 
 
@@ -1517,8 +1516,8 @@ QString screencast::getFfmpegVersion()
 
 void screencast::windowMove()
 {
-  QString x = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).x() );
-  QString y = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).y() );
+  QString x = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).x() + leftFrameBorder );
+  QString y = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).y() + topFrameBorder );
   
   if ( ( deltaXMove != x ) or ( deltaYMove != y ) )
     if ( SystemCall->state() == QProcess::Running ) 
@@ -2128,20 +2127,43 @@ void screencast::record()
     QDesktopWidget *desk = QApplication::desktop();
     setRecordWidth( tr( "%1" ).arg( desk->screenGeometry().width() ) );
     setRecordHeight( tr( "%1" ).arg( desk->screenGeometry().height() ) );
-    
   }
 
   QString deltaX = "0";
   QString deltaY = "0";
+  
   if ( WindowRadioButton->isChecked() )
     if ( firststartWininfo == false )
     {
-      setRecordWidth( vkWinInfo->width() );
-      setRecordHeight( vkWinInfo->height() );
+      int rightFrameBorder = 0;
+      int bottomFrameBorder = 0;
       
-      deltaX  = vkWinInfo->x();
-      deltaY  = vkWinInfo->y();
-      winID   = vkWinInfo->WinID();
+      // Begin ermitteln der Fensterrahmen
+      qDebug() << "with Frame :" << frameGeometry().width() << "x" << frameGeometry().height();
+      qDebug() << "without Frame:" << geometry().width() << "x" << geometry().height();
+      
+      
+      leftFrameBorder = geometry().x() - x();
+      qDebug() << "left frame:" << leftFrameBorder;
+      
+      rightFrameBorder = frameGeometry().width() - geometry().width() - leftFrameBorder;
+      qDebug() << "right frame:" << rightFrameBorder;
+      
+      topFrameBorder = geometry().y() - y();
+      qDebug() << "top frame:" << topFrameBorder;
+      
+      bottomFrameBorder = frameGeometry().height() - geometry().height() - topFrameBorder;
+      qDebug() << "bottom frame:" << bottomFrameBorder;
+      // End  ermitteln der Fensterrahmen
+      
+      setRecordWidth( QString::number( vkWinInfo->width().toUInt() - leftFrameBorder - rightFrameBorder) );
+      setRecordHeight( QString::number( vkWinInfo->height().toUInt() - topFrameBorder - bottomFrameBorder ) );
+      
+      deltaX  = QString::number( vkWinInfo->x().toUInt() + leftFrameBorder );
+      qDebug() << "deltaX:" << deltaX;
+      
+      deltaY  = QString::number( vkWinInfo->y().toUInt() + topFrameBorder );
+      qDebug() << "deltaY:" << deltaY;
 
       moveWindowID = vkWinInfo->getWinID();
       
