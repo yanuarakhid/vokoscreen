@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.6.2";  
+    Version = "1.6.3";  
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -1518,7 +1518,6 @@ void screencast::windowMove()
 {
   QString x = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).x() + leftFrameBorder );
   QString y = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).y() + topFrameBorder );
-  
   if ( ( deltaXMove != x ) or ( deltaYMove != y ) )
     if ( SystemCall->state() == QProcess::Running ) 
       moveWindowPause();
@@ -2142,7 +2141,6 @@ void screencast::record()
       qDebug() << "with Frame :" << frameGeometry().width() << "x" << frameGeometry().height();
       qDebug() << "without Frame:" << geometry().width() << "x" << geometry().height();
       
-      
       leftFrameBorder = geometry().x() - x();
       qDebug() << "left frame:" << leftFrameBorder;
       
@@ -2159,14 +2157,18 @@ void screencast::record()
       setRecordWidth( QString::number( vkWinInfo->width().toUInt() - leftFrameBorder - rightFrameBorder) );
       setRecordHeight( QString::number( vkWinInfo->height().toUInt() - topFrameBorder - bottomFrameBorder ) );
       
-      deltaX  = QString::number( vkWinInfo->x().toUInt() + leftFrameBorder );
+      QDesktopWidget *desk = QApplication::desktop();
+      if ( getRecordWidth().toUInt() >= QString::number( desk->screenGeometry().width() ).toUInt() )
+        deltaX = "0";
+      else
+        deltaX  = QString::number( vkWinInfo->x().toUInt() + leftFrameBorder );
       qDebug() << "deltaX:" << deltaX;
       
-      deltaY  = QString::number( vkWinInfo->y().toUInt() + topFrameBorder );
+      deltaY  = QString::number( QxtWindowSystem::windowGeometry( vkWinInfo->getWinID() ).y() + topFrameBorder );
       qDebug() << "deltaY:" << deltaY;
 
       moveWindowID = vkWinInfo->getWinID();
-      
+	
       deltaXMove = deltaX;
       deltaYMove = deltaY;
 
