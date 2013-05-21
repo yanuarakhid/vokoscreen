@@ -340,7 +340,6 @@ screencast::screencast()
       recordButton->setEnabled( true );
     else
       recordButton->setEnabled( false );
-    //connect( recordButton, SIGNAL( clicked() ), SLOT( clickedRecordButtonScreenSize() ) );
 
     StopButton = new QPushButton( centralWidget );
     StopButton->setText( "Stop" );
@@ -363,7 +362,10 @@ screencast::screencast()
     PauseButton->setGeometry( 310, 200, 70, 30 );
     PauseButton->setCheckable( true );
     PauseButton->setEnabled( false );
-    PauseButton->show();
+    if ( needProgram( "mkvmerge" ) )
+      PauseButton->show();
+    else
+      PauseButton->hide();
 
     PlayButton = new QPushButton( centralWidget );
     PlayButton->setText( "Play" );
