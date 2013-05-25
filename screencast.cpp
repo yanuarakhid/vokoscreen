@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.6.3";  
+    Version = "1.6.4";  
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -546,14 +546,16 @@ screencast::screencast()
       HideMouseCheckbox->setCheckState( Qt::CheckState( settings.value( "HideMouse").toUInt() ) );
     settings.endGroup();
 
+    settings.beginGroup( "GUI" );
+      setGeometry( settings.value( "X", "100" ).toUInt(), settings.value( "Y", "100" ).toUInt(), width(), height() );
+    settings.endGroup();
+    
     // Statusbar
     stateChangedAudio( AudioOnOffCheckbox->checkState() );
     if ( FramesAutoOnOffCheckBox->checkState() == Qt::Checked )
       statusBarLabelFpsSettings->setText( "Auto" );
     else
       statusBarLabelFpsSettings->setText( QString::number( FrameSpinBox->value() ) );
-    
-    
     
     SystemCall = new QProcess( this );
     
@@ -919,6 +921,11 @@ void screencast::saveSettings()
     settings.setValue( "Videocodec", VideocodecComboBox->currentText() );
     settings.setValue( "Format", VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", HideMouseCheckbox->checkState() );    
+  settings.endGroup();
+  
+  settings.beginGroup( "GUI" );
+    settings.setValue( "X", x() );
+    settings.setValue( "Y", y() );
   settings.endGroup();
   
   webcamCheckBox->saveSettings();

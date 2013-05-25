@@ -49,14 +49,10 @@ int main(int argc, char** argv)
     qDebug();
     qDebug() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
     
-    QDesktopWidget *desk = QApplication::desktop();
     int vokoscreenWidth = 580;
-    int vokoscreenHeight = 210 + 30 + 20 ;
-    int x = ( desk->screenGeometry().width() / 2 ) - ( vokoscreenWidth / 2 );
-    int y = ( desk->screenGeometry().height() / 2 ) -( vokoscreenHeight / 2 );
+    int vokoscreenHeight = 260;
     
     screencast foo;
-      foo.setGeometry( x, y, vokoscreenWidth, vokoscreenWidth );
       foo.setFixedSize( vokoscreenWidth, vokoscreenHeight );
       app.setActivationWindow( &foo );
     foo.show();
