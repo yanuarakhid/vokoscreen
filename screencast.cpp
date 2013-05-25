@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.6.4";  
+    Version = "1.6.5";  
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -62,7 +62,7 @@ screencast::screencast()
     centralWidget->setObjectName( QString::fromUtf8( "centralWidget" ) );
     this->setCentralWidget( centralWidget );
 
-    QTabWidget *tabWidget = new QTabWidget( centralWidget );
+    tabWidget = new QTabWidget( centralWidget );
     tabWidget->setGeometry( 120, 0, 450, 190 );
     tabWidget->setIconSize( QSize( 40, 40 ) );
 
@@ -548,6 +548,7 @@ screencast::screencast()
 
     settings.beginGroup( "GUI" );
       setGeometry( settings.value( "X", "100" ).toUInt(), settings.value( "Y", "100" ).toUInt(), width(), height() );
+      tabWidget->setCurrentIndex ( settings.value( "Tab", "0" ).toUInt() );
     settings.endGroup();
     
     // Statusbar
@@ -926,6 +927,7 @@ void screencast::saveSettings()
   settings.beginGroup( "GUI" );
     settings.setValue( "X", x() );
     settings.setValue( "Y", y() );
+    settings.setValue( "Tab", tabWidget->currentIndex() );
   settings.endGroup();
   
   webcamCheckBox->saveSettings();

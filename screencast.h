@@ -160,6 +160,8 @@ private slots:
 
     
 private:
+    QTabWidget *tabWidget;
+  
     QPushButton *StopButton;
     QPushButton *recordButton;
     QProcess *SystemCall;
