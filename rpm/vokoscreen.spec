@@ -26,6 +26,7 @@ videos, live recordings of browser, installation, videoconferences, etc.
 %setup
 
 %build
+qmake
 make
 
 %install
