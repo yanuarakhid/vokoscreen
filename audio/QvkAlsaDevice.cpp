@@ -32,7 +32,7 @@ QString QvkAlsaDevice::getAlsaVersion()
   return version;
 }
 
-// Wird nicht Aufgerufen 
+/*
 void QvkAlsaDevice::setAlsaSample()
 {
   AlsaSample = "48000";
@@ -73,6 +73,23 @@ void QvkAlsaDevice::setAlsaSample()
     
     AlsaSample = QString::number( integerList[ sampleList.count() - 1 ] );
   }
+}
+*/
+
+
+void QvkAlsaDevice::setAlsaSample()
+{
+  std::string stdString( getAlsaHw().toStdString() );
+  const char *device_name = stdString.c_str();
+  
+  // Ungefähre Samplerrate setzen
+  unsigned int samplerate = 40000;
+  
+  // Samplerrate ermitteln
+  alsa_device_sample( device_name, samplerate );
+  
+  // Samplerrate holen 
+  AlsaSample = QString::number( rcSampleRate );
 }
 
 

@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.6.5";  
+    Version = "1.6.6";  
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -152,17 +152,23 @@ screencast::screencast()
     qfont = TabWidgetVideoOptionFrame->font();
     qfont.setPixelSize( 12 );
     TabWidgetVideoOptionFrame->setFont( qfont );
-
+/*
     FramesAutoOnOffCheckBox = new QCheckBox( TabWidgetVideoOptionFrame );
     FramesAutoOnOffCheckBox->setGeometry( 20, 10, 120, 25 );
     FramesAutoOnOffCheckBox->setText( "Auto-Frame" );
     FramesAutoOnOffCheckBox->show();
     connect( FramesAutoOnOffCheckBox,  SIGNAL( stateChanged ( int ) ), SLOT( stateChangedAutoFrames ( int ) ) );
+*/
+
+    QLabel *VideoOptionLabel = new QLabel( TabWidgetVideoOptionFrame );
+    VideoOptionLabel->setGeometry( 20, 10, 80, 25 );
+    VideoOptionLabel->setText( tr( "Frames:" ) );
+    VideoOptionLabel->show();
 
     FrameSpinBox = new QSpinBox( TabWidgetVideoOptionFrame );
-    FrameSpinBox->setGeometry( QRect( 120, 10, 50, 25 ) );
+    FrameSpinBox->setGeometry( QRect( 80, 10, 50, 25 ) );
     FrameSpinBox->setMinimum( 1 );
-    FrameSpinBox->setMaximum( 30 );
+    FrameSpinBox->setMaximum( 99 );
     FrameSpinBox->setSingleStep( 1 );
     FrameSpinBox->setValue( 25 );
     FrameSpinBox->show();
@@ -538,8 +544,8 @@ screencast::screencast()
     settings.endGroup();
     
     settings.beginGroup( "Videooptions" );
-      FramesAutoOnOffCheckBox->setCheckState( Qt::CheckState( settings.value( "Auto-Frame", 2 ).toUInt() ) );
-      setFramesAutoOnOffCheckBox();
+      //FramesAutoOnOffCheckBox->setCheckState( Qt::CheckState( settings.value( "Auto-Frame", 2 ).toUInt() ) );
+      //setFramesAutoOnOffCheckBox();
       FrameSpinBox->setValue( settings.value( "Frames", 25 ).toInt() );
       VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( settings.value( "Videocodec", "mpeg4" ).toString() ) );
       VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( settings.value( "Format", "mkv" ).toString() ) );
@@ -553,9 +559,9 @@ screencast::screencast()
     
     // Statusbar
     stateChangedAudio( AudioOnOffCheckbox->checkState() );
-    if ( FramesAutoOnOffCheckBox->checkState() == Qt::Checked )
-      statusBarLabelFpsSettings->setText( "Auto" );
-    else
+    //if ( FramesAutoOnOffCheckBox->checkState() == Qt::Checked )
+      //statusBarLabelFpsSettings->setText( "Auto" );
+    //else
       statusBarLabelFpsSettings->setText( QString::number( FrameSpinBox->value() ) );
     
     SystemCall = new QProcess( this );
@@ -571,7 +577,7 @@ screencast::screencast()
     
     connect( SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
 
-    connect( FramesAutoOnOffCheckBox,  SIGNAL( clicked() ), SLOT( setFramesAutoOnOffCheckBox() ) );
+    //connect( FramesAutoOnOffCheckBox,  SIGNAL( clicked() ), SLOT( setFramesAutoOnOffCheckBox() ) );
     connect( FrameStandardButton,      SIGNAL( clicked() ), SLOT( setFrameStandardSpinbox() ) );
     connect( VideocodecStandardButton, SIGNAL( clicked() ), SLOT( setVideocodecStandardComboBox() ) );
 
@@ -715,6 +721,7 @@ void screencast::valueChangedFrames( int i )
 /**
  * Statusbar
  */
+/*
 void screencast::stateChangedAutoFrames( int state )
 {
    (void)state;
@@ -723,7 +730,7 @@ void screencast::stateChangedAutoFrames( int state )
    else
      statusBarLabelFpsSettings->setText( QString::number( FrameSpinBox->value() ) );
 }
-
+*/
 
 /**
  * Statusbar
@@ -918,7 +925,7 @@ void screencast::saveSettings()
 
   settings.beginGroup( "Videooptions" );
     settings.setValue( "Frames", FrameSpinBox->value() );
-    settings.setValue( "Auto-Frame", FramesAutoOnOffCheckBox->checkState() );
+    //settings.setValue( "Auto-Frame", FramesAutoOnOffCheckBox->checkState() );
     settings.setValue( "Videocodec", VideocodecComboBox->currentText() );
     settings.setValue( "Format", VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", HideMouseCheckbox->checkState() );    
@@ -1048,12 +1055,12 @@ void screencast::setVideocodecStandardComboBox()
  */
 void screencast::setFrameStandardSpinbox()
 {
-  FramesAutoOnOffCheckBox->setCheckState( Qt::Checked );
+  //FramesAutoOnOffCheckBox->setCheckState( Qt::Checked );
   FrameSpinBox->setEnabled( false );
   FrameSpinBox->setValue( 25 );
 }
 
-
+/*
 void screencast::setFramesAutoOnOffCheckBox()
 {
   if ( FramesAutoOnOffCheckBox->checkState() == Qt::Checked  )
@@ -1061,7 +1068,7 @@ void screencast::setFramesAutoOnOffCheckBox()
   else
     FrameSpinBox->setEnabled( true );
 }
-
+*/
 
 /**
  * Erstellt ~/.asoundrc wenn nicht im Userhome vorhanden
@@ -1682,6 +1689,7 @@ QString screencast::getPulseSample( int value )
 QString screencast::mySample()
 {
   QString ret = "48000";
+  
   if ( PulseDeviceRadioButton->isChecked() )
   {
     QList<QCheckBox *> listQFrame = Pulseframe->findChildren<QCheckBox *>();
@@ -1701,8 +1709,17 @@ QString screencast::mySample()
     if ( not list.empty() )
       ret = list.first();
    }
+   
+   if ( AlsaRadioButton->isChecked() )
+   {
+     // Aus der ComboBox das ausgewählte Device holen
+     QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
+     QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
+     ret = inBox->getAlsaSample();
+   }
     
-  return ret;
+   return ret;
+
 }
 
 
@@ -1789,15 +1806,15 @@ QString screencast::PathMoviesLocation()
      Path = SaveVideoPathLineEdit->displayText();
   else
   {
-    if ( QDesktopServices::storageLocation(QDesktopServices::MoviesLocation).isEmpty() )
+    if ( QDesktopServices::storageLocation( QDesktopServices::MoviesLocation).isEmpty() )
     {
-       Path = QDesktopServices::storageLocation(QDesktopServices:: QDesktopServices::HomeLocation);
+       Path = QDesktopServices::storageLocation( QDesktopServices:: QDesktopServices::HomeLocation );
        SaveVideoPathLineEdit->setText(Path);
     }
     else
     {
-      Path = QDesktopServices::storageLocation(QDesktopServices::MoviesLocation);
-      SaveVideoPathLineEdit->setText(Path);
+      Path = QDesktopServices::storageLocation( QDesktopServices::MoviesLocation );
+      SaveVideoPathLineEdit->setText( Path );
     }
   }
   return Path;
@@ -2234,11 +2251,13 @@ void screencast::record()
      dir.remove( PathTempLocation().append(QDir::separator() ).append(stringList.at( i ) ) );
 
   // frame rate
-  QString frame = QString().number( FrameSpinBox->value() );
-  if ( FramesAutoOnOffCheckBox->checkState() == Qt::Checked )
-    frame = "";
-  else
-    frame = "-r " + frame;
+  //QString frame = QString().number( FrameSpinBox->value() );
+  QString frame = "-r " + QString().number( FrameSpinBox->value() );
+  
+  //if ( FramesAutoOnOffCheckBox->checkState() == Qt::Checked )
+    //frame = "";
+  //else
+    //frame = "-r " + frame;
   
   // Videocodec
   QString myVcodec = VideocodecComboBox->currentText();
@@ -2273,6 +2292,7 @@ void screencast::record()
                + myReport
                + myAlsa()
 	       + "-f x11grab "
+               + frame
 	       + " -s "
 	       + getRecordWidth()
 	       + "x"

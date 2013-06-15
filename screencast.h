@@ -63,8 +63,6 @@ public:
     bool firststartWininfo;
     bool moveWindow;
     
-    
-    
 public slots:
   
 private slots:
@@ -104,7 +102,7 @@ private slots:
     // Tab Videooptionen
     void setFrameStandardSpinbox();
     void setVideocodecStandardComboBox();
-    void setFramesAutoOnOffCheckBox();
+    //void setFramesAutoOnOffCheckBox();
 
     QString PathMoviesLocation();
     QString PathTempLocation();
@@ -148,7 +146,7 @@ private slots:
     void stateChangedAudio( int state );
     void clickedAudioAlsa( bool checked );
     void clickedAudioPulse( bool checked );
-    void stateChangedAutoFrames( int state);;
+    //void stateChangedAutoFrames( int state);;
     void valueChangedFrames( int i );
     void clickedScreenSize();
     void clickedRecordButtonScreenSize();
@@ -187,7 +185,7 @@ private:
     QFrame *TabWidgetVideoOptionFrame;
     QFrame *TabWidgetSocialFrame;
     QSpinBox *FrameSpinBox;
-    QCheckBox *FramesAutoOnOffCheckBox;
+    //QCheckBox *FramesAutoOnOffCheckBox;
     QComboBox *VideocodecComboBox;
     QComboBox *VideoContainerComboBox;
     QCheckBox *HideMouseCheckbox;
