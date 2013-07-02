@@ -37,7 +37,6 @@ void QvkMagnifier::closeEvent( QCloseEvent * event )
 void QvkMagnifier::getDialogMagnifier( QWidget *parent )
 {
   QDialog *dialog = new QDialog( parent );
-  dialog->setFixedSize( 300, 200 );
 
   QFont qfont = dialog->font();
   qfont.setPixelSize( 12 );
@@ -75,6 +74,23 @@ void QvkMagnifier::getDialogMagnifier( QWidget *parent )
   connect( radioButton3, SIGNAL( clicked() ), SLOT( Magnifier600x200() ) );
   if ( formValue == 3 )
     radioButton3->setChecked( true );
+
+  QPropertyAnimation *animation = new QPropertyAnimation( dialog, "geometry");
+  animation->setDuration( 1000 );
+  animation->setStartValue( QRect( parent->x() + parent->width()/2,
+                                   parent->y() + parent->height()/2,
+                                   0,
+                                   0 ) );
+
+  animation->setEndValue( QRect( ( parent->x() ) + ( ( parent->width()/2 ) - ( 300/2 ) ), 
+                                 ( parent->y() ) + ( ( parent->height()/2) - ( 200/2 ) ),
+                                   300,
+                                   200 ) );
+
+  animation->setEasingCurve( QEasingCurve::OutBounce );
+  animation->start();  
+  
+  //dialog->setFixedSize( 300, 200 );
 
   dialog->exec();
 }

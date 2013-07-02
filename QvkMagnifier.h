@@ -10,6 +10,7 @@
 #include <QTimer>
 #include <QObject>
 #include <QRadioButton>
+#include <QPropertyAnimation>
 
 class QvkMagnifier: public QDialog
 { 

@@ -50,6 +50,8 @@ private slots:
   void setAlsaName();
   void setAlsaSample();
 
+  
+  //void alsa_device_sample( const char *device_name, unsigned int rate );
 
 signals:
 

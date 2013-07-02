@@ -32,50 +32,6 @@ QString QvkAlsaDevice::getAlsaVersion()
   return version;
 }
 
-/*
-void QvkAlsaDevice::setAlsaSample()
-{
-  AlsaSample = "48000";
-  QString cardNumber = getCard().remove( "card" );
-
-  QFile file( "/proc/asound/card" + cardNumber + "/stream0" );
-  if ( file.exists() )
-  {
-    file.open ( QIODevice::ReadOnly );
-
-    QTextStream textStream( &file );
-    QString line = textStream.readLine();
-    
-    QStringList stringlist;
-    stringlist.append( line + "\n");
-  
-    while ( !line.isNull() )
-    {
-      line = textStream.readLine();
-      stringlist.append( line + "\n" );
-    }
-
-    file.close();
-
-    QStringList sampleList = stringlist.filter( "Rates:", Qt::CaseInsensitive );
-    sampleList.replaceInStrings( "Rates:", "", Qt::CaseInsensitive );
-    sampleList.replaceInStrings( " ", "", Qt::CaseInsensitive );
-    sampleList.replaceInStrings( "\n", "", Qt::CaseInsensitive );
-
-    QList<int> integerList;
-    for ( int i = 0; i < sampleList.count(); i++ )
-    {
-      int value = sampleList[ i ].toInt();
-      integerList.append( value );
-    }
-    
-    qSort( integerList.begin(), integerList.end() );
-    
-    AlsaSample = QString::number( integerList[ sampleList.count() - 1 ] );
-  }
-}
-*/
-
 
 void QvkAlsaDevice::setAlsaSample()
 {
@@ -264,3 +220,4 @@ QString QvkAlsaDevice::getCard()
 {
   return cardx;  
 }
+

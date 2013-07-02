@@ -15,11 +15,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 #include "screencast.h"  
-#include <iostream>
+
 using namespace std;
 
 screencast::screencast()
 {
+  
+  
     bool beta = true;
     QString Beta;
     if ( beta )
@@ -28,7 +30,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.6.6";  
+    Version = "1.6.7";  
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -152,13 +154,6 @@ screencast::screencast()
     qfont = TabWidgetVideoOptionFrame->font();
     qfont.setPixelSize( 12 );
     TabWidgetVideoOptionFrame->setFont( qfont );
-/*
-    FramesAutoOnOffCheckBox = new QCheckBox( TabWidgetVideoOptionFrame );
-    FramesAutoOnOffCheckBox->setGeometry( 20, 10, 120, 25 );
-    FramesAutoOnOffCheckBox->setText( "Auto-Frame" );
-    FramesAutoOnOffCheckBox->show();
-    connect( FramesAutoOnOffCheckBox,  SIGNAL( stateChanged ( int ) ), SLOT( stateChangedAutoFrames ( int ) ) );
-*/
 
     QLabel *VideoOptionLabel = new QLabel( TabWidgetVideoOptionFrame );
     VideoOptionLabel->setGeometry( 20, 10, 80, 25 );
@@ -172,12 +167,13 @@ screencast::screencast()
     FrameSpinBox->setSingleStep( 1 );
     FrameSpinBox->setValue( 25 );
     FrameSpinBox->show();
-    connect( FrameSpinBox,  SIGNAL( valueChanged( int ) ), SLOT( valueChangedFrames( int ) ) );
+    connect( FrameSpinBox, SIGNAL( valueChanged( int ) ), SLOT( valueChangedFrames( int ) ) );
 
     QPushButton *FrameStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
     FrameStandardButton->setText( tr( "Standard" ) );
     FrameStandardButton->setGeometry( 360, 10, 70, 25 );
     FrameStandardButton->show();
+    connect( FrameStandardButton, SIGNAL( clicked() ), SLOT( setFrameStandardSpinbox() ) );
 
     QLabel *VideocodecOptionLabel = new QLabel( TabWidgetVideoOptionFrame );
     VideocodecOptionLabel->setGeometry( 20, 40, 50, 25 );
@@ -189,7 +185,7 @@ screencast::screencast()
     VideocodecComboBox->show();
     VideocodecComboBox->addItem( "mpeg4" );
     VideocodecComboBox->addItem( "libx264" );
-    connect( VideocodecComboBox,  SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
+    connect( VideocodecComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
     
     QLabel *VideoContainerLabel = new QLabel(TabWidgetVideoOptionFrame );
     VideoContainerLabel->setGeometry( 175, 40, 50, 25 );
@@ -201,12 +197,13 @@ screencast::screencast()
     VideoContainerComboBox->addItem( "avi" );
     VideoContainerComboBox->addItem( "mkv" );
     VideoContainerComboBox->show();
-    connect( VideoContainerComboBox,  SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedFormat( int ) ) );
+    connect( VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedFormat( int ) ) );
     
     QPushButton *VideocodecStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
     VideocodecStandardButton->setText( tr( "Standard" ) );
     VideocodecStandardButton->setGeometry( 360, 40, 70, 25 );
     VideocodecStandardButton->show();
+    connect( VideocodecStandardButton, SIGNAL( clicked() ), SLOT( setVideocodecStandardComboBox() ) );
     
     HideMouseCheckbox = new QCheckBox( TabWidgetVideoOptionFrame );
     HideMouseCheckbox->setGeometry( 20, 70, 300, 25 );
@@ -238,6 +235,7 @@ screencast::screencast()
     SaveVideoPathPushButton->setGeometry(350,30,20,25);
     SaveVideoPathPushButton->setText("...");
     SaveVideoPathPushButton->show();
+    connect( SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
     
     QLabel *VideoPlayerLabel = new QLabel(TabWidgetMiscellaneousFrame);
     VideoPlayerLabel->setGeometry(30,60,210,25);
@@ -346,6 +344,7 @@ screencast::screencast()
       recordButton->setEnabled( true );
     else
       recordButton->setEnabled( false );
+    connect( recordButton, SIGNAL( clicked() ), SLOT( preRecord() ) );
 
     StopButton = new QPushButton( centralWidget );
     StopButton->setText( "Stop" );
@@ -357,6 +356,7 @@ screencast::screencast()
     StopButton->setGeometry( 240, 200, 70, 30 );
     StopButton->setEnabled( false );
     StopButton->show();  
+    connect( StopButton, SIGNAL( clicked() ), SLOT( Stop() ) );
     
     PauseButton = new QPushButton( centralWidget );
     PauseButton->setText( "Pause" );
@@ -372,6 +372,7 @@ screencast::screencast()
       PauseButton->show();
     else
       PauseButton->hide();
+    connect( PauseButton, SIGNAL( clicked() ), SLOT( Pause() ) );
 
     PlayButton = new QPushButton( centralWidget );
     PlayButton->setText( "Play" );
@@ -381,6 +382,7 @@ screencast::screencast()
     PlayButton->setFont( qfont );
     PlayButton->setGeometry( 380, 200, 70, 30 );
     PlayButton->show();
+    connect( PlayButton, SIGNAL( clicked() ), SLOT( play() ) );
 
     sendPushButton = new QPushButton( centralWidget );
     sendPushButton->setGeometry( 450, 200, 70, 30 );
@@ -498,6 +500,9 @@ screencast::screencast()
          }
        }
      }
+     //todo
+     //Standard Videoplayer hinzufügen und in vokoscreen als Standard setzen
+     
      qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
      qDebug();
 
@@ -565,22 +570,11 @@ screencast::screencast()
       statusBarLabelFpsSettings->setText( QString::number( FrameSpinBox->value() ) );
     
     SystemCall = new QProcess( this );
+
+    connect( AudioOnOffCheckbox,     SIGNAL( clicked() ), SLOT( AudioOnOff() ) );
+    connect( AlsaRadioButton,        SIGNAL( clicked() ), SLOT( AudioOnOff() ) );
+    connect( PulseDeviceRadioButton, SIGNAL( clicked() ), SLOT( AudioOnOff() ) );
     
-    connect( recordButton, SIGNAL( clicked() ), SLOT( preRecord() ) );
-    connect( StopButton,   SIGNAL( clicked() ), SLOT( Stop() ) );
-    connect( PauseButton,  SIGNAL( clicked() ), SLOT( Pause() ) );
-    connect( PlayButton,   SIGNAL( clicked() ), SLOT( play() ) );
-
-    connect( AudioOnOffCheckbox,     SIGNAL( clicked() ),              SLOT( AudioOnOff() ) );
-    connect( AlsaRadioButton,        SIGNAL( clicked() ),              SLOT( AudioOnOff() ) );
-    connect( PulseDeviceRadioButton, SIGNAL( clicked() ),              SLOT( AudioOnOff() ) );
-    
-    connect( SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
-
-    //connect( FramesAutoOnOffCheckBox,  SIGNAL( clicked() ), SLOT( setFramesAutoOnOffCheckBox() ) );
-    connect( FrameStandardButton,      SIGNAL( clicked() ), SLOT( setFrameStandardSpinbox() ) );
-    connect( VideocodecStandardButton, SIGNAL( clicked() ), SLOT( setVideocodecStandardComboBox() ) );
-
     connect( SystemCall, SIGNAL( stateChanged ( QProcess::ProcessState) ),this, SLOT( stateChanged( QProcess::ProcessState) ) );
     connect( SystemCall, SIGNAL( error( QProcess::ProcessError) ),        this, SLOT( error( QProcess::ProcessError) ) );
     connect( SystemCall, SIGNAL( readyReadStandardError() ),              this, SLOT( readyReadStandardError() ) );
@@ -662,7 +656,9 @@ screencast::screencast()
    
    clickedScreenSize();
    AreaOnOff();
- 
+   
+   
+   
    
 }
 
@@ -1055,20 +1051,9 @@ void screencast::setVideocodecStandardComboBox()
  */
 void screencast::setFrameStandardSpinbox()
 {
-  //FramesAutoOnOffCheckBox->setCheckState( Qt::Checked );
-  FrameSpinBox->setEnabled( false );
   FrameSpinBox->setValue( 25 );
 }
 
-/*
-void screencast::setFramesAutoOnOffCheckBox()
-{
-  if ( FramesAutoOnOffCheckBox->checkState() == Qt::Checked  )
-    FrameSpinBox->setEnabled( false );
-  else
-    FrameSpinBox->setEnabled( true );
-}
-*/
 
 /**
  * Erstellt ~/.asoundrc wenn nicht im Userhome vorhanden
@@ -1680,11 +1665,11 @@ QString screencast::getPulseSample( int value )
 /**
  * Englisch:
  * Return Samplerate from checked Device
- * The lowest rate sampler for the selected device is used
+ * Pulse: The lowest rate sampler for the selected device is used
  * 
  * German:
  * Gibt Samplerrate von ausgewählten Geräten zurück.
- * Wenn mehrere Geräte ausgewählt wurden wird die niedrigste Samplerrate herangezogen
+ * Pulse: Wenn mehrere Geräte ausgewählt wurden wird die niedrigste Samplerrate herangezogen
  */
 QString screencast::mySample()
 {
@@ -2166,20 +2151,20 @@ void screencast::record()
       int bottomFrameBorder = 0;
       
       // Begin ermitteln der Fensterrahmen
-      qDebug() << "with Frame :" << frameGeometry().width() << "x" << frameGeometry().height();
-      qDebug() << "without Frame:" << geometry().width() << "x" << geometry().height();
+      //qDebug() << "with Frame :" << frameGeometry().width() << "x" << frameGeometry().height();
+      //qDebug() << "without Frame:" << geometry().width() << "x" << geometry().height();
       
       leftFrameBorder = geometry().x() - x();
-      qDebug() << "left frame:" << leftFrameBorder;
+      //qDebug() << "left frame:" << leftFrameBorder;
       
       rightFrameBorder = frameGeometry().width() - geometry().width() - leftFrameBorder;
-      qDebug() << "right frame:" << rightFrameBorder;
+      //qDebug() << "right frame:" << rightFrameBorder;
       
       topFrameBorder = geometry().y() - y();
-      qDebug() << "top frame:" << topFrameBorder;
+      //qDebug() << "top frame:" << topFrameBorder;
       
       bottomFrameBorder = frameGeometry().height() - geometry().height() - topFrameBorder;
-      qDebug() << "bottom frame:" << bottomFrameBorder;
+      //qDebug() << "bottom frame:" << bottomFrameBorder;
       // End  ermitteln der Fensterrahmen
       
       setRecordWidth( QString::number( vkWinInfo->width().toUInt() - leftFrameBorder - rightFrameBorder) );
@@ -2190,10 +2175,10 @@ void screencast::record()
         deltaX = "0";
       else
         deltaX  = QString::number( vkWinInfo->x().toUInt() + leftFrameBorder );
-      qDebug() << "deltaX:" << deltaX;
+      //qDebug() << "deltaX:" << deltaX;
       
       deltaY  = QString::number( QxtWindowSystem::windowGeometry( vkWinInfo->getWinID() ).y() + topFrameBorder );
-      qDebug() << "deltaY:" << deltaY;
+      //qDebug() << "deltaY:" << deltaY;
 
       moveWindowID = vkWinInfo->getWinID();
 	
