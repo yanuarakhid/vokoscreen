@@ -9,7 +9,7 @@
         <translation>Kompresja:</translation>
     </message>
     <message>
-        <source>Mouse cursor not recording</source>
+        <source>Do not record mouse cursor</source>
         <translation>Nie nagrywaj kursora myszy</translation>
     </message>
     <message>

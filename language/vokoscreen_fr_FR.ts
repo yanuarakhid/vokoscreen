@@ -8,7 +8,7 @@
         <translation>compresser:</translation>
     </message>
     <message>
-        <source>Mouse cursor not recording</source>
+        <source>Do not record mouse cursor</source>
         <translation>courseur record ne pas </translation>
     </message>
     <message>

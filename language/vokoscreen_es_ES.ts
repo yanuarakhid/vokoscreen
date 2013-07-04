@@ -8,7 +8,7 @@
         <translation>comprimir:</translation>
     </message>
     <message>
-        <source>Mouse cursor not recording</source>
+        <source>Do not record mouse cursor</source>
         <translation>El cursor no tomar</translation>
     </message>
     <message>
@@ -63,7 +63,7 @@
         <translation>codec</translation>
     </message>
     <message>
-        <source>standard</source>
+        <source>Default</source>
         <translation>estándar</translation>
     </message>
     <message>

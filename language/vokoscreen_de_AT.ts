@@ -8,7 +8,7 @@
         <translation>Komprimieren:</translation>
     </message>
     <message>
-        <source>Mouse cursor not recording</source>
+        <source>Do not record mouse cursor</source>
         <translation>Mauszeiger nicht aufnehmen</translation>
     </message>
     <message>

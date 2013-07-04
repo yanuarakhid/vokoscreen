@@ -8,7 +8,7 @@
         <translation>komprimera:</translation>
     </message>
     <message>
-        <source>Mouse cursor not recording</source>
+        <source>Do not record mouse cursor</source>
         <translation>spela in utan</translation>
     </message>
     <message>
@@ -64,7 +64,7 @@
         <translation>kodec</translation>
     </message>
     <message>
-        <source>standard</source>
+        <source>Default</source>
         <translation>standard</translation>
     </message>
 </context>
