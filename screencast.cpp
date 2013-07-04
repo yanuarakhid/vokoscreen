@@ -1580,7 +1580,7 @@ QString screencast::getPulseInputName( int value )
   Process->setProcessEnvironment(env);
   Process->start( "pactl list" );
   Process->waitForFinished();
-  QString output = Process->readAllStandardOutput();
+  QString output = QString::fromUtf8(Process->readAllStandardOutput());
   Process->close();
   delete Process;
   
