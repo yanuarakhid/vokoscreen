@@ -5,7 +5,7 @@ QvkWebcamController::QvkWebcamController( QWidget * value )
   //qDebug() << "Begin QvkWebcamController::QvkWebcamController( QWidget * value ) ***************************";
   
   checkBox = new QCheckBox( value );
-  checkBox->setText( "Webcam" );
+  checkBox->setText( tr( "Webcam" ) );
   checkBox->show();
   connect( checkBox, SIGNAL( clicked() ), SLOT( webcam() ) );
 
