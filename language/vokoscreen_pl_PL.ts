@@ -5,51 +5,52 @@
     <name>screencast</name>
     <message>
         <source>Compress:</source>
-        <translation>kompresować:</translation>
+        <translatorcomment>Not sure about context</translatorcomment>
+        <translation>Kompresja:</translation>
     </message>
     <message>
         <source>Mouse cursor not recording</source>
-        <translation>kursor myszy nie nagrywania</translation>
+        <translation>Nie nagrywaj kursora myszy</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videopfad</translation>
+        <translation>Ścieżka wideo</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>fullscreen</translation>
+        <translation>Pełny ekran</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>okna</translation>
+        <translation>Okno</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>obszar</translation>
+        <translation>Obszar</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Uruchom</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Zatrzymaj</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Odtwórz</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>otwarty katalog</translation>
+        <translation>Wybierz katalog</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>powiększenie</translation>
+        <translation>Powiększenie</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>zminimalizowane nagrywania whwn zaczyna</translation>
+        <translation>Zminimalizuj vokoscreen podczas nagrywania</translation>
     </message>
 </context>
 </TS>
