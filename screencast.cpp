@@ -170,14 +170,14 @@ screencast::screencast()
     connect( FrameSpinBox, SIGNAL( valueChanged( int ) ), SLOT( valueChangedFrames( int ) ) );
 
     QPushButton *FrameStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
-    FrameStandardButton->setText( tr( "Standard" ) );
+    FrameStandardButton->setText( tr( "Default" ) );
     FrameStandardButton->setGeometry( 360, 10, 70, 25 );
     FrameStandardButton->show();
     connect( FrameStandardButton, SIGNAL( clicked() ), SLOT( setFrameStandardSpinbox() ) );
 
     QLabel *VideocodecOptionLabel = new QLabel( TabWidgetVideoOptionFrame );
     VideocodecOptionLabel->setGeometry( 20, 40, 50, 25 );
-    VideocodecOptionLabel->setText( tr( "Codec:" ) );
+    VideocodecOptionLabel->setText( tr( "Codec" ) + ":");
     VideocodecOptionLabel->show();
 
     VideocodecComboBox = new QComboBox( TabWidgetVideoOptionFrame );
@@ -200,14 +200,14 @@ screencast::screencast()
     connect( VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedFormat( int ) ) );
     
     QPushButton *VideocodecStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
-    VideocodecStandardButton->setText( tr( "Standard" ) );
+    VideocodecStandardButton->setText( tr( "Default" ) );
     VideocodecStandardButton->setGeometry( 360, 40, 70, 25 );
     VideocodecStandardButton->show();
     connect( VideocodecStandardButton, SIGNAL( clicked() ), SLOT( setVideocodecStandardComboBox() ) );
     
     HideMouseCheckbox = new QCheckBox( TabWidgetVideoOptionFrame );
     HideMouseCheckbox->setGeometry( 20, 70, 300, 25 );
-    HideMouseCheckbox->setText( tr( "Mouse cursor not recording" ) );
+    HideMouseCheckbox->setText( tr( "Do not record mouse cursor" ) );
     HideMouseCheckbox->show();
 
     // Tab 4 Miscellaneous options **************************************************
@@ -332,7 +332,7 @@ screencast::screencast()
     // End Tabs *************************************************************
 
     recordButton = new QPushButton( centralWidget );
-    recordButton->setText( "Start" );
+    recordButton->setText( tr( "Start" ) );
     recordButton->setToolTip( "CTRL+SHIFT+F10" );
     qfont = recordButton->font();
     qfont.setPixelSize( 14 );
@@ -347,7 +347,7 @@ screencast::screencast()
     connect( recordButton, SIGNAL( clicked() ), SLOT( preRecord() ) );
 
     StopButton = new QPushButton( centralWidget );
-    StopButton->setText( "Stop" );
+    StopButton->setText( tr( "Stop" ) );
     StopButton->setToolTip( "CTRL+SHIFT+F11" );
     qfont = StopButton->font();
     qfont.setPixelSize( 14 );
@@ -359,7 +359,7 @@ screencast::screencast()
     connect( StopButton, SIGNAL( clicked() ), SLOT( Stop() ) );
     
     PauseButton = new QPushButton( centralWidget );
-    PauseButton->setText( "Pause" );
+    PauseButton->setText( tr( "Pause" ) );
     PauseButton->setToolTip( "CTRL+SHIFT+F12" );
     qfont = PauseButton->font();
     qfont.setPixelSize( 14 );
@@ -375,7 +375,7 @@ screencast::screencast()
     connect( PauseButton, SIGNAL( clicked() ), SLOT( Pause() ) );
 
     PlayButton = new QPushButton( centralWidget );
-    PlayButton->setText( "Play" );
+    PlayButton->setText( tr( "Play" ) );
     qfont = PlayButton->font();
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
@@ -390,7 +390,7 @@ screencast::screencast()
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
     sendPushButton->setFont( qfont );
-    sendPushButton->setText( "Send" );
+    sendPushButton->setText( tr( "Send" ) );
     connect( sendPushButton, SIGNAL( clicked() ), SLOT( send() ) );
     if ( needProgram( "xdg-email" ) )
       sendPushButton->setEnabled( true );
@@ -422,6 +422,10 @@ screencast::screencast()
     statusBarLabelSize->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusBarLabelSize->setToolTip( tr( "Size in KB" ) );
     
+    statusbarLabelScreenSize = new QLabel();
+    statusbarLabelScreenSize->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
+    statusbarLabelScreenSize->setToolTip( tr( "Recording screensize" ) );
+
     statusBarLabelCodec = new QLabel();
     statusBarLabelCodec->setText( VideocodecComboBox->currentText() );
     statusBarLabelCodec->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
@@ -434,15 +438,11 @@ screencast::screencast()
 
     statusBarLabelAudio = new QLabel();
     statusBarLabelAudio->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
-    statusBarLabelAudio->setToolTip( "Audio" );
+    statusBarLabelAudio->setToolTip( tr( "Audio" ) );
     
     statusBarLabelFpsSettings = new QLabel();
     statusBarLabelFpsSettings->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusBarLabelFpsSettings->setToolTip( "Settings fps" );
-    
-    statusbarLabelScreenSize = new QLabel();
-    statusbarLabelScreenSize->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
-    statusbarLabelScreenSize->setToolTip( "Recording screensize" );
 
     QStatusBar *statusBar = new QStatusBar( this );
     setStatusBar( statusBar );
@@ -470,18 +470,19 @@ screencast::screencast()
     
     qDebug() << "[vokoscreen]" << "---Begin search Videoplayer---";
     QStringList playerList = QStringList()  << "kaffeine"
-                                            << "vlc" 
-					    << "gnome-mplayer" 
-					    << "ffplay" 
-					    << "totem" 
-					    << "pia"
-					    << "xine"
-					    << "gxine"
-					    << "gmplayer"
-					    << "kplayer"
-					    << "smplayer"
-					    << "dragon"
-					    << "banshee";
+                                            << "vlc"
+                                            << "gnome-mplayer"
+                                            << "ffplay"
+                                            << "totem"
+                                            << "pia"
+                                            << "xine"
+                                            << "gxine"
+                                            << "gmplayer"
+                                            << "kplayer"
+                                            << "smplayer"
+                                            << "smplayer2"
+                                            << "dragon"
+                                            << "banshee";
     playerList.sort();
     QString playerName;
     QString resultString( qgetenv( "PATH" ) );
@@ -1580,7 +1581,7 @@ QString screencast::getPulseInputName( int value )
   Process->setProcessEnvironment(env);
   Process->start( "pactl list" );
   Process->waitForFinished();
-  QString output = Process->readAllStandardOutput();
+  QString output = QString::fromUtf8(Process->readAllStandardOutput());
   Process->close();
   delete Process;
   

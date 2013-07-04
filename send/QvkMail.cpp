@@ -35,11 +35,11 @@ QvkMail::QvkMail( QWidget *object )
   
   mailSelectedRadioButton = new QRadioButton( dialog );
   mailSelectedRadioButton->setGeometry( QRect( 200, 90, 300, 21 ) );
-  mailSelectedRadioButton->setText( tr( "Mail on or more selected Video" ) );
+  mailSelectedRadioButton->setText( tr( "Mail one or more selected Video" ) );
   
   QPushButton * sendPushbutton = new QPushButton( dialog );
   sendPushbutton->setGeometry( 200, 170, 80, 30 );
-  sendPushbutton->setText( "Send" );
+  sendPushbutton->setText( tr( "Send" ) );
   sendPushbutton->show();
   connect( sendPushbutton, SIGNAL( clicked() ), this, SLOT( selection() ) );
   dialog->exec();
@@ -68,10 +68,9 @@ void QvkMail::startMailClientWithLastFile( QString file )
     // The body String like not Space
     QString bodyString;
     bodyString = tr("You find the Video as attachment");
-    bodyString.replace(" ","_");
   
     QString processString;
-    processString = "xdg-email --attach " + file + " --body " + bodyString;
+    processString = "xdg-email --utf8 --attach " + file + " --body \"" + bodyString + "\"";
   
     qDebug() << "[vokoscreen]" << "startMailClientWithLastFile:" << processString;
   
@@ -89,7 +88,6 @@ void QvkMail::startMailClientWithSelectedFiles( QStringList fileList )
    // The body String like not Space
   QString bodyString;
   bodyString = tr("You find the Video as attachment");
-  bodyString.replace(" ","_");
 
   QString files;
   for ( int i = 1; i <= fileList.count(); i++ )
@@ -101,7 +99,7 @@ void QvkMail::startMailClientWithSelectedFiles( QStringList fileList )
   if ( not fileList.empty())
   {
     QString processString;
-    processString = "xdg-email " + files + " --body " + bodyString;
+    processString = "xdg-email --utf8" + files + " --body \"" + bodyString + "\"";
   
     qDebug() << "[vokoscreen]" << "startMailClientWithSelectedFiles:" << processString;
   
