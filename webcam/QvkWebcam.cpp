@@ -189,13 +189,13 @@ void QvkWebcam::contextMenuEvent( QContextMenuEvent *event )
 {
      //qDebug() << "Begin void QvkWebcam::contextMenuEvent( QContextMenuEvent *event ) *****************************";
   
-     QAction * action160x120 = new QAction( tr ( "160 x 120" ), this );
+     QAction * action160x120 = new QAction( "160 x 120", this );
      connect( action160x120, SIGNAL( triggered() ), this, SLOT( set160x120() ) );
      
-     QAction * action320x240 = new QAction( tr ( "320 x 240" ), this );
+     QAction * action320x240 = new QAction( "320 x 240", this );
      connect( action320x240, SIGNAL( triggered() ), this, SLOT( set320x240() ) );
 
-     QAction * action640x480 = new QAction( tr ( "640 x 480" ), this );
+     QAction * action640x480 = new QAction( "640 x 480", this );
      connect( action640x480, SIGNAL( triggered() ), this, SLOT( set640x480() ) );
 
      QAction * actionNoBorder = new QAction( tr ( "Noborder" ), this );
