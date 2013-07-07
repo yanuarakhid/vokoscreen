@@ -442,7 +442,7 @@ screencast::screencast()
     
     statusBarLabelFpsSettings = new QLabel();
     statusBarLabelFpsSettings->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
-    statusBarLabelFpsSettings->setToolTip( "Settings fps" );
+    statusBarLabelFpsSettings->setToolTip( tr( "Settings fps" ) );
 
     QStatusBar *statusBar = new QStatusBar( this );
     setStatusBar( statusBar );
