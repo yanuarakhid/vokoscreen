@@ -191,7 +191,6 @@
     <message>
         <source>Settings fps</source>
         <translation type="unfinished"></translation>
->>>>>>> Fisiu-master
     </message>
 </context>
 </TS>
