@@ -57,13 +57,8 @@
         <translation type="obsolete">Komprimieren:</translation>
     </message>
     <message>
-<<<<<<< HEAD
         <source>Do not record mouse cursor</source>
-        <translation>Mauszeiger nicht aufnehmen</translation>
-=======
-        <source>Mouse cursor not recording</source>
         <translation type="obsolete">Mauszeiger nicht aufnehmen</translation>
->>>>>>> Fisiu-master
     </message>
     <message>
         <source>Videopath</source>

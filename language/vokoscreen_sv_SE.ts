@@ -57,13 +57,8 @@
         <translation type="obsolete">komprimera:</translation>
     </message>
     <message>
-<<<<<<< HEAD
         <source>Do not record mouse cursor</source>
-        <translation>spela in utan</translation>
-=======
-        <source>Mouse cursor not recording</source>
         <translation type="obsolete">spela in utan</translation>
->>>>>>> Fisiu-master
     </message>
     <message>
         <source>Videopath</source>
@@ -118,11 +113,7 @@
         <translation type="obsolete">kodec</translation>
     </message>
     <message>
-<<<<<<< HEAD
         <source>Default</source>
-        <translation>standard</translation>
-=======
-        <source>standard</source>
         <translation type="obsolete">standard</translation>
     </message>
     <message>

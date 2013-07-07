@@ -57,13 +57,8 @@
         <translation type="obsolete">comprimir:</translation>
     </message>
     <message>
-<<<<<<< HEAD
         <source>Do not record mouse cursor</source>
-        <translation>El cursor no tomar</translation>
-=======
-        <source>Mouse cursor not recording</source>
         <translation type="obsolete">El cursor no tomar</translation>
->>>>>>> Fisiu-master
     </message>
     <message>
         <source>Videopath</source>
@@ -118,13 +113,8 @@
         <translation type="obsolete">codec</translation>
     </message>
     <message>
-<<<<<<< HEAD
         <source>Default</source>
-        <translation>estándar</translation>
-=======
-        <source>standard</source>
         <translation type="obsolete">estándar</translation>
->>>>>>> Fisiu-master
     </message>
     <message>
         <source>webcam settings</source>

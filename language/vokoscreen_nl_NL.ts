@@ -57,13 +57,8 @@
         <translation type="obsolete">comprimeren:</translation>
     </message>
     <message>
-<<<<<<< HEAD
         <source>Do not record mouse cursor</source>
-        <translation>muiscursor niet opnemen</translation>
-=======
-        <source>Mouse cursor not recording</source>
         <translation type="obsolete">muiscursor niet opnemen</translation>
->>>>>>> Fisiu-master
     </message>
     <message>
         <source>Videopath</source>
