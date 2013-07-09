@@ -58,7 +58,7 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="obsolete">Optag ikke musemarkør</translation>
+        <translation>Optag ikke musemarkør</translation>
     </message>
     <message>
         <source>Videopath</source>
@@ -158,10 +158,6 @@
     </message>
     <message>
         <source>Default</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do not record mouse cursor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
