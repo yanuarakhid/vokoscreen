@@ -18,12 +18,15 @@
 #ifndef regionselection_H 
 #define regionselection_H
 
+#include <QPainter>
 #include <QDialog>
 #include <QLabel>
 #include <QMouseEvent>
 #include <QDebug>
 
-class regionselection : public QDialog
+#include <QPixmap>
+
+class regionselection : public QWidget
 { 
 Q_OBJECT
 public:
@@ -34,28 +37,40 @@ public:
 
   
 public slots:
-  void moveTop( QMouseEvent *event );
-  void moveBottom( QMouseEvent *event );
-  void moveLeft( QMouseEvent *event );
-  void moveRight( QMouseEvent *event );
-  void setAllBorder();
+  void moveTopLeft( QMouseEvent *event );
+  void moveTopMiddle( QMouseEvent *event );
+  //void moveBottom( QMouseEvent *event );
+  //void moveLeft( QMouseEvent *event );
+  //void moveRight( QMouseEvent *event );
+  //void setAllBorder();
   int getX();
   int getY();
   int getHeight();
   int getWidth();
-  void printSize();
+  //void printSize();
 
   
 protected:  
+  //void mouseMoveEvent( QMouseEvent *event );
+  //void moveEvent( QMoveEvent * event );
+  //void hideEvent( QHideEvent * event );
+  //void showEvent( QShowEvent * event );
+protected:
   void mouseMoveEvent( QMouseEvent *event );
-  void moveEvent( QMoveEvent * event );
-  void hideEvent( QHideEvent * event );
-  void showEvent( QShowEvent * event );
+  void mousePressEvent( QMouseEvent *event );
 
   
 private:
+  int Rand;  
+  int frameWidth;
+  int radius;
+  int penWidth;
+  int penHalf;
+  
   int border;
-  QLabel *borderTop;
+  QLabel *handleTopLeft;
+  QLabel *handleTopMiddle;
+  
   QLabel *borderBottom;
   QLabel *borderLeft;
   QLabel *borderRight;
@@ -64,8 +79,12 @@ private:
   
   void handlingFrameLock();
   
-  QLabel *labelSize;
+  //QLabel *labelSize;
 
+  void paintEvent( QPaintEvent *event );
+
+  //! Fuer die Bewegung des Fensters
+  QPoint m_dragPosition;
   
 };
 

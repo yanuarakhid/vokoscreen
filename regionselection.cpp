@@ -17,93 +17,102 @@
 
 #include "regionselection.h" 
 
+#include <QRegion>
+#include <QCursor>
+
 using namespace std;
 
+
+/**
+ * int x : 
+ * int y :
+ * int width :
+ * int height :
+ * int framewidth :
+ */
 regionselection::regionselection( int x, int y, int width, int height, int framewidth )
 {
   
-  labelSize = new QLabel();
-  labelSize->setGeometry( x + width/2, y + height/2, 100, 30 );
-  labelSize->setAlignment ( Qt::AlignHCenter | Qt::AlignVCenter );
-  labelSize->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+  setAttribute( Qt::WA_TranslucentBackground );
+  
+  setMouseTracking ( true );
+  
+  qDebug() << "width:" << width << "height:" << height;
+  
+  // Von außen bis Mitte blauer Rahmen
+  Rand = 20;
+  
+  // Breite blauer Rahmen
+  frameWidth = 4;
+  
+  radius = 20;
+
+  penWidth = 2;
+  penHalf = penWidth / 2;
   
   setGeometry( x, y, width, height );
-  border = framewidth;
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-  setAttribute ( Qt::WA_AlwaysShowToolTips, true );
-  
-  QPalette Pal( this->palette() );
-  QColor Col( Qt::red );
-  Pal.setColor( QPalette::Background, Col );
-  this->setPalette( Pal ); 
-  
-  //Top
-  borderTop = new QLabel( this );
-  borderTop->setGeometry( 10, 0, this->width()-20, border );
-  borderTop->show();
-  borderTop->setAutoFillBackground( true );
-  borderTop->setCursor( Qt::SizeVerCursor );
-  // hintergrundfarbe für borderTop
-  QPalette labPal( borderTop->palette() );
-  QColor bgCol( Qt::blue );
-  labPal.setColor( QPalette::Background, bgCol );
-  borderTop->setPalette( labPal );
-  
-  //Bottom
-  borderBottom = new QLabel( this );
-  borderBottom->setGeometry( 10, this->height() - border, this->width() - 20, border );
-  borderBottom->show();
-  borderBottom->setAutoFillBackground( true );
-  borderBottom->setCursor( Qt::SizeVerCursor );
-  // hintergrundfarbe für borderBottom
-  QPalette borderBottomPal( borderBottom->palette() );
-  QColor borderBottomBgCol( Qt::blue );
-  borderBottomPal.setColor( QPalette::Background, borderBottomBgCol );
-  borderBottom->setPalette( borderBottomPal);
 
-  //Left
-  borderLeft = new QLabel( this );
-  borderLeft->setGeometry( 0, 10, border, this->height()-20 );
-  borderLeft->show();
-  borderLeft->setAutoFillBackground( true );
-  borderLeft->setCursor( Qt::SizeHorCursor );
-  // hintergrundfarbe für borderLeft
-  QPalette borderLeftPal( borderLeft->palette() );
-  QColor borderLeftBgCol( Qt::blue );
-  borderLeftPal.setColor( QPalette::Background, borderLeftBgCol );
-  borderLeft->setPalette( borderLeftPal);
-
-  //Right
-  borderRight = new QLabel( this );
-  borderRight->setGeometry( this->width() - border, 10, border, this->height()-20 );
-  borderRight->show();
-  borderRight->setAutoFillBackground( true );
-  borderRight->setCursor( Qt::SizeHorCursor );
-  // hintergrundfarbe für borderLeft
-  QPalette borderRightPal( borderRight->palette() );
-  QColor borderRightBgCol( Qt::blue );
-  borderRightPal.setColor( QPalette::Background, borderRightBgCol );
-  borderRight->setPalette( borderRightPal);
+  //**********************************************************************
+  // handle top left
+  handleTopLeft = new QLabel( this );
+  handleTopLeft->setGeometry( 0, 0, 2 * Rand, 2 * Rand );
+  handleTopLeft->show();
+  handleTopLeft->setCursor( Qt::SizeFDiagCursor );
   
+  QPixmap * pixmap = new QPixmap( handleTopLeft->width(), handleTopLeft->height() );
+  pixmap->fill( Qt::transparent );
+  
+  QPainter * handleTopLeftPainter = new QPainter( pixmap );
+  handleTopLeftPainter->setRenderHints( QPainter::Antialiasing, true );
+  handleTopLeftPainter->setPen( QPen( Qt::black, penWidth ) );
+  
+  QBrush brushTopLeft( Qt::red, Qt::SolidPattern );
+  handleTopLeftPainter->setBrush( brushTopLeft );
 
-  QRegion maskedRegion1( 0,
-             0,
-             this->width(),
-             this->height(),
-             QRegion::Rectangle );
-    
-  // Dieser Teil wird abgezogen
-  QRegion maskedRegion( border,
-            border,
-            this->width() - 2 * border,
-            this->height() - 2 *border,
-            QRegion::Rectangle );
-    
-  this->setMask( maskedRegion1.subtract( maskedRegion ) );
+  QRectF rectangleTopLeft = QRectF( penHalf, penHalf, 2 * ( Rand - penHalf ), 2 * ( Rand -penHalf ) );
+  int startAngle = 0 * 16;
+  int spanAngle = 270 * 16;
+  handleTopLeftPainter->drawPie( rectangleTopLeft, startAngle, spanAngle );
+  
+  // Die schwarze Linie am unteren Rand von drawPie ändern in blau
+  handleTopLeftPainter->setPen( QPen( Qt::blue, frameWidth ) );
+  handleTopLeftPainter->drawLine( handleTopLeft->width() / 2, handleTopLeft->height() / 2 , handleTopLeft->width(), handleTopLeft->height() / 2 );
+  handleTopLeftPainter->drawLine( handleTopLeft->width() / 2, handleTopLeft->height() / 2 , handleTopLeft->width() / 2, handleTopLeft->height() );
+  
+  handleTopLeft->setPixmap( *pixmap );
+  //**********************************************************************
+  //**********************************************************************
+  // handle Top middle
+  handleTopMiddle = new QLabel( this );
+  handleTopMiddle->setGeometry( this->width() / 2 - Rand, 0, 2 * radius, radius );
+  handleTopMiddle->show();
+  handleTopMiddle->setCursor( Qt::SizeVerCursor );
+  
+  pixmap = new QPixmap( handleTopMiddle->width(), handleTopMiddle->height() );
+  pixmap->fill( Qt::transparent );
+  
+  QPainter * handleTopMiddlePainter = new QPainter( pixmap );
+  handleTopMiddlePainter->setRenderHints( QPainter::Antialiasing, true );
+  handleTopMiddlePainter->setPen( QPen( Qt::black, penWidth ) );
+  
+  QBrush brushTopMiddle( Qt::red, Qt::SolidPattern );
+  handleTopMiddlePainter->setBrush( brushTopMiddle );
 
+  QRectF rectangle = QRectF( penHalf, penHalf, 2 * ( Rand - penHalf ), 2 * ( Rand -penHalf ) );
+  startAngle = 0 * 16;
+  spanAngle = 180 * 16;
+  handleTopMiddlePainter->drawPie( rectangle, startAngle, spanAngle );
+  
+  // Die schwarze Linie am unteren Rand von drawPie ändern in blau
+  handleTopMiddlePainter->setPen( QPen( Qt::blue, frameWidth ) );
+  handleTopMiddlePainter->drawLine( 0, handleTopMiddle->height(), handleTopMiddle->width(), handleTopMiddle->height() );
+
+  handleTopMiddle->setPixmap( *pixmap );
+  //**********************************************************************
+  
   // Framelock
   lockFrame( false );
-  labelSize->hide();
 }
 
 
@@ -112,28 +121,101 @@ regionselection::~regionselection()
 }
 
 
-void regionselection::hideEvent( QHideEvent * event )
+void regionselection::paintEvent( QPaintEvent *event ) 
 {
-  (void) event;
-  labelSize->hide();
-}
-
-
-void regionselection::showEvent( QShowEvent * event )
-{
-  (void) event;
-  labelSize->show();
-}
-
-
-void regionselection::printSize()
-{
-  labelSize->setGeometry( getX() + getWidth() / 2 - labelSize->width() / 2, 
-			  getY() + getHeight() / 2 - labelSize->height() / 2 ,
-			  labelSize->width(),
-			  labelSize->height() );
+  (void)event;
   
-  labelSize->setText( QString::number( getWidth() ) + " x " + QString::number( getHeight() ) );
+  QRectF rectangle = QRectF();
+  int startAngle;
+  int spanAngle;
+  
+  QPainter painter( this );
+  painter.setRenderHints( QPainter::Antialiasing, true );
+  painter.setPen( QPen( Qt::black, penWidth ) );
+
+  QBrush brush( Qt::SolidPattern );
+  brush.setColor( Qt::red );
+  painter.setBrush ( brush );
+
+/*
+  // http://de.academic.ru/dic.nsf/dewiki/797970
+  // Knob left top
+  rectangle.setRect( penHalf, penHalf, 2 * Rand, 2 * Rand );
+  startAngle = 0 * 16;
+  spanAngle = 270 * 16;
+  painter.drawPie( rectangle, startAngle, spanAngle );
+  
+  
+  // Knob top middle
+  QPixmap * pixmap = new QPixmap( 50, 50 );
+  pixmap->fill(Qt::green);
+  QPainter handleTopMiddlePainter( pixmap );
+  handleTopMiddle->setPixmap( *pixmap );
+  
+  handleTopMiddlePainter.setBrush ( brush );
+  rectangle.setRect( penHalf, penHalf, 2 * Rand, 2 * Rand);
+  startAngle = 0 * 16;
+  spanAngle = 180 * 16;
+  handleTopMiddlePainter.drawPie( rectangle, startAngle, spanAngle ); 
+
+  handleTopMiddle->setPixmap( *pixmap );
+*/
+  // Knob top right
+  rectangle.setRect( width() - 2 * Rand - penHalf, penHalf, 2 * Rand, 2 * Rand );
+  startAngle = 180 * 16;
+  spanAngle =  -270  * 16;
+  painter.drawPie( rectangle, startAngle, spanAngle ); 
+  
+  // Knob right middle
+  rectangle.setRect( width() - 2 * Rand - penHalf, height() / 2 - Rand, 2 * Rand, 2 * Rand );
+  startAngle = 90 * 16;
+  spanAngle =  -180  * 16;
+  painter.drawPie( rectangle, startAngle, spanAngle ); 
+  
+  // Knob right bottom
+  rectangle.setRect( width() - 2 * Rand - penHalf, height() - 2 * Rand - penHalf, 2 * Rand, 2 * Rand );
+  startAngle = 90 * 16;
+  spanAngle =  -270  * 16;
+  painter.drawPie( rectangle, startAngle, spanAngle );
+  
+  // Knob bottom middle
+  rectangle.setRect( width() / 2 - Rand - penHalf, height() - 2 * Rand - penHalf, 2 * Rand, 2 * Rand );
+  startAngle = 0 * 16;
+  spanAngle =  -180  * 16;
+  painter.drawPie( rectangle, startAngle, spanAngle );
+  
+  // Knob Bottom left
+  rectangle.setRect( penHalf, height() - 2 * Rand - penHalf, 2 * Rand, 2 * Rand );
+  startAngle = 90 * 16;
+  spanAngle =  270  * 16;
+  painter.drawPie( rectangle, startAngle, spanAngle );
+  
+  // Knob left middle
+  rectangle.setRect( penHalf, height()/2 - Rand, 2 * Rand, 2 * Rand );
+  startAngle = 90 * 16;
+  spanAngle =  180  * 16;
+  painter.drawPie( rectangle, startAngle, spanAngle );
+
+  // Kreis in der Mitte
+  painter.drawEllipse ( width()/2 - radius, height()/2 - radius, 2 * radius, 2 * radius );
+
+  
+  // Blue Frame
+  painter.setPen( QPen( Qt::blue, frameWidth ) );
+  
+  // Left Line
+  painter.drawLine( Rand, Rand, Rand, height() - Rand );
+  
+  // Top Line
+  painter.drawLine( Rand, Rand, width() - Rand, Rand);
+  
+  // Right Line
+  painter.drawLine( width() - Rand, Rand, width() - Rand, height() - Rand);
+  
+  // Bottome Line
+  painter.drawLine( Rand, height() - Rand, width() - Rand, height() - Rand);
+  
+  
 }
 
 
@@ -176,245 +258,9 @@ int regionselection::getWidth()
 }
 
 
-void regionselection::setAllBorder()
-{
-  int widgetWidth = geometry().width();
-  int widgetHeight = geometry().height();
-
-  borderTop->setGeometry( 10, 
-			  0,
-			  widgetWidth - 20,
-			  border );
-  
-  borderBottom->setGeometry( 10, 
-			     widgetHeight - border,
-			     widgetWidth - 20,
-			     border );
-  
-  borderLeft->setGeometry( 0, 
-			   10,
-			   border,
-			   widgetHeight - 20 );
-  
-  borderRight->setGeometry( widgetWidth - border,
-			    10,
-			    border,
-			    widgetHeight - 20 );
-  
-  printSize();
-  
-}
-
-
-void regionselection::moveTop( QMouseEvent *event )
-{
-   // Globale Mauskoordinaten 
-  int mouseY = event->globalY();
-    
-  // Alte Widget Koordinaten
-  int widgetX = geometry().x();
-  int widgetY = geometry().y();
-  int widgetWidth = geometry().width();
-  int widgetHeight = geometry().height();
-  
-  // Minimale Größe des Widget begrenzen
-  if ( mouseY >= widgetY + widgetHeight - 100)
-    mouseY = widgetY + widgetHeight - 100;
-  
-  // Neue Geometry des Dialogfenster setzen
-  this->setGeometry( widgetX,
-		     mouseY, 
-		     widgetWidth,
-		     widgetHeight + ( widgetY - mouseY ) );
-  
-  QRegion maskedRegion1( 0, 
-			 0, 
-			 widgetWidth,
-			 widgetHeight + ( widgetY - mouseY ), 
-			 QRegion::Rectangle );
-  
-  // Dieser Teil wird abgezogen
-  QRegion maskedRegion( border,
-			border,
-			widgetWidth - 2 * border,
-			widgetHeight + ( widgetY - mouseY ) - 2 * border,
-			QRegion::Rectangle );
-  
-  this->setMask( maskedRegion1.subtract( maskedRegion ) );
-  
-  setAllBorder();
-  
-  event->accept();
-}
-
-
-void regionselection::moveBottom( QMouseEvent *event )
-{
-  // Globale Mauskoordinaten 
-  int mouseY = event->globalY();
-    
-  // Alte Widget Koordinaten
-  int widgetX = geometry().x();
-  int widgetY = geometry().y();
-  int widgetWidth = geometry().width();
-
-  // Minimale Größe des Widget begrenzen
-  if ( mouseY <= widgetY +  100)
-    mouseY = widgetY + 100;
-  
-  
-  // Neue Geometry des Dialogfenster setzen
-  this->setGeometry( widgetX, 
-		     widgetY, 
-		     widgetWidth, 
-		     mouseY - widgetY );
-   
-  QRegion maskedRegion1( 0, 
-			 0, 
-			 widgetWidth, 
-			 mouseY - widgetY,
-			 QRegion::Rectangle );
-  
-  // Dieser Teil wird abgezogen
-  QRegion maskedRegion( border,
-			border,
-			widgetWidth - 2 * border,
-			mouseY - widgetY - 2 * border,
-			QRegion::Rectangle );
-  
-  this->setMask( maskedRegion1.subtract( maskedRegion ) );
-
-  setAllBorder();
-  
-  event->accept();
-}
-
-
-void regionselection::moveLeft( QMouseEvent *event )
-{  
-  // Globale Mauskoordinaten 
-  int mouseX = event->globalX();
-    
-  // Alte Widget Koordinaten
-  int widgetX = geometry().x();
-  int widgetY = geometry().y();
-  int widgetWidth = geometry().width();
-  int widgetHeight = geometry().height();
-
-  // Minimale Größe des Widget begrenzen
-  if ( mouseX >= widgetX + widgetWidth -  100 )
-    mouseX = widgetX + widgetWidth -  100;
-  
-  // Neue Geometry des Dialogfenster setzen
-  this->setGeometry( mouseX, 
-		     widgetY, 
-		     widgetWidth + widgetX - mouseX,
-		     widgetHeight );
-
-  QRegion maskedRegion1( 0, 
-			 0, 
-			 widgetWidth + widgetX - mouseX,
-			 widgetHeight,
-			 QRegion::Rectangle );
-  
-  // Dieser Teil wird abgezogen
-  QRegion maskedRegion( border,
-			border,
-			widgetWidth + widgetX - mouseX - 2 * border,
-			widgetHeight - 2 * border,
-			QRegion::Rectangle );
-  
-  this->setMask( maskedRegion1.subtract( maskedRegion ) );
-
-  setAllBorder();
-
-  event->accept();
-  
-}
-
-
-void regionselection::moveRight( QMouseEvent *event )
-{
-  // Globale Mauskoordinaten 
-  int mouseX = event->globalX();
-    
-  // Alte Widget Koordinaten
-  int widgetX = geometry().x();
-  int widgetY = geometry().y();
-  int widgetHeight = geometry().height();
-
-  // Minimale Größe des Widget begrenzen
-  if ( mouseX <= widgetX + 100 )
-    mouseX = widgetX + 100;
-  
-  // Neue Geometry des Dialogfenster setzen
-  this->setGeometry( widgetX, 
-		     widgetY, 
-		     mouseX - widgetX,
-		     widgetHeight );
-  
-  QRegion maskedRegion1( 0, 
-			 0, 
-			 mouseX - widgetX,
-			 widgetHeight,
-			 QRegion::Rectangle );
-  
-  // Dieser Teil wird abgezogen
-  QRegion maskedRegion( border,
-			border,
-			mouseX - widgetX - 2 * border,
-			widgetHeight - 2 * border,
-			QRegion::Rectangle );
-  
-  this->setMask( maskedRegion1.subtract( maskedRegion ) );
-  
-  setAllBorder();
-
-  event->accept();
-}
-
-
-void regionselection::moveEvent( QMoveEvent * event )
-{
-  (void) event;
-  printSize();
-}
-
-
-void regionselection::mouseMoveEvent( QMouseEvent *event )
-{
-  if( frameLocked )
-    return;
-
-  if ( borderTop->underMouse() )
-  {
-    moveTop( event );
-    return;
-  }
-  
-  if ( borderBottom->underMouse() )
-  {
-    moveBottom( event );
-    return;
-  }
-
-  if ( borderLeft->underMouse() )
-  {
-    moveLeft( event );
-    return;
-  }
-
-  if ( borderRight->underMouse() )
-  {
-    moveRight( event );
-    return;
-  }
-  
-}
-
-
 void regionselection::handlingFrameLock()
 {
+/*  
     if(frameLocked){
         borderLeft->setGeometry( 0, 0, border, this->height());
         borderRight->setGeometry( this->width()-border,0, border, this->height() );
@@ -425,4 +271,104 @@ void regionselection::handlingFrameLock()
     else {
         setAllBorder();
     }
+*/    
 }
+
+
+/*! MouseMove fuer das Bewegen des Fensters
+\param event QMouseEvent Mouse Event
+*/
+void regionselection::mouseMoveEvent( QMouseEvent *event )
+{
+  if ( handleTopLeft->underMouse() )
+  {
+    moveTopLeft( event );
+    return;
+  }
+
+  if ( handleTopMiddle->underMouse() )
+  {
+    moveTopMiddle( event );
+    return;
+  }
+    
+/*    
+    if (  event->buttons() & Qt::LeftButton )
+    {
+        move( event->globalPos() - m_dragPosition );
+        event->accept();
+    }
+*/  
+    
+}
+
+void regionselection::moveTopLeft( QMouseEvent *event )
+{
+  // Globale Mauskoordinaten 
+  int mouseY = event->globalY();
+  int mouseX = event->globalX();
+  
+  // Alte Widget Koordinaten
+  int widgetX = geometry().x();
+  int widgetY = geometry().y();
+  int widgetWidth = geometry().width();
+  int widgetHeight = geometry().height();
+  
+  // Minimale Größe des Widget begrenzen
+  if ( mouseY >= widgetY + widgetHeight - 200)
+    mouseY = widgetY + widgetHeight - 200;
+
+  if ( mouseX >= widgetX + widgetWidth - 200)
+    mouseX = widgetX + widgetWidth - 200;
+  
+  
+  // Neue Geometry des Dialogfenster setzen
+  this->setGeometry( mouseX,
+		     mouseY, 
+		     widgetWidth + ( widgetX - mouseX ),
+		     widgetHeight + ( widgetY - mouseY ) );
+  
+  
+  event->accept();
+}
+
+
+void regionselection::moveTopMiddle( QMouseEvent *event )
+{
+  // Globale Mauskoordinaten 
+  int mouseY = event->globalY();
+    
+  // Alte Widget Koordinaten
+  int widgetX = geometry().x();
+  int widgetY = geometry().y();
+  int widgetWidth = geometry().width();
+  int widgetHeight = geometry().height();
+  
+  // Minimale Größe des Widget begrenzen
+  if ( mouseY >= widgetY + widgetHeight - 200)
+    mouseY = widgetY + widgetHeight - 200;
+  
+
+  // Neue Geometry des Dialogfenster setzen
+  this->setGeometry( widgetX,
+		     mouseY, 
+		     widgetWidth,
+		     widgetHeight + ( widgetY - mouseY ) );
+  
+  event->accept();
+}
+
+
+/*! MousePressed fuer das Bewegen des Fensters
+\param event QMouseEvent Mouse Event
+*/
+
+void regionselection::mousePressEvent( QMouseEvent *event )
+{
+    if ( event->button() == Qt::LeftButton )
+    {
+        m_dragPosition = event->globalPos() - frameGeometry().topLeft();
+        event->accept();
+    }
+}
+

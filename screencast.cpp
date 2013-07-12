@@ -22,7 +22,7 @@ screencast::screencast()
 {
   
   
-    bool beta = false;
+    bool beta = true;
     QString Beta;
     if ( beta )
       Beta = "Beta";
@@ -30,7 +30,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.0";  
+    Version = "1.7.2";  
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
