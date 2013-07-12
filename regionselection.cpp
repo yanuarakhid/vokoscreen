@@ -307,9 +307,9 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
 
 void regionselection::moveTopLeft( QMouseEvent *event )
 {
-  // Globale Mauskoordinaten 
-  int mouseY = event->globalY();
-  int mouseX = event->globalX();
+  // Globale Mauskoordinaten
+  int mouseGlobalX = event->globalX();
+  int mouseGlobalY = event->globalY();
   
   // Alte Widget Koordinaten
   int widgetX = geometry().x();
@@ -318,19 +318,17 @@ void regionselection::moveTopLeft( QMouseEvent *event )
   int widgetHeight = geometry().height();
   
   // Minimale Größe des Widget begrenzen
-  if ( mouseY >= widgetY + widgetHeight - 200)
-    mouseY = widgetY + widgetHeight - 200;
+  if ( mouseGlobalY >= widgetY + widgetHeight - 200)
+    mouseGlobalY = widgetY + widgetHeight - 200;
 
-  if ( mouseX >= widgetX + widgetWidth - 200)
-    mouseX = widgetX + widgetWidth - 200;
-  
+  if ( mouseGlobalX >= widgetX + widgetWidth - 200)
+    mouseGlobalX = widgetX + widgetWidth - 200;
   
   // Neue Geometry des Dialogfenster setzen
-  this->setGeometry( mouseX,
-		     mouseY, 
-		     widgetWidth + ( widgetX - mouseX ),
-		     widgetHeight + ( widgetY - mouseY ) );
-  
+  this->setGeometry( mouseGlobalX - currentMouseLocalX,
+		     mouseGlobalY - currentMouseLocalY, 
+		     widgetWidth + ( widgetX - mouseGlobalX + currentMouseLocalX ),
+		     widgetHeight + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
   
   event->accept();
 }
@@ -339,39 +337,32 @@ void regionselection::moveTopLeft( QMouseEvent *event )
 void regionselection::moveTopMiddle( QMouseEvent *event )
 {
   // Globale Mauskoordinaten 
-  int mouseY = event->globalY();
-    
-  // Alte Widget Koordinaten
+  int mouseGlobalY = event->globalY();
+  
+  // Alte Globale Widget Koordinaten
   int widgetX = geometry().x();
   int widgetY = geometry().y();
   int widgetWidth = geometry().width();
   int widgetHeight = geometry().height();
   
   // Minimale Größe des Widget begrenzen
-  if ( mouseY >= widgetY + widgetHeight - 200)
-    mouseY = widgetY + widgetHeight - 200;
-  
+  if ( mouseGlobalY >= widgetY + widgetHeight - 200)
+    mouseGlobalY = widgetY + widgetHeight - 200;
 
-  // Neue Geometry des Dialogfenster setzen
+  // Neue Geometry des HauptWidget setzen
   this->setGeometry( widgetX,
-		     mouseY, 
+		     mouseGlobalY - currentMouseLocalY,
 		     widgetWidth,
-		     widgetHeight + ( widgetY - mouseY ) );
+		     widgetHeight + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
   
   event->accept();
 }
 
 
-/*! MousePressed fuer das Bewegen des Fensters
-\param event QMouseEvent Mouse Event
-*/
-
 void regionselection::mousePressEvent( QMouseEvent *event )
 {
-    if ( event->button() == Qt::LeftButton )
-    {
-        m_dragPosition = event->globalPos() - frameGeometry().topLeft();
-        event->accept();
-    }
+  currentMouseLocalX = event->x();
+  currentMouseLocalY = event->y();
+  event->accept();  
 }
 

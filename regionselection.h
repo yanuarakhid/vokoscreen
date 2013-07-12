@@ -86,6 +86,9 @@ private:
   //! Fuer die Bewegung des Fensters
   QPoint m_dragPosition;
   
+  int currentMouseLocalX;
+  int currentMouseLocalY;
+  
 };
 
 
