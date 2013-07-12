@@ -33,6 +33,8 @@ using namespace std;
 regionselection::regionselection( int x, int y, int width, int height, int framewidth )
 {
   
+  qDebug() << tr( "Das ist ein Test Gruss Volker" );
+  
   setAttribute( Qt::WA_TranslucentBackground );
   
   setMouseTracking ( true );

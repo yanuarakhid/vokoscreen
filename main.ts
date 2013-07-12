@@ -51,6 +51,13 @@
     </message>
 </context>
 <context>
+    <name>regionselection</name>
+    <message>
+        <source>Das ist ein Test Gruss Volker</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
