@@ -283,6 +283,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
   if ( handleTopLeft->underMouse() )
   {
     moveTopLeft( event );
+    handleTopMiddle->setGeometry( this->width() / 2 - Rand, 0, 2 * radius, radius );
     return;
   }
 
