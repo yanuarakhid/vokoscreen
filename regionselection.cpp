@@ -33,7 +33,7 @@ using namespace std;
 regionselection::regionselection( int x, int y, int width, int height, int framewidth )
 {
   
-  qDebug() << tr( "Das ist ein Test Gruss Volker" );
+  qDebug() << tr( "Das ist ein Test erstellt am 14.07.2013 21:00 Gruss Volker" );
   
   setAttribute( Qt::WA_TranslucentBackground );
   
@@ -101,10 +101,10 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   QBrush brushTopMiddle( Qt::red, Qt::SolidPattern );
   handleTopMiddlePainter->setBrush( brushTopMiddle );
 
-  QRectF rectangle = QRectF( penHalf, penHalf, 2 * ( Rand - penHalf ), 2 * ( Rand -penHalf ) );
+  QRectF rectangleTopMiddle = QRectF( penHalf, penHalf, 2 * ( Rand - penHalf ), 2 * ( Rand -penHalf ) );
   startAngle = 0 * 16;
   spanAngle = 180 * 16;
-  handleTopMiddlePainter->drawPie( rectangle, startAngle, spanAngle );
+  handleTopMiddlePainter->drawPie( rectangleTopMiddle, startAngle, spanAngle );
   
   // Die schwarze Linie am unteren Rand von drawPie ändern in blau
   handleTopMiddlePainter->setPen( QPen( Qt::blue, frameWidth ) );
@@ -112,6 +112,36 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
 
   handleTopMiddle->setPixmap( *pixmap );
   //**********************************************************************
+  //**********************************************************************
+  // handle top right
+  handleTopRight = new QLabel( this );
+  handleTopRight->setGeometry( this->width() - 2 * Rand, 0, 2 * radius, 2 * radius );
+  handleTopRight->show();
+  handleTopRight->setCursor( Qt::SizeBDiagCursor );
+  
+  pixmap = new QPixmap( handleTopRight->width(), handleTopRight->height() );
+  pixmap->fill( Qt::transparent );
+  
+  QPainter * handleTopRightPainter = new QPainter( pixmap );
+  handleTopRightPainter->setRenderHints( QPainter::Antialiasing, true );
+  handleTopRightPainter->setPen( QPen( Qt::black, penWidth ) );
+  
+  QBrush brushTopRight( Qt::red, Qt::SolidPattern );
+  handleTopRightPainter->setBrush( brushTopRight );
+
+  QRectF rectangleTopRight = QRectF( penHalf, penHalf, 2 * ( Rand - penHalf ), 2 * ( Rand -penHalf ) );
+  startAngle = 180 * 16;
+  spanAngle =  -270  * 16;
+  handleTopRightPainter->drawPie( rectangleTopRight, startAngle, spanAngle );
+  
+  // Die schwarze Linie am unteren Rand von drawPie ändern in blau
+  handleTopRightPainter->setPen( QPen( Qt::blue, frameWidth ) );
+  handleTopRightPainter->drawLine( 0, handleTopRight->height() / 2, handleTopRight->width() / 2, handleTopRight->height() / 2 );
+  handleTopRightPainter->drawLine( handleTopRight->height() / 2, handleTopRight->height() / 2, handleTopRight->width() / 2, handleTopRight->height() );
+  handleTopRight->setPixmap( *pixmap );
+  
+  
+  
   
   // Framelock
   lockFrame( false );
@@ -161,13 +191,13 @@ void regionselection::paintEvent( QPaintEvent *event )
   handleTopMiddlePainter.drawPie( rectangle, startAngle, spanAngle ); 
 
   handleTopMiddle->setPixmap( *pixmap );
-*/
+
   // Knob top right
   rectangle.setRect( width() - 2 * Rand - penHalf, penHalf, 2 * Rand, 2 * Rand );
   startAngle = 180 * 16;
   spanAngle =  -270  * 16;
   painter.drawPie( rectangle, startAngle, spanAngle ); 
-  
+*/  
   // Knob right middle
   rectangle.setRect( width() - 2 * Rand - penHalf, height() / 2 - Rand, 2 * Rand, 2 * Rand );
   startAngle = 90 * 16;
@@ -277,7 +307,7 @@ void regionselection::handlingFrameLock()
 }
 
 
-/*! MouseMove fuer das Bewegen des Fensters
+/*! MouseMove fuer das bewegen des Fensters und Ränder
 \param event QMouseEvent Mouse Event
 */
 void regionselection::mouseMoveEvent( QMouseEvent *event )
@@ -286,6 +316,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
   {
     moveTopLeft( event );
     handleTopMiddle->setGeometry( this->width() / 2 - Rand, 0, 2 * radius, radius );
+    handleTopRight->setGeometry( this->width() - 2 * Rand, 0, 2 * radius, 2 * radius );
     return;
   }
 
@@ -294,7 +325,15 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     moveTopMiddle( event );
     return;
   }
-    
+
+  if ( handleTopRight->underMouse() )
+  {
+    moveTopRight( event );
+    handleTopMiddle->setGeometry( this->width() / 2 - Rand, 0, 2 * radius, radius );
+    handleTopRight->setGeometry( this->width() - 2 * Rand, 0, 2 * radius, 2 * radius );
+    return;
+  }
+  
 /*    
     if (  event->buttons() & Qt::LeftButton )
     {
@@ -330,7 +369,9 @@ void regionselection::moveTopLeft( QMouseEvent *event )
 		     widgetWidth + ( widgetX - mouseGlobalX + currentMouseLocalX ),
 		     widgetHeight + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
   
+  
   event->accept();
+  qDebug() << "moveTopLeft";
 }
 
 
@@ -353,7 +394,38 @@ void regionselection::moveTopMiddle( QMouseEvent *event )
   this->setGeometry( widgetX,
 		     mouseGlobalY - currentMouseLocalY,
 		     widgetWidth,
-		     widgetHeight + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
+		     widgetHeight  + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
+
+  event->accept();
+  
+  qDebug() << "moveTopMiddle";
+}
+
+
+void regionselection::moveTopRight( QMouseEvent *event )
+{
+  // Globale Mauskoordinaten
+  int mouseGlobalX = event->globalX();
+  int mouseGlobalY = event->globalY();
+  
+  // Alte Widget Koordinaten
+  int widgetX = geometry().x();
+  int widgetY = geometry().y();
+  int widgetWidth = geometry().width();
+  int widgetHeight = geometry().height();
+  
+  // Minimale Größe des Widget begrenzen
+  if ( mouseGlobalY >= widgetY + widgetHeight - 200)
+    mouseGlobalY = widgetY + widgetHeight - 200;
+  
+  if ( mouseGlobalX <= widgetX + 200 )
+    mouseGlobalX = widgetX + 200;
+  
+  // Neue Geometry des Fenster setzen
+  this->setGeometry( widgetX,
+		     mouseGlobalY - currentMouseLocalY,
+		     currentWidgetWidth + ( mouseGlobalX - ( widgetX + currentMouseLocalX ) ),
+     		     widgetHeight  + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
   
   event->accept();
 }
@@ -361,8 +433,16 @@ void regionselection::moveTopMiddle( QMouseEvent *event )
 
 void regionselection::mousePressEvent( QMouseEvent *event )
 {
+  // Position bei klick im Fenster festhalten
   currentMouseLocalX = event->x();
   currentMouseLocalY = event->y();
+
+  currentWidgetWidth = geometry().width();
+  currentWidgetHeight = geometry().height();
+  
+  // Wegen Zittern am unteren Rand. Wird nicht benützt, dient erstmal für weitere Überlegungen
+  currentbottomY = geometry().y() + geometry().height();
+  
   event->accept();  
 }
 

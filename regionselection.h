@@ -37,8 +37,6 @@ public:
 
   
 public slots:
-  void moveTopLeft( QMouseEvent *event );
-  void moveTopMiddle( QMouseEvent *event );
   //void moveBottom( QMouseEvent *event );
   //void moveLeft( QMouseEvent *event );
   //void moveRight( QMouseEvent *event );
@@ -49,6 +47,12 @@ public slots:
   int getWidth();
   //void printSize();
 
+  
+private slots:
+  void moveTopLeft( QMouseEvent *event );
+  void moveTopMiddle( QMouseEvent *event );
+  void moveTopRight( QMouseEvent *event );
+  
   
 protected:  
   //void mouseMoveEvent( QMouseEvent *event );
@@ -70,6 +74,7 @@ private:
   int border;
   QLabel *handleTopLeft;
   QLabel *handleTopMiddle;
+  QLabel *handleTopRight;
   
   QLabel *borderBottom;
   QLabel *borderLeft;
@@ -88,6 +93,12 @@ private:
   
   int currentMouseLocalX;
   int currentMouseLocalY;
+  
+  int currentWidgetWidth;
+  int currentWidgetHeight;
+  int currentWidgetY;
+  int currentbottomY;
+  
   
 };
 

@@ -53,7 +53,7 @@
 <context>
     <name>regionselection</name>
     <message>
-        <source>Das ist ein Test Gruss Volker</source>
+        <source>Das ist ein Test erstellt am 14.07.2013 21:00 Gruss Volker</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
