@@ -30,7 +30,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.2";  
+    Version = "1.7.3";  
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -85,12 +85,12 @@ screencast::screencast()
     connect( FullScreenRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
 
     WindowRadioButton = new QRadioButton( frame );
-    WindowRadioButton->setGeometry(QRect(20, 40, 85, 21));
+    WindowRadioButton->setGeometry( QRect( 20, 40, 85, 21 ) );
     WindowRadioButton->setText( tr( "Window" ) );
     connect( WindowRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
 
     AreaRadioButton = new QRadioButton( frame );
-    AreaRadioButton->setGeometry(QRect( 20, 65, 85, 21) );
+    AreaRadioButton->setGeometry( QRect( 20, 65, 85, 21 ) );
     AreaRadioButton->setText( tr( "Area" ) );
     connect( AreaRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
     
@@ -106,9 +106,21 @@ screencast::screencast()
     MagnifierDialogPushButton->show();
     connect( MagnifierDialogPushButton, SIGNAL( clicked() ), SLOT( MagnifierDialog() ) );
     
-    
     webcamCheckBox = new QvkWebcamController( frame );
     webcamCheckBox->setGeometry( 160, 40, 120, 21 );
+
+    QComboBox *ScreenComboBox = new QComboBox( frame );
+    ScreenComboBox->setGeometry( 160, 65, 200, 21 );
+    ScreenComboBox->show();
+    QDesktopWidget *desk = QApplication::desktop();    
+    for ( int i = 0; i < desk->screenCount(); i++ )
+    {
+      QString ScreenGeometryX = QString::number( desk->screenGeometry( i + 1 ).width() );
+      QString ScreenGeometryY = QString::number( desk->screenGeometry( i + 1 ).height() );      
+      ScreenComboBox->addItem( "Bildschirm " + QString::number( i + 1 ) + "   " + ScreenGeometryX + " x " + ScreenGeometryY, i );      
+      qDebug() << "screenCount" << desk->screenCount();
+    }
+    
     
     // Tab 2 Audio options ****************************************
     TabWidgetAudioFrame = new QFrame( this );

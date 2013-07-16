@@ -31,6 +31,7 @@
 #include <QFileDialog>
 #include <QDate>
 #include <QStatusBar>
+#include <QDesktopWidget>
 
 #include "regionselection.h"
 #include "QvkMagnifier.h"
@@ -41,6 +42,7 @@
 #include "QvkWinInfo.h"
 
 #include <QxtGlobalShortcut> 
+
 
 class screencast : public QMainWindow
 { 
