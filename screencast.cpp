@@ -16,6 +16,8 @@
  */
 #include "screencast.h"  
 
+#include <QX11Info>
+
 using namespace std;
 
 screencast::screencast()
@@ -30,7 +32,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.3";  
+    Version = "1.7.4";  
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -120,7 +122,20 @@ screencast::screencast()
       ScreenComboBox->addItem( "Bildschirm " + QString::number( i + 1 ) + "   " + ScreenGeometryX + " x " + ScreenGeometryY, i );      
       qDebug() << "screenCount" << desk->screenCount();
     }
+    // am 16.07.2013 22:20 auf github
     
+    QLabel *CountdownLabel = new QLabel( frame );
+    CountdownLabel->setGeometry( 160, 110, 80, 25 );
+    CountdownLabel->setText( tr( "Countdown" ) );
+    CountdownLabel->show();
+    
+    CountdownSpinBox = new QSpinBox( frame );
+    CountdownSpinBox->setGeometry( 250, 110, 50, 21 );
+    CountdownSpinBox->setMinimum( 0 );
+    CountdownSpinBox->setMaximum( 999 );
+    CountdownSpinBox->setSingleStep( 1 );
+    CountdownSpinBox->setValue( 0 );
+    CountdownSpinBox->show();
     
     // Tab 2 Audio options ****************************************
     TabWidgetAudioFrame = new QFrame( this );
@@ -559,11 +574,12 @@ screencast::screencast()
         VideoplayerComboBox->setCurrentIndex( x );
       
       MinimizedCheckBox->setCheckState( Qt::CheckState( settings.value( "Minimized", 0 ).toUInt() ) );
+      
+      CountdownSpinBox->setValue(  settings.value( "Countdown", 0 ).toUInt() );
+      
     settings.endGroup();
     
     settings.beginGroup( "Videooptions" );
-      //FramesAutoOnOffCheckBox->setCheckState( Qt::CheckState( settings.value( "Auto-Frame", 2 ).toUInt() ) );
-      //setFramesAutoOnOffCheckBox();
       FrameSpinBox->setValue( settings.value( "Frames", 25 ).toInt() );
       VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( settings.value( "Videocodec", "mpeg4" ).toString() ) );
       VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( settings.value( "Format", "mkv" ).toString() ) );
@@ -577,9 +593,6 @@ screencast::screencast()
     
     // Statusbar
     stateChangedAudio( AudioOnOffCheckbox->checkState() );
-    //if ( FramesAutoOnOffCheckBox->checkState() == Qt::Checked )
-      //statusBarLabelFpsSettings->setText( "Auto" );
-    //else
       statusBarLabelFpsSettings->setText( QString::number( FrameSpinBox->value() ) );
     
     SystemCall = new QProcess( this );
@@ -930,11 +943,11 @@ void screencast::saveSettings()
     settings.setValue( "VideoPath", SaveVideoPathLineEdit->displayText() );
     settings.setValue( "Videoplayer", VideoplayerComboBox->currentText() );
     settings.setValue( "Minimized", MinimizedCheckBox->checkState() );
+    settings.setValue( "Countdown", CountdownSpinBox->value() );
   settings.endGroup();
 
   settings.beginGroup( "Videooptions" );
     settings.setValue( "Frames", FrameSpinBox->value() );
-    //settings.setValue( "Auto-Frame", FramesAutoOnOffCheckBox->checkState() );
     settings.setValue( "Videocodec", VideocodecComboBox->currentText() );
     settings.setValue( "Format", VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", HideMouseCheckbox->checkState() );    
@@ -2139,8 +2152,58 @@ QString screencast::getRecordHeight()
 }
 
 
+void screencast::Countdown()
+{
+  if ( CountdownSpinBox->value() > 0 )
+  {
+    
+    QDesktopWidget *desk = QApplication::desktop();
+    int Width = 200;
+    int Height = 200;;
+    int x = ( desk->screenGeometry().width() / 2 ) - ( Width / 2 );
+    int y = ( desk->screenGeometry().height() / 2 ) -( Height / 2 );
+    
+    QFrame * countdownDialog = new QFrame();
+    countdownDialog->setGeometry( x, y, Width, Height );
+    countdownDialog->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    if( QX11Info::isCompositingManagerRunning() )
+       countdownDialog->setAttribute( Qt::WA_TranslucentBackground, true );
+    
+    countdownDialog->show();
+    
+    QFont qfont;;
+    qfont.setPixelSize( 200 );
+    
+    QLabel * label = new QLabel( countdownDialog );
+    label->setGeometry( 0, 0, Width, Height );
+    label->setAlignment(Qt::AlignCenter);    
+    label->setText( QString::number( CountdownSpinBox->value() ) );
+    countdownDialog->setFont( qfont );
+    label->show();
+    QCoreApplication::processEvents( QEventLoop::AllEvents );     
+    
+    QPalette pal( label->palette() );
+    pal.setColor( QPalette::Foreground, Qt::red);
+    label->setPalette( pal );
+    
+    for ( int i = CountdownSpinBox->value() + 1; i >= 1; i-- )
+    {
+      label->setText( QString::number( i ) );
+      QCoreApplication::processEvents( QEventLoop::AllEvents );     
+      QTest::qSleep( 1000 );
+    }
+    
+    countdownDialog->close();
+    
+  } 
+}
+
+
 void screencast::record()
 {
+  
+  Countdown();
+  
   shortcutStart->setEnabled( false );
   shortcutStop->setEnabled( true );
    

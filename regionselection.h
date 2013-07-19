@@ -70,15 +70,16 @@ private:
   int radius;
   int penWidth;
   int penHalf;
+
+  int borderLeft;
+  int borderTop;
+  int borderRight;
+  int borderBottom;
   
   int border;
   QLabel *handleTopLeft;
   QLabel *handleTopMiddle;
   QLabel *handleTopRight;
-  
-  QLabel *borderBottom;
-  QLabel *borderLeft;
-  QLabel *borderRight;
 
   bool frameLocked;
   

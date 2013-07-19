@@ -43,6 +43,7 @@
 
 #include <QxtGlobalShortcut> 
 
+#include <QTest>
 
 class screencast : public QMainWindow
 { 
@@ -71,7 +72,9 @@ private slots:
     void Stop(void);
     void record(void);
     void play();
-    
+
+    void Countdown();
+
     void PulseMultipleChoice();
 
     void AudioOnOff();
@@ -173,7 +176,8 @@ private:
     QRadioButton *AreaRadioButton;
     QCheckBox *MagnifierCheckBox;
     QvkWebcamController *webcamCheckBox;
-
+    QSpinBox * CountdownSpinBox;
+    
     QLabel *ChannelLabel;
     QComboBox *VideoplayerComboBox;
     QPushButton *PlayButton;
