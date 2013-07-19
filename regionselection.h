@@ -76,7 +76,7 @@ private:
   int borderRight;
   int borderBottom;
   
-  int border;
+  //int border;
   QLabel *handleTopLeft;
   QLabel *handleTopMiddle;
   QLabel *handleTopRight;

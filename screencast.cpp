@@ -22,8 +22,6 @@ using namespace std;
 
 screencast::screencast()
 {
-  
-  
     bool beta = true;
     QString Beta;
     if ( beta )
@@ -403,6 +401,7 @@ screencast::screencast()
 
     PlayButton = new QPushButton( centralWidget );
     PlayButton->setText( tr( "Play" ) );
+    PlayButton->setToolTip( tr( "Play last Video" ) );
     qfont = PlayButton->font();
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
@@ -418,6 +417,7 @@ screencast::screencast()
     qfont.setBold( true );
     sendPushButton->setFont( qfont );
     sendPushButton->setText( tr( "Send" ) );
+    sendPushButton->setToolTip( tr( "Send Video" ) );
     connect( sendPushButton, SIGNAL( clicked() ), SLOT( send() ) );
     if ( needProgram( "xdg-email" ) )
       sendPushButton->setEnabled( true );
@@ -2156,10 +2156,11 @@ void screencast::Countdown()
 {
   if ( CountdownSpinBox->value() > 0 )
   {
-    
+    recordButton->setEnabled( false );
+
     QDesktopWidget *desk = QApplication::desktop();
-    int Width = 200;
-    int Height = 200;;
+    int Width = 250;
+    int Height = 250;;
     int x = ( desk->screenGeometry().width() / 2 ) - ( Width / 2 );
     int y = ( desk->screenGeometry().height() / 2 ) -( Height / 2 );
     
@@ -2177,10 +2178,8 @@ void screencast::Countdown()
     QLabel * label = new QLabel( countdownDialog );
     label->setGeometry( 0, 0, Width, Height );
     label->setAlignment(Qt::AlignCenter);    
-    label->setText( QString::number( CountdownSpinBox->value() ) );
     countdownDialog->setFont( qfont );
     label->show();
-    QCoreApplication::processEvents( QEventLoop::AllEvents );     
     
     QPalette pal( label->palette() );
     pal.setColor( QPalette::Foreground, Qt::red);
@@ -2188,9 +2187,16 @@ void screencast::Countdown()
     
     for ( int i = CountdownSpinBox->value() + 1; i >= 1; i-- )
     {
+      label->setText( "" );
+      QCoreApplication::processEvents( QEventLoop::AllEvents );     
       label->setText( QString::number( i ) );
       QCoreApplication::processEvents( QEventLoop::AllEvents );     
-      QTest::qSleep( 1000 );
+      label->update();
+      for ( int ii = 1; ii <= 10; ii++)
+      {
+        QCoreApplication::processEvents( QEventLoop::AllEvents );     
+        QTest::qSleep( 100 );
+      }
     }
     
     countdownDialog->close();

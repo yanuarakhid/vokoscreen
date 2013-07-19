@@ -172,5 +172,13 @@
         <source>Countdown</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Play last Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

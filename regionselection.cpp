@@ -48,7 +48,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   borderRight = 30;
   borderBottom = 20;
   
-  Rand = 20;
+  Rand = 20; // Wenn fertig wird dies nicht mehr bnötigt
   
   // Von außen bis Mitte blauer Rahmen
   // Breite blauer Rahmen
@@ -272,25 +272,25 @@ bool regionselection::isFrameLocked()
 
 int regionselection::getX()
 {
-  return this->x() + border; 
+  return this->x() + borderLeft + frameWidth / 2; 
 }
 
 
 int regionselection::getY()
 {
-  return  this->y() + border;
+  return  this->y() + borderTop + frameWidth / 2;
 }
 
 
 int regionselection::getHeight()
 {
-  return this->height() - 2 * border; 
+  return this->height() - borderTop - borderBottom - frameWidth; 
 }
 
 
 int regionselection::getWidth()
 {
-  return this->width() - 2 * border; 
+  return this->width() - borderLeft - borderRight - frameWidth; 
 }
 
 
