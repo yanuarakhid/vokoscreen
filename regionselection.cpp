@@ -21,6 +21,8 @@
 #include <QCursor>
 #include <QX11Info>
 
+#include <QCoreApplication>
+
 using namespace std;
 
 
@@ -45,7 +47,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   
   borderLeft = 20;
   borderTop = 20;
-  borderRight = 30;
+  borderRight =20;
   borderBottom = 20;
   
   Rand = 20; // Wenn fertig wird dies nicht mehr bnötigt
@@ -144,8 +146,38 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   handleTopRightPainter->drawLine( handleTopRight->height() / 2, handleTopRight->height() / 2, handleTopRight->width() / 2, handleTopRight->height() );
   handleTopRight->setPixmap( *pixmap );
   
+  //**********************************************************************
+  //**********************************************************************
+  // handle right middle
+  handleRightMiddle = new QLabel( this );
+  handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
+  handleRightMiddle->show();
+  handleRightMiddle->setCursor( Qt::SizeHorCursor );
   
+  pixmap = new QPixmap( handleRightMiddle->width(), handleRightMiddle->height() );
+  pixmap->fill( Qt::transparent );
   
+  QPainter * handleRightMiddlePainter = new QPainter( pixmap );
+  handleRightMiddlePainter->setRenderHints( QPainter::Antialiasing, true );
+  handleRightMiddlePainter->setPen( QPen( Qt::black, penWidth ) );
+  
+  QBrush brushRightMiddle( Qt::red, Qt::SolidPattern );
+  handleRightMiddlePainter->setBrush( brushRightMiddle );
+
+  QRectF rectangleRightMiddle = QRectF( penHalf, penHalf, 2 * ( radius - penHalf ), 2 * ( radius -penHalf ) );
+  startAngle = 90 * 16;
+  spanAngle =  -180  * 16;
+  handleRightMiddlePainter->drawPie( rectangleRightMiddle, startAngle, spanAngle );
+  
+  // Die schwarze Linie am unteren Rand von drawPie ändern in blau
+  handleRightMiddlePainter->setPen( QPen( Qt::blue, frameWidth ) );
+  handleRightMiddlePainter->drawLine( handleRightMiddle->width() - radius,
+				      handleRightMiddle->height() / 2 - radius,
+				      handleRightMiddle->width() - radius,
+				      handleTopRight->height() / 2 + radius);
+  handleRightMiddle->setPixmap( *pixmap );
+  
+
   
   // Framelock
   lockFrame( false );
@@ -201,13 +233,13 @@ void regionselection::paintEvent( QPaintEvent *event )
   startAngle = 180 * 16;
   spanAngle =  -270  * 16;
   painter.drawPie( rectangle, startAngle, spanAngle ); 
-*/  
+  
   // Knob right middle
   rectangle.setRect( width() - 2 * Rand - penHalf, height() / 2 - Rand, 2 * Rand, 2 * Rand );
   startAngle = 90 * 16;
   spanAngle =  -180  * 16;
   painter.drawPie( rectangle, startAngle, spanAngle ); 
-  
+*/  
   // Knob right bottom
   rectangle.setRect( width() - 2 * Rand - penHalf, height() - 2 * Rand - penHalf, 2 * Rand, 2 * Rand );
   startAngle = 90 * 16;
@@ -311,9 +343,6 @@ void regionselection::handlingFrameLock()
 }
 
 
-
-
-
 /*! MouseMove fuer das bewegen des Fensters und Ränder
 \param event QMouseEvent Mouse Event
 */
@@ -324,12 +353,14 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     moveTopLeft( event );
     handleTopMiddle->setGeometry( this->width() / 2 - radius, borderTop - radius , 2 * radius, radius );
     handleTopRight->setGeometry( this->width() - borderRight - radius, borderTop - radius, 2 * radius, 2 * radius );
+    handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
     return;
   }
 
   if ( handleTopMiddle->underMouse() )
   {
     moveTopMiddle( event );
+    handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
     return;
   }
 
@@ -338,8 +369,19 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     moveTopRight( event );
     handleTopMiddle->setGeometry( this->width() / 2 - radius, borderTop - radius , 2 * radius, radius );
     handleTopRight->setGeometry( this->width() - borderRight - radius, borderTop - radius, 2 * radius, 2 * radius );
+    handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
     return;
   }
+
+  if ( handleRightMiddle->underMouse() )
+  {
+    moveRightMiddle( event );
+    handleTopMiddle->setGeometry( this->width() / 2 - radius, borderTop - radius , 2 * radius, radius );
+    handleTopRight->setGeometry( this->width() - borderRight - radius, borderTop - radius, 2 * radius, 2 * radius );
+    handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
+    return;
+  }
+  
   
 /*    
     if (  event->buttons() & Qt::LeftButton )
@@ -364,10 +406,10 @@ void regionselection::moveTopLeft( QMouseEvent *event )
   int widgetHeight = geometry().height();
   
   // Minimale Größe des Widget begrenzen
-  if ( mouseGlobalY >= widgetY + widgetHeight - 200)
+  if ( mouseGlobalY >= widgetY + widgetHeight - 200 )
     mouseGlobalY = widgetY + widgetHeight - 200;
 
-  if ( mouseGlobalX >= widgetX + widgetWidth - 200)
+  if ( mouseGlobalX >= widgetX + widgetWidth - 200 )
     mouseGlobalX = widgetX + widgetWidth - 200;
   
   // Neue Geometry des Dialogfenster setzen
@@ -386,17 +428,18 @@ void regionselection::moveTopMiddle( QMouseEvent *event )
 {
   // Globale Mauskoordinaten 
   int mouseGlobalY = event->globalY();
+  qDebug() << event->globalY();
   
   // Alte Globale Widget Koordinaten
   int widgetX = geometry().x();
   int widgetY = geometry().y();
   int widgetWidth = geometry().width();
   int widgetHeight = geometry().height();
-  
-  // Minimale Größe des Widget begrenzen
-  if ( mouseGlobalY >= widgetY + widgetHeight - 200)
-    mouseGlobalY = widgetY + widgetHeight - 200;
 
+  // Minimale Größe des Widget begrenzen
+  if ( mouseGlobalY >= widgetY + widgetHeight - 200 )
+    mouseGlobalY = widgetY + widgetHeight - 200;
+  
   // Neue Geometry des HauptWidget setzen
   this->setGeometry( widgetX,
 		     mouseGlobalY - currentMouseLocalY,
@@ -404,7 +447,7 @@ void regionselection::moveTopMiddle( QMouseEvent *event )
 		     widgetHeight  + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
 
   event->accept();
-  
+
   qDebug() << "moveTopMiddle";
 }
 
@@ -418,11 +461,10 @@ void regionselection::moveTopRight( QMouseEvent *event )
   // Alte Widget Koordinaten
   int widgetX = geometry().x();
   int widgetY = geometry().y();
-  int widgetWidth = geometry().width();
   int widgetHeight = geometry().height();
   
   // Minimale Größe des Widget begrenzen
-  if ( mouseGlobalY >= widgetY + widgetHeight - 200)
+  if ( mouseGlobalY >= widgetY + widgetHeight - 200 )
     mouseGlobalY = widgetY + widgetHeight - 200;
   
   if ( mouseGlobalX <= widgetX + 200 )
@@ -435,6 +477,29 @@ void regionselection::moveTopRight( QMouseEvent *event )
      		     widgetHeight  + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
   
   event->accept();
+
+  qDebug() << "moveTopRight";
+}
+
+
+void regionselection::moveRightMiddle( QMouseEvent *event )
+{
+  // Globale Mauskoordinaten
+  int mouseGlobalX = event->globalX();
+  
+  // Alte Widget Koordinaten
+  int widgetX = geometry().x();
+  int widgetY = geometry().y();
+  int widgetHeight = geometry().height();
+  
+  // Minimale Größe des Widget begrenzen
+  if ( mouseGlobalX <= widgetX + 200 )
+    mouseGlobalX = widgetX + 200;
+  
+  this->setGeometry( widgetX,
+		     widgetY,
+		     currentWidgetWidth + ( mouseGlobalX - ( widgetX + currentMouseLocalX ) ),
+		     widgetHeight );
 }
 
 

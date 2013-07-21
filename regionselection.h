@@ -52,6 +52,7 @@ private slots:
   void moveTopLeft( QMouseEvent *event );
   void moveTopMiddle( QMouseEvent *event );
   void moveTopRight( QMouseEvent *event );
+  void moveRightMiddle( QMouseEvent *even );
   
   
 protected:  
@@ -80,7 +81,9 @@ private:
   QLabel *handleTopLeft;
   QLabel *handleTopMiddle;
   QLabel *handleTopRight;
-
+  QLabel *handleRightMiddle;
+  
+  
   bool frameLocked;
   
   void handlingFrameLock();
@@ -99,7 +102,6 @@ private:
   int currentWidgetHeight;
   int currentWidgetY;
   int currentbottomY;
-  
   
 };
 

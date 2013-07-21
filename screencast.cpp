@@ -1405,8 +1405,10 @@ void screencast::Pause()
         QMessageBox msgBox;
         QString message;
         message.append( tr( "Device " ) );
+        message.append( " " );
         message.append( inBox->getAlsaHw() );
-        message.append( tr( " is busy" ) );
+        message.append( " " );
+	message.append( tr( " is busy" ) );
         msgBox.setText( message );
         msgBox.exec();
 	PauseButton->click();
@@ -1441,7 +1443,9 @@ void screencast::Pause()
         QMessageBox msgBox;
         QString message;
         message.append( tr( "Device " ) );
+        message.append( " " );
         message.append( inBox->getAlsaHw() );
+        message.append( " " );
         message.append( tr( " is busy" ) );
         msgBox.setText( message );
         msgBox.exec();
@@ -2096,16 +2100,19 @@ QString screencast::noMouse()
 
 void screencast::preRecord()
 {
-  if ( AlsaRadioButton->isChecked() )
+  if ( AlsaRadioButton->isChecked() and AudioOnOffCheckbox->isChecked() )
   {
     QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
     QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
     if ( inBox->isbusy() )
     {
       QMessageBox msgBox;
+      msgBox.setIcon( QMessageBox::Information );
       QString message;
       message.append( tr( "Device " ) );
+      message.append( " " );
       message.append( inBox->getAlsaHw() );
+      message.append( " " );
       message.append( tr( " is busy" ) );
       msgBox.setText( message );
       msgBox.exec();
@@ -2185,7 +2192,7 @@ void screencast::Countdown()
     pal.setColor( QPalette::Foreground, Qt::red);
     label->setPalette( pal );
     
-    for ( int i = CountdownSpinBox->value() + 1; i >= 1; i-- )
+    for ( int i = CountdownSpinBox->value(); i >= 1; i-- )
     {
       label->setText( "" );
       QCoreApplication::processEvents( QEventLoop::AllEvents );     
@@ -2198,9 +2205,13 @@ void screencast::Countdown()
         QTest::qSleep( 100 );
       }
     }
-    
+
+    // Der Desktopanimation "Langsames ausblenden" entgegenwirken
+    label->setText( "" );
+    QCoreApplication::processEvents( QEventLoop::AllEvents );     
+    label->hide();
+    QCoreApplication::processEvents( QEventLoop::AllEvents );     
     countdownDialog->close();
-    
   } 
 }
 
