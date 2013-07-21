@@ -5,6 +5,7 @@
 #include <QDialog>
 #include <QTimer>
 #include <QPainter>
+#include <QDebug>
 
 class QvkWinInfo: public QDialog
 { 

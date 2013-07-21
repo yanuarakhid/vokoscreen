@@ -1549,6 +1549,41 @@ QString screencast::getFfmpegVersion()
 
 void screencast::windowMove()
 {
+  
+  //qDebug() << "111111111111111111111111111111111111";
+  try
+  {
+     //qDebug() << "2222222222222222222222222222222222222222222222";
+     QPoint point( QxtWindowSystem::windowGeometry( moveWindowID ).x() + leftFrameBorder, QxtWindowSystem::windowGeometry( moveWindowID ).y() + topFrameBorder );
+     //qDebug() << "33333333333333333333333333333333333333333333";
+     if ( moveWindowID != QxtWindowSystem::windowAt( point ) )
+     {
+        //qDebug() << "4444444444444444444444444444444444444444444";
+        windowMoveTimer->stop();
+        StopButton->click();
+        return;
+     }
+  }
+  catch(...)
+  {
+    //qDebug() << "555555555555555555555555555555555555555";
+    windowMoveTimer->stop();
+    StopButton->click();
+    return;
+  }
+
+  
+/*  
+  QPoint point( QxtWindowSystem::windowGeometry( moveWindowID ).x() + leftFrameBorder, QxtWindowSystem::windowGeometry( moveWindowID ).y() + topFrameBorder );
+  qDebug() << "2222222222222222222222222222222222222222222222";
+  if ( moveWindowID != QxtWindowSystem::windowAt( point ) )
+  {
+    qDebug() << "33333333333333333333333333333333333";
+    windowMoveTimer->stop();
+    StopButton->click();
+    return;
+  }
+*/  
   QString x = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).x() + leftFrameBorder );
   QString y = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).y() + topFrameBorder );
   if ( ( deltaXMove != x ) or ( deltaYMove != y ) )
