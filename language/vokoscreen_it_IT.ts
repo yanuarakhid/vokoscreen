@@ -1,69 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="it_IT">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="it_IT" version="2.0">
 <context>
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You find the Video as attachment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select one or more files</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You find the Video as attachment</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select one or more files</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QvkWebcamController</name>
     <message>
         <source>Webcam</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>screencast</name>
-    <message>
-        <source>Compress:</source>
-        <translation type="obsolete">comprimere:</translation>
-    </message>
-    <message>
-        <source>Do not record mouse cursor</source>
-        <translation type="obsolete">cursore del mouse non registra</translation>
-    </message>
-    <message>
-        <source>Videopath</source>
-        <translation>Videopath</translation>
-    </message>
     <message>
         <source>Fullscreen</source>
         <translation>schermo intero</translation>
@@ -77,6 +63,50 @@
         <translation>area</translation>
     </message>
     <message>
+        <source>Magnification</source>
+        <translation>Lente di ingrandimento</translation>
+    </message>
+    <message>
+        <source>Audio</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Alsa</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Pulse</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Frames:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Codec</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not record mouse cursor</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Videopath</translation>
+    </message>
+    <message>
+        <source>Player</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Vokoscreen minimized when recording starts</source>
+        <translation>La registrazione inizia quando minimizzato</translation>
+    </message>
+    <message>
         <source>Start</source>
         <translation>inizio</translation>
     </message>
@@ -85,112 +115,68 @@
         <translation>Stop</translation>
     </message>
     <message>
+        <source>Pause</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Play</source>
-        <translation type="unfinished">giocare</translation>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Recording time</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Aktual frames per second</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Size in KB</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Recording screensize</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Format</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Settings fps</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open Directory</source>
         <translation>directory aperta</translation>
     </message>
     <message>
-        <source>Magnification</source>
-        <translation>Lente di ingrandimento</translation>
-    </message>
-    <message>
-        <source>Vokoscreen minimized when recording starts</source>
-        <translation>La registrazione inizia quando minimizzato</translation>
-    </message>
-    <message>
-        <source>player</source>
-        <translation type="obsolete">giocatore</translation>
-    </message>
-    <message>
-        <source>codec</source>
-        <translation type="obsolete">codec</translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="obsolete">standard</translation>
-    </message>
-    <message>
-        <source>webcam settings</source>
-        <translation type="obsolete">Configuración de cámara Web</translation>
-    </message>
-    <message>
-        <source>Audio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Alsa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pulse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Frames:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Player</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Recording time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Aktual frames per second</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Size in KB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Codec</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Device </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> is busy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Default</source>
-        <translation type="unfinished"></translation>
+        <source>Countdown</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Do not record mouse cursor</source>
-        <translation type="unfinished"></translation>
+        <source>Play last Video</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Pause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Recording screensize</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings fps</source>
-        <translation type="unfinished"></translation>
+        <source>Send Video</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

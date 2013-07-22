@@ -503,6 +503,20 @@ void regionselection::moveRightMiddle( QMouseEvent *event )
 }
 
 
+void regionselection::moveRightBottom( QMouseEvent *event )
+{
+  // Globale Mauskoordinaten
+  int mouseGlobalX = event->globalX();
+  int mouseGlobalY = event->globalY();
+  
+  // Alte Widget Koordinaten
+  int widgetX = geometry().x();
+  int widgetY = geometry().y();
+  int widgetHeight = geometry().height();
+  
+}
+
+
 void regionselection::mousePressEvent( QMouseEvent *event )
 {
   // Position bei klick im Fenster festhalten

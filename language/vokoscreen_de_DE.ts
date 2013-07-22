@@ -140,7 +140,7 @@
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Aufnahme Bildschirmgröße</translation>
+        <translation>Aktueller Bildschirmbereich</translation>
     </message>
     <message>
         <source>Format</source>

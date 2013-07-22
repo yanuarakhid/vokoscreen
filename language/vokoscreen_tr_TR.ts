@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="tr_TR" version="2.0">
 <context>
     <name>QvkMail</name>
     <message>
@@ -52,19 +52,19 @@
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Volledig scherm</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Window</source>
-        <translation>Venster</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Audio</source>
@@ -96,7 +96,7 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Video map</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Player</source>
@@ -104,15 +104,15 @@
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Vokoscreen in taakbalk als opname start</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pause</source>
@@ -152,7 +152,7 @@
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Open direktory</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Device </source>
