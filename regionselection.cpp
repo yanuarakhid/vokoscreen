@@ -177,7 +177,39 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
 				      handleTopRight->height() / 2 + radius);
   handleRightMiddle->setPixmap( *pixmap );
   
-
+  //**********************************************************************
+  //**********************************************************************
+  // handle bottom right
+  handleBottomRight = new QLabel( this );
+  handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderRight - radius, 2 * radius, 2 * radius );
+  handleBottomRight->show();
+  handleBottomRight->setCursor( Qt::SizeFDiagCursor );
+  
+  pixmap = new QPixmap( handleRightMiddle->width(), handleRightMiddle->height() );
+  pixmap->fill( Qt::transparent );
+  
+  QPainter * handleBottomRightPainter = new QPainter( pixmap );
+  handleBottomRightPainter->setRenderHints( QPainter::Antialiasing, true );
+  handleBottomRightPainter->setPen( QPen( Qt::black, penWidth ) );
+ 
+  QBrush brushBottmRight( Qt::red, Qt::SolidPattern );
+  handleBottomRightPainter->setBrush( brushBottmRight );
+  
+  QRectF rectangleBottmRight = QRectF( penHalf, penHalf, 2 * ( radius - penHalf ), 2 * ( radius -penHalf ) );
+  startAngle = 90 * 16;
+  spanAngle =  -270  * 16;
+  handleBottomRightPainter->drawPie( rectangleBottmRight, startAngle, spanAngle );
+  
+  // Die schwarze Linie am unteren Rand von drawPie ändern in blau
+  handleBottomRightPainter->setPen( QPen( Qt::blue, frameWidth ) );
+  handleBottomRightPainter->drawLine( handleBottomRight->width() - radius,
+				      handleBottomRight->height() / 2 - radius,
+				      handleBottomRight->width() - radius,
+				      handleBottomRight->height() / 2 );
+  handleBottomRightPainter->drawLine( 0, handleTopRight->height() / 2, handleTopRight->width() / 2, handleTopRight->height() / 2 );
+  
+  handleBottomRight->setPixmap( *pixmap );
+  
   
   // Framelock
   lockFrame( false );
@@ -239,13 +271,13 @@ void regionselection::paintEvent( QPaintEvent *event )
   startAngle = 90 * 16;
   spanAngle =  -180  * 16;
   painter.drawPie( rectangle, startAngle, spanAngle ); 
-*/  
+  
   // Knob right bottom
   rectangle.setRect( width() - 2 * Rand - penHalf, height() - 2 * Rand - penHalf, 2 * Rand, 2 * Rand );
   startAngle = 90 * 16;
   spanAngle =  -270  * 16;
   painter.drawPie( rectangle, startAngle, spanAngle );
-  
+*/  
   // Knob bottom middle
   rectangle.setRect( width() / 2 - Rand - penHalf, height() - 2 * Rand - penHalf, 2 * Rand, 2 * Rand );
   startAngle = 0 * 16;
@@ -354,6 +386,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     handleTopMiddle->setGeometry( this->width() / 2 - radius, borderTop - radius , 2 * radius, radius );
     handleTopRight->setGeometry( this->width() - borderRight - radius, borderTop - radius, 2 * radius, 2 * radius );
     handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
+    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderRight - radius, 2 * radius, 2 * radius );
     return;
   }
 
@@ -361,6 +394,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
   {
     moveTopMiddle( event );
     handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
+    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderRight - radius, 2 * radius, 2 * radius );
     return;
   }
 
@@ -370,6 +404,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     handleTopMiddle->setGeometry( this->width() / 2 - radius, borderTop - radius , 2 * radius, radius );
     handleTopRight->setGeometry( this->width() - borderRight - radius, borderTop - radius, 2 * radius, 2 * radius );
     handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
+    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderRight - radius, 2 * radius, 2 * radius );
     return;
   }
 
@@ -379,6 +414,17 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     handleTopMiddle->setGeometry( this->width() / 2 - radius, borderTop - radius , 2 * radius, radius );
     handleTopRight->setGeometry( this->width() - borderRight - radius, borderTop - radius, 2 * radius, 2 * radius );
     handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
+    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderRight - radius, 2 * radius, 2 * radius );
+    return;
+  }
+  
+  if ( handleBottomRight->underMouse() )
+  {
+    moveBottomRight( event );
+    handleTopMiddle->setGeometry( this->width() / 2 - radius, borderTop - radius , 2 * radius, radius );
+    handleTopRight->setGeometry( this->width() - borderRight - radius, borderTop - radius, 2 * radius, 2 * radius );
+    handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
+    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderRight - radius, 2 * radius, 2 * radius );
     return;
   }
   
@@ -503,7 +549,7 @@ void regionselection::moveRightMiddle( QMouseEvent *event )
 }
 
 
-void regionselection::moveRightBottom( QMouseEvent *event )
+void regionselection::moveBottomRight( QMouseEvent *event )
 {
   // Globale Mauskoordinaten
   int mouseGlobalX = event->globalX();
@@ -513,7 +559,20 @@ void regionselection::moveRightBottom( QMouseEvent *event )
   int widgetX = geometry().x();
   int widgetY = geometry().y();
   int widgetHeight = geometry().height();
+
+ 
+  // Minimale Größe des Widget begrenzen
+  if ( mouseGlobalX <= widgetX + 200 )
+    mouseGlobalX = widgetX + 200;
+/*  
+  if ( mouseGlobalY >= widgetY + widgetHeight - 200 )
+    mouseGlobalY = widgetY + widgetHeight - 200;
+*/
   
+  this->setGeometry( widgetX,
+		     widgetY,
+		     currentWidgetWidth + ( mouseGlobalX - ( widgetX + currentMouseLocalX ) ),
+		     currentWidgetHeight + ( mouseGlobalY - ( widgetY + currentMouseLocalY ) ) );
 }
 
 
