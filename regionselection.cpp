@@ -510,11 +510,11 @@ void regionselection::moveTopRight( QMouseEvent *event )
   int widgetHeight = geometry().height();
   
   // Minimale Größe des Widget begrenzen
-  if ( mouseGlobalY >= widgetY + widgetHeight - 200 )
-    mouseGlobalY = widgetY + widgetHeight - 200;
-  
   if ( mouseGlobalX <= widgetX + 200 )
     mouseGlobalX = widgetX + 200;
+
+  if ( mouseGlobalY >= widgetY + widgetHeight - 200 )
+    mouseGlobalY = widgetY + widgetHeight - 200;
   
   // Neue Geometry des Fenster setzen
   this->setGeometry( widgetX,
@@ -564,10 +564,10 @@ void regionselection::moveBottomRight( QMouseEvent *event )
   // Minimale Größe des Widget begrenzen
   if ( mouseGlobalX <= widgetX + 200 )
     mouseGlobalX = widgetX + 200;
-/*  
-  if ( mouseGlobalY >= widgetY + widgetHeight - 200 )
-    mouseGlobalY = widgetY + widgetHeight - 200;
-*/
+  
+  if ( mouseGlobalY <= widgetY + 200 )
+    mouseGlobalY = widgetY +  200;
+
   
   this->setGeometry( widgetX,
 		     widgetY,

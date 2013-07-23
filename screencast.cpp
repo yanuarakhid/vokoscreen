@@ -1549,41 +1549,20 @@ QString screencast::getFfmpegVersion()
 
 void screencast::windowMove()
 {
-  
-  //qDebug() << "111111111111111111111111111111111111";
-  try
-  {
-     //qDebug() << "2222222222222222222222222222222222222222222222";
-     QPoint point( QxtWindowSystem::windowGeometry( moveWindowID ).x() + leftFrameBorder, QxtWindowSystem::windowGeometry( moveWindowID ).y() + topFrameBorder );
-     //qDebug() << "33333333333333333333333333333333333333333333";
-     if ( moveWindowID != QxtWindowSystem::windowAt( point ) )
-     {
-        //qDebug() << "4444444444444444444444444444444444444444444";
-        windowMoveTimer->stop();
-        StopButton->click();
-        return;
-     }
-  }
-  catch(...)
-  {
-    //qDebug() << "555555555555555555555555555555555555555";
-    windowMoveTimer->stop();
-    StopButton->click();
-    return;
-  }
+  // Begin Window is closed
+  QStringList stringList;
+  QList<WId> list = QxtWindowSystem::windows() ;
+  for( int i = 0; i < list.count(); i++)
+    stringList << QString::number( list[ i ] );
 
-  
-/*  
-  QPoint point( QxtWindowSystem::windowGeometry( moveWindowID ).x() + leftFrameBorder, QxtWindowSystem::windowGeometry( moveWindowID ).y() + topFrameBorder );
-  qDebug() << "2222222222222222222222222222222222222222222222";
-  if ( moveWindowID != QxtWindowSystem::windowAt( point ) )
+  if ( !stringList.contains( QString::number( moveWindowID ) ) )
   {
-    qDebug() << "33333333333333333333333333333333333";
     windowMoveTimer->stop();
     StopButton->click();
     return;
-  }
-*/  
+  } 
+  // End Window is closed
+  
   QString x = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).x() + leftFrameBorder );
   QString y = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).y() + topFrameBorder );
   if ( ( deltaXMove != x ) or ( deltaYMove != y ) )
