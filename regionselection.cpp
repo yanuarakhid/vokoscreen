@@ -428,7 +428,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     return;
   }
   
-  
+
 /*    
     if (  event->buttons() & Qt::LeftButton )
     {
@@ -472,9 +472,10 @@ void regionselection::moveTopLeft( QMouseEvent *event )
 
 void regionselection::moveTopMiddle( QMouseEvent *event )
 {
+  
+  
   // Globale Mauskoordinaten 
   int mouseGlobalY = event->globalY();
-  qDebug() << event->globalY();
   
   // Alte Globale Widget Koordinaten
   int widgetX = geometry().x();
@@ -490,7 +491,7 @@ void regionselection::moveTopMiddle( QMouseEvent *event )
   this->setGeometry( widgetX,
 		     mouseGlobalY - currentMouseLocalY,
 		     widgetWidth,
-		     widgetHeight  + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
+		     widgetHeight + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
 
   event->accept();
 
