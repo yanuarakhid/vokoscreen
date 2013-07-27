@@ -23,6 +23,9 @@
 
 #include <QCoreApplication>
 
+#include <math.h>
+#include <QPainterPath>
+
 using namespace std;
 
 
@@ -35,6 +38,7 @@ using namespace std;
  */
 regionselection::regionselection( int x, int y, int width, int height, int framewidth )
 {
+  (void)framewidth;
   setGeometry( x, y, width, height );
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
   
@@ -47,7 +51,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   
   borderLeft = 20;
   borderTop = 20;
-  borderRight =20;
+  borderRight = 30;
   borderBottom = 20;
   
   Rand = 20; // Wenn fertig wird dies nicht mehr bnötigt
@@ -56,7 +60,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   // Breite blauer Rahmen
   frameWidth = 4;
   
-  radius = 15;
+  radius = 20;
 
   penWidth = 2;
   penHalf = penWidth / 2;
@@ -75,7 +79,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   handleTopLeftPainter->setRenderHints( QPainter::Antialiasing, true );
   handleTopLeftPainter->setPen( QPen( Qt::black, penWidth ) );
   
-  QBrush brushTopLeft( Qt::red, Qt::SolidPattern );
+  QBrush brushTopLeft( Qt::green, Qt::SolidPattern );
   handleTopLeftPainter->setBrush( brushTopLeft );
 
   QRectF rectangleTopLeft = QRectF( penHalf, penHalf, 2 * ( radius - penHalf ), 2 * ( radius -penHalf ) );
@@ -104,7 +108,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   handleTopMiddlePainter->setRenderHints( QPainter::Antialiasing, true );
   handleTopMiddlePainter->setPen( QPen( Qt::black, penWidth ) );
   
-  QBrush brushTopMiddle( Qt::red, Qt::SolidPattern );
+  QBrush brushTopMiddle( Qt::green, Qt::SolidPattern );
   handleTopMiddlePainter->setBrush( brushTopMiddle );
 
   QRectF rectangleTopMiddle = QRectF( penHalf, penHalf, 2 * ( radius - penHalf ), 2 * ( radius -penHalf ) );
@@ -132,7 +136,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   handleTopRightPainter->setRenderHints( QPainter::Antialiasing, true );
   handleTopRightPainter->setPen( QPen( Qt::black, penWidth ) );
   
-  QBrush brushTopRight( Qt::red, Qt::SolidPattern );
+  QBrush brushTopRight( Qt::green, Qt::SolidPattern );
   handleTopRightPainter->setBrush( brushTopRight );
 
   QRectF rectangleTopRight = QRectF( penHalf, penHalf, 2 * ( radius - penHalf ), 2 * ( radius -penHalf ) );
@@ -146,70 +150,13 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   handleTopRightPainter->drawLine( handleTopRight->height() / 2, handleTopRight->height() / 2, handleTopRight->width() / 2, handleTopRight->height() );
   handleTopRight->setPixmap( *pixmap );
   
-  //**********************************************************************
-  //**********************************************************************
   // handle right middle
   handleRightMiddle = new QLabel( this );
-  handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
-  handleRightMiddle->show();
-  handleRightMiddle->setCursor( Qt::SizeHorCursor );
   
-  pixmap = new QPixmap( handleRightMiddle->width(), handleRightMiddle->height() );
-  pixmap->fill( Qt::transparent );
-  
-  QPainter * handleRightMiddlePainter = new QPainter( pixmap );
-  handleRightMiddlePainter->setRenderHints( QPainter::Antialiasing, true );
-  handleRightMiddlePainter->setPen( QPen( Qt::black, penWidth ) );
-  
-  QBrush brushRightMiddle( Qt::red, Qt::SolidPattern );
-  handleRightMiddlePainter->setBrush( brushRightMiddle );
-
-  QRectF rectangleRightMiddle = QRectF( penHalf, penHalf, 2 * ( radius - penHalf ), 2 * ( radius -penHalf ) );
-  startAngle = 90 * 16;
-  spanAngle =  -180  * 16;
-  handleRightMiddlePainter->drawPie( rectangleRightMiddle, startAngle, spanAngle );
-  
-  // Die schwarze Linie am unteren Rand von drawPie ändern in blau
-  handleRightMiddlePainter->setPen( QPen( Qt::blue, frameWidth ) );
-  handleRightMiddlePainter->drawLine( handleRightMiddle->width() - radius,
-				      handleRightMiddle->height() / 2 - radius,
-				      handleRightMiddle->width() - radius,
-				      handleTopRight->height() / 2 + radius);
-  handleRightMiddle->setPixmap( *pixmap );
-  
-  //**********************************************************************
-  //**********************************************************************
   // handle bottom right
   handleBottomRight = new QLabel( this );
-  handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderRight - radius, 2 * radius, 2 * radius );
-  handleBottomRight->show();
-  handleBottomRight->setCursor( Qt::SizeFDiagCursor );
   
-  pixmap = new QPixmap( handleRightMiddle->width(), handleRightMiddle->height() );
-  pixmap->fill( Qt::transparent );
-  
-  QPainter * handleBottomRightPainter = new QPainter( pixmap );
-  handleBottomRightPainter->setRenderHints( QPainter::Antialiasing, true );
-  handleBottomRightPainter->setPen( QPen( Qt::black, penWidth ) );
  
-  QBrush brushBottmRight( Qt::red, Qt::SolidPattern );
-  handleBottomRightPainter->setBrush( brushBottmRight );
-  
-  QRectF rectangleBottmRight = QRectF( penHalf, penHalf, 2 * ( radius - penHalf ), 2 * ( radius -penHalf ) );
-  startAngle = 90 * 16;
-  spanAngle =  -270  * 16;
-  handleBottomRightPainter->drawPie( rectangleBottmRight, startAngle, spanAngle );
-  
-  // Die schwarze Linie am unteren Rand von drawPie ändern in blau
-  handleBottomRightPainter->setPen( QPen( Qt::blue, frameWidth ) );
-  handleBottomRightPainter->drawLine( handleBottomRight->width() - radius,
-				      handleBottomRight->height() / 2 - radius,
-				      handleBottomRight->width() - radius,
-				      handleBottomRight->height() / 2 );
-  handleBottomRightPainter->drawLine( 0, handleTopRight->height() / 2, handleTopRight->width() / 2, handleTopRight->height() / 2 );
-  
-  handleBottomRight->setPixmap( *pixmap );
-  
   
   // Framelock
   lockFrame( false );
@@ -221,6 +168,115 @@ regionselection::~regionselection()
 }
 
 
+void regionselection::HandleRightMiddle( QColor color, QCursor cursor )
+{
+  handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
+  handleRightMiddle->show();
+  handleRightMiddle->setCursor( cursor );
+  
+  QPixmap * pixmap = new QPixmap( handleRightMiddle->width(), handleRightMiddle->height() );
+  pixmap->fill( Qt::transparent );
+  
+  QPainter * handleRightMiddlePainter = new QPainter( pixmap );
+  handleRightMiddlePainter->setRenderHints( QPainter::Antialiasing, true );
+  handleRightMiddlePainter->setPen( QPen( Qt::black, penWidth ) );
+  
+  QBrush brushRightMiddle( color, Qt::SolidPattern );
+  handleRightMiddlePainter->setBrush( brushRightMiddle );
+
+  QRectF rectangleRightMiddle = QRectF( penHalf, penHalf, 2 * ( radius - penHalf ), 2 * ( radius -penHalf ) );
+  int startAngle = 90 * 16;
+  int spanAngle =  -180  * 16;
+  handleRightMiddlePainter->drawPie( rectangleRightMiddle, startAngle, spanAngle );
+  
+  // Die schwarze Linie am unteren Rand von drawPie ändern in blau
+  handleRightMiddlePainter->setPen( QPen( Qt::blue, frameWidth ) );
+  handleRightMiddlePainter->drawLine( handleRightMiddle->width() - radius,
+				      handleRightMiddle->height() / 2 - radius,
+				      handleRightMiddle->width() - radius,
+				      handleRightMiddle->height() / 2 + radius);
+  
+  // Begin Pfeil zeichnen
+  handleRightMiddlePainter->setPen( QPen( Qt::black, 2 ) );
+  
+  QBrush handleRightMiddleBrush( Qt::black, Qt::SolidPattern );
+  handleRightMiddlePainter->setBrush( handleRightMiddleBrush );
+
+  QPainterPath * painterPath = new QPainterPath();
+  painterPath->moveTo( handleRightMiddle->width() / 2 , handleRightMiddle->height() / 2 );
+  painterPath->lineTo( handleRightMiddle->width(),      handleRightMiddle->height() / 2 );
+  painterPath->lineTo( handleRightMiddle->width() - 7,  handleRightMiddle->height() / 2 + 3 );
+  painterPath->lineTo( handleRightMiddle->width() - 7,  handleRightMiddle->height() / 2 - 3 );
+  painterPath->lineTo( handleRightMiddle->width(),      handleRightMiddle->height() / 2 );
+  
+  painterPath->setFillRule( Qt::OddEvenFill );
+  
+  handleRightMiddlePainter->drawPath( *painterPath );
+  // End Pfeil zeichnen
+  
+  
+  handleRightMiddle->setPixmap( *pixmap );
+  
+}
+
+
+void regionselection::HandleBottomRight( QColor color, QCursor cursor )
+{
+  handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderBottom - radius, 2 * radius, 2 * radius );
+  handleBottomRight->show();
+  handleBottomRight->setCursor( cursor );
+  
+  QPixmap * pixmap = new QPixmap( handleBottomRight->width(), handleBottomRight->height() );
+  pixmap->fill( Qt::transparent );
+  
+  QPainter * handleBottomRightPainter = new QPainter( pixmap );
+  handleBottomRightPainter->setRenderHints( QPainter::Antialiasing, true );
+  handleBottomRightPainter->setPen( QPen( Qt::black, penWidth ) );
+ 
+  QBrush brushBottomRight( color, Qt::SolidPattern );
+  handleBottomRightPainter->setBrush( brushBottomRight );
+
+  QRectF rectangleBottmRight = QRectF( penHalf, penHalf, 2 * ( radius - penHalf ), 2 * ( radius -penHalf ) );
+  int startAngle = 90 * 16;
+  int spanAngle =  -270  * 16;
+  handleBottomRightPainter->drawPie( rectangleBottmRight, startAngle, spanAngle );
+  
+  // Die schwarze Linie am unteren Rand von drawPie ändern in blau
+  handleBottomRightPainter->setPen( QPen( Qt::blue, frameWidth ) );
+  handleBottomRightPainter->drawLine( handleBottomRight->width() - radius,
+				      handleBottomRight->height() / 2 - radius,
+				      handleBottomRight->width() - radius,
+				      handleBottomRight->height() / 2 );
+  
+  handleBottomRightPainter->drawLine( 0,
+				      handleBottomRight->height() / 2,
+				      handleBottomRight->width() / 2,
+				      handleBottomRight->height() / 2 );
+  
+  // Begin Pfeil zeichnen
+  double h = 2 * radius / 3;
+  
+  handleBottomRightPainter->setPen( QPen( Qt::black, 2 ) );
+  
+  QBrush brush( Qt::black, Qt::SolidPattern );
+  handleBottomRightPainter->setBrush( brush );
+
+  QPainterPath * handleBottomRightPainterPath = new QPainterPath();
+  handleBottomRightPainterPath->moveTo( handleBottomRight->width() / 2 ,        handleBottomRight->height() / 2 );
+  handleBottomRightPainterPath->lineTo( handleBottomRight->width() / 2 + h,     handleBottomRight->height() / 2 + h );
+  handleBottomRightPainterPath->lineTo( handleBottomRight->width() / 2 + h - 7, handleBottomRight->height() / 2 + h - 3 );
+  handleBottomRightPainterPath->lineTo( handleBottomRight->width() / 2 + h - 3, handleBottomRight->height() / 2 + h - 7 );
+  handleBottomRightPainterPath->lineTo( handleBottomRight->width() / 2 + h,     handleBottomRight->height() / 2 + h );
+  
+  handleBottomRightPainterPath->setFillRule( Qt::OddEvenFill );
+  
+  handleBottomRightPainter->drawPath( *handleBottomRightPainterPath );
+  // End Pfeil zeichnen
+  
+  handleBottomRight->setPixmap( *pixmap );
+}
+ 
+ 
 void regionselection::paintEvent( QPaintEvent *event ) 
 {
   (void)event;
@@ -234,7 +290,7 @@ void regionselection::paintEvent( QPaintEvent *event )
   painter.setPen( QPen( Qt::black, penWidth ) );
 
   QBrush brush( Qt::SolidPattern );
-  brush.setColor( Qt::red );
+  brush.setColor( Qt::green );
   painter.setBrush ( brush );
 
 /*
@@ -360,18 +416,16 @@ int regionselection::getWidth()
 
 void regionselection::handlingFrameLock()
 {
-/*  
-    if(frameLocked){
-        borderLeft->setGeometry( 0, 0, border, this->height());
-        borderRight->setGeometry( this->width()-border,0, border, this->height() );
-        borderBottom->setGeometry(0, this->height() - border, this->width(), border );
-        borderTop->setGeometry( 0, 0, this->width(), border );
-	labelSize->hide();
+    if ( frameLocked )
+    {
+      HandleBottomRight( Qt::red, Qt::ArrowCursor );
+      HandleRightMiddle( Qt::red, Qt::ArrowCursor );
     }
-    else {
-        setAllBorder();
+    else
+    {
+      HandleBottomRight( Qt::green, Qt::SizeFDiagCursor );
+      HandleRightMiddle( Qt::green, Qt::SizeHorCursor );
     }
-*/    
 }
 
 
@@ -380,13 +434,17 @@ void regionselection::handlingFrameLock()
 */
 void regionselection::mouseMoveEvent( QMouseEvent *event )
 {
+  
+  if ( isFrameLocked() )
+    return;
+  
   if ( handleTopLeft->underMouse() )
   {
     moveTopLeft( event );
     handleTopMiddle->setGeometry( this->width() / 2 - radius, borderTop - radius , 2 * radius, radius );
     handleTopRight->setGeometry( this->width() - borderRight - radius, borderTop - radius, 2 * radius, 2 * radius );
     handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
-    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderRight - radius, 2 * radius, 2 * radius );
+    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderBottom - radius, 2 * radius, 2 * radius );
     return;
   }
 
@@ -394,7 +452,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
   {
     moveTopMiddle( event );
     handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
-    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderRight - radius, 2 * radius, 2 * radius );
+    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderBottom - radius, 2 * radius, 2 * radius );
     return;
   }
 
@@ -404,7 +462,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     handleTopMiddle->setGeometry( this->width() / 2 - radius, borderTop - radius , 2 * radius, radius );
     handleTopRight->setGeometry( this->width() - borderRight - radius, borderTop - radius, 2 * radius, 2 * radius );
     handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
-    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderRight - radius, 2 * radius, 2 * radius );
+    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderBottom - radius, 2 * radius, 2 * radius );
     return;
   }
 
@@ -414,7 +472,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     handleTopMiddle->setGeometry( this->width() / 2 - radius, borderTop - radius , 2 * radius, radius );
     handleTopRight->setGeometry( this->width() - borderRight - radius, borderTop - radius, 2 * radius, 2 * radius );
     handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
-    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderRight - radius, 2 * radius, 2 * radius );
+    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderBottom - radius, 2 * radius, 2 * radius );
     return;
   }
   
@@ -424,7 +482,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     handleTopMiddle->setGeometry( this->width() / 2 - radius, borderTop - radius , 2 * radius, radius );
     handleTopRight->setGeometry( this->width() - borderRight - radius, borderTop - radius, 2 * radius, 2 * radius );
     handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
-    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderRight - radius, 2 * radius, 2 * radius );
+    handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderBottom - radius, 2 * radius, 2 * radius );
     return;
   }
   
@@ -472,8 +530,6 @@ void regionselection::moveTopLeft( QMouseEvent *event )
 
 void regionselection::moveTopMiddle( QMouseEvent *event )
 {
-  
-  
   // Globale Mauskoordinaten 
   int mouseGlobalY = event->globalY();
   
@@ -529,6 +585,8 @@ void regionselection::moveTopRight( QMouseEvent *event )
 }
 
 
+// http://doc-snapshot.qt-project.org/4.8/qtransform.html#details
+
 void regionselection::moveRightMiddle( QMouseEvent *event )
 {
   // Globale Mauskoordinaten
@@ -559,7 +617,7 @@ void regionselection::moveBottomRight( QMouseEvent *event )
   // Alte Widget Koordinaten
   int widgetX = geometry().x();
   int widgetY = geometry().y();
-  int widgetHeight = geometry().height();
+ // int widgetHeight = geometry().height();
 
  
   // Minimale Größe des Widget begrenzen

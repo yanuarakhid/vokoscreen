@@ -30,7 +30,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.5";  
+    Version = "1.7.7";  
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -2305,7 +2305,7 @@ void screencast::record()
     deltaY  = QString().number( myregionselection->getY() );
 
     //Makes the rectangle unmovable and unresizeable (Is enabled yet again when process finished)
-    myregionselection->lockFrame(true);
+    myregionselection->lockFrame( true );
   }
   
   // -report wird erst ab ffmpeg version 0.9 unterstützt

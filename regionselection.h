@@ -23,7 +23,7 @@
 #include <QLabel>
 #include <QMouseEvent>
 #include <QDebug>
-
+#include <QPropertyAnimation>
 #include <QPixmap>
 
 class regionselection : public QWidget
@@ -34,6 +34,7 @@ public:
   virtual ~regionselection();
   void lockFrame( bool status = true );
   bool isFrameLocked();
+
 
   
 public slots:
@@ -55,6 +56,8 @@ private slots:
   void moveRightMiddle( QMouseEvent *even );
   void moveBottomRight( QMouseEvent *event );
 
+  void HandleRightMiddle( QColor color, QCursor cursor );
+  void HandleBottomRight( QColor color, QCursor cursor );
   
 protected:  
   //void mouseMoveEvent( QMouseEvent *event );
@@ -84,6 +87,8 @@ private:
   QLabel *handleTopRight;
   QLabel *handleRightMiddle;
   QLabel *handleBottomRight;
+  
+  QLabel * handleMiddle;
   
   bool frameLocked;
   
