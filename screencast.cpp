@@ -1815,7 +1815,7 @@ void screencast::PulseMultipleChoice()
       namePulse->setGeometry( QRect( 0,  i * 20, 400, 21 ) );
       namePulse->setText( getPulseInputName( i + 1 ) );
       namePulse->setAccessibleName( getPulseInputDevices( i + 1 ) );
-      namePulse->setToolTip("Select one or more devices");
+      namePulse->setToolTip( tr( "Select one or more devices" ) );
       namePulse->show();
       qDebug() << "[vokoscreen]" << "Find CaptureCard:" << namePulse->text() << "with device:" << namePulse->accessibleName();
     }  
