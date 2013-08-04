@@ -32,6 +32,7 @@ Makefile
 
 # Linux/Unixes
 .*
+!.tx
 !.gitignore
 *~
 

@@ -626,7 +626,7 @@ screencast::screencast()
     connect( AreaRadioButton,       SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
-    myregionselection = new regionselection( 0, 0, 400, 400, 5 );
+    myregionselection = new regionselection( 200,200, 400, 400, 5 );
     myregionselection->close();
     
     connect( MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );

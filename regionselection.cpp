@@ -70,8 +70,8 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
 
   penWidth = 2;
   penHalf = penWidth / 2;
-  
-  //**********************************************************************
+
+/*
   // handle top left
   handleTopLeft = new QLabel( this );
   handleTopLeft->setGeometry( borderLeft - radius, borderTop - radius, 2 * radius, 2 * radius );
@@ -99,15 +99,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   handleTopLeftPainter->drawLine( handleTopLeft->width() / 2, handleTopLeft->height() / 2 , handleTopLeft->width() / 2, handleTopLeft->height() );
   
   handleTopLeft->setPixmap( *pixmap );
-  
-  // handle top right
-  //handleTopRight = new QLabel( this );
-  
-  // handle right middle
-  //handleRightMiddle = new QLabel( this );
-  
-  // handle bottom right
-  //handleBottomRight = new QLabel( this );
+*/  
  
   // Framelock
   lockFrame( false );
@@ -119,6 +111,34 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
 regionselection::~regionselection()
 {
 }
+
+
+void regionselection::HandleTopLeft()
+{
+  QColor color, arrow;
+  
+  if ( isFrameLocked() )
+  {
+    color = Qt::red;
+    arrow = Qt::red;
+  }
+  else
+  {
+    color = Qt::green;
+    arrow = Qt::black;
+  }
+  
+  QBrush brush( color, Qt::SolidPattern );
+  painter->setBrush( brush );
+  painter->setPen( QPen( Qt::black, penWidth ) );
+  
+  QRectF rectangle = QRectF( borderLeft - radius + penHalf, borderTop - radius + penHalf, 2 * radius, 2 * radius );
+  int startAngle = 0 * 16;
+  int spanAngle = 270 * 16;
+  painter->drawPie( rectangle, startAngle, spanAngle );
+  
+}
+
 
 
 void regionselection::HandleTopMiddle()
@@ -148,10 +168,10 @@ void regionselection::HandleTopMiddle()
   painter->setPen( QPen( arrow, 2 ) );
   QPainterPath * painterPath = new QPainterPath();
   painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop - radius + penWidth );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop - radius + penWidth + 1);
   painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, borderTop - radius + 7 );
   painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, borderTop - radius + 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop -radius + penWidth );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop -radius + penWidth + 1);
   painter->drawPath( *painterPath );
 }
 
@@ -286,6 +306,30 @@ void regionselection::paintEvent( QPaintEvent *event )
 {
   (void)event;
   
+  QRegion maskedRegion1( 0, 
+                         0, 
+                         width(),
+                         height(), 
+                         QRegion::Rectangle );
+  
+  // Dieser Teil wird abgezogen
+  QRegion maskedRegion( borderLeft + frameWidth / 2, 
+                        borderTop + frameWidth / 2, 
+                        width() - borderLeft - borderRight - frameWidth,
+                        height() - borderTop - borderBottom - frameWidth, 
+                        QRegion::Rectangle );
+  
+  QRegion maskedRegionTopLeft( borderLeft + radius + 2,
+			       0,
+			       width() / 2 - borderLeft - 2 * radius - 3,
+			       borderTop - frameWidth / 2 );
+
+  
+  this->setMask( maskedRegion1.subtract( maskedRegion ) );
+  this->setMask( maskedRegion1.subtract( maskedRegionTopLeft ) );
+  
+  
+  
   QRectF rectangle = QRectF();
   int startAngle;
   int spanAngle;
@@ -322,6 +366,7 @@ void regionselection::paintEvent( QPaintEvent *event )
   spanAngle =  -270  * 16;
   painter.drawPie( rectangle, startAngle, spanAngle ); 
 */
+  HandleTopLeft();
   HandleTopMiddle();
   HandleTopRight();
   HandleRightMiddle();
@@ -425,17 +470,15 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
   if ( isFrameLocked() )
     return;
   
-  if ( handleTopLeft->underMouse() )
+  // Handle tp left
+  if ( handlePressed == TopLeft )
   {
     moveTopLeft( event );
-    
-    //handleTopMiddle->setGeometry( this->width() / 2 - radius, borderTop - radius , 2 * radius, radius );
-//    handleTopRight->setGeometry( this->width() - borderRight - radius, borderTop - radius, 2 * radius, 2 * radius );
-//    handleRightMiddle->setGeometry( this->width() - borderRight - radius, this->height() / 2 - radius, 2 * radius, 2 * radius );
-    //handleBottomRight->setGeometry( this->width() - borderRight - radius, this->height() - borderBottom - radius, 2 * radius, 2 * radius );
     return;
   }
-
+    
+  
+  
   // Handle top middle
   if ( handlePressed == TopMiddle )
   {
