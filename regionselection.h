@@ -35,13 +35,8 @@ public:
   void lockFrame( bool status = true );
   bool isFrameLocked();
 
-
   
 public slots:
-  //void moveBottom( QMouseEvent *event );
-  //void moveLeft( QMouseEvent *event );
-  //void moveRight( QMouseEvent *event );
-  //void setAllBorder();
   int getX();
   int getY();
   int getHeight();
@@ -50,14 +45,17 @@ public slots:
 
   
 private slots:
-  void moveTopLeft( QMouseEvent *event );
-  void moveTopMiddle( QMouseEvent *event );
-  void moveTopRight( QMouseEvent *event );
-  void moveRightMiddle( QMouseEvent *even );
+  void moveTopLeft    ( QMouseEvent *event );
+  void moveTopMiddle  ( QMouseEvent *event );
+  void moveTopRight   ( QMouseEvent *event );
+  void moveRightMiddle( QMouseEvent *event );
   void moveBottomRight( QMouseEvent *event );
+  void moveBottomMiddle( QMouseEvent *event);
 
-  void HandleRightMiddle( QColor color, QCursor cursor );
-  void HandleBottomRight( QColor color, QCursor cursor );
+  void HandleTopMiddle();
+  void HandleTopRight();
+  void HandleRightMiddle();
+  void HandleBottomRight();
   
 protected:  
   //void mouseMoveEvent( QMouseEvent *event );
@@ -67,9 +65,14 @@ protected:
 protected:
   void mouseMoveEvent( QMouseEvent *event );
   void mousePressEvent( QMouseEvent *event );
-
+  void mouseReleaseEvent ( QMouseEvent * event );
+  
+  void paintEvent( QPaintEvent *event );
+  QPainter * painter;
   
 private:
+  enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
+
   int Rand;  
   int frameWidth;
   int radius;
@@ -81,22 +84,15 @@ private:
   int borderRight;
   int borderBottom;
   
-  //int border;
   QLabel *handleTopLeft;
-  QLabel *handleTopMiddle;
-  QLabel *handleTopRight;
-  QLabel *handleRightMiddle;
-  QLabel *handleBottomRight;
-  
-  QLabel * handleMiddle;
+  //QLabel *handleTopMiddle;
+//  QLabel *handleTopRight;
+//  QLabel *handleRightMiddle;
   
   bool frameLocked;
-  
   void handlingFrameLock();
   
   //QLabel *labelSize;
-
-  void paintEvent( QPaintEvent *event );
 
   //! Fuer die Bewegung des Fensters
   QPoint m_dragPosition;
@@ -109,7 +105,9 @@ private:
   int currentWidgetY;
   int currentbottomY;
   
+  //QCursor myCursor;
+  
+  Handle handlePressed;
+  Handle handleUnderMouse;
 };
-
-
 #endif

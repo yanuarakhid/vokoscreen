@@ -75,5 +75,3 @@ PKGCONFIG += opencv
 
 CONFIG  += qtestlib
 #system( ls )
-
-

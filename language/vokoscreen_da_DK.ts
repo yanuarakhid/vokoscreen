@@ -3,49 +3,49 @@
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
-        <translation type="unfinished"/>
+        <translation>Mail seneste video</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation type="unfinished"/>
+        <translation>Mail en eller flere af de valgte videoer</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"/>
+        <translation>Send</translation>
     </message>
     <message>
         <source>You find the Video as attachment</source>
-        <translation type="unfinished"/>
+        <translation>Du finder videoen som en vedhæftet fil.</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation type="unfinished"/>
+        <translation>Vælg en eller flere filer</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation type="unfinished"/>
+        <translation>Ingen ramme</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation type="unfinished"/>
+        <translation>Ramme</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Luk</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamController</name>
     <message>
         <source>Webcam</source>
-        <translation type="unfinished"/>
+        <translation>Webcam</translation>
     </message>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"/>
+        <translation>Enheden er optaget</translation>
     </message>
 </context>
 <context>
@@ -68,27 +68,27 @@
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"/>
+        <translation>Lyd</translation>
     </message>
     <message>
         <source>Alsa</source>
-        <translation type="unfinished"/>
+        <translation>Alsa</translation>
     </message>
     <message>
         <source>Pulse</source>
-        <translation type="unfinished"/>
+        <translation>Pulse</translation>
     </message>
     <message>
         <source>Frames:</source>
-        <translation type="unfinished"/>
+        <translation>Rammer:</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation type="unfinished"/>
+        <translation>Standard</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation type="unfinished"/>
+        <translation>Codec</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
@@ -100,7 +100,7 @@
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"/>
+        <translation>Afspiller</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
@@ -116,39 +116,39 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>Afspil</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"/>
+        <translation>Send</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation type="unfinished"/>
+        <translation>Optagetid</translation>
     </message>
     <message>
         <source>Aktual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>Aktuel billeder i sekundet</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation type="unfinished"/>
+        <translation>Størrelse i KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"/>
+        <translation>Optager skærmstørrelse</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>Format</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation type="unfinished"/>
+        <translation>Indstillinger fps</translation>
     </message>
     <message>
         <source>Open Directory</source>
@@ -156,27 +156,27 @@
     </message>
     <message>
         <source>Device </source>
-        <translation type="unfinished"/>
+        <translation>Enhed</translation>
     </message>
     <message>
         <source> is busy</source>
-        <translation type="unfinished"/>
+        <translation>er optaget</translation>
     </message>
     <message>
         <source>%1</source>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"/>
+        <translation>Nedtælling</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation type="unfinished"/>
+        <translation>Afspil seneste video</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"/>
+        <translation>Send video</translation>
     </message>
 </context>
 </TS>

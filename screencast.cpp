@@ -22,6 +22,16 @@ using namespace std;
 
 screencast::screencast()
 {
+/*  
+    TestFrame = new QMainWindow();
+    TestFrame->setGeometry( 0, 0, 100, 100 );
+    TestFrame->show();
+    //TestFrame->setPaletteForegroundColor(Qt::white);
+    qDebug() << "X():" << TestFrame->x() << "Y():" << TestFrame->y();
+    qDebug() << "geometry.x()" << TestFrame->geometry().x() << "geometry.y()" << TestFrame->geometry().y();
+    qDebug() << "frameGeometry.width()" << TestFrame->frameGeometry().width() << "frameGeometry.height()" << TestFrame->frameGeometry().height();
+*/    
+  
     bool beta = true;
     QString Beta;
     if ( beta )
@@ -112,14 +122,17 @@ screencast::screencast()
     QComboBox *ScreenComboBox = new QComboBox( frame );
     ScreenComboBox->setGeometry( 160, 65, 200, 21 );
     ScreenComboBox->show();
-    QDesktopWidget *desk = QApplication::desktop();    
+    QDesktopWidget *desk = QApplication::desktop();
+    qDebug() << "[vokoscreen]" << "---Begin search Screen---";
     for ( int i = 0; i < desk->screenCount(); i++ )
     {
       QString ScreenGeometryX = QString::number( desk->screenGeometry( i + 1 ).width() );
       QString ScreenGeometryY = QString::number( desk->screenGeometry( i + 1 ).height() );      
       ScreenComboBox->addItem( "Bildschirm " + QString::number( i + 1 ) + "   " + ScreenGeometryX + " x " + ScreenGeometryY, i );      
-      qDebug() << "screenCount" << desk->screenCount();
+      qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
     }
+    qDebug() << "[vokoscreen]" << "---End search Screen---";
+    qDebug();
     // am 16.07.2013 22:20 auf github
     
     QLabel *CountdownLabel = new QLabel( frame );
@@ -613,7 +626,7 @@ screencast::screencast()
     connect( AreaRadioButton,       SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
-    myregionselection = new regionselection( 200, 200, 400, 400, 5 );
+    myregionselection = new regionselection( 0, 0, 400, 400, 5 );
     myregionselection->close();
     
     connect( MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );
@@ -682,10 +695,6 @@ screencast::screencast()
    
    clickedScreenSize();
    AreaOnOff();
-   
-   
-   
-   
 }
 
 
@@ -1701,7 +1710,6 @@ QString screencast::getPulseSample( int value )
   result = list.filter( "Hz", Qt::CaseInsensitive );
 
   QString sample = result[ 0 ].replace("Hz","");
-
   return sample;
 }
 
@@ -1737,15 +1745,15 @@ QString screencast::mySample()
 
     if ( not list.empty() )
       ret = list.first();
-   }
+  }
    
-   if ( AlsaRadioButton->isChecked() )
-   {
-     // Aus der ComboBox das ausgewählte Device holen
-     QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
-     QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
-     ret = inBox->getAlsaSample();
-   }
+  if ( AlsaRadioButton->isChecked() )
+  {
+    // Aus der ComboBox das ausgewählte Device holen
+    QVariant aa = AlsaHwComboBox->itemData( AlsaHwComboBox->currentIndex() );
+    QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
+    ret = inBox->getAlsaSample();
+  }
     
    return ret;
 
@@ -2254,6 +2262,15 @@ void screencast::record()
   if ( WindowRadioButton->isChecked() )
     if ( firststartWininfo == false )
     {
+/*      
+      TestFrame->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+      //QCoreApplication::processEvents( QEventLoop::AllEvents );     
+      TestFrame->show();
+      //TestFrame->hide();
+      qDebug() << "X():" << TestFrame->x() << "Y():" << TestFrame->y();
+      qDebug() << "geometry.x()" << TestFrame->geometry().x() << "geometry.y()" << TestFrame->geometry().y();
+      qDebug() << "frameGeometry.width()" << TestFrame->frameGeometry() << "frameGeometry.height()" << TestFrame->frameGeometry().height();
+*/      
       int rightFrameBorder = 0;
       int bottomFrameBorder = 0;
       

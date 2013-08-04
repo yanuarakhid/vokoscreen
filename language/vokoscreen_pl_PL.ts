@@ -168,15 +168,15 @@
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"/>
+        <translation>Odliczanie</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation type="unfinished"/>
+        <translation>Odtwórz ostatnie nagranie</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"/>
+        <translation>Wyślij nagranie</translation>
     </message>
 </context>
 </TS>

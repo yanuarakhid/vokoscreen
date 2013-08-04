@@ -66,6 +66,8 @@ public:
     bool firststartWininfo;
     bool moveWindow;
     
+    QMainWindow * TestFrame;
+    
 public slots:
   
 private slots:

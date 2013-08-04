@@ -1,40 +1,40 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="vi" version="2.0">
 <context>
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Mail laatste Video</translation>
+        <translation>Gửi mail video mới nhất</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Mail een of meer geselecteerde video &apos;s</translation>
+        <translation>Gửi mail đối với một hoặc các video được chọn</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Zenden</translation>
+        <translation>Gửi</translation>
     </message>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>U vindt de video als bijlage</translation>
+        <translation>Bạn đã tìm thấy video dưới dạng đính kèm</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Selecteer een of meer bestanden</translation>
+        <translation>Chọn một hoặc nhiều tập ti</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation>Geen rand</translation>
+        <translation>Không có đường viền</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation>Rand</translation>
+        <translation>Đường viền</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Sluiten</translation>
+        <translation>Đóng lại</translation>
     </message>
 </context>
 <context>
@@ -45,26 +45,26 @@
     </message>
     <message>
         <source>Device is busy</source>
-        <translation>Apparaat is bezig</translation>
+        <translation>Thiết bị hiện đang bận</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Volledig scherm</translation>
+        <translation>Toàn màn hình</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Venster</translation>
+        <translation>Cửa sổ</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Khu vực</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Phóng to</translation>
     </message>
     <message>
         <source>Audio</source>
@@ -76,15 +76,15 @@
     </message>
     <message>
         <source>Pulse</source>
-        <translation>Pulse</translation>
+        <translation>Nhịp</translation>
     </message>
     <message>
         <source>Frames:</source>
-        <translation>Frames:</translation>
+        <translation>Khung hình:</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation>Standaard</translation>
+        <translation>Mặc định</translation>
     </message>
     <message>
         <source>Codec</source>
@@ -92,75 +92,75 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Muiscursor niet opnemen</translation>
+        <translation>Không ghi hình phần hiển thị của chuột</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Video map</translation>
+        <translation>Đường dẫn video</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Speler</translation>
+        <translation>Trình phát</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Vokoscreen in taakbalk als opname start</translation>
+        <translation>Vokoscreen sẽ được thu nhỏ khi phần ghi hình được tiến hành</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Bắt đầu</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Dừng lại</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauzeren</translation>
+        <translation>Tạm dừng</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Phát</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Verzenden</translation>
+        <translation>Gửi</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Opnametijd</translation>
+        <translation>Thời gian ghi hình</translation>
     </message>
     <message>
         <source>Aktual frames per second</source>
-        <translation>Werkelijke frames per seconde</translation>
+        <translation>Khung hình thực mỗi giây</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>Grootte in KB</translation>
+        <translation>Kích thước tính bằng KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Grootte van scherm opname</translation>
+        <translation>Kích cỡ màn hình khi ghi hình</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation>Định dạng</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Instellingen fps</translation>
+        <translation>Thiết lập cho khung hình mỗi giây</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Open direktory</translation>
+        <translation>Mở thư mục</translation>
     </message>
     <message>
         <source>Device </source>
-        <translation>Apparaat</translation>
+        <translation>Thiết bị</translation>
     </message>
     <message>
         <source> is busy</source>
-        <translation>is bezig</translation>
+        <translation>hiện đang bận</translation>
     </message>
     <message>
         <source>%1</source>
@@ -168,15 +168,15 @@
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Countdown</translation>
+        <translation>Đếm ngược</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Speel laatste Video</translation>
+        <translation>Phát video mới nhất</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>Stuur Video</translation>
+        <translation>Gửi Video</translation>
     </message>
 </context>
 </TS>
