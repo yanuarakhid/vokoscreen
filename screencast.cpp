@@ -41,6 +41,7 @@ screencast::screencast()
 
     ProgName = "vokoscreen";
     Version = "1.7.7";  
+    
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
     email = email.append( Version ).append( "'" ).append( ">tux@vodafone.de</a>" );
@@ -455,7 +456,7 @@ screencast::screencast()
     statusBarLabelFps = new QLabel();
     statusBarLabelFps->setText( "0" );
     statusBarLabelFps->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
-    statusBarLabelFps->setToolTip( tr( "Aktual frames per second" ) );
+    statusBarLabelFps->setToolTip( tr( "Actual frames per second" ) );
 
     statusBarLabelSize = new QLabel();
     statusBarLabelSize->setText( "0" );

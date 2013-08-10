@@ -11,7 +11,7 @@
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"/>
+        <translation>Invia</translation>
     </message>
     <message>
         <source>You find the Video as attachment</source>
@@ -26,22 +26,22 @@
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation type="unfinished"/>
+        <translation>Senza bordi</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation type="unfinished"/>
+        <translation>Bordi</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Chiudi</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamController</name>
     <message>
         <source>Webcam</source>
-        <translation type="unfinished"/>
+        <translation>Webcam</translation>
     </message>
     <message>
         <source>Device is busy</source>
@@ -68,19 +68,19 @@
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"/>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Alsa</source>
-        <translation type="unfinished"/>
+        <translation>Alsa</translation>
     </message>
     <message>
         <source>Pulse</source>
-        <translation type="unfinished"/>
+        <translation>Pulse</translation>
     </message>
     <message>
         <source>Frames:</source>
-        <translation type="unfinished"/>
+        <translation>Frames:</translation>
     </message>
     <message>
         <source>Default</source>
@@ -88,7 +88,7 @@
     </message>
     <message>
         <source>Codec</source>
-        <translation type="unfinished"/>
+        <translation>Codec</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
@@ -100,7 +100,7 @@
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"/>
+        <translation>Riproduttore</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
@@ -116,15 +116,15 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>Riproduci</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"/>
+        <translation>Invia</translation>
     </message>
     <message>
         <source>Recording time</source>
@@ -136,7 +136,7 @@
     </message>
     <message>
         <source>Size in KB</source>
-        <translation type="unfinished"/>
+        <translation>Dimensioni in KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
@@ -144,7 +144,7 @@
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>Formato</translation>
     </message>
     <message>
         <source>Settings fps</source>
@@ -164,11 +164,11 @@
     </message>
     <message>
         <source>%1</source>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"/>
+        <translation>Conto alla rovescia</translation>
     </message>
     <message>
         <source>Play last Video</source>
@@ -176,6 +176,10 @@
     </message>
     <message>
         <source>Send Video</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select one or more devices</source>
         <translation type="unfinished"/>
     </message>
 </context>

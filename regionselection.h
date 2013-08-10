@@ -19,12 +19,15 @@
 #define regionselection_H
 
 #include <QPainter>
-#include <QDialog>
 #include <QLabel>
-#include <QMouseEvent>
 #include <QDebug>
-#include <QPropertyAnimation>
-#include <QPixmap>
+#include <QRegion>
+#include <QCursor>
+#include <QX11Info>
+#include <QPainterPath>
+#include <QMouseEvent>
+
+#include <math.h>
 
 class regionselection : public QWidget
 { 
@@ -35,7 +38,6 @@ public:
   void lockFrame( bool status = true );
   bool isFrameLocked();
 
-  
 public slots:
   int getX();
   int getY();
@@ -43,7 +45,6 @@ public slots:
   int getWidth();
   //void printSize();
 
-  
 private slots:
   void moveTopLeft    ( QMouseEvent *event );
   void moveTopMiddle  ( QMouseEvent *event );
@@ -57,12 +58,8 @@ private slots:
   void HandleTopRight();
   void HandleRightMiddle();
   void HandleBottomRight();
-  
-protected:  
-  //void mouseMoveEvent( QMouseEvent *event );
-  //void moveEvent( QMoveEvent * event );
-  //void hideEvent( QHideEvent * event );
-  //void showEvent( QShowEvent * event );
+  void HandleBottomMiddle();
+
 protected:
   void mouseMoveEvent( QMouseEvent *event );
   void mousePressEvent( QMouseEvent *event );
@@ -71,10 +68,12 @@ protected:
   void paintEvent( QPaintEvent *event );
   QPainter * painter;
   
+  void resizeEvent( QResizeEvent * event ); //****************************************************
+  
+  
 private:
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
 
-  int Rand;  
   int frameWidth;
   int radius;
   int penWidth;
@@ -100,8 +99,6 @@ private:
   int currentWidgetHeight;
   int currentWidgetY;
   int currentbottomY;
-  
-  //QCursor myCursor;
   
   Handle handlePressed;
   Handle handleUnderMouse;

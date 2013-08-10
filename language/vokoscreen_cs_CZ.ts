@@ -178,5 +178,9 @@
         <source>Send Video</source>
         <translation>Poslat videosekvenci</translation>
     </message>
+    <message>
+        <source>Select one or more devices</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 </TS>

@@ -16,20 +16,14 @@
  */
 
 #include "regionselection.h" 
-
-#include <QRegion>
-#include <QCursor>
-#include <QX11Info>
-
 #include <QCoreApplication>
 
-#include <math.h>
-#include <QPainterPath>
-
-#include <QMouseEvent>
+#include <QToolTip>
 
 using namespace std;
 
+// Double Buffering
+//http://books.google.de/books?id=T373zcyFfvoC&pg=PA168&lpg=PA168&dq=qt+double+buffering&source=bl&ots=Wavv6fM_7D&sig=eOilngWo3WQzrrRPcoP4oOycWbE&hl=de&sa=X&ei=_hgAUoKNIcjwsgaiiIHgCw&ved=0CDEQ6AEwAA#v=onepage&q=qt%20double%20buffering&f=false
 
 /**
  * int x : 
@@ -40,28 +34,31 @@ using namespace std;
  */
 regionselection::regionselection( int x, int y, int width, int height, int framewidth )
 {
+  (void)framewidth;
   handlePressed = NoHandle;
   handleUnderMouse = NoHandle;
-  painter =  new QPainter( this );
+  painter =  new QPainter();
 
-  (void)framewidth;
-  setGeometry( x, y, width, height );
-  setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
   
+  
+QToolTip::showText ( QPoint( 300, 300 ), "Aber Hallo", this );
+  
+  
+  setGeometry( x, y, width, height );
+/*  setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+
   if( QX11Info::isCompositingManagerRunning() )
     setAttribute( Qt::WA_TranslucentBackground, true );
-  
+*/  
   setMouseTracking( true );
   
   qDebug() << "width:" << width << "height:" << height;
   
   borderLeft = 20;
-  borderTop = 20;
-  borderRight = 20;
+  borderTop = 30;
+  borderRight = 40;
   borderBottom = 20;
-  
-  Rand = 20; // Wenn fertig wird dies nicht mehr bnötigt
-  
+ 
   // Von außen bis Mitte blauer Rahmen
   // Breite blauer Rahmen
   frameWidth = 4;
@@ -70,46 +67,20 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
 
   penWidth = 2;
   penHalf = penWidth / 2;
-
-/*
-  // handle top left
-  handleTopLeft = new QLabel( this );
-  handleTopLeft->setGeometry( borderLeft - radius, borderTop - radius, 2 * radius, 2 * radius );
-  handleTopLeft->show();
-  handleTopLeft->setCursor( Qt::SizeFDiagCursor );
-  
-  QPixmap * pixmap = new QPixmap( handleTopLeft->width(), handleTopLeft->height() );
-  pixmap->fill( Qt::transparent );
-  
-  QPainter * handleTopLeftPainter = new QPainter( pixmap );
-  handleTopLeftPainter->setRenderHints( QPainter::Antialiasing, true );
-  handleTopLeftPainter->setPen( QPen( Qt::black, penWidth ) );
-  
-  QBrush brushTopLeft( Qt::green, Qt::SolidPattern );
-  handleTopLeftPainter->setBrush( brushTopLeft );
-
-  QRectF rectangleTopLeft = QRectF( penHalf, penHalf, 2 * ( radius - penHalf ), 2 * ( radius -penHalf ) );
-  int startAngle = 0 * 16;
-  int spanAngle = 270 * 16;
-  handleTopLeftPainter->drawPie( rectangleTopLeft, startAngle, spanAngle );
-  
-  // Die schwarze Linie am unteren Rand von drawPie ändern in blau
-  handleTopLeftPainter->setPen( QPen( Qt::blue, frameWidth ) );
-  handleTopLeftPainter->drawLine( handleTopLeft->width() / 2, handleTopLeft->height() / 2 , handleTopLeft->width(), handleTopLeft->height() / 2 );
-  handleTopLeftPainter->drawLine( handleTopLeft->width() / 2, handleTopLeft->height() / 2 , handleTopLeft->width() / 2, handleTopLeft->height() );
-  
-  handleTopLeft->setPixmap( *pixmap );
-*/  
  
   // Framelock
   lockFrame( false );
-  
- 
 }
 
 
 regionselection::~regionselection()
 {
+}
+
+
+void regionselection::resizeEvent( QResizeEvent * event )
+{
+ //qDebug() << "resizeEvent";
 }
 
 
@@ -136,9 +107,19 @@ void regionselection::HandleTopLeft()
   int startAngle = 0 * 16;
   int spanAngle = 270 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
-  
-}
 
+  // Begin Pfeil zeichnen
+  double h = 2 * radius / 3;
+  painter->setPen( QPen( arrow, 2 ) );
+
+  QPainterPath * painterPath = new QPainterPath();
+  painterPath->moveTo( borderLeft - frameWidth / 2 , borderTop - frameWidth / 2 );
+  painterPath->lineTo( borderLeft - h + penHalf, borderTop - h + penHalf );
+  painterPath->lineTo( borderLeft - h + penHalf + 7, borderTop - h + penHalf + 3 );
+  painterPath->lineTo( borderLeft - h + penHalf + 3, borderTop - h + penHalf + 7 );
+  painterPath->lineTo( borderLeft - h + penHalf, borderTop - h + penHalf );
+  painter->drawPath( *painterPath );
+}
 
 
 void regionselection::HandleTopMiddle()
@@ -164,14 +145,13 @@ void regionselection::HandleTopMiddle()
   int startAngle = 0 * 16;
   int spanAngle = 180 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
-
   painter->setPen( QPen( arrow, 2 ) );
   QPainterPath * painterPath = new QPainterPath();
   painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop - radius + penWidth + 1);
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop - radius + penWidth + 1 );
   painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, borderTop - radius + 7 );
   painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, borderTop - radius + 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop -radius + penWidth + 1);
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop -radius + penWidth + 1 );
   painter->drawPath( *painterPath );
 }
 
@@ -302,83 +282,95 @@ void regionselection::HandleBottomRight()
 }
 
 
+void regionselection::HandleBottomMiddle()
+{
+  QColor color, arrow;
+  
+  if ( isFrameLocked() )
+  {
+    color = Qt::red;
+    arrow = Qt::red;
+  }
+  else
+  {
+    color = Qt::green;
+    arrow = Qt::black;
+  }
+  
+  QBrush brush( color, Qt::SolidPattern );
+  painter->setBrush( brush );
+  painter->setPen( QPen( Qt::black, penWidth ) );
+
+  QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
+  int startAngle = 0 * 16;
+  int spanAngle =  -180  * 16;
+  painter->drawPie( rectangle, startAngle, spanAngle );
+  
+  // Begin Pfeil zeichnen
+  painter->setPen( QPen( arrow, 2 ) );
+
+  QPainterPath * painterPath = new QPainterPath();
+  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + radius, height() - borderBottom );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + radius, height() - borderBottom + radius - penWidth - 1 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + radius - 3, height() - borderBottom + radius - penWidth - 7 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + radius + 3, height() - borderBottom + radius - penWidth - 7 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + radius, height() - borderBottom + radius - penWidth - 1 );
+  
+  painterPath->setFillRule( Qt::OddEvenFill );
+  
+  painter->drawPath( *painterPath );
+  // End Pfeil zeichnen
+}
+
+
 void regionselection::paintEvent( QPaintEvent *event ) 
 {
   (void)event;
-  
-  QRegion maskedRegion1( 0, 
+  QRegion regionWidget(  0, 
                          0, 
                          width(),
                          height(), 
                          QRegion::Rectangle );
+/*  
+  // Region Handle TopLeft
+  QRegion handleTopLeftRectangle( 0, 0, borderLeft + radius + 4, borderTop + radius+4, QRegion::Rectangle );
+  QRegion handleTopLeftCircle( borderLeft - radius - penHalf, borderTop - radius-penHalf, 2 * radius + penWidth+1, 2 * radius + penWidth+1, QRegion::Ellipse );
+  QRegion handleTopLeftSmallRectangle( borderLeft, borderTop, radius, radius, QRegion::Rectangle );
+  QRegion test123 = handleTopLeftRectangle.subtract( handleTopLeftCircle  );
+  //QRegion test234 = test123.intersected ( handleTopLeftSmallRectangle );
   
-  // Dieser Teil wird abgezogen
-  QRegion maskedRegion( borderLeft + frameWidth / 2, 
+  // Region bettween TopLeft and TopMiddle
+  QRegion betweenTopLeftAndTopMiddle( borderLeft + radius + 2,
+			              0,
+			              width() / 2 - borderLeft - 2 * radius - 3,
+			              borderTop - frameWidth / 2 );
+  
+  // Region record
+  QRegion regionRecord( borderLeft + frameWidth / 2, 
                         borderTop + frameWidth / 2, 
                         width() - borderLeft - borderRight - frameWidth,
                         height() - borderTop - borderBottom - frameWidth, 
                         QRegion::Rectangle );
   
-  QRegion maskedRegionTopLeft( borderLeft + radius + 2,
-			       0,
-			       width() / 2 - borderLeft - 2 * radius - 3,
-			       borderTop - frameWidth / 2 );
+  
+  QRegion r15 = regionWidget.subtract( regionRecord );
 
+  //r15 = r15.subtract( handleTopLeftCircle );
+  //r15 = test123.united( handleTopLeftSmallRectangle );
+  //r15 = r15.subtract( test123 );
   
-  this->setMask( maskedRegion1.subtract( maskedRegion ) );
-  this->setMask( maskedRegion1.subtract( maskedRegionTopLeft ) );
-  
-  
-  
-  QRectF rectangle = QRectF();
-  int startAngle;
-  int spanAngle;
-  
+  setMask( r15 );
+*/  
   painter->begin( this );
   painter->setRenderHints( QPainter::Antialiasing, true );
 
-  /*
-  // http://de.academic.ru/dic.nsf/dewiki/797970
-  // Knob left top
-  rectangle.setRect( penHalf, penHalf, 2 * Rand, 2 * Rand );
-  startAngle = 0 * 16;
-  spanAngle = 270 * 16;
-  painter.drawPie( rectangle, startAngle, spanAngle );
-  
-  
-  // Knob top middle
-  QPixmap * pixmap = new QPixmap( 50, 50 );
-  pixmap->fill(Qt::green);
-  QPainter handleTopMiddlePainter( pixmap );
-  handleTopMiddle->setPixmap( *pixmap );
-  
-  handleTopMiddlePainter.setBrush ( brush );
-  rectangle.setRect( penHalf, penHalf, 2 * Rand, 2 * Rand);
-  startAngle = 0 * 16;
-  spanAngle = 180 * 16;
-  handleTopMiddlePainter.drawPie( rectangle, startAngle, spanAngle ); 
-
-  handleTopMiddle->setPixmap( *pixmap );
-
-  // Knob top right
-  rectangle.setRect( width() - 2 * Rand - penHalf, penHalf, 2 * Rand, 2 * Rand );
-  startAngle = 180 * 16;
-  spanAngle =  -270  * 16;
-  painter.drawPie( rectangle, startAngle, spanAngle ); 
-*/
   HandleTopLeft();
   HandleTopMiddle();
   HandleTopRight();
   HandleRightMiddle();
   HandleBottomRight();
-  
-  
-  
-  // Knob bottom middle
-  rectangle.setRect( width() / 2 - Rand - penHalf, height() - 2 * Rand - penHalf, 2 * Rand, 2 * Rand );
-  startAngle = 0 * 16;
-  spanAngle =  -180  * 16;
-  painter->drawPie( rectangle, startAngle, spanAngle );
+  HandleBottomMiddle();
+
 /*  
   // Knob Bottom left
   rectangle.setRect( penHalf, height() - 2 * Rand - penHalf, 2 * Rand, 2 * Rand );
@@ -412,6 +404,8 @@ void regionselection::paintEvent( QPaintEvent *event )
   painter->drawLine( borderLeft, height() - borderBottom, width() - borderRight, height() - borderBottom );
 
   painter->end();
+  
+  event->accept();  
   
 }
 
@@ -466,26 +460,34 @@ void regionselection::handlingFrameLock()
 */
 void regionselection::mouseMoveEvent( QMouseEvent *event )
 {
-  
   if ( isFrameLocked() )
     return;
-  
-  // Handle tp left
-  if ( handlePressed == TopLeft )
+   
+  switch ( handlePressed )
   {
-    moveTopLeft( event );
+    case NoHandle    :                            break;
+    case TopLeft     : moveTopLeft( event );      break;
+    case TopMiddle   : moveTopMiddle( event );    break;
+    case TopRight    : moveTopRight( event );     break;
+    case RightMiddle : moveRightMiddle( event );  break;
+    case BottomRight : moveBottomRight( event );  break;
+    case BottomMiddle: moveBottomMiddle( event ); break;
+    case BottomLeft  :    break;
+    case LeftMiddle  :    break;
+    case Middle      :    break;
     return;
   }
-    
-  
-  
-  // Handle top middle
-  if ( handlePressed == TopMiddle )
+ 
+  if ( ( event->x() > ( borderLeft - radius ) ) and
+       ( event->x() < ( borderLeft + radius ) ) and 
+       ( event->y() > ( borderTop - radius  ) ) and 
+       ( event->y() < ( borderTop + radius) ) )
   {
-    moveTopMiddle( event );
+    setCursor( Qt::SizeFDiagCursor );  
+    handleUnderMouse = TopLeft;
     return;
   }
-  
+
   if ( ( event->x() > ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius ) and
        ( event->x() < ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius ) and
        ( event->y() > borderTop - radius ) and
@@ -496,13 +498,6 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     return;
   }
 
-  // Handle top right
-  if ( handlePressed == TopRight )
-  {
-    moveTopRight( event );
-    return;
-  }
-  
   if ( ( event->x() > width() - borderRight - radius ) and 
        ( event->x() < width() - borderRight + radius ) and
        ( event->y() > borderTop - radius ) and
@@ -510,14 +505,6 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
   {
     setCursor( Qt::SizeBDiagCursor  );
     handleUnderMouse = TopRight;
-    return;
-  }
-  
-  
-  // Handle right middle
-  if ( handlePressed == RightMiddle )
-  {
-    moveRightMiddle( event );
     return;
   }
   
@@ -531,13 +518,6 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     return;
   }
 
-  // Handle bottom right
-  if ( handlePressed == BottomRight )
-  {
-    moveBottomRight( event );
-    return;
-  }
-  
   if ( ( event->x() > width() - borderRight - radius ) and
        ( event->x() < width() - borderRight + radius ) and
        ( event->y() > height() - borderBottom - radius ) and
@@ -548,13 +528,6 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
      return;
   }
 
-  // Handle bottom middle
-  if ( handlePressed == BottomMiddle )
-  {
-    moveBottomMiddle( event );
-    return;
-  }
-  
   if ( ( event->x() > width() / 2 - radius ) and 
        ( event->x() < width() / 2 + radius ) and 
        ( event->y() < height() ) and 
@@ -564,7 +537,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     handleUnderMouse = BottomMiddle;
     return;
   }
-
+  
   handleUnderMouse = NoHandle;
   
   unsetCursor();
@@ -606,7 +579,6 @@ void regionselection::moveTopLeft( QMouseEvent *event )
 		     widgetWidth + ( widgetX - mouseGlobalX + currentMouseLocalX ),
 		     widgetHeight + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
   
-  
   event->accept();
 }
 
@@ -631,9 +603,8 @@ void regionselection::moveTopMiddle( QMouseEvent *event )
 		     mouseGlobalY - currentMouseLocalY,
 		     widgetWidth,
 		     widgetHeight + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
-
-  event->accept();
 }
+
 
 void regionselection::moveTopRight( QMouseEvent *event )
 {
@@ -660,12 +631,9 @@ void regionselection::moveTopRight( QMouseEvent *event )
 		     currentWidgetWidth + ( mouseGlobalX - ( widgetX + currentMouseLocalX ) ),
      		     widgetHeight  + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
   
-  event->accept();
-
+  //event->accept();
 }
 
-
-// http://doc-snapshot.qt-project.org/4.8/qtransform.html#details
 
 void regionselection::moveRightMiddle( QMouseEvent *event )
 {
@@ -714,7 +682,22 @@ void regionselection::moveBottomRight( QMouseEvent *event )
 
 void regionselection::moveBottomMiddle( QMouseEvent *event)
 {
-  (void)event;
+  // Globale Mauskoordinaten
+  int mouseGlobalY = event->globalY();
+  
+  // Alte Widget Koordinaten
+  int widgetX = geometry().x();
+  int widgetY = geometry().y();
+  int widgetWidth = geometry().width();
+
+  if ( mouseGlobalY <= widgetY + 200 )
+    mouseGlobalY = widgetY +  200;
+  
+  this->setGeometry( widgetX,
+		     widgetY,
+     		     widgetWidth,
+		     currentWidgetHeight + ( mouseGlobalY - ( widgetY + currentMouseLocalY ) ) );
+  
 }
 
 
@@ -741,11 +724,6 @@ void regionselection::mousePressEvent( QMouseEvent *event )
     case Middle      : handlePressed = Middle;       break;
   }
   
-  
-  // Wegen Zittern am unteren Rand. Wird nicht benützt, dient erstmal für weitere Überlegungen
-  currentbottomY = y() + height();
-  
-  
   event->accept();  
 }
 
@@ -754,5 +732,4 @@ void regionselection::mouseReleaseEvent( QMouseEvent * event )
   (void)event;
   handlePressed = NoHandle;
   event->accept();  
-  
 }

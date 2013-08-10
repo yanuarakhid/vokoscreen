@@ -178,5 +178,9 @@
         <source>Send Video</source>
         <translation>Video versenden</translation>
     </message>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Ein oder mehrere Geräte auswählen</translation>
+    </message>
 </context>
 </TS>

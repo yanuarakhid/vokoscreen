@@ -3,180 +3,184 @@
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
-        <translation type="unfinished"/>
+        <translation>Mejla sensaste video</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation type="unfinished"/>
+        <translation>Mejla en eller flera valda video</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"/>
+        <translation>Skicka</translation>
     </message>
     <message>
         <source>You find the Video as attachment</source>
-        <translation type="unfinished"/>
+        <translation>Du hittar videon som bilaga</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation type="unfinished"/>
+        <translation>Välj en eller flera filer</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation type="unfinished"/>
+        <translation>Ingen ram</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation type="unfinished"/>
+        <translation>Ram</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Stäng</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamController</name>
     <message>
         <source>Webcam</source>
-        <translation type="unfinished"/>
+        <translation>Webcam</translation>
     </message>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"/>
+        <translation>Enheten är upptagen</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>fullskärm</translation>
+        <translation>Fullskärm</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>fönster</translation>
+        <translation>Fönster</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>område</translation>
+        <translation>Område</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>förstoringsglas</translation>
+        <translation>Förstoringsglas</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"/>
+        <translation>Ljud</translation>
     </message>
     <message>
         <source>Alsa</source>
-        <translation type="unfinished"/>
+        <translation>Alsa</translation>
     </message>
     <message>
         <source>Pulse</source>
-        <translation type="unfinished"/>
+        <translation>Pulse</translation>
     </message>
     <message>
         <source>Frames:</source>
-        <translation type="unfinished"/>
+        <translation>Ram</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation type="unfinished"/>
+        <translation>Standard</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation type="unfinished"/>
+        <translation>Codec</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"/>
+        <translation>Spela inte in muspekaren</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>videosökväg</translation>
+        <translation>Videosökväg</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"/>
+        <translation>Spelare</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>förminska när inspelningen starta</translation>
+        <translation>Vokoscreen är förminskad när inspelningen startas</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>starta</translation>
+        <translation>Starta</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>stopp</translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>Spela</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"/>
+        <translation>Skicka</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation type="unfinished"/>
+        <translation>Inspelningstid</translation>
     </message>
     <message>
         <source>Aktual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>Aktuella antal bilder per sekund</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation type="unfinished"/>
+        <translation>Storlek in kb</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"/>
+        <translation>Inspelning skärmstorlek</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>Format</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation type="unfinished"/>
+        <translation>Inställningar fps</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>öppen katalog</translation>
+        <translation>Öppen katalog</translation>
     </message>
     <message>
         <source>Device </source>
-        <translation type="unfinished"/>
+        <translation>Enheten</translation>
     </message>
     <message>
         <source> is busy</source>
-        <translation type="unfinished"/>
+        <translation>är upptagen</translation>
     </message>
     <message>
         <source>%1</source>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"/>
+        <translation>Nedräkning</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation type="unfinished"/>
+        <translation>Spela förra videon</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"/>
+        <translation>Skicka video</translation>
+    </message>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Mejla en eller flera valda video</translation>
     </message>
 </context>
 </TS>

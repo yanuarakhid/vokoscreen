@@ -178,5 +178,9 @@
         <source>Send Video</source>
         <translation>Stuur Video</translation>
     </message>
+    <message>
+        <source>Select one or more devices</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 </TS>

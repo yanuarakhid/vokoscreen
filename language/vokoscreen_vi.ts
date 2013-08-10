@@ -19,7 +19,7 @@
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Chọn một hoặc nhiều tập ti</translation>
+        <translation>Chọn một hoặc nhiều tập tin</translation>
     </message>
 </context>
 <context>
@@ -177,6 +177,10 @@
     <message>
         <source>Send Video</source>
         <translation>Gửi Video</translation>
+    </message>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Chọn một hoặc nhiều thiết bị</translation>
     </message>
 </context>
 </TS>
