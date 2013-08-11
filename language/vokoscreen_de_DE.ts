@@ -131,10 +131,6 @@
         <translation>Aufnahmezeit</translation>
     </message>
     <message>
-        <source>Aktual frames per second</source>
-        <translation>Aktuelle Framerate</translation>
-    </message>
-    <message>
         <source>Size in KB</source>
         <translation>Grösse in KB</translation>
     </message>
@@ -181,6 +177,10 @@
     <message>
         <source>Select one or more devices</source>
         <translation>Ein oder mehrere Geräte auswählen</translation>
+    </message>
+    <message>
+        <source>Actual frames per second</source>
+        <translation>Aktuelle fps</translation>
     </message>
 </context>
 </TS>

@@ -131,10 +131,6 @@
         <translation>Inspelningstid</translation>
     </message>
     <message>
-        <source>Aktual frames per second</source>
-        <translation>Aktuella antal bilder per sekund</translation>
-    </message>
-    <message>
         <source>Size in KB</source>
         <translation>Storlek in kb</translation>
     </message>
@@ -181,6 +177,10 @@
     <message>
         <source>Select one or more devices</source>
         <translation>Mejla en eller flera valda video</translation>
+    </message>
+    <message>
+        <source>Actual frames per second</source>
+        <translation>Aktuella antal bilder per sekund</translation>
     </message>
 </context>
 </TS>

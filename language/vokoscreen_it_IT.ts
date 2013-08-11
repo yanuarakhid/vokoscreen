@@ -3,11 +3,11 @@
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
-        <translation type="unfinished"/>
+        <translation>Spedisci via mail l&apos;ultimo video</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation type="unfinished"/>
+        <translation>Spedisci via mail uno o più video selezionati</translation>
     </message>
     <message>
         <source>Send</source>
@@ -15,11 +15,11 @@
     </message>
     <message>
         <source>You find the Video as attachment</source>
-        <translation type="unfinished"/>
+        <translation>Troverete il video come allegato</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation type="unfinished"/>
+        <translation>Selezionare uno o più file</translation>
     </message>
 </context>
 <context>
@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"/>
+        <translation>La periferica è occupata</translation>
     </message>
 </context>
 <context>
@@ -84,7 +84,7 @@
     </message>
     <message>
         <source>Default</source>
-        <translation type="unfinished"/>
+        <translation>Predefinito</translation>
     </message>
     <message>
         <source>Codec</source>
@@ -92,11 +92,11 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"/>
+        <translation>Non registrare il cursore del mouse</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videopath</translation>
+        <translation>Ubicazione del video</translation>
     </message>
     <message>
         <source>Player</source>
@@ -104,7 +104,7 @@
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>La registrazione inizia quando minimizzato</translation>
+        <translation>Minimizza Vokoscreen quando inizia la registrazione</translation>
     </message>
     <message>
         <source>Start</source>
@@ -128,11 +128,7 @@
     </message>
     <message>
         <source>Recording time</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Aktual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>Durata della registrazione</translation>
     </message>
     <message>
         <source>Size in KB</source>
@@ -140,7 +136,7 @@
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"/>
+        <translation>Dimensioni dello schermo da registrare</translation>
     </message>
     <message>
         <source>Format</source>
@@ -148,19 +144,19 @@
     </message>
     <message>
         <source>Settings fps</source>
-        <translation type="unfinished"/>
+        <translation>Impostazioni fps</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>directory aperta</translation>
+        <translation>Apri cartella</translation>
     </message>
     <message>
         <source>Device </source>
-        <translation type="unfinished"/>
+        <translation>Periferica</translation>
     </message>
     <message>
         <source> is busy</source>
-        <translation type="unfinished"/>
+        <translation>è occupato</translation>
     </message>
     <message>
         <source>%1</source>
@@ -172,15 +168,19 @@
     </message>
     <message>
         <source>Play last Video</source>
-        <translation type="unfinished"/>
+        <translation>Riproduci ultimo video</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"/>
+        <translation>Invia video</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"/>
+        <translation>Selezionare una o più periferiche</translation>
+    </message>
+    <message>
+        <source>Actual frames per second</source>
+        <translation>Fotogrammi al secondo attuale</translation>
     </message>
 </context>
 </TS>

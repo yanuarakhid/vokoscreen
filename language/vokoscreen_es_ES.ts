@@ -96,7 +96,7 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Vídeo camino</translation>
+        <translation>Ubicación del vídeo</translation>
     </message>
     <message>
         <source>Player</source>
@@ -104,7 +104,7 @@
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>La grabación comienza cuando se minimiza</translation>
+        <translation>Minimizar Vokoscreen al comenzar la grabación</translation>
     </message>
     <message>
         <source>Start</source>
@@ -131,10 +131,6 @@
         <translation>Tiempo de grabación</translation>
     </message>
     <message>
-        <source>Aktual frames per second</source>
-        <translation>Fotogramas por segundo actuales</translation>
-    </message>
-    <message>
         <source>Size in KB</source>
         <translation>Tamaño en KB</translation>
     </message>
@@ -152,7 +148,7 @@
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Open Directory</translation>
+        <translation>Abrir directorio</translation>
     </message>
     <message>
         <source>Device </source>
@@ -181,6 +177,10 @@
     <message>
         <source>Select one or more devices</source>
         <translation>Seleccione uno o más dispositivos</translation>
+    </message>
+    <message>
+        <source>Actual frames per second</source>
+        <translation>Fotogramas por segundo actuales</translation>
     </message>
 </context>
 </TS>

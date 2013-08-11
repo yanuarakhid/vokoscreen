@@ -131,10 +131,6 @@
         <translation>Temps d&apos;enregistrement</translation>
     </message>
     <message>
-        <source>Aktual frames per second</source>
-        <translation>Frames par secondes actuelles</translation>
-    </message>
-    <message>
         <source>Size in KB</source>
         <translation>Taille en KB</translation>
     </message>
@@ -180,6 +176,10 @@
     </message>
     <message>
         <source>Select one or more devices</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Actual frames per second</source>
         <translation type="unfinished"/>
     </message>
 </context>

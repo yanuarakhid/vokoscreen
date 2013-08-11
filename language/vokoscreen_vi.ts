@@ -131,10 +131,6 @@
         <translation>Thời gian ghi hình</translation>
     </message>
     <message>
-        <source>Aktual frames per second</source>
-        <translation>Khung hình thực mỗi giây</translation>
-    </message>
-    <message>
         <source>Size in KB</source>
         <translation>Kích thước tính bằng KB</translation>
     </message>
@@ -181,6 +177,10 @@
     <message>
         <source>Select one or more devices</source>
         <translation>Chọn một hoặc nhiều thiết bị</translation>
+    </message>
+    <message>
+        <source>Actual frames per second</source>
+        <translation>Khung hình thực mỗi giây</translation>
     </message>
 </context>
 </TS>
