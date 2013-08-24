@@ -27,8 +27,24 @@ QvkWebcam::QvkWebcam()
                getValueY(),
                getValueWidth(),
                getValueHeight() );
-   
 }
+
+/**
+ * Wird von vokoscreen.cpp -> QvkWebcamController aufgerufen
+ */
+void QvkWebcam::saveSettings()
+{
+  QSettings settings( "vokoscreen", "vokoscreen" );   
+  settings.beginGroup( "Webcam" );
+    settings.setValue( "Border",getValueBorder() );
+    settings.setValue( "X", x() );
+    settings.setValue( "Y", y() );
+    settings.setValue( "Width", width() );
+    settings.setValue( "Height", height() );
+    settings.setValue( "Number", getDeviceNumber() );
+  settings.endGroup();
+}
+
 
 void QvkWebcam::setValueBorder( bool value )
 {
@@ -78,22 +94,6 @@ int QvkWebcam::getValueWidth()
 int QvkWebcam::getValueHeight()
 {
   return Height; 
-}
-
-/**
- * Wird von vokoscreen.cpp -> QvkWebcamController aufgerufen
- */
-void QvkWebcam::saveSettings()
-{
-  QSettings settings( "vokoscreen", "vokoscreen" );   
-  settings.beginGroup( "Webcam" );
-    settings.setValue( "Border",getValueBorder() );
-    settings.setValue( "X", x() );
-    settings.setValue( "Y", y() );
-    settings.setValue( "Width", width() );
-    settings.setValue( "Height", height() );
-    settings.setValue( "Number", getDeviceNumber() );
-  settings.endGroup();
 }
 
 

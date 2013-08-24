@@ -162,7 +162,6 @@ private slots:
     QString getRecordWidth();
     void setRecordHeight( QString value );
     QString getRecordHeight();
-
     
 private:
     QTabWidget *tabWidget;

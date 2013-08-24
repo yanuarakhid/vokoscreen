@@ -14,6 +14,7 @@
 <file>pictures/VokoCola.png</file>
 <file>pictures/vokoscreen.png</file>
 <file>language/vokoscreen_ar_SA.ts</file>
+<file>language/vokoscreen_ast.ts</file>
 <file>language/vokoscreen_cs_CZ.ts</file>
 <file>language/vokoscreen_cs.ts</file>
 <file>language/vokoscreen_da_DK.ts</file>
@@ -35,5 +36,7 @@
 <file>language/vokoscreen_tr_TR.ts</file>
 <file>language/vokoscreen_uk_UA.ts</file>
 <file>language/vokoscreen_vi.ts</file>
+<file>language/vokoscreen_zh_CN.ts</file>
+<file>language/vokoscreen_zh_TW.ts</file>
 </qresource>
 </RCC>

@@ -1,74 +1,74 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="tr_TR" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.0">
 <context>
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Son videoyu postala</translation>
+        <translation>邮寄最后一个视频</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Bir veya daha fazla seçili videoyu postala</translation>
+        <translation>邮寄一个或多个选取的视频</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Gönder</translation>
+        <translation>邮寄</translation>
     </message>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Video gibi eklenti bul</translation>
+        <translation>您会看到视频作为附件</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Bir veya daha fazla dosya seçin</translation>
+        <translation>选取一个或多个文件</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation>Çerçevesiz</translation>
+        <translation>没有窗口边框</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation>Çerçeve</translation>
+        <translation>窗口边框</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Kapat</translation>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamController</name>
     <message>
         <source>Webcam</source>
-        <translation>Web kamerası</translation>
+        <translation>摄像头</translation>
     </message>
     <message>
         <source>Device is busy</source>
-        <translation>Aygıt meşgul</translation>
+        <translation>装置忙碌中</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Tam Ekran</translation>
+        <translation>全屏模式</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Pencere</translation>
+        <translation>窗口</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Bölge</translation>
+        <translation>区域</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Büyütme</translation>
+        <translation>放大</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Ses</translation>
+        <translation>音频</translation>
     </message>
     <message>
         <source>Alsa</source>
@@ -80,83 +80,83 @@
     </message>
     <message>
         <source>Frames:</source>
-        <translation>Çerçeveler:</translation>
+        <translation>帧率:</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation>Varsayılan</translation>
+        <translation>默认值</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Kodek</translation>
+        <translation>编码器</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Fare imlecini kaydetme</translation>
+        <translation>不要录制鼠标</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Video yolu</translation>
+        <translation>视频路径</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Oynatıcı</translation>
+        <translation>播放器</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Kayıt başladığında Vokoscreen programını küçült</translation>
+        <translation>开始录制时最小化 Vokoscreen</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Başlat</translation>
+        <translation>开始</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Durdur</translation>
+        <translation>停止</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Duraklat</translation>
+        <translation>暂停</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Oynat</translation>
+        <translation>播放</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Gönder</translation>
+        <translation>寄送</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Kayıt süresi</translation>
+        <translation>录制时间</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>KB olarak boyut</translation>
+        <translation>大小(KB)</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Kayıt ekran boyutu</translation>
+        <translation>录制屏幕大小</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Biçim</translation>
+        <translation>格式</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>fps ayarı</translation>
+        <translation>设定帧率</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Dizin Aç</translation>
+        <translation>开启目录</translation>
     </message>
     <message>
         <source>Device </source>
-        <translation>Aygıt</translation>
+        <translation>装置</translation>
     </message>
     <message>
         <source> is busy</source>
-        <translation>meşgul</translation>
+        <translation>忙碌中</translation>
     </message>
     <message>
         <source>%1</source>
@@ -164,23 +164,23 @@
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Geri sayım</translation>
+        <translation>倒计时</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Son videoyu oynat</translation>
+        <translation>播放最后一个视频</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>Video Gönder</translation>
+        <translation>寄送视频</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Bir veya daha fazla aygıt seçin</translation>
+        <translation>选取一个或多个装置</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Saniye başına fiili kare</translation>
+        <translation>实际的帧率</translation>
     </message>
 </context>
 </TS>

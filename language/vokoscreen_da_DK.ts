@@ -176,11 +176,11 @@
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"/>
+        <translation>Vælg en eller flere enheder</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>Aktuelle billeder pr. sekund</translation>
     </message>
 </context>
 </TS>

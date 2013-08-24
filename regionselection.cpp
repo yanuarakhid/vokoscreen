@@ -17,8 +17,8 @@
 
 #include "regionselection.h" 
 #include <QCoreApplication>
-
 #include <QToolTip>
+#include <QMouseEvent>
 
 using namespace std;
 
@@ -45,17 +45,17 @@ QToolTip::showText ( QPoint( 300, 300 ), "Aber Hallo", this );
   
   
   setGeometry( x, y, width, height );
-/*  setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+  setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
 
   if( QX11Info::isCompositingManagerRunning() )
     setAttribute( Qt::WA_TranslucentBackground, true );
-*/  
+  
   setMouseTracking( true );
   
   qDebug() << "width:" << width << "height:" << height;
   
   borderLeft = 20;
-  borderTop = 30;
+  borderTop = 20;
   borderRight = 40;
   borderBottom = 20;
  
@@ -80,6 +80,7 @@ regionselection::~regionselection()
 
 void regionselection::resizeEvent( QResizeEvent * event )
 {
+ (void)event;
  //qDebug() << "resizeEvent";
 }
 
@@ -323,6 +324,90 @@ void regionselection::HandleBottomMiddle()
 }
 
 
+void regionselection::HandleBottomLeft()
+{
+  QColor color, arrow;
+  
+  if ( isFrameLocked() )
+  {
+    color = Qt::red;
+    arrow = Qt::red;
+  }
+  else
+  {
+    color = Qt::green;
+    arrow = Qt::black;
+  }
+  
+  QBrush brush( color, Qt::SolidPattern );
+  painter->setBrush( brush );
+  painter->setPen( QPen( Qt::black, penWidth ) );
+
+  QRectF rectangle = QRectF( borderLeft - radius + penHalf, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
+  int startAngle = 90 * 16;
+  int spanAngle =  270  * 16;
+  painter->drawPie( rectangle, startAngle, spanAngle );
+
+  // Begin Pfeil zeichnen
+  painter->setPen( QPen( arrow, 2 ) );
+
+  double h = 2 * radius / 3;
+
+  QPainterPath * painterPath = new QPainterPath();
+  painterPath->moveTo( borderLeft - frameWidth / 2, height() - borderBottom + frameWidth / 2 );
+  painterPath->lineTo( borderLeft - h + penHalf,  height() - borderBottom + h - penHalf );
+  painterPath->lineTo( borderLeft - h + 3, height() - borderBottom + h - 7 );
+  painterPath->lineTo( borderLeft - h + 7, height() - borderBottom + h - 3 );
+  painterPath->lineTo( borderLeft - h + penHalf,  height() - borderBottom + h - penHalf );
+  
+  painterPath->setFillRule( Qt::OddEvenFill );
+  
+  painter->drawPath( *painterPath );
+  // End Pfeil zeichnen
+}
+
+
+void regionselection::HandleLeftMiddle()
+{
+  QColor color, arrow;
+  
+  if ( isFrameLocked() )
+  {
+    color = Qt::red;
+    arrow = Qt::red;
+  }
+  else
+  {
+    color = Qt::green;
+    arrow = Qt::black;
+  }
+  
+  QBrush brush( color, Qt::SolidPattern );
+  painter->setBrush( brush );
+  painter->setPen( QPen( Qt::black, penWidth ) );
+
+  QRectF rectangle = QRectF( borderLeft - radius + penHalf, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius, 2 * radius, 2 * radius );
+  int startAngle = 90 * 16;
+  int spanAngle =  180  * 16;
+  painter->drawPie( rectangle, startAngle, spanAngle );
+  
+  // Begin Pfeil zeichnen
+  painter->setPen( QPen( arrow, 2 ) );
+
+  QPainterPath * painterPath = new QPainterPath();
+  painterPath->moveTo( borderLeft - frameWidth / 2, ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->lineTo( penWidth + 1, ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->lineTo( penHalf + 7,  ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
+  painterPath->lineTo( penHalf + 7,  ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
+  painterPath->lineTo( penWidth + 1, ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  
+  painterPath->setFillRule( Qt::OddEvenFill );
+  
+  painter->drawPath( *painterPath );
+  // End Pfeil zeichnen
+}
+
+
 void regionselection::paintEvent( QPaintEvent *event ) 
 {
   (void)event;
@@ -370,20 +455,10 @@ void regionselection::paintEvent( QPaintEvent *event )
   HandleRightMiddle();
   HandleBottomRight();
   HandleBottomMiddle();
+  HandleBottomLeft();
+  HandleLeftMiddle();
 
 /*  
-  // Knob Bottom left
-  rectangle.setRect( penHalf, height() - 2 * Rand - penHalf, 2 * Rand, 2 * Rand );
-  startAngle = 90 * 16;
-  spanAngle =  270  * 16;
-  painter.drawPie( rectangle, startAngle, spanAngle );
-  
-  // Knob left middle
-  rectangle.setRect( penHalf, height()/2 - Rand, 2 * Rand, 2 * Rand );
-  startAngle = 90 * 16;
-  spanAngle =  180  * 16;
-  painter.drawPie( rectangle, startAngle, spanAngle );
-
   // Kreis in der Mitte
   painter.drawEllipse ( width()/2 - radius, height()/2 - radius, 2 * radius, 2 * radius );
 
@@ -472,7 +547,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     case RightMiddle : moveRightMiddle( event );  break;
     case BottomRight : moveBottomRight( event );  break;
     case BottomMiddle: moveBottomMiddle( event ); break;
-    case BottomLeft  :    break;
+    case BottomLeft  : moveBottomLeft( event );   break;
     case LeftMiddle  :    break;
     case Middle      :    break;
     return;
@@ -528,13 +603,23 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
      return;
   }
 
-  if ( ( event->x() > width() / 2 - radius ) and 
-       ( event->x() < width() / 2 + radius ) and 
+  if ( ( event->x() > ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius ) and 
+       ( event->x() < ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius ) and 
        ( event->y() < height() ) and 
        ( event->y() > height() - radius ) )
   {
     setCursor( Qt::SizeVerCursor );
     handleUnderMouse = BottomMiddle;
+    return;
+  }
+  
+  if ( ( event->x() > ( borderLeft - radius ) ) and
+       ( event->x() < ( borderLeft + radius ) ) and
+       ( event->y() > ( height() - borderBottom - radius ) ) and
+       ( event->y() < height() ) )
+  {
+    setCursor( Qt::SizeBDiagCursor );
+    handleUnderMouse = BottomLeft;
     return;
   }
   
@@ -573,6 +658,13 @@ void regionselection::moveTopLeft( QMouseEvent *event )
   if ( mouseGlobalX >= widgetX + widgetWidth - 200 )
     mouseGlobalX = widgetX + widgetWidth - 200;
   
+  // Maximale Größe begrenzen
+  if ( mouseGlobalY - currentMouseLocalY < 0 )
+    mouseGlobalY = widgetY + currentMouseLocalY;
+    
+  if ( mouseGlobalX - currentMouseLocalX < 0 )  
+    mouseGlobalX = widgetX + currentMouseLocalX;
+  
   // Neue Geometry des Dialogfenster setzen
   this->setGeometry( mouseGlobalX - currentMouseLocalX,
 		     mouseGlobalY - currentMouseLocalY, 
@@ -597,6 +689,10 @@ void regionselection::moveTopMiddle( QMouseEvent *event )
   // Minimale Größe des Widget begrenzen
   if ( mouseGlobalY >= widgetY + widgetHeight - 200 )
     mouseGlobalY = widgetY + widgetHeight - 200;
+
+  // Maximale Größe begrenzen
+  if ( mouseGlobalY - currentMouseLocalY < 0 )
+    mouseGlobalY = widgetY + currentMouseLocalY;
   
   // Neue Geometry des HauptWidget setzen
   this->setGeometry( widgetX,
@@ -616,7 +712,7 @@ void regionselection::moveTopRight( QMouseEvent *event )
   int widgetX = geometry().x();
   int widgetY = geometry().y();
   int widgetHeight = geometry().height();
-  //int widgetWidth = geometry().width();
+  int widgetWidth = geometry().width();
 
   // Minimale Größe des Widget begrenzen
   if ( mouseGlobalX <= widgetX + 200 )
@@ -624,6 +720,22 @@ void regionselection::moveTopRight( QMouseEvent *event )
   
   if ( mouseGlobalY >= widgetY + widgetHeight - 200 )
     mouseGlobalY = widgetY + widgetHeight - 200;
+
+  // Maximale Größe begrenzen
+  if ( mouseGlobalY - currentMouseLocalY < 0 )
+    mouseGlobalY = widgetY + currentMouseLocalY;
+
+ 
+  
+  QDesktopWidget *desk = QApplication::desktop();
+  qDebug() <<  desk->screenGeometry().width() - widgetX - widgetWidth;
+  if ( ( mouseGlobalX + ( desk->screenGeometry().width() - widgetX - widgetWidth )*-1 ) > desk->screenGeometry().width() )
+  {
+    qDebug() << "111111111111111111111111";
+    mouseGlobalX = mouseGlobalX + ( desk->screenGeometry().width() - widgetX - widgetWidth ) * -1;
+    
+  }
+  
   
   // Neue Geometry des Fenster setzen
   this->setGeometry( widgetX,
@@ -680,7 +792,7 @@ void regionselection::moveBottomRight( QMouseEvent *event )
 }
 
 
-void regionselection::moveBottomMiddle( QMouseEvent *event)
+void regionselection::moveBottomMiddle( QMouseEvent *event )
 {
   // Globale Mauskoordinaten
   int mouseGlobalY = event->globalY();
@@ -697,7 +809,35 @@ void regionselection::moveBottomMiddle( QMouseEvent *event)
 		     widgetY,
      		     widgetWidth,
 		     currentWidgetHeight + ( mouseGlobalY - ( widgetY + currentMouseLocalY ) ) );
+}
+
+
+void regionselection::moveBottomLeft( QMouseEvent *event )
+{
+  // Globale Mauskoordinaten
+  int mouseGlobalX = event->globalX();
+  int mouseGlobalY = event->globalY();
   
+  // Alte Widget Koordinaten
+  int widgetX = geometry().x();
+  int widgetY = geometry().y();
+  int widgetWidth = geometry().width();
+
+  // Minimale Größe des Widget begrenzen
+  if ( mouseGlobalY <= widgetY + 200 )
+    mouseGlobalY = widgetY + 200;
+
+  if ( mouseGlobalX >= widgetX + widgetWidth - 200 )
+    mouseGlobalX = widgetX + widgetWidth - 200;
+  
+  if ( mouseGlobalX - currentMouseLocalX < 0 )  
+    mouseGlobalX = widgetX + currentMouseLocalX;
+  
+  
+  this->setGeometry( mouseGlobalX - currentMouseLocalX,
+		     widgetY,
+     		     widgetWidth + ( widgetX - mouseGlobalX + currentMouseLocalX ),
+		     currentWidgetHeight + ( mouseGlobalY - ( widgetY + currentMouseLocalY ) ) );
 }
 
 

@@ -26,6 +26,8 @@
 #include <QX11Info>
 #include <QPainterPath>
 #include <QMouseEvent>
+#include <QApplication>
+#include <QDesktopWidget>
 
 #include <math.h>
 
@@ -52,6 +54,7 @@ private slots:
   void moveRightMiddle( QMouseEvent *event );
   void moveBottomRight( QMouseEvent *event );
   void moveBottomMiddle( QMouseEvent *event);
+  void moveBottomLeft( QMouseEvent *event );
 
   void HandleTopLeft();
   void HandleTopMiddle();
@@ -59,6 +62,8 @@ private slots:
   void HandleRightMiddle();
   void HandleBottomRight();
   void HandleBottomMiddle();
+  void HandleBottomLeft();
+  void HandleLeftMiddle();
 
 protected:
   void mouseMoveEvent( QMouseEvent *event );

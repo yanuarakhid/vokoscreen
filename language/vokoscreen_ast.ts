@@ -1,78 +1,78 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="tr_TR" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ast" version="2.0">
 <context>
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Son videoyu postala</translation>
+        <translation>Dunviar per corréu&apos;l vidéu caberu</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Bir veya daha fazla seçili videoyu postala</translation>
+        <translation>Dunviar per corréu un o más videos esbillaos</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Gönder</translation>
+        <translation>Dunviar</translation>
     </message>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Video gibi eklenti bul</translation>
+        <translation>Pues alcontrar el vidéu como axuntu</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Bir veya daha fazla dosya seçin</translation>
+        <translation>Esbilla un o más ficheros</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation>Çerçevesiz</translation>
+        <translation>Ensin bordes</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation>Çerçeve</translation>
+        <translation>Borde</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Kapat</translation>
+        <translation>Zarrar</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamController</name>
     <message>
         <source>Webcam</source>
-        <translation>Web kamerası</translation>
+        <translation>Cámara web</translation>
     </message>
     <message>
         <source>Device is busy</source>
-        <translation>Aygıt meşgul</translation>
+        <translation>El preséu ta ocupáu</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Tam Ekran</translation>
+        <translation>Pantalla completa</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Pencere</translation>
+        <translation>Ventanu</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Bölge</translation>
+        <translation>Fastera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Büyütme</translation>
+        <translation>Lente</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Ses</translation>
+        <translation>Audiu</translation>
     </message>
     <message>
         <source>Alsa</source>
-        <translation>Alsa</translation>
+        <translation>ALSA</translation>
     </message>
     <message>
         <source>Pulse</source>
@@ -80,83 +80,83 @@
     </message>
     <message>
         <source>Frames:</source>
-        <translation>Çerçeveler:</translation>
+        <translation>Cuadros:</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation>Varsayılan</translation>
+        <translation>Per defeutu</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Kodek</translation>
+        <translation>Codec</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Fare imlecini kaydetme</translation>
+        <translation>Nun grabar el mur</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Video yolu</translation>
+        <translation>Ruta&apos;l vidéu</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Oynatıcı</translation>
+        <translation>Reproductor</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Kayıt başladığında Vokoscreen programını küçült</translation>
+        <translation>Vokoscreen minimizáu cuando la grabación entame</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Başlat</translation>
+        <translation>Entamar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Durdur</translation>
+        <translation>Aparar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Duraklat</translation>
+        <translation>Posar</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Oynat</translation>
+        <translation>Reproducir</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Gönder</translation>
+        <translation>Dunviar</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Kayıt süresi</translation>
+        <translation>Tiempu de grabación</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>KB olarak boyut</translation>
+        <translation>Grandor en KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Kayıt ekran boyutu</translation>
+        <translation>Grandor de pantalla al grabar</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Biçim</translation>
+        <translation>Formatu</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>fps ayarı</translation>
+        <translation>Axustar FPS</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Dizin Aç</translation>
+        <translation>Abrir carpeta</translation>
     </message>
     <message>
         <source>Device </source>
-        <translation>Aygıt</translation>
+        <translation>Preséu</translation>
     </message>
     <message>
         <source> is busy</source>
-        <translation>meşgul</translation>
+        <translation>ta ocupáu</translation>
     </message>
     <message>
         <source>%1</source>
@@ -164,23 +164,23 @@
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Geri sayım</translation>
+        <translation>Cuenta atrás</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Son videoyu oynat</translation>
+        <translation>Reproducir el vidéu caberu</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>Video Gönder</translation>
+        <translation>Dunviar vidéu</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Bir veya daha fazla aygıt seçin</translation>
+        <translation>Esbilla un o más preseos</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Saniye başına fiili kare</translation>
+        <translation>Cuadros per segundu d&apos;anguaño</translation>
     </message>
 </context>
 </TS>

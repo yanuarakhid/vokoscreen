@@ -17,8 +17,10 @@
 #include "screencast.h"  
 
 #include <QX11Info>
-
+#include <QScreen>
 using namespace std;
+
+/// ffmpeg -i <rein> -vcodec libx264 -b 2048k -s 720x576 -acodec libmp3lame -ab 128k -ar 48000 -ac 2 -f matroska -y <raus>.mkv
 
 screencast::screencast()
 {
@@ -40,7 +42,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.8";  
+    Version = "1.7.9";  
     
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@vodafone.de?subject=vokoscreen ";
@@ -696,6 +698,7 @@ screencast::screencast()
    
    clickedScreenSize();
    AreaOnOff();
+   
 }
 
 
@@ -1158,6 +1161,26 @@ void screencast::readyReadStandardError()
     statusBarLabelFps->setText( output.mid( x + 4, 3 ).replace( " ", "" ) );
   }
 
+  // 
+  int fps = statusBarLabelFps->text().toUInt();
+  if ( fps >=  FrameSpinBox->value() )
+  {
+    statusBarLabelFps->setAutoFillBackground( true );
+    QPalette pal( statusBarLabelFps->palette() );
+    pal.setColor( QPalette::Foreground, Qt::black );
+    pal.setColor( QPalette::Background, Qt::green );
+    statusBarLabelFps->setPalette( pal );
+  }
+
+  if ( fps < FrameSpinBox->value() )
+  {
+    statusBarLabelFps->setAutoFillBackground( true );
+    QPalette pal( statusBarLabelFps->palette() );
+    pal.setColor( QPalette::Foreground, Qt::black );
+    pal.setColor( QPalette::Background, Qt::red );
+    statusBarLabelFps->setPalette( pal );
+  }    
+  
   QFileInfo fileInfo( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   statusBarLabelSize->setText( QString::number( fileInfo.size() / 1024 ) );
 }
