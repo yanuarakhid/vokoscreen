@@ -18,22 +18,11 @@
 
 #include <QX11Info>
 #include <QScreen>
-using namespace std;
 
-/// ffmpeg -i <rein> -vcodec libx264 -b 2048k -s 720x576 -acodec libmp3lame -ab 128k -ar 48000 -ac 2 -f matroska -y <raus>.mkv
+using namespace std;
 
 screencast::screencast()
 {
-/*  
-    TestFrame = new QMainWindow();
-    TestFrame->setGeometry( 0, 0, 100, 100 );
-    TestFrame->show();
-    //TestFrame->setPaletteForegroundColor(Qt::white);
-    qDebug() << "X():" << TestFrame->x() << "Y():" << TestFrame->y();
-    qDebug() << "geometry.x()" << TestFrame->geometry().x() << "geometry.y()" << TestFrame->geometry().y();
-    qDebug() << "frameGeometry.width()" << TestFrame->frameGeometry().width() << "frameGeometry.height()" << TestFrame->frameGeometry().height();
-*/    
-  
     bool beta = true;
     QString Beta;
     if ( beta )
@@ -136,7 +125,6 @@ screencast::screencast()
     }
     qDebug() << "[vokoscreen]" << "---End search Screen---";
     qDebug();
-    // am 16.07.2013 22:20 auf github
     
     QLabel *CountdownLabel = new QLabel( frame );
     CountdownLabel->setGeometry( 160, 110, 80, 25 );
@@ -184,7 +172,6 @@ screencast::screencast()
     PulseDeviceRadioButton->setText( tr( "Pulse" ) );
     PulseDeviceRadioButton->show();
     connect( PulseDeviceRadioButton,  SIGNAL( clicked( bool )  ), SLOT( clickedAudioPulse( bool ) ) );
-
 
     // Tab 3 Video options **************************************************
     TabWidgetVideoOptionFrame = new QFrame( this );
@@ -260,7 +247,6 @@ screencast::screencast()
     qfont = TabWidgetMiscellaneousFrame->font();
     qfont.setPixelSize( 12 );
     TabWidgetMiscellaneousFrame->setFont( qfont );
-    
 
     QLabel *SaveVideoPathLabel = new QLabel(TabWidgetMiscellaneousFrame);
     SaveVideoPathLabel->setGeometry(30,30,210,25);
@@ -333,7 +319,6 @@ screencast::screencast()
     QLabel* labelMail = new QLabel( TabWidgetAboutFrame );
     labelMail->setGeometry( QRect( 180, 50, 400, 22 ) );
     labelMail->setText( email );
-    //labelMail->setAlignment( Qt::AlignCenter );
     labelMail->setOpenExternalLinks( true );
     labelMail->show();
 
@@ -544,8 +529,6 @@ screencast::screencast()
          }
        }
      }
-     //todo
-     //Standard Videoplayer hinzufügen und in vokoscreen als Standard setzen
      
      qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
      qDebug();
@@ -756,20 +739,6 @@ void screencast::valueChangedFrames( int i )
 /**
  * Statusbar
  */
-/*
-void screencast::stateChangedAutoFrames( int state )
-{
-   (void)state;
-   if ( FramesAutoOnOffCheckBox->checkState() == Qt::Checked )
-     statusBarLabelFpsSettings->setText( "Auto" );
-   else
-     statusBarLabelFpsSettings->setText( QString::number( FrameSpinBox->value() ) );
-}
-*/
-
-/**
- * Statusbar
- */
 void screencast::stateChangedAudio( int state )
 {
   if ( state == Qt::Unchecked )
@@ -851,7 +820,6 @@ void screencast::myVideoFileSystemWatcher( const QString & path )
     sendPushButton->setEnabled( true );
   }
 }
-
 
 
 /*
@@ -1322,7 +1290,7 @@ void screencast::error( QProcess::ProcessError error )
   // Kann mann testen in dem man den ffmpeg aus der Processliste tötet
   if ( error == QProcess::Crashed )
   {
-    // crashed Ordner löschen    
+    // remove crashed directory
     QSettings settings1( ProgName, ProgName );
     QFileInfo settingsPath1( settings1.fileName() );
     QFile file1( settingsPath1.absolutePath() );
@@ -1336,7 +1304,7 @@ void screencast::error( QProcess::ProcessError error )
         Dir1.remove( stringList1[ i ] );
     }
     
-    // Sichern von ffmpeg.log, vokoscreen.log, vokoscreen.conf im Ordner crashed
+    // Move ffmpeg.log, vokoscreen.log, vokoscreen.conf in directory crashed
     QSettings settings( ProgName, ProgName );
     QFileInfo settingsPath( settings.fileName() );
     QFile file( settingsPath.absolutePath() );
@@ -1437,12 +1405,13 @@ void screencast::Pause()
       {
         QMessageBox msgBox;
         QString message;
-        message.append( tr( "Device " ) );
+        /*message.append( tr( "Device " ) );
         message.append( " " );
         message.append( inBox->getAlsaHw() );
         message.append( " " );
-	message.append( tr( " is busy" ) );
-        msgBox.setText( message );
+	message.append( tr( " is busy" ) ); */
+        message.append( tr( "Device %1 is busy" ).arg( inBox->getAlsaHw() ) );
+	msgBox.setText( message );
         msgBox.exec();
 	PauseButton->click();
         return;
@@ -1475,11 +1444,12 @@ void screencast::Pause()
       {
         QMessageBox msgBox;
         QString message;
-        message.append( tr( "Device " ) );
+        /*message.append( tr( "Device " ) );
         message.append( " " );
         message.append( inBox->getAlsaHw() );
         message.append( " " );
-        message.append( tr( " is busy" ) );
+        message.append( tr( " is busy" ) ); */
+        message.append( tr( "Device %1 is busy" ).arg( inBox->getAlsaHw() ) );
         msgBox.setText( message );
         msgBox.exec();
 	PauseButton->click();
@@ -1780,7 +1750,6 @@ QString screencast::mySample()
   }
     
    return ret;
-
 }
 
 
@@ -2155,11 +2124,12 @@ void screencast::preRecord()
       QMessageBox msgBox;
       msgBox.setIcon( QMessageBox::Information );
       QString message;
-      message.append( tr( "Device " ) );
+      /*message.append( tr( "Device " ) );
       message.append( " " );
       message.append( inBox->getAlsaHw() );
       message.append( " " );
-      message.append( tr( " is busy" ) );
+      message.append( tr( " is busy" ) ); */
+      message.append( tr( "Device %1 is busy" ).arg( inBox->getAlsaHw() ) );
       msgBox.setText( message );
       msgBox.exec();
       return;
@@ -2357,7 +2327,6 @@ void screencast::record()
     myReport = "";
 
   qDebug() << "[vokoscreen]" << "Report :" << myReport;
-  //qDebug() << "[vokoscreen]" << "ffmpegVersion :" << getFfmpegVersion();
 
   // set working directory for writing and delete the ffmpegLog from Profil directory
   QSettings settings( ProgName, ProgName );
@@ -2384,13 +2353,7 @@ void screencast::record()
      dir.remove( PathTempLocation().append(QDir::separator() ).append(stringList.at( i ) ) );
 
   // frame rate
-  //QString frame = QString().number( FrameSpinBox->value() );
   QString frame = "-r " + QString().number( FrameSpinBox->value() );
-  
-  //if ( FramesAutoOnOffCheckBox->checkState() == Qt::Checked )
-    //frame = "";
-  //else
-    //frame = "-r " + frame;
   
   // Videocodec
   QString myVcodec = VideocodecComboBox->currentText();

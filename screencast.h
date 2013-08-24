@@ -153,7 +153,6 @@ private slots:
     void stateChangedAudio( int state );
     void clickedAudioAlsa( bool checked );
     void clickedAudioPulse( bool checked );
-    //void stateChangedAutoFrames( int state);;
     void valueChangedFrames( int i );
     void clickedScreenSize();
     void clickedRecordButtonScreenSize();
