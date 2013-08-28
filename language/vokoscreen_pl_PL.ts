@@ -151,14 +151,6 @@
         <translation>Wybierz katalog</translation>
     </message>
     <message>
-        <source>Device </source>
-        <translation>Urządzenie</translation>
-    </message>
-    <message>
-        <source> is busy</source>
-        <translation>jest zajęte</translation>
-    </message>
-    <message>
         <source>%1</source>
         <translation>%1</translation>
     </message>
@@ -180,6 +172,10 @@
     </message>
     <message>
         <source>Actual frames per second</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device %1 is busy</source>
         <translation type="unfinished"/>
     </message>
 </context>

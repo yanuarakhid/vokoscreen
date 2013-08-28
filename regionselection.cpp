@@ -408,6 +408,32 @@ void regionselection::HandleLeftMiddle()
 }
 
 
+void regionselection::HandleMiddle()
+{
+  QColor color, arrow;
+  
+  if ( isFrameLocked() )
+  {
+    color = Qt::red;
+    arrow = Qt::red;
+  }
+  else
+  {
+    color = Qt::green;
+    arrow = Qt::black;
+  }
+
+  QBrush brush( color, Qt::SolidPattern );
+  painter->setBrush( brush );
+  painter->setPen( QPen( Qt::black, penWidth ) );
+
+  painter->drawEllipse ( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, 
+			 ( height() - borderTop - borderBottom ) / 2 + borderTop - radius,
+			   2 * radius,
+			   2 * radius );
+}
+
+
 void regionselection::paintEvent( QPaintEvent *event ) 
 {
   (void)event;
@@ -457,6 +483,7 @@ void regionselection::paintEvent( QPaintEvent *event )
   HandleBottomMiddle();
   HandleBottomLeft();
   HandleLeftMiddle();
+  HandleMiddle();
 
 /*  
   // Kreis in der Mitte
@@ -548,8 +575,8 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     case BottomRight : moveBottomRight( event );  break;
     case BottomMiddle: moveBottomMiddle( event ); break;
     case BottomLeft  : moveBottomLeft( event );   break;
-    case LeftMiddle  :    break;
-    case Middle      :    break;
+    case LeftMiddle  : moveLeftMiddle( event );   break;
+    case Middle      : moveMiddle( event );       break;
     return;
   }
  
@@ -620,6 +647,27 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
   {
     setCursor( Qt::SizeBDiagCursor );
     handleUnderMouse = BottomLeft;
+    return;
+  }
+  
+  if ( ( event->x() > ( borderLeft - radius ) ) and
+       ( event->x() < ( borderLeft + radius ) ) and 
+       ( event->y() > ( ( height() - borderTop - borderBottom ) / 2 + borderTop - radius ) ) and
+       ( event->y() < ( ( height() - borderTop - borderBottom ) / 2 + borderTop + radius ) ) )
+  {
+    setCursor( Qt::SizeHorCursor );
+    handleUnderMouse = LeftMiddle;
+    return;
+  }
+  
+  
+  if ( ( event->x() > ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius ) and 
+       ( event->x() < ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius ) and
+       ( event->y() > ( ( height() - borderTop - borderBottom ) / 2 + borderTop - radius ) ) and
+       ( event->y() < ( ( height() - borderTop - borderBottom ) / 2 + borderTop + radius ) ) )
+  {
+    setCursor( Qt::SizeAllCursor );
+    handleUnderMouse = Middle;
     return;
   }
   
@@ -829,15 +877,49 @@ void regionselection::moveBottomLeft( QMouseEvent *event )
 
   if ( mouseGlobalX >= widgetX + widgetWidth - 200 )
     mouseGlobalX = widgetX + widgetWidth - 200;
-  
+
+  // Maximale Größe des Widget begrenzen
   if ( mouseGlobalX - currentMouseLocalX < 0 )  
     mouseGlobalX = widgetX + currentMouseLocalX;
-  
   
   this->setGeometry( mouseGlobalX - currentMouseLocalX,
 		     widgetY,
      		     widgetWidth + ( widgetX - mouseGlobalX + currentMouseLocalX ),
 		     currentWidgetHeight + ( mouseGlobalY - ( widgetY + currentMouseLocalY ) ) );
+}
+
+
+void regionselection::moveLeftMiddle( QMouseEvent *event )
+{
+  // Globale Mauskoordinaten
+  int mouseGlobalX = event->globalX();
+  int mouseGlobalY = event->globalY();
+  
+  // Alte Widget Koordinaten
+  int widgetX = geometry().x();
+  int widgetY = geometry().y();
+  int widgetWidth = geometry().width();
+  int widgetHeight = geometry().height();
+  
+  // Minimale Größe des Widget begrenzen
+  if ( mouseGlobalX >= widgetX + widgetWidth - 200 )
+    mouseGlobalX = widgetX + widgetWidth - 200;
+
+  // Maximale Größe des Widget begrenzen
+  if ( mouseGlobalX - currentMouseLocalX < 0 )  
+    mouseGlobalX = widgetX + currentMouseLocalX;
+  
+  // Neue Geometry des Dialogfenster setzen
+  this->setGeometry( mouseGlobalX - currentMouseLocalX,
+		     widgetY,
+		     widgetWidth + ( widgetX - mouseGlobalX + currentMouseLocalX ),
+		     widgetHeight );
+}
+
+
+void regionselection::moveMiddle( QMouseEvent *event )
+{
+  
 }
 
 

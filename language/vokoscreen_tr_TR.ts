@@ -151,14 +151,6 @@
         <translation>Dizin Aç</translation>
     </message>
     <message>
-        <source>Device </source>
-        <translation>Aygıt</translation>
-    </message>
-    <message>
-        <source> is busy</source>
-        <translation>meşgul</translation>
-    </message>
-    <message>
         <source>%1</source>
         <translation>%1</translation>
     </message>
@@ -181,6 +173,10 @@
     <message>
         <source>Actual frames per second</source>
         <translation>Saniye başına fiili kare</translation>
+    </message>
+    <message>
+        <source>Device %1 is busy</source>
+        <translation>Aygıt %1 meşgul</translation>
     </message>
 </context>
 </TS>

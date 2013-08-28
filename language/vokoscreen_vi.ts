@@ -151,14 +151,6 @@
         <translation>Mở thư mục</translation>
     </message>
     <message>
-        <source>Device </source>
-        <translation>Thiết bị</translation>
-    </message>
-    <message>
-        <source> is busy</source>
-        <translation>hiện đang bận</translation>
-    </message>
-    <message>
         <source>%1</source>
         <translation>%1</translation>
     </message>
@@ -181,6 +173,10 @@
     <message>
         <source>Actual frames per second</source>
         <translation>Khung hình thực mỗi giây</translation>
+    </message>
+    <message>
+        <source>Device %1 is busy</source>
+        <translation>Thiết bị %1 hiện đang bận</translation>
     </message>
 </context>
 </TS>

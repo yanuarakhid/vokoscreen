@@ -151,14 +151,6 @@
         <translation>Abrir carpeta</translation>
     </message>
     <message>
-        <source>Device </source>
-        <translation>Preséu</translation>
-    </message>
-    <message>
-        <source> is busy</source>
-        <translation>ta ocupáu</translation>
-    </message>
-    <message>
         <source>%1</source>
         <translation>%1</translation>
     </message>
@@ -181,6 +173,10 @@
     <message>
         <source>Actual frames per second</source>
         <translation>Cuadros per segundu d&apos;anguaño</translation>
+    </message>
+    <message>
+        <source>Device %1 is busy</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

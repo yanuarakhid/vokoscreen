@@ -151,14 +151,6 @@
         <translation>開啟目錄</translation>
     </message>
     <message>
-        <source>Device </source>
-        <translation>裝置</translation>
-    </message>
-    <message>
-        <source> is busy</source>
-        <translation>忙碌中</translation>
-    </message>
-    <message>
         <source>%1</source>
         <translation>%1</translation>
     </message>
@@ -181,6 +173,10 @@
     <message>
         <source>Actual frames per second</source>
         <translation>實際的影格率</translation>
+    </message>
+    <message>
+        <source>Device %1 is busy</source>
+        <translation>裝置 %1 忙碌中</translation>
     </message>
 </context>
 </TS>

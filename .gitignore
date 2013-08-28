@@ -39,3 +39,7 @@ Makefile
 # vokoscreen
 language/*.qm
 vokoscreen
+
+# ffmpeg
+*.log
+

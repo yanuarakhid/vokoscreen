@@ -151,14 +151,6 @@
         <translation>Otevřít adresář</translation>
     </message>
     <message>
-        <source>Device </source>
-        <translation>Zařízení</translation>
-    </message>
-    <message>
-        <source> is busy</source>
-        <translation>je zaneprázdněn</translation>
-    </message>
-    <message>
         <source>%1</source>
         <translation>%1</translation>
     </message>
@@ -180,6 +172,10 @@
     </message>
     <message>
         <source>Actual frames per second</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device %1 is busy</source>
         <translation type="unfinished"/>
     </message>
 </context>

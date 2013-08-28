@@ -151,14 +151,6 @@
         <translation>Verzeichnis öffnen</translation>
     </message>
     <message>
-        <source>Device </source>
-        <translation>Gerät</translation>
-    </message>
-    <message>
-        <source> is busy</source>
-        <translation>ist belegt!</translation>
-    </message>
-    <message>
         <source>%1</source>
         <translation>%1</translation>
     </message>
@@ -180,7 +172,11 @@
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Aktuelle fps</translation>
+        <translation>Aktuelle Framerate</translation>
+    </message>
+    <message>
+        <source>Device %1 is busy</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

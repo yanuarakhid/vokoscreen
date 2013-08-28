@@ -48,13 +48,15 @@ public slots:
   //void printSize();
 
 private slots:
-  void moveTopLeft    ( QMouseEvent *event );
-  void moveTopMiddle  ( QMouseEvent *event );
-  void moveTopRight   ( QMouseEvent *event );
-  void moveRightMiddle( QMouseEvent *event );
-  void moveBottomRight( QMouseEvent *event );
-  void moveBottomMiddle( QMouseEvent *event);
-  void moveBottomLeft( QMouseEvent *event );
+  void moveTopLeft     ( QMouseEvent *event );
+  void moveTopMiddle   ( QMouseEvent *event );
+  void moveTopRight    ( QMouseEvent *event );
+  void moveRightMiddle ( QMouseEvent *event );
+  void moveBottomRight ( QMouseEvent *event );
+  void moveBottomMiddle( QMouseEvent *event );
+  void moveBottomLeft  ( QMouseEvent *event );
+  void moveLeftMiddle  ( QMouseEvent *event );
+  void moveMiddle      ( QMouseEvent *event );
 
   void HandleTopLeft();
   void HandleTopMiddle();
@@ -64,6 +66,7 @@ private slots:
   void HandleBottomMiddle();
   void HandleBottomLeft();
   void HandleLeftMiddle();
+  void HandleMiddle();
 
 protected:
   void mouseMoveEvent( QMouseEvent *event );

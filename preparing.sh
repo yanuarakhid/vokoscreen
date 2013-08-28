@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo ==================
+echo Remove ffmpeg logs
+echo ==================
+rm *.log
+
 echo ============
 echo Make main.ts
 echo ============

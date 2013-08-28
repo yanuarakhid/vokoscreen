@@ -151,14 +151,6 @@
         <translation>Apri cartella</translation>
     </message>
     <message>
-        <source>Device </source>
-        <translation>Periferica</translation>
-    </message>
-    <message>
-        <source> is busy</source>
-        <translation>è occupato</translation>
-    </message>
-    <message>
         <source>%1</source>
         <translation>%1</translation>
     </message>
@@ -181,6 +173,10 @@
     <message>
         <source>Actual frames per second</source>
         <translation>Fotogrammi al secondo attuale</translation>
+    </message>
+    <message>
+        <source>Device %1 is busy</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

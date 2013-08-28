@@ -2083,7 +2083,7 @@ const QString screencast::myPulseDevice()
 
   if ( integerList.count() > 1 )
     ret = "vokoscreenMix.monitor";
-    
+
   return ret;
 }
 
@@ -2400,7 +2400,9 @@ void screencast::record()
 	       + " -vcodec "
 	       + myVcodec
        	       + myAcodec()
-      	       + " -ar " + mySample()
+	       //+ " -ab 256k "  //********************************************Neu
+      	       + " -ar 48000 "  //********************************************Neu
+      	       //+ " -ar " + mySample()
 	       + quality
 	       + frame + " ";
 	       	            

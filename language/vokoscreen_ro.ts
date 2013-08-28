@@ -1,70 +1,70 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ro" version="2.0">
 <context>
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Mail laatste Video</translation>
+        <translation>Trimite pe email ultimul video</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Mail een of meer geselecteerde video &apos;s</translation>
+        <translation>Email cu unul sau mai multe fișiere video selectate</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Zenden</translation>
+        <translation>Trimite</translation>
     </message>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>U vindt de video als bijlage</translation>
+        <translation>Gasești fișierul video ca atașament</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Selecteer een of meer bestanden</translation>
+        <translation>Selectează unul sau mai multe fișiere</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation>Geen rand</translation>
+        <translation>Fără margine</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation>Rand</translation>
+        <translation>Margine</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Sluiten</translation>
+        <translation>Închide</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamController</name>
     <message>
         <source>Webcam</source>
-        <translation>Webcam</translation>
+        <translation>Cameră Web</translation>
     </message>
     <message>
         <source>Device is busy</source>
-        <translation>Apparaat is bezig</translation>
+        <translation>Dispozitivul este ocupat</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Volledig scherm</translation>
+        <translation>Pe tot ecranul</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Venster</translation>
+        <translation>Fereastră</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Arie</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Mărire</translation>
     </message>
     <message>
         <source>Audio</source>
@@ -80,11 +80,11 @@
     </message>
     <message>
         <source>Frames:</source>
-        <translation>Frames:</translation>
+        <translation>Cadre:</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation>Standaard</translation>
+        <translation>Implicit</translation>
     </message>
     <message>
         <source>Codec</source>
@@ -92,63 +92,63 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Muiscursor niet opnemen</translation>
+        <translation>Nu înregistra cursorul de maus</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Video map</translation>
+        <translation>Calea video</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Speler</translation>
+        <translation>Lector</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Vokoscreen in taakbalk als opname start</translation>
+        <translation>Vokoscreen va fi minimizat cănd începe înregistrarea</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Începe</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Oprește</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauzeren</translation>
+        <translation>Pauză</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Redă</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Verzenden</translation>
+        <translation>Trimite</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Opnametijd</translation>
+        <translation>Durata înregistrării</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>Grootte in KB</translation>
+        <translation>Mărimea în KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Grootte van scherm opname</translation>
+        <translation>Aria de ecran pentru înregistrare </translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation>Format</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Instellingen fps</translation>
+        <translation>Setări fps</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Open direktory</translation>
+        <translation>Deschide dosar</translation>
     </message>
     <message>
         <source>%1</source>
@@ -156,27 +156,27 @@
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Countdown</translation>
+        <translation>Numărătoare inversă</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Speel laatste Video</translation>
+        <translation>Redă ultimul video</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>Stuur Video</translation>
+        <translation>Trimite video</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"/>
+        <translation>Selectează unul sau mai multe dispozitive</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>Cadre reale pe secundă</translation>
     </message>
     <message>
         <source>Device %1 is busy</source>
-        <translation type="unfinished"/>
+        <translation>Diszpozitivul %1 este ocupat</translation>
     </message>
 </context>
 </TS>
