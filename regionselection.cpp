@@ -56,7 +56,7 @@ QToolTip::showText ( QPoint( 300, 300 ), "Aber Hallo", this );
   
   borderLeft = 20;
   borderTop = 20;
-  borderRight = 40;
+  borderRight = 20;
   borderBottom = 20;
  
   // Von außen bis Mitte blauer Rahmen
@@ -81,7 +81,6 @@ regionselection::~regionselection()
 void regionselection::resizeEvent( QResizeEvent * event )
 {
  (void)event;
- //qDebug() << "resizeEvent";
 }
 
 
@@ -148,11 +147,11 @@ void regionselection::HandleTopMiddle()
   painter->drawPie( rectangle, startAngle, spanAngle );
   painter->setPen( QPen( arrow, 2 ) );
   QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop - radius + penWidth + 1 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, borderTop - radius + 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, borderTop - radius + 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft, borderTop -radius + penWidth + 1 );
+  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop - radius + penWidth + penHalf );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, borderTop - radius + penWidth+7 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, borderTop - radius + penWidth+7 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop - radius + penWidth + penHalf );
   painter->drawPath( *painterPath );
 }
 
@@ -227,11 +226,11 @@ void regionselection::HandleRightMiddle()
   painter->setPen( QPen( arrow, 2 ) );
 
   QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( width() - borderRight + frameWidth / 2       , ( ( height() - borderTop - borderBottom ) / 2 + borderTop ) );
-  painterPath->lineTo( width() - borderRight + radius - penWidth - 1, ( ( height() - borderTop - borderBottom ) / 2 + borderTop ) );
-  painterPath->lineTo( width() - borderRight + radius - penWidth - 7, ( ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 ) );
-  painterPath->lineTo( width() - borderRight + radius - penWidth - 7, ( ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 ) );
-  painterPath->lineTo( width() - borderRight + radius - penWidth - 1, ( ( height() - borderTop - borderBottom ) / 2 + borderTop ) );
+  painterPath->moveTo( width() - borderRight + frameWidth / 2       , ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->lineTo( width() - borderRight + radius - penWidth - 1, ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->lineTo( width() - borderRight + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
+  painterPath->lineTo( width() - borderRight + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
+  painterPath->lineTo( width() - borderRight + radius - penWidth - 1, ( height() - borderTop - borderBottom ) / 2 + borderTop );
 
   painterPath->setFillRule( Qt::OddEvenFill );
   
@@ -302,7 +301,7 @@ void regionselection::HandleBottomMiddle()
   painter->setBrush( brush );
   painter->setPen( QPen( Qt::black, penWidth ) );
 
-  QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
+  QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
   int startAngle = 0 * 16;
   int spanAngle =  -180  * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
@@ -311,11 +310,11 @@ void regionselection::HandleBottomMiddle()
   painter->setPen( QPen( arrow, 2 ) );
 
   QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + radius, height() - borderBottom );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + radius, height() - borderBottom + radius - penWidth - 1 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + radius - 3, height() - borderBottom + radius - penWidth - 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + radius + 3, height() - borderBottom + radius - penWidth - 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + radius, height() - borderBottom + radius - penWidth - 1 );
+  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     height() - borderBottom );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     height() - borderBottom + radius - penWidth - 1 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, height() - borderBottom + radius - penWidth - 7 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, height() - borderBottom + radius - penWidth - 7 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     height() - borderBottom + radius - penWidth - 1 );
   
   painterPath->setFillRule( Qt::OddEvenFill );
   
@@ -355,10 +354,10 @@ void regionselection::HandleBottomLeft()
 
   QPainterPath * painterPath = new QPainterPath();
   painterPath->moveTo( borderLeft - frameWidth / 2, height() - borderBottom + frameWidth / 2 );
-  painterPath->lineTo( borderLeft - h + penHalf,  height() - borderBottom + h - penHalf );
-  painterPath->lineTo( borderLeft - h + 3, height() - borderBottom + h - 7 );
-  painterPath->lineTo( borderLeft - h + 7, height() - borderBottom + h - 3 );
-  painterPath->lineTo( borderLeft - h + penHalf,  height() - borderBottom + h - penHalf );
+  painterPath->lineTo( borderLeft - h + penHalf,    height() - borderBottom + h - penHalf );
+  painterPath->lineTo( borderLeft - h + 3,          height() - borderBottom + h - 7 );
+  painterPath->lineTo( borderLeft - h + 7,          height() - borderBottom + h - 3 );
+  painterPath->lineTo( borderLeft - h + penHalf,    height() - borderBottom + h - penHalf );
   
   painterPath->setFillRule( Qt::OddEvenFill );
   
@@ -395,11 +394,11 @@ void regionselection::HandleLeftMiddle()
   painter->setPen( QPen( arrow, 2 ) );
 
   QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( borderLeft - frameWidth / 2, ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( penWidth + 1, ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( penHalf + 7,  ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
-  painterPath->lineTo( penHalf + 7,  ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
-  painterPath->lineTo( penWidth + 1, ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->moveTo( borderLeft - frameWidth / 2,        ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->lineTo( borderLeft - radius + penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->lineTo( borderLeft - radius + penWidth + 7, ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
+  painterPath->lineTo( borderLeft - radius + penWidth + 7, ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
+  painterPath->lineTo( borderLeft - radius + penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
   
   painterPath->setFillRule( Qt::OddEvenFill );
   
@@ -431,6 +430,69 @@ void regionselection::HandleMiddle()
 			 ( height() - borderTop - borderBottom ) / 2 + borderTop - radius,
 			   2 * radius,
 			   2 * radius );
+  
+  //Begin Pfeil zeichnen
+  painter->setPen( QPen( arrow, 2 ) );
+
+  QPainterPath * painterPath = new QPainterPath();
+  //arrow left
+  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,                        ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius + penWidth,    ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius + penWidth + 7,( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius + penWidth + 7,( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius + penWidth,    ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  
+  //arrow top
+  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop - radius + penWidth );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius + penWidth + 7 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius + penWidth + 7 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop - radius + penWidth );
+  
+  //arrow right
+  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,                         ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius - penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius - penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
+
+  //arrow bottom
+  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop + radius - penWidth );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, ( height() - borderTop - borderBottom ) / 2 + borderTop + radius - penWidth - 7 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, ( height() - borderTop - borderBottom ) / 2 + borderTop + radius - penWidth - 7 );
+  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop + radius - penWidth );
+  
+  painterPath->setFillRule( Qt::OddEvenFill );
+  
+  painter->drawPath( *painterPath );
+  // End Pfeil zeichnen
+}
+
+
+void regionselection::printSize()
+{
+  QString widthHeigtSize = QString::number( getWidth() ) + " x " + QString::number( getHeight() );
+  
+  QFont font;
+  font.setPointSize( 14 );
+  //font.setBold( true );
+  painter->setFont( font );
+  
+  QFontMetrics fontMetrics( font );
+  int pixelWidth = fontMetrics.width( widthHeigtSize );
+  QRect rect( ( width() - borderLeft - borderRight ) / 2 + borderLeft - pixelWidth / 2 - 5,
+	      ( height() - borderTop - borderBottom ) / 2 + borderTop - 2 * radius - 20,
+	        pixelWidth + 10,
+	        16 + 10);
+  
+  QBrush brush( Qt::yellow, Qt::SolidPattern );
+  painter->setBrush( brush );
+  painter->setPen( QPen( Qt::black, penWidth ) );  
+
+  painter->drawRoundedRect( rect, 7, 7 );
+
+  painter->drawText( rect, Qt::AlignCenter, widthHeigtSize );
 }
 
 
@@ -484,12 +546,8 @@ void regionselection::paintEvent( QPaintEvent *event )
   HandleBottomLeft();
   HandleLeftMiddle();
   HandleMiddle();
+  printSize();
 
-/*  
-  // Kreis in der Mitte
-  painter.drawEllipse ( width()/2 - radius, height()/2 - radius, 2 * radius, 2 * radius );
-
-*/  
   // Blue Frame
   painter->setPen( QPen( Qt::blue, frameWidth ) );
   
@@ -632,8 +690,8 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
 
   if ( ( event->x() > ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius ) and 
        ( event->x() < ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius ) and 
-       ( event->y() < height() ) and 
-       ( event->y() > height() - radius ) )
+       ( event->y() < height() - borderBottom + radius ) and 
+       ( event->y() > height() - borderBottom ) )
   {
     setCursor( Qt::SizeVerCursor );
     handleUnderMouse = BottomMiddle;
@@ -659,7 +717,6 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     handleUnderMouse = LeftMiddle;
     return;
   }
-  
   
   if ( ( event->x() > ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius ) and 
        ( event->x() < ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius ) and
@@ -772,18 +829,10 @@ void regionselection::moveTopRight( QMouseEvent *event )
   // Maximale Größe begrenzen
   if ( mouseGlobalY - currentMouseLocalY < 0 )
     mouseGlobalY = widgetY + currentMouseLocalY;
-
- 
   
   QDesktopWidget *desk = QApplication::desktop();
-  qDebug() <<  desk->screenGeometry().width() - widgetX - widgetWidth;
-  if ( ( mouseGlobalX + ( desk->screenGeometry().width() - widgetX - widgetWidth )*-1 ) > desk->screenGeometry().width() )
-  {
-    qDebug() << "111111111111111111111111";
-    mouseGlobalX = mouseGlobalX + ( desk->screenGeometry().width() - widgetX - widgetWidth ) * -1;
-    
-  }
-  
+  if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+    mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
   
   // Neue Geometry des Fenster setzen
   this->setGeometry( widgetX,
@@ -804,10 +853,16 @@ void regionselection::moveRightMiddle( QMouseEvent *event )
   int widgetX = geometry().x();
   int widgetY = geometry().y();
   int widgetHeight = geometry().height();
-  
+  int widgetWidth = geometry().width();
+
   // Minimale Größe des Widget begrenzen
   if ( mouseGlobalX <= widgetX + 200 )
     mouseGlobalX = widgetX + 200;
+
+  // Maximale größe begrenzen
+  QDesktopWidget *desk = QApplication::desktop();
+  if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+    mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
   
   this->setGeometry( widgetX,
 		     widgetY,
@@ -825,13 +880,19 @@ void regionselection::moveBottomRight( QMouseEvent *event )
   // Alte Widget Koordinaten
   int widgetX = geometry().x();
   int widgetY = geometry().y();
- 
+  int widgetWidth = geometry().width();
+
   // Minimale Größe des Widget begrenzen
   if ( mouseGlobalX <= widgetX + 200 )
     mouseGlobalX = widgetX + 200;
   
   if ( mouseGlobalY <= widgetY + 200 )
     mouseGlobalY = widgetY +  200;
+  
+  // Maximale größe begrenzen
+  QDesktopWidget *desk = QApplication::desktop();
+  if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+    mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
   
   this->setGeometry( widgetX,
 		     widgetY,
@@ -893,7 +954,6 @@ void regionselection::moveLeftMiddle( QMouseEvent *event )
 {
   // Globale Mauskoordinaten
   int mouseGlobalX = event->globalX();
-  int mouseGlobalY = event->globalY();
   
   // Alte Widget Koordinaten
   int widgetX = geometry().x();
@@ -919,7 +979,11 @@ void regionselection::moveLeftMiddle( QMouseEvent *event )
 
 void regionselection::moveMiddle( QMouseEvent *event )
 {
+  // Globale Mauskoordinaten
+  int mouseGlobalX = event->globalX();
+  int mouseGlobalY = event->globalY();
   
+  move( mouseGlobalX - currentMouseLocalX, mouseGlobalY - currentMouseLocalY );
 }
 
 
@@ -928,7 +992,10 @@ void regionselection::mousePressEvent( QMouseEvent *event )
   // Position bei klick im Fenster festhalten
   currentMouseLocalX = event->x();
   currentMouseLocalY = event->y();
-
+  
+  //Abstand von Rechte Seite Widget bis Cursor
+  currentMouseRightLocalX = width() - currentMouseLocalX;
+  
   currentWidgetWidth = geometry().width();
   currentWidgetHeight = geometry().height();
   
@@ -948,6 +1015,7 @@ void regionselection::mousePressEvent( QMouseEvent *event )
   
   event->accept();  
 }
+
 
 void regionselection::mouseReleaseEvent( QMouseEvent * event )
 {

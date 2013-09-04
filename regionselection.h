@@ -45,7 +45,7 @@ public slots:
   int getY();
   int getHeight();
   int getWidth();
-  //void printSize();
+  void printSize();
 
 private slots:
   void moveTopLeft     ( QMouseEvent *event );
@@ -102,6 +102,8 @@ private:
   
   int currentMouseLocalX;
   int currentMouseLocalY;
+  
+  int currentMouseRightLocalX;
   
   int currentWidgetWidth;
   int currentWidgetHeight;
