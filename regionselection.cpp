@@ -16,9 +16,6 @@
  */
 
 #include "regionselection.h" 
-#include <QCoreApplication>
-#include <QToolTip>
-#include <QMouseEvent>
 
 using namespace std;
 
@@ -780,7 +777,6 @@ void regionselection::moveTopMiddle( QMouseEvent *event )
   if ( mouseGlobalY >= widgetY + widgetHeight + currentMouseLocalY - 200 )
     mouseGlobalY = widgetY + widgetHeight + currentMouseLocalY - 200;
   
-  
   // Maximale Größe begrenzen
   if ( mouseGlobalY - currentMouseLocalY < 0 )
     mouseGlobalY = widgetY + currentMouseLocalY;
@@ -982,6 +978,30 @@ void regionselection::moveMiddle( QMouseEvent *event )
   // Globale Mauskoordinaten
   int mouseGlobalX = event->globalX();
   int mouseGlobalY = event->globalY();
+
+  // Alte Widget Koordinaten
+  int widgetX = geometry().x();
+  int widgetY = geometry().y();
+  int widgetWidth = geometry().width();
+  int widgetHeight = geometry().height();
+  
+  // Das Verschieben begrenzen
+  // Top
+  if ( mouseGlobalY - currentMouseLocalY < 0 )
+    mouseGlobalY = widgetY + currentMouseLocalY;
+  
+  // Right
+  QDesktopWidget *desk = QApplication::desktop();
+  if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+    mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
+  
+  // Bottom
+  if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+    mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
+    
+  // Left
+  if ( mouseGlobalX - currentMouseLocalX < 0 )  
+    mouseGlobalX = widgetX + currentMouseLocalX;
   
   move( mouseGlobalX - currentMouseLocalX, mouseGlobalY - currentMouseLocalY );
 }

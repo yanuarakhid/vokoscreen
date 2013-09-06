@@ -19,7 +19,6 @@
 #define regionselection_H
 
 #include <QPainter>
-#include <QLabel>
 #include <QDebug>
 #include <QRegion>
 #include <QCursor>
@@ -28,8 +27,6 @@
 #include <QMouseEvent>
 #include <QApplication>
 #include <QDesktopWidget>
-
-#include <math.h>
 
 class regionselection : public QWidget
 { 
@@ -45,7 +42,6 @@ public slots:
   int getY();
   int getHeight();
   int getWidth();
-  void printSize();
 
 private slots:
   void moveTopLeft     ( QMouseEvent *event );
@@ -68,6 +64,8 @@ private slots:
   void HandleLeftMiddle();
   void HandleMiddle();
 
+  void printSize();
+  
 protected:
   void mouseMoveEvent( QMouseEvent *event );
   void mousePressEvent( QMouseEvent *event );
@@ -77,7 +75,6 @@ protected:
   QPainter * painter;
   
   void resizeEvent( QResizeEvent * event );
-  
   
 private:
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
