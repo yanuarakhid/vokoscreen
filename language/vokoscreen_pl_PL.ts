@@ -19,7 +19,7 @@
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Wybierz jednek lub kilka plików</translation>
+        <translation>Wybierz jeden lub wiele plików</translation>
     </message>
 </context>
 <context>
@@ -168,15 +168,15 @@
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"/>
+        <translation>Wybierz jedno lub wiele urządzeń</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>Aktualna liczba klatek na sekundę</translation>
     </message>
     <message>
         <source>Device %1 is busy</source>
-        <translation type="unfinished"/>
+        <translation>Urządzenie %1 jest zajęte</translation>
     </message>
 </context>
 </TS>

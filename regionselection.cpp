@@ -38,11 +38,6 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
   handlePressed = NoHandle;
   handleUnderMouse = NoHandle;
   painter =  new QPainter();
-
-  
-  
-QToolTip::showText ( QPoint( 300, 300 ), "Aber Hallo", this );
-  
   
   setGeometry( x, y, width, height );
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
@@ -51,8 +46,6 @@ QToolTip::showText ( QPoint( 300, 300 ), "Aber Hallo", this );
     setAttribute( Qt::WA_TranslucentBackground, true );
   
   setMouseTracking( true );
-  
-  qDebug() << "width:" << width << "height:" << height;
   
   borderLeft = 20;
   borderTop = 20;
@@ -733,16 +726,8 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
   unsetCursor();
 
   event->accept();
-
-/*    
-    if (  event->buttons() & Qt::LeftButton )
-    {
-        move( event->globalPos() - m_dragPosition );
-        event->accept();
-    }
-  
-*/ 
 }
+
 
 void regionselection::moveTopLeft( QMouseEvent *event )
 {
@@ -757,16 +742,16 @@ void regionselection::moveTopLeft( QMouseEvent *event )
   int widgetHeight = geometry().height();
   
   // Minimale Größe des Widget begrenzen
-  if ( mouseGlobalY >= widgetY + widgetHeight - 200 )
-    mouseGlobalY = widgetY + widgetHeight - 200;
+  if ( mouseGlobalY >= widgetY + widgetHeight + currentMouseLocalY - 200 )
+    mouseGlobalY = widgetY + widgetHeight + currentMouseLocalY - 200;
 
-  if ( mouseGlobalX >= widgetX + widgetWidth - 200 )
-    mouseGlobalX = widgetX + widgetWidth - 200;
+  if ( mouseGlobalX >= widgetX + widgetWidth + currentMouseLocalX - 200 )
+    mouseGlobalX = widgetX + widgetWidth + currentMouseLocalX - 200;
   
   // Maximale Größe begrenzen
   if ( mouseGlobalY - currentMouseLocalY < 0 )
     mouseGlobalY = widgetY + currentMouseLocalY;
-    
+  
   if ( mouseGlobalX - currentMouseLocalX < 0 )  
     mouseGlobalX = widgetX + currentMouseLocalX;
   
@@ -792,9 +777,10 @@ void regionselection::moveTopMiddle( QMouseEvent *event )
   int widgetHeight = geometry().height();
 
   // Minimale Größe des Widget begrenzen
-  if ( mouseGlobalY >= widgetY + widgetHeight - 200 )
-    mouseGlobalY = widgetY + widgetHeight - 200;
-
+  if ( mouseGlobalY >= widgetY + widgetHeight + currentMouseLocalY - 200 )
+    mouseGlobalY = widgetY + widgetHeight + currentMouseLocalY - 200;
+  
+  
   // Maximale Größe begrenzen
   if ( mouseGlobalY - currentMouseLocalY < 0 )
     mouseGlobalY = widgetY + currentMouseLocalY;
@@ -820,12 +806,12 @@ void regionselection::moveTopRight( QMouseEvent *event )
   int widgetWidth = geometry().width();
 
   // Minimale Größe des Widget begrenzen
-  if ( mouseGlobalX <= widgetX + 200 )
-    mouseGlobalX = widgetX + 200;
+  if ( mouseGlobalX <= widgetX + 200 - currentMouseRightLocalX )
+    mouseGlobalX = widgetX + 200 - currentMouseRightLocalX;
   
-  if ( mouseGlobalY >= widgetY + widgetHeight - 200 )
-    mouseGlobalY = widgetY + widgetHeight - 200;
-
+  if ( mouseGlobalY >= widgetY + widgetHeight + currentMouseLocalY - 200 )
+    mouseGlobalY = widgetY + widgetHeight + currentMouseLocalY - 200;
+  
   // Maximale Größe begrenzen
   if ( mouseGlobalY - currentMouseLocalY < 0 )
     mouseGlobalY = widgetY + currentMouseLocalY;
@@ -839,8 +825,6 @@ void regionselection::moveTopRight( QMouseEvent *event )
 		     mouseGlobalY - currentMouseLocalY,
 		     currentWidgetWidth + ( mouseGlobalX - ( widgetX + currentMouseLocalX ) ),
      		     widgetHeight  + ( widgetY - mouseGlobalY + currentMouseLocalY ) );
-  
-  //event->accept();
 }
 
 
@@ -856,8 +840,8 @@ void regionselection::moveRightMiddle( QMouseEvent *event )
   int widgetWidth = geometry().width();
 
   // Minimale Größe des Widget begrenzen
-  if ( mouseGlobalX <= widgetX + 200 )
-    mouseGlobalX = widgetX + 200;
+  if ( mouseGlobalX <= widgetX + 200 - currentMouseRightLocalX )
+    mouseGlobalX = widgetX + 200 - currentMouseRightLocalX;
 
   // Maximale größe begrenzen
   QDesktopWidget *desk = QApplication::desktop();
@@ -881,18 +865,22 @@ void regionselection::moveBottomRight( QMouseEvent *event )
   int widgetX = geometry().x();
   int widgetY = geometry().y();
   int widgetWidth = geometry().width();
+  int widgetHeight = geometry().height();
 
   // Minimale Größe des Widget begrenzen
-  if ( mouseGlobalX <= widgetX + 200 )
-    mouseGlobalX = widgetX + 200;
+  if ( mouseGlobalX <= widgetX + 200 - currentMouseRightLocalX )
+    mouseGlobalX = widgetX + 200 - currentMouseRightLocalX;
   
-  if ( mouseGlobalY <= widgetY + 200 )
-    mouseGlobalY = widgetY +  200;
+  if ( mouseGlobalY <= widgetY + 200 - currentMouseRightLocalY )
+    mouseGlobalY = widgetY + 200 - currentMouseRightLocalY;
   
   // Maximale größe begrenzen
   QDesktopWidget *desk = QApplication::desktop();
   if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
     mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
+  
+  if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+    mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
   
   this->setGeometry( widgetX,
 		     widgetY,
@@ -910,10 +898,17 @@ void regionselection::moveBottomMiddle( QMouseEvent *event )
   int widgetX = geometry().x();
   int widgetY = geometry().y();
   int widgetWidth = geometry().width();
+  int widgetHeight = geometry().height();
 
-  if ( mouseGlobalY <= widgetY + 200 )
-    mouseGlobalY = widgetY +  200;
+  // Minimale Größe des Widget begrenzen
+  if ( mouseGlobalY <= widgetY + 200 - currentMouseRightLocalY )
+    mouseGlobalY = widgetY + 200 - currentMouseRightLocalY;
   
+  // Maximale größe begrenzen
+  QDesktopWidget *desk = QApplication::desktop();
+  if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+    mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
+
   this->setGeometry( widgetX,
 		     widgetY,
      		     widgetWidth,
@@ -931,17 +926,22 @@ void regionselection::moveBottomLeft( QMouseEvent *event )
   int widgetX = geometry().x();
   int widgetY = geometry().y();
   int widgetWidth = geometry().width();
+  int widgetHeight = geometry().height();
 
   // Minimale Größe des Widget begrenzen
-  if ( mouseGlobalY <= widgetY + 200 )
-    mouseGlobalY = widgetY + 200;
+  if ( mouseGlobalY <= widgetY + 200 - currentMouseRightLocalY )
+    mouseGlobalY = widgetY + 200 - currentMouseRightLocalY;
 
-  if ( mouseGlobalX >= widgetX + widgetWidth - 200 )
-    mouseGlobalX = widgetX + widgetWidth - 200;
+  if ( mouseGlobalX >= widgetX + widgetWidth + currentMouseLocalX - 200 )
+    mouseGlobalX = widgetX + widgetWidth + currentMouseLocalX - 200;
 
   // Maximale Größe des Widget begrenzen
   if ( mouseGlobalX - currentMouseLocalX < 0 )  
     mouseGlobalX = widgetX + currentMouseLocalX;
+
+  QDesktopWidget *desk = QApplication::desktop();
+  if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+    mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
   
   this->setGeometry( mouseGlobalX - currentMouseLocalX,
 		     widgetY,
@@ -962,9 +962,9 @@ void regionselection::moveLeftMiddle( QMouseEvent *event )
   int widgetHeight = geometry().height();
   
   // Minimale Größe des Widget begrenzen
-  if ( mouseGlobalX >= widgetX + widgetWidth - 200 )
-    mouseGlobalX = widgetX + widgetWidth - 200;
-
+  if ( mouseGlobalX >= widgetX + widgetWidth + currentMouseLocalX - 200 )
+    mouseGlobalX = widgetX + widgetWidth + currentMouseLocalX - 200;
+  
   // Maximale Größe des Widget begrenzen
   if ( mouseGlobalX - currentMouseLocalX < 0 )  
     mouseGlobalX = widgetX + currentMouseLocalX;
@@ -995,6 +995,7 @@ void regionselection::mousePressEvent( QMouseEvent *event )
   
   //Abstand von Rechte Seite Widget bis Cursor
   currentMouseRightLocalX = width() - currentMouseLocalX;
+  currentMouseRightLocalY = height() - currentMouseLocalY;
   
   currentWidgetWidth = geometry().width();
   currentWidgetHeight = geometry().height();

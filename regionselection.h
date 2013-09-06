@@ -76,7 +76,7 @@ protected:
   void paintEvent( QPaintEvent *event );
   QPainter * painter;
   
-  void resizeEvent( QResizeEvent * event ); //****************************************************
+  void resizeEvent( QResizeEvent * event );
   
   
 private:
@@ -95,15 +95,10 @@ private:
   bool frameLocked;
   void handlingFrameLock();
   
-  //QLabel *labelSize;
-
-  //! Fuer die Bewegung des Fensters
-  QPoint m_dragPosition;
-  
   int currentMouseLocalX;
   int currentMouseLocalY;
-  
   int currentMouseRightLocalX;
+  int currentMouseRightLocalY;
   
   int currentWidgetWidth;
   int currentWidgetHeight;
