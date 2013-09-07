@@ -41,7 +41,7 @@ regionselection::regionselection( int x, int y, int width, int height, int frame
 
   if( QX11Info::isCompositingManagerRunning() )
     setAttribute( Qt::WA_TranslucentBackground, true );
-  
+
   setMouseTracking( true );
   
   borderLeft = 20;
@@ -71,6 +71,42 @@ regionselection::~regionselection()
 void regionselection::resizeEvent( QResizeEvent * event )
 {
  (void)event;
+}
+
+
+void regionselection::cleanRecordArea( bool state )
+{
+  if ( state )
+  {
+    QRegion regionWidget(  0, 
+                           0, 
+                           width(),
+                           height(), 
+                           QRegion::Rectangle );
+  
+    QRegion regionRecord( borderLeft + frameWidth / 2, 
+                          borderTop + frameWidth / 2, 
+                          width() - borderLeft - borderRight - frameWidth,
+                          height() - borderTop - borderBottom - frameWidth, 
+                          QRegion::Rectangle );
+    
+    QRegion region = regionWidget.subtract( regionRecord );
+    setMask( region );
+  }
+  else
+  {
+    QDesktopWidget *desk = QApplication::desktop();
+    
+    QRegion screen(  0, 
+                     0, 
+                     desk->screenGeometry().width(),
+                     desk->screenGeometry().height(),
+                     QRegion::Rectangle );
+    
+    setMask( screen );
+  }
+
+  
 }
 
 

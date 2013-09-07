@@ -42,6 +42,7 @@ public slots:
   int getY();
   int getHeight();
   int getWidth();
+  void cleanRecordArea( bool state );
 
 private slots:
   void moveTopLeft     ( QMouseEvent *event );
@@ -65,7 +66,7 @@ private slots:
   void HandleMiddle();
 
   void printSize();
-  
+
 protected:
   void mouseMoveEvent( QMouseEvent *event );
   void mousePressEvent( QMouseEvent *event );

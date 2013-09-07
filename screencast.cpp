@@ -2315,6 +2315,9 @@ void screencast::record()
     deltaX  = QString().number( myregionselection->getX() );
     deltaY  = QString().number( myregionselection->getY() );
 
+    // 
+    myregionselection->cleanRecordArea( true );
+    
     //Makes the rectangle unmovable and unresizeable (Is enabled yet again when process finished)
     myregionselection->lockFrame( true );
   }
@@ -2483,6 +2486,9 @@ void screencast::startRecord( QString RecordPathName )
 
 void screencast::Stop()
 {
+  
+  myregionselection->cleanRecordArea( false );
+  
   shortcutStart->setEnabled( true );
   shortcutStop->setEnabled( false );
   
