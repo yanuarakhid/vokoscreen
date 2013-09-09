@@ -18,7 +18,7 @@
 
 #include <QX11Info>
 #include <QScreen>
-
+#include <QBitmap>
 using namespace std;
 
 screencast::screencast()
@@ -31,7 +31,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.10";  
+    Version = "1.7.11";  
     
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@kohaupt-online.de?subject=vokoscreen ";
@@ -111,21 +111,6 @@ screencast::screencast()
     webcamCheckBox = new QvkWebcamController( frame );
     webcamCheckBox->setGeometry( 160, 40, 120, 21 );
 
-    QComboBox *ScreenComboBox = new QComboBox( frame );
-    ScreenComboBox->setGeometry( 160, 65, 200, 21 );
-    ScreenComboBox->show();
-    QDesktopWidget *desk = QApplication::desktop();
-    qDebug() << "[vokoscreen]" << "---Begin search Screen---";
-    for ( int i = 0; i < desk->screenCount(); i++ )
-    {
-      QString ScreenGeometryX = QString::number( desk->screenGeometry( i + 1 ).width() );
-      QString ScreenGeometryY = QString::number( desk->screenGeometry( i + 1 ).height() );      
-      ScreenComboBox->addItem( "Bildschirm " + QString::number( i + 1 ) + "   " + ScreenGeometryX + " x " + ScreenGeometryY, i );      
-      qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
-    }
-    qDebug() << "[vokoscreen]" << "---End search Screen---";
-    qDebug();
-    
     QLabel *CountdownLabel = new QLabel( frame );
     CountdownLabel->setGeometry( 160, 110, 80, 25 );
     CountdownLabel->setText( tr( "Countdown" ) );
@@ -431,9 +416,9 @@ screencast::screencast()
     label->setAlignment( Qt::AlignCenter );
     label->show();
     QImage* qImage = new QImage( ":/pictures/VokoCola.png" );
-    label->setPixmap(QPixmap::fromImage(*qImage, Qt::AutoColor));
-    label->setScaledContents(true);
-    
+    label->setPixmap(QPixmap::fromImage( *qImage, Qt::AutoColor) );
+    label->setScaledContents( true );
+
     // Statusbar
     statusBarLabelTime = new QLabel();
     statusBarLabelTime->setText( "00:00:00" );
@@ -2404,8 +2389,8 @@ void screencast::record()
 	       + myVcodec
        	       + myAcodec()
 	       //+ " -ab 256k "  //********************************************Neu
-      	       + " -ar 48000 "  //********************************************Neu
-      	       //+ " -ar " + mySample()
+      	       //+ " -ar 48000 "  //********************************************Neu
+      	       + " -ar " + mySample()
 	       + quality
 	       + frame + " ";
 	       	            

@@ -105,8 +105,6 @@ void regionselection::cleanRecordArea( bool state )
     
     setMask( screen );
   }
-
-  
 }
 
 
