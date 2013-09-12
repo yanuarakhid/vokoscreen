@@ -95,15 +95,7 @@ void regionselection::cleanRecordArea( bool state )
   }
   else
   {
-    QDesktopWidget *desk = QApplication::desktop();
-    
-    QRegion screen(  0, 
-                     0, 
-                     desk->screenGeometry().width(),
-                     desk->screenGeometry().height(),
-                     QRegion::Rectangle );
-    
-    setMask( screen );
+    clearMask();
   }
 }
 
@@ -449,11 +441,13 @@ void regionselection::HandleMiddle()
   QBrush brush( color, Qt::SolidPattern );
   painter->setBrush( brush );
   painter->setPen( QPen( Qt::black, penWidth ) );
-
-  painter->drawEllipse ( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, 
-			 ( height() - borderTop - borderBottom ) / 2 + borderTop - radius,
-			   2 * radius,
-			   2 * radius );
+  
+  QRect rect( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, 
+              ( height() - borderTop - borderBottom ) / 2 + borderTop - radius,
+                2 * radius,
+                2 * radius );
+  
+  painter->drawEllipse ( rect );
   
   //Begin Pfeil zeichnen
   painter->setPen( QPen( arrow, 2 ) );
@@ -491,6 +485,28 @@ void regionselection::HandleMiddle()
   
   painter->drawPath( *painterPath );
   // End Pfeil zeichnen
+  
+  // set HandelMidlle if have no CompositingManager
+  if ( !QX11Info::isCompositingManagerRunning() )
+  {
+    rect.setLeft( rect.left() - 2 );
+    rect.setTop( rect.top() - 2 );
+    rect.setWidth( rect.width() + 2 );
+    rect.setHeight( rect.height() + 2 );
+    setHandleMiddleForMask( rect );
+  }
+}
+
+
+void regionselection::setHandleMiddleForMask( QRect rec )
+{
+  HandleMiddleForMask = rec;
+}
+
+
+QRect regionselection::getHandleMiddleForMask()
+{
+  return HandleMiddleForMask;
 }
 
 
@@ -508,7 +524,7 @@ void regionselection::printSize()
   QRect rect( ( width() - borderLeft - borderRight ) / 2 + borderLeft - pixelWidth / 2 - 5,
 	      ( height() - borderTop - borderBottom ) / 2 + borderTop - 2 * radius - 20,
 	        pixelWidth + 10,
-	        16 + 10);
+	        16 + 10 );
   
   QBrush brush( Qt::yellow, Qt::SolidPattern );
   painter->setBrush( brush );
@@ -517,18 +533,41 @@ void regionselection::printSize()
   painter->drawRoundedRect( rect, 7, 7 );
 
   painter->drawText( rect, Qt::AlignCenter, widthHeigtSize );
+  
+  // set Rectangle if have no CompositingManager
+  if ( !QX11Info::isCompositingManagerRunning() )
+  {
+    rect.setLeft( rect.left() - 2 );
+    rect.setTop( rect.top() - 2 );
+    rect.setWidth( rect.width() + 2 );
+    rect.setHeight( rect.height() + 2 );
+    setPrintSizeRectForMask( rect );
+  }
+}
+
+
+void regionselection::setPrintSizeRectForMask( QRect rec )
+{
+  printSizeRectForMask = rec;
+}
+
+
+QRect regionselection::getPrintSizeRectForMask()
+{
+  return printSizeRectForMask;
 }
 
 
 void regionselection::paintEvent( QPaintEvent *event ) 
 {
   (void)event;
+/*
   QRegion regionWidget(  0, 
                          0, 
                          width(),
                          height(), 
                          QRegion::Rectangle );
-/*  
+  
   // Region Handle TopLeft
   QRegion handleTopLeftRectangle( 0, 0, borderLeft + radius + 4, borderTop + radius+4, QRegion::Rectangle );
   QRegion handleTopLeftCircle( borderLeft - radius - penHalf, borderTop - radius-penHalf, 2 * radius + penWidth+1, 2 * radius + penWidth+1, QRegion::Ellipse );
@@ -557,7 +596,36 @@ void regionselection::paintEvent( QPaintEvent *event )
   //r15 = r15.subtract( test123 );
   
   setMask( r15 );
-*/  
+*/
+
+  // This is, if the CompositingManager is down
+  if ( !isFrameLocked() and !QX11Info::isCompositingManagerRunning() )
+  {
+    // Widget
+    clearMask();
+    QRegion RegionWidget( 0, 0, width(), height() );
+    // RecordArea
+    QRegion RegionArea  ( borderLeft + frameWidth / 2,
+                          borderTop + frameWidth / 2,
+                          width() - ( borderLeft + frameWidth / 2 ) - ( borderRight + frameWidth / 2 ),
+                          height() - ( borderTop + frameWidth / 2 ) - ( borderBottom + frameWidth / 2 ) );
+    // subtract the record Area
+    QRegion RegionNew = RegionWidget.subtract( RegionArea );
+    // Retrieves and merge display-area-size in record Area
+    QRegion r1 = RegionNew.united( getPrintSizeRectForMask() );
+    
+    // HandleMiddle
+    // Retrieves and merge HandleMiddle in record Area
+    r1 = r1.united( getHandleMiddleForMask() );
+    
+    
+    // New
+    //QRegion newHandleMiddle( getHandleMiddleForMask(), QRegion::Ellipse );
+    //r1 = r1.united( newHandleMiddle );
+    
+    setMask( r1 );
+  }
+
   painter->begin( this );
   painter->setRenderHints( QPainter::Antialiasing, true );
 

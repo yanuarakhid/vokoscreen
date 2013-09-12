@@ -66,6 +66,12 @@ private slots:
   void HandleMiddle();
 
   void printSize();
+  void setPrintSizeRectForMask( QRect rec );
+  QRect getPrintSizeRectForMask();
+  void setHandleMiddleForMask( QRect rec );
+  QRect getHandleMiddleForMask();
+
+  
 
 protected:
   void mouseMoveEvent( QMouseEvent *event );
@@ -105,5 +111,8 @@ private:
   
   Handle handlePressed;
   Handle handleUnderMouse;
+  
+  QRect printSizeRectForMask;
+  QRect HandleMiddleForMask;
 };
 #endif
