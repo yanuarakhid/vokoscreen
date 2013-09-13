@@ -1390,11 +1390,6 @@ void screencast::Pause()
       {
         QMessageBox msgBox;
         QString message;
-        /*message.append( tr( "Device " ) );
-        message.append( " " );
-        message.append( inBox->getAlsaHw() );
-        message.append( " " );
-	message.append( tr( " is busy" ) ); */
         message.append( tr( "Device %1 is busy" ).arg( inBox->getAlsaHw() ) );
 	msgBox.setText( message );
         msgBox.exec();
@@ -1429,11 +1424,6 @@ void screencast::Pause()
       {
         QMessageBox msgBox;
         QString message;
-        /*message.append( tr( "Device " ) );
-        message.append( " " );
-        message.append( inBox->getAlsaHw() );
-        message.append( " " );
-        message.append( tr( " is busy" ) ); */
         message.append( tr( "Device %1 is busy" ).arg( inBox->getAlsaHw() ) );
         msgBox.setText( message );
         msgBox.exec();
@@ -2109,11 +2099,6 @@ void screencast::preRecord()
       QMessageBox msgBox;
       msgBox.setIcon( QMessageBox::Information );
       QString message;
-      /*message.append( tr( "Device " ) );
-      message.append( " " );
-      message.append( inBox->getAlsaHw() );
-      message.append( " " );
-      message.append( tr( " is busy" ) ); */
       message.append( tr( "Device %1 is busy" ).arg( inBox->getAlsaHw() ) );
       msgBox.setText( message );
       msgBox.exec();
