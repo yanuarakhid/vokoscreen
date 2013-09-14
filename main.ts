@@ -180,5 +180,9 @@
         <source>Device %1 is busy</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Your Actual frames in the Settings is too heigh</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

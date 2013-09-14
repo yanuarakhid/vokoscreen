@@ -176,7 +176,7 @@
     </message>
     <message>
         <source>Device %1 is busy</source>
-        <translation type="unfinished"/>
+        <translation>Dispositivo %1 è occupato</translation>
     </message>
 </context>
 </TS>

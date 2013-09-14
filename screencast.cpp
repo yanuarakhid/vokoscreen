@@ -621,7 +621,7 @@ screencast::screencast()
    SystemTrayIconGreen = new QSystemTrayIcon( QIcon ( ":/pictures/start.png" ) );
    SystemTrayIconGreen->show();
    SystemTrayIconGreen->setToolTip( tr( "Start" ) );
-
+   
    SystemTrayIconRed = new QSystemTrayIcon( QIcon ( ":/pictures/stop.png" ) );
    SystemTrayIconRed->hide();
    SystemTrayIconRed->setToolTip( tr( "Stop" ) );
@@ -1118,6 +1118,7 @@ void screencast::readyReadStandardError()
   int fps = statusBarLabelFps->text().toUInt();
   if ( fps >=  FrameSpinBox->value() )
   {
+    statusBarLabelFps->setToolTip( tr( "Actual frames per second" ) );
     statusBarLabelFps->setAutoFillBackground( true );
     QPalette pal( statusBarLabelFps->palette() );
     pal.setColor( QPalette::Foreground, Qt::black );
@@ -1127,10 +1128,19 @@ void screencast::readyReadStandardError()
 
   if ( fps < FrameSpinBox->value() )
   {
+    statusBarLabelFps->setToolTip( tr( "Your Actual frames in the Settings is too heigh" ) );
     statusBarLabelFps->setAutoFillBackground( true );
     QPalette pal( statusBarLabelFps->palette() );
-    pal.setColor( QPalette::Foreground, Qt::black );
-    pal.setColor( QPalette::Background, Qt::red );
+    if ( pal.color( QPalette::Background ) == Qt::red )
+    {
+      pal.setColor( QPalette::Foreground, Qt::black );
+      pal.setColor( QPalette::Background, Qt::yellow );
+    }
+    else
+    {
+      pal.setColor( QPalette::Foreground, Qt::black );
+      pal.setColor( QPalette::Background, Qt::red );
+    }
     statusBarLabelFps->setPalette( pal );
   }    
   

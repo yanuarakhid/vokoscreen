@@ -116,7 +116,7 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>pausa</translation>
     </message>
     <message>
         <source>Play</source>
@@ -152,7 +152,7 @@
     </message>
     <message>
         <source>%1</source>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -176,7 +176,7 @@
     </message>
     <message>
         <source>Device %1 is busy</source>
-        <translation type="unfinished"/>
+        <translation>O dispositivo %1 está ocupado</translation>
     </message>
 </context>
 </TS>
