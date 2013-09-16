@@ -178,5 +178,9 @@
         <source>Device %1 is busy</source>
         <translation>Thiết bị %1 hiện đang bận</translation>
     </message>
+    <message>
+        <source>Your Actual frames in the Settings is too heigh</source>
+        <translation>Khung hình thực tế của bạn trong phần thiết lập quá cao</translation>
+    </message>
 </context>
 </TS>

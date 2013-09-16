@@ -178,5 +178,9 @@
         <source>Device %1 is busy</source>
         <translation>Aygıt %1 meşgul</translation>
     </message>
+    <message>
+        <source>Your Actual frames in the Settings is too heigh</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 </TS>

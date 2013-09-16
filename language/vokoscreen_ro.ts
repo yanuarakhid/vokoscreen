@@ -178,5 +178,9 @@
         <source>Device %1 is busy</source>
         <translation>Diszpozitivul %1 este ocupat</translation>
     </message>
+    <message>
+        <source>Your Actual frames in the Settings is too heigh</source>
+        <translation>Valoarea pentru cadre în Setări este prea mare</translation>
+    </message>
 </context>
 </TS>
