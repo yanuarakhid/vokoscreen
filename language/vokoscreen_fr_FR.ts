@@ -160,7 +160,7 @@
     </message>
     <message>
         <source>Play last Video</source>
-        <translation type="unfinished"/>
+        <translation>Jouez dernière vidéo</translation>
     </message>
     <message>
         <source>Send Video</source>
@@ -168,15 +168,15 @@
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionnez un ou plusieurs fichiers</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>Frames par secondes actuelles</translation>
     </message>
     <message>
         <source>Device %1 is busy</source>
-        <translation>Le périphérique% 1 est occupé</translation>
+        <translation>Le périphérique %1 est occupé</translation>
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>

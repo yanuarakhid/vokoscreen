@@ -487,14 +487,14 @@ void regionselection::HandleMiddle()
   // End Pfeil zeichnen
   
   // set HandelMidlle if have no CompositingManager
-  if ( !QX11Info::isCompositingManagerRunning() )
-  {
+//  if ( !QX11Info::isCompositingManagerRunning() )
+//  {
     rect.setLeft( rect.left() - 2 );
     rect.setTop( rect.top() - 2 );
     rect.setWidth( rect.width() + 2 );
     rect.setHeight( rect.height() + 2 );
     setHandleMiddleForMask( rect );
-  }
+//  }
 }
 
 
@@ -535,14 +535,14 @@ void regionselection::printSize()
   painter->drawText( rect, Qt::AlignCenter, widthHeigtSize );
   
   // set Rectangle if have no CompositingManager
-  if ( !QX11Info::isCompositingManagerRunning() )
-  {
+  //if ( !QX11Info::isCompositingManagerRunning() )
+  //{
     rect.setLeft( rect.left() - 2 );
     rect.setTop( rect.top() - 2 );
     rect.setWidth( rect.width() + 2 );
     rect.setHeight( rect.height() + 2 );
     setPrintSizeRectForMask( rect );
-  }
+  //}
 }
 
 
@@ -599,7 +599,8 @@ void regionselection::paintEvent( QPaintEvent *event )
 */
 
   // This is, if the CompositingManager is down
-  if ( !isFrameLocked() and !QX11Info::isCompositingManagerRunning() )
+  //if ( !isFrameLocked() and !QX11Info::isCompositingManagerRunning() )
+  if ( !isFrameLocked() )
   {
     // Widget
     clearMask();

@@ -3,180 +3,180 @@
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Trimite pe email ultimul video</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Email cu unul sau mai multe fișiere video selectate</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send</source>
-        <translation>Trimite</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Gasești fișierul video ca atașament</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Selectează unul sau mai multe fișiere</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation>Fără margine</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Border</source>
-        <translation>Margine</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close</source>
-        <translation>Închide</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QvkWebcamController</name>
     <message>
         <source>Webcam</source>
-        <translation>Cameră Web</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Device is busy</source>
-        <translation>Dispozitivul este ocupat</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Pe tot ecranul</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fereastră</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Area</source>
-        <translation>Arie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Mărire</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Alsa</source>
-        <translation>Alsa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pulse</source>
-        <translation>Pulse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Frames:</source>
-        <translation>Cadre:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Default</source>
-        <translation>Implicit</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Codec</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Nu înregistra cursorul de maus</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Calea video</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Player</source>
-        <translation>Lector</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Vokoscreen va fi minimizat cănd începe înregistrarea</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Start</source>
-        <translation>Începe</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Oprește</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauză</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Play</source>
-        <translation>Redă</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send</source>
-        <translation>Trimite</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Durata înregistrării</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>Mărimea în KB</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Aria de ecran pentru înregistrare </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Setări fps</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Deschide dosar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1</source>
-        <translation>%1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Numărătoare inversă</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Redă ultimul video</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>Trimite video</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selectează unul sau mai multe dispozitive</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Cadre reale pe secundă</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Device %1 is busy</source>
-        <translation>Diszpozitivul %1 este ocupat</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
