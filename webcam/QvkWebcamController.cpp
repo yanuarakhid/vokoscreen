@@ -136,6 +136,7 @@ void QvkWebcamController::webcamCloseEvent()
   vkWebcam->setClose();
   checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
   //qDebug() << "End   void QvkWebcamController::webcamCloseEvent() ***************************";
+  comboBoxCount->setEnabled( true );
 }
 
 
