@@ -16,6 +16,7 @@
  */
 
 #include "regionselection.h" 
+#include <QDesktopWidget>
 
 using namespace std;
 
@@ -1088,23 +1089,27 @@ void regionselection::moveMiddle( QMouseEvent *event )
   int widgetWidth = geometry().width();
   int widgetHeight = geometry().height();
   
-  // Das Verschieben begrenzen
-  // Top
-  if ( mouseGlobalY - currentMouseLocalY < 0 )
-    mouseGlobalY = widgetY + currentMouseLocalY;
-  
-  // Right
   QDesktopWidget *desk = QApplication::desktop();
-  if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
-    mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
+  if ( desk->screenCount() < 2 ) 
+  {
+    // Das Verschieben begrenzen
+    // Top
+    if ( mouseGlobalY - currentMouseLocalY < 0 )
+      mouseGlobalY = widgetY + currentMouseLocalY;
   
-  // Bottom
-  if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
-    mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
+    // Right
+    //QDesktopWidget *desk = QApplication::desktop();
+    if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+      mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
+  
+    // Bottom
+    if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+      mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
     
-  // Left
-  if ( mouseGlobalX - currentMouseLocalX < 0 )  
-    mouseGlobalX = widgetX + currentMouseLocalX;
+    // Left
+    if ( mouseGlobalX - currentMouseLocalX < 0 )  
+      mouseGlobalX = widgetX + currentMouseLocalX;
+  }
   
   move( mouseGlobalX - currentMouseLocalX, mouseGlobalY - currentMouseLocalY );
 }

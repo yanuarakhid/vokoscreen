@@ -31,7 +31,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.13";  
+    Version = "1.7.14";  
     
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@kohaupt-online.de?subject=vokoscreen ";
