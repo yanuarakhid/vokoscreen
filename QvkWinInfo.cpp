@@ -1,10 +1,9 @@
 #include "QvkWinInfo.h" 
-
+#include <QCoreApplication>
 using namespace std;
 
 QvkWinInfo::QvkWinInfo()
 {
-  
   myX = 0;
   myY = 0;
   myWidth = 0;
@@ -58,7 +57,6 @@ QvkWinInfo::QvkWinInfo()
   this->setMask( r5 );
 
   lastWinID = this->winId();
-  //qDebug() << "lastWinID:" << lastWinID;
   
   windowTimer = new QTimer( this );
   connect( windowTimer, SIGNAL( timeout() ), this, SLOT( selectWindow() ) );
@@ -69,7 +67,6 @@ QvkWinInfo::QvkWinInfo()
   mouseTimer->start( 20 );
 
   show();
-  
 }
 
 
@@ -92,7 +89,6 @@ void QvkWinInfo::paintEvent( QPaintEvent *event )
 void QvkWinInfo::mousePosition()
 {
   QCursor cursor;
-  //qDebug() << "X:" << cursor.pos().x() << "Y:" << cursor.pos().y();
   move( cursor.pos().x() - 25 , cursor.pos().y() - 25 );
 }
 
@@ -100,7 +96,6 @@ void QvkWinInfo::mousePosition()
 void QvkWinInfo::selectWindow()
 {
   newWinID = QxtWindowSystem::activeWindow();
-  //qDebug() << "newWinID:" << newWinID;
 
   if ( lastWinID != newWinID )
   {
@@ -110,6 +105,10 @@ void QvkWinInfo::selectWindow()
     myY = QxtWindowSystem::windowGeometry( newWinID ).y();
     myWidth = QxtWindowSystem::windowGeometry( newWinID ).width();
     myHeight = QxtWindowSystem::windowGeometry( newWinID ).height();
+    
+    // Cursor resize does not show in video in the first Frames
+    resize( 10, 10 );
+    
     emit windowChanged();
     this->close();
     delete this;

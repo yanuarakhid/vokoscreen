@@ -101,7 +101,7 @@ screencast::screencast()
     MagnifierCheckBox->setGeometry( QRect( 160, 15, 120, 21 ) );
     MagnifierCheckBox->setToolTip( "CTRL+SHIFT+F9" );
     MagnifierCheckBox->show();
-    
+
     QPushButton *MagnifierDialogPushButton = new QPushButton( frame );
     MagnifierDialogPushButton->setGeometry( 270, 15, 20, 21 );
     MagnifierDialogPushButton->setText( "..." );
@@ -2236,6 +2236,7 @@ void screencast::record()
   if ( WindowRadioButton->isChecked() )
     if ( firststartWininfo == false )
     {
+       
 /*      
       TestFrame->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
       //QCoreApplication::processEvents( QEventLoop::AllEvents );     

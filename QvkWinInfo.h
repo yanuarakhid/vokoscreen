@@ -6,8 +6,8 @@
 #include <QTimer>
 #include <QPainter>
 #include <QDebug>
-
-class QvkWinInfo: public QDialog
+#include <QMainWindow>
+class QvkWinInfo: public QMainWindow //QDialog
 { 
 Q_OBJECT
 public:

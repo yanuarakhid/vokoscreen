@@ -180,7 +180,7 @@
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
-        <translation type="unfinished"/>
+        <translation>Die aktuelle Framerate in den Einstellungen ist zu hoch</translation>
     </message>
 </context>
 </TS>

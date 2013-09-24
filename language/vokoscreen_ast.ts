@@ -180,7 +180,7 @@
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
-        <translation type="unfinished"/>
+        <translation>Los tos frames d&apos;anguaño nos axustes son abondo altos</translation>
     </message>
 </context>
 </TS>
