@@ -180,7 +180,7 @@
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
-        <translation type="unfinished"/>
+        <translation>Liczba klatek zapisana w ustawieniach jest większa od aktualnej liczby klatek</translation>
     </message>
 </context>
 </TS>

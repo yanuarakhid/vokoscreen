@@ -19,7 +19,7 @@
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Esbilla un o más ficheros</translation>
+        <translation>Esbilla unu o más ficheros</translation>
     </message>
 </context>
 <context>

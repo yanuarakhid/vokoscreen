@@ -15,6 +15,12 @@ echo Download language pack
 echo ======================
 tx pull -a
 
+
+echo =========================
+echo Remove old screencast.qrc
+echo =========================
+rm screencast.qrc
+
 echo =====================
 echo Create screencast.qrc
 echo =====================
@@ -33,6 +39,7 @@ echo $array | sed 's: :</file>\n<file>:g' >> screencast.qrc
 array='<file>'$( ls -al language/*.ts | sed 's/ \+/ /g' | cut -d " " -f 9 | sed 's/ \+/ /g')'</file>'
 # ":" is separatorr
 echo $array | sed 's: :</file>\n<file>:g' >> screencast.qrc
+sed -i 's/.ts/.qm/g' screencast.qrc
 echo '</qresource>' >> screencast.qrc
 echo '</RCC>'  >> screencast.qrc
 

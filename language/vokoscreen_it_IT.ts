@@ -180,7 +180,7 @@
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
-        <translation type="unfinished"/>
+        <translation>La attuale impostazione dei fotogrammi è troppo alta</translation>
     </message>
 </context>
 </TS>
