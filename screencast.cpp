@@ -16,9 +16,6 @@
  */
 #include "screencast.h"  
 
-#include <QX11Info>
-#include <QScreen>
-#include <QBitmap>
 using namespace std;
 
 screencast::screencast()
@@ -31,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.14";  
+    Version = "1.7.15";  
     
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@kohaupt-online.de?subject=vokoscreen ";
