@@ -594,8 +594,15 @@ screencast::screencast()
     connect( AreaRadioButton,       SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
-    myregionselection = new regionselection( 200,200, 400, 400, 5 );
-    myregionselection->close();
+    settings.beginGroup( "Area" );
+       myregionselection = new regionselection();
+       myregionselection->setGeometry ( settings.value( "X", 200 ).toUInt(),
+       				        settings.value( "Y", 200 ).toUInt(),
+				        settings.value( "Width", 200 ).toUInt() + myregionselection->borderLeft + myregionselection->borderRight + myregionselection->frameWidth,
+				        settings.value( "Height", 200 ).toUInt() + myregionselection->borderTop + myregionselection->borderBottom + myregionselection->frameWidth
+				      );
+       myregionselection->close();
+    settings.endGroup();
     
     connect( MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );
     magnifier = new QvkMagnifier();
@@ -920,6 +927,13 @@ void screencast::saveSettings()
     settings.setValue( "X", x() );
     settings.setValue( "Y", y() );
     settings.setValue( "Tab", tabWidget->currentIndex() );
+  settings.endGroup();
+  
+  settings.beginGroup( "Area" );
+    settings.setValue( "X", myregionselection->getX() );
+    settings.setValue( "Y", myregionselection->getY() );
+    settings.setValue( "Width", myregionselection->getWidth() );
+    settings.setValue( "Height", myregionselection->getHeight() );
   settings.endGroup();
   
   webcamCheckBox->saveSettings();

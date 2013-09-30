@@ -30,14 +30,16 @@ using namespace std;
  * int height :
  * int framewidth :
  */
-regionselection::regionselection( int x, int y, int width, int height, int framewidth )
+//regionselection::regionselection( int x, int y, int width, int height, int framewidth )
+regionselection::regionselection()
 {
-  (void)framewidth;
+  //(void)framewidth;
   handlePressed = NoHandle;
   handleUnderMouse = NoHandle;
   painter =  new QPainter();
   
-  setGeometry( x, y, width, height );
+  //setGeometry( x, y, width, height );
+  //setGeometry( 200, 200, 200, 200 );
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
 
   if( QX11Info::isCompositingManagerRunning() )
@@ -681,13 +683,13 @@ bool regionselection::isFrameLocked()
 
 int regionselection::getX()
 {
-  return this->x() + borderLeft + frameWidth / 2; 
+  return this->x(); 
 }
 
 
 int regionselection::getY()
 {
-  return  this->y() + borderTop + frameWidth / 2;
+  return  this->y();
 }
 
 

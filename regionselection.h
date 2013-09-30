@@ -28,15 +28,25 @@
 #include <QApplication>
 #include <QDesktopWidget>
 
-class regionselection : public QWidget
+#include <QMainWindow>
+
+class regionselection : public QMainWindow //QWidget
 { 
 Q_OBJECT
 public:
-  regionselection( int x, int y, int width, int height, int border );
+ // regionselection( int x, int y, int width, int height, int border );
+  regionselection();
+
   virtual ~regionselection();
   void lockFrame( bool status = true );
   bool isFrameLocked();
 
+  int borderLeft;
+  int borderTop;
+  int borderRight;
+  int borderBottom;
+  int frameWidth;
+  
 public slots:
   int getX();
   int getY();
@@ -86,16 +96,16 @@ protected:
 private:
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
 
-  int frameWidth;
+  //int frameWidth;
   int radius;
   int penWidth;
   int penHalf;
-
+/*
   int borderLeft;
   int borderTop;
   int borderRight;
   int borderBottom;
-  
+*/  
   bool frameLocked;
   void handlingFrameLock();
   

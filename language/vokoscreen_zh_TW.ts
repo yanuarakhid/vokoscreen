@@ -180,7 +180,7 @@
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
-        <translation type="unfinished"/>
+        <translation>您設定的影格率太高了</translation>
     </message>
 </context>
 </TS>
