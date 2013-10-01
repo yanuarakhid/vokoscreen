@@ -58,7 +58,7 @@ screencast::screencast()
     bool beta = true;
     QString Beta;
     if ( beta )
-      Beta = "Beta";
+      Beta = "Beta"; 
     else
       Beta = "";
 
