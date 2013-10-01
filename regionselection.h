@@ -53,6 +53,8 @@ public slots:
   int getHeight();
   int getWidth();
   void cleanRecordArea( bool state );
+  int getXRecordArea();
+  int getYRecordArea();
 
 private slots:
   void moveTopLeft     ( QMouseEvent *event );

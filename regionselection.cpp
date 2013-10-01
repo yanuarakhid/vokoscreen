@@ -681,24 +681,54 @@ bool regionselection::isFrameLocked()
 }
 
 
+/**
+ * Return x from window
+ */
 int regionselection::getX()
 {
   return this->x(); 
 }
 
 
+/**
+ * Return y from window
+ */
 int regionselection::getY()
 {
   return  this->y();
 }
 
 
+/**
+ * Return x from record area
+ */
+int regionselection::getXRecordArea()
+{
+  return this->x() + borderLeft + frameWidth / 2; 
+}
+
+
+/**
+ * Return y from record area
+ */
+int regionselection::getYRecordArea()
+{
+  return  this->y() + borderTop + frameWidth / 2;
+}
+
+
+/**
+ * Return height from record area
+ */
 int regionselection::getHeight()
 {
   return this->height() - borderTop - borderBottom - frameWidth; 
 }
 
 
+/**
+ * Return width from record Area
+ */
 int regionselection::getWidth()
 {
   return this->width() - borderLeft - borderRight - frameWidth; 

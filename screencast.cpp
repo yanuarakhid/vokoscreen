@@ -16,10 +16,45 @@
  */
 #include "screencast.h"  
 
+
+
 using namespace std;
+
+
+/**
+ * Search program foo in PATH
+ */
+QString getFileWithPath( QString ProgName )
+{
+    QString find;
+    QString prog;
+    QString resultString( qgetenv( "PATH" ) );
+    QStringList pathList = resultString.split( ":" );
+      for ( int i = 0; i < pathList.size(); ++i )
+      {
+        prog = pathList.at( i ) + QDir::separator() + ProgName;
+        if ( QFile::exists( prog ) )
+        {
+          find = prog;
+          break;
+        }
+      }
+    return find;
+}
+
 
 screencast::screencast()
 {
+    QString Prog = "ffmpeg";
+    QFileInfo info( getFileWithPath( Prog ) );
+    if( info.isSymLink() )
+    {
+      QString fileName = info.symLinkTarget();  
+      QFileInfo fileInfo( fileName );
+      qDebug() << "[vokoscreen]" << getFileWithPath( Prog ) << "is a link and pointing to"<< fileName << "use avconv";
+    }
+ 
+ 
     bool beta = true;
     QString Beta;
     if ( beta )
@@ -28,7 +63,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.16";  
+    Version = "1.7.17";  
     
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@kohaupt-online.de?subject=vokoscreen ";
@@ -1360,7 +1395,7 @@ bool screencast::needProgram( QString ProgName )
       for ( int i = 0; i < pathList.size(); ++i )
       {
         prog = pathList.at( i ) + QDir::separator() + ProgName;
-        if ( QFile::exists(prog ) )
+        if ( QFile::exists( prog ) )
         {
           find = true;
           break;
@@ -2304,8 +2339,10 @@ void screencast::record()
     setRecordWidth( QString().number( myregionselection->getWidth() ) );
     setRecordHeight( QString().number( myregionselection->getHeight() ) );
 
-    deltaX  = QString().number( myregionselection->getX() );
-    deltaY  = QString().number( myregionselection->getY() );
+//    deltaX  = QString().number( myregionselection->getX() );
+//    deltaY  = QString().number( myregionselection->getY() );
+    deltaX  = QString().number( myregionselection->getXRecordArea() );
+    deltaY  = QString().number( myregionselection->getYRecordArea() );
 
     // 
     myregionselection->cleanRecordArea( true );
