@@ -68,6 +68,8 @@ public:
     
     QMainWindow * TestFrame;
     
+    QString recordApplikation;
+    
 public slots:
   
 private slots:
@@ -232,6 +234,7 @@ private:
     QLabel * statusBarLabelAudio;
     QLabel * statusBarLabelFpsSettings;
     QLabel * statusbarLabelScreenSize;
+    QLabel * statusBarProgForRecord;
     
     QString screenRecordWidth;
     QString screenRecordHeight;

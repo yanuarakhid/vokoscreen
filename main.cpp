@@ -56,6 +56,6 @@ int main(int argc, char** argv)
       foo.setFixedSize( vokoscreenWidth, vokoscreenHeight );
       app.setActivationWindow( &foo );
     foo.show();
-     
+
     return app.exec();
 }

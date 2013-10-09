@@ -20,41 +20,8 @@
 
 using namespace std;
 
-
-/**
- * Search program foo in PATH
- */
-QString getFileWithPath( QString ProgName )
-{
-    QString find;
-    QString prog;
-    QString resultString( qgetenv( "PATH" ) );
-    QStringList pathList = resultString.split( ":" );
-      for ( int i = 0; i < pathList.size(); ++i )
-      {
-        prog = pathList.at( i ) + QDir::separator() + ProgName;
-        if ( QFile::exists( prog ) )
-        {
-          find = prog;
-          break;
-        }
-      }
-    return find;
-}
-
-
 screencast::screencast()
 {
-    QString Prog = "ffmpeg";
-    QFileInfo info( getFileWithPath( Prog ) );
-    if( info.isSymLink() )
-    {
-      QString fileName = info.symLinkTarget();  
-      QFileInfo fileInfo( fileName );
-      qDebug() << "[vokoscreen]" << getFileWithPath( Prog ) << "is a link and pointing to"<< fileName << "use avconv";
-    }
- 
- 
     bool beta = true;
     QString Beta;
     if ( beta )
@@ -383,10 +350,11 @@ screencast::screencast()
     recordButton->setFont( qfont );
     recordButton->setGeometry( 170, 200, 70, 30 );
     recordButton->show();
-    if ( needProgram( "ffmpeg" ) )
+/*    if ( needProgram( "ffmpeg" ) )  *************************************************************************************
       recordButton->setEnabled( true );
     else
       recordButton->setEnabled( false );
+*/
     connect( recordButton, SIGNAL( clicked() ), SLOT( preRecord() ) );
 
     StopButton = new QPushButton( centralWidget );
@@ -452,6 +420,11 @@ screencast::screencast()
     label->setScaledContents( true );
 
     // Statusbar
+    statusBarProgForRecord = new QLabel();
+    statusBarProgForRecord->setText( recordApplikation );
+    statusBarProgForRecord->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
+    statusBarProgForRecord->setToolTip( "Program for recording" );
+    
     statusBarLabelTime = new QLabel();
     statusBarLabelTime->setText( "00:00:00" );
     statusBarLabelTime->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
@@ -495,6 +468,7 @@ screencast::screencast()
     QLabel * LabelTemp = new QLabel();
     statusBar->addWidget( LabelTemp, 120 );
     
+    statusBar->addWidget( statusBarProgForRecord, 0 );
     statusBar->addWidget( statusBarLabelTime, 0);
     statusBar->addWidget( statusBarLabelFps, 0 );
     statusBar->addWidget( statusBarLabelSize, 0 );
@@ -1049,16 +1023,72 @@ void screencast::AreaOnOff()
 
 
 /**
+ * Search program foo in PATH
+ */
+QString getFileWithPath( QString ProgName )
+{
+    QString find;
+    QString prog;
+    QString resultString( qgetenv( "PATH" ) );
+    QStringList pathList = resultString.split( ":" );
+    for ( int i = 0; i < pathList.size(); ++i )
+    {
+      prog = pathList.at( i ) + QDir::separator() + ProgName;
+      if ( QFile::exists( prog ) )
+      {
+        find = prog;
+        break;
+      }
+    }
+    return find;
+}
+
+
+/**
  * Looking for external programs
  */
 void screencast::searchExternalPrograms()
 {
   qDebug() << "[vokoscreen]" << "---Begin Search external tools---";
+/*  
   if ( needProgram("ffmpeg") )
      qDebug() << "[vokoscreen]" << "Find ffmpeg";
   else
      qDebug() << "[vokoscreen]" << "Error: ffmpeg is not found, this is an ffmpeg tool. Please install ffmpeg";
-
+*/
+    QString Prog = "ffmpeg";
+    QFileInfo info( getFileWithPath( Prog ) );
+    if ( info.isSymLink() )
+    {
+      QString fileName = info.symLinkTarget();  
+      QFileInfo fileInfo( fileName );
+      qDebug() << "[vokoscreen]" << getFileWithPath( Prog ) << "is a link and pointing to"<< fileName;
+      if ( fileInfo.baseName() == "avconv" )
+      {
+        recordApplikation = "avconv";
+	qDebug() << "[vokoscreen] use avconv";
+      }
+    }
+    else
+    {
+     if ( needProgram( "ffmpeg" ) )
+     {
+        recordApplikation = "ffmpeg";
+        qDebug() << "[vokoscreen]" << "Find ffmpeg";
+     }
+     else
+     {
+       if ( needProgram( "avconv" ) )
+       {
+          recordApplikation = "avconv";
+          qDebug() << "[vokoscreen]" << "Find avconv";
+       }
+     }
+    }
+  
+  
+  
+  
   if ( needProgram("pactl") )
      qDebug() << "[vokoscreen]" << "Find pactl";
   else
@@ -2353,12 +2383,15 @@ void screencast::record()
   
   // -report wird erst ab ffmpeg version 0.9 unterstützt
   QString myReport = "";
-  if ( getFfmpegVersion() >= "00.09.00" )
-    myReport = "-report ";
-  else
-    myReport = "";
+  if ( recordApplikation == "ffmpeg" )
+  {
+    if ( getFfmpegVersion() >= "00.09.00" )
+      myReport = "-report ";
+    else
+      myReport = "";
 
-  qDebug() << "[vokoscreen]" << "Report :" << myReport;
+    qDebug() << "[vokoscreen]" << "Report :" << myReport;
+  }
 
   // set working directory for writing and delete the ffmpegLog from Profil directory
   QSettings settings( ProgName, ProgName );
@@ -2409,14 +2442,15 @@ void screencast::record()
   nameInMoviesLocation = NameInMoviesLocation();
 
   QString quality;
-  if ( getFfmpegVersion() < "01.01.00" )
+  if ( ( getFfmpegVersion() < "01.01.00" ) and ( recordApplikation == "ffmpeg" ) )
     quality = " -sameq ";
   else
     quality = " -qscale 0 ";
 
   clickedRecordButtonScreenSize();
   
-  ffmpegString = "/usr/bin/ffmpeg "
+//  ffmpegString = "/usr/bin/ffmpeg "
+  ffmpegString = recordApplikation + " "
                + myReport
                + myAlsa()
 	       + "-f x11grab "
