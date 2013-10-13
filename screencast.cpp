@@ -30,7 +30,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.17";  
+    Version = "1.7.19";  
     
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@kohaupt-online.de?subject=vokoscreen ";
@@ -1912,7 +1912,6 @@ QString screencast::PathMoviesLocation()
 }
 
 
-
 QString screencast::PathTempLocation()
 {
   // Doppelter ProgName um Eindeutigkeit in tmp zuerreichen
@@ -2462,6 +2461,7 @@ void screencast::record()
 	       + " -i :0.0+"
 	       + deltaX + "," 
 	       + deltaY
+	       + " -pix_fmt yuv420p" // Neu das funktioniert sehr gut ohne ca. 80 fps, mit 99fps bei eingestellten 99fps und preset medium
                + noMouse()
 	       + " -vcodec "
 	       + myVcodec
