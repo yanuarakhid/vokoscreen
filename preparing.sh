@@ -15,7 +15,6 @@ echo Download language pack
 echo ======================
 tx pull -a
 
-
 echo =========================
 echo Remove old screencast.qrc
 echo =========================

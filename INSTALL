@@ -3,8 +3,8 @@ Requires:
   - alsa
   - libX11
   - opencv
-  - ffmpeg
   - libmp3lame0
+  - ffmpeg or avconv
   - mkvtoolnix
 
 Optional:

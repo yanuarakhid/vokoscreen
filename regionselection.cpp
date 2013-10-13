@@ -16,7 +16,6 @@
  */
 
 #include "regionselection.h" 
-#include <QDesktopWidget>
 
 using namespace std;
 
@@ -30,16 +29,12 @@ using namespace std;
  * int height :
  * int framewidth :
  */
-//regionselection::regionselection( int x, int y, int width, int height, int framewidth )
 regionselection::regionselection()
 {
-  //(void)framewidth;
   handlePressed = NoHandle;
   handleUnderMouse = NoHandle;
   painter =  new QPainter();
   
-  //setGeometry( x, y, width, height );
-  //setGeometry( 200, 200, 200, 200 );
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
 
   if( QX11Info::isCompositingManagerRunning() )
@@ -489,15 +484,11 @@ void regionselection::HandleMiddle()
   painter->drawPath( *painterPath );
   // End Pfeil zeichnen
   
-  // set HandelMidlle if have no CompositingManager
-//  if ( !QX11Info::isCompositingManagerRunning() )
-//  {
-    rect.setLeft( rect.left() - 2 );
-    rect.setTop( rect.top() - 2 );
-    rect.setWidth( rect.width() + 2 );
-    rect.setHeight( rect.height() + 2 );
-    setHandleMiddleForMask( rect );
-//  }
+  rect.setLeft( rect.left() - 2 );
+  rect.setTop( rect.top() - 2 );
+  rect.setWidth( rect.width() + 2 );
+  rect.setHeight( rect.height() + 2 );
+  setHandleMiddleForMask( rect );
 }
 
 
@@ -537,15 +528,11 @@ void regionselection::printSize()
 
   painter->drawText( rect, Qt::AlignCenter, widthHeigtSize );
   
-  // set Rectangle if have no CompositingManager
-  //if ( !QX11Info::isCompositingManagerRunning() )
-  //{
-    rect.setLeft( rect.left() - 2 );
-    rect.setTop( rect.top() - 2 );
-    rect.setWidth( rect.width() + 2 );
-    rect.setHeight( rect.height() + 2 );
-    setPrintSizeRectForMask( rect );
-  //}
+  rect.setLeft( rect.left() - 2 );
+  rect.setTop( rect.top() - 2 );
+  rect.setWidth( rect.width() + 2 );
+  rect.setHeight( rect.height() + 2 );
+  setPrintSizeRectForMask( rect );
 }
 
 
@@ -564,68 +551,28 @@ QRect regionselection::getPrintSizeRectForMask()
 void regionselection::paintEvent( QPaintEvent *event ) 
 {
   (void)event;
-/*
-  QRegion regionWidget(  0, 
-                         0, 
-                         width(),
-                         height(), 
-                         QRegion::Rectangle );
-  
-  // Region Handle TopLeft
-  QRegion handleTopLeftRectangle( 0, 0, borderLeft + radius + 4, borderTop + radius+4, QRegion::Rectangle );
-  QRegion handleTopLeftCircle( borderLeft - radius - penHalf, borderTop - radius-penHalf, 2 * radius + penWidth+1, 2 * radius + penWidth+1, QRegion::Ellipse );
-  QRegion handleTopLeftSmallRectangle( borderLeft, borderTop, radius, radius, QRegion::Rectangle );
-  QRegion test123 = handleTopLeftRectangle.subtract( handleTopLeftCircle  );
-  //QRegion test234 = test123.intersected ( handleTopLeftSmallRectangle );
-  
-  // Region bettween TopLeft and TopMiddle
-  QRegion betweenTopLeftAndTopMiddle( borderLeft + radius + 2,
-			              0,
-			              width() / 2 - borderLeft - 2 * radius - 3,
-			              borderTop - frameWidth / 2 );
-  
-  // Region record
-  QRegion regionRecord( borderLeft + frameWidth / 2, 
-                        borderTop + frameWidth / 2, 
-                        width() - borderLeft - borderRight - frameWidth,
-                        height() - borderTop - borderBottom - frameWidth, 
-                        QRegion::Rectangle );
-  
-  
-  QRegion r15 = regionWidget.subtract( regionRecord );
 
-  //r15 = r15.subtract( handleTopLeftCircle );
-  //r15 = test123.united( handleTopLeftSmallRectangle );
-  //r15 = r15.subtract( test123 );
-  
-  setMask( r15 );
-*/
-
-  // This is, if the CompositingManager is down
-  //if ( !isFrameLocked() and !QX11Info::isCompositingManagerRunning() )
   if ( !isFrameLocked() )
   {
     // Widget
     clearMask();
     QRegion RegionWidget( 0, 0, width(), height() );
+    
     // RecordArea
     QRegion RegionArea  ( borderLeft + frameWidth / 2,
                           borderTop + frameWidth / 2,
                           width() - ( borderLeft + frameWidth / 2 ) - ( borderRight + frameWidth / 2 ),
                           height() - ( borderTop + frameWidth / 2 ) - ( borderBottom + frameWidth / 2 ) );
+
     // subtract the record Area
     QRegion RegionNew = RegionWidget.subtract( RegionArea );
+
     // Retrieves and merge display-area-size in record Area
     QRegion r1 = RegionNew.united( getPrintSizeRectForMask() );
     
     // HandleMiddle
     // Retrieves and merge HandleMiddle in record Area
     r1 = r1.united( getHandleMiddleForMask() );
-    
-    
-    // New
-    //QRegion newHandleMiddle( getHandleMiddleForMask(), QRegion::Ellipse );
-    //r1 = r1.united( newHandleMiddle );
     
     setMask( r1 );
   }

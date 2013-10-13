@@ -16,8 +16,6 @@
  */
 #include "screencast.h"  
 
-
-
 using namespace std;
 
 screencast::screencast()
@@ -30,21 +28,25 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.19";  
+    Version = "1.7.20";  
     
     Version = Version + " " + Beta;
     email = "<a href ='mailto:tux@kohaupt-online.de?subject=vokoscreen ";
-    email = email.append( Version ).append( "'" ).append( ">tux@kohaupt-online.de</a>" );
-    
+    //email = email.append( Version ).append( "'" ).append( ">tux@kohaupt-online.de</a>" );
+    email = email.append( Version ).append( "'" ).append( ">Support</a>" );
+
     QString emaildeveloper = "<a href ='mailto:vkohaupt@freenet.de?subject=vokoscreen ";
-    emaildeveloper = emaildeveloper.append( Version ).append( "'" ).append( ">vkohaupt@freenet.de</a>" );
-    
-    homepage = "<a href='http://www.kohaupt-online.de/hp'>www.kohaupt-online.de/hp</a>";
+    //emaildeveloper = emaildeveloper.append( Version ).append( "'" ).append( ">vkohaupt@freenet.de</a>" );
+    emaildeveloper = emaildeveloper.append( Version ).append( "'" ).append( ">Developer</a>" );
+
+    //homepage = "<a href='http://www.kohaupt-online.de/hp'>www.kohaupt-online.de/hp</a>";
+    homepage = "<a href='http://www.kohaupt-online.de/hp'>Homepage</a>";
 
     screencast::setWindowTitle( ProgName + " " + Version );
     
-    QString mailingliste = "<a href ='mailto:vokoscreen@googlegroups.com'>vokoscreen@googlegroups.com</a>";
-    
+    //QString mailingliste = "<a href ='mailto:vokoscreen@googlegroups.com'>vokoscreen@googlegroups.com</a>";
+    QString mailingliste = "<a href ='mailto:vokoscreen@googlegroups.com'>Mailinglist</a>";
+
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     screencast::setWindowIcon( icon );    
@@ -272,72 +274,88 @@ screencast::screencast()
     qfont = TabWidgetAboutFrame->font();
     qfont.setPixelSize( 12 );
     TabWidgetAboutFrame->setFont( qfont );
-
-    QLabel* labelMailingliste = new QLabel( TabWidgetAboutFrame );
-    labelMailingliste->setText( "Mailinglist" );
-    labelMailingliste->setGeometry( 70, 10, 400, 22 );
-    labelMailingliste->show();
-
-    QLabel* labelMailinglisteMail = new QLabel( TabWidgetAboutFrame );
-    labelMailinglisteMail->setText( mailingliste );
-    labelMailinglisteMail->setGeometry( 180, 10, 400, 22 );
-    labelMailinglisteMail->setOpenExternalLinks( true );
-    labelMailinglisteMail->show();
     
+/*    
     QLabel* labelWeb = new QLabel( TabWidgetAboutFrame );
     labelWeb->setGeometry( QRect( 70, 30, 400, 22 ) );
     labelWeb->setText( "Homepage" );
     labelWeb->show();
-    
+*/    
     QLabel* labelWebSite = new QLabel( TabWidgetAboutFrame );
-    labelWebSite->setGeometry( QRect( 180, 30, 400, 22 ) );
+    labelWebSite->setGeometry( QRect( 70, 10, 400, 22 ) );
     labelWebSite->setText( homepage );
     labelWebSite->setOpenExternalLinks( true );
     labelWebSite->show();
     
+/*
+    QLabel* labelMailingliste = new QLabel( TabWidgetAboutFrame );
+    labelMailingliste->setText( "Mailinglist" );
+    labelMailingliste->setGeometry( 70, 10, 400, 22 );
+    labelMailingliste->show();
+*/
+    QLabel* labelMailinglisteMail = new QLabel( TabWidgetAboutFrame );
+    labelMailinglisteMail->setText( mailingliste );
+    labelMailinglisteMail->setGeometry( 70, 30, 400, 22 );
+    labelMailinglisteMail->setOpenExternalLinks( true );
+    labelMailinglisteMail->show();
+/*    
     QLabel* labelMailSupport = new QLabel( TabWidgetAboutFrame );
     labelMailSupport->setGeometry( QRect( 70, 50, 400, 22 ) );
     labelMailSupport->setText( "Support" );
     labelMailSupport->show();
- 
+*/ 
     QLabel* labelMail = new QLabel( TabWidgetAboutFrame );
-    labelMail->setGeometry( QRect( 180, 50, 400, 22 ) );
+    labelMail->setGeometry( QRect( 70, 50, 400, 22 ) );
     labelMail->setText( email );
     labelMail->setOpenExternalLinks( true );
     labelMail->show();
-
+/*
     QLabel* labelDeveLoper = new QLabel( TabWidgetAboutFrame );
     labelDeveLoper->setText( "Developer" );
     labelDeveLoper->setGeometry( QRect( 70, 70, 400, 22 ) );
     labelDeveLoper->show();
-
+*/
     QLabel* labelDeveLoperMail = new QLabel( TabWidgetAboutFrame );
     labelDeveLoperMail->setText( emaildeveloper );
-    labelDeveLoperMail->setGeometry( QRect( 180, 70, 400, 22 ) );
+    labelDeveLoperMail->setGeometry( QRect( 70, 70, 400, 22 ) );
     labelDeveLoperMail->setOpenExternalLinks( true );
     labelDeveLoperMail->show();
+
     
+    QLabel* labelLanguageUrl = new QLabel( TabWidgetAboutFrame );
+    labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>Languages</a>" );
+    labelLanguageUrl->setGeometry( QRect( 240, 10, 400, 22 ) );
+    labelLanguageUrl->setOpenExternalLinks( true );
+    labelLanguageUrl->show();
+    
+/*    
     QLabel* labelOpensuseBeta = new QLabel( TabWidgetAboutFrame );
     labelOpensuseBeta->setText( "Beta" );
     labelOpensuseBeta->setGeometry( QRect( 70, 90, 400, 22 ) );
     labelOpensuseBeta->show();
-
+*/
     QLabel* labelOpensuseBetaUrl = new QLabel( TabWidgetAboutFrame );
-    labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>openSUSE</a>" );
-    labelOpensuseBetaUrl->setGeometry( QRect( 180, 90, 400, 22 ) );
+    labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>Beta openSUSE</a>" );
+    labelOpensuseBetaUrl->setGeometry( QRect( 240, 30, 400, 22 ) );
     labelOpensuseBetaUrl->setOpenExternalLinks( true );
     labelOpensuseBetaUrl->show();
-
+/*
     QLabel* labelUbuntuBeta = new QLabel( TabWidgetAboutFrame );
     labelUbuntuBeta->setText( "Beta" );
     labelUbuntuBeta->setGeometry( QRect( 70, 110, 400, 22 ) );
     labelUbuntuBeta->show();
-
+*/
     QLabel* labelUbuntuBetaUrl = new QLabel( TabWidgetAboutFrame );
-    labelUbuntuBetaUrl->setText( "<a href='http://ppa.launchpad.net/vokoscreen-dev/vokoscreen-daily/ubuntu/pool/main/v/vokoscreen/'>Ubuntu</a>" );
-    labelUbuntuBetaUrl->setGeometry( QRect( 180, 110, 400, 22 ) );
+    labelUbuntuBetaUrl->setText( "<a href='http://ppa.launchpad.net/vokoscreen-dev/vokoscreen-daily/ubuntu/pool/main/v/vokoscreen/'>Beta Ubuntu</a>" );
+    labelUbuntuBetaUrl->setGeometry( QRect( 240, 50, 400, 22 ) );
     labelUbuntuBetaUrl->setOpenExternalLinks( true );
     labelUbuntuBetaUrl->show();
+    
+    QLabel * labelDonateUrl = new QLabel( TabWidgetAboutFrame );
+    labelDonateUrl->setText( "<a href='http://www.kohaupt-online.de/hp/spende.html'>Donate</a>" );
+    labelDonateUrl->setGeometry( QRect( 180, 100, 400, 22 ) );
+    labelDonateUrl->setOpenExternalLinks( true );
+    labelDonateUrl->show();
     
     // End Tabs *************************************************************
 
@@ -492,6 +510,7 @@ screencast::screencast()
                                             << "vlc"
                                             << "gnome-mplayer"
                                             << "ffplay"
+					    << "avplay"
                                             << "totem"
                                             << "pia"
                                             << "xine"
@@ -2433,8 +2452,9 @@ void screencast::record()
     if ( ( intRecordY % 2 ) == 1 )
       setRecordHeight( QString().number( --intRecordY ) );
     
+    myVcodec = "libx264 -preset veryfast"; // Standard
     //myVcodec = "libx264 -preset medium";
-    myVcodec = "libx264 -preset veryfast";
+    //myVcodec = "libx264 -preset veryslow";
     
   }  
 
@@ -2444,7 +2464,7 @@ void screencast::record()
   if ( ( getFfmpegVersion() < "01.01.00" ) and ( recordApplikation == "ffmpeg" ) )
     quality = " -sameq ";
   else
-    quality = " -qscale 0 ";
+    quality = " -qscale 1 ";
 
   clickedRecordButtonScreenSize();
   
@@ -2461,7 +2481,7 @@ void screencast::record()
 	       + " -i :0.0+"
 	       + deltaX + "," 
 	       + deltaY
-	       + " -pix_fmt yuv420p" // Neu das funktioniert sehr gut ohne ca. 80 fps, mit 99fps bei eingestellten 99fps und preset medium
+	       + " -pix_fmt yuv420p" // Neu das funktioniert sehr gut, ohne ca. 80 fps, mit 99fps bei eingestellten 99fps und preset medium aber nur unter opensuse, unter Ubuntu 13.04 keine veränderung
                + noMouse()
 	       + " -vcodec "
 	       + myVcodec

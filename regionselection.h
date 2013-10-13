@@ -27,14 +27,12 @@
 #include <QMouseEvent>
 #include <QApplication>
 #include <QDesktopWidget>
-
 #include <QMainWindow>
 
 class regionselection : public QMainWindow //QWidget
 { 
 Q_OBJECT
 public:
- // regionselection( int x, int y, int width, int height, int border );
   regionselection();
 
   virtual ~regionselection();
@@ -98,16 +96,9 @@ protected:
 private:
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
 
-  //int frameWidth;
   int radius;
   int penWidth;
   int penHalf;
-/*
-  int borderLeft;
-  int borderTop;
-  int borderRight;
-  int borderBottom;
-*/  
   bool frameLocked;
   void handlingFrameLock();
   
