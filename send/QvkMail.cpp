@@ -66,11 +66,9 @@ void QvkMail::startMailClientWithLastFile( QString file )
   if ( file > "" )
   {
     // The body String like not Space
-    QString bodyString;
-    bodyString = tr("You find the Video as attachment");
+    QString bodyString = tr( "You find the Video as attachment" );
   
-    QString processString;
-    processString = "xdg-email --utf8 --attach " + file + " --body \"" + bodyString + "\"";
+    QString processString = "xdg-email --utf8 --attach " + file + " --body \"" + bodyString + "\"";
   
     qDebug() << "[vokoscreen]" << "startMailClientWithLastFile:" << processString;
   
@@ -86,8 +84,7 @@ void QvkMail::startMailClientWithLastFile( QString file )
 void QvkMail::startMailClientWithSelectedFiles( QStringList fileList )
 {
    // The body String like not Space
-  QString bodyString;
-  bodyString = tr("You find the Video as attachment");
+  QString bodyString = tr( "You find the Video as attachment" );
 
   QString files;
   for ( int i = 1; i <= fileList.count(); i++ )
@@ -98,8 +95,7 @@ void QvkMail::startMailClientWithSelectedFiles( QStringList fileList )
   
   if ( not fileList.empty())
   {
-    QString processString;
-    processString = "xdg-email --utf8" + files + " --body \"" + bodyString + "\"";
+    QString processString = "xdg-email --utf8" + files + " --body \"" + bodyString + "\"";
   
     qDebug() << "[vokoscreen]" << "startMailClientWithSelectedFiles:" << processString;
   
@@ -116,7 +112,7 @@ QString QvkMail::lastMovie()
 {
   QDir dir( QDesktopServices::storageLocation( QDesktopServices::MoviesLocation ) );
   QStringList filters;
-  filters << "screencast*";
+  filters << "vokoscreen*";
   QStringList List = dir.entryList( filters, QDir::Files, QDir::Time );
   if ( List.isEmpty() )
      return "";

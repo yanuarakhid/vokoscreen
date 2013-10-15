@@ -1,5 +1,6 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
+<file>pictures/VokoCola.png</file>
 <file>pictures/about.png</file>
 <file>pictures/go.png</file>
 <file>pictures/magnifier.png</file>
@@ -11,7 +12,6 @@
 <file>pictures/stop.png</file>
 <file>pictures/tools.png</file>
 <file>pictures/videooptionen.png</file>
-<file>pictures/VokoCola.png</file>
 <file>pictures/vokoscreen.png</file>
 <file>language/vokoscreen_ar.qm</file>
 <file>language/vokoscreen_ast.qm</file>
@@ -27,8 +27,8 @@
 <file>language/vokoscreen_nl_NL.qm</file>
 <file>language/vokoscreen_pl_PL.qm</file>
 <file>language/vokoscreen_pt_BR.qm</file>
-<file>language/vokoscreen_ro_RO.qm</file>
 <file>language/vokoscreen_ro.qm</file>
+<file>language/vokoscreen_ro_RO.qm</file>
 <file>language/vokoscreen_sv_SE.qm</file>
 <file>language/vokoscreen_tr_TR.qm</file>
 <file>language/vokoscreen_vi.qm</file>

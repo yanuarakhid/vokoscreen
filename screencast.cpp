@@ -664,7 +664,7 @@ screencast::screencast()
 
    SystemTrayIconBlue = new QSystemTrayIcon( QIcon ( ":/pictures/go.png" ) );
    SystemTrayIconBlue->hide();
-   SystemTrayIconBlue->setToolTip( "Go" );
+   SystemTrayIconBlue->setToolTip( tr( "Go" ) );
 
    connect( SystemTrayIconGreen,  SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStart( QSystemTrayIcon::ActivationReason ) ) );
    connect( SystemTrayIconRed,    SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStop( QSystemTrayIcon::ActivationReason ) ) );
@@ -1458,7 +1458,7 @@ void screencast::moveWindowPause()
 {
   pause = true;
   PauseButton->setChecked( true );
-  PauseButton->setText( "Go" );
+  PauseButton->setText( tr( "Go" ) );
   SystemCall->terminate();
   SystemCall->waitForFinished();
   pulseUnloadModule();
@@ -1468,7 +1468,7 @@ void screencast::moveWindowPause()
 void screencast::moveWindowGo()
 {
   PauseButton->setChecked( false );  
-  PauseButton->setText( "Pause" );
+  PauseButton->setText( tr ( "Pause" ) );
   startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
 }
 
@@ -1482,7 +1482,7 @@ void screencast::Pause()
     {
       shortcutStop->setEnabled( false );
       windowMoveTimer->stop();
-      PauseButton->setText( "Go" );
+      PauseButton->setText( tr ( "Go" ) );
       SystemCall->terminate();
       SystemCall->waitForFinished();
       pulseUnloadModule();
@@ -1516,7 +1516,7 @@ void screencast::Pause()
     {
       shortcutStop->setEnabled( false );
       windowMoveTimer->stop();
-      PauseButton->setText( "Go" );
+      PauseButton->setText( tr ( "Go" ) );
       SystemCall->terminate();
       SystemCall->waitForFinished();
       pulseUnloadModule();
@@ -1536,7 +1536,7 @@ void screencast::Pause()
         return;
       }
       shortcutStop->setEnabled( true );
-      PauseButton->setText( "Pause" );
+      PauseButton->setText( tr( "Pause" ) );
       startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
       windowMoveTimer->start();
     }
@@ -2260,7 +2260,7 @@ void screencast::Countdown()
     
     QLabel * label = new QLabel( countdownDialog );
     label->setGeometry( 0, 0, Width, Height );
-    label->setAlignment(Qt::AlignCenter);    
+    label->setAlignment( Qt::AlignCenter );    
     countdownDialog->setFont( qfont );
     label->show();
     
