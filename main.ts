@@ -188,5 +188,9 @@
         <source>Go</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Format:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

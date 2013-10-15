@@ -203,7 +203,7 @@ screencast::screencast()
     
     QLabel *VideoContainerLabel = new QLabel(TabWidgetVideoOptionFrame );
     VideoContainerLabel->setGeometry( 175, 40, 50, 25 );
-    VideoContainerLabel->setText( "Format:" );
+    VideoContainerLabel->setText( tr( "Format:" ) );
     VideoContainerLabel->show();
     
     VideoContainerComboBox = new QComboBox( TabWidgetVideoOptionFrame );
