@@ -823,7 +823,7 @@ void screencast::myVideoFileSystemWatcher( const QString & path )
   (void)path;
   QDir Dira( PathMoviesLocation() );
   QStringList filters;
-  filters << "screencast*";
+  filters << "vokoscreen*";
   QStringList List = Dira.entryList( filters, QDir::Files, QDir::Time );
   
   if ( List.isEmpty() )
@@ -1549,7 +1549,6 @@ void screencast::Pause()
  */
 void screencast::play()
 {
-  
   if ( MagnifierCheckBox->isChecked() )
 	MagnifierCheckBox->click();
  
@@ -1559,7 +1558,7 @@ void screencast::play()
   
   QDir Dira( PathMoviesLocation() );
   QStringList filters;
-  filters << "screencast*";
+  filters << "vokoscreen*";
   QStringList List = Dira.entryList( filters, QDir::Files, QDir::Time );
   if ( List.isEmpty() )
   {
@@ -1952,20 +1951,7 @@ QString screencast::PathTempLocation()
  */
 QString screencast::NameInMoviesLocation()
 {
-  QString myFilename = "screencast";
-  QString myFilenameExtension = "." + VideoContainerComboBox->currentText();
-  QString myName = PathMoviesLocation() + QDir::separator() + myFilename + myFilenameExtension;
-
-  QFile *myFile = new QFile( myName );
-  uint x = 0;
-  do
-  {
-    x++;
-    myFile->setFileName( PathMoviesLocation() + QDir::separator() + myFilename + "-" + QString().number(x) + myFilenameExtension );
-    myName = myFile->fileName();
-  } while ( myFile->exists() );
-
-  return myFilename + "-" + QString().number(x) + myFilenameExtension;
+  return "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + VideoContainerComboBox->currentText();
 }
 
 

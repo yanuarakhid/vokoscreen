@@ -45,6 +45,8 @@
 
 #include <QTest>
 
+#include <QDateTime>
+
 class screencast : public QMainWindow
 { 
 Q_OBJECT

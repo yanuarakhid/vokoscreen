@@ -1,3 +1,5 @@
+1.8.0 New record area, countdown-timer, avconv support
+1.7.0 Save last tab, remove v4l-utils, time display bug, samplerate usb-mikro, filesize statusline,
 1.6.7 various changes
 1.6.6 Remove autoframe, Sample now via asoundlib 
 1.6.5 save current tab
