@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="es_ES">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es_ES" version="2.0">
 <context>
     <name>QvkMail</name>
     <message>
@@ -183,6 +181,14 @@
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
         <translation>Tu configuración de fotogramas actual es demasiado alta</translation>
+    </message>
+    <message>
+        <source>Go</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Format:</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>Device is busy</source>
-        <translation>الجهاز يشتغل حاليا</translation>
+        <translation>الجهاز مشغول حاليا</translation>
     </message>
 </context>
 <context>
@@ -180,7 +180,15 @@
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
-        <translation>[Ẏǿŭř Ȧƈŧŭȧŀ ƒřȧḿḗş īƞ ŧħḗ Şḗŧŧīƞɠş īş ŧǿǿ ħḗīɠħ ϕςſǲ 衋ẛǅſΰ]</translation>
+        <translation>عدد المشاهد الحالية في الإعدادات كبير جداً</translation>
+    </message>
+    <message>
+        <source>Go</source>
+        <translation>اِذهب</translation>
+    </message>
+    <message>
+        <source>Format:</source>
+        <translation>الصيغة:</translation>
     </message>
 </context>
 </TS>

@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="vi">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="vi" version="2.0">
 <context>
     <name>QvkMail</name>
     <message>
@@ -183,6 +181,14 @@
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
         <translation>Khung hình thực tế của bạn trong phần thiết lập quá cao</translation>
+    </message>
+    <message>
+        <source>Go</source>
+        <translation>Thực hiện</translation>
+    </message>
+    <message>
+        <source>Format:</source>
+        <translation>Định dạng:</translation>
     </message>
 </context>
 </TS>

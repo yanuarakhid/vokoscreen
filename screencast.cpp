@@ -28,24 +28,21 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.20";  
-    
+    Version = "1.7.21";  
     Version = Version + " " + Beta;
+
+    homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
+    
+    QString mailingliste = "<a href ='mailto:vokoscreen@googlegroups.com?subject=vokoscreen ";
+    mailingliste = mailingliste.append( Version ).append( "'" ).append( ">" + tr( "Mailinglist" ) + "</a>" );
+    
     email = "<a href ='mailto:tux@kohaupt-online.de?subject=vokoscreen ";
-    //email = email.append( Version ).append( "'" ).append( ">tux@kohaupt-online.de</a>" );
-    email = email.append( Version ).append( "'" ).append( ">Support</a>" );
+    email = email.append( Version ).append( "'" ).append( ">" + tr( "Support" ) + "</a>" );
 
     QString emaildeveloper = "<a href ='mailto:vkohaupt@freenet.de?subject=vokoscreen ";
-    //emaildeveloper = emaildeveloper.append( Version ).append( "'" ).append( ">vkohaupt@freenet.de</a>" );
-    emaildeveloper = emaildeveloper.append( Version ).append( "'" ).append( ">Developer</a>" );
-
-    //homepage = "<a href='http://www.kohaupt-online.de/hp'>www.kohaupt-online.de/hp</a>";
-    homepage = "<a href='http://www.kohaupt-online.de/hp'>Homepage</a>";
-
-    screencast::setWindowTitle( ProgName + " " + Version );
+    emaildeveloper = emaildeveloper.append( Version ).append( "'" ).append( ">" + tr( "Developer" ) + "</a>" );
     
-    //QString mailingliste = "<a href ='mailto:vokoscreen@googlegroups.com'>vokoscreen@googlegroups.com</a>";
-    QString mailingliste = "<a href ='mailto:vokoscreen@googlegroups.com'>Mailinglist</a>";
+    screencast::setWindowTitle( ProgName + " " + Version );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
@@ -171,7 +168,7 @@ screencast::screencast()
 
     QLabel *VideoOptionLabel = new QLabel( TabWidgetVideoOptionFrame );
     VideoOptionLabel->setGeometry( 20, 10, 80, 25 );
-    VideoOptionLabel->setText( tr( "Frames:" ) );
+    VideoOptionLabel->setText( tr( "Frames" ) );
     VideoOptionLabel->show();
 
     FrameSpinBox = new QSpinBox( TabWidgetVideoOptionFrame );
@@ -191,7 +188,7 @@ screencast::screencast()
 
     QLabel *VideocodecOptionLabel = new QLabel( TabWidgetVideoOptionFrame );
     VideocodecOptionLabel->setGeometry( 20, 40, 50, 25 );
-    VideocodecOptionLabel->setText( tr( "Codec" ) + ":");
+    VideocodecOptionLabel->setText( tr( "Codec" ) );
     VideocodecOptionLabel->show();
 
     VideocodecComboBox = new QComboBox( TabWidgetVideoOptionFrame );
@@ -203,7 +200,7 @@ screencast::screencast()
     
     QLabel *VideoContainerLabel = new QLabel(TabWidgetVideoOptionFrame );
     VideoContainerLabel->setGeometry( 175, 40, 50, 25 );
-    VideoContainerLabel->setText( tr( "Format:" ) );
+    VideoContainerLabel->setText( tr( "Format" ) );
     VideoContainerLabel->show();
     
     VideoContainerComboBox = new QComboBox( TabWidgetVideoOptionFrame );
@@ -225,38 +222,38 @@ screencast::screencast()
     HideMouseCheckbox->show();
 
     // Tab 4 Miscellaneous options **************************************************
-    TabWidgetMiscellaneousFrame = new QFrame(this);
-    TabWidgetMiscellaneousFrame->setGeometry(120,0,300,200);
+    TabWidgetMiscellaneousFrame = new QFrame( this );
+    TabWidgetMiscellaneousFrame->setGeometry( 120, 0, 300, 200 );
     TabWidgetMiscellaneousFrame->show();
-    tabWidget->addTab(TabWidgetMiscellaneousFrame,"");
-    tabWidget->setTabIcon(3,QIcon(":/pictures/tools.png"));
+    tabWidget->addTab(TabWidgetMiscellaneousFrame, "" );
+    tabWidget->setTabIcon( 3, QIcon( ":/pictures/tools.png" ) );
     qfont = TabWidgetMiscellaneousFrame->font();
     qfont.setPixelSize( 12 );
     TabWidgetMiscellaneousFrame->setFont( qfont );
 
-    QLabel *SaveVideoPathLabel = new QLabel(TabWidgetMiscellaneousFrame);
-    SaveVideoPathLabel->setGeometry(30,30,210,25);
+    QLabel *SaveVideoPathLabel = new QLabel( TabWidgetMiscellaneousFrame );
+    SaveVideoPathLabel->setGeometry( 30, 30, 210, 25 );
     SaveVideoPathLabel->setText( tr( "Videopath" ) );
     SaveVideoPathLabel->show();
     
-    SaveVideoPathLineEdit = new QLineEdit(TabWidgetMiscellaneousFrame);
-    SaveVideoPathLineEdit->setGeometry(140,30,210,25);
-    SaveVideoPathLineEdit->setReadOnly(true);
+    SaveVideoPathLineEdit = new QLineEdit( TabWidgetMiscellaneousFrame );
+    SaveVideoPathLineEdit->setGeometry( 140, 30, 210, 25 );
+    SaveVideoPathLineEdit->setReadOnly( true );
     SaveVideoPathLineEdit->show();
     
-    QPushButton *SaveVideoPathPushButton = new QPushButton(TabWidgetMiscellaneousFrame);
-    SaveVideoPathPushButton->setGeometry(350,30,20,25);
-    SaveVideoPathPushButton->setText("...");
+    QPushButton *SaveVideoPathPushButton = new QPushButton( TabWidgetMiscellaneousFrame );
+    SaveVideoPathPushButton->setGeometry( 350, 30, 20, 25);
+    SaveVideoPathPushButton->setText( "..." );
     SaveVideoPathPushButton->show();
     connect( SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
     
     QLabel *VideoPlayerLabel = new QLabel(TabWidgetMiscellaneousFrame);
-    VideoPlayerLabel->setGeometry(30,60,210,25);
+    VideoPlayerLabel->setGeometry( 30, 60, 210, 25 );
     VideoPlayerLabel->setText( tr( "Player" ) );
     VideoPlayerLabel->show();
     
-    VideoplayerComboBox = new QComboBox(TabWidgetMiscellaneousFrame);
-    VideoplayerComboBox->setGeometry(140,60,210,25);
+    VideoplayerComboBox = new QComboBox( TabWidgetMiscellaneousFrame );
+    VideoplayerComboBox->setGeometry( 140, 60, 210, 25 );
     VideoplayerComboBox->show();
 
     MinimizedCheckBox = new QCheckBox( TabWidgetMiscellaneousFrame );
@@ -323,7 +320,7 @@ screencast::screencast()
 
     
     QLabel* labelLanguageUrl = new QLabel( TabWidgetAboutFrame );
-    labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>Languages</a>" );
+    labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>" + tr( "Languages" ) + "</a>" );
     labelLanguageUrl->setGeometry( QRect( 240, 10, 400, 22 ) );
     labelLanguageUrl->setOpenExternalLinks( true );
     labelLanguageUrl->show();
@@ -335,7 +332,7 @@ screencast::screencast()
     labelOpensuseBeta->show();
 */
     QLabel* labelOpensuseBetaUrl = new QLabel( TabWidgetAboutFrame );
-    labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>Beta openSUSE</a>" );
+    labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Beta openSUSE" ) + "</a>" );
     labelOpensuseBetaUrl->setGeometry( QRect( 240, 30, 400, 22 ) );
     labelOpensuseBetaUrl->setOpenExternalLinks( true );
     labelOpensuseBetaUrl->show();
@@ -346,13 +343,13 @@ screencast::screencast()
     labelUbuntuBeta->show();
 */
     QLabel* labelUbuntuBetaUrl = new QLabel( TabWidgetAboutFrame );
-    labelUbuntuBetaUrl->setText( "<a href='http://ppa.launchpad.net/vokoscreen-dev/vokoscreen-daily/ubuntu/pool/main/v/vokoscreen/'>Beta Ubuntu</a>" );
+    labelUbuntuBetaUrl->setText( "<a href='http://ppa.launchpad.net/vokoscreen-dev/vokoscreen-daily/ubuntu/pool/main/v/vokoscreen/'>" + tr( "Beta Ubuntu" ) + "</a>" );
     labelUbuntuBetaUrl->setGeometry( QRect( 240, 50, 400, 22 ) );
     labelUbuntuBetaUrl->setOpenExternalLinks( true );
     labelUbuntuBetaUrl->show();
     
     QLabel * labelDonateUrl = new QLabel( TabWidgetAboutFrame );
-    labelDonateUrl->setText( "<a href='http://www.kohaupt-online.de/hp/spende.html'>Donate</a>" );
+    labelDonateUrl->setText( "<a href='http://www.kohaupt-online.de/hp/spende.html'>" + tr( "Donate" ) + "</a>" );
     labelDonateUrl->setGeometry( QRect( 180, 100, 400, 22 ) );
     labelDonateUrl->setOpenExternalLinks( true );
     labelDonateUrl->show();
@@ -660,7 +657,7 @@ screencast::screencast()
    
    SystemTrayIconYellow = new QSystemTrayIcon( QIcon ( ":/pictures/pause.png" ) );
    SystemTrayIconYellow->hide();
-   SystemTrayIconYellow->setToolTip( "Pause" );
+   SystemTrayIconYellow->setToolTip( tr( "Pause" ) );
 
    SystemTrayIconBlue = new QSystemTrayIcon( QIcon ( ":/pictures/go.png" ) );
    SystemTrayIconBlue->hide();
@@ -865,7 +862,7 @@ void screencast::AlsaWatcherEvent( QStringList CardxList )
   }
 
   QSettings settings( ProgName, ProgName );
-  settings.beginGroup("Alsa" );
+  settings.beginGroup( "Alsa" );
     int x = AlsaHwComboBox->findText( settings.value( "NameCaptureCard" ).toString(),Qt::MatchExactly );
     AlsaHwComboBox->setCurrentIndex( x );
   settings.endGroup();
@@ -1503,7 +1500,7 @@ void screencast::Pause()
       }
       
       shortcutStop->setEnabled( true );
-      PauseButton->setText( "Pause" );
+      PauseButton->setText( tr( "Pause" ) );
       startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
     }
   }
@@ -2406,10 +2403,10 @@ void screencast::record()
   Dir.setCurrent( workDirectory );  
   
   // bestehendes ffmpegLog löschen
-  QDir Dira("");
+  QDir Dira( "" );
   QStringList filters;
   filters << "ffmpeg*";
-  QStringList List = Dira.entryList(filters, QDir::Files, QDir::Name);
+  QStringList List = Dira.entryList(filters, QDir::Files, QDir::Name );
   QFile FfmpegFile;
   for (int i = 0; i < List.size(); ++i)
      FfmpegFile.remove( List.at(i) );
@@ -2467,7 +2464,7 @@ void screencast::record()
 	       + " -i :0.0+"
 	       + deltaX + "," 
 	       + deltaY
-	       + " -pix_fmt yuv420p" // Neu das funktioniert sehr gut, ohne ca. 80 fps, mit 99fps bei eingestellten 99fps und preset medium aber nur unter opensuse, unter Ubuntu 13.04 keine veränderung
+	       + " -pix_fmt yuv420p" // Neu das funktioniert sehr gut, ohne ca. 80 fps, mit 99fps bei eingestellten 99fps und preset medium aber nur unter opensuse, unter Ubuntu 13.04 keine Veränderung
                + noMouse()
 	       + " -vcodec "
 	       + myVcodec

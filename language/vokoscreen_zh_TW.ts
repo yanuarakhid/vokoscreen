@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="zh_TW">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_TW" version="2.0">
 <context>
     <name>QvkMail</name>
     <message>
@@ -183,6 +181,14 @@
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
         <translation>您設定的影格率太高了</translation>
+    </message>
+    <message>
+        <source>Go</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Format:</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>
