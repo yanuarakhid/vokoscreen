@@ -1,0 +1,11 @@
+Spezial Feature in vokoscreen.conf 
+
+Path:
+~/.config/vokoscreen/vokoscreen.conf
+
+# Hide recordarea in Taskbar
+# Side effect: Around the recordarea shows a Border
+# The entry must be made with a text editor
+# Introduced in vokoscreen 1.7.22 Beta
+[AREA]
+NoShowInTaskBar=1
