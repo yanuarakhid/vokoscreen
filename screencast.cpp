@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.21";  
+    Version = "1.7.22";  
     Version = Version + " " + Beta;
 
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
@@ -167,7 +167,8 @@ screencast::screencast()
     TabWidgetVideoOptionFrame->setFont( qfont );
 
     QLabel *VideoOptionLabel = new QLabel( TabWidgetVideoOptionFrame );
-    VideoOptionLabel->setGeometry( 20, 10, 80, 25 );
+    VideoOptionLabel->setGeometry( 20, 10, 50, 25 );
+    //VideoOptionLabel->setAlignment( Qt::AlignRight );
     VideoOptionLabel->setText( tr( "Frames" ) );
     VideoOptionLabel->show();
 
@@ -232,10 +233,10 @@ screencast::screencast()
     TabWidgetMiscellaneousFrame->setFont( qfont );
 
     QLabel *SaveVideoPathLabel = new QLabel( TabWidgetMiscellaneousFrame );
-    SaveVideoPathLabel->setGeometry( 30, 30, 210, 25 );
+    SaveVideoPathLabel->setGeometry( 30, 30, 100, 25 );
     SaveVideoPathLabel->setText( tr( "Videopath" ) );
     SaveVideoPathLabel->show();
-    
+
     SaveVideoPathLineEdit = new QLineEdit( TabWidgetMiscellaneousFrame );
     SaveVideoPathLineEdit->setGeometry( 140, 30, 210, 25 );
     SaveVideoPathLineEdit->setReadOnly( true );
@@ -248,7 +249,7 @@ screencast::screencast()
     connect( SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
     
     QLabel *VideoPlayerLabel = new QLabel(TabWidgetMiscellaneousFrame);
-    VideoPlayerLabel->setGeometry( 30, 60, 210, 25 );
+    VideoPlayerLabel->setGeometry( 30, 60, 100, 25 );
     VideoPlayerLabel->setText( tr( "Player" ) );
     VideoPlayerLabel->show();
     
@@ -263,7 +264,6 @@ screencast::screencast()
 
     // Tab 6 About *********************************************************
     QFrame *TabWidgetAboutFrame = new QFrame(this);
-    TabWidgetAboutFrame->setGeometry( 120, 0, 300, 200 );
     TabWidgetAboutFrame->show();
     tabWidget->addTab( TabWidgetAboutFrame, "" );
     tabWidget->setTabIcon( 4, QIcon( ":/pictures/about.png" ) );
@@ -271,89 +271,70 @@ screencast::screencast()
     qfont = TabWidgetAboutFrame->font();
     qfont.setPixelSize( 12 );
     TabWidgetAboutFrame->setFont( qfont );
+
+    int labelWidth = tabWidget->width() / 2;
+    int leftSide = 0;
+    int rightSide = tabWidget->width() / 2;
     
-/*    
-    QLabel* labelWeb = new QLabel( TabWidgetAboutFrame );
-    labelWeb->setGeometry( QRect( 70, 30, 400, 22 ) );
-    labelWeb->setText( "Homepage" );
-    labelWeb->show();
-*/    
+    //QLabel* labelWebSite = new QLabel( TabWidgetAboutFrame );
     QLabel* labelWebSite = new QLabel( TabWidgetAboutFrame );
-    labelWebSite->setGeometry( QRect( 70, 10, 400, 22 ) );
+    labelWebSite->setGeometry( leftSide, 10, labelWidth, 22 );
     labelWebSite->setText( homepage );
     labelWebSite->setOpenExternalLinks( true );
+    labelWebSite->setAlignment( Qt::AlignCenter );
     labelWebSite->show();
-    
-/*
-    QLabel* labelMailingliste = new QLabel( TabWidgetAboutFrame );
-    labelMailingliste->setText( "Mailinglist" );
-    labelMailingliste->setGeometry( 70, 10, 400, 22 );
-    labelMailingliste->show();
-*/
+
     QLabel* labelMailinglisteMail = new QLabel( TabWidgetAboutFrame );
     labelMailinglisteMail->setText( mailingliste );
-    labelMailinglisteMail->setGeometry( 70, 30, 400, 22 );
+    labelMailinglisteMail->setGeometry( leftSide, 30, labelWidth, 22 );
     labelMailinglisteMail->setOpenExternalLinks( true );
+    labelMailinglisteMail->setAlignment( Qt::AlignCenter );    
     labelMailinglisteMail->show();
-/*    
-    QLabel* labelMailSupport = new QLabel( TabWidgetAboutFrame );
-    labelMailSupport->setGeometry( QRect( 70, 50, 400, 22 ) );
-    labelMailSupport->setText( "Support" );
-    labelMailSupport->show();
-*/ 
+
     QLabel* labelMail = new QLabel( TabWidgetAboutFrame );
-    labelMail->setGeometry( QRect( 70, 50, 400, 22 ) );
+    labelMail->setGeometry( leftSide, 50, labelWidth, 22 );
     labelMail->setText( email );
     labelMail->setOpenExternalLinks( true );
+    labelMail->setAlignment( Qt::AlignCenter );    
     labelMail->show();
-/*
-    QLabel* labelDeveLoper = new QLabel( TabWidgetAboutFrame );
-    labelDeveLoper->setText( "Developer" );
-    labelDeveLoper->setGeometry( QRect( 70, 70, 400, 22 ) );
-    labelDeveLoper->show();
-*/
+
     QLabel* labelDeveLoperMail = new QLabel( TabWidgetAboutFrame );
     labelDeveLoperMail->setText( emaildeveloper );
-    labelDeveLoperMail->setGeometry( QRect( 70, 70, 400, 22 ) );
+    labelDeveLoperMail->setGeometry( leftSide, 70, labelWidth, 22 );
     labelDeveLoperMail->setOpenExternalLinks( true );
+    labelDeveLoperMail->setAlignment( Qt::AlignCenter );    
     labelDeveLoperMail->show();
-
     
     QLabel* labelLanguageUrl = new QLabel( TabWidgetAboutFrame );
-    labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>" + tr( "Languages" ) + "</a>" );
-    labelLanguageUrl->setGeometry( QRect( 240, 10, 400, 22 ) );
+    labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
+    labelLanguageUrl->setGeometry( rightSide, 10, labelWidth, 22 );
     labelLanguageUrl->setOpenExternalLinks( true );
+    labelLanguageUrl->setAlignment( Qt::AlignCenter );    
     labelLanguageUrl->show();
     
-/*    
-    QLabel* labelOpensuseBeta = new QLabel( TabWidgetAboutFrame );
-    labelOpensuseBeta->setText( "Beta" );
-    labelOpensuseBeta->setGeometry( QRect( 70, 90, 400, 22 ) );
-    labelOpensuseBeta->show();
-*/
     QLabel* labelOpensuseBetaUrl = new QLabel( TabWidgetAboutFrame );
     labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Beta openSUSE" ) + "</a>" );
-    labelOpensuseBetaUrl->setGeometry( QRect( 240, 30, 400, 22 ) );
+    labelOpensuseBetaUrl->setGeometry( rightSide, 30, labelWidth, 22 );
     labelOpensuseBetaUrl->setOpenExternalLinks( true );
+    labelOpensuseBetaUrl->setAlignment( Qt::AlignCenter );    
     labelOpensuseBetaUrl->show();
-/*
-    QLabel* labelUbuntuBeta = new QLabel( TabWidgetAboutFrame );
-    labelUbuntuBeta->setText( "Beta" );
-    labelUbuntuBeta->setGeometry( QRect( 70, 110, 400, 22 ) );
-    labelUbuntuBeta->show();
-*/
+
     QLabel* labelUbuntuBetaUrl = new QLabel( TabWidgetAboutFrame );
     labelUbuntuBetaUrl->setText( "<a href='http://ppa.launchpad.net/vokoscreen-dev/vokoscreen-daily/ubuntu/pool/main/v/vokoscreen/'>" + tr( "Beta Ubuntu" ) + "</a>" );
-    labelUbuntuBetaUrl->setGeometry( QRect( 240, 50, 400, 22 ) );
+    labelUbuntuBetaUrl->setGeometry( rightSide, 50, labelWidth, 22 );
     labelUbuntuBetaUrl->setOpenExternalLinks( true );
+    labelUbuntuBetaUrl->setAlignment( Qt::AlignCenter );    
     labelUbuntuBetaUrl->show();
     
     QLabel * labelDonateUrl = new QLabel( TabWidgetAboutFrame );
     labelDonateUrl->setText( "<a href='http://www.kohaupt-online.de/hp/spende.html'>" + tr( "Donate" ) + "</a>" );
-    labelDonateUrl->setGeometry( QRect( 180, 100, 400, 22 ) );
+    labelDonateUrl->setGeometry( 0, 100, tabWidget->width(), 22 );
     labelDonateUrl->setOpenExternalLinks( true );
+    labelDonateUrl->setAlignment( Qt::AlignCenter );    
     labelDonateUrl->show();
-    
+    //labelDonateUrl->setAutoFillBackground( true ); //******************
+    //labelDonateUrl->setPalette( palette );         //******************
+
     // End Tabs *************************************************************
 
     recordButton = new QPushButton( centralWidget );
@@ -438,7 +419,7 @@ screencast::screencast()
     statusBarProgForRecord = new QLabel();
     statusBarProgForRecord->setText( recordApplikation );
     statusBarProgForRecord->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
-    statusBarProgForRecord->setToolTip( "Program for recording" );
+    statusBarProgForRecord->setToolTip( tr ( "Program for recording" ) );
     
     statusBarLabelTime = new QLabel();
     statusBarLabelTime->setText( "00:00:00" );
@@ -582,7 +563,6 @@ screencast::screencast()
       MinimizedCheckBox->setCheckState( Qt::CheckState( settings.value( "Minimized", 0 ).toUInt() ) );
       
       CountdownSpinBox->setValue(  settings.value( "Countdown", 0 ).toUInt() );
-      
     settings.endGroup();
     
     settings.beginGroup( "Videooptions" );
@@ -962,7 +942,7 @@ void screencast::saveSettings()
   settings.endGroup();
   
   webcamCheckBox->saveSettings();
-  
+  myregionselection->saveSettings();
 }
 
 
@@ -2269,7 +2249,10 @@ void screencast::Countdown()
     {
       label->setText( "" );
       QCoreApplication::processEvents( QEventLoop::AllEvents );     
+
       label->setText( QString::number( i ) );
+      
+      
       QCoreApplication::processEvents( QEventLoop::AllEvents );     
       label->update();
       for ( int ii = 1; ii <= 10; ii++)

@@ -79,10 +79,6 @@
         <translation>Pulse</translation>
     </message>
     <message>
-        <source>Frames:</source>
-        <translation>Frames:</translation>
-    </message>
-    <message>
         <source>Default</source>
         <translation>Predeterminado</translation>
     </message>
@@ -187,7 +183,39 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Format:</source>
+        <source>Homepage</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mailinglist</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Support</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Developer</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Frames</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Languages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Beta openSUSE</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Beta Ubuntu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Donate</source>
         <translation type="unfinished"/>
     </message>
 </context>

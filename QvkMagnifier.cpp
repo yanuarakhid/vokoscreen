@@ -13,7 +13,7 @@ QvkMagnifier::QvkMagnifier()
   Magnifier400x200();
 
   resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
-  setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
+  setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
   border = 3;
 
   label->setGeometry( QRect( 0 + border, 0 + border, this->width() - 2 * border, this->height() - 2 * border ) );

@@ -16,6 +16,7 @@
  */
 
 #include "regionselection.h" 
+#include <QSettings>
 
 using namespace std;
 
@@ -35,8 +36,22 @@ regionselection::regionselection()
   handleUnderMouse = NoHandle;
   painter =  new QPainter();
   
-  setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-
+  // Muß in die vokoscreen.conf von Hand eingetragen werden. Keine GUI Unterstützung.
+  // NoShowInTaskBar=1
+  QSettings settings( "vokoscreen", "vokoscreen" );
+  settings.beginGroup( "Area" );
+    if ( settings.value( "NoShowInTaskBar", 0 ).toUInt() == 0 )
+    {
+      setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+      Setting_Area_NoShowInTaskBar = 0;
+    }
+    else
+    {
+      setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
+      Setting_Area_NoShowInTaskBar = 1;
+    }
+  settings.endGroup();
+  
   if( QX11Info::isCompositingManagerRunning() )
     setAttribute( Qt::WA_TranslucentBackground, true );
 
@@ -63,6 +78,15 @@ regionselection::regionselection()
 
 regionselection::~regionselection()
 {
+}
+
+
+void regionselection::saveSettings()
+{
+  QSettings settings( "vokoscreen", "vokoscreen" );   
+  settings.beginGroup( "Area" );
+    settings.setValue( "NoShowInTaskBar", Setting_Area_NoShowInTaskBar );
+  settings.endGroup();
 }
 
 
@@ -510,7 +534,6 @@ void regionselection::printSize()
   
   QFont font;
   font.setPointSize( 14 );
-  //font.setBold( true );
   painter->setFont( font );
   
   QFontMetrics fontMetrics( font );
@@ -607,9 +630,9 @@ void regionselection::paintEvent( QPaintEvent *event )
   painter->drawLine( borderLeft, height() - borderBottom, width() - borderRight, height() - borderBottom );
 
   painter->end();
-  
+
   event->accept();  
-  
+
 }
 
 
@@ -625,6 +648,12 @@ void regionselection::lockFrame( bool status )
 bool regionselection::isFrameLocked()
 {
     return frameLocked;
+}
+
+
+void regionselection::handlingFrameLock()
+{
+  repaint();
 }
 
 
@@ -679,12 +708,6 @@ int regionselection::getHeight()
 int regionselection::getWidth()
 {
   return this->width() - borderLeft - borderRight - frameWidth; 
-}
-
-
-void regionselection::handlingFrameLock()
-{
-  repaint();
 }
 
 

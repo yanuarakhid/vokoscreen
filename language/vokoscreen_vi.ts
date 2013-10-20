@@ -79,10 +79,6 @@
         <translation>Nhịp</translation>
     </message>
     <message>
-        <source>Frames:</source>
-        <translation>Khung hình:</translation>
-    </message>
-    <message>
         <source>Default</source>
         <translation>Mặc định</translation>
     </message>
@@ -187,8 +183,40 @@
         <translation>Thực hiện</translation>
     </message>
     <message>
-        <source>Format:</source>
-        <translation>Định dạng:</translation>
+        <source>Homepage</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mailinglist</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Support</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Developer</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Frames</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Languages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Beta openSUSE</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Beta Ubuntu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

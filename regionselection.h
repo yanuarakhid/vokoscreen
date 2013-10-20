@@ -29,11 +29,14 @@
 #include <QDesktopWidget>
 #include <QMainWindow>
 
-class regionselection : public QMainWindow //QWidget
+#include <QDialog>
+
+class regionselection : public QDialog
 { 
 Q_OBJECT
 public:
   regionselection();
+  regionselection( QWidget *parent );
 
   virtual ~regionselection();
   void lockFrame( bool status = true );
@@ -53,6 +56,7 @@ public slots:
   void cleanRecordArea( bool state );
   int getXRecordArea();
   int getYRecordArea();
+  void saveSettings();
 
 private slots:
   void moveTopLeft     ( QMouseEvent *event );
@@ -80,8 +84,6 @@ private slots:
   QRect getPrintSizeRectForMask();
   void setHandleMiddleForMask( QRect rec );
   QRect getHandleMiddleForMask();
-
-  
 
 protected:
   void mouseMoveEvent( QMouseEvent *event );
@@ -117,5 +119,7 @@ private:
   
   QRect printSizeRectForMask;
   QRect HandleMiddleForMask;
+  
+  int Setting_Area_NoShowInTaskBar;
 };
 #endif

@@ -79,10 +79,6 @@
         <translation>Pulse</translation>
     </message>
     <message>
-        <source>Frames:</source>
-        <translation>Cadre:</translation>
-    </message>
-    <message>
         <source>Default</source>
         <translation>Implicit</translation>
     </message>
@@ -184,11 +180,43 @@
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"/>
+        <translation>Start</translation>
     </message>
     <message>
-        <source>Format:</source>
-        <translation type="unfinished"/>
+        <source>Homepage</source>
+        <translation>Pagină web</translation>
+    </message>
+    <message>
+        <source>Mailinglist</source>
+        <translation>Listă de discuții</translation>
+    </message>
+    <message>
+        <source>Support</source>
+        <translation>Suport</translation>
+    </message>
+    <message>
+        <source>Developer</source>
+        <translation>Dezvoltator</translation>
+    </message>
+    <message>
+        <source>Frames</source>
+        <translation>Cadre</translation>
+    </message>
+    <message>
+        <source>Languages</source>
+        <translation>Limbi</translation>
+    </message>
+    <message>
+        <source>Beta openSUSE</source>
+        <translation>Beta openSUSE</translation>
+    </message>
+    <message>
+        <source>Beta Ubuntu</source>
+        <translation>Beta Ubuntu</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donează</translation>
     </message>
 </context>
 </TS>

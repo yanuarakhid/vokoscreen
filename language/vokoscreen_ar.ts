@@ -79,10 +79,6 @@
         <translation>Pulse</translation>
     </message>
     <message>
-        <source>Frames:</source>
-        <translation>المشاهد:</translation>
-    </message>
-    <message>
         <source>Default</source>
         <translation>افتراضي</translation>
     </message>
@@ -187,8 +183,40 @@
         <translation>اِذهب</translation>
     </message>
     <message>
-        <source>Format:</source>
-        <translation>الصيغة:</translation>
+        <source>Homepage</source>
+        <translation>صفحة البرنامج</translation>
+    </message>
+    <message>
+        <source>Mailinglist</source>
+        <translation>القائمة البريدية</translation>
+    </message>
+    <message>
+        <source>Support</source>
+        <translation>الدعم</translation>
+    </message>
+    <message>
+        <source>Developer</source>
+        <translation>المطور</translation>
+    </message>
+    <message>
+        <source>Frames</source>
+        <translation>المشاهد</translation>
+    </message>
+    <message>
+        <source>Languages</source>
+        <translation>اللغات</translation>
+    </message>
+    <message>
+        <source>Beta openSUSE</source>
+        <translation>نسخة تجريبية openSUSE</translation>
+    </message>
+    <message>
+        <source>Beta Ubuntu</source>
+        <translation>نسخة تجريبية Ubuntu</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>تبرع</translation>
     </message>
 </context>
 </TS>
