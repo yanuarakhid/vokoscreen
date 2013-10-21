@@ -64,11 +64,11 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>شاشة التكبير</translation>
+        <translation>المكبّرة</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>صوت</translation>
+        <translation>الصوت</translation>
     </message>
     <message>
         <source>Alsa</source>
@@ -180,7 +180,7 @@
     </message>
     <message>
         <source>Go</source>
-        <translation>اِذهب</translation>
+        <translation>واصِل</translation>
     </message>
     <message>
         <source>Homepage</source>
@@ -203,10 +203,6 @@
         <translation>المشاهد</translation>
     </message>
     <message>
-        <source>Languages</source>
-        <translation>اللغات</translation>
-    </message>
-    <message>
         <source>Beta openSUSE</source>
         <translation>نسخة تجريبية openSUSE</translation>
     </message>
@@ -217,6 +213,14 @@
     <message>
         <source>Donate</source>
         <translation>تبرع</translation>
+    </message>
+    <message>
+        <source>Program for recording</source>
+        <translation>برنامج التسجيل</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>الترجمات</translation>
     </message>
 </context>
 </TS>

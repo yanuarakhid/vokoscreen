@@ -93,8 +93,6 @@ protected:
   void paintEvent( QPaintEvent *event );
   QPainter * painter;
   
-  void resizeEvent( QResizeEvent * event );
-  
 private:
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
 

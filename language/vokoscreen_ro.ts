@@ -203,10 +203,6 @@
         <translation>Cadre</translation>
     </message>
     <message>
-        <source>Languages</source>
-        <translation>Limbi</translation>
-    </message>
-    <message>
         <source>Beta openSUSE</source>
         <translation>Beta openSUSE</translation>
     </message>
@@ -217,6 +213,14 @@
     <message>
         <source>Donate</source>
         <translation>Donează</translation>
+    </message>
+    <message>
+        <source>Program for recording</source>
+        <translation>Program pentru înregistrare</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Traduceri</translation>
     </message>
 </context>
 </TS>

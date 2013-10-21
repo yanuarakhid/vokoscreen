@@ -184,38 +184,42 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Strona domowa</translation>
     </message>
     <message>
         <source>Mailinglist</source>
-        <translation type="unfinished"/>
+        <translation>Lista mailingowa</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>Wsparcie</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>Programista</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Languages</source>
-        <translation type="unfinished"/>
+        <translation>Klatki</translation>
     </message>
     <message>
         <source>Beta openSUSE</source>
-        <translation type="unfinished"/>
+        <translation>Beta openSUSE</translation>
     </message>
     <message>
         <source>Beta Ubuntu</source>
-        <translation type="unfinished"/>
+        <translation>Beta Ubuntu</translation>
     </message>
     <message>
         <source>Donate</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Program for recording</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Translations</source>
         <translation type="unfinished"/>
     </message>
 </context>

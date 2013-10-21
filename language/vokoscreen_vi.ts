@@ -184,39 +184,43 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Trang chủ</translation>
     </message>
     <message>
         <source>Mailinglist</source>
-        <translation type="unfinished"/>
+        <translation>Danh sách email</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>Hỗ trợ</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>Nhà phát triển</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Languages</source>
-        <translation type="unfinished"/>
+        <translation>Khung ảnh</translation>
     </message>
     <message>
         <source>Beta openSUSE</source>
-        <translation type="unfinished"/>
+        <translation>Bản thử nghiệm openSUSE</translation>
     </message>
     <message>
         <source>Beta Ubuntu</source>
-        <translation type="unfinished"/>
+        <translation>Bản thử nghiệm Ubuntu</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"/>
+        <translation>Ủng hộ tài chính</translation>
+    </message>
+    <message>
+        <source>Program for recording</source>
+        <translation>Chương trình dùng để ghi hình</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Chuyển ngữ</translation>
     </message>
 </context>
 </TS>

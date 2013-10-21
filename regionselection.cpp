@@ -40,15 +40,15 @@ regionselection::regionselection()
   // NoShowInTaskBar=1
   QSettings settings( "vokoscreen", "vokoscreen" );
   settings.beginGroup( "Area" );
-    if ( settings.value( "NoShowInTaskBar", 0 ).toUInt() == 0 )
-    {
-      setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-      Setting_Area_NoShowInTaskBar = 0;
-    }
-    else
+    if ( settings.value( "NoShowInTaskBar", 1 ).toUInt() == 1 )
     {
       setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
       Setting_Area_NoShowInTaskBar = 1;
+    }
+    else
+    {
+      setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+      Setting_Area_NoShowInTaskBar = 0;
     }
   settings.endGroup();
   
@@ -87,12 +87,6 @@ void regionselection::saveSettings()
   settings.beginGroup( "Area" );
     settings.setValue( "NoShowInTaskBar", Setting_Area_NoShowInTaskBar );
   settings.endGroup();
-}
-
-
-void regionselection::resizeEvent( QResizeEvent * event )
-{
- (void)event;
 }
 
 
@@ -574,9 +568,14 @@ QRect regionselection::getPrintSizeRectForMask()
 void regionselection::paintEvent( QPaintEvent *event ) 
 {
   (void)event;
+  painter->begin( this );
 
+  // Maskiert den Bereich für PrintSize und HandleMiddle
   if ( !isFrameLocked() )
   {
+    printSize();
+    HandleMiddle();
+    
     // Widget
     clearMask();
     QRegion RegionWidget( 0, 0, width(), height() );
@@ -592,7 +591,6 @@ void regionselection::paintEvent( QPaintEvent *event )
 
     // Retrieves and merge display-area-size in record Area
     QRegion r1 = RegionNew.united( getPrintSizeRectForMask() );
-    
     // HandleMiddle
     // Retrieves and merge HandleMiddle in record Area
     r1 = r1.united( getHandleMiddleForMask() );
@@ -600,7 +598,7 @@ void regionselection::paintEvent( QPaintEvent *event )
     setMask( r1 );
   }
 
-  painter->begin( this );
+  //painter->begin( this );
   painter->setRenderHints( QPainter::Antialiasing, true );
 
   HandleTopLeft();

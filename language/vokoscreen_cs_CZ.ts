@@ -203,10 +203,6 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Languages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Beta openSUSE</source>
         <translation type="unfinished"/>
     </message>
@@ -216,6 +212,14 @@
     </message>
     <message>
         <source>Donate</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Program for recording</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Translations</source>
         <translation type="unfinished"/>
     </message>
 </context>

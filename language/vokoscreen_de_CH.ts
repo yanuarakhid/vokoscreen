@@ -203,10 +203,6 @@
         <translation>Frames</translation>
     </message>
     <message>
-        <source>Languages</source>
-        <translation>Sprachen</translation>
-    </message>
-    <message>
         <source>Beta openSUSE</source>
         <translation>Beta OpenSuse</translation>
     </message>
@@ -217,6 +213,14 @@
     <message>
         <source>Donate</source>
         <translation>Spende</translation>
+    </message>
+    <message>
+        <source>Program for recording</source>
+        <translation>Aufnahme mit</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Übersetzungen</translation>
     </message>
 </context>
 </TS>
