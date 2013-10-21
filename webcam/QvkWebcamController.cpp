@@ -11,7 +11,7 @@ QvkWebcamController::QvkWebcamController( QWidget * value )
 
   comboBoxCount = new QComboBox( value );
   comboBoxCount->setGeometry( 250, 40, 40, 21 );
-  comboBoxCount->setToolTip( "Select webcam" );
+  comboBoxCount->setToolTip( tr ( "Select webcam" ) );
   comboBoxCount->show();
   
   myWebcamWatcher = new QvkWebcamWatcher();

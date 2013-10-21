@@ -64,6 +64,10 @@
         <source>Device is busy</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Select webcam</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>screencast</name>
