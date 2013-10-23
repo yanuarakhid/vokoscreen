@@ -1932,6 +1932,26 @@ QString screencast::NameInMoviesLocation()
 }
 
 
+/*
+QString screencast::NameInMoviesLocation()
+{
+  QString myFilename = "screencast";
+  QString myFilenameExtension = "." + VideoContainerComboBox->currentText();
+  QString myName = PathMoviesLocation() + QDir::separator() + myFilename + myFilenameExtension;
+
+  QFile *myFile = new QFile( myName );
+  uint x = 0;
+  do
+  {
+    x++;
+    myFile->setFileName( PathMoviesLocation() + QDir::separator() + myFilename + "-" + QString().number(x) + myFilenameExtension );
+    myName = myFile->fileName();
+  } while ( myFile->exists() );
+
+  return myFilename + "-" + QString().number(x) + myFilenameExtension;
+}
+*/
+
 /**
  * Return the new pausename
  */
@@ -2249,9 +2269,8 @@ void screencast::Countdown()
     {
       label->setText( "" );
       QCoreApplication::processEvents( QEventLoop::AllEvents );     
-
-      label->setText( QString::number( i ) );
       
+      label->setText( QString::number( i ) );
       
       QCoreApplication::processEvents( QEventLoop::AllEvents );     
       label->update();
@@ -2559,8 +2578,19 @@ void screencast::Stop()
         mergeString.append( " + " ).append( PathTempLocation() ).append( QDir::separator() ).append( stringList.at( i ) );
 
     mergeString.append( " -o " ).append( PathMoviesLocation() + QDir::separator() + nameInMoviesLocation );
+/*
+    // Unter der Sprache Arabisch funktioniert mkvmerge nicht
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();// Test
+    env.insert("LANG", "ro_MD");// Test
+    SystemCall->setProcessEnvironment(env); //Test
+*/
     SystemCall->start( mergeString );
     SystemCall->waitForFinished();
+/*    
+    QString mkvAusgabe = SystemCall->readAllStandardOutput(); // Test
+    SystemCall->close(); / Test
+    qDebug() << "*****************Test*****" << mkvAusgabe; /Test
+*/    
     for ( int i = 0; i < stringList.size(); ++i )
       dir.remove( PathTempLocation().append( QDir::separator() ).append( stringList.at( i ) ) );
 

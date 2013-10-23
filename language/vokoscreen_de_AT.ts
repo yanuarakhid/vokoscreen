@@ -1,5 +1,20 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="de_AT" version="2.0">
 <context>
+    <name>QvkMagnifier</name>
+    <message>
+        <source>200 x 200</source>
+        <translation>200 x 200</translation>
+    </message>
+    <message>
+        <source>400 x 200</source>
+        <translation>400 x 200</translation>
+    </message>
+    <message>
+        <source>600 x 200</source>
+        <translation>600 x 200</translation>
+    </message>
+</context>
+<context>
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
@@ -46,6 +61,10 @@
     <message>
         <source>Device is busy</source>
         <translation>Gerät ist belegt</translation>
+    </message>
+    <message>
+        <source>Select webcam</source>
+        <translation>Webcam auswählen</translation>
     </message>
 </context>
 <context>

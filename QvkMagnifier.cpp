@@ -53,7 +53,7 @@ void QvkMagnifier::getDialogMagnifier( QWidget *parent )
 
   radioButton1 = new QRadioButton( dialog );
   radioButton1->setGeometry( 170, 50, 200, 21 );
-  radioButton1->setText( tr( "200 x 200" ) );
+  radioButton1->setText( "200 x 200" );
   radioButton1->show();
   connect( radioButton1, SIGNAL( clicked() ), SLOT( Magnifier200x200() ) );
   if ( formValue == 1 )
@@ -61,7 +61,7 @@ void QvkMagnifier::getDialogMagnifier( QWidget *parent )
 
   radioButton2 = new QRadioButton( dialog );
   radioButton2->setGeometry( 170, 80, 200, 21 );
-  radioButton2->setText( tr( "400 x 200" ) );
+  radioButton2->setText( "400 x 200" );
   radioButton2->show();
   connect( radioButton2, SIGNAL( clicked() ), SLOT( Magnifier400x200() ) );
   if ( formValue == 2 )
@@ -69,7 +69,7 @@ void QvkMagnifier::getDialogMagnifier( QWidget *parent )
 
   radioButton3 = new QRadioButton( dialog );
   radioButton3->setGeometry( 170, 110, 200, 21 );
-  radioButton3->setText( tr( "600 x 200" ) );
+  radioButton3->setText( "600 x 200" );
   radioButton3->show();
   connect( radioButton3, SIGNAL( clicked() ), SLOT( Magnifier600x200() ) );
   if ( formValue == 3 )
