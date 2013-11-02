@@ -20,7 +20,7 @@ using namespace std;
 
 screencast::screencast()
 {
-    bool beta = true;
+    bool beta = false;
     QString Beta;
     if ( beta )
       Beta = "Beta"; 
@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.7.22";  
+    Version = "1.8.0";  
     Version = Version + " " + Beta;
 
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
