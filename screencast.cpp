@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.8.0";  
+    Version = "1.8.1";  
     Version = Version + " " + Beta;
 
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
@@ -1401,9 +1401,9 @@ void screencast::error( QProcess::ProcessError error )
   // Noch nicht getestet
   if ( error == QProcess::FailedToStart )
   {
-    qDebug() << "Der Prozess konnte nicht gestartet werden. Entweder ist das aufgerufene Programm nicht installiert, oder der ffmpeg Aufruf ist Fehlerhaft oder Sie haben nicht über ausreichende Berechtigungen um das Programm aufzurufen.";
+    qDebug() << "The process could not be started. Either the is called program is not installed, or the ffmpeg or avconv call Faulty or you have not over sufficient permissions to to the program.";
     QMessageBox msgBox;
-    msgBox.setText("Der Prozess konnte nicht gestartet werden. Entweder ist das aufgerufene Programm nicht installiert, oder der ffmpeg Aufruf ist Fehlerhaft oder Sie haben nicht über ausreichende Berechtigungen um das Programm aufzurufen.");
+    msgBox.setText( "The process could not be started. Either the is called program is not installed, or the ffmpeg or avconv call Faulty or you have not over sufficient permissions to to the program." );
     msgBox.exec();
   }
 }

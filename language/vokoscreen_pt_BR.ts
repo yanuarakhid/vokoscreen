@@ -3,53 +3,53 @@
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
-        <translation type="unfinished"/>
+        <translation>Enviar último vídeo</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation type="unfinished"/>
+        <translation>Enviar um ou mais Vídeos selecionados</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"/>
+        <translation>Enviar</translation>
     </message>
     <message>
         <source>You find the Video as attachment</source>
-        <translation type="unfinished"/>
+        <translation>Você encontra o Vídeo como anexo</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation type="unfinished"/>
+        <translation>Selecione um ou mais arquivos</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation type="unfinished"/>
+        <translation>Sem borda</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation type="unfinished"/>
+        <translation>Borda</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Fechar</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamController</name>
     <message>
         <source>Webcam</source>
-        <translation type="unfinished"/>
+        <translation>Webcam</translation>
     </message>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"/>
+        <translation>Dispositivo está ocupado</translation>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"/>
+        <translation>Selecione webcam</translation>
     </message>
 </context>
 <context>
@@ -72,27 +72,27 @@
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"/>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Alsa</source>
-        <translation type="unfinished"/>
+        <translation>Alsa</translation>
     </message>
     <message>
         <source>Pulse</source>
-        <translation type="unfinished"/>
+        <translation>Pulse</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation type="unfinished"/>
+        <translation>Padrão</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation type="unfinished"/>
+        <translation>Codec</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"/>
+        <translation>Não gravar o cursor do mouse</translation>
     </message>
     <message>
         <source>Videopath</source>
@@ -100,7 +100,7 @@
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"/>
+        <translation>Player</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
@@ -120,31 +120,31 @@
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>Reproduzir</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"/>
+        <translation>Enviar</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation type="unfinished"/>
+        <translation>Tempo de Gravação</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation type="unfinished"/>
+        <translation>Tamanho em KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"/>
+        <translation>Tamanho da tela de Gravação</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>Formato</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation type="unfinished"/>
+        <translation>Configurações de FPS</translation>
     </message>
     <message>
         <source>Open Directory</source>
@@ -156,23 +156,23 @@
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"/>
+        <translation>Contagem Regressiva</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation type="unfinished"/>
+        <translation>Reproduzir último Vídeo</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"/>
+        <translation>Enviar Vídeo</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"/>
+        <translation>Selecione um mais dispositivos</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>Frames por segundo</translation>
     </message>
     <message>
         <source>Device %1 is busy</source>
@@ -180,51 +180,51 @@
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
-        <translation type="unfinished"/>
+        <translation>Suas configurações de Frames por Segundo estão muito altas</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"/>
+        <translation>Ir</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Homepage</translation>
     </message>
     <message>
         <source>Mailinglist</source>
-        <translation type="unfinished"/>
+        <translation>Lista de Email</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>Suporte</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>Desenvolvedor</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"/>
+        <translation>Frames</translation>
     </message>
     <message>
         <source>Beta openSUSE</source>
-        <translation type="unfinished"/>
+        <translation>Beta openSUSE</translation>
     </message>
     <message>
         <source>Beta Ubuntu</source>
-        <translation type="unfinished"/>
+        <translation>Beta Ubuntu</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"/>
+        <translation>Doações</translation>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation type="unfinished"/>
+        <translation>Programa para gravação</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"/>
+        <translation>Traduções</translation>
     </message>
 </context>
 </TS>

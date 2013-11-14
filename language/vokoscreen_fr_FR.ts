@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner la webcam</translation>
     </message>
 </context>
 <context>
@@ -136,7 +136,7 @@
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Enregistrement de la taille de l&apos;écran</translation>
+        <translation>Taille d&apos;écran de l&apos;enregistrement</translation>
     </message>
     <message>
         <source>Format</source>
@@ -156,15 +156,15 @@
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"/>
+        <translation>Compte à rebours</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Jouez dernière vidéo</translation>
+        <translation>Jouer la dernière vidéo</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"/>
+        <translation>Envoyer la vidéo</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
@@ -172,7 +172,7 @@
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Frames par secondes actuelles</translation>
+        <translation>Images par secondes actuelles</translation>
     </message>
     <message>
         <source>Device %1 is busy</source>
@@ -180,7 +180,7 @@
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
-        <translation type="unfinished"/>
+        <translation>Votre nombre d&apos;images par seconde dans les paramètres est trop élevé</translation>
     </message>
     <message>
         <source>Go</source>
@@ -188,43 +188,43 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Page d&apos;accueil</translation>
     </message>
     <message>
         <source>Mailinglist</source>
-        <translation type="unfinished"/>
+        <translation>Liste de diffusion</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>Support</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>Développeur</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"/>
+        <translation>Images</translation>
     </message>
     <message>
         <source>Beta openSUSE</source>
-        <translation type="unfinished"/>
+        <translation>Bêta openSUSE</translation>
     </message>
     <message>
         <source>Beta Ubuntu</source>
-        <translation type="unfinished"/>
+        <translation>Bêta Ubuntu</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"/>
+        <translation>Faire un don</translation>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation type="unfinished"/>
+        <translation>Programme pour l&apos;enregistrement</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"/>
+        <translation>Traductions</translation>
     </message>
 </context>
 </TS>

@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"/>
+        <translation>Web kamera seç</translation>
     </message>
 </context>
 <context>
@@ -180,51 +180,51 @@
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
-        <translation type="unfinished"/>
+        <translation>Aktif pencelereler ayarlar için çok yüksek</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"/>
+        <translation>Git</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Ana Sayfa</translation>
     </message>
     <message>
         <source>Mailinglist</source>
-        <translation type="unfinished"/>
+        <translation>Eposta listesi</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>Destek</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>Geliştirici</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"/>
+        <translation>Çerçeveler</translation>
     </message>
     <message>
         <source>Beta openSUSE</source>
-        <translation type="unfinished"/>
+        <translation>Beta openSUSE</translation>
     </message>
     <message>
         <source>Beta Ubuntu</source>
-        <translation type="unfinished"/>
+        <translation>Beta Ubuntu</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"/>
+        <translation>Yardım et</translation>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation type="unfinished"/>
+        <translation>Kayıt programı</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"/>
+        <translation>Çeviriler</translation>
     </message>
 </context>
 </TS>

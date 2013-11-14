@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"/>
+        <translation>Esbillar cámara web</translation>
     </message>
 </context>
 <context>
@@ -184,47 +184,47 @@
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"/>
+        <translation>DIr</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Páxina d&apos;aniciu</translation>
     </message>
     <message>
         <source>Mailinglist</source>
-        <translation type="unfinished"/>
+        <translation>Lllista de corréu</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>Sofitu</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>Desendolcador</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"/>
+        <translation>Frames</translation>
     </message>
     <message>
         <source>Beta openSUSE</source>
-        <translation type="unfinished"/>
+        <translation>Beta openSUSE</translation>
     </message>
     <message>
         <source>Beta Ubuntu</source>
-        <translation type="unfinished"/>
+        <translation>Beta Ubuntu</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"/>
+        <translation>Donar</translation>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation type="unfinished"/>
+        <translation>Programa pa grabar</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"/>
+        <translation>Tornes</translation>
     </message>
 </context>
 </TS>
