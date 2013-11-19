@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.8.1";  
+    Version = "1.8.2";  
     Version = Version + " " + Beta;
 
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
@@ -1046,44 +1046,36 @@ QString getFileWithPath( QString ProgName )
 void screencast::searchExternalPrograms()
 {
   qDebug() << "[vokoscreen]" << "---Begin Search external tools---";
-/*  
-  if ( needProgram("ffmpeg") )
-     qDebug() << "[vokoscreen]" << "Find ffmpeg";
-  else
-     qDebug() << "[vokoscreen]" << "Error: ffmpeg is not found, this is an ffmpeg tool. Please install ffmpeg";
-*/
-    QString Prog = "ffmpeg";
-    QFileInfo info( getFileWithPath( Prog ) );
-    if ( info.isSymLink() )
+
+  QString Prog = "ffmpeg";
+  QFileInfo info( getFileWithPath( Prog ) );
+  if ( info.isSymLink() )
+  {
+    QString fileName = info.symLinkTarget();  
+    QFileInfo fileInfo( fileName );
+    qDebug() << "[vokoscreen]" << getFileWithPath( Prog ) << "is a link and pointing to"<< fileName;
+    if ( fileInfo.baseName() == "avconv" )
     {
-      QString fileName = info.symLinkTarget();  
-      QFileInfo fileInfo( fileName );
-      qDebug() << "[vokoscreen]" << getFileWithPath( Prog ) << "is a link and pointing to"<< fileName;
-      if ( fileInfo.baseName() == "avconv" )
-      {
-        recordApplikation = "avconv";
-	qDebug() << "[vokoscreen] use avconv";
-      }
+      recordApplikation = "avconv";
+      qDebug() << "[vokoscreen] use avconv";
+     }
+  }
+  else
+  {
+    if ( needProgram( "avconv" ) )
+    {
+      recordApplikation = "avconv";
+      qDebug() << "[vokoscreen]" << "Find avconv";
     }
     else
     {
-     if ( needProgram( "ffmpeg" ) )
-     {
+      if ( needProgram( "ffmpeg" ) )
+      {
         recordApplikation = "ffmpeg";
         qDebug() << "[vokoscreen]" << "Find ffmpeg";
-     }
-     else
-     {
-       if ( needProgram( "avconv" ) )
-       {
-          recordApplikation = "avconv";
-          qDebug() << "[vokoscreen]" << "Find avconv";
-       }
-     }
+      }
     }
-  
-  
-  
+  }
   
   if ( needProgram("pactl") )
      qDebug() << "[vokoscreen]" << "Find pactl";
