@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.8.2";  
+    Version = "1.8.4";  
     Version = Version + " " + Beta;
 
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
@@ -332,8 +332,6 @@ screencast::screencast()
     labelDonateUrl->setOpenExternalLinks( true );
     labelDonateUrl->setAlignment( Qt::AlignCenter );    
     labelDonateUrl->show();
-    //labelDonateUrl->setAutoFillBackground( true ); //******************
-    //labelDonateUrl->setPalette( palette );         //******************
 
     // End Tabs *************************************************************
 
@@ -346,11 +344,6 @@ screencast::screencast()
     recordButton->setFont( qfont );
     recordButton->setGeometry( 170, 200, 70, 30 );
     recordButton->show();
-/*    if ( needProgram( "ffmpeg" ) )  *************************************************************************************
-      recordButton->setEnabled( true );
-    else
-      recordButton->setEnabled( false );
-*/
     connect( recordButton, SIGNAL( clicked() ), SLOT( preRecord() ) );
 
     StopButton = new QPushButton( centralWidget );
@@ -1924,26 +1917,6 @@ QString screencast::NameInMoviesLocation()
 }
 
 
-/*
-QString screencast::NameInMoviesLocation()
-{
-  QString myFilename = "screencast";
-  QString myFilenameExtension = "." + VideoContainerComboBox->currentText();
-  QString myName = PathMoviesLocation() + QDir::separator() + myFilename + myFilenameExtension;
-
-  QFile *myFile = new QFile( myName );
-  uint x = 0;
-  do
-  {
-    x++;
-    myFile->setFileName( PathMoviesLocation() + QDir::separator() + myFilename + "-" + QString().number(x) + myFilenameExtension );
-    myName = myFile->fileName();
-  } while ( myFile->exists() );
-
-  return myFilename + "-" + QString().number(x) + myFilenameExtension;
-}
-*/
-
 /**
  * Return the new pausename
  */
@@ -2146,12 +2119,10 @@ QString screencast::myAcodec()
 {
   QString acodec;
   if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( AlsaRadioButton->isChecked() ) and ( AlsaHwComboBox->currentText() > "" ) )
-     //return " -acodec libvorbis";
      return " -acodec libmp3lame";
 
   
   if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( PulseDeviceRadioButton->isChecked() ) and ( myPulseDevice() > "" ) )
-     //return " -acodec libvorbis";
      return " -acodec libmp3lame";
  
   return "";
