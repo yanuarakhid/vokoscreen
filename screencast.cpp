@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.8.4";  
+    Version = "1.8.5";  
     Version = Version + " " + Beta;
 
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
@@ -52,7 +52,7 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "Qt Version: " << qVersion();
     QvkAlsaDevice inBox ;
     qDebug() << "[vokoscreen]" << "asoundlib Version:" << inBox.getAlsaVersion();
-    qDebug() << "[vokoscreen]" << "ffmpeg Version:" << getFfmpegVersion();
+    //qDebug() << "[vokoscreen]" << "ffmpeg Version:" << getFfmpegVersion();
     qDebug();
     
     searchExternalPrograms();
@@ -1050,7 +1050,7 @@ void screencast::searchExternalPrograms()
     if ( fileInfo.baseName() == "avconv" )
     {
       recordApplikation = "avconv";
-      qDebug() << "[vokoscreen] use avconv";
+      qDebug() << "[vokoscreen] use avconv as ffmpeg-link";
      }
   }
   else
@@ -1058,14 +1058,14 @@ void screencast::searchExternalPrograms()
     if ( needProgram( "avconv" ) )
     {
       recordApplikation = "avconv";
-      qDebug() << "[vokoscreen]" << "Find avconv";
+      qDebug() << "[vokoscreen]" << "Find avconv" << "Version:" << getAvconvVersion();
     }
     else
     {
       if ( needProgram( "ffmpeg" ) )
       {
         recordApplikation = "ffmpeg";
-        qDebug() << "[vokoscreen]" << "Find ffmpeg";
+        qDebug() << "[vokoscreen]" << "Find ffmpeg" << "Version:" << getFfmpegVersion();
       }
     }
   }
@@ -1532,6 +1532,20 @@ void screencast::play()
     QProcess *SystemCall = new QProcess( this );
     SystemCall->start( player + " " + PathMoviesLocation() + QDir::separator() + List.at( 0 ) );
   }
+}
+
+
+QString screencast::getAvconvVersion()
+{
+  QProcess Process;
+  Process.start("avconv -version");
+  Process.waitForFinished();
+  QString avconvVersion = Process.readAllStandardOutput();
+  Process.close();
+
+  QStringList list = avconvVersion.split( "\n" );
+  list = list[ 0 ].split( " " );
+  return list[ 1 ];
 }
 
 
@@ -2450,7 +2464,11 @@ void screencast::record()
   stream << "Record resolution: " << getRecordWidth() << "x" << getRecordHeight() << "\n";
   stream << "Alsa string: " << myAlsa() << "\n";
   stream << "Qt Version: " << qVersion() << "\n";
-  stream << "ffmpeg Version: " << getFfmpegVersion() << "\n";
+  if ( recordApplikation == "ffmpeg" )
+    stream << "ffmpeg Version: " << getFfmpegVersion() << "\n";
+  if ( recordApplikation == "avconv" )
+    stream << "avconv Version: " << getAvconvVersion() << "\n";
+    
   stream << "Record String: " << ffmpegString << PathMoviesLocation() << QDir::separator() << nameInMoviesLocation << "\n";
 }
 

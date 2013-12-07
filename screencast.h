@@ -54,6 +54,7 @@ public:
     screencast();
     virtual ~screencast();
     QString getFfmpegVersion();
+    QString getAvconvVersion();
     QString ProgName;
     QString Version;
     QString email;
