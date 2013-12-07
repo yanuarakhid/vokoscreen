@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"/>
+        <translation>Wybierz kamerę</translation>
     </message>
 </context>
 <context>
@@ -184,7 +184,7 @@
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"/>
+        <translation>Wznów</translation>
     </message>
     <message>
         <source>Homepage</source>
@@ -216,15 +216,15 @@
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"/>
+        <translation>Darowizna</translation>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation type="unfinished"/>
+        <translation>Program nagrywający</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"/>
+        <translation>Tłumaczenia</translation>
     </message>
 </context>
 </TS>

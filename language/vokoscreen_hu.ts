@@ -92,7 +92,7 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Nem rögzíti a kurzort</translation>
+        <translation>Egérmutató elrejtése</translation>
     </message>
     <message>
         <source>Videopath</source>
@@ -172,15 +172,15 @@
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Aktuális frames per second</translation>
+        <translation>Képkockák száma másodpercenként</translation>
     </message>
     <message>
         <source>Device %1 is busy</source>
-        <translation>Eszközfoglaltság %1</translation>
+        <translation>%1 eszköz foglalt</translation>
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
-        <translation>Your Actual frames in the Settings is too heigh</translation>
+        <translation>A beállított képkockaszám túl magas</translation>
     </message>
     <message>
         <source>Go</source>
@@ -188,7 +188,7 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Homepage</translation>
+        <translation>Weboldal</translation>
     </message>
     <message>
         <source>Mailinglist</source>
@@ -196,15 +196,15 @@
     </message>
     <message>
         <source>Support</source>
-        <translation>Support</translation>
+        <translation>Támogatás</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation>Developer</translation>
+        <translation>Fejlesztés</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Képkocka</translation>
     </message>
     <message>
         <source>Beta openSUSE</source>
@@ -216,11 +216,11 @@
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donate</translation>
+        <translation>Adományozás</translation>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation>Program for recording</translation>
+        <translation>Képrögzítő program</translation>
     </message>
     <message>
         <source>Translations</source>

@@ -2445,7 +2445,6 @@ void screencast::record()
 
   clickedRecordButtonScreenSize();
   
-//  ffmpegString = "/usr/bin/ffmpeg "
   ffmpegString = recordApplikation + " "
                + myReport
                + myAlsa()
@@ -2458,8 +2457,8 @@ void screencast::record()
 	       + " -i :0.0+"
 	       + deltaX + "," 
 	       + deltaY
-	       + " -pix_fmt yuv420p" // Neu das funktioniert sehr gut, ohne ca. 80 fps, mit 99fps bei eingestellten 99fps und preset medium aber nur unter opensuse, unter Ubuntu 13.04 keine Veränderung
                + noMouse()
+	       + " -pix_fmt yuv420p" // Neu das funktioniert sehr gut, ohne ca. 80 fps, mit 99fps bei eingestellten 99fps und preset medium aber nur unter opensuse, unter Ubuntu 13.04 keine Veränderung
 	       + " -vcodec "
 	       + myVcodec
        	       + myAcodec()
