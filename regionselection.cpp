@@ -917,7 +917,8 @@ void regionselection::moveTopRight( QMouseEvent *event )
     mouseGlobalY = widgetY + currentMouseLocalY;
   
   QDesktopWidget *desk = QApplication::desktop();
-  if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+  //if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+  if ( mouseGlobalX + currentMouseRightLocalX > desk->width() )
     mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
   
   // Neue Geometry des Fenster setzen
@@ -945,7 +946,8 @@ void regionselection::moveRightMiddle( QMouseEvent *event )
 
   // Maximale größe begrenzen
   QDesktopWidget *desk = QApplication::desktop();
-  if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+  //if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+  if ( mouseGlobalX + currentMouseRightLocalX > desk->width() )
     mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
   
   this->setGeometry( widgetX,
@@ -976,10 +978,12 @@ void regionselection::moveBottomRight( QMouseEvent *event )
   
   // Maximale größe begrenzen
   QDesktopWidget *desk = QApplication::desktop();
-  if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+  //if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+  if ( mouseGlobalX + currentMouseRightLocalX > desk->width() )
     mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
   
-  if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+  //if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+  if ( mouseGlobalY + currentMouseRightLocalY > desk->height() )
     mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
   
   this->setGeometry( widgetX,
@@ -1006,7 +1010,8 @@ void regionselection::moveBottomMiddle( QMouseEvent *event )
   
   // Maximale größe begrenzen
   QDesktopWidget *desk = QApplication::desktop();
-  if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+  //if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+  if ( mouseGlobalY + currentMouseRightLocalY > desk->height() )
     mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
 
   this->setGeometry( widgetX,
@@ -1040,7 +1045,8 @@ void regionselection::moveBottomLeft( QMouseEvent *event )
     mouseGlobalX = widgetX + currentMouseLocalX;
 
   QDesktopWidget *desk = QApplication::desktop();
-  if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+  //if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+  if ( mouseGlobalY + currentMouseRightLocalY > desk->height() )
     mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
   
   this->setGeometry( mouseGlobalX - currentMouseLocalX,
@@ -1099,11 +1105,13 @@ void regionselection::moveMiddle( QMouseEvent *event )
   
     // Right
     //QDesktopWidget *desk = QApplication::desktop();
-    if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+    //if ( mouseGlobalX + currentMouseRightLocalX > desk->screenGeometry().width() )
+    if ( mouseGlobalX + currentMouseRightLocalX > desk->width() )
       mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
   
     // Bottom
-    if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+    //if ( mouseGlobalY + currentMouseRightLocalY > desk->screenGeometry().height() )
+    if ( mouseGlobalY + currentMouseRightLocalY > desk->height() )
       mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
     
     // Left
