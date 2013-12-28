@@ -28,7 +28,7 @@ screencast::screencast()
       Beta = "";
 
     ProgName = "vokoscreen";
-    Version = "1.8.5";  
+    Version = "1.8.6";  
     Version = Version + " " + Beta;
 
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
@@ -620,19 +620,23 @@ screencast::screencast()
 
    // Abfrage einbauen ob Systemtray existiert
 
-   SystemTrayIconGreen = new QSystemTrayIcon( QIcon ( ":/pictures/start.png" ) );
+   //SystemTrayIconGreen = new QSystemTrayIcon( QIcon ( ":/pictures/start.png" ) );
+   SystemTrayIconGreen = new QSystemTrayIcon( QIcon::fromTheme( "media-playback-start", QIcon( ":/pictures/start.png" ) ) );
    SystemTrayIconGreen->show();
    SystemTrayIconGreen->setToolTip( tr( "Start" ) );
    
-   SystemTrayIconRed = new QSystemTrayIcon( QIcon ( ":/pictures/stop.png" ) );
+   //SystemTrayIconRed = new QSystemTrayIcon( QIcon ( ":/pictures/stop.png" ) );
+   SystemTrayIconRed = new QSystemTrayIcon( QIcon::fromTheme( "media-playback-stop", QIcon ( ":/pictures/stop.png" ) ) );
    SystemTrayIconRed->hide();
    SystemTrayIconRed->setToolTip( tr( "Stop" ) );
    
-   SystemTrayIconYellow = new QSystemTrayIcon( QIcon ( ":/pictures/pause.png" ) );
+   //SystemTrayIconYellow = new QSystemTrayIcon( QIcon ( ":/pictures/pause.png" ) );
+   SystemTrayIconYellow = new QSystemTrayIcon( QIcon::fromTheme( "media-playback-pause", QIcon ( ":/pictures/pause.png" ) ) );
    SystemTrayIconYellow->hide();
    SystemTrayIconYellow->setToolTip( tr( "Pause" ) );
 
-   SystemTrayIconBlue = new QSystemTrayIcon( QIcon ( ":/pictures/go.png" ) );
+   //SystemTrayIconBlue = new QSystemTrayIcon( QIcon ( ":/pictures/go.png" ) );
+   SystemTrayIconBlue = new QSystemTrayIcon( QIcon::fromTheme( "media-skip-forward", QIcon ( ":/pictures/go.png" ) ) );
    SystemTrayIconBlue->hide();
    SystemTrayIconBlue->setToolTip( tr( "Go" ) );
 
