@@ -184,7 +184,7 @@
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"/>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Homepage</source>
