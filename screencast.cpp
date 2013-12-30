@@ -23,13 +23,13 @@ screencast::screencast()
     bool beta = false;
     QString Beta;
     if ( beta )
-      Beta = "Beta"; 
+      Beta = " Beta"; 
     else
       Beta = "";
 
     ProgName = "vokoscreen";
     Version = "1.8.6";  
-    Version = Version + " " + Beta;
+    Version = Version + Beta;
 
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
     
@@ -312,16 +312,23 @@ screencast::screencast()
     labelLanguageUrl->setAlignment( Qt::AlignCenter );    
     labelLanguageUrl->show();
     
+    QLabel* labelSourcecodeUrl = new QLabel( TabWidgetAboutFrame );
+    labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreen'>" + tr( "Sourcecode" ) + "</a>" );
+    labelSourcecodeUrl->setGeometry( rightSide, 30, labelWidth, 22 );
+    labelSourcecodeUrl->setOpenExternalLinks( true );
+    labelSourcecodeUrl->setAlignment( Qt::AlignCenter );    
+    labelSourcecodeUrl->show();
+    
     QLabel* labelOpensuseBetaUrl = new QLabel( TabWidgetAboutFrame );
     labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Beta openSUSE" ) + "</a>" );
-    labelOpensuseBetaUrl->setGeometry( rightSide, 30, labelWidth, 22 );
+    labelOpensuseBetaUrl->setGeometry( rightSide, 50, labelWidth, 22 );
     labelOpensuseBetaUrl->setOpenExternalLinks( true );
     labelOpensuseBetaUrl->setAlignment( Qt::AlignCenter );    
     labelOpensuseBetaUrl->show();
 
     QLabel* labelUbuntuBetaUrl = new QLabel( TabWidgetAboutFrame );
     labelUbuntuBetaUrl->setText( "<a href='http://ppa.launchpad.net/vokoscreen-dev/vokoscreen-daily/ubuntu/pool/main/v/vokoscreen/'>" + tr( "Beta Ubuntu" ) + "</a>" );
-    labelUbuntuBetaUrl->setGeometry( rightSide, 50, labelWidth, 22 );
+    labelUbuntuBetaUrl->setGeometry( rightSide, 70, labelWidth, 22 );
     labelUbuntuBetaUrl->setOpenExternalLinks( true );
     labelUbuntuBetaUrl->setAlignment( Qt::AlignCenter );    
     labelUbuntuBetaUrl->show();
