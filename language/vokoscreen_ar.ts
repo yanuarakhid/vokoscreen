@@ -226,5 +226,9 @@
         <source>Translations</source>
         <translation>الترجمات</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 </TS>

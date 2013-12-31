@@ -39,6 +39,11 @@ array='<file>'$( ls -al language/*.ts | sed 's/ \+/ /g' | cut -d " " -f 9 | sed 
 # ":" is separatorr
 echo $array | sed 's: :</file>\n<file>:g' >> screencast.qrc
 sed -i 's/.ts/.qm/g' screencast.qrc
+
+#########
+# VERSION
+#########
+echo '<file>VERSION</file>' >> screencast.qrc
 echo '</qresource>' >> screencast.qrc
 echo '</RCC>'  >> screencast.qrc
 

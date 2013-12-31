@@ -1,5 +1,5 @@
 /* vokoscreen - A desktop recorder
- * Copyright (C) 2011-2013 Volker Kohaupt
+ * Copyright (C) 2011-2014 Volker Kohaupt
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,16 +20,18 @@ using namespace std;
 
 screencast::screencast()
 {
-    bool beta = false;
-    QString Beta;
-    if ( beta )
-      Beta = " Beta"; 
-    else
-      Beta = "";
-
-    ProgName = "vokoscreen";
-    Version = "1.8.6";  
-    Version = Version + Beta;
+    QSettings versionSettings(":/VERSION", QSettings::IniFormat );
+    versionSettings.beginGroup("Info");
+      bool beta = versionSettings.value( "Beta" ).toBool();
+      QString Beta;
+      if ( beta )
+        Beta = " Beta"; 
+      else
+        Beta = "";
+      
+      ProgName = versionSettings.value( "Progname" ).toString();
+      Version = versionSettings.value( "Version" ).toString() + Beta;
+    versionSettings.endGroup();
 
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
     
