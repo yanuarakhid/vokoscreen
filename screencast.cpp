@@ -260,11 +260,18 @@ screencast::screencast()
     VideoplayerComboBox->show();
 
     MinimizedCheckBox = new QCheckBox( TabWidgetMiscellaneousFrame );
-    MinimizedCheckBox->setGeometry( 30, 90, 350, 25 );
+    MinimizedCheckBox->setGeometry( 30, 85, 350, 25 );
     MinimizedCheckBox->setText( tr( "Vokoscreen minimized when recording starts" ) );
     MinimizedCheckBox->show();
+    
+    SystrayCheckBox = new QCheckBox( TabWidgetMiscellaneousFrame );
+    SystrayCheckBox->setGeometry( 30, 110, 350, 25 );
+    SystrayCheckBox->setText( tr( "Show in systray" ) );
+    SystrayCheckBox->setCheckState( Qt::Checked );
+    SystrayCheckBox->show();
+    connect( SystrayCheckBox, SIGNAL( stateChanged( int ) ), SLOT( stateChangedSystray( int ) ) );
 
-    // Tab 6 About *********************************************************
+    // Tab 5 About *********************************************************
     QFrame *TabWidgetAboutFrame = new QFrame(this);
     TabWidgetAboutFrame->show();
     tabWidget->addTab( TabWidgetAboutFrame, "" );
@@ -278,7 +285,6 @@ screencast::screencast()
     int leftSide = 0;
     int rightSide = tabWidget->width() / 2;
     
-    //QLabel* labelWebSite = new QLabel( TabWidgetAboutFrame );
     QLabel* labelWebSite = new QLabel( TabWidgetAboutFrame );
     labelWebSite->setGeometry( leftSide, 10, labelWidth, 22 );
     labelWebSite->setText( homepage );
@@ -627,28 +633,23 @@ screencast::screencast()
    AudioOnOff();
    pulseUnloadModule();
 
-   // Abfrage einbauen ob Systemtray existiert
-
-   //SystemTrayIconGreen = new QSystemTrayIcon( QIcon ( ":/pictures/start.png" ) );
    SystemTrayIconGreen = new QSystemTrayIcon( QIcon::fromTheme( "media-playback-start", QIcon( ":/pictures/start.png" ) ) );
-   SystemTrayIconGreen->show();
    SystemTrayIconGreen->setToolTip( tr( "Start" ) );
    
-   //SystemTrayIconRed = new QSystemTrayIcon( QIcon ( ":/pictures/stop.png" ) );
    SystemTrayIconRed = new QSystemTrayIcon( QIcon::fromTheme( "media-playback-stop", QIcon ( ":/pictures/stop.png" ) ) );
-   SystemTrayIconRed->hide();
    SystemTrayIconRed->setToolTip( tr( "Stop" ) );
    
-   //SystemTrayIconYellow = new QSystemTrayIcon( QIcon ( ":/pictures/pause.png" ) );
    SystemTrayIconYellow = new QSystemTrayIcon( QIcon::fromTheme( "media-playback-pause", QIcon ( ":/pictures/pause.png" ) ) );
-   SystemTrayIconYellow->hide();
    SystemTrayIconYellow->setToolTip( tr( "Pause" ) );
-
-   //SystemTrayIconBlue = new QSystemTrayIcon( QIcon ( ":/pictures/go.png" ) );
+   
    SystemTrayIconBlue = new QSystemTrayIcon( QIcon::fromTheme( "media-skip-forward", QIcon ( ":/pictures/go.png" ) ) );
-   SystemTrayIconBlue->hide();
    SystemTrayIconBlue->setToolTip( tr( "Go" ) );
 
+   settings.beginGroup( "GUI" );
+      SystrayCheckBox->setCheckState( Qt::CheckState( settings.value( "Systray", 2 ).toUInt() ) );
+      stateChangedSystray( Qt::CheckState( settings.value( "Systray", 2 ).toUInt() ) );
+   settings.endGroup();
+   
    connect( SystemTrayIconGreen,  SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStart( QSystemTrayIcon::ActivationReason ) ) );
    connect( SystemTrayIconRed,    SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStop( QSystemTrayIcon::ActivationReason ) ) );
    connect( SystemTrayIconYellow, SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayPause( QSystemTrayIcon::ActivationReason ) ) );
@@ -687,6 +688,25 @@ screencast::screencast()
 
 screencast::~screencast()
 {
+}
+
+
+void screencast::stateChangedSystray( int state )
+{
+  if ( state == Qt::Unchecked )
+  {
+    SystemTrayIconGreen->hide();
+    SystemTrayIconRed->hide();
+    SystemTrayIconYellow->hide();
+    SystemTrayIconBlue->hide();
+  }
+  if ( state == Qt::Checked )
+  {
+    SystemTrayIconGreen->show();
+    SystemTrayIconRed->hide();
+    SystemTrayIconYellow->hide();
+    SystemTrayIconBlue->hide();
+  }
 }
 
 
@@ -938,6 +958,7 @@ void screencast::saveSettings()
     settings.setValue( "X", x() );
     settings.setValue( "Y", y() );
     settings.setValue( "Tab", tabWidget->currentIndex() );
+    settings.setValue( "Systray", SystrayCheckBox->checkState() );
   settings.endGroup();
   
   settings.beginGroup( "Area" );
@@ -1243,11 +1264,14 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       TabWidgetAudioFrame->setEnabled(false);
       TabWidgetMiscellaneousFrame->setEnabled(false);
       TabWidgetVideoOptionFrame->setEnabled( false );
-
-      SystemTrayIconGreen->hide();
-      SystemTrayIconYellow->show();      
-      SystemTrayIconRed->show();
-      SystemTrayIconBlue->hide();
+      
+      if ( SystrayCheckBox->checkState() == Qt::Checked )
+      {
+        SystemTrayIconGreen->hide();
+        SystemTrayIconYellow->show();      
+        SystemTrayIconRed->show();
+        SystemTrayIconBlue->hide();
+      }
     }
   
     if ((newState == QProcess::NotRunning) and (pause == false))
@@ -1263,10 +1287,13 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       TabWidgetMiscellaneousFrame->setEnabled(true);
       TabWidgetVideoOptionFrame->setEnabled( true );
       
-      SystemTrayIconGreen->show();
-      SystemTrayIconYellow->hide();
-      SystemTrayIconRed->hide();      
-      SystemTrayIconBlue->hide();
+      if ( SystrayCheckBox->checkState() == Qt::Checked )
+      {
+	SystemTrayIconGreen->show();
+        SystemTrayIconYellow->hide();
+        SystemTrayIconRed->hide();      
+        SystemTrayIconBlue->hide();
+      }
       
       if ( MagnifierCheckBox->isChecked() )
 	MagnifierCheckBox->click();
@@ -1286,10 +1313,13 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       TabWidgetMiscellaneousFrame->setEnabled(false);
       TabWidgetVideoOptionFrame->setEnabled( false );
 
-      SystemTrayIconGreen->hide();
-      SystemTrayIconRed->hide();
-      SystemTrayIconYellow->hide();
-      SystemTrayIconBlue->show();
+      if ( SystrayCheckBox->checkState() == Qt::Checked )
+      {
+        SystemTrayIconGreen->hide();
+        SystemTrayIconRed->hide();
+        SystemTrayIconYellow->hide();
+        SystemTrayIconBlue->show();
+      }
     }
 
     if ((newState == QProcess::Running) and (pause == true) and ( not PauseButton->isChecked() ))
@@ -1305,11 +1335,14 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       TabWidgetAudioFrame->setEnabled(false);
       TabWidgetMiscellaneousFrame->setEnabled(false);
       TabWidgetVideoOptionFrame->setEnabled( false );
-      
-      SystemTrayIconGreen->hide();
-      SystemTrayIconYellow->show();      
-      SystemTrayIconRed->show();
-      SystemTrayIconBlue->hide();
+
+      if ( SystrayCheckBox->checkState() == Qt::Checked )
+      {      
+        SystemTrayIconGreen->hide();
+        SystemTrayIconYellow->show();      
+        SystemTrayIconRed->show();
+        SystemTrayIconBlue->hide();
+      }
     }
       
     if ( ( newState == QProcess::NotRunning ) and ( pause == true ) and ( not PauseButton->isChecked() ) )
@@ -1324,11 +1357,14 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       TabWidgetAudioFrame->setEnabled(true);
       TabWidgetMiscellaneousFrame->setEnabled(true);
       TabWidgetVideoOptionFrame->setEnabled( true );
-      
-      SystemTrayIconGreen->show();
-      SystemTrayIconRed->hide();
-      SystemTrayIconYellow->hide();
-      SystemTrayIconBlue->hide();
+
+      if ( SystrayCheckBox->checkState() == Qt::Checked )
+      {
+        SystemTrayIconGreen->show();
+        SystemTrayIconRed->hide();
+        SystemTrayIconYellow->hide();
+        SystemTrayIconBlue->hide();
+      }
     }
        
     if (newState == QProcess::Running)

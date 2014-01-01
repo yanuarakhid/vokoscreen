@@ -232,5 +232,9 @@
         <source>Sourcecode</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

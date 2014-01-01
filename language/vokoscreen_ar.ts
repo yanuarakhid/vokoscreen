@@ -228,7 +228,7 @@
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"/>
+        <translation>الملف المصدري</translation>
     </message>
 </context>
 </TS>

@@ -132,7 +132,8 @@ private slots:
     void saveSettings();
     
     void WindowMinimized();
-    
+
+    void stateChangedSystray( int );
     void SystemTrayStart( QSystemTrayIcon::ActivationReason );
     void SystemTrayStop( QSystemTrayIcon::ActivationReason );
     void SystemTrayPause( QSystemTrayIcon::ActivationReason reason );
@@ -208,6 +209,7 @@ private:
     QScrollArea *scrollAreaPulse;
     QCheckBox *namePulse;
     
+    QCheckBox *SystrayCheckBox;
     QSystemTrayIcon *SystemTrayIconGreen;
     QSystemTrayIcon *SystemTrayIconRed;
     QSystemTrayIcon *SystemTrayIconYellow;
