@@ -27,15 +27,6 @@ QvkWebcamController::QvkWebcamController( QWidget * value )
   }
 
   vkWebcam = new QvkWebcam();
-  QSettings settings( "vokoscreen", "vokoscreen" );   
-  settings.beginGroup( "Webcam" );
-    vkWebcam->setDeviceNumber( settings.value( "Number", 0 ).toUInt() );
-    comboBoxCount->setCurrentIndex( vkWebcam->getDeviceNumber() );
-  settings.endGroup();
-  
-  //vkWebcam->setDeviceNumber( comboBoxCount->currentText().toUInt() );
-  //comboBoxCount->setCurrentIndex( vkWebcam->getDeviceNumber() );
-  
   connect( vkWebcam, SIGNAL( closeWebcam() ), this, SLOT( webcamCloseEvent() ) );
   //qDebug() << "End QvkWebcamController::QvkWebcamController( QWidget * value ) ***************************";
   
@@ -107,7 +98,7 @@ void QvkWebcamController::webcamChangedEvent( QStringList deviceList )
   comboBoxCount->clear();
   for( int x = 0; x < myWebcamWatcher->getWebcamCount(); x++ )
   {
-    comboBoxCount->addItem( QString::number( x ) );
+    comboBoxCount->addItem( deviceList[x].right( 1 ) );
   }
 
   if ( deviceList.empty() )
@@ -146,7 +137,8 @@ void QvkWebcamController::webcamCloseEvent()
 void QvkWebcamController::webcam()
 {
   //qDebug() << "Begin void QvkWebcamController::webcam() ***************************";
-  
+  vkWebcam->setDeviceNumber( comboBoxCount->currentText().toUInt() );
+
   if ( vkWebcam->isVisible() )
   {
   }

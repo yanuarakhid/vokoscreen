@@ -91,4 +91,5 @@ void QvkWebcamWatcher::myfileSystemWatcher( QString path )
   
   if ( oldDeviceList.count() != deviceList.count() )
     oldDeviceList = deviceList;
+  
 }

@@ -1,5 +1,8 @@
 #include "QvkWebcam.h" 
 
+#include "QvkWebcamController.h"  //***neu
+ 
+
 using namespace std;
 
 QvkWebcam::QvkWebcam()
