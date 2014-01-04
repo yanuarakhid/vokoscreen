@@ -1,6 +1,6 @@
 #include "QvkWebcam.h" 
 
-#include "QvkWebcamController.h"  //***neu
+#include "QvkWebcamController.h"
  
 
 using namespace std;
