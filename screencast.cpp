@@ -347,6 +347,16 @@ screencast::screencast()
     labelDonateUrl->setOpenExternalLinks( true );
     labelDonateUrl->setAlignment( Qt::AlignCenter );    
     labelDonateUrl->show();
+    
+    creditsQPushButton = new QPushButton( TabWidgetAboutFrame );
+    creditsQPushButton->setGeometry( 400, 95, 40, 40 );
+    QIcon creditsIcon;
+    creditsIcon.addFile( ":/pictures/community.png", QSize(), QIcon::Normal, QIcon::On );
+    creditsQPushButton->setIconSize( QSize( 30, 30 ) );
+    creditsQPushButton->setIcon( creditsIcon );
+    creditsQPushButton->show();
+    connect( creditsQPushButton, SIGNAL( clicked() ), SLOT( showCredits() ) );
+    
 
     // End Tabs *************************************************************
 
@@ -688,6 +698,26 @@ screencast::screencast()
 
 screencast::~screencast()
 {
+}
+
+
+void screencast::showCredits()
+{
+   creditsQPushButton->setEnabled( false );
+   credits = new QvkCredits();
+   credits->show();
+   connect( credits, SIGNAL( closeCredits() ), SLOT( creditsCloseEvent() ) );
+}
+
+
+/**
+ * Wird aufgerufen wenn das credits Fenster geschloßen und dabei
+ * das SIGNAL closeCredits in der Klasse QvkCredits ausgelösst wird
+ */
+void screencast::creditsCloseEvent()
+{
+   creditsQPushButton->setEnabled( true );
+   delete credits;
 }
 
 

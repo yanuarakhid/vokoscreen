@@ -40,6 +40,7 @@
 #include "QvkMail.h"
 #include "QvkAlsaWatcher.h"
 #include "QvkWinInfo.h"
+#include "QvkCredits.h"
 
 #include <QxtGlobalShortcut> 
 
@@ -73,6 +74,7 @@ public:
     
     QString recordApplikation;
     
+    QvkCredits * credits;
 public slots:
   
 private slots:
@@ -114,7 +116,6 @@ private slots:
     // Tab Videooptionen
     void setFrameStandardSpinbox();
     void setVideocodecStandardComboBox();
-    //void setFramesAutoOnOffCheckBox();
 
     QString PathMoviesLocation();
     QString PathTempLocation();
@@ -168,6 +169,9 @@ private slots:
     void setRecordHeight( QString value );
     QString getRecordHeight();
     
+    void showCredits();
+    void creditsCloseEvent();
+
 private:
     QTabWidget *tabWidget;
   
@@ -197,7 +201,6 @@ private:
     QFrame *TabWidgetVideoOptionFrame;
     QFrame *TabWidgetSocialFrame;
     QSpinBox *FrameSpinBox;
-    //QCheckBox *FramesAutoOnOffCheckBox;
     QComboBox *VideocodecComboBox;
     QComboBox *VideoContainerComboBox;
     QCheckBox *HideMouseCheckbox;
@@ -248,7 +251,8 @@ private:
     
     QDateTime beginTime;
     
-    
+    QPushButton * creditsQPushButton;
+
  protected:
     void closeEvent( QCloseEvent * event );
 	

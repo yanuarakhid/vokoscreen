@@ -228,7 +228,11 @@
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"/>
+        <translation>Исходный код</translation>
+    </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Показать значок на верхней панели </translation>
     </message>
 </context>
 </TS>
