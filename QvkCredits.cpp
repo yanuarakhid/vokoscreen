@@ -38,17 +38,19 @@ void QvkCredits::paintEvent( QPaintEvent *event )
     pixmap.load( ":/pictures/Scroll.png" );
     pixmap = pixmap.scaledToWidth( 550, Qt::SmoothTransformation );
 
-    painter->drawPixmap( 0, 0, pixmap );
-
     QFont font;
     font.setPointSize( 10 );
-    painter->setFont( font );
+    font.setItalic( true );
     
     int x = 155;
     int y = 155;
     int deltaX = 6;
     int deltaY = 15;
     
+    painter->setPen( Qt::darkYellow );
+    painter->setFont( font );
+    painter->drawPixmap( 0, 0, pixmap );
+
     painter->drawText( x - 1 * deltaX, y + 1 * deltaY, "Volker Kohaupt (developer)" );
     painter->drawText( x - 2 * deltaX, y + 2 * deltaY, "Michael Kohaupt (public relations, support)" ); 
     painter->drawText( x - 3 * deltaX, y + 3 * deltaY, "Dominique (maintainer for debian/ubuntu packages)" );
@@ -81,6 +83,7 @@ void QvkCredits::mousePressEvent ( QMouseEvent * event )
   (void)event;
   close();
 }
+
 
 /**
  *  closeEvent wird ausgelößt wenn das fenster geschloßen wird

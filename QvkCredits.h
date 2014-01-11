@@ -13,10 +13,9 @@ class QvkCredits: public QMainWindow
 public:
     QvkCredits();
     virtual ~QvkCredits();
-    
-    //QLabel * labelPaper;
     QPainter * painter;
-  
+
+    
 signals:
     void closeCredits();
 
@@ -26,6 +25,7 @@ private slots:
   
 private:
 
+  
 protected:  
   void mousePressEvent ( QMouseEvent * event );
   void paintEvent( QPaintEvent *event );
