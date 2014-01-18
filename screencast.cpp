@@ -424,6 +424,16 @@ screencast::screencast()
     else
       sendPushButton->setEnabled( false );
     
+    QTimer::singleShot( 15000, &version, SLOT( doDownload() ) );
+    connect( &version, SIGNAL( versionDownloadFinish() ), SLOT( buttonVersion() ) );
+    updateButton = new QPushButton( centralWidget );
+    updateButton->setGeometry( 530, 190, 45, 45 );
+    updateButton->setIcon( QIcon( ":/pictures/system-software-update.png" ) );
+    updateButton->setIconSize( QSize( 35, 35 ) );
+    updateButton->setToolTip( tr( "New version available" ) );
+    updateButton->hide();
+    connect( updateButton, SIGNAL( clicked() ), SLOT( showHomepage() ) );  
+    
     QLabel* label = new QLabel( centralWidget );
     label->setText("");
     label->setGeometry( QRect( 0, 0, 123, 240) );
@@ -698,6 +708,22 @@ screencast::screencast()
 
 screencast::~screencast()
 {
+}
+
+
+void screencast::buttonVersion()
+{
+  QString localVersion = "1.8.0";
+  if ( version.isNewVersionAvailable( localVersion, version.getRemoteVersion() ) )
+    updateButton->show();
+  else
+    updateButton->hide();
+}
+
+
+void screencast::showHomepage()
+{
+   QDesktopServices::openUrl( QUrl( "http://www.kohaupt-online.de/hp", QUrl::StrictMode ) );
 }
 
 

@@ -41,12 +41,15 @@
 #include "QvkAlsaWatcher.h"
 #include "QvkWinInfo.h"
 #include "QvkCredits.h"
+#include "QvkVersion.h"
 
 #include <QxtGlobalShortcut> 
 
 #include <QTest>
 
 #include <QDateTime>
+
+
 
 class screencast : public QMainWindow
 { 
@@ -75,6 +78,11 @@ public:
     QString recordApplikation;
     
     QvkCredits * credits;
+
+public:    
+    QvkVersion version;
+
+    
 public slots:
   
 private slots:
@@ -172,6 +180,9 @@ private slots:
     void showCredits();
     void creditsCloseEvent();
 
+    void showHomepage();
+    void buttonVersion();
+   
 private:
     QTabWidget *tabWidget;
   
@@ -252,6 +263,7 @@ private:
     QDateTime beginTime;
     
     QPushButton * creditsQPushButton;
+    QPushButton * updateButton;
 
  protected:
     void closeEvent( QCloseEvent * event );

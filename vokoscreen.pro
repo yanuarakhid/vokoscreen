@@ -6,14 +6,16 @@ HEADERS += screencast.h \
            regionselection.h \
            QvkMagnifier.h \
            QvkWinInfo.h \
-           QvkCredits.h
+           QvkCredits.h \
+           QvkVersion.h
 
 SOURCES += main.cpp \
            screencast.cpp \
            regionselection.cpp \
            QvkMagnifier.cpp \
            QvkWinInfo.cpp \
-           QvkCredits.cpp
+           QvkCredits.cpp \
+           QvkVersion.cpp
 
 RESOURCES += screencast.qrc
                         
