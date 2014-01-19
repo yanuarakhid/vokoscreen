@@ -228,6 +228,14 @@
     </message>
     <message>
         <source>Sourcecode</source>
+        <translation>Quellcode</translation>
+    </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Im Systray anzeigen</translation>
+    </message>
+    <message>
+        <source>New version available</source>
         <translation type="unfinished"/>
     </message>
 </context>

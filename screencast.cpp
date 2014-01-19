@@ -713,7 +713,7 @@ screencast::~screencast()
 
 void screencast::buttonVersion()
 {
-  QString localVersion = "1.8.0";
+  QString localVersion = Version;
   if ( version.isNewVersionAvailable( localVersion, version.getRemoteVersion() ) )
     updateButton->show();
   else

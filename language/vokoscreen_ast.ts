@@ -7,7 +7,7 @@
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Dunviar per corréu un o más videos esbillaos</translation>
+        <translation>Dunviar per corréu ún o más videos esbillaos</translation>
     </message>
     <message>
         <source>Send</source>
@@ -228,6 +228,14 @@
     </message>
     <message>
         <source>Sourcecode</source>
+        <translation>Códigu fonte</translation>
+    </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Amosar na bandexa&apos;l sistema</translation>
+    </message>
+    <message>
+        <source>New version available</source>
         <translation type="unfinished"/>
     </message>
 </context>

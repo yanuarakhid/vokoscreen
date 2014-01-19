@@ -234,5 +234,9 @@
         <source>Show in systray</source>
         <translation>Показать значок на верхней панели </translation>
     </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 </TS>

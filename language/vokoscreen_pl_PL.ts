@@ -230,5 +230,13 @@
         <source>Sourcecode</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 </TS>

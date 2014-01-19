@@ -230,5 +230,13 @@
         <source>Sourcecode</source>
         <translation>الملف المصدري</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>أظهِر البرنامج في مساحة التبليغ</translation>
+    </message>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 </TS>
