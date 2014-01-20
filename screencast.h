@@ -257,8 +257,8 @@ private:
     
     QString screenRecordWidth;
     QString screenRecordHeight;
-    int leftFrameBorder;
-    int topFrameBorder;
+    //int leftFrameBorder;
+    //int topFrameBorder;
     
     QDateTime beginTime;
     

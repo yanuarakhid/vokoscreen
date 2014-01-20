@@ -1726,8 +1726,17 @@ void screencast::windowMove()
   } 
   // End Window is closed
   
-  QString x = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).x() + leftFrameBorder );
-  QString y = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).y() + topFrameBorder );
+  // Wenn Versatzwert kleiner null ist
+  QString x = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).x() );
+  int xx = x.toInt();
+  if ( xx < 0 )
+    x = "0";
+  
+  QString y = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).y() );
+  int yy = y.toInt();
+  if ( yy < 0 )
+    y = "0";
+  
   if ( ( deltaXMove != x ) or ( deltaYMove != y ) )
     if ( SystemCall->state() == QProcess::Running ) 
       moveWindowPause();
@@ -1744,7 +1753,6 @@ void screencast::windowMove()
       str2 = "";
       for ( int i = 0; i < result.count(); i++ )
         str2.append( result.at( i ) + " " );
-
       ffmpegString = str1 + str2.trimmed() + " ";
       moveWindowGo();
     }
@@ -2394,72 +2402,43 @@ void screencast::record()
   QString deltaX = "0";
   QString deltaY = "0";
   
-  if ( WindowRadioButton->isChecked() )
-    if ( firststartWininfo == false )
-    {
-       
-/*      
-      TestFrame->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-      //QCoreApplication::processEvents( QEventLoop::AllEvents );     
-      TestFrame->show();
-      //TestFrame->hide();
-      qDebug() << "X():" << TestFrame->x() << "Y():" << TestFrame->y();
-      qDebug() << "geometry.x()" << TestFrame->geometry().x() << "geometry.y()" << TestFrame->geometry().y();
-      qDebug() << "frameGeometry.width()" << TestFrame->frameGeometry() << "frameGeometry.height()" << TestFrame->frameGeometry().height();
-*/      
-      int rightFrameBorder = 0;
-      int bottomFrameBorder = 0;
-      
-      // Begin ermitteln der Fensterrahmen
-      //qDebug() << "with Frame :" << frameGeometry().width() << "x" << frameGeometry().height();
-      //qDebug() << "without Frame:" << geometry().width() << "x" << geometry().height();
-      
-      leftFrameBorder = geometry().x() - x();
-      //qDebug() << "left frame:" << leftFrameBorder;
-      
-      rightFrameBorder = frameGeometry().width() - geometry().width() - leftFrameBorder;
-      //qDebug() << "right frame:" << rightFrameBorder;
-      
-      topFrameBorder = geometry().y() - y();
-      //qDebug() << "top frame:" << topFrameBorder;
-      
-      bottomFrameBorder = frameGeometry().height() - geometry().height() - topFrameBorder;
-      //qDebug() << "bottom frame:" << bottomFrameBorder;
-      // End  ermitteln der Fensterrahmen
-      
-      setRecordWidth( QString::number( vkWinInfo->width().toUInt() - leftFrameBorder - rightFrameBorder) );
-      setRecordHeight( QString::number( vkWinInfo->height().toUInt() - topFrameBorder - bottomFrameBorder ) );
-      
+  if ( WindowRadioButton->isChecked() and ( firststartWininfo == false) )
+  {
+      setRecordWidth( vkWinInfo->width() );
+      setRecordHeight( vkWinInfo->height() );
       QDesktopWidget *desk = QApplication::desktop();
-      if ( getRecordWidth().toUInt() >= QString::number( desk->screenGeometry().width() ).toUInt() )
+      if ( getRecordWidth().toInt() >= desk->screenGeometry().width() )
+      {
         deltaX = "0";
+        setRecordWidth( QString::number( desk->screenGeometry().width() ) );
+      }
       else
-        deltaX  = QString::number( vkWinInfo->x().toUInt() + leftFrameBorder );
-      //qDebug() << "deltaX:" << deltaX;
-      
-      deltaY  = QString::number( QxtWindowSystem::windowGeometry( vkWinInfo->getWinID() ).y() + topFrameBorder );
-      //qDebug() << "deltaY:" << deltaY;
+        deltaX = QString::number( vkWinInfo->x().toUInt() );
+
+      if ( getRecordHeight().toUInt() >= QString::number( desk->screenGeometry().height() ).toUInt() )
+      {
+        deltaY = "0";
+        setRecordHeight( QString::number( desk->screenGeometry().height() ) );
+      }
+      else
+	deltaY = QString::number( vkWinInfo->y().toUInt() );
 
       moveWindowID = vkWinInfo->getWinID();
-	
+      
       deltaXMove = deltaX;
       deltaYMove = deltaY;
 
       windowMoveTimer->start( 120 );
       firststartWininfo = true;
-    }
+  }
   
   if ( AreaRadioButton->isChecked() )
   {
     setRecordWidth( QString().number( myregionselection->getWidth() ) );
     setRecordHeight( QString().number( myregionselection->getHeight() ) );
-
-//    deltaX  = QString().number( myregionselection->getX() );
-//    deltaY  = QString().number( myregionselection->getY() );
     deltaX  = QString().number( myregionselection->getXRecordArea() );
     deltaY  = QString().number( myregionselection->getYRecordArea() );
 
-    // 
     myregionselection->cleanRecordArea( true );
     
     //Makes the rectangle unmovable and unresizeable (Is enabled yet again when process finished)
