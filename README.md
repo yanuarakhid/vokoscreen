@@ -11,3 +11,4 @@ vokoscreen is an easy to use screencast creator to record educational videos, li
 ![Picture](http://linuxecke.volkoh.de/vokoscreen/vokoscreen-5png)
 ![Picture](http://linuxecke.volkoh.de/vokoscreen/vokoscreen-6png)
 
+![Picture](http://linuxecke.volkoh.de/vokoscreen/vokoscreen-6.png)
