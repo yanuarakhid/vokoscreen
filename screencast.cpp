@@ -1635,12 +1635,12 @@ void screencast::play()
   QStringList List = Dira.entryList( filters, QDir::Files, QDir::Time );
   if ( List.isEmpty() )
   {
-    QProcess *SystemCall = new QProcess( this );
+    QProcess *SystemCall = new QProcess();
     SystemCall->start( player );
   }
   else
   {
-    QProcess *SystemCall = new QProcess( this );
+    QProcess *SystemCall = new QProcess();
     SystemCall->start( player + " " + PathMoviesLocation() + QDir::separator() + List.at( 0 ) );
   }
 }
