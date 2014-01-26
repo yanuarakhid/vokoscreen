@@ -526,7 +526,9 @@ screencast::screencast()
                                             << "smplayer"
                                             << "smplayer2"
                                             << "dragon"
-                                            << "banshee";
+                                            << "banshee"
+					    << "openshot"
+					    << "kdenlive";
     playerList.sort();
     QString playerName;
     QString resultString( qgetenv( "PATH" ) );
@@ -540,14 +542,18 @@ screencast::screencast()
          if ( QFile::exists( playerName ) )
          {
            qDebug() << "[vokoscreen]" << "Find Videoplayer :" << playerName;
-           VideoplayerComboBox->addItem( playerList.at( x ), playerName );
+	   QFileInfo playProg( playerName );
+	   if ( playProg.fileName() == "kdenlive" )
+	     playerName = playerName + " -i";
+
+	   VideoplayerComboBox->addItem( playerList.at( x ), playerName );
            break;
          }
        }
      }
      
-     qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
-     qDebug();
+    qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
+    qDebug();
 
     // Einstellungen aus .conf einlesen
     QSettings settings( ProgName, ProgName );
