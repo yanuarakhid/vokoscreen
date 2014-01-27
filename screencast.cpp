@@ -177,7 +177,7 @@ screencast::screencast()
     FrameSpinBox = new QSpinBox( TabWidgetVideoOptionFrame );
     FrameSpinBox->setGeometry( QRect( 80, 10, 50, 25 ) );
     FrameSpinBox->setMinimum( 1 );
-    FrameSpinBox->setMaximum( 99 );
+    FrameSpinBox->setMaximum( 200 );
     FrameSpinBox->setSingleStep( 1 );
     FrameSpinBox->setValue( 25 );
     FrameSpinBox->show();
@@ -2252,12 +2252,13 @@ QString screencast::myAcodec()
 {
   QString acodec;
   if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( AlsaRadioButton->isChecked() ) and ( AlsaHwComboBox->currentText() > "" ) )
-     return " -acodec libmp3lame";
-
+     //return " -acodec libmp3lame";
+     return "-c:a libmp3lame";
   
   if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( PulseDeviceRadioButton->isChecked() ) and ( myPulseDevice() > "" ) )
-     return " -acodec libmp3lame";
- 
+     //return " -acodec libmp3lame";
+     return "-c:a libmp3lame";
+
   return "";
 }
 
@@ -2488,8 +2489,8 @@ void screencast::record()
      dir.remove( PathTempLocation().append(QDir::separator() ).append(stringList.at( i ) ) );
 
   // frame rate
-  QString frame = "-r " + QString().number( FrameSpinBox->value() );
-  
+  //QString frame = "-r " + QString().number( FrameSpinBox->value() );
+  QString framerate = "-framerate " + QString().number( FrameSpinBox->value() );
   // Videocodec
   QString myVcodec = VideocodecComboBox->currentText();
   if ( myVcodec == "libx264" )
@@ -2519,7 +2520,7 @@ void screencast::record()
     quality = " -qscale 1 ";
 
   clickedRecordButtonScreenSize();
-  
+/*  
   ffmpegString = recordApplikation + " "
                + myReport
                + myAlsa()
@@ -2535,14 +2536,29 @@ void screencast::record()
                + noMouse()
 	       + " -pix_fmt yuv420p" // Neu das funktioniert sehr gut, ohne ca. 80 fps, mit 99fps bei eingestellten 99fps und preset medium aber nur unter opensuse, unter Ubuntu 13.04 keine Veränderung
 	       + " -vcodec "
-	       + myVcodec
+	       + myVcodec + " "
        	       + myAcodec()
-	       //+ " -ab 256k "  //********************************************Neu
-      	       //+ " -ar 48000 "  //********************************************Neu
+	       //+ " -ab 256k "
+      	       //+ " -ar 48000 "
       	       + " -ar " + mySample()
 	       + quality
 	       + frame + " ";
-	       	            
+*/
+  ffmpegString = recordApplikation + " "
+               + "-f x11grab" + " "
+               + framerate + " "
+	       + "-video_size" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
+               + "-i :0.0+" + deltaX + "," + deltaY
+	       + noMouse() + " "
+               + "-dcodec copy" + " "
+               + myAlsa() + " "
+               + "-acodec libmp3lame" + " "
+               + "-pix_fmt yuv420p" + " "
+               + "-c:v" + " " + myVcodec + " "
+               + myAcodec() + " "
+	       + quality + " "
+               + "-y ";
+  
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   
   QFile FileVokoscreenLog(settingsPath.absolutePath() + QDir::separator() + ProgName + ".log");
