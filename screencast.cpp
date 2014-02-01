@@ -1265,40 +1265,8 @@ void screencast::readyReadStandardError()
   {
     int x = output.indexOf( "fps" );
     statusBarLabelFps->setText( output.mid( x + 4, 3 ).replace( " ", "" ) );
-    //statusBarLabelFps->setToolTip( tr( "Actual frames per second" ) );
   }
 
-  //
-/*  
-  int fps = statusBarLabelFps->text().toUInt();
-  if ( fps >=  FrameSpinBox->value() )
-  {
-    statusBarLabelFps->setToolTip( tr( "Actual frames per second" ) );
-    //statusBarLabelFps->setAutoFillBackground( true );
-    //QPalette pal( statusBarLabelFps->palette() );
-    //pal.setColor( QPalette::Foreground, Qt::black );
-    //pal.setColor( QPalette::Background, Qt::green );
-    //statusBarLabelFps->setPalette( pal );
-  }
-
-  if ( fps < FrameSpinBox->value() )
-  {
-    statusBarLabelFps->setToolTip( tr( "Your Actual frames in the Settings is too heigh" ) );
-    statusBarLabelFps->setAutoFillBackground( true );
-    QPalette pal( statusBarLabelFps->palette() );
-    if ( pal.color( QPalette::Background ) == Qt::red )
-    {
-      pal.setColor( QPalette::Foreground, Qt::black );
-      pal.setColor( QPalette::Background, Qt::yellow );
-    }
-    else
-    {
-      pal.setColor( QPalette::Foreground, Qt::black );
-      pal.setColor( QPalette::Background, Qt::red );
-    }
-    statusBarLabelFps->setPalette( pal );
-  }    
-*/  
   QFileInfo fileInfo( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   statusBarLabelSize->setText( QString::number( fileInfo.size() / 1024 ) );
 }
@@ -2522,30 +2490,7 @@ void screencast::record()
     quality = " -qscale 1 ";
 
   clickedRecordButtonScreenSize();
-/*  
-  ffmpegString = recordApplikation + " "
-               + myReport
-               + myAlsa()
-	       + "-f x11grab "
-               + frame
-	       + " -s "
-	       + getRecordWidth()
-	       + "x"
-	       + getRecordHeight()
-	       + " -i :0.0+"
-	       + deltaX + "," 
-	       + deltaY
-               + noMouse()
-	       + " -pix_fmt yuv420p" // Neu das funktioniert sehr gut, ohne ca. 80 fps, mit 99fps bei eingestellten 99fps und preset medium aber nur unter opensuse, unter Ubuntu 13.04 keine Veränderung
-	       + " -vcodec "
-	       + myVcodec + " "
-       	       + myAcodec()
-	       //+ " -ab 256k "
-      	       //+ " -ar 48000 "
-      	       + " -ar " + mySample()
-	       + quality
-	       + frame + " ";
-*/
+
   ffmpegString = recordApplikation + " "
                + "-f x11grab" + " "
                + framerate + " "
@@ -2558,8 +2503,7 @@ void screencast::record()
                + "-pix_fmt yuv420p" + " "
                + "-c:v" + " " + myVcodec + " "
                + myAcodec() + " "
-               + quality + " "
-               + "-y ";
+               + quality + " ";
   
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   
