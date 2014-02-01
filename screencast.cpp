@@ -1265,18 +1265,20 @@ void screencast::readyReadStandardError()
   {
     int x = output.indexOf( "fps" );
     statusBarLabelFps->setText( output.mid( x + 4, 3 ).replace( " ", "" ) );
+    //statusBarLabelFps->setToolTip( tr( "Actual frames per second" ) );
   }
 
-  // 
+  //
+/*  
   int fps = statusBarLabelFps->text().toUInt();
   if ( fps >=  FrameSpinBox->value() )
   {
     statusBarLabelFps->setToolTip( tr( "Actual frames per second" ) );
-    statusBarLabelFps->setAutoFillBackground( true );
-    QPalette pal( statusBarLabelFps->palette() );
-    pal.setColor( QPalette::Foreground, Qt::black );
-    pal.setColor( QPalette::Background, Qt::green );
-    statusBarLabelFps->setPalette( pal );
+    //statusBarLabelFps->setAutoFillBackground( true );
+    //QPalette pal( statusBarLabelFps->palette() );
+    //pal.setColor( QPalette::Foreground, Qt::black );
+    //pal.setColor( QPalette::Background, Qt::green );
+    //statusBarLabelFps->setPalette( pal );
   }
 
   if ( fps < FrameSpinBox->value() )
@@ -1296,7 +1298,7 @@ void screencast::readyReadStandardError()
     }
     statusBarLabelFps->setPalette( pal );
   }    
-  
+*/  
   QFileInfo fileInfo( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   statusBarLabelSize->setText( QString::number( fileInfo.size() / 1024 ) );
 }
@@ -2547,16 +2549,16 @@ void screencast::record()
   ffmpegString = recordApplikation + " "
                + "-f x11grab" + " "
                + framerate + " "
-	       + "-video_size" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
+               + "-video_size" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
                + "-i :0.0+" + deltaX + "," + deltaY
-	       + noMouse() + " "
+               + noMouse() + " "
                + "-dcodec copy" + " "
                + myAlsa() + " "
                + "-acodec libmp3lame" + " "
                + "-pix_fmt yuv420p" + " "
                + "-c:v" + " " + myVcodec + " "
                + myAcodec() + " "
-	       + quality + " "
+               + quality + " "
                + "-y ";
   
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
