@@ -214,6 +214,7 @@ private:
     QSpinBox *FrameSpinBox;
     QComboBox *VideocodecComboBox;
     QComboBox *VideoContainerComboBox;
+    QComboBox *AudiocodecComboBox;
     QCheckBox *HideMouseCheckbox;
     QCheckBox *MinimizedCheckBox;
     

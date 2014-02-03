@@ -219,8 +219,19 @@ screencast::screencast()
     VideocodecStandardButton->show();
     connect( VideocodecStandardButton, SIGNAL( clicked() ), SLOT( setVideocodecStandardComboBox() ) );
     
+    QLabel *AudiocodecLabel = new QLabel( TabWidgetVideoOptionFrame );
+    AudiocodecLabel->setGeometry( 20, 70, 80, 25 );
+    AudiocodecLabel->setText( tr( "Audiocodec" ) );
+    AudiocodecLabel->show();
+    
+    AudiocodecComboBox = new QComboBox( TabWidgetVideoOptionFrame );
+    AudiocodecComboBox->setGeometry( 100, 70, 100, 25 );
+    AudiocodecComboBox->show();
+    AudiocodecComboBox->addItem( "libmp3lame" );
+    AudiocodecComboBox->addItem( "libvorbis" );
+    
     HideMouseCheckbox = new QCheckBox( TabWidgetVideoOptionFrame );
-    HideMouseCheckbox->setGeometry( 20, 70, 300, 25 );
+    HideMouseCheckbox->setGeometry( 20, 100, 300, 25 );
     HideMouseCheckbox->setText( tr( "Do not record mouse cursor" ) );
     HideMouseCheckbox->show();
 
@@ -1913,14 +1924,16 @@ void screencast::AudioOnOff()
       AlsaHwComboBox->setEnabled( true );
     else
       AlsaHwComboBox->setEnabled( false );
+    
+    AudiocodecComboBox->setEnabled( true );
   }
   else
   {
     AlsaRadioButton->setEnabled( false );
     AlsaHwComboBox->setEnabled( false );
-//    PulseRadioButton->setEnabled( false );
     Pulseframe->setEnabled( false );
     PulseDeviceRadioButton->setEnabled( false );
+    AudiocodecComboBox->setEnabled( false );
   }
 }
 
@@ -2222,12 +2235,10 @@ QString screencast::myAcodec()
 {
   QString acodec;
   if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( AlsaRadioButton->isChecked() ) and ( AlsaHwComboBox->currentText() > "" ) )
-     //return " -acodec libmp3lame";
-     return "-c:a libmp3lame";
+     return "-c:a " + AudiocodecComboBox->currentText(); //"-c:a libmp3lame";
   
   if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( PulseDeviceRadioButton->isChecked() ) and ( myPulseDevice() > "" ) )
-     //return " -acodec libmp3lame";
-     return "-c:a libmp3lame";
+     return "-c:a " + AudiocodecComboBox->currentText(); //"-c:a libmp3lame";
 
   return "";
 }
@@ -2499,7 +2510,7 @@ void screencast::record()
                + noMouse() + " "
                + "-dcodec copy" + " "
                + myAlsa() + " "
-               + "-acodec libmp3lame" + " "
+               //+ "-acodec libmp3lame" + " "
                + "-pix_fmt yuv420p" + " "
                + "-c:v" + " " + myVcodec + " "
                + myAcodec() + " "
