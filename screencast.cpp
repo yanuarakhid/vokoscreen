@@ -620,6 +620,7 @@ screencast::screencast()
     settings.beginGroup( "Videooptions" );
       FrameSpinBox->setValue( settings.value( "Frames", 25 ).toInt() );
       VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( settings.value( "Videocodec", "mpeg4" ).toString() ) );
+      AudiocodecComboBox->setCurrentIndex( AudiocodecComboBox->findText( settings.value( "Audiocodec", "libmp3lame" ).toString() ) );
       VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( settings.value( "Format", "mkv" ).toString() ) );
       HideMouseCheckbox->setCheckState( Qt::CheckState( settings.value( "HideMouse").toUInt() ) );
     settings.endGroup();
@@ -1030,6 +1031,7 @@ void screencast::saveSettings()
   settings.beginGroup( "Videooptions" );
     settings.setValue( "Frames", FrameSpinBox->value() );
     settings.setValue( "Videocodec", VideocodecComboBox->currentText() );
+    settings.setValue( "Audiocodec", AudiocodecComboBox->currentText() );
     settings.setValue( "Format", VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", HideMouseCheckbox->checkState() );    
   settings.endGroup();
