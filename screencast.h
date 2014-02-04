@@ -124,7 +124,8 @@ private slots:
     // Tab Videooptionen
     void setFrameStandardSpinbox();
     void setVideocodecStandardComboBox();
-
+    void setAudiocodecStandardComboBox();
+    
     QString PathMoviesLocation();
     QString PathTempLocation();
     QString NameInMoviesLocation();

@@ -45,7 +45,7 @@ void QvkVersion::downloadFinished( QNetworkReply *reply )
     else
     {
        if ( saveToDisk( localVersionFilename, reply ) )
-            printf( "[vokoscreen] Download of %s succeeded (saved to %s)\n", url.toEncoded().constData(), qPrintable( localVersionFilename ) );
+            printf( "[vokoscreen] File VERSION available\n" );
     }
 
     readVersionTempFile( localVersionFilename );

@@ -1,0 +1,13 @@
+Liberate from extern Program ffmpeg
+ 
+Library:
+libavutil51 --> openSUSE
+libavutil-devel - Development files for libavutil
+ 
+Example:
+/usr/share/ffmpeg/examples/decoding_encoding.c in package libffmpeg-devel
+
+
+
+Video Audio sychron
+/usr/bin/ffmpeg -xerror -loglevel info -f x11grab -framerate 200 -video_size 1680x1050 -i :0.0+0,0 -dcodec copy -f alsa -ac 1 -i hw:1,0 -acodec libmp3lame -c:v libx264 -preset veryfast -c:a libmp3lame -y /tmp/qx11grab-202059.mkv

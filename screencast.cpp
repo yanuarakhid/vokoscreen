@@ -190,24 +190,24 @@ screencast::screencast()
     connect( FrameStandardButton, SIGNAL( clicked() ), SLOT( setFrameStandardSpinbox() ) );
 
     QLabel *VideocodecOptionLabel = new QLabel( TabWidgetVideoOptionFrame );
-    VideocodecOptionLabel->setGeometry( 20, 40, 50, 25 );
-    VideocodecOptionLabel->setText( tr( "Codec" ) );
+    VideocodecOptionLabel->setGeometry( 20, 40, 80, 25 );
+    VideocodecOptionLabel->setText( tr( "Videocodec" ) );
     VideocodecOptionLabel->show();
 
     VideocodecComboBox = new QComboBox( TabWidgetVideoOptionFrame );
-    VideocodecComboBox->setGeometry( 80, 40, 80, 25 );
+    VideocodecComboBox->setGeometry( 100, 40, 100, 25 );
     VideocodecComboBox->show();
     VideocodecComboBox->addItem( "mpeg4" );
     VideocodecComboBox->addItem( "libx264" );
     connect( VideocodecComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
     
     QLabel *VideoContainerLabel = new QLabel(TabWidgetVideoOptionFrame );
-    VideoContainerLabel->setGeometry( 175, 40, 50, 25 );
+    VideoContainerLabel->setGeometry( 210, 40, 50, 25 );
     VideoContainerLabel->setText( tr( "Format" ) );
     VideoContainerLabel->show();
     
     VideoContainerComboBox = new QComboBox( TabWidgetVideoOptionFrame );
-    VideoContainerComboBox->setGeometry( 230, 40, 70, 25 );
+    VideoContainerComboBox->setGeometry( 260, 40, 70, 25 );
     VideoContainerComboBox->addItem( "avi" );
     VideoContainerComboBox->addItem( "mkv" );
     VideoContainerComboBox->show();
@@ -229,6 +229,13 @@ screencast::screencast()
     AudiocodecComboBox->show();
     AudiocodecComboBox->addItem( "libmp3lame" );
     AudiocodecComboBox->addItem( "libvorbis" );
+    
+    QPushButton *AudiocodecStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
+    AudiocodecStandardButton->setText( tr( "Default" ) );
+    AudiocodecStandardButton->setGeometry( 360, 70, 70, 25 );
+    AudiocodecStandardButton->show();
+    connect( AudiocodecStandardButton, SIGNAL( clicked() ), SLOT( setAudiocodecStandardComboBox() ) );
+    
     
     HideMouseCheckbox = new QCheckBox( TabWidgetVideoOptionFrame );
     HideMouseCheckbox->setGeometry( 20, 100, 300, 25 );
@@ -1199,6 +1206,15 @@ void screencast::setVideocodecStandardComboBox()
 {
   VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( "mpeg4", Qt::MatchExactly ) );
   VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( "mkv", Qt::MatchExactly ) );
+}
+
+
+/**
+ * Set standard Audio codec
+ */
+void screencast::setAudiocodecStandardComboBox()
+{
+  AudiocodecComboBox ->setCurrentIndex( AudiocodecComboBox->findText( "libmp3lame", Qt::MatchExactly )  );
 }
 
 
@@ -2503,6 +2519,7 @@ void screencast::record()
   clickedRecordButtonScreenSize();
 
   ffmpegString = recordApplikation + " "
+               + myReport + " "
                + "-f x11grab" + " "
                + framerate + " "
                + "-video_size" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
