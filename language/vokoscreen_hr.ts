@@ -1,242 +1,242 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="hu" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="hr" version="2.0">
 <context>
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Utolsó videó levélként</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Egy vagy több kiválasztott videó levélként</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send</source>
-        <translation>Küldés</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>A videó csatolva</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Válasszon ki egy vagy több fájlt</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation>Keret nélkül</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Border</source>
-        <translation>Kerettel</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close</source>
-        <translation>Bezár</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QvkWebcamController</name>
     <message>
         <source>Webcam</source>
-        <translation>Webkamera</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Device is busy</source>
-        <translation>Az eszköz foglalt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation>Válasszon webkamerát</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Teljes képernyő</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Window</source>
-        <translation>Ablak</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Area</source>
-        <translation>Terület</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Nagyítás</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Hangrendszer</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Alsa</source>
-        <translation>Alsa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pulse</source>
-        <translation>Pulse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Default</source>
-        <translation>Alapértelmezett</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Kodek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Egérmutató elrejtése</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videó mentés helye</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Player</source>
-        <translation>Lejátszó</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Vokoscreen minimalizálása a felvétel megkezdésekor</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Szünet</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Play</source>
-        <translation>Lejátszás</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send</source>
-        <translation>Küldés</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Felvétel ideje</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>Méret KB-ban</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Felvétel képernyőmérete</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formátum</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Fps beállítás</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Könyvtár megnyitása</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1</source>
-        <translation>%1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Visszaszámlálás</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Utolsó videó lejátszása</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>Videó küldése</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Válasszon ki egy vagy több eszközt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Képkockák száma másodpercenként</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Device %1 is busy</source>
-        <translation>%1 eszköz foglalt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
-        <translation>A beállított képkockaszám túl magas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Go</source>
-        <translation>Indít</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Weboldal</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mailinglist</source>
-        <translation>Levelezőlista</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Support</source>
-        <translation>Támogatás</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Developer</source>
-        <translation>Fejlesztés</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Képkocka</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Beta openSUSE</source>
-        <translation>Beta openSUSE</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Beta Ubuntu</source>
-        <translation>Beta Ubuntu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Adományozás</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation>Képrögzítő program</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Fordítás</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Forráskód</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Megjelenítés a tálcán</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>New version available</source>
-        <translation>Új verzió érhető el</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

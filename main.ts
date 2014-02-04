@@ -181,10 +181,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Your Actual frames in the Settings is too heigh</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation type="unfinished"></translation>
     </message>
@@ -238,6 +234,14 @@
     </message>
     <message>
         <source>New version available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
