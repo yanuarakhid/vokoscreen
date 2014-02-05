@@ -124,6 +124,26 @@ screencast::screencast()
     CountdownSpinBox->setValue( 0 );
     CountdownSpinBox->show();
     
+    
+    // http://doc-snapshot.qt-project.org/4.8/qdesktopwidget.html#availableGeometry
+    QComboBox *ScreenComboBox = new QComboBox( frame );
+    ScreenComboBox->setGeometry( 160, 65, 200, 21 );
+    ScreenComboBox->hide();
+    QDesktopWidget *desk = QApplication::desktop();
+    qDebug() << "[vokoscreen]" << "---Begin search Screen---";
+    qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
+    for ( int i = 0; i < desk->screenCount(); i++ )
+    {
+      QString ScreenGeometryX = QString::number( desk->screenGeometry( i + 1 ).width() );
+      QString ScreenGeometryY = QString::number( desk->screenGeometry( i + 1 ).height() );      
+      ScreenComboBox->addItem( "Display " + QString::number( i ) + "   " + ScreenGeometryX + " x " + ScreenGeometryY, i );      
+      qDebug() << "[vokoscreen]" << "Display " + QString::number( i ) + "   " + ScreenGeometryX + " x " + ScreenGeometryY ;
+    }
+    qDebug() << "[vokoscreen]" << "---End search Screen---";
+    qDebug();
+    
+    
+    
     // Tab 2 Audio options ****************************************
     TabWidgetAudioFrame = new QFrame( this );
     TabWidgetAudioFrame->setGeometry( 120, 0, 300, 290 );
