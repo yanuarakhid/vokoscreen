@@ -16,6 +16,8 @@
  */
 #include "screencast.h"  
 
+#include "QvkFtp.h"
+
 using namespace std;
 
 screencast::screencast()
@@ -462,6 +464,15 @@ screencast::screencast()
     else
       sendPushButton->setEnabled( false );
     
+    ftpPushButton = new QPushButton( centralWidget );
+    ftpPushButton->setGeometry( 530, 200, 50, 30 );
+    qfont = sendPushButton->font();
+    qfont.setPixelSize( 14 );
+    qfont.setBold( true );
+    ftpPushButton->setFont( qfont );
+    ftpPushButton->setText( tr( "FTP" ) );
+    connect( ftpPushButton, SIGNAL( clicked() ), SLOT( ftp() ) );
+    
     QTimer::singleShot( 15000, &version, SLOT( doDownload() ) );
     connect( &version, SIGNAL( versionDownloadFinish() ), SLOT( buttonVersion() ) );
     updateButton = new QPushButton( centralWidget );
@@ -753,6 +764,13 @@ screencast::screencast()
 
 screencast::~screencast()
 {
+}
+
+
+void screencast::ftp()
+{
+    QvkFtp *myFtp = new QvkFtp();
+    myFtp->show();
 }
 
 

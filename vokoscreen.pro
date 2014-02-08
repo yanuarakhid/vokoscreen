@@ -7,7 +7,8 @@ HEADERS += screencast.h \
            QvkMagnifier.h \
            QvkWinInfo.h \
            QvkCredits.h \
-           QvkVersion.h
+           QvkVersion.h \
+           QvkFtp.h
 
 SOURCES += main.cpp \
            screencast.cpp \
@@ -15,7 +16,8 @@ SOURCES += main.cpp \
            QvkMagnifier.cpp \
            QvkWinInfo.cpp \
            QvkCredits.cpp \
-           QvkVersion.cpp
+           QvkVersion.cpp \
+           QvkFtp.cpp
 
 RESOURCES += screencast.qrc
                         

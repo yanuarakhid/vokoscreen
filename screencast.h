@@ -183,12 +183,20 @@ private slots:
 
     void showHomepage();
     void buttonVersion();
+    
+    void ftp();
+
    
 private:
     QTabWidget *tabWidget;
   
-    QPushButton *StopButton;
     QPushButton *recordButton;
+    QPushButton *StopButton;
+    QPushButton *PauseButton;
+    QPushButton *PlayButton;
+    QPushButton *sendPushButton;
+    QPushButton *ftpPushButton;
+    
     QProcess *SystemCall;
     QRadioButton *AlsaRadioButton;
     QComboBox *AlsaHwComboBox;
@@ -202,8 +210,6 @@ private:
     
     QLabel *ChannelLabel;
     QComboBox *VideoplayerComboBox;
-    QPushButton *PlayButton;
-    QPushButton *PauseButton;
     QFrame *TabWidgetAudioFrame;
     QLabel *recordTimeLabel;
     QLineEdit *SaveVideoPathLineEdit;
@@ -243,7 +249,6 @@ private:
     QvkWinInfo *vkWinInfo;
     WId moveWindowID;
     
-    QPushButton *sendPushButton;
 
     QList<QvkAlsaDevice *> AlsaDeviceList;
 
