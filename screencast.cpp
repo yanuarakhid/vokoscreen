@@ -470,7 +470,7 @@ screencast::screencast()
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
     ftpPushButton->setFont( qfont );
-    ftpPushButton->setText( tr( "FTP" ) );
+    ftpPushButton->setText( "FTP" );
     connect( ftpPushButton, SIGNAL( clicked() ), SLOT( ftp() ) );
     
     QTimer::singleShot( 15000, &version, SLOT( doDownload() ) );
