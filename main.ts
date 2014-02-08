@@ -244,5 +244,9 @@
         <source>Audiocodec</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>FTP</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
