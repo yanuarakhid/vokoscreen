@@ -637,7 +637,7 @@ void regionselection::paintEvent( QPaintEvent *event )
 void regionselection::lockFrame( bool status )
 {
     frameLocked = status;
-    qDebug() << "[vokoscreen][Regional selection] Frame locked:" << status;
+    qDebug() << "[vokoscreen] [Regional selection] Frame locked:" << status;
     qDebug();
     handlingFrameLock();
 }

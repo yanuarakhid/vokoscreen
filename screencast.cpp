@@ -54,7 +54,6 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "Qt Version: " << qVersion();
     QvkAlsaDevice inBox ;
     qDebug() << "[vokoscreen]" << "asoundlib Version:" << inBox.getAlsaVersion();
-    //qDebug() << "[vokoscreen]" << "ffmpeg Version:" << getFfmpegVersion();
     qDebug();
     
     searchExternalPrograms();
@@ -1448,21 +1447,20 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       }
     }
        
-    if (newState == QProcess::Running)
+    if ( newState == QProcess::Running )
     {
       qDebug();
-      qDebug() << "[vokoscreen] ffmpeg is running and is ready for reading and writing";
+      qDebug() << "[vokoscreen]" << recordApplikation << "is running and is ready for reading and writing";
     }
    
-    if (newState == QProcess::NotRunning)
+    if ( newState == QProcess::NotRunning )
     {
       qDebug();
-      qDebug() << "[vokoscreen] ffmpeg is not running";
+      qDebug() << "[vokoscreen]" << recordApplikation << "is not running";
 
       //Enables the customarea rectangle again. (Is diabled in record() )
-        if(!PauseButton->isChecked()){
-            myregionselection->lockFrame(false);
-        }
+      if ( !PauseButton->isChecked() )
+         myregionselection->lockFrame( false );
     }
 }
 
@@ -2549,7 +2547,6 @@ void screencast::record()
                + noMouse() + " "
                + "-dcodec copy" + " "
                + myAlsa() + " "
-               //+ "-acodec libmp3lame" + " "
                + "-pix_fmt yuv420p" + " "
                + "-c:v" + " " + myVcodec + " "
                + myAcodec() + " "
@@ -2577,7 +2574,7 @@ void screencast::record()
 
 void screencast::startRecord( QString RecordPathName )
 {
-  qDebug() << "[vokoscreen]"<< "ffmpegcommand :" << ffmpegString + RecordPathName;
+  qDebug() << "[vokoscreen]"<< "Executive command :" << ffmpegString + RecordPathName;
 
   if ( PulseDeviceRadioButton->isChecked() )
   {
