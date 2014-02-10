@@ -183,9 +183,6 @@ private slots:
 
     void showHomepage();
     void buttonVersion();
-    
-    void ftp();
-
    
 private:
     QTabWidget *tabWidget;
@@ -195,7 +192,6 @@ private:
     QPushButton *PauseButton;
     QPushButton *PlayButton;
     QPushButton *sendPushButton;
-    QPushButton *ftpPushButton;
     
     QProcess *SystemCall;
     QRadioButton *AlsaRadioButton;
