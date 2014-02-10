@@ -11,7 +11,6 @@ QvkFtp::QvkFtp()
 {
   setGeometry( 500, 200, 500, 500 );
   
-  
   QLabel *userLabel = new QLabel( this );
   userLabel->setGeometry( 100, 100, 100, 30 );
   userLabel->setText( "User" );
