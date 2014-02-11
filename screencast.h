@@ -79,9 +79,10 @@ public:
     
     QvkCredits * credits;
 
-public:    
+public:
+#ifndef NO_NEW_VERSION_CHECK
     QvkVersion version;
-
+#endif
     
 public slots:
   
@@ -182,8 +183,11 @@ private slots:
     void creditsCloseEvent();
 
     void showHomepage();
+    
+#ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
-   
+#endif
+    
 private:
     QTabWidget *tabWidget;
   

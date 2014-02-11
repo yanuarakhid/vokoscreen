@@ -23,9 +23,13 @@ Compile:
      or
     - clone git repository: "git clone https://github.com/vkohaupt/vokoscreen.git"
   - change into the vokoscreen-<version> directory
-  - run "qmake"
+  - run "qmake <option>"
   - run "make"
 
+  
+qmake options:
+DEFINES+=NO_NEW_VERSION_CHECK
+  
 openSUSE:
 Install Schemata: QT 4-Development
   

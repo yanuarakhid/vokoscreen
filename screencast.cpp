@@ -460,7 +460,8 @@ screencast::screencast()
       sendPushButton->setEnabled( true );
     else
       sendPushButton->setEnabled( false );
-    
+
+  #ifndef NO_NEW_VERSION_CHECK
     QTimer::singleShot( 15000, &version, SLOT( doDownload() ) );
     connect( &version, SIGNAL( versionDownloadFinish() ), SLOT( buttonVersion() ) );
     updateButton = new QPushButton( centralWidget );
@@ -470,6 +471,7 @@ screencast::screencast()
     updateButton->setToolTip( tr( "New version available" ) );
     updateButton->hide();
     connect( updateButton, SIGNAL( clicked() ), SLOT( showHomepage() ) );  
+  #endif
     
     QLabel* label = new QLabel( centralWidget );
     label->setText("");
@@ -754,7 +756,7 @@ screencast::~screencast()
 {
 }
 
-
+#ifndef NO_NEW_VERSION_CHECK
 void screencast::buttonVersion()
 {
   QString localVersion = Version;
@@ -763,7 +765,7 @@ void screencast::buttonVersion()
   else
     updateButton->hide();
 }
-
+#endif
 
 void screencast::showHomepage()
 {
