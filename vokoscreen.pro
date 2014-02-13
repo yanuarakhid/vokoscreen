@@ -16,16 +16,24 @@ SOURCES += main.cpp \
            QvkWinInfo.cpp \
            QvkCredits.cpp \
            QvkVersion.cpp \
+           
+# In der screencast.qrc stehen *.qm Einträge, diese Dateien sind aber noch nicht
+# im Unterverzeichnis "language" vorhanden da diese "eigentlich" erst mit make geniert werden,
+# daher gibt es eine Fehlermeldung wenn der Befehl qmake aufgerufen und "RESOURCES += screencast.qrc" abgearbeitet wird.
+# Um der Fehlermeldung entgegenzuwirken das keine *.qm Dateien vorhanden sind wird lrelease als Systemaufruf vorher aufgerufen.
+# Das Script/Macro siehe weiter unten "# language packages" muß weiter bestehen bleiben damit "make clean" die *.qm Dateien löscht.
 
+system(lrelease language/vokoscreen_*.ts)
+          
 RESOURCES += screencast.qrc
                         
 TRANSLATIONS = $$files(language/vokoscreen_*.ts)
-                
+
 # language packages
 !isEmpty(TRANSLATIONS) 
 {
   isEmpty(QMAKE_LRELEASE)
-  {
+ {
     win32:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\lrelease.exe
       else:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
   }
@@ -79,3 +87,4 @@ PKGCONFIG += opencv
 
 CONFIG  += qtestlib
 #system( ls )
+
