@@ -179,10 +179,6 @@
         <translation>El preséu %1 ta ocupáu</translation>
     </message>
     <message>
-        <source>Your Actual frames in the Settings is too heigh</source>
-        <translation>Los tos frames d&apos;anguaño nos axustes son abondo altos</translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation>DIr</translation>
     </message>
@@ -236,7 +232,15 @@
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>Nueva versión disponible</translation>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation>Codec vidéu</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Codec soníu</translation>
     </message>
 </context>
 </TS>

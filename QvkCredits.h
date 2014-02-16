@@ -5,6 +5,13 @@
 #include <QApplication>
 #include <QMainWindow> 
 #include <QLabel>
+#include <QPixmap>
+#include <QX11Info>
+#include <QDebug>
+#include <QPainter>
+#include <QDesktopWidget>
+#include <QStringList>
+#include <QFile>
 
 class QvkCredits: public QMainWindow
 {
@@ -14,7 +21,7 @@ public:
     QvkCredits();
     virtual ~QvkCredits();
     QPainter * painter;
-
+    QStringList creditsStringlist;
     
 signals:
     void closeCredits();

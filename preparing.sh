@@ -41,11 +41,17 @@ echo $array | sed 's: :</file>\n<file>:g' >> screencast.qrc
 sed -i 's/.ts/.qm/g' screencast.qrc
 
 #########
+# CREDITS
+#########
+echo '<file>CREDITS</file>' >> screencast.qrc
+
+#########
 # VERSION
 #########
 echo '<file>VERSION</file>' >> screencast.qrc
 echo '</qresource>' >> screencast.qrc
 echo '</RCC>'  >> screencast.qrc
+
 
 echo ==========
 echo Script end

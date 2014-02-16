@@ -41,6 +41,7 @@
 <file>language/vokoscreen_vi.qm</file>
 <file>language/vokoscreen_zh_CN.qm</file>
 <file>language/vokoscreen_zh_TW.qm</file>
+<file>CREDITS</file>
 <file>VERSION</file>
 </qresource>
 </RCC>
