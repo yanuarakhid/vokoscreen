@@ -7,7 +7,7 @@ QvkCredits::QvkCredits()
   if( QX11Info::isCompositingManagerRunning() )
     setAttribute( Qt::WA_TranslucentBackground, true );
 
-  resize( 600, 600 );
+  resize( 600, 650 );
   
   QDesktopWidget *desktop = QApplication::desktop();  
   int x = ( desktop->width() - width() ) / 2;
@@ -45,14 +45,14 @@ void QvkCredits::paintEvent( QPaintEvent *event )
 
     QPixmap pixmap( 0, 0 );
     pixmap.load( ":/pictures/Scroll.png" );
-    pixmap = pixmap.scaledToWidth( 550, Qt::SmoothTransformation );
+    pixmap = pixmap.scaledToWidth( 600, Qt::SmoothTransformation );
 
     QFont font;
     font.setPointSize( 10 );
     font.setItalic( true );
     
     int x = 155;
-    int y = 155;
+    int y = 165;
     int deltaX = 6;
     int deltaY = 15;
     
