@@ -69,7 +69,8 @@ void QvkMail::startMailClientWithLastFile( QString file )
     QString bodyString = tr( "You find the Video as attachment" );
   
     QString processString = "xdg-email --utf8 --attach " + file + " --body \"" + bodyString + "\"";
-  
+    //QString processString = "xdg-email --utf8 --attach \""  + file + "\"" + " --body \"" + bodyString + "\"";
+
     qDebug() << "[vokoscreen]" << "startMailClientWithLastFile:" << processString;
   
     QProcess Process;

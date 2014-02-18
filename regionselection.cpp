@@ -443,16 +443,8 @@ void regionselection::HandleMiddle()
 {
   QColor color, arrow;
   
-  if ( isFrameLocked() )
-  {
-    color = Qt::red;
-    arrow = Qt::red;
-  }
-  else
-  {
-    color = Qt::green;
-    arrow = Qt::black;
-  }
+  color = Qt::green;
+  arrow = Qt::black;
 
   QBrush brush( color, Qt::SolidPattern );
   painter->setBrush( brush );
