@@ -13,7 +13,6 @@ Q_OBJECT
 public:
   QvkWinInfo();
   virtual ~QvkWinInfo();
- QMainWindow *testWindow;
   
 public slots:
   QString x();
