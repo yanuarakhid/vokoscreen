@@ -561,6 +561,7 @@ void regionselection::paintEvent( QPaintEvent *event )
 {
   (void)event;
   painter->begin( this );
+  painter->setRenderHints( QPainter::Antialiasing, true );
 
   // Maskiert den Bereich für PrintSize und HandleMiddle
   if ( !isFrameLocked() )
@@ -590,8 +591,6 @@ void regionselection::paintEvent( QPaintEvent *event )
     setMask( r1 );
   }
 
-  //painter->begin( this );
-  painter->setRenderHints( QPainter::Antialiasing, true );
 
   HandleTopLeft();
   HandleTopMiddle();
@@ -601,8 +600,8 @@ void regionselection::paintEvent( QPaintEvent *event )
   HandleBottomMiddle();
   HandleBottomLeft();
   HandleLeftMiddle();
-  HandleMiddle();
-  printSize();
+  //HandleMiddle();
+  //printSize();
 
   // Blue Frame
   painter->setPen( QPen( Qt::blue, frameWidth ) );
