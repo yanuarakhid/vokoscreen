@@ -1593,7 +1593,7 @@ void screencast::Pause()
 	PauseButton->click();
         return;
       }
-      
+      Countdown();
       shortcutStop->setEnabled( true );
       PauseButton->setText( tr( "Pause" ) );
       startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
