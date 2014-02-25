@@ -7,7 +7,7 @@ HEADERS += screencast.h \
            QvkMagnifier.h \
            QvkWinInfo.h \
            QvkCredits.h \
-           QvkVersion.h \
+           QvkVersion.h
 
 SOURCES += main.cpp \
            screencast.cpp \
@@ -15,7 +15,7 @@ SOURCES += main.cpp \
            QvkMagnifier.cpp \
            QvkWinInfo.cpp \
            QvkCredits.cpp \
-           QvkVersion.cpp \
+           QvkVersion.cpp
            
 # In der screencast.qrc stehen *.qm Einträge, diese Dateien sind aber noch nicht
 # im Unterverzeichnis "language" vorhanden da diese "eigentlich" erst mit make geniert werden,
@@ -87,4 +87,7 @@ PKGCONFIG += opencv
 
 CONFIG  += qtestlib
 #system( ls )
+
+#LIBS += -lX11 -lXfixes
+
 

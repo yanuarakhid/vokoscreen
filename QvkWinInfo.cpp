@@ -1,4 +1,4 @@
-#include "QvkWinInfo.h" 
+#include "QvkWinInfo.h"
 #include <QCoreApplication>
 using namespace std;
 
@@ -101,11 +101,37 @@ void QvkWinInfo::selectWindow()
   {
     windowTimer->stop();
     mouseTimer->stop();
+/**
+ * siehe auch screencast::windowMove()
+ */
+//******************************************************
+/*
+    QvkWindowGrabber grabber;
+    QRect rect = grabber.grabCurrent( true, newWinID );
+    myX = rect.x();
+    myY = rect.y();
+    myWidth = rect.width();
+    myHeight = rect.height();
+*/
+//******************************************************
+
+/**
+ * Mit dem Original qxt gibt es ein Offset unter Gnome
+ * 
+ * Eigene Routine in qxt eingebaut siehe qxt in vokoscreen
+ * 
+ * Probleme:
+ * Beim verscheiben des Fenster wird die neue Position erst beim setzen des Fenster erkannt.
+ * 
+ */
+//****************************************************
+
     myX = QxtWindowSystem::windowGeometry( newWinID ).x();
     myY = QxtWindowSystem::windowGeometry( newWinID ).y();
     myWidth = QxtWindowSystem::windowGeometry( newWinID ).width();
     myHeight = QxtWindowSystem::windowGeometry( newWinID ).height();
 
+    
     // Cursor resize does not show in video in the first Frames
     resize( 10, 10 );
     
