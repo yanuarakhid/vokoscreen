@@ -1751,11 +1751,6 @@ void screencast::windowMove()
   } 
   // End Window is closed
 
-/**
- * Hiermit gibt es ein Offset unter Gnome
- */
-//****************************************************
-
   // Wenn Versatzwert kleiner null ist
   QString x = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).x() );
   int xx = x.toInt();
@@ -1767,20 +1762,6 @@ void screencast::windowMove()
   if ( yy < 0 )
     y = "0";
 
-//****************************************************  
-  
-/**
- * siehe auch QvkWinInfo::selectWindow()
- */
-//*******************************************************
-/*
-  QvkWindowGrabber grabber;
-  QRect rect = grabber.grabCurrent( true, moveWindowID );
-  QString x = QString::number( rect.x() );
-  QString y = QString::number( rect.y() );
-*/
-//******************************************************  
-  
   if ( ( deltaXMove != x ) or ( deltaYMove != y ) )
     if ( SystemCall->state() == QProcess::Running ) 
       moveWindowPause();
