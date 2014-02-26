@@ -41,13 +41,12 @@ TRANSLATIONS = $$files(language/vokoscreen_*.ts)
   TSQM.name = lrelease ${QMAKE_FILE_IN}
   TSQM.input = TRANSLATIONS
   TSQM.output = $$TS_DIR/${QMAKE_FILE_BASE}.qm
-  TSQM.commands = $$QMAKE_LRELEASE ${QMAKE_FILE_IN}
-  TSQM.CONFIG = no_link
+  TSQM.commands = $$QMAKE_LRELEASE ${QMAKE_FILE_IN} ${QMAKE_FILE_OUT}
+  TSQM.CONFIG = no_link 
   QMAKE_EXTRA_COMPILERS += TSQM
   PRE_TARGETDEPS += compiler_TSQM_make_all
 }
 else:message(No translation files in project)
-
 
 # Install paths
 image.path = /usr/share/pixmaps
@@ -63,7 +62,7 @@ INSTALLS += target image desktop man
 # Clean target
 QMAKE_CLEAN += $$TARGET */*~
 
-CONFIG += link_pkgconfig
+CONFIG += link_pkgconfig 
 
 # QtSingleApplication
 include(QtSingleApplication/qtsingleapplication.pri)
@@ -82,11 +81,15 @@ include(send/send.pri)
 include(webcam/webcam.pri)
 PKGCONFIG += opencv
 
-#include(QtZip-src/QtZip.pri)
-#PKGCONFIG += zlib
+# project
+include(project/project.pri)
 
 CONFIG  += qtestlib
+
 #system( ls )
+
+#include(QtZip-src/QtZip.pri)
+#PKGCONFIG += zlib
 
 #LIBS += -lX11 -lXfixes
 
