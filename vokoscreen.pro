@@ -84,6 +84,9 @@ PKGCONFIG += opencv
 # project
 include(project/project.pri)
 
+# settings
+include(settings/settings.pri)
+
 CONFIG  += qtestlib
 
 #system( ls )
