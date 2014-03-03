@@ -33,6 +33,8 @@
 #include <QStatusBar>
 #include <QDesktopWidget>
 
+#include <QvkSettings.h>
+
 #include "regionselection.h"
 #include "QvkMagnifier.h"
 #include "QvkWebcamController.h"
@@ -50,6 +52,7 @@
 #include <QDateTime>
 
 
+//#include <QEvent>
 
 class screencast : public QMainWindow
 { 
@@ -59,8 +62,10 @@ public:
     virtual ~screencast();
     QString getFfmpegVersion();
     QString getAvconvVersion();
-    QString ProgName;
-    QString Version;
+
+
+//    QString ProgName;
+//    QString Version;
     QString email;
     QString homepage;
     QString ffmpegString;
@@ -272,9 +277,11 @@ private:
     QPushButton * creditsQPushButton;
     QPushButton * updateButton;
 
+    QvkSettings vkSettings;
+
  protected:
     void closeEvent( QCloseEvent * event );
-	
+
 };
 
 

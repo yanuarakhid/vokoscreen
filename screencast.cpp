@@ -20,6 +20,7 @@ using namespace std;
 
 screencast::screencast()
 {
+/*  
     QSettings versionSettings(":/VERSION", QSettings::IniFormat );
     versionSettings.beginGroup("Info");
       bool beta = versionSettings.value( "Beta" ).toBool();
@@ -32,25 +33,28 @@ screencast::screencast()
       ProgName = versionSettings.value( "Progname" ).toString();
       Version = versionSettings.value( "Version" ).toString() + Beta;
     versionSettings.endGroup();
-
+*/
+    
+    vkSettings.readAll();
+ 
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
     
     QString mailingliste = "<a href ='mailto:vokoscreen@googlegroups.com?subject=vokoscreen ";
-    mailingliste = mailingliste.append( Version ).append( "'" ).append( ">" + tr( "Mailinglist" ) + "</a>" );
+    mailingliste = mailingliste.append( vkSettings.getVersion() ).append( "'" ).append( ">" + tr( "Mailinglist" ) + "</a>" );
     
     email = "<a href ='mailto:tux@kohaupt-online.de?subject=vokoscreen ";
-    email = email.append( Version ).append( "'" ).append( ">" + tr( "Support" ) + "</a>" );
+    email = email.append( vkSettings.getVersion() ).append( "'" ).append( ">" + tr( "Support" ) + "</a>" );
 
     QString emaildeveloper = "<a href ='mailto:vkohaupt@freenet.de?subject=vokoscreen ";
-    emaildeveloper = emaildeveloper.append( Version ).append( "'" ).append( ">" + tr( "Developer" ) + "</a>" );
+    emaildeveloper = emaildeveloper.append( vkSettings.getVersion() ).append( "'" ).append( ">" + tr( "Developer" ) + "</a>" );
     
-    screencast::setWindowTitle( ProgName + " " + Version );
+    screencast::setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     screencast::setWindowIcon( icon );    
 
-    qDebug() << "[vokoscreen]" << "Version:" << Version;
+    qDebug() << "[vokoscreen]" << "Version:" << vkSettings.getVersion();
     qDebug() << "[vokoscreen]" << "Qt Version: " << qVersion();
     QvkAlsaDevice inBox ;
     qDebug() << "[vokoscreen]" << "asoundlib Version:" << inBox.getAlsaVersion();
@@ -67,14 +71,15 @@ screencast::screencast()
 
     tabWidget = new QTabWidget( centralWidget );
     tabWidget->setGeometry( 120, 0, 450, 190 );
-    tabWidget->setIconSize( QSize( 40, 40 ) );
+    tabWidget->setIconSize( QSize( 40, 48 ) );
 
     // Tab 1 Screen options ***************************************************
     QFrame *frame = new QFrame( this );
     frame->setGeometry( 120, 10, 300, 200 );
     frame->show();
     tabWidget->addTab( frame, "" );
-    tabWidget->setTabIcon( 0, QIcon( ":/pictures/monitor.png" ) );
+    //tabWidget->setTabIcon( 0, QIcon( ":/pictures/monitor.png" ) );
+    tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
     QFont qfont = frame->font();
     qfont.setPixelSize( 12 );
     frame->setFont( qfont );
@@ -148,7 +153,8 @@ screencast::screencast()
     TabWidgetAudioFrame->setGeometry( 120, 0, 300, 290 );
     TabWidgetAudioFrame->show();
     tabWidget->addTab( TabWidgetAudioFrame, "" );
-    tabWidget->setTabIcon( 1, QIcon( ":/pictures/micro.png" ) );
+    //tabWidget->setTabIcon( 1, QIcon( ":/pictures/micro.png" ) );
+    tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
     qfont = TabWidgetAudioFrame->font();
     qfont.setPixelSize( 12 );
     TabWidgetAudioFrame->setFont( qfont );
@@ -182,7 +188,9 @@ screencast::screencast()
     TabWidgetVideoOptionFrame->setGeometry( 120, 0, 300, 200 );
     TabWidgetVideoOptionFrame->show();
     tabWidget->addTab( TabWidgetVideoOptionFrame, "" );
-    tabWidget->setTabIcon( 2, QIcon( ":/pictures/videooptionen.png" ) );
+    //tabWidget->setTabIcon( 2, QIcon( ":/pictures/videooptionen.png" ) );
+    tabWidget->setTabIcon( 2, QIcon::fromTheme( "applications-multimedia", QIcon( ":/pictures/videooptionen.png" ) ) );
+
     qfont = TabWidgetVideoOptionFrame->font();
     qfont.setPixelSize( 12 );
     TabWidgetVideoOptionFrame->setFont( qfont );
@@ -266,7 +274,8 @@ screencast::screencast()
     TabWidgetMiscellaneousFrame->setGeometry( 120, 0, 300, 200 );
     TabWidgetMiscellaneousFrame->show();
     tabWidget->addTab(TabWidgetMiscellaneousFrame, "" );
-    tabWidget->setTabIcon( 3, QIcon( ":/pictures/tools.png" ) );
+    //tabWidget->setTabIcon( 3, QIcon( ":/pictures/tools.png" ) );
+    tabWidget->setTabIcon( 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
     qfont = TabWidgetMiscellaneousFrame->font();
     qfont.setPixelSize( 12 );
     TabWidgetMiscellaneousFrame->setFont( qfont );
@@ -312,7 +321,8 @@ screencast::screencast()
     QFrame *TabWidgetAboutFrame = new QFrame(this);
     TabWidgetAboutFrame->show();
     tabWidget->addTab( TabWidgetAboutFrame, "" );
-    tabWidget->setTabIcon( 4, QIcon( ":/pictures/about.png" ) );
+    //tabWidget->setTabIcon( 4, QIcon( ":/pictures/about.png" ) );
+    tabWidget->setTabIcon( 4, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
     tabWidget->show();
     qfont = TabWidgetAboutFrame->font();
     qfont.setPixelSize( 12 );
@@ -475,7 +485,8 @@ screencast::screencast()
     
     QLabel* label = new QLabel( centralWidget );
     label->setText("");
-    label->setGeometry( QRect( 0, 0, 123, 240) );
+    //label->setGeometry( QRect( 0, 0, 123, 240) );
+    label->setGeometry( QRect( 10, 0, 100, 190 ) );
     label->setAlignment( Qt::AlignCenter );
     label->show();
     QImage* qImage = new QImage( ":/pictures/VokoCola.png" );
@@ -595,61 +606,98 @@ screencast::screencast()
     qDebug();
 
     // Einstellungen aus .conf einlesen
-    QSettings settings( ProgName, ProgName );
+    QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
+//    settings.beginGroup( "Miscellaneous" );
 
     // Dient nur zum anlegen des Profils damit ffmpeglog erstellt werden kann
-    settings.beginGroup("vokoscreen");
-      settings.setValue("Version", Version);
-    settings.endGroup();
+//    settings.beginGroup("vokoscreen");
+//      settings.setValue("Version", vkSettings.getVersion());
+//    settings.endGroup();
 
-    settings.beginGroup( "Audio" );
-      AudioOnOffCheckbox->setCheckState( Qt::CheckState( settings.value( "AudioOnOff", 2 ).toUInt() ) );
-    settings.endGroup();
+//    settings.beginGroup( "Audio" );
+      //AudioOnOffCheckbox->setCheckState( Qt::CheckState( settings.value( "AudioOnOff", 2 ).toUInt() ) );   
+      AudioOnOffCheckbox->setCheckState( Qt::CheckState( vkSettings.getAudioOnOff() ) );
+//    settings.endGroup();
 
-    settings.beginGroup("Alsa" );
-      AlsaRadioButton->setChecked( settings.value( "Alsa", false ).toBool() );
-    settings.endGroup();
+//    settings.beginGroup("Alsa" );
+      //AlsaRadioButton->setChecked( settings.value( "Alsa", false ).toBool() );
+      AlsaRadioButton->setChecked( vkSettings.getAlsaSelect() );
+//    settings.endGroup();
 
-    settings.beginGroup("Pulse");
-      PulseDeviceRadioButton->setChecked( settings.value( "Pulse", true ).toBool() );
-    settings.endGroup();
+//    settings.beginGroup("Pulse");
+//      PulseDeviceRadioButton->setChecked( settings.value( "Pulse", true ).toBool() );
+      PulseDeviceRadioButton->setChecked( vkSettings.getPulseSelect() );
+//    settings.endGroup();
 
-    settings.beginGroup("Record");
-      FullScreenRadioButton->setChecked( settings.value( "FullScreen", true ).toBool() );
-      WindowRadioButton->setChecked( settings.value( "Window", false ).toBool() );
-      AreaRadioButton->setChecked( settings.value( "Area", false ).toBool() );
-    settings.endGroup();
+//    settings.beginGroup("Record");
+//      FullScreenRadioButton->setChecked( settings.value( "FullScreen", true ).toBool() );
+      FullScreenRadioButton->setChecked( vkSettings.getFullScreenSelect() );
+      
+//      WindowRadioButton->setChecked( settings.value( "Window", false ).toBool() );
+      WindowRadioButton->setChecked( vkSettings.getWindowSelect() );
+      
+//      AreaRadioButton->setChecked( settings.value( "Area", false ).toBool() );
+      AreaRadioButton->setChecked( vkSettings.getAreaSelect() );
+//    settings.endGroup();
 
-    settings.beginGroup( "Miscellaneous" );
+    //settings.beginGroup( "Miscellaneous" );
+      //QDir Dir;
+      //if ( Dir.exists( settings.value( "VideoPath", PathMoviesLocation() ).toString() ) )
+      //  SaveVideoPathLineEdit->setText( settings.value( "VideoPath", PathMoviesLocation() ).toString() );
+      //SaveVideoPathLineEdit->setText( settings.value( "VideoPath", PathMoviesLocation() ).toString() );
+      //else
+      //PathMoviesLocation();
+
       QDir Dir;
-      if ( Dir.exists( settings.value( "VideoPath", PathMoviesLocation() ).toString() ) )
-        SaveVideoPathLineEdit->setText( settings.value( "VideoPath", PathMoviesLocation() ).toString() );
+      if ( Dir.exists( vkSettings.getVideoPath() ) )
+        SaveVideoPathLineEdit->setText( vkSettings.getVideoPath() );
       else
-	PathMoviesLocation();
+        PathMoviesLocation();
 
-      int x = VideoplayerComboBox->findText( settings.value( "Videoplayer" ).toString(),Qt::MatchExactly );
+      //int x = VideoplayerComboBox->findText( settings.value( "Videoplayer" ).toString(),Qt::MatchExactly );
+      //if ( x == -1 )
+      //  VideoplayerComboBox->setCurrentIndex( 0 );
+      //else
+      //  VideoplayerComboBox->setCurrentIndex( x );
+
+      int x = VideoplayerComboBox->findText( vkSettings.getVideoPlayer(), Qt::MatchExactly );
       if ( x == -1 )
         VideoplayerComboBox->setCurrentIndex( 0 );
       else
         VideoplayerComboBox->setCurrentIndex( x );
       
-      MinimizedCheckBox->setCheckState( Qt::CheckState( settings.value( "Minimized", 0 ).toUInt() ) );
       
-      CountdownSpinBox->setValue(  settings.value( "Countdown", 0 ).toUInt() );
-    settings.endGroup();
-    
-    settings.beginGroup( "Videooptions" );
-      FrameSpinBox->setValue( settings.value( "Frames", 25 ).toInt() );
-      VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( settings.value( "Videocodec", "mpeg4" ).toString() ) );
-      AudiocodecComboBox->setCurrentIndex( AudiocodecComboBox->findText( settings.value( "Audiocodec", "libmp3lame" ).toString() ) );
-      VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( settings.value( "Format", "mkv" ).toString() ) );
-      HideMouseCheckbox->setCheckState( Qt::CheckState( settings.value( "HideMouse").toUInt() ) );
-    settings.endGroup();
+      //MinimizedCheckBox->setCheckState( Qt::CheckState( settings.value( "Minimized", 0 ).toUInt() ) );
+      MinimizedCheckBox->setCheckState( Qt::CheckState( vkSettings.getMinimized() ) );
+      
+      //CountdownSpinBox->setValue( settings.value( "Countdown", 0 ).toUInt() );
+      CountdownSpinBox->setValue( vkSettings.getCountdown() );
+      
+    //settings.endGroup();
 
-    settings.beginGroup( "GUI" );
-      setGeometry( settings.value( "X", "100" ).toUInt(), settings.value( "Y", "100" ).toUInt(), width(), height() );
-      tabWidget->setCurrentIndex ( settings.value( "Tab", "0" ).toUInt() );
-    settings.endGroup();
+    //settings.beginGroup( "Videooptions" );
+      //FrameSpinBox->setValue( settings.value( "Frames", 25 ).toInt() );
+      FrameSpinBox->setValue( vkSettings.getFrames() );
+
+      //VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( settings.value( "Videocodec", "mpeg4" ).toString() ) );
+      VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( vkSettings.getVideoCodec() ) );
+      
+      
+      //AudiocodecComboBox->setCurrentIndex( AudiocodecComboBox->findText( settings.value( "Audiocodec", "libmp3lame" ).toString() ) );
+      AudiocodecComboBox->setCurrentIndex( AudiocodecComboBox->findText( vkSettings.getAudioCodec() ) );
+
+      //VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( settings.value( "Format", "mkv" ).toString() ) );
+      VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( vkSettings.getVideoContainer() ) );
+
+      //HideMouseCheckbox->setCheckState( Qt::CheckState( settings.value( "HideMouse").toUInt() ) );
+      HideMouseCheckbox->setCheckState( Qt::CheckState( vkSettings.getHideMouse()) );
+      
+    //settings.endGroup();
+
+    //settings.beginGroup( "GUI" );
+      setGeometry( vkSettings.getX(), vkSettings.getY(), width(), height() );
+      tabWidget->setCurrentIndex( vkSettings.getTab() );
+    //settings.endGroup();
     
     // Statusbar
     stateChangedAudio( AudioOnOffCheckbox->checkState() );
@@ -673,6 +721,7 @@ screencast::screencast()
     connect( AreaRadioButton,       SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
+    /*
     settings.beginGroup( "Area" );
        myregionselection = new regionselection();
        myregionselection->setGeometry ( settings.value( "X", 200 ).toUInt(),
@@ -682,6 +731,16 @@ screencast::screencast()
 				      );
        myregionselection->close();
     settings.endGroup();
+    */
+       myregionselection = new regionselection();
+       myregionselection->setGeometry ( vkSettings.getAreaX(),
+       				        vkSettings.getAreaY(),
+				        vkSettings.getAreaWidth() + myregionselection->borderLeft + myregionselection->borderRight + myregionselection->frameWidth,
+				        vkSettings.getAreaHeight() + myregionselection->borderTop + myregionselection->borderBottom + myregionselection->frameWidth
+				      );
+       myregionselection->close();
+    
+    
     
     connect( MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );
     magnifier = new QvkMagnifier();
@@ -711,10 +770,14 @@ screencast::screencast()
    SystemTrayIconBlue = new QSystemTrayIcon( QIcon::fromTheme( "media-skip-forward", QIcon ( ":/pictures/go.png" ) ) );
    SystemTrayIconBlue->setToolTip( tr( "Go" ) );
 
-   settings.beginGroup( "GUI" );
-      SystrayCheckBox->setCheckState( Qt::CheckState( settings.value( "Systray", 2 ).toUInt() ) );
-      stateChangedSystray( Qt::CheckState( settings.value( "Systray", 2 ).toUInt() ) );
-   settings.endGroup();
+//   settings.beginGroup( "GUI" );
+//      SystrayCheckBox->setCheckState( Qt::CheckState( settings.value( "Systray", 2 ).toUInt() ) );
+//      stateChangedSystray( Qt::CheckState( settings.value( "Systray", 2 ).toUInt() ) );
+//   settings.endGroup();
+   
+      SystrayCheckBox->setCheckState( Qt::CheckState( vkSettings.getSystray() ) );
+      stateChangedSystray( Qt::CheckState( vkSettings.getSystray() ) );
+   
    
    connect( SystemTrayIconGreen,  SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStart( QSystemTrayIcon::ActivationReason ) ) );
    connect( SystemTrayIconRed,    SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStop( QSystemTrayIcon::ActivationReason ) ) );
@@ -759,7 +822,7 @@ screencast::~screencast()
 #ifndef NO_NEW_VERSION_CHECK
 void screencast::buttonVersion()
 {
-  QString localVersion = Version;
+  QString localVersion = vkSettings.getVersion();
   if ( version.isNewVersionAvailable( localVersion, version.getRemoteVersion() ) )
     updateButton->show();
   else
@@ -969,7 +1032,7 @@ void screencast::AlsaWatcherEvent( QStringList CardxList )
     AlsaHwComboBox->addItem( AlsaDeviceList.at( i )->getAlsaName() , i );
   }
 
-  QSettings settings( ProgName, ProgName );
+  QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
   settings.beginGroup( "Alsa" );
     int x = AlsaHwComboBox->findText( settings.value( "NameCaptureCard" ).toString(),Qt::MatchExactly );
     AlsaHwComboBox->setCurrentIndex( x );
@@ -1013,12 +1076,12 @@ void screencast::closeEvent( QCloseEvent * event )
 
 void screencast::saveSettings()
 {
-  QSettings settings( ProgName, ProgName );
+  QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
   
   settings.clear();
 
   settings.beginGroup( "vokoscreen" );
-    settings.setValue( "Version", Version );
+    settings.setValue( "Version", vkSettings.getVersion() );
   settings.endGroup();
 
   settings.beginGroup( "Audio" );
@@ -1268,7 +1331,7 @@ void screencast::makeAsoundrc()
     qDebug() << "[vokoscreen] File not found .asound for PulseAudio Plugin";
     qDebug() << "[vokoscreen] Create file .asound for PulseAudio Plugin";
     QTextStream out( &qFile );
-    out << "# create by vokoscreen " << Version << "\n";
+    out << "# create by vokoscreen " << vkSettings.getVersion() << "\n";
     out << "\n";
     out << "pcm.pulse {\n";
     out << "  type pulse\n";
@@ -1473,7 +1536,7 @@ void screencast::error( QProcess::ProcessError error )
   if ( error == QProcess::Crashed )
   {
     // remove crashed directory
-    QSettings settings1( ProgName, ProgName );
+    QSettings settings1( vkSettings.getProgName(), vkSettings.getProgName() );
     QFileInfo settingsPath1( settings1.fileName() );
     QFile file1( settingsPath1.absolutePath() );
     QString workDirectory1 = file1.fileName();
@@ -1487,7 +1550,7 @@ void screencast::error( QProcess::ProcessError error )
     }
     
     // Move ffmpeg.log, vokoscreen.log, vokoscreen.conf in directory crashed
-    QSettings settings( ProgName, ProgName );
+    QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
     QFileInfo settingsPath( settings.fileName() );
     QFile file( settingsPath.absolutePath() );
     QString workDirectory = file.fileName();
@@ -2034,7 +2097,7 @@ QString screencast::PathMoviesLocation()
   {
     if ( QDesktopServices::storageLocation( QDesktopServices::MoviesLocation).isEmpty() )
     {
-       Path = QDesktopServices::storageLocation( QDesktopServices:: QDesktopServices::HomeLocation );
+       Path = QDesktopServices::storageLocation( QDesktopServices::HomeLocation );
        SaveVideoPathLineEdit->setText(Path);
     }
     else
@@ -2050,7 +2113,7 @@ QString screencast::PathMoviesLocation()
 QString screencast::PathTempLocation()
 {
   // Doppelter ProgName um Eindeutigkeit in tmp zuerreichen
-  QString tmpName = ProgName + "-" + ProgName;
+  QString tmpName = vkSettings.getProgName() + "-" + vkSettings.getProgName();
   QString tempPathProg = QDesktopServices::storageLocation ( QDesktopServices::TempLocation ) + QDir::separator() + tmpName;
   QDir dirTempPathProg( tempPathProg );
   if ( not dirTempPathProg.exists() )
@@ -2485,7 +2548,7 @@ void screencast::record()
   }
 
   // set working directory for writing and delete the ffmpegLog from Profil directory
-  QSettings settings( ProgName, ProgName );
+  QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
   QFileInfo settingsPath( settings.fileName() );
   QFile file( settingsPath.absolutePath() );
   QString workDirectory = file.fileName();
@@ -2557,12 +2620,12 @@ void screencast::record()
   
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   
-  QFile FileVokoscreenLog(settingsPath.absolutePath() + QDir::separator() + ProgName + ".log");
+  QFile FileVokoscreenLog(settingsPath.absolutePath() + QDir::separator() + vkSettings.getProgName() + ".log");
   if ( !FileVokoscreenLog.open( QIODevice::WriteOnly ) ) 
     qDebug() << "Datei konnte nicht angelegt werden: " << FileVokoscreenLog.errorString();
   
   QTextStream stream( &FileVokoscreenLog );
-  stream << ProgName << " Version: " << Version << "\n";
+  stream << vkSettings.getProgName() << " Version: " << vkSettings.getVersion() << "\n";
   stream << "Record resolution: " << getRecordWidth() << "x" << getRecordHeight() << "\n";
   stream << "Alsa string: " << myAlsa() << "\n";
   stream << "Qt Version: " << qVersion() << "\n";
