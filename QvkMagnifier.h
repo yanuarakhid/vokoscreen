@@ -11,6 +11,7 @@
 #include <QObject>
 #include <QRadioButton>
 #include <QPropertyAnimation>
+#include <QPushButton>
 
 class QvkMagnifier: public QDialog
 { 
@@ -19,8 +20,7 @@ public:
   QvkMagnifier();
   virtual ~QvkMagnifier();
   
-   //QDialog *dialog;
-   
+  
 public slots:
   void getDialogMagnifier( QWidget *parent );
 
@@ -38,6 +38,8 @@ private slots:
   int getDistanceX();
   int getDistanceY();
 
+  void closeDialog();
+  
 
 protected:  
 
@@ -56,6 +58,7 @@ private:
   QRadioButton *radioButton3;
   int faktor;
   int formValue;
+  QDialog *dialog;
 };
 
 

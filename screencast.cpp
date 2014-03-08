@@ -20,21 +20,6 @@ using namespace std;
 
 screencast::screencast()
 {
-/*  
-    QSettings versionSettings(":/VERSION", QSettings::IniFormat );
-    versionSettings.beginGroup("Info");
-      bool beta = versionSettings.value( "Beta" ).toBool();
-      QString Beta;
-      if ( beta )
-        Beta = " Beta"; 
-      else
-        Beta = "";
-      
-      ProgName = versionSettings.value( "Progname" ).toString();
-      Version = versionSettings.value( "Version" ).toString() + Beta;
-    versionSettings.endGroup();
-*/
-    
     vkSettings.readAll();
  
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
@@ -605,48 +590,17 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
     qDebug();
 
-    // Einstellungen aus .conf einlesen
-    QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
-//    settings.beginGroup( "Miscellaneous" );
-
-    // Dient nur zum anlegen des Profils damit ffmpeglog erstellt werden kann
-//    settings.beginGroup("vokoscreen");
-//      settings.setValue("Version", vkSettings.getVersion());
-//    settings.endGroup();
-
-//    settings.beginGroup( "Audio" );
-      //AudioOnOffCheckbox->setCheckState( Qt::CheckState( settings.value( "AudioOnOff", 2 ).toUInt() ) );   
       AudioOnOffCheckbox->setCheckState( Qt::CheckState( vkSettings.getAudioOnOff() ) );
-//    settings.endGroup();
 
-//    settings.beginGroup("Alsa" );
-      //AlsaRadioButton->setChecked( settings.value( "Alsa", false ).toBool() );
       AlsaRadioButton->setChecked( vkSettings.getAlsaSelect() );
-//    settings.endGroup();
 
-//    settings.beginGroup("Pulse");
-//      PulseDeviceRadioButton->setChecked( settings.value( "Pulse", true ).toBool() );
       PulseDeviceRadioButton->setChecked( vkSettings.getPulseSelect() );
-//    settings.endGroup();
 
-//    settings.beginGroup("Record");
-//      FullScreenRadioButton->setChecked( settings.value( "FullScreen", true ).toBool() );
       FullScreenRadioButton->setChecked( vkSettings.getFullScreenSelect() );
       
-//      WindowRadioButton->setChecked( settings.value( "Window", false ).toBool() );
       WindowRadioButton->setChecked( vkSettings.getWindowSelect() );
       
-//      AreaRadioButton->setChecked( settings.value( "Area", false ).toBool() );
       AreaRadioButton->setChecked( vkSettings.getAreaSelect() );
-//    settings.endGroup();
-
-    //settings.beginGroup( "Miscellaneous" );
-      //QDir Dir;
-      //if ( Dir.exists( settings.value( "VideoPath", PathMoviesLocation() ).toString() ) )
-      //  SaveVideoPathLineEdit->setText( settings.value( "VideoPath", PathMoviesLocation() ).toString() );
-      //SaveVideoPathLineEdit->setText( settings.value( "VideoPath", PathMoviesLocation() ).toString() );
-      //else
-      //PathMoviesLocation();
 
       QDir Dir;
       if ( Dir.exists( vkSettings.getVideoPath() ) )
@@ -654,50 +608,28 @@ screencast::screencast()
       else
         PathMoviesLocation();
 
-      //int x = VideoplayerComboBox->findText( settings.value( "Videoplayer" ).toString(),Qt::MatchExactly );
-      //if ( x == -1 )
-      //  VideoplayerComboBox->setCurrentIndex( 0 );
-      //else
-      //  VideoplayerComboBox->setCurrentIndex( x );
-
       int x = VideoplayerComboBox->findText( vkSettings.getVideoPlayer(), Qt::MatchExactly );
       if ( x == -1 )
         VideoplayerComboBox->setCurrentIndex( 0 );
       else
         VideoplayerComboBox->setCurrentIndex( x );
       
-      
-      //MinimizedCheckBox->setCheckState( Qt::CheckState( settings.value( "Minimized", 0 ).toUInt() ) );
       MinimizedCheckBox->setCheckState( Qt::CheckState( vkSettings.getMinimized() ) );
       
-      //CountdownSpinBox->setValue( settings.value( "Countdown", 0 ).toUInt() );
       CountdownSpinBox->setValue( vkSettings.getCountdown() );
       
-    //settings.endGroup();
-
-    //settings.beginGroup( "Videooptions" );
-      //FrameSpinBox->setValue( settings.value( "Frames", 25 ).toInt() );
       FrameSpinBox->setValue( vkSettings.getFrames() );
 
-      //VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( settings.value( "Videocodec", "mpeg4" ).toString() ) );
       VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( vkSettings.getVideoCodec() ) );
       
-      
-      //AudiocodecComboBox->setCurrentIndex( AudiocodecComboBox->findText( settings.value( "Audiocodec", "libmp3lame" ).toString() ) );
       AudiocodecComboBox->setCurrentIndex( AudiocodecComboBox->findText( vkSettings.getAudioCodec() ) );
 
-      //VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( settings.value( "Format", "mkv" ).toString() ) );
       VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( vkSettings.getVideoContainer() ) );
 
-      //HideMouseCheckbox->setCheckState( Qt::CheckState( settings.value( "HideMouse").toUInt() ) );
       HideMouseCheckbox->setCheckState( Qt::CheckState( vkSettings.getHideMouse()) );
       
-    //settings.endGroup();
-
-    //settings.beginGroup( "GUI" );
       setGeometry( vkSettings.getX(), vkSettings.getY(), width(), height() );
       tabWidget->setCurrentIndex( vkSettings.getTab() );
-    //settings.endGroup();
     
     // Statusbar
     stateChangedAudio( AudioOnOffCheckbox->checkState() );
@@ -721,17 +653,6 @@ screencast::screencast()
     connect( AreaRadioButton,       SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
-    /*
-    settings.beginGroup( "Area" );
-       myregionselection = new regionselection();
-       myregionselection->setGeometry ( settings.value( "X", 200 ).toUInt(),
-       				        settings.value( "Y", 200 ).toUInt(),
-				        settings.value( "Width", 200 ).toUInt() + myregionselection->borderLeft + myregionselection->borderRight + myregionselection->frameWidth,
-				        settings.value( "Height", 200 ).toUInt() + myregionselection->borderTop + myregionselection->borderBottom + myregionselection->frameWidth
-				      );
-       myregionselection->close();
-    settings.endGroup();
-    */
        myregionselection = new regionselection();
        myregionselection->setGeometry ( vkSettings.getAreaX(),
        				        vkSettings.getAreaY(),
@@ -739,8 +660,6 @@ screencast::screencast()
 				        vkSettings.getAreaHeight() + myregionselection->borderTop + myregionselection->borderBottom + myregionselection->frameWidth
 				      );
        myregionselection->close();
-    
-    
     
     connect( MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );
     magnifier = new QvkMagnifier();
@@ -770,14 +689,8 @@ screencast::screencast()
    SystemTrayIconBlue = new QSystemTrayIcon( QIcon::fromTheme( "media-skip-forward", QIcon ( ":/pictures/go.png" ) ) );
    SystemTrayIconBlue->setToolTip( tr( "Go" ) );
 
-//   settings.beginGroup( "GUI" );
-//      SystrayCheckBox->setCheckState( Qt::CheckState( settings.value( "Systray", 2 ).toUInt() ) );
-//      stateChangedSystray( Qt::CheckState( settings.value( "Systray", 2 ).toUInt() ) );
-//   settings.endGroup();
-   
       SystrayCheckBox->setCheckState( Qt::CheckState( vkSettings.getSystray() ) );
       stateChangedSystray( Qt::CheckState( vkSettings.getSystray() ) );
-   
    
    connect( SystemTrayIconGreen,  SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStart( QSystemTrayIcon::ActivationReason ) ) );
    connect( SystemTrayIconRed,    SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStop( QSystemTrayIcon::ActivationReason ) ) );
