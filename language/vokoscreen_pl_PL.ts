@@ -179,10 +179,6 @@
         <translation>Urządzenie %1 jest zajęte</translation>
     </message>
     <message>
-        <source>Your Actual frames in the Settings is too heigh</source>
-        <translation>Liczba klatek zapisana w ustawieniach jest większa od aktualnej liczby klatek</translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation>Wznów</translation>
     </message>
@@ -228,15 +224,23 @@
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"/>
+        <translation>Kod źródłowy</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"/>
+        <translation>Pokazuj w tacce systemowej</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>Dostępna jest nowa wersja</translation>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation>Kodek wideo</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Kodek audio</translation>
     </message>
 </context>
 </TS>
