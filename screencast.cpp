@@ -56,14 +56,13 @@ screencast::screencast()
 
     tabWidget = new QTabWidget( centralWidget );
     tabWidget->setGeometry( 120, 0, 450, 190 );
-    tabWidget->setIconSize( QSize( 40, 48 ) );
+    tabWidget->setIconSize( QSize( 32, 32 ) );
 
     // Tab 1 Screen options ***************************************************
     QFrame *frame = new QFrame( this );
     frame->setGeometry( 120, 10, 300, 200 );
     frame->show();
     tabWidget->addTab( frame, "" );
-    //tabWidget->setTabIcon( 0, QIcon( ":/pictures/monitor.png" ) );
     tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
     QFont qfont = frame->font();
     qfont.setPixelSize( 12 );
@@ -138,7 +137,6 @@ screencast::screencast()
     TabWidgetAudioFrame->setGeometry( 120, 0, 300, 290 );
     TabWidgetAudioFrame->show();
     tabWidget->addTab( TabWidgetAudioFrame, "" );
-    //tabWidget->setTabIcon( 1, QIcon( ":/pictures/micro.png" ) );
     tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
     qfont = TabWidgetAudioFrame->font();
     qfont.setPixelSize( 12 );
@@ -173,7 +171,6 @@ screencast::screencast()
     TabWidgetVideoOptionFrame->setGeometry( 120, 0, 300, 200 );
     TabWidgetVideoOptionFrame->show();
     tabWidget->addTab( TabWidgetVideoOptionFrame, "" );
-    //tabWidget->setTabIcon( 2, QIcon( ":/pictures/videooptionen.png" ) );
     tabWidget->setTabIcon( 2, QIcon::fromTheme( "applications-multimedia", QIcon( ":/pictures/videooptionen.png" ) ) );
 
     qfont = TabWidgetVideoOptionFrame->font();
@@ -259,7 +256,6 @@ screencast::screencast()
     TabWidgetMiscellaneousFrame->setGeometry( 120, 0, 300, 200 );
     TabWidgetMiscellaneousFrame->show();
     tabWidget->addTab(TabWidgetMiscellaneousFrame, "" );
-    //tabWidget->setTabIcon( 3, QIcon( ":/pictures/tools.png" ) );
     tabWidget->setTabIcon( 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
     qfont = TabWidgetMiscellaneousFrame->font();
     qfont.setPixelSize( 12 );
@@ -306,7 +302,6 @@ screencast::screencast()
     QFrame *TabWidgetAboutFrame = new QFrame(this);
     TabWidgetAboutFrame->show();
     tabWidget->addTab( TabWidgetAboutFrame, "" );
-    //tabWidget->setTabIcon( 4, QIcon( ":/pictures/about.png" ) );
     tabWidget->setTabIcon( 4, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
     tabWidget->show();
     qfont = TabWidgetAboutFrame->font();
