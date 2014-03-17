@@ -1,5 +1,37 @@
 #!/bin/bash
 
+# Testen ob lupdate auf dem System vorhanden ist.
+progname=$(which lupdate)
+if [ $? = 0 ]; then
+    echo
+else
+    kdialog --title "preparing.sh" --msgbox "lupdate nicht auf System vorhanden. lupdate ist bestandteil von Programmpacket libqt4-devel"
+    echo "[preparing.sh] lupdate nicht auf System vorhanden"
+    echo "[preparing.sh] lupdate ist bestandteil von Programmpacket libqt4-devel"
+    exit 1
+fi
+
+# Testen ob tx auf dem System vorhanden ist.
+progname=$(which tx)
+if [ $? = 0 ]; then
+    echo
+else
+    kdialog --title "preparing.sh" --msgbox "tx nicht auf System vorhanden. tx ist bestandteil von Programmpacket transifex-client"
+    echo "[preparing.sh] tx nicht auf System vorhanden"
+    echo "[preparing.sh] tx ist bestandteil von Programmpacket transifex-client"
+    exit 1
+fi
+
+# Funktioniert noch nicht so wie ich will
+# Testen ob ~/.transifexrc im home vorhanden ist.
+#$file="/home/vk/.transifexrc"
+#if [ -f $file ]; then
+#    echo "[preparing.sh] ~/.transifexrc nicht auf System vorhanden"
+#    echo "[preparing.sh] ~/.transifexrcenthält den transifex Zugang"
+#    kdialog --title "preparing.sh" --msgbox "~/.transifexrc nicht auf System vorhanden. ~/.transifexrc enthält den transifex Zugang"
+#    exit 1   
+#fi
+
 echo ==================
 echo Remove ffmpeg logs
 echo ==================
