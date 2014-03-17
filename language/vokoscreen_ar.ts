@@ -179,10 +179,6 @@
         <translation>الجهاز %1 مشغول حالياً</translation>
     </message>
     <message>
-        <source>Your Actual frames in the Settings is too heigh</source>
-        <translation>عدد المشاهد الحالية في الإعدادات كبير جداً</translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation>واصِل</translation>
     </message>
@@ -236,7 +232,15 @@
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>نسخة جديدة متوفرة</translation>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation>ترميز الفيديو</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>ترميز الصوت</translation>
     </message>
 </context>
 </TS>
