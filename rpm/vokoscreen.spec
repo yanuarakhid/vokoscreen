@@ -1,6 +1,6 @@
 Summary: Screencasting
 Name: vokoscreen
-Version: 2.0.0
+Version: 2.0.1
 Release: 0
 License: GPL-2.0
 Group: Productivity/Multimedia/CD/Record
