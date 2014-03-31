@@ -545,8 +545,6 @@ screencast::screencast()
     QStringList playerList = QStringList()  << "kaffeine"
                                             << "vlc"
                                             << "gnome-mplayer"
-                                            << "ffplay"
-					    << "avplay"
                                             << "totem"
                                             << "pia"
                                             << "xine"
