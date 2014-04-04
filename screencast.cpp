@@ -2391,8 +2391,8 @@ void screencast::record()
   if ( FullScreenRadioButton->isChecked() )
   {
     QDesktopWidget *desk = QApplication::desktop();
-    setRecordWidth( tr( "%1" ).arg( desk->screenGeometry().width() ) );
-    setRecordHeight( tr( "%1" ).arg( desk->screenGeometry().height() ) );
+    setRecordWidth( QString::number( desk->screenGeometry().width() ) );
+    setRecordHeight( QString::number( desk->screenGeometry().height() ) );
   }
 
   QString deltaX = "0";
