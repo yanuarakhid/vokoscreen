@@ -89,7 +89,7 @@ void regionselection::saveSettings()
   settings.endGroup();
 }
 
-
+/*
 void regionselection::cleanRecordArea( bool state )
 {
   if ( state )
@@ -114,7 +114,7 @@ void regionselection::cleanRecordArea( bool state )
     clearMask();
   }
 }
-
+*/
 
 void regionselection::HandleTopLeft()
 {
@@ -556,7 +556,10 @@ QRect regionselection::getPrintSizeRectForMask()
   return printSizeRectForMask;
 }
 
-
+/**
+* Am besten die ganze Datei auf USB Stick und mit oensuse testen
+*
+*/
 void regionselection::paintEvent( QPaintEvent *event ) 
 {
   (void)event;
@@ -585,7 +588,7 @@ void regionselection::paintEvent( QPaintEvent *event )
     // HandleMiddle
     // Retrieves and merge HandleMiddle in record Area
     r1 = r1.united( getHandleMiddleForMask() );
-    
+qDebug() << getPrintSizeRectForMask();    
     setMask( r1 );
   }
   else
@@ -603,15 +606,8 @@ void regionselection::paintEvent( QPaintEvent *event )
     // subtract the record Area
     QRegion RegionNew = RegionWidget.subtract( RegionArea );
 
-    // Retrieves and merge display-area-size in record Area
-    //QRegion r1 = RegionNew.united( getPrintSizeRectForMask() );
-    // HandleMiddle
-    // Retrieves and merge HandleMiddle in record Area
-    //r1 = r1.united( getHandleMiddleForMask() );
-    
     setMask( RegionNew );
   }
-
 
   HandleTopLeft();
   HandleTopMiddle();
@@ -621,8 +617,6 @@ void regionselection::paintEvent( QPaintEvent *event )
   HandleBottomMiddle();
   HandleBottomLeft();
   HandleLeftMiddle();
-  //HandleMiddle();
-  //printSize();
 
   // Blue Frame
   painter->setPen( QPen( Qt::blue, frameWidth ) );
@@ -664,6 +658,7 @@ bool regionselection::isFrameLocked()
 void regionselection::handlingFrameLock()
 {
   repaint();
+  update();
 }
 
 
