@@ -53,7 +53,6 @@ public slots:
   int getY();
   int getHeight();
   int getWidth();
-  //void cleanRecordArea( bool state );
   int getXRecordArea();
   int getYRecordArea();
   void saveSettings();

@@ -89,33 +89,6 @@ void regionselection::saveSettings()
   settings.endGroup();
 }
 
-/*
-void regionselection::cleanRecordArea( bool state )
-{
-  if ( state )
-  {
-    QRegion regionWidget(  0, 
-                           0, 
-                           width(),
-                           height(), 
-                           QRegion::Rectangle );
-  
-    QRegion regionRecord( borderLeft + frameWidth / 2, 
-                          borderTop + frameWidth / 2, 
-                          width() - borderLeft - borderRight - frameWidth,
-                          height() - borderTop - borderBottom - frameWidth, 
-                          QRegion::Rectangle );
-    
-    QRegion region = regionWidget.subtract( regionRecord );
-    setMask( region );
-  }
-  else
-  {
-    clearMask();
-  }
-}
-*/
-
 void regionselection::HandleTopLeft()
 {
   QColor color, arrow;
@@ -556,10 +529,7 @@ QRect regionselection::getPrintSizeRectForMask()
   return printSizeRectForMask;
 }
 
-/**
-* Am besten die ganze Datei auf USB Stick und mit oensuse testen
-*
-*/
+
 void regionselection::paintEvent( QPaintEvent *event ) 
 {
   (void)event;
@@ -572,6 +542,7 @@ void regionselection::paintEvent( QPaintEvent *event )
     printSize();
     HandleMiddle();
     clearMask();
+    
     QRegion RegionWidget( 0, 0, width(), height() );
     
     // RecordArea
@@ -585,10 +556,10 @@ void regionselection::paintEvent( QPaintEvent *event )
 
     // Retrieves and merge display-area-size in record Area
     QRegion r1 = RegionNew.united( getPrintSizeRectForMask() );
+    
     // HandleMiddle
     // Retrieves and merge HandleMiddle in record Area
     r1 = r1.united( getHandleMiddleForMask() );
-qDebug() << getPrintSizeRectForMask();    
     setMask( r1 );
   }
   else
