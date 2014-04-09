@@ -1177,7 +1177,7 @@ void screencast::searchExternalPrograms()
   }
   
   if ( needProgram("pactl") )
-     qDebug() << "[vokoscreen]" << "Find pactl";
+     qDebug() << "[vokoscreen]" << "Find pactl Version:" << getPactlVersion();
   else
      qDebug() << "[vokoscreen]" << "Error: pactl is not found, this is an PulseAudio-utils tool. Please install pactl";
   
@@ -1632,6 +1632,20 @@ void screencast::play()
     QProcess *SystemCall = new QProcess();
     SystemCall->start( player + " " + PathMoviesLocation() + QDir::separator() + List.at( 0 ) );
   }
+}
+
+
+QString screencast::getPactlVersion()
+{
+  QProcess Process;
+  Process.start("pactl --version");
+  Process.waitForFinished();
+  QString pactlVersion = Process.readAllStandardOutput();
+  Process.close();
+
+  QStringList list = pactlVersion.split( "\n" );
+  list = list[ 0 ].split( " " );
+  return list[ 1 ];
 }
 
 

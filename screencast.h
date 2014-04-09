@@ -60,6 +60,7 @@ public:
     QString getFfmpegVersion();
     QString getAvconvVersion();
     QString getMkvmergeVersion();
+    QString getPactlVersion();
 
     QString email;
     QString homepage;
