@@ -51,9 +51,6 @@
 
 #include <QDateTime>
 
-
-//#include <QEvent>
-
 class screencast : public QMainWindow
 { 
 Q_OBJECT
@@ -62,10 +59,8 @@ public:
     virtual ~screencast();
     QString getFfmpegVersion();
     QString getAvconvVersion();
+    QString getMkvmergeVersion();
 
-
-//    QString ProgName;
-//    QString Version;
     QString email;
     QString homepage;
     QString ffmpegString;
@@ -269,8 +264,6 @@ private:
     
     QString screenRecordWidth;
     QString screenRecordHeight;
-    //int leftFrameBorder;
-    //int topFrameBorder;
     
     QDateTime beginTime;
     

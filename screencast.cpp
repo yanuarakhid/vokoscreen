@@ -1182,7 +1182,7 @@ void screencast::searchExternalPrograms()
      qDebug() << "[vokoscreen]" << "Error: pactl is not found, this is an PulseAudio-utils tool. Please install pactl";
   
   if ( needProgram("mkvmerge") )
-     qDebug() << "[vokoscreen]" << "Find mkvmerge";
+     qDebug() << "[vokoscreen]" << "Find mkvmerge Version:" << getMkvmergeVersion();
   else
      qDebug() << "[vokoscreen]" << "Error: mkvmerge is not found, this is an mkvtoolnix tool. Please install mkvmerge";
   
@@ -1632,6 +1632,20 @@ void screencast::play()
     QProcess *SystemCall = new QProcess();
     SystemCall->start( player + " " + PathMoviesLocation() + QDir::separator() + List.at( 0 ) );
   }
+}
+
+
+QString screencast::getMkvmergeVersion()
+{
+  QProcess Process;
+  Process.start("mkvmerge --version");
+  Process.waitForFinished();
+  QString mkvmergeVersion = Process.readAllStandardOutput();
+  Process.close();
+
+  QStringList list = mkvmergeVersion.split( "\n" );
+  list = list[ 0 ].split( " " );
+  return list[ 1 ];
 }
 
 
