@@ -144,11 +144,11 @@
     </message>
     <message>
         <source>Settings fps</source>
-        <translation type="unfinished"/>
+        <translation>Configuración de fps</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Abrir carpeta</translation>
+        <translation>Abrir directorio</translation>
     </message>
     <message>
         <source>%1</source>
@@ -172,7 +172,7 @@
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>Cuadros por segundo actuales</translation>
     </message>
     <message>
         <source>Device %1 is busy</source>
@@ -180,7 +180,7 @@
     </message>
     <message>
         <source>Your Actual frames in the Settings is too heigh</source>
-        <translation type="unfinished"/>
+        <translation>Los cuadros en la configuración son muy altos</translation>
     </message>
     <message>
         <source>Go</source>
@@ -228,15 +228,15 @@
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"/>
+        <translation>Código fuente</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar en bandeja del sistema</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>Nueva versión disponible</translation>
     </message>
 </context>
 </TS>
