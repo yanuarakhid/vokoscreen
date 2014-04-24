@@ -1,244 +1,246 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs" version="2.0">
 <context>
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Odeslat poslední video</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Odeslat jedno nebo více vybraných videí</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Odeslat</translation>
     </message>
     <message>
         <source>You find the Video as attachment</source>
-        <translation type="unfinished"></translation>
+        <translation>Video najdete v příloze</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte jeden nebo více souborů</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation type="unfinished"></translation>
+        <translation>Bez ohraničení</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>Ohraničení</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Zavřít</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamController</name>
     <message>
         <source>Webcam</source>
-        <translation type="unfinished"></translation>
+        <translation>Webkamera</translation>
     </message>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"></translation>
+        <translation>Zařízení je zaneprázdněno</translation>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat webkameru</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Celá obrazovka</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Okno</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Oblast</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvětšení</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvuk</translation>
     </message>
     <message>
         <source>Alsa</source>
-        <translation type="unfinished"></translation>
+        <translation>Alsa</translation>
     </message>
     <message>
         <source>Pulse</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulse</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Výchozí</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodek</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenahrávat kurzor myši</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation type="unfinished"></translation>
+        <translation>Videostopa</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Přehrávač</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation type="unfinished"></translation>
+        <translation>Vokoscreen minimalizován na začátku nahrávání</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Přehrát</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Odeslat</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahrávací čas</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost v KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost plochy nahrávání</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení fps</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít umístění</translation>
+    </message>
+    <message>
+        <source>%1</source>
+        <translation>%1</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Odpočet</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Přehrát poslední video</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Odeslat video</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat jedno nebo více zařízení</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuální snímky za sekundu</translation>
     </message>
     <message>
         <source>Device %1 is busy</source>
-        <translation type="unfinished"></translation>
+        <translation>Zařízení %1 je zaneprázdněno</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"></translation>
+        <translation>Začít</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Domovská stránka</translation>
     </message>
     <message>
         <source>Mailinglist</source>
-        <translation type="unfinished"></translation>
+        <translation>Seznam kontaktů</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"></translation>
+        <translation>Podpora</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"></translation>
+        <translation>Vývojář</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Snímky</translation>
     </message>
     <message>
         <source>Beta openSUSE</source>
-        <translation type="unfinished"></translation>
+        <translation>Beta openSUSE</translation>
     </message>
     <message>
         <source>Beta Ubuntu</source>
-        <translation type="unfinished"></translation>
+        <translation>Beta Ubuntu</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Příspěvek</translation>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Program pro záznam</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Překlady</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdrojový kód</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit v liště</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"></translation>
+        <translation>Nová verze k dispozici</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Videokodek</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Audiokodek</translation>
     </message>
 </context>
 </TS>
