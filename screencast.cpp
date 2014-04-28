@@ -2532,7 +2532,7 @@ void screencast::record()
   if ( ( getFfmpegVersion() < "01.01.00" ) and ( recordApplikation == "ffmpeg" ) )
     quality = " -sameq ";
   else
-    quality = " -q:a 1 ";
+    quality = " -q:v 1 ";
 //    quality = " -qscale 1 "; // obsolet
 
   clickedRecordButtonScreenSize();
