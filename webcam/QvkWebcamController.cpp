@@ -6,6 +6,8 @@ QvkWebcamController::QvkWebcamController( QWidget * value )
   
   checkBox = new QCheckBox( value );
   checkBox->setText( tr( "Webcam" ) );
+  checkBox->setToolTip( "CTRL+SHIFT+F8" );
+  
   checkBox->show();
   connect( checkBox, SIGNAL( clicked() ), SLOT( webcam() ) );
 
@@ -30,6 +32,11 @@ QvkWebcamController::QvkWebcamController( QWidget * value )
   connect( vkWebcam, SIGNAL( closeWebcam() ), this, SLOT( webcamCloseEvent() ) );
   //qDebug() << "End QvkWebcamController::QvkWebcamController( QWidget * value ) ***************************";
   
+}
+
+void QvkWebcamController::click()
+{
+  checkBox->click(); 
 }
 
 

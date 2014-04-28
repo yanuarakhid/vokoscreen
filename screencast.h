@@ -155,7 +155,7 @@ private slots:
     void showMagnifier();
     void MagnifierDialog();
     
-
+    void ShortcutWebcam();
     void ShortcutPause();
     void ShortcutMagnifier();
     void uncheckMagnifier();
@@ -242,6 +242,7 @@ private:
     regionselection *myregionselection;
     QvkWebcam *webcam;
     
+    QxtGlobalShortcut *shortcutWebcam;
     QxtGlobalShortcut *shortcutMagnifier;
     QxtGlobalShortcut *shortcutPause;
     QxtGlobalShortcut *shortcutStart;

@@ -26,7 +26,8 @@ public slots:
   void webcamClose();
   bool isVisible();
   void saveSettings();
-  
+  void click();
+
   
 private slots:
   void webcam();

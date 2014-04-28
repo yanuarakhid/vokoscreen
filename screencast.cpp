@@ -689,6 +689,10 @@ screencast::screencast()
    connect( SystemTrayIconRed,    SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStop( QSystemTrayIcon::ActivationReason ) ) );
    connect( SystemTrayIconYellow, SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayPause( QSystemTrayIcon::ActivationReason ) ) );
    connect( SystemTrayIconBlue,   SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayGo( QSystemTrayIcon::ActivationReason ) ) ); 
+
+   shortcutWebcam = new QxtGlobalShortcut( this );
+   connect( shortcutWebcam, SIGNAL( activated() ), this, SLOT( ShortcutWebcam() ) );
+   shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
    
    shortcutMagnifier = new QxtGlobalShortcut( this );
    connect( shortcutMagnifier, SIGNAL( activated() ), this, SLOT( ShortcutMagnifier() ) );
@@ -1044,6 +1048,11 @@ void screencast::saveSettings()
   myregionselection->saveSettings();
 }
 
+
+void screencast::ShortcutWebcam()
+{
+  webcamCheckBox->click(); 
+}
 
 void screencast::ShortcutMagnifier()
 {
