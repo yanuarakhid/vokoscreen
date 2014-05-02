@@ -2513,8 +2513,8 @@ void screencast::record()
      dir.remove( PathTempLocation().append(QDir::separator() ).append(stringList.at( i ) ) );
 
   // frame rate
-  //QString frame = "-r " + QString().number( FrameSpinBox->value() );
-  QString framerate = "-framerate " + QString().number( FrameSpinBox->value() );
+  QString framerate = "-r " + QString().number( FrameSpinBox->value() );
+  //QString framerate = "-framerate " + QString().number( FrameSpinBox->value() ); // No funktion under Ubuntu 14.04 
   // Videocodec
   QString myVcodec = VideocodecComboBox->currentText();
   if ( myVcodec == "libx264" )
