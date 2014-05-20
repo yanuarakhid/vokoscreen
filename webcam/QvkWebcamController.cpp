@@ -1,68 +1,86 @@
 #include "QvkWebcamController.h" 
 
-QvkWebcamController::QvkWebcamController( QWidget * value )
+QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox )
 {
-  //qDebug() << "Begin QvkWebcamController::QvkWebcamController( QWidget * value ) ***************************";
+  checkBox = myCheckBox;
+  checkBox->setEnabled( false );
+  connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( setWebcamOnOff( bool ) ) );
   
-  checkBox = new QCheckBox( value );
-  checkBox->setText( tr( "Webcam" ) );
-  checkBox->setToolTip( "CTRL+SHIFT+F8" );
-  
-  checkBox->show();
-  connect( checkBox, SIGNAL( clicked() ), SLOT( webcam() ) );
+  comboBox = myComboBox;
 
-  comboBoxCount = new QComboBox( value );
-  comboBoxCount->setGeometry( 250, 40, 40, 21 );
-  comboBoxCount->setToolTip( tr ( "Select webcam" ) );
-  comboBoxCount->show();
+  captureThread = new CaptureThread();
+  connect( captureThread, SIGNAL( newPicture( QImage ) ), this, SLOT( setNewImage( QImage ) ) );
   
   myWebcamWatcher = new QvkWebcamWatcher();
   connect( myWebcamWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( webcamChangedEvent( QStringList ) ) );
-  connect( myWebcamWatcher, SIGNAL( added( QStringList, QStringList ) ), this, SLOT( webcamAddedEvent( QStringList, QStringList ) ) );
   connect( myWebcamWatcher, SIGNAL( removed( QStringList, QString ) ), this, SLOT( webcamRemovedEvent( QStringList, QString ) ) );
   myWebcamWatcher->myfileSystemWatcher( "/dev/" );
-
-  if ( myWebcamWatcher->getWebcamCount() == 0 )
-  {
-    checkBox->setEnabled( false );
-    comboBoxCount->setEnabled( false );
-  }
-
-  vkWebcam = new QvkWebcam();
-  connect( vkWebcam, SIGNAL( closeWebcam() ), this, SLOT( webcamCloseEvent() ) );
-  //qDebug() << "End QvkWebcamController::QvkWebcamController( QWidget * value ) ***************************";
+  
+  webcamWindow = new QvkWebcamWindow();
+  connect( webcamWindow, SIGNAL( closeWebcamWindow() ), SLOT( webcamCloseEvent() ) );  
+  (void) webcamWindow;
   
 }
-
-void QvkWebcamController::click()
-{
-  checkBox->click(); 
-}
-
 
 QvkWebcamController::~QvkWebcamController( void )
 {
 }
 
 
-void QvkWebcamController::saveSettings()
-{
-  vkWebcam->saveSettings(); 
-}
-
-
-void QvkWebcamController::setGeometry( int x, int y, int width, int height )
-{
-  checkBox->setGeometry( x, y, width, height );
-}
-
-
 /**
- * Wird vom Destruktor von vokoscreen aufgerufen
+ * Wird aufgerufen wenn das Webcam Fenster geschloßen und dabei
+ * das SIGNAL closeWebcamWindow in der Klasse QvkWebcamWindow ausgelösst wird
  */
-void QvkWebcamController::webcamClose()
+void QvkWebcamController::webcamCloseEvent()
 {
-  checkBox->click();
+  checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
+  comboBox->setEnabled( true );
+  if ( captureThread->running )
+    captureThread->stop();
+  
+  webcamWindow->close();
+}
+
+
+/*
+ * Wird ausgelößt beim betätigen der checkbox
+ */
+void QvkWebcamController::setWebcamOnOff( bool value )
+{
+  if ( value == false )
+  {
+    captureThread->stop();
+    webcamWindow->hide();
+    comboBox->setEnabled( true );
+    return;
+  }
+  
+  if ( value == true )
+  {
+    if ( ( captureThread->busy( "/dev/video" + comboBox->currentText() ) == true ) and ( checkBox->checkState() == Qt::Checked ) )
+    {
+      qDebug() << "[vokoscreen] device /dev/video" + comboBox->currentText() << "is busy";
+      QMessageBox messageBox( QMessageBox::Warning,
+                              "vokoscreen",
+                              "/dev/video" + comboBox->currentText() + " " + tr( "is busy") );
+    
+      messageBox.exec();
+      checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
+      return;
+    }
+    
+     comboBox->setEnabled( false );
+     webcamWindow->show();
+     webcamWindow->currentDevice = "/dev/video" + comboBox->currentText(); //**********************
+     captureThread->start( "/dev/video" + comboBox->currentText() );
+     return;
+  }
+}
+
+
+void QvkWebcamController::setNewImage( QImage image )
+{
+  webcamWindow->webcamLabel->setPixmap( QPixmap::fromImage( image, Qt::AutoColor) );
 }
 
 
@@ -73,7 +91,6 @@ void QvkWebcamController::webcamAddedEvent( QStringList deviceList, QStringList 
 {
   (void)deviceList;
   (void)addedDevices;
-  //qDebug() << "[vokoscreen] webcam added:" << addedDevices;
 }
 
 
@@ -83,97 +100,38 @@ void QvkWebcamController::webcamAddedEvent( QStringList deviceList, QStringList 
 void QvkWebcamController::webcamRemovedEvent( QStringList deviceList, QString removedDevice )
 {
   (void)deviceList;
-  (void)removedDevice;
-  //qDebug() << "[vokoscreen] webcam removed:" << removedDevice;
 
-  if ( vkWebcam->isVisible() )
-    vkWebcam->close();
-}
-
-
-bool QvkWebcamController::isVisible()
-{
-  return vkWebcam->isVisible();
+  if ( removedDevice.right( 1 ) == webcamWindow->currentDevice.right( 1 ) )
+  {
+    webcamWindow->close();
+  }
 }
 
 
 /**
- * Wird aufgerufen wenn Gerät hinzugefügt oder entfernt wird
+ * Wird aufgerufen wenn ein Gerät hinzugefügt oder entfernt wird
  */
 void QvkWebcamController::webcamChangedEvent( QStringList deviceList )
 {
-  comboBoxCount->clear();
+  comboBox->clear();
   for( int x = 0; x < myWebcamWatcher->getWebcamCount(); x++ )
   {
-    comboBoxCount->addItem( deviceList[x].right( 1 ) );
+    comboBox->addItem( deviceList[x].right( 1 ) );
   }
 
   if ( deviceList.empty() )
   {
     checkBox->setEnabled( false );
     checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
-    comboBoxCount->setEnabled( false );
+    comboBox->setEnabled( false );
   }
-  else
+  
+  if ( not deviceList.empty() )
   {
     checkBox->setEnabled( true );
-    comboBoxCount->setEnabled( true );
+    comboBox->setEnabled( true );
   }
-
-  //qDebug() << "[vokoscreen] changed";
-}
-
-
-/**
- * Wird aufgerufen wenn das Webcam Fenster geschloßen und dabei
- * das SIGNAL closeWebcam in der Klasse QvkWebcam ausgelösst wird
- */
-void QvkWebcamController::webcamCloseEvent()
-{
-  //qDebug() << "Begin void QvkWebcamController::webcamCloseEvent() ***************************";
-  vkWebcam->setClose();
-  checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
-  //qDebug() << "End   void QvkWebcamController::webcamCloseEvent() ***************************";
-  comboBoxCount->setEnabled( true );
-}
-
-
-/**
- * Wird aufgerufen wenn die checkbox betätigt wird
- */
-void QvkWebcamController::webcam()
-{
-  //qDebug() << "Begin void QvkWebcamController::webcam() ***************************";
-  vkWebcam->setDeviceNumber( comboBoxCount->currentText().toUInt() );
-
-  if ( vkWebcam->isVisible() )
-  {
-  }
-  else
-    if ( vkWebcam->isBusy() )
-    {
-      QMessageBox msgBox;
-      QString message;
-      message.append( tr( "Device is busy" ) );
-      msgBox.setText( message );
-      msgBox.exec();
-
-      checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );    
-      return;
-    }
-  
-  if ( checkBox->isChecked() )
-  {
-    comboBoxCount->setEnabled( false );
-    vkWebcam->setDeviceNumber( comboBoxCount->currentText().toUInt() );
-    vkWebcam->showWebcam();
-    vkWebcam->show();
-  }
-  else
-  {
-    comboBoxCount->setEnabled( true );
-    vkWebcam->close();
-  }
-  //qDebug() << "End   void QvkWebcamController::webcam() ***************************";
+ 
+ 
   
 }

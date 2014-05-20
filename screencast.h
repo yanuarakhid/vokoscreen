@@ -34,7 +34,6 @@
 #include <QDesktopWidget>
 
 #include <QvkSettings.h>
-
 #include "regionselection.h"
 #include "QvkMagnifier.h"
 #include "QvkWebcamController.h"
@@ -46,9 +45,7 @@
 #include "QvkVersion.h"
 
 #include <QxtGlobalShortcut> 
-
 #include <QTest>
-
 #include <QDateTime>
 
 class screencast : public QMainWindow
@@ -240,7 +237,8 @@ private:
     
     QvkMagnifier *magnifier;
     regionselection *myregionselection;
-    QvkWebcam *webcam;
+    //QvkWebcam *webcam;
+    QvkWebcamController *webcamController;
     
     QxtGlobalShortcut *shortcutWebcam;
     QxtGlobalShortcut *shortcutMagnifier;

@@ -80,7 +80,8 @@ include(send/send.pri)
 
 # webcam
 include(webcam/webcam.pri)
-PKGCONFIG += opencv
+PKGCONFIG += libv4l2
+PKGCONFIG += libv4lconvert
 
 # project
 include(project/project.pri)
@@ -90,11 +91,5 @@ include(settings/settings.pri)
 
 CONFIG  += qtestlib
 
-#system( ls )
-
-#include(QtZip-src/QtZip.pri)
-#PKGCONFIG += zlib
-
-#LIBS += -lX11 -lXfixes
 
 

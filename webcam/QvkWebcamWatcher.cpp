@@ -1,13 +1,10 @@
 #include "QvkWebcamWatcher.h" 
-#include <QDebug>
-using namespace std;
 
+using namespace std;
 
 /**
  * Die Metohoden werden nur aufgerufen wenn sich in /dev/ was geändert hat
  */
-
-
 
 QvkWebcamWatcher::QvkWebcamWatcher()
 {
@@ -31,7 +28,6 @@ int QvkWebcamWatcher::getWebcamCount()
 
 /**
  * Return added devices
- *
  */
 QStringList QvkWebcamWatcher::addedDevices()
 {
@@ -74,7 +70,10 @@ void QvkWebcamWatcher::myfileSystemWatcher( QString path )
   // removed device
   if ( deviceList.count() <  webcamCount )
   {
-    //qDebug() << "removed device:" << removedDevice();
+    qDebug();
+    qDebug() << "[vokoscreen] removed device" << removedDevice();
+    qDebug() << "[vokoscreen] connected devices" <<  deviceList;
+    
     webcamCount = deviceList.count();
     emit changed( deviceList );
     emit removed( deviceList, removedDevice() );
@@ -83,7 +82,10 @@ void QvkWebcamWatcher::myfileSystemWatcher( QString path )
   // added device
   if ( deviceList.count() >  webcamCount )
   {
-    //qDebug() << "added devices:" << addedDevices();
+    qDebug();
+    qDebug() << "[vokoscreen] added device" << addedDevices();
+    qDebug() << "[vokoscreen] connected devices" <<  deviceList;
+    
     webcamCount = deviceList.count();
     emit changed( deviceList );
     emit added( deviceList, addedDevices() );

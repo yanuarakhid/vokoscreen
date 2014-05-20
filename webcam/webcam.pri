@@ -1,10 +1,12 @@
 INCLUDEPATH	+= $$PWD
 DEPENDPATH      += $$PWD
-HEADERS		+= $$PWD/QvkWebcam.h \
-                   $$PWD/QvkWebcamController.h \
-                   $$PWD/QvkWebcamWatcher.h
                    
-SOURCES		+= $$PWD/QvkWebcam.cpp \
-                   $$PWD/QvkWebcamController.cpp \
-                   $$PWD/QvkWebcamWatcher.cpp
+HEADERS += $$PWD/QvkCapturethread.h \
+           $$PWD/QvkWebcamWatcher.h \
+           $$PWD/QvkWebcamController.h \
+           $$PWD/QvkWebcamWindow.h
 
+SOURCES += $$PWD/QvkCapturethread.cpp \
+           $$PWD/QvkWebcamWatcher.cpp \
+           $$PWD/QvkWebcamController.cpp \
+           $$PWD/QvkWebcamWindow.cpp

@@ -1,12 +1,12 @@
 
 
 
-     Qvkwebcam       QvkwebcamWatcher
-         |                   |
-         ---------------------
-                  |
-                  |
-          QvkWebcamController
-                  |
-                  |
-              vokoscreen
+  QvkCapturethread    QvkWebcamWatcher    QvkWebcamWindow
+         |                   |                  |
+         ---------------------------------------
+                             |
+                             |
+                    QvkWebcamController
+                             |
+                             |
+                         vokoscreen

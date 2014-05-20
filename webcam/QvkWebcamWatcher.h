@@ -4,6 +4,7 @@
 #include <QStringList>
 #include <QDir>
 #include <QFileSystemWatcher>
+#include <QDebug>
 
 class QvkWebcamWatcher: public QObject
 {
@@ -27,7 +28,7 @@ private slots:
   
 signals:
   void changed( QStringList deviceList );
-  void removed( QStringList deviceList, QString string );
+  void removed( QStringList deviceList, QString removedDevice );
   void added( QStringList deviceList, QStringList stringList );
 
   

@@ -96,9 +96,27 @@ screencast::screencast()
     MagnifierDialogPushButton->show();
     connect( MagnifierDialogPushButton, SIGNAL( clicked() ), SLOT( MagnifierDialog() ) );
     
-    webcamCheckBox = new QvkWebcamController( frame );
-    webcamCheckBox->setGeometry( 160, 40, 120, 21 );
+    //webcamCheckBox = new QvkWebcamController( frame );
+    //webcamCheckBox->setGeometry( 160, 40, 120, 21 );
 
+
+
+    QCheckBox *webcamCheckBox = new QCheckBox( frame );
+    webcamCheckBox->setText( tr( "Webcam" ) );
+    webcamCheckBox->setToolTip( "CTRL+SHIFT+F8" );
+    webcamCheckBox->setGeometry( 160, 40, 120, 21 );
+    webcamCheckBox->show();
+  
+    QComboBox *webcamComboBox = new QComboBox( frame );
+    webcamComboBox->setGeometry( 250, 40, 40, 21 );
+    webcamComboBox->setToolTip( tr ( "Select webcam" ) );
+    webcamComboBox->show();
+
+    webcamController = new QvkWebcamController( webcamCheckBox, webcamComboBox );
+    (void)webcamController;
+
+    
+    
     QLabel *CountdownLabel = new QLabel( frame );
     CountdownLabel->setGeometry( 160, 110, 80, 25 );
     CountdownLabel->setText( tr( "Countdown" ) );
@@ -979,8 +997,10 @@ void screencast::closeEvent( QCloseEvent * event )
   saveSettings();
   myregionselection->close();
   magnifier->close();
-  if ( webcamCheckBox->isVisible()  )
-     webcamCheckBox->webcamClose();
+
+  //if ( webcamCheckBox->isVisible()  )
+     //webcamCheckBox->webcamClose();
+  webcamController->webcamCloseEvent();  
 }
 
 
@@ -1044,14 +1064,14 @@ void screencast::saveSettings()
     settings.setValue( "Height", myregionselection->getHeight() );
   settings.endGroup();
   
-  webcamCheckBox->saveSettings();
+  //webcamCheckBox->saveSettings();
   myregionselection->saveSettings();
 }
 
 
 void screencast::ShortcutWebcam()
 {
-  webcamCheckBox->click(); 
+  //webcamCheckBox->click(); 
 }
 
 void screencast::ShortcutMagnifier()
