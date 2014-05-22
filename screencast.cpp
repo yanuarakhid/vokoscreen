@@ -101,7 +101,7 @@ screencast::screencast()
 
 
 
-    QCheckBox *webcamCheckBox = new QCheckBox( frame );
+    webcamCheckBox = new QCheckBox( frame );
     webcamCheckBox->setText( tr( "Webcam" ) );
     webcamCheckBox->setToolTip( "CTRL+SHIFT+F8" );
     webcamCheckBox->setGeometry( 160, 40, 120, 21 );
@@ -2651,8 +2651,19 @@ void screencast::startRecord( QString RecordPathName )
     }
   }
   
+  // Webcam Bug abfangen
+  bool webcamRunning = false;
+  if ( webcamCheckBox->checkState() == Qt::Checked )
+  {
+    webcamCheckBox->click();
+    webcamRunning = true;
+  }
+  
   SystemCall->start( ffmpegString + RecordPathName );
 
+  if ( webcamRunning == true )
+   webcamCheckBox->click();  
+  
   // Recordtime Statusbar
   beginTime  = QDateTime::currentDateTime();
 

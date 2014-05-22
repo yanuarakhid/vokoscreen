@@ -77,11 +77,11 @@ class CaptureThread : public QThread
 		unsigned int                    n_buffers;
 		QString                         dev_name;
 
-		struct v4l2_format src_fmt;
-		unsigned char *dst_buf;
-		struct v4lconvert_data *v4lconvert_data;
-		int di;
-		char header [50];
+		struct v4l2_format              src_fmt;
+		unsigned char                   *dst_buf;
+		struct v4lconvert_data          *v4lconvert_data;
+		int                             di;
+		char                            header [50];
 };
 
 #endif // CAPTURETHREAD_H

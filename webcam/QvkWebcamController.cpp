@@ -38,42 +38,42 @@ void QvkWebcamController::webcamCloseEvent()
   if ( captureThread->running )
     captureThread->stop();
   
-  webcamWindow->close();
+  //webcamWindow->close();
 }
 
 
 /*
- * Wird ausgelößt beim betätigen der checkbox
+ * Wird ausgelößt wenn checkbox getätigt wird
  */
 void QvkWebcamController::setWebcamOnOff( bool value )
 {
   if ( value == false )
   {
     captureThread->stop();
-    webcamWindow->hide();
+    webcamWindow->close();
     comboBox->setEnabled( true );
+    return;
+  }
+ 
+//  if ( ( value == true ) and ( captureThread->busy( "/dev/video" + comboBox->currentText() ) == true ) )
+  if ( captureThread->busy( "/dev/video" + comboBox->currentText() ) == true )
+  {
+    qDebug() << "[vokoscreen] webcam device /dev/video" + comboBox->currentText() << "is busy";
+    QMessageBox messageBox( QMessageBox::Warning,
+                            "vokoscren webcam",
+                            "Webcam /dev/video" + comboBox->currentText() + " " + tr( "is busy") );
+    
+    messageBox.exec();
+    checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
     return;
   }
   
   if ( value == true )
   {
-    if ( ( captureThread->busy( "/dev/video" + comboBox->currentText() ) == true ) and ( checkBox->checkState() == Qt::Checked ) )
-    {
-      qDebug() << "[vokoscreen] device /dev/video" + comboBox->currentText() << "is busy";
-      QMessageBox messageBox( QMessageBox::Warning,
-                              "vokoscreen",
-                              "/dev/video" + comboBox->currentText() + " " + tr( "is busy") );
-    
-      messageBox.exec();
-      checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
-      return;
-    }
-    
-     comboBox->setEnabled( false );
-     webcamWindow->show();
-     webcamWindow->currentDevice = "/dev/video" + comboBox->currentText(); //**********************
-     captureThread->start( "/dev/video" + comboBox->currentText() );
-     return;
+    comboBox->setEnabled( false );
+    webcamWindow->show();
+    webcamWindow->currentDevice = "/dev/video" + comboBox->currentText();
+    captureThread->start( "/dev/video" + comboBox->currentText() );
   }
 }
 
@@ -131,7 +131,4 @@ void QvkWebcamController::webcamChangedEvent( QStringList deviceList )
     checkBox->setEnabled( true );
     comboBox->setEnabled( true );
   }
- 
- 
-  
 }

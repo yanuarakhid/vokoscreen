@@ -29,10 +29,10 @@ void CaptureThread::xioctl(int fh, int request, void *arg) {
 	  quit();
 	  return;  
 	}
-  
+
 	int r;
 	do {
-		r = v4l2_ioctl(fh, request, arg);
+             r = v4l2_ioctl(fh, request, arg);
 	} while (r == -1 && ((errno == EINTR) || (errno == EAGAIN)));
 
 	if (r == -1) {
@@ -134,7 +134,8 @@ bool CaptureThread::busy( QString device )
           quit();
 	}
 
-	CLEAR( fmt );
+	//CLEAR( fmt );
+	struct v4l2_format fmt;// neu
 	fmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
 	fmt.fmt.pix.width       = 640;
 	fmt.fmt.pix.height      = 480;
@@ -148,12 +149,18 @@ bool CaptureThread::busy( QString device )
 	}
 	while ( r == -1 && ( ( errno == EINTR) || (errno == EAGAIN ) ) );
 
-        v4l2_close( fd );
+	v4l2_close( fd );
 
 	if ( r == -1 )
+	{
+	  qDebug() << "webcam" << dev_name << "ist busy";
           return true;
+	}
 	else
+	{
+	  qDebug() << "webcam" << dev_name << "nicht busy";
 	  return false;
+	}
 }
 
 

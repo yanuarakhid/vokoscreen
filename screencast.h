@@ -194,7 +194,8 @@ private:
     QPushButton *PauseButton;
     QPushButton *PlayButton;
     QPushButton *sendPushButton;
-    
+    QCheckBox *webcamCheckBox;
+     
     QProcess *SystemCall;
     QRadioButton *AlsaRadioButton;
     QComboBox *AlsaHwComboBox;
@@ -203,7 +204,6 @@ private:
     QRadioButton * WindowRadioButton;
     QRadioButton *AreaRadioButton;
     QCheckBox *MagnifierCheckBox;
-    QvkWebcamController *webcamCheckBox;
     QSpinBox * CountdownSpinBox;
     
     QLabel *ChannelLabel;
@@ -237,7 +237,6 @@ private:
     
     QvkMagnifier *magnifier;
     regionselection *myregionselection;
-    //QvkWebcam *webcam;
     QvkWebcamController *webcamController;
     
     QxtGlobalShortcut *shortcutWebcam;
