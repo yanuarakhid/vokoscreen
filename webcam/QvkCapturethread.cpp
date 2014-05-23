@@ -152,15 +152,9 @@ bool CaptureThread::busy( QString device )
 	v4l2_close( fd );
 
 	if ( r == -1 )
-	{
-	  qDebug() << "webcam" << dev_name << "ist busy";
           return true;
-	}
 	else
-	{
-	  qDebug() << "webcam" << dev_name << "nicht busy";
 	  return false;
-	}
 }
 
 

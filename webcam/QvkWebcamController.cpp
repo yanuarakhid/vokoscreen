@@ -37,8 +37,6 @@ void QvkWebcamController::webcamCloseEvent()
   comboBox->setEnabled( true );
   if ( captureThread->running )
     captureThread->stop();
-  
-  //webcamWindow->close();
 }
 
 
@@ -55,7 +53,6 @@ void QvkWebcamController::setWebcamOnOff( bool value )
     return;
   }
  
-//  if ( ( value == true ) and ( captureThread->busy( "/dev/video" + comboBox->currentText() ) == true ) )
   if ( captureThread->busy( "/dev/video" + comboBox->currentText() ) == true )
   {
     qDebug() << "[vokoscreen] webcam device /dev/video" + comboBox->currentText() << "is busy";
