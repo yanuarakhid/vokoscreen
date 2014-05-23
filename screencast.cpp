@@ -96,11 +96,6 @@ screencast::screencast()
     MagnifierDialogPushButton->show();
     connect( MagnifierDialogPushButton, SIGNAL( clicked() ), SLOT( MagnifierDialog() ) );
     
-    //webcamCheckBox = new QvkWebcamController( frame );
-    //webcamCheckBox->setGeometry( 160, 40, 120, 21 );
-
-
-
     webcamCheckBox = new QCheckBox( frame );
     webcamCheckBox->setText( tr( "Webcam" ) );
     webcamCheckBox->setToolTip( "CTRL+SHIFT+F8" );
@@ -114,8 +109,6 @@ screencast::screencast()
 
     webcamController = new QvkWebcamController( webcamCheckBox, webcamComboBox );
     (void)webcamController;
-
-    
     
     QLabel *CountdownLabel = new QLabel( frame );
     CountdownLabel->setGeometry( 160, 110, 80, 25 );
@@ -130,8 +123,6 @@ screencast::screencast()
     CountdownSpinBox->setValue( 0 );
     CountdownSpinBox->show();
     
-    
-    // http://doc-snapshot.qt-project.org/4.8/qdesktopwidget.html#availableGeometry
     QComboBox *ScreenComboBox = new QComboBox( frame );
     ScreenComboBox->setGeometry( 160, 65, 200, 21 );
     ScreenComboBox->hide();
@@ -147,8 +138,6 @@ screencast::screencast()
     }
     qDebug() << "[vokoscreen]" << "---End search Screen---";
     qDebug();
-    
-    
     
     // Tab 2 Audio options ****************************************
     TabWidgetAudioFrame = new QFrame( this );
@@ -197,7 +186,6 @@ screencast::screencast()
 
     QLabel *VideoOptionLabel = new QLabel( TabWidgetVideoOptionFrame );
     VideoOptionLabel->setGeometry( 20, 10, 50, 25 );
-    //VideoOptionLabel->setAlignment( Qt::AlignRight );
     VideoOptionLabel->setText( tr( "Frames" ) );
     VideoOptionLabel->show();
 
@@ -401,7 +389,6 @@ screencast::screencast()
     creditsQPushButton->setIcon( creditsIcon );
     creditsQPushButton->show();
     connect( creditsQPushButton, SIGNAL( clicked() ), SLOT( showCredits() ) );
-    
 
     // End Tabs *************************************************************
 
@@ -483,7 +470,6 @@ screencast::screencast()
     
     QLabel* label = new QLabel( centralWidget );
     label->setText("");
-    //label->setGeometry( QRect( 0, 0, 123, 240) );
     label->setGeometry( QRect( 10, 0, 100, 190 ) );
     label->setAlignment( Qt::AlignCenter );
     label->show();
@@ -700,8 +686,8 @@ screencast::screencast()
    SystemTrayIconBlue = new QSystemTrayIcon( QIcon::fromTheme( "media-skip-forward", QIcon ( ":/pictures/go.png" ) ) );
    SystemTrayIconBlue->setToolTip( tr( "Go" ) );
 
-      SystrayCheckBox->setCheckState( Qt::CheckState( vkSettings.getSystray() ) );
-      stateChangedSystray( Qt::CheckState( vkSettings.getSystray() ) );
+   SystrayCheckBox->setCheckState( Qt::CheckState( vkSettings.getSystray() ) );
+   stateChangedSystray( Qt::CheckState( vkSettings.getSystray() ) );
    
    connect( SystemTrayIconGreen,  SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStart( QSystemTrayIcon::ActivationReason ) ) );
    connect( SystemTrayIconRed,    SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStop( QSystemTrayIcon::ActivationReason ) ) );
@@ -997,9 +983,6 @@ void screencast::closeEvent( QCloseEvent * event )
   saveSettings();
   myregionselection->close();
   magnifier->close();
-
-  //if ( webcamCheckBox->isVisible()  )
-     //webcamCheckBox->webcamClose();
   webcamController->webcamCloseEvent();  
 }
 
@@ -1071,7 +1054,7 @@ void screencast::saveSettings()
 
 void screencast::ShortcutWebcam()
 {
-  //webcamCheckBox->click(); 
+  webcamCheckBox->click(); 
 }
 
 void screencast::ShortcutMagnifier()
@@ -2534,8 +2517,7 @@ void screencast::record()
 
   // frame rate
   QString framerate = "-r " + QString().number( FrameSpinBox->value() );
-  //QString framerate = "-framerate " + QString().number( FrameSpinBox->value() ); // No funktion under Ubuntu 14.04 
-  // Videocodec
+  
   QString myVcodec = VideocodecComboBox->currentText();
   if ( myVcodec == "libx264" )
   {
@@ -2549,10 +2531,7 @@ void screencast::record()
     if ( ( intRecordY % 2 ) == 1 )
       setRecordHeight( QString().number( --intRecordY ) );
     
-    myVcodec = "libx264 -preset veryfast"; // Standard
-    //myVcodec = "libx264 -preset medium";
-    //myVcodec = "libx264 -preset veryslow";
-    
+    myVcodec = "libx264 -preset veryfast";
   }  
 
   nameInMoviesLocation = NameInMoviesLocation();
@@ -2562,7 +2541,6 @@ void screencast::record()
     quality = " -sameq ";
   else
     quality = " -q:v 1 ";
-//    quality = " -qscale 1 "; // obsolet
 
   clickedRecordButtonScreenSize();
 
@@ -2693,19 +2671,9 @@ void screencast::Stop()
         mergeString.append( " + " ).append( PathTempLocation() ).append( QDir::separator() ).append( stringList.at( i ) );
 
     mergeString.append( " -o " ).append( PathMoviesLocation() + QDir::separator() + nameInMoviesLocation );
-/*
-    // Unter der Sprache Arabisch funktioniert mkvmerge nicht
-    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();// Test
-    env.insert("LANG", "ro_MD");// Test
-    SystemCall->setProcessEnvironment(env); //Test
-*/
     SystemCall->start( mergeString );
     SystemCall->waitForFinished();
-/*    
-    QString mkvAusgabe = SystemCall->readAllStandardOutput(); // Test
-    SystemCall->close(); / Test
-    qDebug() << "*****************Test*****" << mkvAusgabe; /Test
-*/    
+
     for ( int i = 0; i < stringList.size(); ++i )
       dir.remove( PathTempLocation().append( QDir::separator() ).append( stringList.at( i ) ) );
 
