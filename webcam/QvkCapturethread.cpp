@@ -119,6 +119,44 @@ int CaptureThread::stop()
   quit();
   return 0;
 }
+  
+
+QString CaptureThread::getNameFromDevice( QString device )
+{
+	char dummy[256];
+	QString dev_name = device;
+	int fd = -1;
+
+	fd = v4l2_open( dev_name.toStdString().c_str(), O_RDONLY, 0 );
+	
+	if ( -1 == fd )
+	{
+		fprintf( stderr,"open %s: %s\n", dev_name.toStdString().c_str(), strerror( errno ) );
+		exit(1);
+	};
+
+	if ( -1 != v4l2_ioctl( fd,VIDIOC_QUERYCAP, dummy ) )
+	{
+		printf( "\n### v4l2 device info [%s] ###\n", dev_name.toStdString().c_str() );
+	} else
+	  {
+		fprintf( stderr, "%s: not an video4linux device\n", dev_name.toStdString().c_str() );
+		exit( 1 );
+          }
+	
+	struct v4l2_capability capability;
+	memset( &capability, 0, sizeof( capability ) );
+	if ( -1 == v4l2_ioctl( fd, VIDIOC_QUERYCAP, &capability ) )
+	{
+          v4l2_close( fd );
+          return "-1";
+	}
+	QString str( ( char * ) capability.card );
+        
+        v4l2_close( fd );
+	
+	return str;
+}
 
 
 bool CaptureThread::busy( QString device )

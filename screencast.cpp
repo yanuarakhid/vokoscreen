@@ -16,6 +16,8 @@
  */
 #include "screencast.h"  
 
+#include <QEvent>
+
 using namespace std;
 
 screencast::screencast()
@@ -95,7 +97,7 @@ screencast::screencast()
     MagnifierDialogPushButton->setText( "..." );
     MagnifierDialogPushButton->show();
     connect( MagnifierDialogPushButton, SIGNAL( clicked() ), SLOT( MagnifierDialog() ) );
-    
+/*    
     webcamCheckBox = new QCheckBox( frame );
     webcamCheckBox->setText( tr( "Webcam" ) );
     webcamCheckBox->setToolTip( "CTRL+SHIFT+F8" );
@@ -103,13 +105,13 @@ screencast::screencast()
     webcamCheckBox->show();
   
     QComboBox *webcamComboBox = new QComboBox( frame );
-    webcamComboBox->setGeometry( 250, 40, 40, 21 );
+    webcamComboBox->setGeometry( 250, 40, 200, 21 );
     webcamComboBox->setToolTip( tr ( "Select webcam" ) );
     webcamComboBox->show();
 
     webcamController = new QvkWebcamController( webcamCheckBox, webcamComboBox );
     (void)webcamController;
-    
+*/    
     QLabel *CountdownLabel = new QLabel( frame );
     CountdownLabel->setGeometry( 160, 110, 80, 25 );
     CountdownLabel->setText( tr( "Countdown" ) );
@@ -251,7 +253,6 @@ screencast::screencast()
     AudiocodecStandardButton->show();
     connect( AudiocodecStandardButton, SIGNAL( clicked() ), SLOT( setAudiocodecStandardComboBox() ) );
     
-    
     HideMouseCheckbox = new QCheckBox( TabWidgetVideoOptionFrame );
     HideMouseCheckbox->setGeometry( 20, 100, 300, 25 );
     HideMouseCheckbox->setText( tr( "Do not record mouse cursor" ) );
@@ -304,11 +305,36 @@ screencast::screencast()
     SystrayCheckBox->show();
     connect( SystrayCheckBox, SIGNAL( stateChanged( int ) ), SLOT( stateChangedSystray( int ) ) );
 
-    // Tab 5 About *********************************************************
+    // Tab 5 Webcam *******************************************************
+    TabWidgetMiscellaneousFrame = new QFrame( this );
+    TabWidgetMiscellaneousFrame->setGeometry( 120, 0, 300, 200 );
+    TabWidgetMiscellaneousFrame->show();
+    tabWidget->addTab(TabWidgetMiscellaneousFrame, "" );
+    tabWidget->setTabIcon( 4, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/tools.png" ) ) );
+    qfont = TabWidgetMiscellaneousFrame->font();
+    qfont.setPixelSize( 12 );
+    TabWidgetMiscellaneousFrame->setFont( qfont );
+
+    webcamCheckBox = new QCheckBox( TabWidgetMiscellaneousFrame );
+    webcamCheckBox->setText( tr( "Webcam" ) );
+    webcamCheckBox->setToolTip( "CTRL+SHIFT+F8" );
+    webcamCheckBox->setGeometry( 20, 40, 120, 25 );
+    webcamCheckBox->show();
+  
+    QComboBox *webcamComboBox = new QComboBox( TabWidgetMiscellaneousFrame );
+    webcamComboBox->setGeometry( 120, 40, 220, 25 );
+    webcamComboBox->setToolTip( tr ( "Select webcam" ) );
+    webcamComboBox->show();
+
+    webcamController = new QvkWebcamController( webcamCheckBox, webcamComboBox );
+    (void)webcamController;
+    
+    
+    // Tab 6 About *********************************************************
     QFrame *TabWidgetAboutFrame = new QFrame(this);
     TabWidgetAboutFrame->show();
     tabWidget->addTab( TabWidgetAboutFrame, "" );
-    tabWidget->setTabIcon( 4, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
+    tabWidget->setTabIcon( 5, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
     tabWidget->show();
     qfont = TabWidgetAboutFrame->font();
     qfont.setPixelSize( 12 );
@@ -732,6 +758,23 @@ screencast::screencast()
 screencast::~screencast()
 {
 }
+
+// http://qt-project.org/doc/qt-4.8/qapplication.html#setStyle
+void screencast::changeEvent( QEvent *event )
+{
+  switch ( event->type() ) 
+  {
+    case QEvent::StyleChange:
+        qDebug() << "111111111111111111111111111111" << QIcon::themeName();
+        tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );      
+        tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
+	break;
+    default:
+        break;
+    }
+    
+}
+
 
 #ifndef NO_NEW_VERSION_CHECK
 void screencast::buttonVersion()
@@ -2629,7 +2672,7 @@ void screencast::startRecord( QString RecordPathName )
     }
   }
   
-  // Webcam Bug abfangen
+  // Webcam busybug abfangen
   bool webcamRunning = false;
   if ( webcamCheckBox->checkState() == Qt::Checked )
   {

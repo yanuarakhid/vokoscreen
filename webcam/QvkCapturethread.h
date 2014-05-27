@@ -50,6 +50,7 @@ class CaptureThread : public QThread
         public slots:
 	        void xioctl(int fh, int request, void *arg);
                 bool busy( QString device );
+                QString getNameFromDevice( QString device );
 
 	protected:
 		void run();

@@ -53,7 +53,9 @@ void QvkWebcamController::setWebcamOnOff( bool value )
     return;
   }
  
-  if ( captureThread->busy( "/dev/video" + comboBox->currentText() ) == true )
+  QString index = comboBox->currentText().left( 2 ).right( 1 );
+  //index = index.right( 1 );
+  if ( captureThread->busy( "/dev/video" + index ) == true )
   {
     qDebug() << "[vokoscreen] webcam device /dev/video" + comboBox->currentText() << "is busy";
     QMessageBox messageBox( QMessageBox::Warning,
@@ -69,14 +71,17 @@ void QvkWebcamController::setWebcamOnOff( bool value )
   {
     comboBox->setEnabled( false );
     webcamWindow->show();
-    webcamWindow->currentDevice = "/dev/video" + comboBox->currentText();
-    captureThread->start( "/dev/video" + comboBox->currentText() );
+    webcamWindow->currentDevice = "/dev/video" + index;
+    captureThread->start( "/dev/video" + index );
   }
 }
 
 
 void QvkWebcamController::setNewImage( QImage image )
 {
+  // Mirror
+  //image = image.mirrored ( true, false );
+  
   webcamWindow->webcamLabel->setPixmap( QPixmap::fromImage( image, Qt::AutoColor) );
 }
 
@@ -99,9 +104,7 @@ void QvkWebcamController::webcamRemovedEvent( QStringList deviceList, QString re
   (void)deviceList;
 
   if ( removedDevice.right( 1 ) == webcamWindow->currentDevice.right( 1 ) )
-  {
     webcamWindow->close();
-  }
 }
 
 
@@ -113,7 +116,9 @@ void QvkWebcamController::webcamChangedEvent( QStringList deviceList )
   comboBox->clear();
   for( int x = 0; x < myWebcamWatcher->getWebcamCount(); x++ )
   {
-    comboBox->addItem( deviceList[x].right( 1 ) );
+    //comboBox->addItem( deviceList[x].right( 1 ) );
+//    comboBox->addItem( "[" + QString::number( x ) + "]" + " " + captureThread->getNameFromDevice( "/dev/video" + deviceList[x].right( 1 ) ) );
+    comboBox->addItem( "[" + deviceList[x].right( 1 ) + "]" + " " + captureThread->getNameFromDevice( "/dev/video" + deviceList[x].right( 1 ) ) );
   }
 
   if ( deviceList.empty() )

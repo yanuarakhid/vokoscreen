@@ -273,7 +273,12 @@ private:
 
  protected:
     void closeEvent( QCloseEvent * event );
-
+    
+    //bool event( QEvent *event );
+    
+    void changeEvent(QEvent *e);
+    
+    
 };
 
 
