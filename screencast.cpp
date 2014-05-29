@@ -326,7 +326,12 @@ screencast::screencast()
     webcamComboBox->setToolTip( tr ( "Select webcam" ) );
     webcamComboBox->show();
 
-    webcamController = new QvkWebcamController( webcamCheckBox, webcamComboBox );
+    QCheckBox *mirrorCheckBox = new QCheckBox( TabWidgetMiscellaneousFrame );
+    mirrorCheckBox->setText( tr( "Mirror" ) );
+    mirrorCheckBox->setGeometry( 20, 70, 200, 25 );
+    mirrorCheckBox->show();
+  
+    webcamController = new QvkWebcamController( webcamCheckBox, webcamComboBox, mirrorCheckBox );
     (void)webcamController;
     
     

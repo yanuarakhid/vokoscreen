@@ -6,7 +6,7 @@ QvkWebcamWindow::QvkWebcamWindow()
 {
   setWindowTitle( "vokoscreen webcam");
 
-  setWindowFlags( Qt::Tool );
+  //setWindowFlags( Qt::Tool );
   setGeometry( 0, 0, 320, 240 );
   
   webcamLabel = new QLabel( this );

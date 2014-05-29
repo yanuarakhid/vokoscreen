@@ -18,7 +18,7 @@ class QvkWebcamController : public QObject
     Q_OBJECT
 
 public:
-  QvkWebcamController( QCheckBox *checkBox, QComboBox *comboBoxCount );
+  QvkWebcamController( QCheckBox *checkBox, QComboBox *comboBoxCount, QCheckBox *myMirrorCheckBox );
   virtual ~QvkWebcamController();
   
   
@@ -32,16 +32,18 @@ private slots:
   void webcamRemovedEvent( QStringList deviceList, QString removedDevice );
   void setWebcamOnOff( bool value );
   void setNewImage( QImage image );
+  void setMirrorOnOff( bool value );
 
   
 private:
   QCheckBox *checkBox;
   QComboBox *comboBox;
-
+  QCheckBox *mirrorCheckBox;
   QvkWebcamWatcher * myWebcamWatcher;
   CaptureThread *captureThread;
   QvkWebcamWindow *webcamWindow;
- 
+  bool mirrored;
+  
 protected:
   
   

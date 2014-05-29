@@ -1,6 +1,6 @@
 #include "QvkWebcamController.h" 
 
-QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox )
+QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox )
 {
   checkBox = myCheckBox;
   checkBox->setEnabled( false );
@@ -8,6 +8,10 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   
   comboBox = myComboBox;
 
+  mirrorCheckBox = myMirrorCheckBox;
+  connect( mirrorCheckBox, SIGNAL( clicked( bool ) ), this, SLOT( setMirrorOnOff( bool ) ) );
+
+  
   captureThread = new CaptureThread();
   connect( captureThread, SIGNAL( newPicture( QImage ) ), this, SLOT( setNewImage( QImage ) ) );
   
@@ -39,6 +43,14 @@ void QvkWebcamController::webcamCloseEvent()
     captureThread->stop();
 }
 
+
+void QvkWebcamController::setMirrorOnOff( bool value )
+{
+  if ( value == true )
+    mirrored = true;
+  else
+    mirrored = false;
+}
 
 /*
  * Wird ausgelößt wenn checkbox getätigt wird
@@ -79,8 +91,8 @@ void QvkWebcamController::setWebcamOnOff( bool value )
 
 void QvkWebcamController::setNewImage( QImage image )
 {
-  // Mirror
-  //image = image.mirrored ( true, false );
+  if ( mirrored == true )
+    image = image.mirrored ( true, false );
   
   webcamWindow->webcamLabel->setPixmap( QPixmap::fromImage( image, Qt::AutoColor) );
 }
