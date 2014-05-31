@@ -2,7 +2,8 @@ Requires:
   - Qt 4
   - alsa
   - libX11
-  - opencv
+  - libv4l2
+  - libv4lconvert
   - libmp3lame0
   - ffmpeg or avconv
   - mkvtoolnix
@@ -13,13 +14,14 @@ Optional:
 BuildRequires:
   - pkgconfig
   - libqt4-devel
+  - libqt4-linguist
   - alsa-devel
   - libX11-devel
-  - opencv-devel
+  - libv4l-devel
   
 Compile:
   - get sources
-    - extract vokoscren-<version>.tar
+    - extract vokoscren-<version>.tar.gz
      or
     - clone git repository: "git clone https://github.com/vkohaupt/vokoscreen.git"
   - change into the vokoscreen-<version> directory
