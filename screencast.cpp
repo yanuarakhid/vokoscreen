@@ -16,8 +16,6 @@
  */
 #include "screencast.h"  
 
-#include <QEvent>
-
 using namespace std;
 
 screencast::screencast()
@@ -45,8 +43,9 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "Qt Version: " << qVersion();
     QvkAlsaDevice inBox ;
     qDebug() << "[vokoscreen]" << "asoundlib Version:" << inBox.getAlsaVersion();
+    qDebug() << "[vokoscreen] current icon-theme:" << QIcon::themeName();
     qDebug();
-    
+
     searchExternalPrograms();
     
     pause = false;
@@ -97,21 +96,7 @@ screencast::screencast()
     MagnifierDialogPushButton->setText( "..." );
     MagnifierDialogPushButton->show();
     connect( MagnifierDialogPushButton, SIGNAL( clicked() ), SLOT( MagnifierDialog() ) );
-/*    
-    webcamCheckBox = new QCheckBox( frame );
-    webcamCheckBox->setText( tr( "Webcam" ) );
-    webcamCheckBox->setToolTip( "CTRL+SHIFT+F8" );
-    webcamCheckBox->setGeometry( 160, 40, 120, 21 );
-    webcamCheckBox->show();
-  
-    QComboBox *webcamComboBox = new QComboBox( frame );
-    webcamComboBox->setGeometry( 250, 40, 200, 21 );
-    webcamComboBox->setToolTip( tr ( "Select webcam" ) );
-    webcamComboBox->show();
-
-    webcamController = new QvkWebcamController( webcamCheckBox, webcamComboBox );
-    (void)webcamController;
-*/    
+    
     QLabel *CountdownLabel = new QLabel( frame );
     CountdownLabel->setGeometry( 160, 110, 80, 25 );
     CountdownLabel->setText( tr( "Countdown" ) );
@@ -306,28 +291,28 @@ screencast::screencast()
     connect( SystrayCheckBox, SIGNAL( stateChanged( int ) ), SLOT( stateChangedSystray( int ) ) );
 
     // Tab 5 Webcam *******************************************************
-    TabWidgetMiscellaneousFrame = new QFrame( this );
-    TabWidgetMiscellaneousFrame->setGeometry( 120, 0, 300, 200 );
-    TabWidgetMiscellaneousFrame->show();
-    tabWidget->addTab(TabWidgetMiscellaneousFrame, "" );
-    tabWidget->setTabIcon( 4, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/tools.png" ) ) );
-    qfont = TabWidgetMiscellaneousFrame->font();
+    TabWidgetWebcamFrame = new QFrame( this );
+    TabWidgetWebcamFrame->setGeometry( 120, 0, 300, 200 );
+    TabWidgetWebcamFrame->show();
+    tabWidget->addTab( TabWidgetWebcamFrame, "" );
+    tabWidget->setTabIcon( 4, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
+    qfont = TabWidgetWebcamFrame->font();
     qfont.setPixelSize( 12 );
-    TabWidgetMiscellaneousFrame->setFont( qfont );
+    TabWidgetWebcamFrame->setFont( qfont );
 
-    webcamCheckBox = new QCheckBox( TabWidgetMiscellaneousFrame );
+    webcamCheckBox = new QCheckBox( TabWidgetWebcamFrame );
     webcamCheckBox->setText( tr( "Webcam" ) );
     webcamCheckBox->setToolTip( "CTRL+SHIFT+F8" );
     webcamCheckBox->setGeometry( 20, 40, 120, 25 );
     webcamCheckBox->show();
   
-    QComboBox *webcamComboBox = new QComboBox( TabWidgetMiscellaneousFrame );
+    QComboBox *webcamComboBox = new QComboBox( TabWidgetWebcamFrame );
     webcamComboBox->setGeometry( 120, 40, 220, 25 );
     webcamComboBox->setToolTip( tr ( "Select webcam" ) );
     webcamComboBox->show();
 
-    QCheckBox *mirrorCheckBox = new QCheckBox( TabWidgetMiscellaneousFrame );
-    mirrorCheckBox->setText( tr( "Mirror" ) );
+    QCheckBox *mirrorCheckBox = new QCheckBox( TabWidgetWebcamFrame );
+    mirrorCheckBox->setText( tr( "Mirrored" ) );
     mirrorCheckBox->setGeometry( 20, 70, 200, 25 );
     mirrorCheckBox->show();
   
@@ -764,20 +749,26 @@ screencast::~screencast()
 {
 }
 
-// http://qt-project.org/doc/qt-4.8/qapplication.html#setStyle
+
+// Only for testing no funktion
+void screencast::styleChange( QStyle &oldStyle )
+{
+    qDebug() << "[vokoscreen] old styleSheet:" <<  &oldStyle; 
+}
+
+// Only for testing no funktion
 void screencast::changeEvent( QEvent *event )
 {
   switch ( event->type() ) 
   {
     case QEvent::StyleChange:
-        qDebug() << "111111111111111111111111111111" << QIcon::themeName();
+        qDebug() << "[vokoscreen] current icon-theme" << QIcon::themeName();
         tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );      
         tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
 	break;
     default:
         break;
     }
-    
 }
 
 

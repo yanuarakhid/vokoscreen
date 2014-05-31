@@ -208,14 +208,16 @@ private:
     
     QLabel *ChannelLabel;
     QComboBox *VideoplayerComboBox;
-    QFrame *TabWidgetAudioFrame;
     QLabel *recordTimeLabel;
     QLineEdit *SaveVideoPathLineEdit;
     QRadioButton *PulseDeviceRadioButton;
     
-    QFrame *TabWidgetMiscellaneousFrame;
+    QFrame *TabWidgetAudioFrame;
     QFrame *TabWidgetVideoOptionFrame;
+    QFrame *TabWidgetMiscellaneousFrame;
+    QFrame *TabWidgetWebcamFrame;
     QFrame *TabWidgetSocialFrame;
+    
     QSpinBox *FrameSpinBox;
     QComboBox *VideocodecComboBox;
     QComboBox *VideoContainerComboBox;
@@ -278,7 +280,7 @@ private:
     
     void changeEvent(QEvent *e);
     
-    
+    void styleChange( QStyle &asd );
 };
 
 

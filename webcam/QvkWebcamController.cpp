@@ -7,10 +7,14 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( setWebcamOnOff( bool ) ) );
   
   comboBox = myComboBox;
-
+  
+  mirrored = false;
   mirrorCheckBox = myMirrorCheckBox;
+  if ( checkBox->checkState() == Qt::Unchecked )
+    mirrorCheckBox->setEnabled( false );
+  else
+    mirrorCheckBox->setEnabled( true );
   connect( mirrorCheckBox, SIGNAL( clicked( bool ) ), this, SLOT( setMirrorOnOff( bool ) ) );
-
   
   captureThread = new CaptureThread();
   connect( captureThread, SIGNAL( newPicture( QImage ) ), this, SLOT( setNewImage( QImage ) ) );
@@ -23,7 +27,6 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   webcamWindow = new QvkWebcamWindow();
   connect( webcamWindow, SIGNAL( closeWebcamWindow() ), SLOT( webcamCloseEvent() ) );  
   (void) webcamWindow;
-  
 }
 
 QvkWebcamController::~QvkWebcamController( void )
@@ -41,6 +44,8 @@ void QvkWebcamController::webcamCloseEvent()
   comboBox->setEnabled( true );
   if ( captureThread->running )
     captureThread->stop();
+  
+  webcamWindow->close();
 }
 
 
@@ -62,11 +67,11 @@ void QvkWebcamController::setWebcamOnOff( bool value )
     captureThread->stop();
     webcamWindow->close();
     comboBox->setEnabled( true );
+    mirrorCheckBox->setEnabled( false );
     return;
   }
  
   QString index = comboBox->currentText().left( 2 ).right( 1 );
-  //index = index.right( 1 );
   if ( captureThread->busy( "/dev/video" + index ) == true )
   {
     qDebug() << "[vokoscreen] webcam device /dev/video" + comboBox->currentText() << "is busy";
@@ -82,6 +87,7 @@ void QvkWebcamController::setWebcamOnOff( bool value )
   if ( value == true )
   {
     comboBox->setEnabled( false );
+    mirrorCheckBox->setEnabled( true );
     webcamWindow->show();
     webcamWindow->currentDevice = "/dev/video" + index;
     captureThread->start( "/dev/video" + index );

@@ -17,6 +17,7 @@
 <file>pictures/VokoCola-1.png</file>
 <file>pictures/VokoCola.png</file>
 <file>pictures/vokoscreen.png</file>
+<file>pictures/webcam.png</file>
 <file>language/vokoscreen_ar.qm</file>
 <file>language/vokoscreen_ast.qm</file>
 <file>language/vokoscreen_ca.qm</file>
@@ -41,6 +42,7 @@
 <file>language/vokoscreen_sv_SE.qm</file>
 <file>language/vokoscreen_th_TH.qm</file>
 <file>language/vokoscreen_tr_TR.qm</file>
+<file>language/vokoscreen_uk_UA.qm</file>
 <file>language/vokoscreen_vi.qm</file>
 <file>language/vokoscreen_zh_CN.qm</file>
 <file>language/vokoscreen_zh_TW.qm</file>
