@@ -15,7 +15,7 @@
     </message>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Gasești fișierul video ca atașament</translation>
+        <translation>Găsești fișierul video ca atașament</translation>
     </message>
     <message>
         <source>Select one or more files</source>
@@ -23,7 +23,14 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>is busy</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
         <translation>Fără margine</translation>
@@ -35,21 +42,6 @@
     <message>
         <source>Close</source>
         <translation>Închide</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Webcam</source>
-        <translation>Cameră Web</translation>
-    </message>
-    <message>
-        <source>Device is busy</source>
-        <translation>Dispozitivul este ocupat</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation>Alege camera web</translation>
     </message>
 </context>
 <context>
@@ -104,7 +96,7 @@
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Vokoscreen va fi minimizat cănd începe înregistrarea</translation>
+        <translation>Vokoscreen va fi minimizat când începe înregistrarea</translation>
     </message>
     <message>
         <source>Start</source>
@@ -136,7 +128,7 @@
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Aria de ecran pentru înregistrare </translation>
+        <translation>Aria de ecran pentru înregistrare</translation>
     </message>
     <message>
         <source>Format</source>
@@ -149,10 +141,6 @@
     <message>
         <source>Open Directory</source>
         <translation>Deschide dosar</translation>
-    </message>
-    <message>
-        <source>%1</source>
-        <translation>%1</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -176,11 +164,7 @@
     </message>
     <message>
         <source>Device %1 is busy</source>
-        <translation>Diszpozitivul %1 este ocupat</translation>
-    </message>
-    <message>
-        <source>Your Actual frames in the Settings is too heigh</source>
-        <translation>Valoarea pentru cadre în Setări este prea mare</translation>
+        <translation>Dispozitivul %1 este ocupat</translation>
     </message>
     <message>
         <source>Go</source>
@@ -228,14 +212,34 @@
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"/>
+        <translation>Cod sursă</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"/>
+        <translation>Arată în tava de sistem</translation>
     </message>
     <message>
         <source>New version available</source>
+        <translation>O nouă versiune este disponibilă</translation>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation>Codec video</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Codec audio</translation>
+    </message>
+    <message>
+        <source>Webcam</source>
+        <translation>Cameră Web</translation>
+    </message>
+    <message>
+        <source>Select webcam</source>
+        <translation>Alege camera web</translation>
+    </message>
+    <message>
+        <source>Mirrored</source>
         <translation type="unfinished"/>
     </message>
 </context>

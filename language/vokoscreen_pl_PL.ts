@@ -23,7 +23,14 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>is busy</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
         <translation>Bez ramki</translation>
@@ -35,21 +42,6 @@
     <message>
         <source>Close</source>
         <translation>Zamknij</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Webcam</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
-        <source>Device is busy</source>
-        <translation>Urządzenie zajęte</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation>Wybierz kamerę</translation>
     </message>
 </context>
 <context>
@@ -151,10 +143,6 @@
         <translation>Wybierz katalog</translation>
     </message>
     <message>
-        <source>%1</source>
-        <translation>%1</translation>
-    </message>
-    <message>
         <source>Countdown</source>
         <translation>Odliczanie</translation>
     </message>
@@ -241,6 +229,18 @@
     <message>
         <source>Audiocodec</source>
         <translation>Kodek audio</translation>
+    </message>
+    <message>
+        <source>Webcam</source>
+        <translation>Kamera</translation>
+    </message>
+    <message>
+        <source>Select webcam</source>
+        <translation>Wybierz kamerę</translation>
+    </message>
+    <message>
+        <source>Mirrored</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

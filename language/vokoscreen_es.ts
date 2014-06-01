@@ -23,7 +23,14 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>is busy</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
         <translation>Sin borde</translation>
@@ -35,21 +42,6 @@
     <message>
         <source>Close</source>
         <translation>Cerrar</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Webcam</source>
-        <translation>Cámara web</translation>
-    </message>
-    <message>
-        <source>Device is busy</source>
-        <translation>El dispositivo está ocupado</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation>Seleccione la cámara web</translation>
     </message>
 </context>
 <context>
@@ -136,7 +128,7 @@
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"/>
+        <translation>screensize grabación</translation>
     </message>
     <message>
         <source>Format</source>
@@ -149,10 +141,6 @@
     <message>
         <source>Open Directory</source>
         <translation>Abrir directorio</translation>
-    </message>
-    <message>
-        <source>%1</source>
-        <translation>%1</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -177,10 +165,6 @@
     <message>
         <source>Device %1 is busy</source>
         <translation>El dispositivo «%1» está ocupado</translation>
-    </message>
-    <message>
-        <source>Your Actual frames in the Settings is too heigh</source>
-        <translation>Los cuadros en la configuración son muy altos</translation>
     </message>
     <message>
         <source>Go</source>
@@ -237,6 +221,26 @@
     <message>
         <source>New version available</source>
         <translation>Nueva versión disponible</translation>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Webcam</source>
+        <translation>Cámara web</translation>
+    </message>
+    <message>
+        <source>Select webcam</source>
+        <translation>Seleccione la cámara web</translation>
+    </message>
+    <message>
+        <source>Mirrored</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

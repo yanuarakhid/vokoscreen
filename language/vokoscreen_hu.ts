@@ -23,7 +23,14 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>is busy</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
         <translation>Keret nélkül</translation>
@@ -35,21 +42,6 @@
     <message>
         <source>Close</source>
         <translation>Bezár</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Webcam</source>
-        <translation>Webkamera</translation>
-    </message>
-    <message>
-        <source>Device is busy</source>
-        <translation>Az eszköz foglalt</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation>Válasszon webkamerát</translation>
     </message>
 </context>
 <context>
@@ -151,10 +143,6 @@
         <translation>Könyvtár megnyitása</translation>
     </message>
     <message>
-        <source>%1</source>
-        <translation>%1</translation>
-    </message>
-    <message>
         <source>Countdown</source>
         <translation>Visszaszámlálás</translation>
     </message>
@@ -177,10 +165,6 @@
     <message>
         <source>Device %1 is busy</source>
         <translation>%1 eszköz foglalt</translation>
-    </message>
-    <message>
-        <source>Your Actual frames in the Settings is too heigh</source>
-        <translation>A beállított képkockaszám túl magas</translation>
     </message>
     <message>
         <source>Go</source>
@@ -237,6 +221,26 @@
     <message>
         <source>New version available</source>
         <translation>Új verzió érhető el</translation>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation>Videokodek</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Audiokodek</translation>
+    </message>
+    <message>
+        <source>Webcam</source>
+        <translation>Webkamera</translation>
+    </message>
+    <message>
+        <source>Select webcam</source>
+        <translation>Válasszon webkamerát</translation>
+    </message>
+    <message>
+        <source>Mirrored</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

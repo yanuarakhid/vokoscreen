@@ -23,7 +23,14 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>is busy</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
         <translation>ไม่มีขอบ</translation>
@@ -35,21 +42,6 @@
     <message>
         <source>Close</source>
         <translation>ปิด</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Webcam</source>
-        <translation>เว็บแคม</translation>
-    </message>
-    <message>
-        <source>Device is busy</source>
-        <translation>อุปกรณ์ยังไม่พร้อม</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation>เลือกเว็บแคม</translation>
     </message>
 </context>
 <context>
@@ -237,6 +229,18 @@
     <message>
         <source>Audiocodec</source>
         <translation>ตัวถอดรหัสเสียง</translation>
+    </message>
+    <message>
+        <source>Webcam</source>
+        <translation>เว็บแคม</translation>
+    </message>
+    <message>
+        <source>Select webcam</source>
+        <translation>เลือกเว็บแคม</translation>
+    </message>
+    <message>
+        <source>Mirrored</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

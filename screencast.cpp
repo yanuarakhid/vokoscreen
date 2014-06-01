@@ -177,7 +177,7 @@ screencast::screencast()
     VideoOptionLabel->show();
 
     FrameSpinBox = new QSpinBox( TabWidgetVideoOptionFrame );
-    FrameSpinBox->setGeometry( QRect( 80, 10, 50, 25 ) );
+    FrameSpinBox->setGeometry( QRect( 100, 10, 50, 25 ) );
     FrameSpinBox->setMinimum( 1 );
     FrameSpinBox->setMaximum( 200 );
     FrameSpinBox->setSingleStep( 1 );
@@ -186,8 +186,10 @@ screencast::screencast()
     connect( FrameSpinBox, SIGNAL( valueChanged( int ) ), SLOT( valueChangedFrames( int ) ) );
 
     QPushButton *FrameStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
-    FrameStandardButton->setText( tr( "Default" ) );
-    FrameStandardButton->setGeometry( 360, 10, 70, 25 );
+    FrameStandardButton->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+    FrameStandardButton->setText( "" );
+    FrameStandardButton->setGeometry( 350, 10, 50, 25 );
+    FrameStandardButton->setToolTip( tr( "Default" ) );
     FrameStandardButton->show();
     connect( FrameStandardButton, SIGNAL( clicked() ), SLOT( setFrameStandardSpinbox() ) );
 
@@ -216,8 +218,10 @@ screencast::screencast()
     connect( VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedFormat( int ) ) );
     
     QPushButton *VideocodecStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
-    VideocodecStandardButton->setText( tr( "Default" ) );
-    VideocodecStandardButton->setGeometry( 360, 40, 70, 25 );
+    VideocodecStandardButton->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+    VideocodecStandardButton->setText( "" );
+    VideocodecStandardButton->setGeometry( 350, 40, 50, 25 );
+    VideocodecStandardButton->setToolTip( tr( "Default" ) );
     VideocodecStandardButton->show();
     connect( VideocodecStandardButton, SIGNAL( clicked() ), SLOT( setVideocodecStandardComboBox() ) );
     
@@ -233,8 +237,10 @@ screencast::screencast()
     AudiocodecComboBox->addItem( "libvorbis" );
     
     QPushButton *AudiocodecStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
-    AudiocodecStandardButton->setText( tr( "Default" ) );
-    AudiocodecStandardButton->setGeometry( 360, 70, 70, 25 );
+    AudiocodecStandardButton->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+    AudiocodecStandardButton->setText( "" );
+    AudiocodecStandardButton->setGeometry( 350, 70, 50, 25 );
+    AudiocodecStandardButton->setToolTip( tr( "Default" ) );
     AudiocodecStandardButton->show();
     connect( AudiocodecStandardButton, SIGNAL( clicked() ), SLOT( setAudiocodecStandardComboBox() ) );
     
@@ -415,7 +421,7 @@ screencast::screencast()
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
     recordButton->setFont( qfont );
-    recordButton->setGeometry( 170, 200, 70, 30 );
+    recordButton->setGeometry( 120, 200, 90, 30 );
     recordButton->show();
     connect( recordButton, SIGNAL( clicked() ), SLOT( preRecord() ) );
 
@@ -426,7 +432,7 @@ screencast::screencast()
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
     StopButton->setFont( qfont );
-    StopButton->setGeometry( 240, 200, 70, 30 );
+    StopButton->setGeometry( 210, 200, 90, 30 );
     StopButton->setEnabled( false );
     StopButton->show();  
     connect( StopButton, SIGNAL( clicked() ), SLOT( Stop() ) );
@@ -438,7 +444,7 @@ screencast::screencast()
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
     PauseButton->setFont( qfont );
-    PauseButton->setGeometry( 310, 200, 70, 30 );
+    PauseButton->setGeometry( 300, 200, 90, 30 );
     PauseButton->setCheckable( true );
     PauseButton->setEnabled( false );
     if ( needProgram( "mkvmerge" ) )
@@ -454,12 +460,12 @@ screencast::screencast()
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
     PlayButton->setFont( qfont );
-    PlayButton->setGeometry( 380, 200, 70, 30 );
+    PlayButton->setGeometry( 390, 200, 90, 30 );
     PlayButton->show();
     connect( PlayButton, SIGNAL( clicked() ), SLOT( play() ) );
 
     sendPushButton = new QPushButton( centralWidget );
-    sendPushButton->setGeometry( 450, 200, 70, 30 );
+    sendPushButton->setGeometry( 480, 200, 90, 30 );
     qfont = sendPushButton->font();
     qfont.setPixelSize( 14 );
     qfont.setBold( true );
@@ -475,8 +481,8 @@ screencast::screencast()
   #ifndef NO_NEW_VERSION_CHECK
     QTimer::singleShot( 15000, &version, SLOT( doDownload() ) );
     connect( &version, SIGNAL( versionDownloadFinish() ), SLOT( buttonVersion() ) );
-    updateButton = new QPushButton( centralWidget );
-    updateButton->setGeometry( 530, 190, 45, 45 );
+    updateButton = new QPushButton( frame );
+    updateButton->setGeometry( 395, 100, 45, 45 );
     updateButton->setIcon( QIcon( ":/pictures/system-software-update.png" ) );
     updateButton->setIconSize( QSize( 35, 35 ) );
     updateButton->setToolTip( tr( "New version available" ) );

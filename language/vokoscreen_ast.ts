@@ -23,33 +23,25 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>is busy</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
-        <translation>Ensin bordes</translation>
+        <translation>Ensin bervesos</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation>Borde</translation>
+        <translation>Bervesu</translation>
     </message>
     <message>
         <source>Close</source>
         <translation>Zarrar</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Webcam</source>
-        <translation>Cámara web</translation>
-    </message>
-    <message>
-        <source>Device is busy</source>
-        <translation>El preséu ta ocupáu</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation>Esbillar cámara web</translation>
     </message>
 </context>
 <context>
@@ -60,7 +52,7 @@
     </message>
     <message>
         <source>Window</source>
-        <translation>Ventanu</translation>
+        <translation>Ventana</translation>
     </message>
     <message>
         <source>Area</source>
@@ -84,7 +76,7 @@
     </message>
     <message>
         <source>Default</source>
-        <translation>Per defeutu</translation>
+        <translation>Por defeutu</translation>
     </message>
     <message>
         <source>Codec</source>
@@ -96,7 +88,7 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Ruta&apos;l vidéu</translation>
+        <translation>Camín del vidéu</translation>
     </message>
     <message>
         <source>Player</source>
@@ -148,11 +140,7 @@
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Abrir carpeta</translation>
-    </message>
-    <message>
-        <source>%1</source>
-        <translation>%1</translation>
+        <translation>Abrir direutoriu</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -168,7 +156,7 @@
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Esbilla un o más preseos</translation>
+        <translation>Esbilla ún o más preseos</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
@@ -232,7 +220,7 @@
     </message>
     <message>
         <source>New version available</source>
-        <translation>Nueva versión disponible</translation>
+        <translation>Versión nueva disponible</translation>
     </message>
     <message>
         <source>Videocodec</source>
@@ -241,6 +229,18 @@
     <message>
         <source>Audiocodec</source>
         <translation>Codec soníu</translation>
+    </message>
+    <message>
+        <source>Webcam</source>
+        <translation>Cámara web</translation>
+    </message>
+    <message>
+        <source>Select webcam</source>
+        <translation>Esbillar cámara web</translation>
+    </message>
+    <message>
+        <source>Mirrored</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

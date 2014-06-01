@@ -23,7 +23,14 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>is busy</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
         <translation>Pas de bordure</translation>
@@ -35,21 +42,6 @@
     <message>
         <source>Close</source>
         <translation>Fermer</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Webcam</source>
-        <translation>Webcam</translation>
-    </message>
-    <message>
-        <source>Device is busy</source>
-        <translation>Le périphérique est en cours d&apos;utilisation</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation>Sélectionner la webcam</translation>
     </message>
 </context>
 <context>
@@ -151,10 +143,6 @@
         <translation>Ouvrir le répertoire</translation>
     </message>
     <message>
-        <source>%1</source>
-        <translation>% 1</translation>
-    </message>
-    <message>
         <source>Countdown</source>
         <translation>Compte à rebours</translation>
     </message>
@@ -177,10 +165,6 @@
     <message>
         <source>Device %1 is busy</source>
         <translation>Le périphérique %1 est occupé</translation>
-    </message>
-    <message>
-        <source>Your Actual frames in the Settings is too heigh</source>
-        <translation>Votre nombre d&apos;images par seconde dans les paramètres est trop élevé</translation>
     </message>
     <message>
         <source>Go</source>
@@ -228,14 +212,34 @@
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"/>
+        <translation>Code source</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"/>
+        <translation>Afficher dans la zone de notification</translation>
     </message>
     <message>
         <source>New version available</source>
+        <translation>Une nouvelle version est disponible</translation>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Webcam</source>
+        <translation>Webcam</translation>
+    </message>
+    <message>
+        <source>Select webcam</source>
+        <translation>Sélectionner la webcam</translation>
+    </message>
+    <message>
+        <source>Mirrored</source>
         <translation type="unfinished"/>
     </message>
 </context>

@@ -23,7 +23,14 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>is busy</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
         <translation>Без рамки</translation>
@@ -35,21 +42,6 @@
     <message>
         <source>Close</source>
         <translation>Закрыть</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Webcam</source>
-        <translation>Веб-камера</translation>
-    </message>
-    <message>
-        <source>Device is busy</source>
-        <translation>Устройство в настоящее время используется</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation>Выберите веб-камеру</translation>
     </message>
 </context>
 <context>
@@ -151,10 +143,6 @@
         <translation>Открыть папку</translation>
     </message>
     <message>
-        <source>%1</source>
-        <translation>%1</translation>
-    </message>
-    <message>
         <source>Countdown</source>
         <translation>Обратный отсчёт</translation>
     </message>
@@ -177,10 +165,6 @@
     <message>
         <source>Device %1 is busy</source>
         <translation>Устройство %1 используется</translation>
-    </message>
-    <message>
-        <source>Your Actual frames in the Settings is too heigh</source>
-        <translation>Кол-во фактических кадров в с. превышено</translation>
     </message>
     <message>
         <source>Go</source>
@@ -236,6 +220,26 @@
     </message>
     <message>
         <source>New version available</source>
+        <translation>Доступна новая версия</translation>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Webcam</source>
+        <translation>Веб-камера</translation>
+    </message>
+    <message>
+        <source>Select webcam</source>
+        <translation>Выберите веб-камеру</translation>
+    </message>
+    <message>
+        <source>Mirrored</source>
         <translation type="unfinished"/>
     </message>
 </context>

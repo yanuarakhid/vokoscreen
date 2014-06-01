@@ -23,7 +23,14 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>is busy</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
         <translation>沒有視窗邊框</translation>
@@ -35,21 +42,6 @@
     <message>
         <source>Close</source>
         <translation>關閉</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Webcam</source>
-        <translation>網路攝影機</translation>
-    </message>
-    <message>
-        <source>Device is busy</source>
-        <translation>裝置忙碌中</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -151,10 +143,6 @@
         <translation>開啟目錄</translation>
     </message>
     <message>
-        <source>%1</source>
-        <translation>%1</translation>
-    </message>
-    <message>
         <source>Countdown</source>
         <translation>倒數計時</translation>
     </message>
@@ -177,10 +165,6 @@
     <message>
         <source>Device %1 is busy</source>
         <translation>裝置 %1 忙碌中</translation>
-    </message>
-    <message>
-        <source>Your Actual frames in the Settings is too heigh</source>
-        <translation>您設定的影格率太高了</translation>
     </message>
     <message>
         <source>Go</source>
@@ -236,6 +220,26 @@
     </message>
     <message>
         <source>New version available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Webcam</source>
+        <translation>網路攝影機</translation>
+    </message>
+    <message>
+        <source>Select webcam</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mirrored</source>
         <translation type="unfinished"/>
     </message>
 </context>

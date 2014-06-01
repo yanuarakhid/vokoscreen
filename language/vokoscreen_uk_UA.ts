@@ -23,7 +23,14 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>is busy</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
         <translation>Без рамки</translation>
@@ -35,21 +42,6 @@
     <message>
         <source>Close</source>
         <translation>Закрити</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Webcam</source>
-        <translation>Веб-камера</translation>
-    </message>
-    <message>
-        <source>Device is busy</source>
-        <translation>Пристрій використовується</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation>Виберіть веб-камеру</translation>
     </message>
 </context>
 <context>
@@ -237,6 +229,18 @@
     <message>
         <source>Audiocodec</source>
         <translation>Аудіокодек</translation>
+    </message>
+    <message>
+        <source>Webcam</source>
+        <translation>Веб-камера</translation>
+    </message>
+    <message>
+        <source>Select webcam</source>
+        <translation>Виберіть веб-камеру</translation>
+    </message>
+    <message>
+        <source>Mirrored</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

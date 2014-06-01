@@ -23,7 +23,14 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>is busy</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
         <translation>Bez ohraničení</translation>
@@ -35,21 +42,6 @@
     <message>
         <source>Close</source>
         <translation>Zavřít</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Webcam</source>
-        <translation>Webkamera</translation>
-    </message>
-    <message>
-        <source>Device is busy</source>
-        <translation>Zařízení je zaneprázdněno</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation>Vybrat webkameru</translation>
     </message>
 </context>
 <context>
@@ -151,10 +143,6 @@
         <translation>Otevřít umístění</translation>
     </message>
     <message>
-        <source>%1</source>
-        <translation>%1</translation>
-    </message>
-    <message>
         <source>Countdown</source>
         <translation>Odpočet</translation>
     </message>
@@ -241,6 +229,18 @@
     <message>
         <source>Audiocodec</source>
         <translation>Audiokodek</translation>
+    </message>
+    <message>
+        <source>Webcam</source>
+        <translation>Webkamera</translation>
+    </message>
+    <message>
+        <source>Select webcam</source>
+        <translation>Vybrat webkameru</translation>
+    </message>
+    <message>
+        <source>Mirrored</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>
