@@ -7,6 +7,9 @@ QvkWebcamWindow::QvkWebcamWindow()
   setWindowTitle( "vokoscreen webcam");
   setGeometry( 0, 0, 320, 240 );
   
+  if( QX11Info::isCompositingManagerRunning() )
+    setAttribute( Qt::WA_TranslucentBackground, true );
+  
   webcamLabel = new QLabel( this );
   webcamLabel->setGeometry( 0, 0, width(), height() );
   webcamLabel->setAlignment( Qt::AlignCenter );

@@ -309,20 +309,62 @@ screencast::screencast()
     webcamCheckBox = new QCheckBox( TabWidgetWebcamFrame );
     webcamCheckBox->setText( tr( "Webcam" ) );
     webcamCheckBox->setToolTip( "CTRL+SHIFT+F8" );
-    webcamCheckBox->setGeometry( 20, 40, 120, 25 );
+    webcamCheckBox->setGeometry( 20, 5, 120, 25 );
     webcamCheckBox->show();
   
     QComboBox *webcamComboBox = new QComboBox( TabWidgetWebcamFrame );
-    webcamComboBox->setGeometry( 120, 40, 220, 25 );
+    webcamComboBox->setGeometry( 120, 5, 220, 25 );
     webcamComboBox->setToolTip( tr ( "Select webcam" ) );
     webcamComboBox->show();
 
     QCheckBox *mirrorCheckBox = new QCheckBox( TabWidgetWebcamFrame );
     mirrorCheckBox->setText( tr( "Mirrored" ) );
-    mirrorCheckBox->setGeometry( 20, 70, 200, 25 );
+    mirrorCheckBox->setGeometry( 20, 30, 200, 25 );
     mirrorCheckBox->show();
+    
+    QFrame *dialFrame = new QFrame( TabWidgetWebcamFrame );
+    dialFrame->setFrameShape( QFrame::StyledPanel );
+    dialFrame->setFrameShadow( QFrame::Sunken );
+    dialFrame->setGeometry( 20, 55, 86, 86 );
+    dialFrame->show();
   
-    webcamController = new QvkWebcamController( webcamCheckBox, webcamComboBox, mirrorCheckBox );
+    int dialWith = 40;
+    int dialheight = 40;
+    QDial *rotateDial = new QDial( dialFrame );
+    rotateDial->setWrapping ( true );
+    rotateDial->setGeometry( dialFrame->width() / 2 - dialWith / 2, 
+			     dialFrame->height() / 2 - dialheight / 2, 
+			     dialWith,
+			     dialheight );
+
+    int radioButtonwidth = 20;
+    int radioButtonheight = 20;
+    QRadioButton *radioButtonTopMiddle = new QRadioButton( dialFrame );
+    radioButtonTopMiddle->setGeometry( rotateDial->x() + rotateDial->width() / 2 - radioButtonwidth / 2,
+                                       rotateDial->y() - radioButtonwidth,
+				       radioButtonwidth,
+				       radioButtonheight );
+  
+    QRadioButton *radioButtonRightMiddle = new QRadioButton( dialFrame );
+    radioButtonRightMiddle->setGeometry( rotateDial->x() + rotateDial->width(),
+                                         rotateDial->y() + rotateDial->height() / 2 - radioButtonheight / 2,
+                                         radioButtonwidth,
+				         radioButtonheight );
+   
+    QRadioButton *radioButtonBottomMiddle = new QRadioButton( dialFrame );
+    radioButtonBottomMiddle->setGeometry( rotateDial->x() + rotateDial->width() / 2 - radioButtonwidth / 2,
+                                       rotateDial->y() + rotateDial->height(),
+                                       radioButtonwidth,
+	 			       radioButtonheight );
+ 
+    QRadioButton *radioButtonLeftMiddle = new QRadioButton( dialFrame );
+    radioButtonLeftMiddle->setGeometry( rotateDial->x() - radioButtonwidth,
+                                        rotateDial->y() + rotateDial->height() / 2 - radioButtonheight / 2,
+                                        radioButtonwidth,
+				        radioButtonheight );
+
+    webcamController = new QvkWebcamController( webcamCheckBox, webcamComboBox, mirrorCheckBox, 
+						dialFrame, rotateDial, radioButtonTopMiddle, radioButtonRightMiddle, radioButtonBottomMiddle, radioButtonLeftMiddle );
     (void)webcamController;
     
     

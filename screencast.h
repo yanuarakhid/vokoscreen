@@ -32,6 +32,7 @@
 #include <QDate>
 #include <QStatusBar>
 #include <QDesktopWidget>
+#include <QDial>
 
 #include <QvkSettings.h>
 #include "regionselection.h"

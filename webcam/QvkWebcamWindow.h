@@ -6,6 +6,7 @@
 #include <QAction>
 #include <QMenu>
 #include <QContextMenuEvent>
+#include <QX11Info>
 
 class QvkWebcamWindow : public QMainWindow
 {

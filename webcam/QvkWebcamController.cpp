@@ -1,21 +1,41 @@
 #include "QvkWebcamController.h" 
 
-QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox )
+QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox, 
+					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle, QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle )
 {
   checkBox = myCheckBox;
   checkBox->setEnabled( false );
   connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( setWebcamOnOff( bool ) ) );
+  
+  rotateFrame = myRotateFrame;
   
   comboBox = myComboBox;
   
   mirrored = false;
   mirrorCheckBox = myMirrorCheckBox;
   if ( checkBox->checkState() == Qt::Unchecked )
+  {
     mirrorCheckBox->setEnabled( false );
+    rotateFrame->setEnabled( false );
+  }
   else
+  {
     mirrorCheckBox->setEnabled( true );
+    rotateFrame->setEnabled( false );
+  }
   connect( mirrorCheckBox, SIGNAL( clicked( bool ) ), this, SLOT( setMirrorOnOff( bool ) ) );
+    
+  rotateDial = myRotateDial;
+  rotateDial->setMinimum( 0 );
+  rotateDial->setMaximum ( 360 );
+  rotateDial->setValue( 0 );
+  connect( rotateDial, SIGNAL( sliderPressed () ), this, SLOT( rotateDialclicked() ) );
   
+  radioButtonTopMiddle = myRadioButtonTopMiddle;
+  radioButtonRightMiddle = myRadioButtonRightMiddle;
+  radioButtonBottomMiddle = myRadioButtonBottomMiddle;
+  radioButtonLeftMiddle = myRadioButtonLeftMiddle;
+ 
   captureThread = new CaptureThread();
   connect( captureThread, SIGNAL( newPicture( QImage ) ), this, SLOT( setNewImage( QImage ) ) );
   
@@ -31,6 +51,27 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
 
 QvkWebcamController::~QvkWebcamController( void )
 {
+}
+
+
+void QvkWebcamController::rotateDialclicked()
+{
+  // Diese drei Befehle müssen sein damit der Radiobutton unchecked ist
+  radioButtonTopMiddle->setCheckable ( false );
+  radioButtonTopMiddle->setChecked( false );
+  radioButtonTopMiddle->setCheckable ( true );
+
+  radioButtonRightMiddle->setCheckable ( false );
+  radioButtonRightMiddle->setChecked( false );
+  radioButtonRightMiddle->setCheckable ( true );
+
+  radioButtonBottomMiddle->setCheckable ( false );
+  radioButtonBottomMiddle->setChecked( false );
+  radioButtonBottomMiddle->setCheckable ( true );
+ 
+  radioButtonLeftMiddle->setCheckable ( false );
+  radioButtonLeftMiddle->setChecked( false );
+  radioButtonLeftMiddle->setCheckable ( true );
 }
 
 
@@ -68,6 +109,7 @@ void QvkWebcamController::setWebcamOnOff( bool value )
     webcamWindow->close();
     comboBox->setEnabled( true );
     mirrorCheckBox->setEnabled( false );
+    rotateFrame->setEnabled( false );
     return;
   }
  
@@ -88,6 +130,7 @@ void QvkWebcamController::setWebcamOnOff( bool value )
   {
     comboBox->setEnabled( false );
     mirrorCheckBox->setEnabled( true );
+    rotateFrame->setEnabled( true );
     webcamWindow->show();
     webcamWindow->currentDevice = "/dev/video" + index;
     captureThread->start( "/dev/video" + index );
@@ -99,8 +142,25 @@ void QvkWebcamController::setNewImage( QImage image )
 {
   if ( mirrored == true )
     image = image.mirrored ( true, false );
+
+  if (radioButtonLeftMiddle->isChecked() == true )
+      rotateDial->setValue( 90 );
   
-  webcamWindow->webcamLabel->setPixmap( QPixmap::fromImage( image, Qt::AutoColor) );
+  if ( radioButtonTopMiddle->isChecked() == true )
+    rotateDial->setValue( 180 );
+
+  if ( radioButtonRightMiddle->isChecked() == true )
+    rotateDial->setValue( 270 );
+  
+  if ( radioButtonBottomMiddle->isChecked() == true )
+    rotateDial->setValue( 360 );
+
+
+  QTransform transform;
+  transform.rotate( rotateDial->value() );
+  QImage transformedImage = image.transformed( transform );
+  
+  webcamWindow->webcamLabel->setPixmap( QPixmap::fromImage( transformedImage, Qt::AutoColor) );
 }
 
 
