@@ -1256,7 +1256,14 @@ void screencast::searchExternalPrograms()
     {
       recordApplikation = "avconv";
       qDebug() << "[vokoscreen] use avconv as ffmpeg-link";
-     }
+    }
+/*    
+    if ( fileInfo.baseName() == "ffmpeg" )
+    {
+      recordApplikation = "ffmpeg";
+      qDebug() << "[vokoscreen] use ffmpeg as ffmpeg-link";
+    }
+*/    
   }
   else
   {
@@ -2603,8 +2610,9 @@ void screencast::record()
      dir.remove( PathTempLocation().append(QDir::separator() ).append(stringList.at( i ) ) );
 
   // frame rate
-  QString framerate = "-r " + QString().number( FrameSpinBox->value() );
-  
+  //QString framerate = "-r " + QString().number( FrameSpinBox->value() );
+  QString framerate = "-framerate " + QString().number( FrameSpinBox->value() );
+
   QString myVcodec = VideocodecComboBox->currentText();
   if ( myVcodec == "libx264" )
   {
