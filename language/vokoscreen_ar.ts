@@ -26,7 +26,7 @@
     <name>QvkWebcamController</name>
     <message>
         <source>is busy</source>
-        <translation type="unfinished"/>
+        <translation>مشغول حاليا</translation>
     </message>
 </context>
 <context>
@@ -240,7 +240,7 @@
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>معكوس</translation>
     </message>
 </context>
 </TS>

@@ -26,7 +26,7 @@
     <name>QvkWebcamController</name>
     <message>
         <source>is busy</source>
-        <translation type="unfinished"/>
+        <translation>ist von einem anderen Programm belegt</translation>
     </message>
 </context>
 <context>
@@ -240,7 +240,7 @@
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>gespiegelt</translation>
     </message>
 </context>
 </TS>
