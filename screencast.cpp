@@ -1574,7 +1574,7 @@ void screencast::error( QProcess::ProcessError error )
     for ( int i = 0; i < stringList.count(); ++i )
       QFile::copy( workDirectory + QDir::separator() + stringList[ i ], workDirectory + QDir::separator() + "crashed" + QDir::separator() + stringList[ i ]);
     
-    QString crashedtext = "[vokoscreen] ffmpeg is crashed on ";
+    QString crashedtext = "[vokoscreen] " + recordApplikation + " is crashed on ";
     QDateTime dateTime = QDateTime::currentDateTime();
     QString time = dateTime.toString( "hh:mm" );
     QString day = dateTime.toString( "dddd" );
