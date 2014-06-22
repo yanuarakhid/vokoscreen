@@ -2609,9 +2609,14 @@ void screencast::record()
   for ( int i = 0; i < stringList.size(); ++i )
      dir.remove( PathTempLocation().append(QDir::separator() ).append(stringList.at( i ) ) );
 
-  // frame rate
-  //QString framerate = "-r " + QString().number( FrameSpinBox->value() );
-  QString framerate = "-framerate " + QString().number( FrameSpinBox->value() );
+  // framerate
+  QString framerate;
+  if ( recordApplikation == "ffmpeg" )
+    framerate = "-framerate " + QString().number( FrameSpinBox->value() );
+  
+  if ( recordApplikation == "avconv" )
+    framerate = "-r " + QString().number( FrameSpinBox->value() );
+  
 
   QString myVcodec = VideocodecComboBox->currentText();
   if ( myVcodec == "libx264" )
