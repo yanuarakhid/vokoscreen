@@ -25,6 +25,25 @@
     </message>
 </context>
 <context>
+    <name>QvkWebcamBusyDialog</name>
+    <message>
+        <source>Webcam is busy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Used by</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
