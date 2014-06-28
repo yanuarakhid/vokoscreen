@@ -25,13 +25,6 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>is busy</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>

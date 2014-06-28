@@ -114,14 +114,29 @@ void QvkWebcamController::setWebcamOnOff( bool value )
   }
  
   QString index = comboBox->currentText().left( 2 ).right( 1 );
+  QProcess Process;
+  Process.start( "lsof /dev/video" + index );
+  Process.waitForFinished();
+  QString standardOutput = Process.readAllStandardOutput();
+  Process.close();
+  
   if ( captureThread->busy( "/dev/video" + index ) == true )
   {
-    qDebug() << "[vokoscreen] webcam device /dev/video" + comboBox->currentText() << "is busy";
-    QMessageBox messageBox( QMessageBox::Warning,
-                            "vokoscren webcam",
-                            "Webcam /dev/video" + comboBox->currentText() + " " + tr( "is busy") );
+    QString usedBy = "";
+    if ( standardOutput > "" )
+    {
+      QStringList list = standardOutput.split( "\n" );
+      if ( not list.empty() )
+      {
+        list = list[ 1 ].split( " " );
+        usedBy = list[ 0 ];
+      }
+    }
     
-    messageBox.exec();
+    QvkWebcamBusyDialog *WebcamBusyDialog = new QvkWebcamBusyDialog( comboBox->currentText().remove( 0, 4 ), "/dev/video" + index, usedBy );
+    (void) WebcamBusyDialog;
+  
+    qDebug() << "[vokoscreen] webcam device /dev/video" + index + " " + comboBox->currentText().remove( 0, 4 ) + " is busy by " + usedBy;
     checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
     return;
   }

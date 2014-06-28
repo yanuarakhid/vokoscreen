@@ -5,6 +5,7 @@
 #include "QvkCapturethread.h"
 #include "QvkWebcamWatcher.h"
 #include "QvkWebcamWindow.h"
+#include "QvkWebcamBusyDialog.h"
 
 #include <QCheckBox>
 #include <QComboBox>
@@ -14,6 +15,7 @@
 #include <QLabel>
 #include <QDial>
 #include <QRadioButton>
+#include <QProcess>
 
 class QvkWebcamController : public QObject
 {

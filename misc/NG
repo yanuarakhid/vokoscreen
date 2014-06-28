@@ -1,0 +1,11 @@
+ 
+             QMediaRecorder:
+             void QMediaRecorder::setEncodingSettings(const QAudioEncoderSettings & audio, const QVideoEncoderSettings & video = QVideoEncoderSettings(), const QString & container = QString())
+
+
+             
+             QVideoFrame
+             
+             QVideoEncoderSettings
+                    |
+               QMediarecorder
