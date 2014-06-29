@@ -36,7 +36,7 @@ void CaptureThread::xioctl(int fh, int request, void *arg) {
 	} while (r == -1 && ((errno == EINTR) || (errno == EAGAIN)));
 
 	if (r == -1) {
-		qDebug() << "[vokoscreen] error " << errno << " " << strerror(errno);
+		qDebug() << "[vokoscreen] CaptureThread::xioctl error " << errno << " " << strerror(errno);
 		return;
 	}
 }
@@ -64,7 +64,7 @@ void CaptureThread::run() {
 		} while ((r == -1 && (errno = EINTR)));
 
 		if (r == -1) {
-			qDebug() << "select";
+			qDebug() << "[vokoscreen] CaptureThread::run select";
 			quit();
 			return;
 		}
@@ -80,7 +80,7 @@ void CaptureThread::run() {
 					 (unsigned char*)buffers[buf.index].start, buf.bytesused,
 					 dst_buf, fmt.fmt.pix.sizeimage) < 0) {
 			if (errno != EAGAIN)
-				qDebug() << "v4l_convert";
+				qDebug() << "[vokoscreen] CaptureThread::run v4l_convert";
 		}
 
 		unsigned char* asil=(unsigned char*)malloc(fmt.fmt.pix.sizeimage+qstrlen(header));
@@ -130,10 +130,10 @@ QString CaptureThread::getNameFromDevice( QString device )
 //	fd = v4l2_open( dev_name.toStdString().c_str(), O_RDONLY, 0 );
 	fd = v4l2_open(dev_name.toStdString().c_str(), O_RDWR | O_NONBLOCK, 0);
 	
-	
+	qDebug();
 	if ( -1 == fd )
 	{
-		fprintf( stderr,"open %s: %s\n", dev_name.toStdString().c_str(), strerror( errno ) );
+		fprintf( stderr,"[vokoscreen] CaptureThread::getNameFromDevice open %s: %s\n", dev_name.toStdString().c_str(), strerror( errno ) );
 		exit(1);
 	};
 
@@ -142,7 +142,7 @@ QString CaptureThread::getNameFromDevice( QString device )
 		printf( "\n### v4l2 device info [%s] ###\n", dev_name.toStdString().c_str() );
 	} else
 	  {
-		fprintf( stderr, "%s: not an video4linux device\n", dev_name.toStdString().c_str() );
+		fprintf( stderr, "[vokoscreen] CaptureThread::getNameFromDevice %s: not an video4linux device\n", dev_name.toStdString().c_str() );
 		exit( 1 );
           }
 	
@@ -170,7 +170,7 @@ bool CaptureThread::busy( QString device )
 	fd = v4l2_open(dev_name.toStdString().c_str(), O_RDWR | O_NONBLOCK, 0);
 	if ( fd < 0 )
 	{
-          qDebug() << "Cannot open device";
+          qDebug() << "[vokoscreen] CaptureThread::busy Cannot open device";
           quit();
 	}
 
@@ -221,7 +221,7 @@ int CaptureThread::start( QString device )
 //	fd = v4l2_open( dev_name.toStdString().c_str(), O_RDONLY, 0 );
 
 	if (fd < 0) {
-		qDebug() << "Cannot open device";
+		qDebug() << "[vokoscreen] CaptureThread::start Cannot open device";
 		quit();
 		return 1;
 	}
@@ -234,7 +234,7 @@ int CaptureThread::start( QString device )
 	fmt.fmt.pix.field       = V4L2_FIELD_INTERLACED;
 	xioctl(fd, VIDIOC_S_FMT, &fmt);
 	if (fmt.fmt.pix.pixelformat != V4L2_PIX_FMT_RGB24) {
-		qDebug() << "Libv4l didn't accept RGB24 format. Can't proceed.";
+		qDebug() << "[vokoscreen] CaptureThread::start Libv4l didn't accept RGB24 format. Can't proceed.";
 		quit();
 		return 1;
 	}
@@ -242,9 +242,9 @@ int CaptureThread::start( QString device )
 
 	v4lconvert_data = v4lconvert_create(fd);
 	if (v4lconvert_data == NULL)
-		qDebug() << "v4lconvert_create";
+		qDebug() << "[vokoscreen] CaptureThread::start v4lconvert_create";
 	if (v4lconvert_try_format(v4lconvert_data, &fmt, &src_fmt) != 0)
-		qDebug() << "v4lconvert_try_format";
+		qDebug() << "[vokoscreen] CaptureThread::start v4lconvert_try_format";
 	xioctl(fd, VIDIOC_S_FMT, &src_fmt);
 	dst_buf = (unsigned char*)malloc(fmt.fmt.pix.sizeimage);
 
@@ -261,14 +261,13 @@ int CaptureThread::start( QString device )
 		buf.type        = V4L2_BUF_TYPE_VIDEO_CAPTURE;
 		buf.memory      = V4L2_MEMORY_MMAP;
 		buf.index       = n_buffers;
-
 		xioctl(fd, VIDIOC_QUERYBUF, &buf);
 
 		buffers[n_buffers].length = buf.length;
 		buffers[n_buffers].start = v4l2_mmap(NULL, buf.length, PROT_READ | PROT_WRITE, MAP_SHARED, fd, buf.m.offset);
 
 		if (MAP_FAILED == buffers[n_buffers].start) {
-			qDebug() << "mmap";
+			qDebug() << "[vokoscreen] CaptureThread::start mmap";
 			quit();
 			return 1;
 		}

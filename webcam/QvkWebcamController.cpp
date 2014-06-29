@@ -208,11 +208,7 @@ void QvkWebcamController::webcamChangedEvent( QStringList deviceList )
 {
   comboBox->clear();
   for( int x = 0; x < myWebcamWatcher->getWebcamCount(); x++ )
-  {
-    //comboBox->addItem( deviceList[x].right( 1 ) );
-//    comboBox->addItem( "[" + QString::number( x ) + "]" + " " + captureThread->getNameFromDevice( "/dev/video" + deviceList[x].right( 1 ) ) );
     comboBox->addItem( "[" + deviceList[x].right( 1 ) + "]" + " " + captureThread->getNameFromDevice( "/dev/video" + deviceList[x].right( 1 ) ) );
-  }
 
   if ( deviceList.empty() )
   {

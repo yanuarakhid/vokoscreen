@@ -25,7 +25,6 @@ public:
    QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox, 
 					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle, QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle );
   
-  //QvkWebcamController( QCheckBox *checkBox, QComboBox *comboBoxCount, QCheckBox *myMirrorCheckBox, QFrame *myRotateFrame,QDial *myRotateDial );
   virtual ~QvkWebcamController();
   
   
@@ -41,7 +40,7 @@ private slots:
   void setNewImage( QImage image );
   void setMirrorOnOff( bool value );
   void rotateDialclicked();
-
+  
   
 private:
   QFrame *rotateFrame;
