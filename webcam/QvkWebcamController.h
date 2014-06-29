@@ -27,6 +27,8 @@ public:
   
   virtual ~QvkWebcamController();
   
+  QStringList webcamList;
+  
   
 public slots:
   void webcamCloseEvent();
@@ -41,6 +43,9 @@ private slots:
   void setMirrorOnOff( bool value );
   void rotateDialclicked();
   
+  void readWebcams( QStringList );
+  void webcams();
+
   
 private:
   QFrame *rotateFrame;

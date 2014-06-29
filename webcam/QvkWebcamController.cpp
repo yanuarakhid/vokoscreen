@@ -1,4 +1,5 @@
 #include "QvkWebcamController.h" 
+#include <QTimer>
 
 QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox, 
 					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle, QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle )
@@ -47,6 +48,11 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   webcamWindow = new QvkWebcamWindow();
   connect( webcamWindow, SIGNAL( closeWebcamWindow() ), SLOT( webcamCloseEvent() ) );  
   (void) webcamWindow;
+  
+  
+  connect( myWebcamWatcher, SIGNAL( readWebcamNames( QStringList ) ), this, SLOT( readWebcams( QStringList ) ) );
+
+  
 }
 
 QvkWebcamController::~QvkWebcamController( void )
@@ -198,6 +204,22 @@ void QvkWebcamController::webcamRemovedEvent( QStringList deviceList, QString re
 
   if ( removedDevice.right( 1 ) == webcamWindow->currentDevice.right( 1 ) )
     webcamWindow->close();
+}
+
+
+/**
+ * This routine read the webcam name 5 seconds after the webcam device
+ */
+void QvkWebcamController::readWebcams( QStringList deviceList )
+{
+  webcamList = deviceList;
+  QTimer::singleShot( 5000, this, SLOT( webcams() ) );
+}
+
+
+void QvkWebcamController::webcams()
+{
+  webcamChangedEvent( webcamList );
 }
 
 

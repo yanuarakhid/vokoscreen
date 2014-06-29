@@ -89,6 +89,7 @@ void QvkWebcamWatcher::myfileSystemWatcher( QString path )
     webcamCount = deviceList.count();
     emit changed( deviceList );
     emit added( deviceList, addedDevices() );
+    emit readWebcamNames( deviceList );
   }
   
   if ( oldDeviceList.count() != deviceList.count() )

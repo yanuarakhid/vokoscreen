@@ -31,6 +31,8 @@ signals:
   void removed( QStringList deviceList, QString removedDevice );
   void added( QStringList deviceList, QStringList stringList );
 
+  void readWebcamNames( QStringList deviceList );
+  
   
 protected:  
 
