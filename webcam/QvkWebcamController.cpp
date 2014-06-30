@@ -35,6 +35,7 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   radioButtonTopMiddle = myRadioButtonTopMiddle;
   radioButtonRightMiddle = myRadioButtonRightMiddle;
   radioButtonBottomMiddle = myRadioButtonBottomMiddle;
+  radioButtonBottomMiddle->setChecked( true );
   radioButtonLeftMiddle = myRadioButtonLeftMiddle;
  
   captureThread = new CaptureThread();
@@ -49,10 +50,7 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   connect( webcamWindow, SIGNAL( closeWebcamWindow() ), SLOT( webcamCloseEvent() ) );  
   (void) webcamWindow;
   
-  
   connect( myWebcamWatcher, SIGNAL( readWebcamNames( QStringList ) ), this, SLOT( readWebcams( QStringList ) ) );
-
-  
 }
 
 QvkWebcamController::~QvkWebcamController( void )
