@@ -206,6 +206,7 @@ private:
     QRadioButton *AreaRadioButton;
     QCheckBox *MagnifierCheckBox;
     QSpinBox * CountdownSpinBox;
+    QComboBox * ScreenComboBox;
     
     QLabel *ChannelLabel;
     QComboBox *VideoplayerComboBox;

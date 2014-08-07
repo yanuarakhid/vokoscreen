@@ -110,18 +110,21 @@ screencast::screencast()
     CountdownSpinBox->setValue( 0 );
     CountdownSpinBox->show();
     
-    QComboBox *ScreenComboBox = new QComboBox( frame );
+    ScreenComboBox = new QComboBox( frame );
     ScreenComboBox->setGeometry( 160, 15, 200, 21 );
     //ScreenComboBox->hide();
     QDesktopWidget *desk = QApplication::desktop();
     qDebug() << "[vokoscreen]" << "---Begin search Screen---";
     qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
+    ScreenComboBox->addItem( "All", -1 );    
     for ( int i = 0; i < desk->screenCount(); i++ )
     {
+      QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i + 1 ).left() );
+      QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i + 1 ).top() );      
       QString ScreenGeometryX = QString::number( desk->screenGeometry( i + 1 ).width() );
-      QString ScreenGeometryY = QString::number( desk->screenGeometry( i + 1 ).height() );      
-      ScreenComboBox->addItem( "Display " + QString::number( i ) + "   " + ScreenGeometryX + " x " + ScreenGeometryY, i );      
-      qDebug() << "[vokoscreen]" << "Display " + QString::number( i ) + "   " + ScreenGeometryX + " x " + ScreenGeometryY ;
+      QString ScreenGeometryY = QString::number( desk->screenGeometry( i + 1 ).height() );
+      ScreenComboBox->addItem( "Display " + QString::number( i ) + " " + ScreenGeometryX + " x " + ScreenGeometryY, i );
+      qDebug() << "[vokoscreen]" << "Display " + QString::number( i ) + " " + ScreenGeometryX + " x " + ScreenGeometryY + "+" + ScreenGeometryX1 + "+" + ScreenGeometryY1;
     }
     qDebug() << "[vokoscreen]" << "---End search Screen---";
     qDebug();
@@ -2561,6 +2564,33 @@ void screencast::record()
       windowMoveTimer->start( 120 );
       firststartWininfo = true;
   }
+
+  if( FullScreenRadioButton->isChecked() )
+  {
+      int screen = ScreenComboBox->itemData( ScreenComboBox->currentIndex() ).toInt();
+      qDebug() << "[vokoscreen]" << "Report: recording fullscreen: " << screen;
+
+      int fullScreenWidth = 0;
+      int fullScreenHeight = 0;
+
+      QDesktopWidget *desk = QApplication::desktop();
+      for ( int i = 0; i < desk->screenCount(); i++ )
+      {
+          // skip if we are recording a specific screen and this isn't it.
+          if( screen != -1 && screen != i ) continue;
+          // set the offset if we are recording a specific screen.
+          if( screen != -1 )
+          {
+              deltaX = QString::number( desk->screenGeometry( i + 1 ).left() );
+              deltaY = QString::number( desk->screenGeometry( i + 1 ).top() );
+          }
+          fullScreenWidth += desk->screenGeometry( i + 1 ).width();
+          fullScreenHeight = std::max(fullScreenHeight, desk->screenGeometry( i + 1 ).height());
+      }
+
+      setRecordWidth( QString::number( fullScreenWidth ) );
+      setRecordHeight( QString::number( fullScreenHeight) );
+  }  
   
   if ( AreaRadioButton->isChecked() )
   {
