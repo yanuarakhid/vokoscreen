@@ -87,12 +87,12 @@ screencast::screencast()
     
     MagnifierCheckBox = new QCheckBox( frame );
     MagnifierCheckBox->setText( tr( "Magnification" ) );
-    MagnifierCheckBox->setGeometry( QRect( 160, 15, 120, 21 ) );
+    MagnifierCheckBox->setGeometry( QRect( 160, 40, 120, 21 ) );
     MagnifierCheckBox->setToolTip( "CTRL+SHIFT+F9" );
     MagnifierCheckBox->show();
 
     QPushButton *MagnifierDialogPushButton = new QPushButton( frame );
-    MagnifierDialogPushButton->setGeometry( 270, 15, 20, 21 );
+    MagnifierDialogPushButton->setGeometry( 270, 40, 20, 21 );
     MagnifierDialogPushButton->setText( "..." );
     MagnifierDialogPushButton->show();
     connect( MagnifierDialogPushButton, SIGNAL( clicked() ), SLOT( MagnifierDialog() ) );
@@ -111,8 +111,8 @@ screencast::screencast()
     CountdownSpinBox->show();
     
     QComboBox *ScreenComboBox = new QComboBox( frame );
-    ScreenComboBox->setGeometry( 160, 65, 200, 21 );
-    ScreenComboBox->hide();
+    ScreenComboBox->setGeometry( 160, 15, 200, 21 );
+    //ScreenComboBox->hide();
     QDesktopWidget *desk = QApplication::desktop();
     qDebug() << "[vokoscreen]" << "---Begin search Screen---";
     qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
@@ -2016,7 +2016,7 @@ QString screencast::getPulseSample( int value )
  */
 QString screencast::mySample()
 {
-  QString ret = "48000";
+  QString ret = "41000";
   
   if ( PulseDeviceRadioButton->isChecked() )
   {
