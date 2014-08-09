@@ -433,14 +433,14 @@ screencast::screencast()
     labelOpensuseBetaUrl->setOpenExternalLinks( true );
     labelOpensuseBetaUrl->setAlignment( Qt::AlignCenter );    
     labelOpensuseBetaUrl->show();
-
+/*
     QLabel* labelUbuntuBetaUrl = new QLabel( TabWidgetAboutFrame );
     labelUbuntuBetaUrl->setText( "<a href='http://ppa.launchpad.net/vokoscreen-dev/vokoscreen-daily/ubuntu/pool/main/v/vokoscreen/'>" + tr( "Beta Ubuntu" ) + "</a>" );
     labelUbuntuBetaUrl->setGeometry( rightSide, 70, labelWidth, 22 );
     labelUbuntuBetaUrl->setOpenExternalLinks( true );
     labelUbuntuBetaUrl->setAlignment( Qt::AlignCenter );    
     labelUbuntuBetaUrl->show();
-    
+*/    
     QLabel * labelDonateUrl = new QLabel( TabWidgetAboutFrame );
     labelDonateUrl->setText( "<a href='http://www.kohaupt-online.de/hp/spende.html'>" + tr( "Donate" ) + "</a>" );
     labelDonateUrl->setGeometry( 0, 100, tabWidget->width(), 22 );
