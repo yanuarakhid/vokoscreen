@@ -123,8 +123,8 @@ screencast::screencast()
       QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i + 1 ).top() );      
       QString ScreenGeometryX = QString::number( desk->screenGeometry( i + 1 ).width() );
       QString ScreenGeometryY = QString::number( desk->screenGeometry( i + 1 ).height() );
-      ScreenComboBox->addItem( "Display " + QString::number( i ) + " " + ScreenGeometryX + " x " + ScreenGeometryY, i );
-      qDebug() << "[vokoscreen]" << "Display " + QString::number( i ) + " " + ScreenGeometryX + " x " + ScreenGeometryY + "+" + ScreenGeometryX1 + "+" + ScreenGeometryY1;
+      ScreenComboBox->addItem( "Display " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i );
+      qDebug() << "[vokoscreen]" << "Display " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY + "+" + ScreenGeometryX1 + "+" + ScreenGeometryY1;
     }
     qDebug() << "[vokoscreen]" << "---End search Screen---";
     qDebug();
@@ -2585,7 +2585,7 @@ void screencast::record()
               deltaY = QString::number( desk->screenGeometry( i + 1 ).top() );
           }
           fullScreenWidth += desk->screenGeometry( i + 1 ).width();
-          fullScreenHeight = std::max(fullScreenHeight, desk->screenGeometry( i + 1 ).height());
+          fullScreenHeight = std::max( fullScreenHeight, desk->screenGeometry( i + 1 ).height() );
       }
 
       setRecordWidth( QString::number( fullScreenWidth ) );
