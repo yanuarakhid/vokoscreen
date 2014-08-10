@@ -116,7 +116,6 @@ screencast::screencast()
     QDesktopWidget *desk = QApplication::desktop();
     qDebug() << "[vokoscreen]" << "---Begin search Screen---";
     qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
-    ScreenComboBox->addItem( "All", -1 );    
     for ( int i = 0; i < desk->screenCount(); i++ )
     {
       QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i + 1 ).left() );
@@ -126,6 +125,7 @@ screencast::screencast()
       ScreenComboBox->addItem( "Display " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i );
       qDebug() << "[vokoscreen]" << "Display " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY + "+" + ScreenGeometryX1 + "+" + ScreenGeometryY1;
     }
+    ScreenComboBox->addItem( "All Displays", -1 );    
     qDebug() << "[vokoscreen]" << "---End search Screen---";
     qDebug();
     
