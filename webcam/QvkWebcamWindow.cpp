@@ -4,6 +4,7 @@ using namespace std;
 
 QvkWebcamWindow::QvkWebcamWindow()
 {
+  setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
   setWindowTitle( "vokoscreen webcam");
   setGeometry( 0, 0, 320, 240 );
   
@@ -101,9 +102,11 @@ void QvkWebcamWindow::contextMenuEvent( QContextMenuEvent *event )
      QAction * actionBorder = new QAction( tr ( "Border" ), this );
      connect( actionBorder, SIGNAL( triggered() ), this, SLOT( setBorder() ) );
 
+     QAction * actionVisibleOverFullscreen = new QAction( tr ( "Show over fullscreen" ), this );
+     connect( actionVisibleOverFullscreen, SIGNAL( triggered() ), this, SLOT( setVisibleOverFullscreen() ) );
+
      QAction * actionClose = new QAction( tr ( "Close" ), this );
      connect( actionClose, SIGNAL( triggered() ), this, SLOT( closeMenue() ) );
-     
      
      QMenu menu( this );
      menu.addAction( action160x120 );
@@ -112,6 +115,7 @@ void QvkWebcamWindow::contextMenuEvent( QContextMenuEvent *event )
      menu.addSeparator();
      menu.addAction( actionNoBorder );
      menu.addAction( actionBorder );
+     menu.addAction( actionVisibleOverFullscreen );
      menu.addSeparator();
      menu.addAction( actionClose );
      menu.exec( event->globalPos() );
@@ -164,6 +168,15 @@ void QvkWebcamWindow::setBorder()
   show();
   setValueBorder( true );
 }
+
+
+void QvkWebcamWindow::setVisibleOverFullscreen()
+{
+   setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint );
+   activateWindow();
+   show();
+}
+
 
 void QvkWebcamWindow::resizeEvent ( QResizeEvent * )
 {
