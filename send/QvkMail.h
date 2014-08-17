@@ -29,6 +29,7 @@ private slots:
   QString lastMovie();
   void selection();
   QStringList selectedMail();
+  void closeDialog();
 
 
 signals:
