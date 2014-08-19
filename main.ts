@@ -23,6 +23,10 @@
         <source>Select one or more files</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QvkWebcamBusyDialog</name>
@@ -55,6 +59,10 @@
     </message>
     <message>
         <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show over fullscreen</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -206,10 +214,6 @@
     </message>
     <message>
         <source>Beta openSUSE</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Beta Ubuntu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

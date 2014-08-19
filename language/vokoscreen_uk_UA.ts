@@ -23,9 +23,21 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcamController</name>
+    <name>QvkWebcamBusyDialog</name>
     <message>
-        <source>is busy</source>
+        <source>Webcam is busy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Used by</source>
         <translation type="unfinished"/>
     </message>
 </context>

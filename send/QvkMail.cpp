@@ -1,6 +1,5 @@
 
 #include "QvkMail.h" 
-#include <QDialogButtonBox>
 
 using namespace std;
 

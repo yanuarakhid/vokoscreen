@@ -23,10 +23,22 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcamController</name>
+    <name>QvkWebcamBusyDialog</name>
     <message>
-        <source>is busy</source>
-        <translation>ist von einem anderen Programm belegt</translation>
+        <source>Webcam is busy</source>
+        <translation>Webcam ist belegt</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation>Gerät</translation>
+    </message>
+    <message>
+        <source>Used by</source>
+        <translation>benutzt von</translation>
     </message>
 </context>
 <context>
