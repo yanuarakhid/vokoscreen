@@ -252,7 +252,7 @@
     </message>
     <message>
         <source>Mirrored</source>
-        <translation>gespiegelt</translation>
+        <translation>Gespiegelt</translation>
     </message>
 </context>
 </TS>
