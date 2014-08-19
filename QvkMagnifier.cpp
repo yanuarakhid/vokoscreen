@@ -77,7 +77,7 @@ void QvkMagnifier::getDialogMagnifier( QWidget *parent )
     
   QPushButton *button = new QPushButton( dialog );
   button->setGeometry( QRect( 220, 170, 65, 25 ) );
-  button->setText( "Close" );
+  button->setText( tr( "Close" ) );
   connect( button, SIGNAL( clicked() ), SLOT( closeDialog() ) );
   
   QPropertyAnimation *animation = new QPropertyAnimation( dialog, "geometry");
