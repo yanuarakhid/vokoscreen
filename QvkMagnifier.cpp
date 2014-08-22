@@ -1,5 +1,6 @@
 #include "QvkMagnifier.h"
 
+
 using namespace std;
 
 
@@ -36,6 +37,28 @@ void QvkMagnifier::closeEvent( QCloseEvent * event )
 
 void QvkMagnifier::getDialogMagnifier( QWidget *parent )
 {
+  newDialog = new QDialog;
+  newDialog->setModal( true );
+
+  Ui_Dialog myUiDialog;
+  myUiDialog.setupUi( newDialog );
+  newDialog->show();  
+
+  connect( myUiDialog.radioButton1, SIGNAL( clicked() ), SLOT( Magnifier200x200() ) );
+  if ( formValue == 1 )
+    myUiDialog.radioButton1->setChecked( true );
+  
+  connect( myUiDialog.radioButton2, SIGNAL( clicked() ), SLOT( Magnifier400x200() ) );
+  if ( formValue == 2 )
+    myUiDialog.radioButton2->setChecked( true );
+  
+  connect( myUiDialog.radioButton3, SIGNAL( clicked() ), SLOT( Magnifier600x200() ) );
+  if ( formValue == 3 )
+    myUiDialog.radioButton3->setChecked( true );
+  
+  connect( myUiDialog.buttonBox, SIGNAL( accepted() ), SLOT( closeDialog() ) );
+  
+/*  
   dialog = new QDialog( parent );
 
   QFont qfont = dialog->font();
@@ -98,12 +121,13 @@ void QvkMagnifier::getDialogMagnifier( QWidget *parent )
   //dialog->setFixedSize( 300, 200 );
 
   dialog->exec();
+*/  
 }
 
 
 void QvkMagnifier::closeDialog()
 {
-  dialog->close();
+  newDialog->close();
 }
 
 

@@ -13,6 +13,10 @@
 #include <QPropertyAnimation>
 #include <QPushButton>
 
+
+#include "ui_QvkMagnifierDialog.h"
+
+
 class QvkMagnifier: public QDialog
 { 
 Q_OBJECT
@@ -58,7 +62,9 @@ private:
   QRadioButton *radioButton3;
   int faktor;
   int formValue;
-  QDialog *dialog;
+  //QDialog *dialog;
+  
+  QDialog *newDialog;
 };
 
 
