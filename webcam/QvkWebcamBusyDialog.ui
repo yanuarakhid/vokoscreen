@@ -121,7 +121,7 @@
        <item row="0" column="1">
         <widget class="QLabel" name="label_Name_Value">
          <property name="text">
-          <string>unknown unknown</string>
+          <string>Unknown</string>
          </property>
          <property name="margin">
           <number>6</number>
@@ -141,7 +141,7 @@
        <item row="1" column="1">
         <widget class="QLabel" name="label_Device_Value">
          <property name="text">
-          <string>unknown unknown</string>
+          <string>Unknown</string>
          </property>
          <property name="margin">
           <number>6</number>
@@ -161,7 +161,7 @@
        <item row="2" column="1">
         <widget class="QLabel" name="label_UsedBy_Value">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;unknown unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="margin">
           <number>6</number>
