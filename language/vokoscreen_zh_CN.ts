@@ -1,5 +1,12 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.0">
 <context>
+    <name>QvkMagnifier</name>
+    <message>
+        <source>Close</source>
+        <translation>关闭</translation>
+    </message>
+</context>
+<context>
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
@@ -20,6 +27,10 @@
     <message>
         <source>Select one or more files</source>
         <translation>选取一个或多个文件</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
@@ -54,6 +65,10 @@
     <message>
         <source>Close</source>
         <translation>关闭</translation>
+    </message>
+    <message>
+        <source>Show over fullscreen</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -204,10 +219,6 @@
     </message>
     <message>
         <source>Beta openSUSE</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Beta Ubuntu</source>
         <translation type="unfinished"/>
     </message>
     <message>

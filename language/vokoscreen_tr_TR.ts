@@ -1,5 +1,12 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="tr_TR" version="2.0">
 <context>
+    <name>QvkMagnifier</name>
+    <message>
+        <source>Close</source>
+        <translation>Kapat</translation>
+    </message>
+</context>
+<context>
     <name>QvkMail</name>
     <message>
         <source>Mail last Video</source>
@@ -20,6 +27,10 @@
     <message>
         <source>Select one or more files</source>
         <translation>Bir veya daha fazla dosya seçin</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Kapat</translation>
     </message>
 </context>
 <context>
@@ -54,6 +65,10 @@
     <message>
         <source>Close</source>
         <translation>Kapat</translation>
+    </message>
+    <message>
+        <source>Show over fullscreen</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -205,10 +220,6 @@
     <message>
         <source>Beta openSUSE</source>
         <translation>Beta openSUSE</translation>
-    </message>
-    <message>
-        <source>Beta Ubuntu</source>
-        <translation>Beta Ubuntu</translation>
     </message>
     <message>
         <source>Donate</source>

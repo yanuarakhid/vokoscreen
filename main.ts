@@ -2,14 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>QvkMagnifier</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QvkMail</name>
+    <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
         <translation type="unfinished"></translation>
@@ -23,15 +16,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QvkMail</name>
+    <message>
         <source>You find the Video as attachment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
