@@ -1,13 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.0">
 <context>
-    <name>QvkMagnifier</name>
-    <message>
-        <source>Close</source>
-        <translation>Закрыть</translation>
-    </message>
-</context>
-<context>
-    <name>QvkMail</name>
+    <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
         <translation>Отправить последний видеофайл</translation>
@@ -21,16 +14,19 @@
         <translation>Отправить</translation>
     </message>
     <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkMail</name>
+    <message>
         <source>You find the Video as attachment</source>
         <translation>Видеофайл будет представлен во вложении</translation>
     </message>
     <message>
         <source>Select one or more files</source>
         <translation>Выберите один или несколько файлов</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Закрыть</translation>
     </message>
 </context>
 <context>
@@ -190,10 +186,6 @@
         <translation>Фактическое кол-во кадров в с.</translation>
     </message>
     <message>
-        <source>Device %1 is busy</source>
-        <translation>Устройство %1 используется</translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation>Перейти</translation>
     </message>
@@ -263,6 +255,14 @@
     </message>
     <message>
         <source>Mirrored</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>is busy</source>
         <translation type="unfinished"/>
     </message>
 </context>

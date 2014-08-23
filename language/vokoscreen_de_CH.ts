@@ -1,13 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="de_CH" version="2.0">
 <context>
-    <name>QvkMagnifier</name>
-    <message>
-        <source>Close</source>
-        <translation>Schliessen</translation>
-    </message>
-</context>
-<context>
-    <name>QvkMail</name>
+    <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
         <translation>Letztes Video per mail versenden</translation>
@@ -21,16 +14,19 @@
         <translation>Senden</translation>
     </message>
     <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkMail</name>
+    <message>
         <source>You find the Video as attachment</source>
         <translation>Video im Anhang</translation>
     </message>
     <message>
         <source>Select one or more files</source>
         <translation>Eine oder mehrere Dateien senden</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Schliessen</translation>
     </message>
 </context>
 <context>
@@ -49,7 +45,7 @@
     </message>
     <message>
         <source>Used by</source>
-        <translation>benutzt von</translation>
+        <translation>Benutzt von</translation>
     </message>
 </context>
 <context>
@@ -190,10 +186,6 @@
         <translation>Aktuelle fps</translation>
     </message>
     <message>
-        <source>Device %1 is busy</source>
-        <translation>Gerät %1 ist belegt</translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation>Weiter</translation>
     </message>
@@ -264,6 +256,14 @@
     <message>
         <source>Mirrored</source>
         <translation>Gespiegelt</translation>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation>Gerät</translation>
+    </message>
+    <message>
+        <source>is busy</source>
+        <translation>ist von einem anderen Programm belegt</translation>
     </message>
 </context>
 </TS>

@@ -1,13 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="vi" version="2.0">
 <context>
-    <name>QvkMagnifier</name>
-    <message>
-        <source>Close</source>
-        <translation>Đóng lại</translation>
-    </message>
-</context>
-<context>
-    <name>QvkMail</name>
+    <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
         <translation>Gửi mail video mới nhất</translation>
@@ -21,16 +14,19 @@
         <translation>Gửi</translation>
     </message>
     <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkMail</name>
+    <message>
         <source>You find the Video as attachment</source>
         <translation>Bạn đã tìm thấy video dưới dạng đính kèm</translation>
     </message>
     <message>
         <source>Select one or more files</source>
         <translation>Chọn một hoặc nhiều tập tin</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Đóng lại</translation>
     </message>
 </context>
 <context>
@@ -190,10 +186,6 @@
         <translation>Khung hình thực mỗi giây</translation>
     </message>
     <message>
-        <source>Device %1 is busy</source>
-        <translation>Thiết bị %1 hiện đang bận</translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation>Thực hiện</translation>
     </message>
@@ -263,6 +255,14 @@
     </message>
     <message>
         <source>Mirrored</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>is busy</source>
         <translation type="unfinished"/>
     </message>
 </context>

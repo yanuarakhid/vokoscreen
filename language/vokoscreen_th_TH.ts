@@ -1,13 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="th_TH" version="2.0">
 <context>
-    <name>QvkMagnifier</name>
-    <message>
-        <source>Close</source>
-        <translation>ปิด</translation>
-    </message>
-</context>
-<context>
-    <name>QvkMail</name>
+    <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
         <translation>ส่งวิดีโอล่าสุดทางอีเมล</translation>
@@ -21,16 +14,19 @@
         <translation>ส่ง</translation>
     </message>
     <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkMail</name>
+    <message>
         <source>You find the Video as attachment</source>
         <translation>วิดีโอดังแนบ</translation>
     </message>
     <message>
         <source>Select one or more files</source>
         <translation>เลือกไฟล์อย่างน้อยหนึ่งไฟล์</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>ปิด</translation>
     </message>
 </context>
 <context>
@@ -190,10 +186,6 @@
         <translation>จำนวนเฟรมต่อวินาที</translation>
     </message>
     <message>
-        <source>Device %1 is busy</source>
-        <translation>อุปกรณ์ %1 ยังไม่พร้อม</translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation>ไป</translation>
     </message>
@@ -263,6 +255,14 @@
     </message>
     <message>
         <source>Mirrored</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>is busy</source>
         <translation type="unfinished"/>
     </message>
 </context>

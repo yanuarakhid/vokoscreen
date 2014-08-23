@@ -1,13 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="fr_FR" version="2.0">
 <context>
-    <name>QvkMagnifier</name>
-    <message>
-        <source>Close</source>
-        <translation>Fermer</translation>
-    </message>
-</context>
-<context>
-    <name>QvkMail</name>
+    <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
         <translation>Envoyer la dernière vidéo</translation>
@@ -21,16 +14,19 @@
         <translation>Envoyer</translation>
     </message>
     <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkMail</name>
+    <message>
         <source>You find the Video as attachment</source>
         <translation>Vous trouverez la vidéo en pièce jointe</translation>
     </message>
     <message>
         <source>Select one or more files</source>
         <translation>Sélectionnez un ou plusieurs fichiers</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Fermer</translation>
     </message>
 </context>
 <context>
@@ -190,10 +186,6 @@
         <translation>Images par secondes actuelles</translation>
     </message>
     <message>
-        <source>Device %1 is busy</source>
-        <translation>Le périphérique %1 est occupé</translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation>Démarrer</translation>
     </message>
@@ -263,6 +255,14 @@
     </message>
     <message>
         <source>Mirrored</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>is busy</source>
         <translation type="unfinished"/>
     </message>
 </context>

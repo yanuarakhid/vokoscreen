@@ -2410,7 +2410,6 @@ void screencast::preRecord()
       msgBox.setIcon( QMessageBox::Information );
       QString message;
       message.append( tr( "Device" ) + " " + inBox->getAlsaHw() + " " + tr( "is busy" ) );
-
       msgBox.setText( message );
       msgBox.exec();
       return;

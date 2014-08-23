@@ -1,13 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.0">
 <context>
-    <name>QvkMagnifier</name>
-    <message>
-        <source>Close</source>
-        <translation>Stäng</translation>
-    </message>
-</context>
-<context>
-    <name>QvkMail</name>
+    <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
         <translation>Mejla sensaste video</translation>
@@ -21,16 +14,19 @@
         <translation>Skicka</translation>
     </message>
     <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkMail</name>
+    <message>
         <source>You find the Video as attachment</source>
         <translation>Du hittar videon som bilaga</translation>
     </message>
     <message>
         <source>Select one or more files</source>
         <translation>Välj en eller flera filer</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Stäng</translation>
     </message>
 </context>
 <context>
@@ -190,10 +186,6 @@
         <translation>Aktuella antal bilder per sekund</translation>
     </message>
     <message>
-        <source>Device %1 is busy</source>
-        <translation>Device %1 är upptagen</translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation>Starta</translation>
     </message>
@@ -263,6 +255,14 @@
     </message>
     <message>
         <source>Mirrored</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>is busy</source>
         <translation type="unfinished"/>
     </message>
 </context>

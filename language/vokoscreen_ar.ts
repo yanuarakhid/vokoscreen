@@ -1,13 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="ar" version="2.0">
 <context>
-    <name>QvkMagnifier</name>
-    <message>
-        <source>Close</source>
-        <translation>أغلق</translation>
-    </message>
-</context>
-<context>
-    <name>QvkMail</name>
+    <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
         <translation>أرسل آخر فيديو</translation>
@@ -21,16 +14,19 @@
         <translation>أرسل</translation>
     </message>
     <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkMail</name>
+    <message>
         <source>You find the Video as attachment</source>
         <translation>سوف تجد الفيديو على شكل رابط</translation>
     </message>
     <message>
         <source>Select one or more files</source>
         <translation>اختر ملفاً أو أكثر</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>أغلق</translation>
     </message>
 </context>
 <context>
@@ -190,10 +186,6 @@
         <translation>عدد المشاهد \ ثا الحالية</translation>
     </message>
     <message>
-        <source>Device %1 is busy</source>
-        <translation>الجهاز %1 مشغول حالياً</translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation>واصِل</translation>
     </message>
@@ -264,6 +256,14 @@
     <message>
         <source>Mirrored</source>
         <translation>معكوس</translation>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation>الجهاز</translation>
+    </message>
+    <message>
+        <source>is busy</source>
+        <translation>مشغول حاليا</translation>
     </message>
 </context>
 </TS>

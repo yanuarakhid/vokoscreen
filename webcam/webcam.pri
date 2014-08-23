@@ -12,3 +12,5 @@ SOURCES += $$PWD/QvkCapturethread.cpp \
            $$PWD/QvkWebcamController.cpp \
            $$PWD/QvkWebcamWindow.cpp \
            $$PWD/QvkWebcamBusyDialog.cpp
+           
+FORMS += QvkWebcamBusyDialog.ui

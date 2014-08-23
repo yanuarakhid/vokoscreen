@@ -1,13 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.0">
 <context>
-    <name>QvkMagnifier</name>
-    <message>
-        <source>Close</source>
-        <translation>Sluiten</translation>
-    </message>
-</context>
-<context>
-    <name>QvkMail</name>
+    <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
         <translation>Mail laatste Video</translation>
@@ -18,8 +11,15 @@
     </message>
     <message>
         <source>Send</source>
-        <translation>Zenden</translation>
+        <translation>Verzenden</translation>
     </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
         <translation>U vindt de video als bijlage</translation>
@@ -27,10 +27,6 @@
     <message>
         <source>Select one or more files</source>
         <translation>Selecteer een of meer bestanden</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Sluiten</translation>
     </message>
 </context>
 <context>
@@ -190,10 +186,6 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Device %1 is busy</source>
-        <translation>Apparaat %1 is bezig</translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation>Start</translation>
     </message>
@@ -263,6 +255,14 @@
     </message>
     <message>
         <source>Mirrored</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>is busy</source>
         <translation type="unfinished"/>
     </message>
 </context>

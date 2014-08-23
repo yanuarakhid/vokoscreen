@@ -1,13 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="ast" version="2.0">
 <context>
-    <name>QvkMagnifier</name>
-    <message>
-        <source>Close</source>
-        <translation>Zarrar</translation>
-    </message>
-</context>
-<context>
-    <name>QvkMail</name>
+    <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
         <translation>Dunviar per corréu&apos;l vidéu caberu</translation>
@@ -21,16 +14,19 @@
         <translation>Dunviar</translation>
     </message>
     <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>QvkMail</name>
+    <message>
         <source>You find the Video as attachment</source>
         <translation>Pues alcontrar el vidéu como axuntu</translation>
     </message>
     <message>
         <source>Select one or more files</source>
         <translation>Esbilla unu o más ficheros</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Zarrar</translation>
     </message>
 </context>
 <context>
@@ -190,10 +186,6 @@
         <translation>Cuadros per segundu d&apos;anguaño</translation>
     </message>
     <message>
-        <source>Device %1 is busy</source>
-        <translation>El preséu %1 ta ocupáu</translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation>DIr</translation>
     </message>
@@ -264,6 +256,14 @@
     <message>
         <source>Mirrored</source>
         <translation>Espeyáu</translation>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation>Preséu</translation>
+    </message>
+    <message>
+        <source>is busy</source>
+        <translation>ta ocupáu</translation>
     </message>
 </context>
 </TS>
