@@ -37,6 +37,8 @@ void QvkMagnifier::closeEvent( QCloseEvent * event )
 
 void QvkMagnifier::getDialogMagnifier( QWidget *parent )
 {
+  (void)parent;
+  
   newDialog = new QDialog;
   newDialog->setModal( true );
 

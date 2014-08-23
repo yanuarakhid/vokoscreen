@@ -10,6 +10,8 @@
 #include <QFileDialog>
 #include <QLabel>
 
+#include "ui_QvkMailDialog.h"
+
 class QvkMail: public QObject
 { 
 Q_OBJECT
@@ -39,9 +41,13 @@ protected:
 
   
 private:
-  QDialog * dialog;
-  QRadioButton * mailRadioButton;
-  QRadioButton * mailSelectedRadioButton;
+  QDialog *newDialog;
+//  QDialog * dialog;
+//  QRadioButton * mailRadioButton;
+//  QRadioButton * mailSelectedRadioButton;
+  
+  Ui_MailDialog myUiMailDialog;
+
 };
 
 #endif

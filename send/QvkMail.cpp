@@ -11,6 +11,19 @@ QvkMail::QvkMail()
 
 QvkMail::QvkMail( QWidget *object )
 {
+  (void)object;
+  
+  newDialog = new QDialog;
+  newDialog->setModal( true );
+
+  myUiMailDialog.setupUi( newDialog );
+  newDialog->show();  
+  
+  connect( myUiMailDialog.sendPushButton, SIGNAL( clicked() ), this, SLOT( selection() ) );
+  connect( myUiMailDialog.cancelPushButton, SIGNAL( clicked() ), this, SLOT( closeDialog() ) ) ;
+
+  
+/*  
   dialog = new QDialog( object );
   dialog->setFixedSize( 470, 200 );
   
@@ -49,6 +62,7 @@ QvkMail::QvkMail( QWidget *object )
   connect( closePushbutton, SIGNAL( clicked() ), this, SLOT( closeDialog() ) ) ;
   
   dialog->exec();
+*/  
 }
 
 
@@ -59,16 +73,16 @@ QvkMail::~QvkMail()
 
 void QvkMail::closeDialog()
 {
-  dialog->close();  
+  newDialog->close();
 }
 
 
 void QvkMail::selection()
 {
-  if ( mailRadioButton->isChecked() )
+  if ( myUiMailDialog.mailRadioButton->isChecked() )
     startMailClientWithLastFile( lastMovie() );
 
-  if ( mailSelectedRadioButton->isChecked() )
+  if ( myUiMailDialog.mailSelectedRadioButton->isChecked() )
     startMailClientWithSelectedFiles( selectedMail() );
 }
 
@@ -90,7 +104,7 @@ void QvkMail::startMailClientWithLastFile( QString file )
     Process.close();
   }
 
-  dialog->close();
+  newDialog->close();
 }
 
 
@@ -117,7 +131,7 @@ void QvkMail::startMailClientWithSelectedFiles( QStringList fileList )
     Process.close();
   }
   
-  dialog->close();
+  newDialog->close();
 }
 
 
@@ -139,7 +153,7 @@ QStringList QvkMail::selectedMail()
 
   QString a = QDesktopServices::storageLocation( QDesktopServices::MoviesLocation );
   
-  QStringList files = QFileDialog::getOpenFileNames( dialog,
+  QStringList files = QFileDialog::getOpenFileNames( newDialog,
                                                      tr( "Select one or more files" ),
                                                      QDesktopServices::storageLocation( QDesktopServices::MoviesLocation ) , 
                                                      "*.*" );
