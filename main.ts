@@ -188,10 +188,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Device %1 is busy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Go</source>
         <translation type="unfinished"></translation>
     </message>
@@ -261,6 +257,14 @@
     </message>
     <message>
         <source>Mirrored</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>is busy</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
