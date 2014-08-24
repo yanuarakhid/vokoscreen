@@ -79,7 +79,7 @@
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="../screencast.qrc">:/pictures/webcamBusy.png</pixmap>
+             <pixmap resource="../screencast.qrc">:/pictures/microbusy.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -150,9 +150,6 @@
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_UsedBy">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
          <property name="text">
           <string>Used by</string>
          </property>
@@ -163,9 +160,6 @@
        </item>
        <item row="2" column="1">
         <widget class="QLabel" name="label_UsedBy_Value">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>

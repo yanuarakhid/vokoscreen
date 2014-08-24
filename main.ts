@@ -321,13 +321,5 @@
         <source>Mirrored</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Device</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>is busy</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 </TS>

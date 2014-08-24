@@ -8,3 +8,4 @@ SOURCES		+= $$PWD/QvkAlsaWatcher.cpp \
                    $$PWD/QvkAlsaDevice.cpp \
                    $$PWD/alsa_device.c
 
+FORMS           += $$PWD/QvkAlsaBusyDialog.ui

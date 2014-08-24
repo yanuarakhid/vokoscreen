@@ -9,6 +9,7 @@
 #include <QProcess>
 #include <stdio.h>
 #include <string.h>
+#include <QDialog>
 
 #include <stdlib.h>
 #include <alsa/asoundlib.h>
@@ -41,6 +42,8 @@ public slots:
   QString getAlsaSample();
   QString getAlsaVersion(); // libasound
   bool isbusy();            // libasound
+  void busyDialog( QString AlsaHw, QString AlsaName );
+  QString getPurAlsaName();
   void setChannel();
 
   
@@ -65,7 +68,7 @@ private:
   QString AlsaCannel;
   QString AlsaName;
   QString AlsaSample;
-  
+  QString alsaName;
 };
 
 #endif

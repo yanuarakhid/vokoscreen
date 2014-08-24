@@ -1663,11 +1663,7 @@ void screencast::Pause()
       QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
       if ( inBox->isbusy() and AlsaRadioButton->isChecked() )
       {
-        QMessageBox msgBox;
-        QString message;
-        message.append( tr( "Device" ) + " " + inBox->getAlsaHw() + " " + tr( "is busy" ) );
-	msgBox.setText( message );
-        msgBox.exec();
+        inBox->busyDialog( inBox->getAlsaHw(), inBox->getPurAlsaName() );
 	PauseButton->click();
         return;
       }
@@ -1697,12 +1693,8 @@ void screencast::Pause()
       QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
       if ( inBox->isbusy() and AlsaRadioButton->isChecked() )
       {
-        QMessageBox msgBox;
-        QString message;
-        message.append( tr( "Device" ) + " " + inBox->getAlsaHw() + " " + tr( "is busy" ) );
-        msgBox.setText( message );
-        msgBox.exec();
-	PauseButton->click();
+        inBox->busyDialog( inBox->getAlsaHw(), inBox->getPurAlsaName() );
+        PauseButton->click();
         return;
       }
       Countdown();
@@ -2406,12 +2398,7 @@ void screencast::preRecord()
     QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
     if ( inBox->isbusy() )
     {
-      QMessageBox msgBox;
-      msgBox.setIcon( QMessageBox::Information );
-      QString message;
-      message.append( tr( "Device" ) + " " + inBox->getAlsaHw() + " " + tr( "is busy" ) );
-      msgBox.setText( message );
-      msgBox.exec();
+      inBox->busyDialog( inBox->getAlsaHw(), inBox->getPurAlsaName() );
       return;
     }
     else

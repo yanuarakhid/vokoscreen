@@ -1,6 +1,8 @@
 #include "QvkAlsaDevice.h"
 
 #include "alsa_device.h" 
+#include "ui_QvkAlsaBusyDialog.h"
+
 
 using namespace std;
 
@@ -71,11 +73,26 @@ bool QvkAlsaDevice::isbusy()
 }
 
 
+void QvkAlsaDevice::busyDialog( QString AlsaHw, QString AlsaName )
+{
+  QDialog *newDialog = new QDialog;
+  newDialog->setModal( true );
+
+  Ui_AlsaBusyDialog myAlsaBusyDialog;
+  myAlsaBusyDialog.setupUi( newDialog );
+  newDialog->show();  
+  
+  myAlsaBusyDialog.label_Name_Value->setText( AlsaName );
+  myAlsaBusyDialog.label_Device_Value->setText( AlsaHw );
+  
+}
+
+
 void QvkAlsaDevice::setAlsaName()
 {
    register int  err;
    int           cardNum;
-   QString alsaName;
+   //QString alsaName;
 
    QString cardNumber = getCard().remove( "card" );
   
@@ -116,8 +133,17 @@ void QvkAlsaDevice::setAlsaName()
    AlsaName = "[" + getAlsaHw() + "] " + alsaName;
 }  
 
+/**
+ * Return: "USB Device 0x46d:0x809"
+ */
+QString QvkAlsaDevice::getPurAlsaName()
+{
+  return alsaName;
+}
 
-
+/**
+ * Return: "[HW:1,0] USB Device 0x46d:0x809"
+ */
 QString QvkAlsaDevice::getAlsaName()
 {
    return AlsaName;
