@@ -1,5 +1,36 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.0">
 <context>
+    <name>AlsaBusyDialog</name>
+    <message>
+        <source>vokoscreen webcam</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device is busy</source>
+        <translation>El dispositivo está ocupado</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Used by</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -64,6 +95,37 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>WebcamBusyDialog</name>
+    <message>
+        <source>vokoscreen webcam</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device is busy</source>
+        <translation>El dispositivo está ocupado</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Used by</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -255,14 +317,6 @@
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Device</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>is busy</source>
         <translation type="unfinished"/>
     </message>
 </context>

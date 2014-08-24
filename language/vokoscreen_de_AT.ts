@@ -1,5 +1,36 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="de_AT" version="2.0">
 <context>
+    <name>AlsaBusyDialog</name>
+    <message>
+        <source>vokoscreen webcam</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device is busy</source>
+        <translation>Gerät ist belegt</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation>Gerät</translation>
+    </message>
+    <message>
+        <source>Used by</source>
+        <translation>Benutzt von</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -64,6 +95,37 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>WebcamBusyDialog</name>
+    <message>
+        <source>vokoscreen webcam</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Device is busy</source>
+        <translation>Gerät ist belegt</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation>Gerät</translation>
+    </message>
+    <message>
+        <source>Used by</source>
+        <translation>Benutzt von</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -256,14 +318,6 @@
     <message>
         <source>Mirrored</source>
         <translation>Gespiegelt</translation>
-    </message>
-    <message>
-        <source>Device</source>
-        <translation>Gerät</translation>
-    </message>
-    <message>
-        <source>is busy</source>
-        <translation>ist von einem anderen Programm belegt</translation>
     </message>
 </context>
 </TS>
