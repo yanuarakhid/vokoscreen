@@ -122,10 +122,10 @@ screencast::screencast()
       QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i + 1 ).top() );      
       QString ScreenGeometryX = QString::number( desk->screenGeometry( i + 1 ).width() );
       QString ScreenGeometryY = QString::number( desk->screenGeometry( i + 1 ).height() );
-      ScreenComboBox->addItem( "Display " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i );
+      ScreenComboBox->addItem( tr( "Display" ) + " " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i );
       qDebug() << "[vokoscreen]" << "Display " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY + "+" + ScreenGeometryX1 + "+" + ScreenGeometryY1;
     }
-    ScreenComboBox->addItem( "All Displays", -1 );    
+    ScreenComboBox->addItem( tr( "All Displays" ), -1 );    
     qDebug() << "[vokoscreen]" << "---End search Screen---";
     qDebug();
     

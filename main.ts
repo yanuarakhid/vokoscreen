@@ -286,5 +286,13 @@
         <source>Mirrored</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Display</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All Displays</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
