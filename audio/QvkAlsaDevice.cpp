@@ -75,7 +75,7 @@ bool QvkAlsaDevice::isbusy()
 
 void QvkAlsaDevice::busyDialog( QString AlsaHw, QString AlsaName )
 {
-  QDialog *newDialog = new QDialog;
+  newDialog = new QDialog;
   newDialog->setModal( true );
 
   Ui_AlsaBusyDialog myAlsaBusyDialog;
@@ -84,7 +84,13 @@ void QvkAlsaDevice::busyDialog( QString AlsaHw, QString AlsaName )
   
   myAlsaBusyDialog.label_Name_Value->setText( AlsaName );
   myAlsaBusyDialog.label_Device_Value->setText( AlsaHw );
-  
+  connect( myAlsaBusyDialog.buttonBox, SIGNAL( accepted() ), this, SLOT( closeDialog() ) );
+}
+
+
+void QvkAlsaDevice::closeDialog()
+{
+  newDialog->close();
 }
 
 

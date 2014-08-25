@@ -46,12 +46,15 @@ public slots:
   QString getPurAlsaName();
   void setChannel();
 
+private:  
+  QDialog *newDialog;
   
 private slots:
   void setCard( QString string );
   void setAlsaHw();
   void setAlsaName();
   void setAlsaSample();
+  void closeDialog();
 
   
   //void alsa_device_sample( const char *device_name, unsigned int rate );
