@@ -4,10 +4,6 @@
 <context>
     <name>AlsaBusyDialog</name>
     <message>
-        <source>vokoscreen webcam</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Device is busy</source>
         <translation type="unfinished"></translation>
     </message>
@@ -79,10 +75,6 @@
 </context>
 <context>
     <name>WebcamBusyDialog</name>
-    <message>
-        <source>vokoscreen webcam</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Device is busy</source>
         <translation type="unfinished"></translation>

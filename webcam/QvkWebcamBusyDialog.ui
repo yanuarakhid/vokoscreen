@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>vokoscreen webcam</string>
+   <string notr="true">vokoscreen webcam</string>
   </property>
   <property name="modal">
    <bool>true</bool>
