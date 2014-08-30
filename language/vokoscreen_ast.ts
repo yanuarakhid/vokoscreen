@@ -2,10 +2,6 @@
 <context>
     <name>AlsaBusyDialog</name>
     <message>
-        <source>vokoscreen webcam</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Device is busy</source>
         <translation>El preséu ta ocupáu</translation>
     </message>
@@ -24,10 +20,6 @@
     <message>
         <source>Used by</source>
         <translation>Usáu por</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -61,25 +53,6 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcamBusyDialog</name>
-    <message>
-        <source>Webcam is busy</source>
-        <translation>La cámara web ta ocupada</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Nome</translation>
-    </message>
-    <message>
-        <source>Device</source>
-        <translation>Preséu</translation>
-    </message>
-    <message>
-        <source>Used by</source>
-        <translation>Usáu por</translation>
-    </message>
-</context>
-<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
@@ -101,10 +74,6 @@
 <context>
     <name>WebcamBusyDialog</name>
     <message>
-        <source>vokoscreen webcam</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Device is busy</source>
         <translation>El preséu ta ocupáu</translation>
     </message>
@@ -122,10 +91,6 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -318,6 +283,14 @@
     <message>
         <source>Mirrored</source>
         <translation>Espeyáu</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>All Displays</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

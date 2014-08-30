@@ -2,10 +2,6 @@
 <context>
     <name>AlsaBusyDialog</name>
     <message>
-        <source>vokoscreen webcam</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Device is busy</source>
         <translation>Gerät ist belegt</translation>
     </message>
@@ -15,7 +11,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Unbekannt</translation>
     </message>
     <message>
         <source>Device</source>
@@ -24,10 +20,6 @@
     <message>
         <source>Used by</source>
         <translation>Benutzt von</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -61,25 +53,6 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcamBusyDialog</name>
-    <message>
-        <source>Webcam is busy</source>
-        <translation>Webcam ist belegt</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Name</translation>
-    </message>
-    <message>
-        <source>Device</source>
-        <translation>Gerät</translation>
-    </message>
-    <message>
-        <source>Used by</source>
-        <translation>Benutzt von</translation>
-    </message>
-</context>
-<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
@@ -101,10 +74,6 @@
 <context>
     <name>WebcamBusyDialog</name>
     <message>
-        <source>vokoscreen webcam</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Device is busy</source>
         <translation>Gerät ist belegt</translation>
     </message>
@@ -122,11 +91,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>Unbekannt</translation>
     </message>
 </context>
 <context>
@@ -318,6 +283,14 @@
     <message>
         <source>Mirrored</source>
         <translation>Gespiegelt</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Bildschirm</translation>
+    </message>
+    <message>
+        <source>All Displays</source>
+        <translation>Alle Bildschirme</translation>
     </message>
 </context>
 </TS>

@@ -2,10 +2,6 @@
 <context>
     <name>AlsaBusyDialog</name>
     <message>
-        <source>vokoscreen webcam</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Device is busy</source>
         <translation>الجهاز مشغول حاليا</translation>
     </message>
@@ -24,10 +20,6 @@
     <message>
         <source>Used by</source>
         <translation>مستخدمة من طرف</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;مجهول&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -61,25 +53,6 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcamBusyDialog</name>
-    <message>
-        <source>Webcam is busy</source>
-        <translation>كاميرا الوب مشغولة</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>الاسم</translation>
-    </message>
-    <message>
-        <source>Device</source>
-        <translation>الجهاز</translation>
-    </message>
-    <message>
-        <source>Used by</source>
-        <translation>مستخدمة من طرف</translation>
-    </message>
-</context>
-<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
@@ -101,10 +74,6 @@
 <context>
     <name>WebcamBusyDialog</name>
     <message>
-        <source>vokoscreen webcam</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Device is busy</source>
         <translation>الجهاز مشغول حاليا</translation>
     </message>
@@ -123,10 +92,6 @@
     <message>
         <source>Unknown</source>
         <translation>مجهول</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;مجهول&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -318,6 +283,14 @@
     <message>
         <source>Mirrored</source>
         <translation>معكوس</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>All Displays</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

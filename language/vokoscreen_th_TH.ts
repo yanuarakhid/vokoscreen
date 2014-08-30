@@ -2,10 +2,6 @@
 <context>
     <name>AlsaBusyDialog</name>
     <message>
-        <source>vokoscreen webcam</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Device is busy</source>
         <translation>อุปกรณ์ยังไม่พร้อม</translation>
     </message>
@@ -23,10 +19,6 @@
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -61,25 +53,6 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcamBusyDialog</name>
-    <message>
-        <source>Webcam is busy</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Device</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Used by</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Noborder</source>
@@ -101,10 +74,6 @@
 <context>
     <name>WebcamBusyDialog</name>
     <message>
-        <source>vokoscreen webcam</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Device is busy</source>
         <translation>อุปกรณ์ยังไม่พร้อม</translation>
     </message>
@@ -122,10 +91,6 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Unknown&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -317,6 +282,14 @@
     </message>
     <message>
         <source>Mirrored</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>All Displays</source>
         <translation type="unfinished"/>
     </message>
 </context>
