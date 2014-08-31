@@ -84,6 +84,7 @@ void QvkAlsaDevice::busyDialog( QString AlsaHw, QString AlsaName )
   
   myAlsaBusyDialog.label_Name_Value->setText( AlsaName );
   myAlsaBusyDialog.label_Device_Value->setText( AlsaHw );
+  myAlsaBusyDialog.label_UsedBy_Value->setText( "<html><head/><body><p><span style=\" color:#ff0000;\">" + getUsedBy() + "</span></p></body></html>" );
   connect( myAlsaBusyDialog.buttonBox, SIGNAL( accepted() ), this, SLOT( closeDialog() ) );
 }
 
@@ -92,6 +93,36 @@ void QvkAlsaDevice::closeDialog()
 {
   newDialog->close();
 }
+
+
+QString QvkAlsaDevice::getUsedBy()
+{
+  QString alsaHw = getAlsaHw();
+  QStringList listHw = alsaHw.split( ":" );
+  listHw = listHw[ 1 ].split( "," );
+  QString value1 = listHw[0];
+  QString value2 = listHw[1];
+  
+  QProcess Process;
+  Process.start( "lsof /dev/snd/pcmC" + value1 + "D" + value2 + "c" );
+  Process.waitForFinished();
+  QString standardOutput = Process.readAllStandardOutput();
+  Process.close();
+
+  QString usedBy = "";
+  if ( standardOutput > "" )
+  {
+    QStringList list = standardOutput.split( "\n" );
+    if ( not list.empty() )
+    {
+      list = list[ 1 ].split( " " );
+      usedBy = list[ 0 ];
+    }
+  }
+  
+  return usedBy;
+}
+
 
 
 void QvkAlsaDevice::setAlsaName()
