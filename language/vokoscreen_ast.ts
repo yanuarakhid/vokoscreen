@@ -11,7 +11,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Desconocíu</translation>
     </message>
     <message>
         <source>Device</source>
@@ -38,7 +38,7 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Encaboxar</translation>
     </message>
 </context>
 <context>
@@ -91,7 +91,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Desconocíu</translation>
     </message>
 </context>
 <context>
@@ -286,11 +286,11 @@
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"/>
+        <translation>Pantalla</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
+        <translation>Toles pantalles</translation>
     </message>
 </context>
 </TS>
