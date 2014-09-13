@@ -1,5 +1,6 @@
 #include "QvkWebcamController.h" 
 #include <QTimer>
+#include <QSettings>
 
 QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox, 
 					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle, QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle )
@@ -48,20 +49,34 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   
   webcamWindow = new QvkWebcamWindow();
   connect( webcamWindow, SIGNAL( closeWebcamWindow() ), SLOT( webcamCloseEvent() ) );  
-  (void) webcamWindow;
+  //(void) webcamWindow;
   
   connect( myWebcamWatcher, SIGNAL( readWebcamNames( QStringList ) ), this, SLOT( readWebcams( QStringList ) ) );
 }
+
 
 QvkWebcamController::~QvkWebcamController( void )
 {
 }
 
 
+void QvkWebcamController::saveSettings()
+{
+  QSettings settings( "vokoscreen", "vokoscreen" );
+  settings.beginGroup( "Webcam" );
+    settings.setValue( "X", webcamWindow->getValueX() );
+    settings.setValue( "Y", webcamWindow->getValueY() );
+    settings.setValue( "Width", webcamWindow->getValueWidth() );
+    settings.setValue( "Height", webcamWindow->getValueHeight() );
+    settings.setValue( "Border", webcamWindow->getValueBorder() );
+  settings.endGroup();
+}
+
+
 void QvkWebcamController::rotateDialclicked()
 {
   // Diese drei Befehle müssen sein damit der Radiobutton unchecked ist
-  radioButtonTopMiddle->setCheckable ( false );
+  radioButtonTopMiddle->setCheckable( false );
   radioButtonTopMiddle->setChecked( false );
   radioButtonTopMiddle->setCheckable ( true );
 

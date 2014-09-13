@@ -1,4 +1,5 @@
 #include "QvkWebcamWindow.h" 
+#include <QDebug>
 
 using namespace std;
 
@@ -7,7 +8,7 @@ QvkWebcamWindow::QvkWebcamWindow()
   setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
   setWindowTitle( "vokoscreen webcam");
   setGeometry( 0, 0, 320, 240 );
-  
+
   if( QX11Info::isCompositingManagerRunning() )
     setAttribute( Qt::WA_TranslucentBackground, true );
   
@@ -28,26 +29,6 @@ void QvkWebcamWindow::setValueBorder( bool value )
   border = value; 
 }
 
-void QvkWebcamWindow::setValueX( int value )
-{
-  X =  value;
-}
-
-void QvkWebcamWindow::setValueY( int value )
-{
-  Y = value;  
-}
-
-void QvkWebcamWindow::setValueWidth( int value )
-{
-  Width = value;
-}
-
-void QvkWebcamWindow::setValueHeight( int value )
-{
-  Height = value; 
-}
-
 bool QvkWebcamWindow::getValueBorder()
 {
   return border; 
@@ -55,22 +36,22 @@ bool QvkWebcamWindow::getValueBorder()
 
 int QvkWebcamWindow::getValueX()
 {
-  return X; 
+  return x();
 }
 
 int QvkWebcamWindow::getValueY()
 {
-  return Y; 
+  return y();
 }
 
 int QvkWebcamWindow::getValueWidth()
 {
-  return Width;
+  return width();
 }
 
 int QvkWebcamWindow::getValueHeight()
 {
-  return Height; 
+  return height();
 }
 
 /**
@@ -133,24 +114,18 @@ void QvkWebcamWindow::closeMenue()
 void QvkWebcamWindow::set160x120()
 {
   setGeometry( x(), y(), 160, 120 );
-  setValueWidth( 160 );
-  setValueHeight( 120 );
 }
 
 
 void QvkWebcamWindow::set320x240()
 {
   setGeometry( x(), y(), 320, 240 );
-  setValueWidth( 320 );
-  setValueHeight( 240 );
 }
 
 
 void QvkWebcamWindow::set640x480()
 {
   setGeometry( x(), y(), 640, 480 );
-  setValueWidth( 640 );
-  setValueHeight( 480 );
 }
 
 

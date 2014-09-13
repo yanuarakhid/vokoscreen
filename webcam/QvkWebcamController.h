@@ -32,6 +32,7 @@ public:
   
 public slots:
   void webcamCloseEvent();
+  void saveSettings();
 
   
 private slots:

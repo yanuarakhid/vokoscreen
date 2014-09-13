@@ -18,14 +18,15 @@ public:
     virtual ~QvkWebcamWindow();
     QString currentDevice;
     QLabel *webcamLabel;
+    bool getValueBorder();
+    int getValueX();
+    int getValueY();
+    int getValueWidth();
+    int getValueHeight();
 
     
 private:
     bool border;
-    int X;
-    int Y;
-    int Width;
-    int Height;
 
     
 public slots:
@@ -39,20 +40,9 @@ private slots:
     void setBorder();
     void setVisibleOverFullscreen();
     void closeMenue();
-
     void setValueBorder( bool value );
-    void setValueX( int value );
-    void setValueY( int value );
-    void setValueWidth( int value );
-    void setValueHeight( int value );
-    
-    bool getValueBorder();
-    int getValueX();
-    int getValueY();
-    int getValueWidth();
-    int getValueHeight();
 
-  
+    
 protected:
     void closeEvent( QCloseEvent * event );
     void contextMenuEvent( QContextMenuEvent *event );

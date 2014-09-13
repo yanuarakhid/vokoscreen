@@ -196,7 +196,13 @@ private:
     QPushButton *PlayButton;
     QPushButton *sendPushButton;
     QCheckBox *webcamCheckBox;
-     
+    QCheckBox *mirrorCheckBox;
+    QDial *rotateDial;
+    QRadioButton *radioButtonTopMiddle;
+    QRadioButton *radioButtonRightMiddle;
+    QRadioButton *radioButtonBottomMiddle;
+    QRadioButton *radioButtonLeftMiddle;
+        
     QProcess *SystemCall;
     QRadioButton *AlsaRadioButton;
     QComboBox *AlsaHwComboBox;
