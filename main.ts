@@ -57,10 +57,6 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Noborder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Border</source>
         <translation type="unfinished"></translation>
     </message>

@@ -1,5 +1,4 @@
 #include "QvkWebcamWindow.h" 
-#include <QDebug>
 
 using namespace std;
 
@@ -17,6 +16,26 @@ QvkWebcamWindow::QvkWebcamWindow()
   webcamLabel->setAlignment( Qt::AlignCenter );
   webcamLabel->setScaledContents( true );
   webcamLabel->show();
+  
+  action160x120 = new QAction( "160 x 120", this );
+  connect( action160x120, SIGNAL( triggered() ), this, SLOT( set160x120() ) );
+   
+  action320x240 = new QAction( "320 x 240", this );
+  connect( action320x240, SIGNAL( triggered() ), this, SLOT( set320x240() ) );
+
+  action640x480 = new QAction( "640 x 480", this );
+  connect( action640x480, SIGNAL( triggered() ), this, SLOT( set640x480() ) );
+
+  actionBorder = new QAction( tr ( "Border" ), this );
+  actionBorder->setCheckable( true );
+  actionBorder->setChecked( true );
+  connect( actionBorder, SIGNAL( triggered() ), this, SLOT( setBorder() ) );
+
+  actionVisibleOverFullscreen = new QAction( tr ( "Show over fullscreen" ), this );
+  connect( actionVisibleOverFullscreen, SIGNAL( triggered() ), this, SLOT( setVisibleOverFullscreen() ) );
+
+  actionClose = new QAction( tr ( "Close" ), this );
+  connect( actionClose, SIGNAL( triggered() ), this, SLOT( closeMenue() ) ); 
 }
 
 
@@ -63,38 +82,15 @@ void QvkWebcamWindow::closeEvent( QCloseEvent * event )
   emit closeWebcamWindow();
 }
 
-
+/**
+ * Wird aufgerufen sobald die Kontexttaste betätigt wird
+ */
 void QvkWebcamWindow::contextMenuEvent( QContextMenuEvent *event )
 {
-     //qDebug() << "Begin void QvkWebcam::contextMenuEvent( QContextMenuEvent *event ) *****************************";
-  
-     QAction * action160x120 = new QAction( "160 x 120", this );
-     connect( action160x120, SIGNAL( triggered() ), this, SLOT( set160x120() ) );
-     
-     QAction * action320x240 = new QAction( "320 x 240", this );
-     connect( action320x240, SIGNAL( triggered() ), this, SLOT( set320x240() ) );
-
-     QAction * action640x480 = new QAction( "640 x 480", this );
-     connect( action640x480, SIGNAL( triggered() ), this, SLOT( set640x480() ) );
-
-     QAction * actionNoBorder = new QAction( tr ( "Noborder" ), this );
-     connect( actionNoBorder, SIGNAL( triggered() ), this, SLOT( setNoBorder() ) );
-
-     QAction * actionBorder = new QAction( tr ( "Border" ), this );
-     connect( actionBorder, SIGNAL( triggered() ), this, SLOT( setBorder() ) );
-
-     QAction * actionVisibleOverFullscreen = new QAction( tr ( "Show over fullscreen" ), this );
-     connect( actionVisibleOverFullscreen, SIGNAL( triggered() ), this, SLOT( setVisibleOverFullscreen() ) );
-
-     QAction * actionClose = new QAction( tr ( "Close" ), this );
-     connect( actionClose, SIGNAL( triggered() ), this, SLOT( closeMenue() ) );
-     
-     QMenu menu( this );
      menu.addAction( action160x120 );
      menu.addAction( action320x240 );
      menu.addAction( action640x480 );
      menu.addSeparator();
-     menu.addAction( actionNoBorder );
      menu.addAction( actionBorder );
      menu.addAction( actionVisibleOverFullscreen );
      menu.addSeparator();
@@ -129,19 +125,20 @@ void QvkWebcamWindow::set640x480()
 }
 
 
-void QvkWebcamWindow::setNoBorder()
-{
-  setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-  show();
-  setValueBorder( false );
-}
-
-
 void QvkWebcamWindow::setBorder()
 {
-  setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
-  show();
-  setValueBorder( true );
+  if ( actionBorder->isChecked() )
+  {
+    setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
+    show();
+    setValueBorder( true );
+  }
+  else
+  {
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    show();
+    setValueBorder( false );
+  }
 }
 
 

@@ -7,6 +7,7 @@
 #include <QMenu>
 #include <QContextMenuEvent>
 #include <QX11Info>
+#include <QDebug>
 
 class QvkWebcamWindow : public QMainWindow
 {
@@ -24,10 +25,19 @@ public:
     int getValueWidth();
     int getValueHeight();
 
+    QAction *action160x120;
+    QAction *action320x240;
+    QAction *action640x480;
+    QAction *actionVisibleOverFullscreen;
+    QAction *actionClose;
+    
+    QMenu menu;
+
+    
     
 private:
     bool border;
-
+    QAction * actionBorder;
     
 public slots:
 
@@ -36,7 +46,7 @@ private slots:
     void set160x120();
     void set320x240();
     void set640x480();
-    void setNoBorder();
+    //void setNoBorder();
     void setBorder();
     void setVisibleOverFullscreen();
     void closeMenue();
