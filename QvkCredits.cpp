@@ -62,7 +62,7 @@ void QvkCredits::paintEvent( QPaintEvent *event )
 
 //    painter->drawText( x - 1 * deltaX, y + 1 * deltaY, creditsStringlist.value( 0 ) );
     painter->drawText( 230, 70, "Volker Kohaupt" );
-    painter->drawText( 230, 90, "Developer by vokoscreen" );
+    painter->drawText( 230, 90, "Developer of vokoscreen" );
     
     painter->drawText( x - 1 * deltaX, y + 2 * deltaY, creditsStringlist.value( 0 ) ); 
     painter->drawText( x - 2 * deltaX, y + 3 * deltaY, creditsStringlist.value( 1 ) );

@@ -30,14 +30,13 @@ public:
     QAction *action640x480;
     QAction *actionVisibleOverFullscreen;
     QAction *actionClose;
-    
     QMenu menu;
 
-    
     
 private:
     bool border;
     QAction * actionBorder;
+
     
 public slots:
 
@@ -46,7 +45,6 @@ private slots:
     void set160x120();
     void set320x240();
     void set640x480();
-    //void setNoBorder();
     void setBorder();
     void setVisibleOverFullscreen();
     void closeMenue();

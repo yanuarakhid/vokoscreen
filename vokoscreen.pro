@@ -25,8 +25,7 @@ FORMS += QvkMagnifierDialog.ui
 # Um der Fehlermeldung entgegenzuwirken das keine *.qm Dateien vorhanden sind wird lrelease als Systemaufruf vorher aufgerufen.
 # Das Script/Macro siehe weiter unten "# language packages" muß weiter bestehen bleiben damit "make clean" die *.qm Dateien löscht.
 
-# Für XUbuntu deaktiviert
-# system(lrelease language/vokoscreen_*.ts)
+system(lrelease language/vokoscreen_*.ts)
           
 RESOURCES += screencast.qrc
                         
