@@ -55,10 +55,6 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Noborder</source>
-        <translation>Ingen ramme</translation>
-    </message>
-    <message>
         <source>Border</source>
         <translation>Ramme</translation>
     </message>

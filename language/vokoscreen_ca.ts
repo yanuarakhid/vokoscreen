@@ -55,10 +55,6 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Noborder</source>
-        <translation>Sense vora</translation>
-    </message>
-    <message>
         <source>Border</source>
         <translation>Vora</translation>
     </message>

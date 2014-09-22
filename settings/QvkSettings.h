@@ -54,7 +54,9 @@ public:
   int getAreaWidth();
   int getAreaHeight();
   
-  
+  // webcam
+  int getWebcamOnOff();
+
 public slots:
 
   
@@ -98,6 +100,9 @@ private:
   int AreaY;
   int AreaWidth;
   int AreaHeight;
+
+  // webcam
+  int webcamOnOff;
   
 };
 

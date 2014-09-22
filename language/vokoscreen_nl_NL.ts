@@ -55,10 +55,6 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Noborder</source>
-        <translation>Geen rand</translation>
-    </message>
-    <message>
         <source>Border</source>
         <translation>Rand</translation>
     </message>

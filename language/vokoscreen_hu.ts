@@ -55,10 +55,6 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Noborder</source>
-        <translation>Keret nélkül</translation>
-    </message>
-    <message>
         <source>Border</source>
         <translation>Kerettel</translation>
     </message>

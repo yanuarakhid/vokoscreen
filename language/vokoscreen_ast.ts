@@ -55,10 +55,6 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Noborder</source>
-        <translation>Ensin bervesos</translation>
-    </message>
-    <message>
         <source>Border</source>
         <translation>Bervesu</translation>
     </message>

@@ -55,10 +55,6 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Noborder</source>
-        <translation>Sem borda</translation>
-    </message>
-    <message>
         <source>Border</source>
         <translation>Borda</translation>
     </message>

@@ -55,10 +55,6 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Noborder</source>
-        <translation>沒有視窗邊框</translation>
-    </message>
-    <message>
         <source>Border</source>
         <translation>視窗邊框</translation>
     </message>

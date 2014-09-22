@@ -55,10 +55,6 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Noborder</source>
-        <translation>Bez ohraničení</translation>
-    </message>
-    <message>
         <source>Border</source>
         <translation>Ohraničení</translation>
     </message>

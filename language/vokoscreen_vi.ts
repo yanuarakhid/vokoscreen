@@ -55,10 +55,6 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Noborder</source>
-        <translation>Không có đường viền</translation>
-    </message>
-    <message>
         <source>Border</source>
         <translation>Đường viền</translation>
     </message>

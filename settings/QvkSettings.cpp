@@ -76,6 +76,9 @@ void QvkSettings::readAll()
         AreaHeight = settings.value( "Height", 200 ).toUInt();
     settings.endGroup();
 
+    settings.beginGroup( "Webcam" );
+        webcamOnOff = settings.value( "Show", 200 ).toUInt();
+    settings.endGroup();
     
     
 }
@@ -207,4 +210,10 @@ int QvkSettings::getAreaWidth()
 int QvkSettings::getAreaHeight()
 {
   return AreaHeight ;
+}
+
+// Webcam
+int QvkSettings::getWebcamOnOff()
+{
+  return webcamOnOff;
 }
