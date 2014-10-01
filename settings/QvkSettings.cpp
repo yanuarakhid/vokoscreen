@@ -77,10 +77,12 @@ void QvkSettings::readAll()
     settings.endGroup();
 
     settings.beginGroup( "Webcam" );
-        webcamOnOff = settings.value( "Show", 200 ).toUInt();
+	webcamX = settings.value( "X", 0 ).toUInt();
+	webcamY = settings.value( "Y", 0 ).toUInt();
+	webcamWidth = settings.value( "Width", 320 ).toUInt();
+	webcamHeight = settings.value( "Height", 240 ).toUInt();
+	webcamMirrored = settings.value( "Mirrored", false ).toBool();
     settings.endGroup();
-    
-    
 }
 
 QString QvkSettings::getVersion()
@@ -209,11 +211,31 @@ int QvkSettings::getAreaWidth()
 
 int QvkSettings::getAreaHeight()
 {
-  return AreaHeight ;
+  return AreaHeight;
 }
 
 // Webcam
-int QvkSettings::getWebcamOnOff()
+int QvkSettings::getWebcamX()
 {
-  return webcamOnOff;
+  return webcamX;
+}
+
+int QvkSettings::getWebcamY()
+{
+  return webcamY;
+}
+
+int QvkSettings::getWebcamHeight()
+{
+ return webcamHeight; 
+}
+ 
+int QvkSettings::getWebcamWidth()
+{
+  return webcamWidth;
+}
+
+bool QvkSettings::getWebcamMirrored()
+{
+  return webcamMirrored;
 }

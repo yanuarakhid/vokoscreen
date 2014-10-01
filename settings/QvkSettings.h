@@ -55,8 +55,12 @@ public:
   int getAreaHeight();
   
   // webcam
-  int getWebcamOnOff();
-
+  int getWebcamX();
+  int getWebcamY();
+  int getWebcamHeight();
+  int getWebcamWidth();
+  bool getWebcamMirrored();
+  
 public slots:
 
   
@@ -102,7 +106,11 @@ private:
   int AreaHeight;
 
   // webcam
-  int webcamOnOff;
+  int webcamX;
+  int webcamY;
+  int webcamHeight;
+  int webcamWidth;
+  bool webcamMirrored;
   
 };
 

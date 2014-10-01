@@ -7,19 +7,19 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Имя</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Неизвестно</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Устройство</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Используется</translation>
     </message>
 </context>
 <context>
@@ -38,7 +38,7 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Отмена</translation>
     </message>
 </context>
 <context>
@@ -64,7 +64,7 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Показать в полноэкранном режиме</translation>
     </message>
 </context>
 <context>
@@ -75,19 +75,19 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Имя</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Устройство</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Используется</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Неизвестно</translation>
     </message>
 </context>
 <context>
@@ -262,11 +262,11 @@
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"/>
+        <translation>Видеокодек</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"/>
+        <translation>Звуковой кодек</translation>
     </message>
     <message>
         <source>Webcam</source>
@@ -278,15 +278,15 @@
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>Зеркалирование</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"/>
+        <translation>Экран</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
+        <translation>Все экраны</translation>
     </message>
 </context>
 </TS>

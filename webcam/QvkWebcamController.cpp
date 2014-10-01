@@ -5,6 +5,9 @@
 QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox, 
 					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle, QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle )
 {
+  
+  vkSettings.readAll();
+  
   checkBox = myCheckBox;
   checkBox->setEnabled( false );
   connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( setWebcamOnOff( bool ) ) );
@@ -15,6 +18,7 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   
   mirrored = false;
   mirrorCheckBox = myMirrorCheckBox;
+  
   if ( checkBox->checkState() == Qt::Unchecked )
   {
     mirrorCheckBox->setEnabled( false );
@@ -26,7 +30,13 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
     rotateFrame->setEnabled( false );
   }
   connect( mirrorCheckBox, SIGNAL( clicked( bool ) ), this, SLOT( setMirrorOnOff( bool ) ) );
-    
+  if ( vkSettings.getWebcamMirrored() == true )
+  {
+    mirrorCheckBox->setEnabled( true );
+    mirrorCheckBox->click();
+    mirrorCheckBox->setEnabled( false );
+  }
+
   rotateDial = myRotateDial;
   rotateDial->setMinimum( 0 );
   rotateDial->setMaximum ( 360 );
@@ -48,8 +58,8 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   myWebcamWatcher->myfileSystemWatcher( "/dev/" );
   
   webcamWindow = new QvkWebcamWindow();
-  connect( webcamWindow, SIGNAL( closeWebcamWindow() ), SLOT( webcamCloseEvent() ) );  
-  //(void) webcamWindow;
+  connect( webcamWindow, SIGNAL( closeWebcamWindow() ), SLOT( webcamCloseEvent() ) );
+  webcamWindow->setGeometry( vkSettings.getWebcamX(), vkSettings.getWebcamY(), vkSettings.getWebcamWidth(), vkSettings.getWebcamHeight() );
   
   connect( myWebcamWatcher, SIGNAL( readWebcamNames( QStringList ) ), this, SLOT( readWebcams( QStringList ) ) );
 }

@@ -6,6 +6,7 @@
 #include "QvkWebcamWatcher.h"
 #include "QvkWebcamWindow.h"
 #include "QvkWebcamBusyDialog.h"
+#include <QvkSettings.h>
 
 #include <QCheckBox>
 #include <QComboBox>
@@ -63,7 +64,8 @@ private:
   QvkWebcamWindow *webcamWindow;
   bool mirrored;
 
-  
+  QvkSettings vkSettings;
+
 protected:
   
   

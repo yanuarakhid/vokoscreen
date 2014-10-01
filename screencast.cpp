@@ -326,7 +326,6 @@ screencast::screencast()
     mirrorCheckBox->setText( tr( "Mirrored" ) );
     mirrorCheckBox->setGeometry( 20, 70, 200, 25 );
     mirrorCheckBox->show();
-    mirrorCheckBox->click();
 
     QFrame *dialFrame = new QFrame( TabWidgetWebcamFrame );
     dialFrame->setFrameShape( QFrame::StyledPanel );
