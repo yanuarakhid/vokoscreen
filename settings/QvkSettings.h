@@ -60,6 +60,7 @@ public:
   int getWebcamHeight();
   int getWebcamWidth();
   bool getWebcamMirrored();
+  bool getWebcamBorder();
   
 public slots:
 
@@ -111,7 +112,7 @@ private:
   int webcamHeight;
   int webcamWidth;
   bool webcamMirrored;
-  
+  bool webcamBorder;
 };
 
 #endif
