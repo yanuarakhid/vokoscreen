@@ -60,8 +60,8 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   webcamWindow = new QvkWebcamWindow();
   connect( webcamWindow, SIGNAL( closeWebcamWindow() ), SLOT( webcamCloseEvent() ) );
   webcamWindow->setGeometry( vkSettings.getWebcamX(), vkSettings.getWebcamY(), vkSettings.getWebcamWidth(), vkSettings.getWebcamHeight() );
-  webcamWindow->setValueBorder( vkSettings.getWebcamBorder() );
-  webcamWindow->Hier aktualisieren ****************************************************************************************************************
+  if ( not vkSettings.getWebcamBorder( ) )
+    webcamWindow->actionBorder->trigger();
 
   connect( myWebcamWatcher, SIGNAL( readWebcamNames( QStringList ) ), this, SLOT( readWebcams( QStringList ) ) );
 }
