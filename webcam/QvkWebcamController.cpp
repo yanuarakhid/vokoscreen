@@ -60,9 +60,7 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   webcamWindow = new QvkWebcamWindow();
   connect( webcamWindow, SIGNAL( closeWebcamWindow() ), SLOT( webcamCloseEvent() ) );
   webcamWindow->setGeometry( vkSettings.getWebcamX(), vkSettings.getWebcamY(), vkSettings.getWebcamWidth(), vkSettings.getWebcamHeight() );
-  if ( not vkSettings.getWebcamBorder( ) )
-    webcamWindow->actionBorder->trigger();
-
+  
   connect( myWebcamWatcher, SIGNAL( readWebcamNames( QStringList ) ), this, SLOT( readWebcams( QStringList ) ) );
 }
 
@@ -180,6 +178,8 @@ void QvkWebcamController::setWebcamOnOff( bool value )
     webcamWindow->show();
     webcamWindow->currentDevice = "/dev/video" + index;
     captureThread->start( "/dev/video" + index );
+    if ( not vkSettings.getWebcamBorder( ) ) 
+      webcamWindow->actionBorder->trigger();
   }
 }
 

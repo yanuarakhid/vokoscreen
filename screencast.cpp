@@ -386,19 +386,19 @@ screencast::screencast()
     int leftSide = 0;
     int rightSide = tabWidget->width() / 2;
     
+    QLabel* labelOpensuseBetaUrl = new QLabel( TabWidgetAboutFrame );
+    labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Developer Homepage" ) + "</a>" );
+    labelOpensuseBetaUrl->setGeometry( leftSide, 10, labelWidth, 22 );
+    labelOpensuseBetaUrl->setOpenExternalLinks( true );
+    labelOpensuseBetaUrl->setAlignment( Qt::AlignCenter );    
+    labelOpensuseBetaUrl->show();
+    
     QLabel* labelWebSite = new QLabel( TabWidgetAboutFrame );
-    labelWebSite->setGeometry( leftSide, 10, labelWidth, 22 );
+    labelWebSite->setGeometry( leftSide, 30, labelWidth, 22 );
     labelWebSite->setText( homepage );
     labelWebSite->setOpenExternalLinks( true );
     labelWebSite->setAlignment( Qt::AlignCenter );
     labelWebSite->show();
-
-    QLabel* labelMailinglisteMail = new QLabel( TabWidgetAboutFrame );
-    labelMailinglisteMail->setText( mailingliste );
-    labelMailinglisteMail->setGeometry( leftSide, 30, labelWidth, 22 );
-    labelMailinglisteMail->setOpenExternalLinks( true );
-    labelMailinglisteMail->setAlignment( Qt::AlignCenter );    
-    labelMailinglisteMail->show();
 
     QLabel* labelMail = new QLabel( TabWidgetAboutFrame );
     labelMail->setGeometry( leftSide, 50, labelWidth, 22 );
@@ -413,27 +413,27 @@ screencast::screencast()
     labelDeveLoperMail->setOpenExternalLinks( true );
     labelDeveLoperMail->setAlignment( Qt::AlignCenter );    
     labelDeveLoperMail->show();
-    
-    QLabel* labelLanguageUrl = new QLabel( TabWidgetAboutFrame );
-    labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
-    labelLanguageUrl->setGeometry( rightSide, 10, labelWidth, 22 );
-    labelLanguageUrl->setOpenExternalLinks( true );
-    labelLanguageUrl->setAlignment( Qt::AlignCenter );    
-    labelLanguageUrl->show();
-    
+   
     QLabel* labelSourcecodeUrl = new QLabel( TabWidgetAboutFrame );
     labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreen'>" + tr( "Sourcecode" ) + "</a>" );
-    labelSourcecodeUrl->setGeometry( rightSide, 30, labelWidth, 22 );
+    labelSourcecodeUrl->setGeometry( rightSide, 10, labelWidth, 22 );
     labelSourcecodeUrl->setOpenExternalLinks( true );
     labelSourcecodeUrl->setAlignment( Qt::AlignCenter );    
     labelSourcecodeUrl->show();
     
-    QLabel* labelOpensuseBetaUrl = new QLabel( TabWidgetAboutFrame );
-    labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Beta openSUSE" ) + "</a>" );
-    labelOpensuseBetaUrl->setGeometry( rightSide, 50, labelWidth, 22 );
-    labelOpensuseBetaUrl->setOpenExternalLinks( true );
-    labelOpensuseBetaUrl->setAlignment( Qt::AlignCenter );    
-    labelOpensuseBetaUrl->show();
+    QLabel* labelLanguageUrl = new QLabel( TabWidgetAboutFrame );
+    labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
+    labelLanguageUrl->setGeometry( rightSide, 30, labelWidth, 22 );
+    labelLanguageUrl->setOpenExternalLinks( true );
+    labelLanguageUrl->setAlignment( Qt::AlignCenter );    
+    labelLanguageUrl->show();
+
+    QLabel* labelMailinglisteMail = new QLabel( TabWidgetAboutFrame );
+    labelMailinglisteMail->setText( mailingliste );
+    labelMailinglisteMail->setGeometry( rightSide, 50, labelWidth, 22 );
+    labelMailinglisteMail->setOpenExternalLinks( true );
+    labelMailinglisteMail->setAlignment( Qt::AlignCenter );    
+    labelMailinglisteMail->show();
 
     QLabel * labelDonateUrl = new QLabel( TabWidgetAboutFrame );
     labelDonateUrl->setText( "<a href='http://www.kohaupt-online.de/hp/spende.html'>" + tr( "Donate" ) + "</a>" );
@@ -1133,7 +1133,6 @@ void screencast::saveSettings()
   myregionselection->saveSettings();
 
   settings.beginGroup( "Webcam" );
-    settings.setValue( "Show", webcamCheckBox->checkState() );
     settings.setValue( "Mirrored", mirrorCheckBox->checkState() );
     settings.setValue( "Rotate", rotateDial->value() );
     settings.setValue( "Top", radioButtonTopMiddle->isChecked() );

@@ -235,10 +235,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Beta openSUSE</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Donate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -288,6 +284,10 @@
     </message>
     <message>
         <source>All Displays</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Developer Homepage</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

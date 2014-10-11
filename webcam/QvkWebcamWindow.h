@@ -36,7 +36,6 @@ public:
 
 private:
     bool border;
-    //QAction * actionBorder;
 
     
 public slots:
@@ -50,7 +49,6 @@ private slots:
     void setBorder();
     void setVisibleOverFullscreen();
     void closeMenue();
-    //void setValueBorder( bool value );
 
     
 protected:
