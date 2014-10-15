@@ -233,10 +233,6 @@
         <translation>Frames</translation>
     </message>
     <message>
-        <source>Beta openSUSE</source>
-        <translation>Beta openSUSE</translation>
-    </message>
-    <message>
         <source>Donate</source>
         <translation>Donar</translation>
     </message>
@@ -287,6 +283,10 @@
     <message>
         <source>All Displays</source>
         <translation>Toles pantalles</translation>
+    </message>
+    <message>
+        <source>Developer Homepage</source>
+        <translation>Páxina web del desendolcador</translation>
     </message>
 </context>
 </TS>

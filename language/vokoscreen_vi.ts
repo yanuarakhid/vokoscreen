@@ -233,10 +233,6 @@
         <translation>Khung ảnh</translation>
     </message>
     <message>
-        <source>Beta openSUSE</source>
-        <translation>Bản thử nghiệm openSUSE</translation>
-    </message>
-    <message>
         <source>Donate</source>
         <translation>Ủng hộ tài chính</translation>
     </message>
@@ -286,6 +282,10 @@
     </message>
     <message>
         <source>All Displays</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Developer Homepage</source>
         <translation type="unfinished"/>
     </message>
 </context>

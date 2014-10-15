@@ -233,10 +233,6 @@
         <translation>Frames</translation>
     </message>
     <message>
-        <source>Beta openSUSE</source>
-        <translation>Beta OpenSuse</translation>
-    </message>
-    <message>
         <source>Donate</source>
         <translation>Spende</translation>
     </message>
@@ -287,6 +283,10 @@
     <message>
         <source>All Displays</source>
         <translation>Alle Bildschirme</translation>
+    </message>
+    <message>
+        <source>Developer Homepage</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>
