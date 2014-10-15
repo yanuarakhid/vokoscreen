@@ -1716,7 +1716,17 @@ void screencast::play()
 {
   if ( MagnifierCheckBox->isChecked() )
 	MagnifierCheckBox->click();
- 
+  
+  if ( VideoplayerComboBox->count() == 0 )
+  {
+    QDialog *newDialog = new QDialog;
+    newDialog->setModal( true );
+    Ui_NoPlayerDialog myUiDialog;
+    myUiDialog.setupUi( newDialog );
+    newDialog->show();
+    return;
+  }
+  
   QVariant aa = VideoplayerComboBox->itemData( VideoplayerComboBox->currentIndex() ); // get userdata from ComboBox
   QString player = aa.toString();
   player = player.replace( "\n", "" ); 

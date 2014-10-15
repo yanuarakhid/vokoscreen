@@ -42,7 +42,7 @@ void QvkMagnifier::getDialogMagnifier( QWidget *parent )
   newDialog = new QDialog;
   newDialog->setModal( true );
 
-  Ui_Dialog myUiDialog;
+  Ui_MagnifierDialog myUiDialog;
   myUiDialog.setupUi( newDialog );
   newDialog->show();  
 

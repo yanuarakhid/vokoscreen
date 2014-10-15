@@ -35,7 +35,7 @@
 #include <QDesktopWidget>
 #include <QDial>
 
-#include <QvkSettings.h>
+#include "QvkSettings.h"
 #include "regionselection.h"
 #include "QvkMagnifier.h"
 #include "QvkWebcamController.h"
@@ -45,6 +45,8 @@
 #include "QvkWinInfo.h"
 #include "QvkCredits.h"
 #include "QvkVersion.h"
+
+#include "ui_QvkNoPlayerDialog.h"
 
 #include <QxtGlobalShortcut> 
 #include <QTest>
