@@ -23,6 +23,17 @@
     </message>
 </context>
 <context>
+    <name>Dialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Please install a videoplayer</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>

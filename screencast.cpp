@@ -607,8 +607,8 @@ screencast::screencast()
     statusBar->setFont( qfont );
     
     qDebug() << "[vokoscreen]" << "---Begin search Videoplayer---";
-    QStringList playerList = QStringList()  << "kaffeine"
-                                            << "vlc"
+    QStringList playerList = QStringList()  //<< "kaffeine"
+                                            //<< "vlc"
                                             << "gnome-mplayer"
                                             << "totem"
                                             << "pia"

@@ -23,6 +23,17 @@
     </message>
 </context>
 <context>
+    <name>Dialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+    <message>
+        <source>Please install a videoplayer</source>
+        <translation>Bitte einen Videoplayer installieren</translation>
+    </message>
+</context>
+<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -286,7 +297,7 @@
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Entwickler homepage</translation>
     </message>
 </context>
 </TS>
