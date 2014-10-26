@@ -26,9 +26,6 @@ screencast::screencast()
  
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
     
-    QString mailingliste = "<a href ='mailto:vokoscreen@googlegroups.com?subject=vokoscreen ";
-    mailingliste = mailingliste.append( vkSettings.getVersion() ).append( "'" ).append( ">" + tr( "Mailinglist" ) + "</a>" );
-    
     email = "<a href ='mailto:tux@kohaupt-online.de?subject=vokoscreen ";
     email = email.append( vkSettings.getVersion() ).append( "'" ).append( ">" + tr( "Support" ) + "</a>" );
 
@@ -427,13 +424,6 @@ screencast::screencast()
     labelLanguageUrl->setOpenExternalLinks( true );
     labelLanguageUrl->setAlignment( Qt::AlignCenter );    
     labelLanguageUrl->show();
-
-    QLabel* labelMailinglisteMail = new QLabel( TabWidgetAboutFrame );
-    labelMailinglisteMail->setText( mailingliste );
-    labelMailinglisteMail->setGeometry( rightSide, 50, labelWidth, 22 );
-    labelMailinglisteMail->setOpenExternalLinks( true );
-    labelMailinglisteMail->setAlignment( Qt::AlignCenter );    
-    labelMailinglisteMail->show();
 
     QLabel * labelDonateUrl = new QLabel( TabWidgetAboutFrame );
     labelDonateUrl->setText( "<a href='http://www.kohaupt-online.de/hp/spende.html'>" + tr( "Donate" ) + "</a>" );
