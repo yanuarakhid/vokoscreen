@@ -56,7 +56,7 @@ void QvkSettings::readAll()
     
     settings.beginGroup( "Videooptions" );
       Frames = settings.value( "Frames", 25 ).toInt();
-      VideoCodec = settings.value( "Videocodec", "mpeg4" ).toString();
+      VideoCodec = settings.value( "Videocodec", "libx264" ).toString();
       AudioCodec = settings.value( "Audiocodec", "libmp3lame" ).toString();
       VideoContainer = settings.value( "Format", "mkv" ).toString();
       HideMouse = settings.value( "HideMouse").toUInt();

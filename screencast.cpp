@@ -203,8 +203,8 @@ screencast::screencast()
     VideocodecComboBox = new QComboBox( TabWidgetVideoOptionFrame );
     VideocodecComboBox->setGeometry( 100, 40, 100, 25 );
     VideocodecComboBox->show();
-    VideocodecComboBox->addItem( "mpeg4" );
     VideocodecComboBox->addItem( "libx264" );
+    VideocodecComboBox->addItem( "mpeg4" );
     connect( VideocodecComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
     
     QLabel *VideoContainerLabel = new QLabel(TabWidgetVideoOptionFrame );
@@ -1297,7 +1297,7 @@ void screencast::searchExternalPrograms()
  */
 void screencast::setVideocodecStandardComboBox()
 {
-  VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( "mpeg4", Qt::MatchExactly ) );
+  VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( "libx264", Qt::MatchExactly ) );
   VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( "mkv", Qt::MatchExactly ) );
 }
 
