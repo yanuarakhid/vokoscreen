@@ -15,21 +15,10 @@
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Urządzenie</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>Dialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Please install a videoplayer</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -49,6 +38,17 @@
     </message>
     <message>
         <source>Cancel</source>
+        <translation>Anuluj</translation>
+    </message>
+</context>
+<context>
+    <name>NoPlayerDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Please install a videoplayer</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -90,7 +90,7 @@
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Urządzenie</translation>
     </message>
     <message>
         <source>Used by</source>
@@ -285,7 +285,7 @@
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>Odbicie lustrzane</translation>
     </message>
     <message>
         <source>Display</source>
@@ -297,7 +297,7 @@
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Strona programisty</translation>
     </message>
 </context>
 </TS>

@@ -46,10 +46,6 @@
 <context>
     <name>NoPlayerDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Please install a videoplayer</source>
         <translation type="unfinished"></translation>
     </message>
@@ -62,6 +58,21 @@
     </message>
     <message>
         <source>Select one or more files</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QvkWebcam</name>
+    <message>
+        <source>Noborder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Border</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

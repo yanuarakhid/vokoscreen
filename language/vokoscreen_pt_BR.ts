@@ -23,17 +23,6 @@
     </message>
 </context>
 <context>
-    <name>Dialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -50,6 +39,17 @@
     <message>
         <source>Cancel</source>
         <translation>Cancelar</translation>
+    </message>
+</context>
+<context>
+    <name>NoPlayerDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Please install a videoplayer</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -121,7 +121,7 @@
     </message>
     <message>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation>Áudio</translation>
     </message>
     <message>
         <source>Alsa</source>
@@ -153,7 +153,7 @@
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Vokoscreen minimizado quando iniciar gravação</translation>
+        <translation>Minimizar o Vokoscreen ao iniciar a gravação</translation>
     </message>
     <message>
         <source>Start</source>
@@ -165,7 +165,7 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation>pausa</translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Play</source>
@@ -213,7 +213,7 @@
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecione um mais dispositivos</translation>
+        <translation>Selecione um ou mais dispositivos</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
@@ -261,7 +261,7 @@
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostra no systray</translation>
+        <translation>Mostrar na área de notificação</translation>
     </message>
     <message>
         <source>New version available</source>
@@ -281,7 +281,7 @@
     </message>
     <message>
         <source>Select webcam</source>
-        <translation>Selecione webcam</translation>
+        <translation>Selecione a webcam</translation>
     </message>
     <message>
         <source>Mirrored</source>
@@ -297,7 +297,7 @@
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Página Web do desenvolvedor</translation>
     </message>
 </context>
 </TS>
