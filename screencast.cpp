@@ -128,6 +128,13 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "---End search Screen---";
     qDebug();
     
+    // Give the Display :0 or :1 etc.
+    qDebug() << "[vokoscreen]" << "---Begin Environment---";
+    DISPLAY = qgetenv( "DISPLAY" );
+    qDebug() << "[vokoscreen] runs on DISPLAY" << DISPLAY;
+    qDebug() << "[vokoscreen]" << "---End Environment---";
+    qDebug();
+    
     // Tab 2 Audio options ****************************************
     TabWidgetAudioFrame = new QFrame( this );
     TabWidgetAudioFrame->setGeometry( 120, 0, 300, 290 );
@@ -2668,7 +2675,7 @@ void screencast::record()
                + "-f x11grab" + " "
                + framerate + " "
                + "-video_size" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
-               + "-i :0.0+" + deltaX + "," + deltaY
+               + "-i " + DISPLAY + ".0+" + deltaX + "," + deltaY
                + noMouse() + " "
                + "-dcodec copy" + " "
                + myAlsa() + " "

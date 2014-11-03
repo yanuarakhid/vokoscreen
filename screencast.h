@@ -191,6 +191,8 @@ private slots:
 #endif
     
 private:
+    QString DISPLAY;
+    
     QTabWidget *tabWidget;
   
     QPushButton *recordButton;
