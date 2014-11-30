@@ -2533,6 +2533,7 @@ void screencast::record()
   
   if ( WindowRadioButton->isChecked() and ( firststartWininfo == false) )
   {
+      qDebug() << "[vokoscreen]" << "recording window";
       setRecordWidth( vkWinInfo->width() );
       setRecordHeight( vkWinInfo->height() );
       QDesktopWidget *desk = QApplication::desktop();
@@ -2564,7 +2565,7 @@ void screencast::record()
   if( FullScreenRadioButton->isChecked() )
   {
       int screen = ScreenComboBox->itemData( ScreenComboBox->currentIndex() ).toInt();
-      qDebug() << "[vokoscreen]" << "Report: recording fullscreen: " << screen;
+      qDebug() << "[vokoscreen]" << "recording fullscreen: " << screen;
 
       int fullScreenWidth = 0;
       int fullScreenHeight = 0;
@@ -2597,6 +2598,8 @@ void screencast::record()
 
     //Makes the rectangle unmovable and unresizeable (Is enabled yet again when process finished)
     myregionselection->lockFrame( true );
+
+    qDebug() << "[vokoscreen]" << "recording area";
   }
   
   // -report wird erst ab ffmpeg version 0.9 unterstützt

@@ -139,7 +139,8 @@ QString CaptureThread::getNameFromDevice( QString device )
 
 	if ( -1 != v4l2_ioctl( fd,VIDIOC_QUERYCAP, dummy ) )
 	{
-		printf( "\n### v4l2 device info [%s] ###\n", dev_name.toStdString().c_str() );
+		//printf( "[vokoscreen] v4l2 device info [%s]\n", dev_name.toStdString().c_str() );
+		qDebug() << "[vokoscreen] v4l2 device info " << dev_name.toStdString().c_str();
 	} else
 	  {
 		fprintf( stderr, "[vokoscreen] CaptureThread::getNameFromDevice %s: not an video4linux device\n", dev_name.toStdString().c_str() );
@@ -170,7 +171,7 @@ bool CaptureThread::busy( QString device )
 	fd = v4l2_open(dev_name.toStdString().c_str(), O_RDWR | O_NONBLOCK, 0);
 	if ( fd < 0 )
 	{
-          qDebug() << "[vokoscreen] CaptureThread::busy Cannot open device";
+          qDebug() << "[vokoscreen] CaptureThread::busy cannot open device";
           quit();
 	}
 
@@ -221,7 +222,7 @@ int CaptureThread::start( QString device )
 //	fd = v4l2_open( dev_name.toStdString().c_str(), O_RDONLY, 0 );
 
 	if (fd < 0) {
-		qDebug() << "[vokoscreen] CaptureThread::start Cannot open device";
+		qDebug() << "[vokoscreen] CaptureThread::start cannot open device";
 		quit();
 		return 1;
 	}
