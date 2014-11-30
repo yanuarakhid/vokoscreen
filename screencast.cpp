@@ -2520,14 +2520,14 @@ void screencast::record()
    
   if ( MinimizedCheckBox->checkState() == Qt::Checked )
     WindowMinimized();
-  
+/*  
   if ( FullScreenRadioButton->isChecked() )
   {
     QDesktopWidget *desk = QApplication::desktop();
     setRecordWidth( QString::number( desk->screenGeometry().width() ) );
     setRecordHeight( QString::number( desk->screenGeometry().height() ) );
   }
-
+*/
   QString deltaX = "0";
   QString deltaY = "0";
   
