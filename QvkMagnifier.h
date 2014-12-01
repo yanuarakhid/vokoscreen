@@ -23,7 +23,6 @@ Q_OBJECT
 public:
   QvkMagnifier();
   virtual ~QvkMagnifier();
-  QTimer *timer;//********************************************************************************** new  
   
 public slots:
   void getDialogMagnifier( QWidget *parent );

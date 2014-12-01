@@ -186,6 +186,10 @@ private slots:
 
     void showHomepage();
     
+    void myScreenCountChanged ( int newCount );
+    
+    
+    
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
 #endif

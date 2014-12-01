@@ -111,25 +111,10 @@ screencast::screencast()
     
     ScreenComboBox = new QComboBox( frame );
     ScreenComboBox->setGeometry( 160, 15, 200, 21 );
-    //ScreenComboBox->hide();
     QDesktopWidget *desk = QApplication::desktop();
-    qDebug() << "[vokoscreen]" << "---Begin search Screen---";
-    qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
-    qDebug() << "[vokoscreen] Primary screen is: Display" << desk->primaryScreen() + 1;
-    qDebug() << "[vokoscreen] VirtualDesktop:" << desk->isVirtualDesktop();
-    for ( int i = 0; i < desk->screenCount(); i++ )
-    {
-      QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i + 1 ).left() );
-      QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i + 1 ).top() );      
-      QString ScreenGeometryX = QString::number( desk->screenGeometry( i + 1 ).width() );
-      QString ScreenGeometryY = QString::number( desk->screenGeometry( i + 1 ).height() );
-      ScreenComboBox->addItem( tr( "Display" ) + " " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i );
-      qDebug() << "[vokoscreen]" << "Display " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY + "+" + ScreenGeometryX1 + "+" + ScreenGeometryY1;
-    }
-    ScreenComboBox->addItem( tr( "All Displays" ), -1 );    
-    qDebug() << "[vokoscreen]" << "---End search Screen---";
-    qDebug();
-    
+    myScreenCountChanged( desk->screenCount() );
+    connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( myScreenCountChanged(int) ) );
+
     // Give the Display :0 or :1 etc.
     qDebug() << "[vokoscreen]" << "---Begin Environment---";
     DISPLAY = qgetenv( "DISPLAY" );
@@ -791,6 +776,30 @@ screencast::screencast()
 
 screencast::~screencast()
 {
+}
+
+
+void screencast::myScreenCountChanged( int newCount )
+{
+    (void)newCount;
+    ScreenComboBox->clear();
+    QDesktopWidget *desk = QApplication::desktop();
+    qDebug() << "[vokoscreen]" << "---Begin search Screen---";
+    qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
+    qDebug() << "[vokoscreen] Primary screen is: Display" << desk->primaryScreen() + 1;
+    qDebug() << "[vokoscreen] VirtualDesktop:" << desk->isVirtualDesktop();
+    for ( int i = 0; i < desk->screenCount(); i++ )
+    {
+      QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i + 1 ).left() );
+      QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i + 1 ).top() );      
+      QString ScreenGeometryX = QString::number( desk->screenGeometry( i + 1 ).width() );
+      QString ScreenGeometryY = QString::number( desk->screenGeometry( i + 1 ).height() );
+      ScreenComboBox->addItem( tr( "Display" ) + " " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i );
+      qDebug() << "[vokoscreen]" << "Display " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY + "+" + ScreenGeometryX1 + "+" + ScreenGeometryY1;
+    }
+    ScreenComboBox->addItem( tr( "All Displays" ), -1 );    
+    qDebug() << "[vokoscreen]" << "---End search Screen---";
+    qDebug();
 }
 
 
