@@ -116,6 +116,7 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "---Begin search Screen---";
     qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
     qDebug() << "[vokoscreen] Primary screen is: Display" << desk->primaryScreen() + 1;
+    qDebug() << "[vokoscreen] VirtualDesktop:" << desk->isVirtualDesktop();
     for ( int i = 0; i < desk->screenCount(); i++ )
     {
       QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i + 1 ).left() );
