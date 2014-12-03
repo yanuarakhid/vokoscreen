@@ -91,7 +91,20 @@ include(project/project.pri)
 # settings
 include(settings/settings.pri)
 
-CONFIG  += qtestlib
+equals(QT_MAJOR_VERSION, "4") {
+  # Qt4
+  QT += testlib
+  message("")
+  message("[vokoscreen] Makefile > qt4")
+  message("")
+}
 
+equals(QT_MAJOR_VERSION, "5") {
+  # Qt5
+  QT += core gui widgets x11extras network testlib
+  message("")
+  message("[vokoscreen] Makefile > qt5")
+  message("")
+}
 
 
