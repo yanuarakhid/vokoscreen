@@ -67,8 +67,15 @@ QMAKE_CLEAN += $$TARGET */*~
 
 CONFIG += link_pkgconfig 
 
-# QtSingleApplication
-include(QtSingleApplication/qtsingleapplication.pri)
+equals(QT_MAJOR_VERSION, "4") {
+  # QtSingleApplication
+  include(QtSingleApplicationQt4/qtsingleapplication.pri)
+}
+
+equals(QT_MAJOR_VERSION, "5") {
+  # QtSingleApplication
+  include(QtSingleApplicationQt5/qtsingleapplication.pri)
+}
 
 # libqxt
 include(libqxt/libqxt.pri)

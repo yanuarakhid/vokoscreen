@@ -17,8 +17,16 @@
  */
 
 #include "screencast.h"
-//#include <QSplashScreen>
-#include <QtSingleApplication/qtsingleapplication.h>
+
+#ifdef QT4
+  #include <QtSingleApplicationQt4/qtsingleapplication.h>
+#endif
+
+#ifdef QT5
+  #include <QtSingleApplicationQt5/qtsingleapplication.h>
+#endif
+
+
 #include <QDebug>
 #include <QTranslator>
 #include <QLocale>
