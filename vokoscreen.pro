@@ -77,8 +77,15 @@ equals(QT_MAJOR_VERSION, "5") {
   include(QtSingleApplicationQt5/qtsingleapplication.pri)
 }
 
+equals(QT_MAJOR_VERSION, "4") {
 # libqxt
-include(libqxt/libqxt.pri)
+include(libqxtQt4/libqxt.pri)
+}
+
+equals(QT_MAJOR_VERSION, "5") {
+# libqxt
+include(libqxtQt5/libqxt.pri)
+}
 
 # audio
 include(audio/audio.pri)
