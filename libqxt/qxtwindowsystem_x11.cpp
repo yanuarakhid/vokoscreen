@@ -208,6 +208,7 @@ typedef Status (*XScreenSaverQueryInfo)(Display* display, Drawable* drawable, XS
 static XScreenSaverAllocInfo _xScreenSaverAllocInfo = 0;
 static XScreenSaverQueryInfo _xScreenSaverQueryInfo = 0;
 
+
 uint QxtWindowSystem::idleTime()
 {
     static bool xssResolved = false;

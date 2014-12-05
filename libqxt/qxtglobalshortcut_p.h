@@ -51,6 +51,7 @@ public:
     bool unsetShortcut();
 
     static bool error;
+
 #ifndef Q_WS_MAC
     static int ref;
     static QAbstractEventDispatcher::EventFilter prevEventFilter;

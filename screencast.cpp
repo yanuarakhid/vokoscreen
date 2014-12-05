@@ -1345,7 +1345,14 @@ void screencast::setFrameStandardSpinbox()
  */
 void screencast::makeAsoundrc()
 {
+  #ifdef QT4
   QString homeLocation = QDesktopServices::storageLocation( QDesktopServices:: QDesktopServices::HomeLocation );
+  #endif
+  
+  #ifdef QT5
+  QString homeLocation = QStandardPaths::writableLocation( QStandardPaths::HomeLocation );
+  #endif  
+  
   QString asoundrc = homeLocation + "/.asoundrc";
   
   qDebug() << "[vokoscreen]" << "---Begin search PulseAudio Plugin---";
@@ -1377,7 +1384,7 @@ void screencast::makeAsoundrc()
 
 }
 
-
+#ifdef QT4
 void screencast::saveVideoPath()
 {
   QString dir = QFileDialog::getExistingDirectory( this, tr( "Open Directory" ),
@@ -1386,7 +1393,18 @@ void screencast::saveVideoPath()
   if ( dir > "" )
     SaveVideoPathLineEdit->setText( dir );
 }
+#endif
 
+#ifdef QT5
+void screencast::saveVideoPath()
+{
+  QString dir = QFileDialog::getExistingDirectory( this, tr( "Open Directory" ),
+                QStandardPaths::writableLocation( QStandardPaths::HomeLocation ), QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
+
+  if ( dir > "" )
+    SaveVideoPathLineEdit->setText( dir );
+}
+#endif
 
 void screencast::readyReadStandardError()
 {
@@ -2149,15 +2167,30 @@ QString screencast::PathMoviesLocation()
   if ( SaveVideoPathLineEdit->displayText() > "" )
      Path = SaveVideoPathLineEdit->displayText();
   else
-  {
+  { 
+    #ifdef QT4
     if ( QDesktopServices::storageLocation( QDesktopServices::MoviesLocation).isEmpty() )
+    #endif
+    #ifdef QT5
+    if ( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ).isEmpty() )
+    #endif 
     {
+       #ifdef QT4
        Path = QDesktopServices::storageLocation( QDesktopServices::HomeLocation );
+       #endif
+       #ifdef QT5
+       Path = QStandardPaths::writableLocation( QStandardPaths::HomeLocation );
+       #endif
        SaveVideoPathLineEdit->setText(Path);
     }
     else
     {
+      #ifdef QT4
       Path = QDesktopServices::storageLocation( QDesktopServices::MoviesLocation );
+      #endif
+      #ifdef QT5
+      Path = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+      #endif
       SaveVideoPathLineEdit->setText( Path );
     }
   }
@@ -2165,15 +2198,30 @@ QString screencast::PathMoviesLocation()
 }
 
 
+
+
 QString screencast::PathTempLocation()
 {
   // Doppelter ProgName um Eindeutigkeit in tmp zuerreichen
   QString tmpName = vkSettings.getProgName() + "-" + vkSettings.getProgName();
+
+  #ifdef QT4
   QString tempPathProg = QDesktopServices::storageLocation ( QDesktopServices::TempLocation ) + QDir::separator() + tmpName;
+  #endif
+
+  #ifdef QT5
+  QString tempPathProg = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + QDir::separator() + tmpName;
+  #endif
+  
   QDir dirTempPathProg( tempPathProg );
   if ( not dirTempPathProg.exists() )
   {
+      #ifdef QT4
       QString tempPath = QDesktopServices::storageLocation ( QDesktopServices::TempLocation );
+      #endif
+      #ifdef QT5
+      QString tempPath = QStandardPaths::writableLocation( QStandardPaths::TempLocation );
+      #endif      
       QDir dirTempPath( tempPath );
       dirTempPath.mkdir( tmpName );
   }
@@ -2477,7 +2525,7 @@ void screencast::Countdown()
     QFrame * countdownDialog = new QFrame();
     countdownDialog->setGeometry( x, y, Width, Height );
     countdownDialog->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-    if( QX11Info::isCompositingManagerRunning() )
+    //if( QX11Info::isCompositingManagerRunning() ) // *********************************************** vorerst ersatzlos gestrichen **************************************************
        countdownDialog->setAttribute( Qt::WA_TranslucentBackground, true );
     
     countdownDialog->show();

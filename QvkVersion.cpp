@@ -17,10 +17,16 @@ void QvkVersion::doDownload()
 
 bool QvkVersion::saveToDisk( const QString &remoteFilename, QIODevice *data )
 {
+#ifdef QT4
     QFile remoteFile( QDesktopServices::storageLocation ( QDesktopServices::TempLocation ) +
 		      QDir::separator() +
 		      remoteFilename );
-
+#endif
+#ifdef QT5
+    QFile remoteFile( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) +
+		      QDir::separator() +
+		      remoteFilename );
+#endif    
     if ( !remoteFile.open( QIODevice::WriteOnly ) )
     {
         fprintf( stderr, "Could not open %s for writing: %s\n", qPrintable( remoteFilename ), qPrintable( remoteFile.errorString() ) );
@@ -56,10 +62,16 @@ void QvkVersion::downloadFinished( QNetworkReply *reply )
 
 void QvkVersion::readVersionTempFile( QString localVersionFilename )
 {
+#ifdef QT4  
     QSettings settings( QDesktopServices::storageLocation ( QDesktopServices::TempLocation ) + 
                         QDir::separator() +
 			localVersionFilename, QSettings::IniFormat );
-    
+#endif
+#ifdef QT5
+    QSettings settings( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + 
+                        QDir::separator() +
+			localVersionFilename, QSettings::IniFormat );
+#endif
     settings.beginGroup( "Info" );
        setRemoteVersion( settings.value( "Version" ).toString() );
     settings.endGroup();

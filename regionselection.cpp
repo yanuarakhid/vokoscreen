@@ -53,7 +53,7 @@ regionselection::regionselection()
     }
   settings.endGroup();
   
-  if( QX11Info::isCompositingManagerRunning() )
+  //if( QX11Info::isCompositingManagerRunning() ) // ******************************* vorerst ersatzlos gestrichen ********************************************************
     setAttribute( Qt::WA_TranslucentBackground, true );
 
   setMouseTracking( true );
@@ -553,8 +553,13 @@ void regionselection::paintEvent( QPaintEvent *event )
                           height() - ( borderTop + frameWidth / 2 ) - ( borderBottom + frameWidth / 2 ) );
 
     // subtract the record Area
+    #ifdef QT4
     QRegion RegionNew = RegionWidget.subtract( RegionArea );
-
+    #endif
+    #ifdef QT5
+    QRegion RegionNew = RegionWidget.subtracted( RegionArea );
+    #endif
+    
     // Retrieves and merge display-area-size in record Area
     QRegion r1 = RegionNew.united( getPrintSizeRectForMask() );
     
@@ -576,8 +581,12 @@ void regionselection::paintEvent( QPaintEvent *event )
                           height() - ( borderTop + frameWidth / 2 ) - ( borderBottom + frameWidth / 2 ) );
 
     // subtract the record Area
+    #ifdef QT4
     QRegion RegionNew = RegionWidget.subtract( RegionArea );
-
+    #endif
+    #ifdef QT5
+    QRegion RegionNew = RegionWidget.subtracted( RegionArea );
+    #endif
     setMask( RegionNew );
   }
 

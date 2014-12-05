@@ -4,7 +4,7 @@
 QvkCredits::QvkCredits()
 {
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-  if( QX11Info::isCompositingManagerRunning() )
+  //if( QX11Info::isCompositingManagerRunning() ) // ************************************* vorerst Erssatzlos gestrichen *****************************************************
     setAttribute( Qt::WA_TranslucentBackground, true );
 
   resize( 600, 650 );
