@@ -137,7 +137,13 @@ void QvkMail::startMailClientWithSelectedFiles( QStringList fileList )
 
 QString QvkMail::lastMovie()
 {
+#ifdef QT4
   QDir dir( QDesktopServices::storageLocation( QDesktopServices::MoviesLocation ) );
+#endif
+#ifdef QT5
+  QDir dir( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+#endif
+  
   QStringList filters;
   filters << "vokoscreen*";
   QStringList List = dir.entryList( filters, QDir::Files, QDir::Time );
@@ -150,13 +156,23 @@ QString QvkMail::lastMovie()
 
 QStringList QvkMail::selectedMail()
 {
-
+#ifdef QT4
   QString a = QDesktopServices::storageLocation( QDesktopServices::MoviesLocation );
   
   QStringList files = QFileDialog::getOpenFileNames( newDialog,
                                                      tr( "Select one or more files" ),
                                                      QDesktopServices::storageLocation( QDesktopServices::MoviesLocation ) , 
                                                      "*.*" );
+#endif
+
+#ifdef QT5
+  QString a = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+  
+  QStringList files = QFileDialog::getOpenFileNames( newDialog,
+                                                     tr( "Select one or more files" ),
+                                                     QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) , 
+                                                     "*.*" );
+#endif
   
   return files;
 }

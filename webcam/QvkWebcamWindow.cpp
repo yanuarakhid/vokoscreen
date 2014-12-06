@@ -8,7 +8,7 @@ QvkWebcamWindow::QvkWebcamWindow()
   setWindowTitle( "vokoscreen webcam");
   setGeometry( 0, 0, 320, 240 );
 
-  if( QX11Info::isCompositingManagerRunning() )
+  //if( QX11Info::isCompositingManagerRunning() ) // *************************** vorerst Ersatzlos gestrichen ******************************************************
     setAttribute( Qt::WA_TranslucentBackground, true );
   
   webcamLabel = new QLabel( this );
