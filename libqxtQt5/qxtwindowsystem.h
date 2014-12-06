@@ -47,7 +47,7 @@ public:
     static QStringList windowTitles();
     static QRect windowGeometry(WId window);
 
-    static uint idleTime();
+    //static uint idleTime();
 };
 
 #endif // QXTWINDOWSYSTEM_H

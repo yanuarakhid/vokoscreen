@@ -48,7 +48,10 @@
 
 #include "ui_QvkNoPlayerDialog.h"
 
+#ifdef QT4
 #include <QxtGlobalShortcut> 
+#endif
+
 #include <QTest>
 #include <QDateTime>
 
@@ -257,13 +260,15 @@ private:
     QvkMagnifier *magnifier;
     regionselection *myregionselection;
     QvkWebcamController *webcamController;
-    
+
+#ifdef QT4
     QxtGlobalShortcut *shortcutWebcam;
     QxtGlobalShortcut *shortcutMagnifier;
     QxtGlobalShortcut *shortcutPause;
     QxtGlobalShortcut *shortcutStart;
     QxtGlobalShortcut *shortcutStop;
-    
+#endif
+
     QvkWinInfo *vkWinInfo;
     WId moveWindowID;
     

@@ -31,7 +31,6 @@
 
 #include <QLibrary>
 #include <QX11Info>
-#include <QDebug>
 #include <X11/Xutil.h>
 
 static WindowList qxt_getWindows(Atom prop)
@@ -115,8 +114,6 @@ QString QxtWindowSystem::windowTitle(WId window)
     return name;
 }
 
-
-/*
 QRect QxtWindowSystem::windowGeometry(WId window)
 {
     int x, y;
@@ -125,6 +122,7 @@ QRect QxtWindowSystem::windowGeometry(WId window)
     Display* display = QX11Info::display();
     XGetGeometry(display, window, &root, &x, &y, &width, &height, &border, &depth);
     XTranslateCoordinates(display, window, root, x, y, &x, &y, &child);
+
     static Atom net_frame = 0;
     if (!net_frame)
         net_frame = XInternAtom(QX11Info::display(), "_NET_FRAME_EXTENTS", True);
@@ -146,52 +144,8 @@ QRect QxtWindowSystem::windowGeometry(WId window)
         if (data)
             XFree(data);
     }
-
     return rect;
 }
-*/
-
-
-/**
- * Volkers Version 24.02.2014
- * Returns the Windows dimensions and coordinates
- **/
-
-QRect QxtWindowSystem::windowGeometry( WId child)
-{
-    int x, y;
-    Window root;
-    uint w, h, border, depth;
-
-    XGetGeometry( QX11Info::display(), child, &root, &x, &y, &w, &h, &border, &depth );
-
-    Window parent;
-    Window* children;
-    unsigned int nchildren;
-
-    if( XQueryTree( QX11Info::display(), child, &root, &parent, &children, &nchildren ) != 0 )
-    {
-        if( children != NULL )
-        {
-            XFree( children );
-        }
-
-        int newx, newy;
-        Window dummy;
-
-        if( XTranslateCoordinates( QX11Info::display(), parent, QX11Info::appRootWindow(), x, y, &newx, &newy, &dummy ))
-        {
-            x = newx;
-            y = newy;
-        }
-    }
-
-    QRect rect( x, y, w, h );
-
-    return rect;
-}
-
-
 
 typedef struct {
     Window  window;     /* screen saver window - may not exist */
@@ -205,10 +159,9 @@ typedef struct {
 typedef XScreenSaverInfo* (*XScreenSaverAllocInfo)();
 typedef Status (*XScreenSaverQueryInfo)(Display* display, Drawable* drawable, XScreenSaverInfo* info);
 
-static XScreenSaverAllocInfo _xScreenSaverAllocInfo = 0;
-static XScreenSaverQueryInfo _xScreenSaverQueryInfo = 0;
-
-
+//static XScreenSaverAllocInfo _xScreenSaverAllocInfo = 0;
+//static XScreenSaverQueryInfo _xScreenSaverQueryInfo = 0;
+/*
 uint QxtWindowSystem::idleTime()
 {
     static bool xssResolved = false;
@@ -234,3 +187,4 @@ uint QxtWindowSystem::idleTime()
     }
     return idle;
 }
+*/
