@@ -64,7 +64,7 @@ private:
   int formValue;
   //QDialog *dialog;
   QDialog *newDialog;
-  QTimer *timer;//***********************************************
+  QTimer *timer;
 
 };
 
