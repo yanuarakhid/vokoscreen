@@ -22,8 +22,14 @@ QvkMagnifier::QvkMagnifier()
   label->setScaledContents( true );
   label->show();
 
-  QTimer *timer = new QTimer( this );
+  timer = new QTimer( this );
   connect( timer, SIGNAL( timeout() ), this, SLOT( mytimer() ) );
+}
+
+
+void QvkMagnifier::magnifierShow()
+{
+  this->show();
   timer->start( 40 );
 }
 
@@ -32,6 +38,7 @@ void QvkMagnifier::closeEvent( QCloseEvent * event )
 {
   (void)event;
   emit closeMagnifier();
+  timer->stop();
 }
 
 

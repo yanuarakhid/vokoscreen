@@ -1195,7 +1195,7 @@ void screencast::ShortcutMagnifier()
 void screencast::showMagnifier()
 {
   if ( MagnifierCheckBox->isChecked() )
-    magnifier->show();
+    magnifier-> magnifierShow();
   else
     magnifier->close(); 
 }

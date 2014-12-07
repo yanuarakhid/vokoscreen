@@ -26,6 +26,7 @@ public:
   
 public slots:
   void getDialogMagnifier( QWidget *parent );
+  void magnifierShow();
 
   
 private slots:
@@ -62,8 +63,9 @@ private:
   int faktor;
   int formValue;
   //QDialog *dialog;
-  
   QDialog *newDialog;
+  QTimer *timer;//***********************************************
+
 };
 
 
