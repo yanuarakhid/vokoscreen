@@ -1477,7 +1477,8 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       FullScreenRadioButton->setEnabled( false );
       WindowRadioButton->setEnabled( false );
       AreaRadioButton->setEnabled( false );
-      
+      ScreenComboBox->setEnabled( false );
+
       TabWidgetAudioFrame->setEnabled(false);
       TabWidgetMiscellaneousFrame->setEnabled(false);
       TabWidgetVideoOptionFrame->setEnabled( false );
@@ -1499,7 +1500,8 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       FullScreenRadioButton->setEnabled( true );
       WindowRadioButton->setEnabled( true );
       AreaRadioButton->setEnabled( true );
-      
+      ScreenComboBox->setEnabled( true );
+
       TabWidgetAudioFrame->setEnabled(true);
       TabWidgetMiscellaneousFrame->setEnabled(true);
       TabWidgetVideoOptionFrame->setEnabled( true );
@@ -1525,7 +1527,8 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       FullScreenRadioButton->setEnabled( false );
       WindowRadioButton->setEnabled( false );
       AreaRadioButton->setEnabled( false );
-      
+      ScreenComboBox->setEnabled( false );
+
       TabWidgetAudioFrame->setEnabled(false);
       TabWidgetMiscellaneousFrame->setEnabled(false);
       TabWidgetVideoOptionFrame->setEnabled( false );
@@ -1548,6 +1551,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       FullScreenRadioButton->setEnabled( false );
       WindowRadioButton->setEnabled( false );
       AreaRadioButton->setEnabled( false );
+      ScreenComboBox->setEnabled( false );
       
       TabWidgetAudioFrame->setEnabled(false);
       TabWidgetMiscellaneousFrame->setEnabled(false);
@@ -1570,6 +1574,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       FullScreenRadioButton->setEnabled( true );
       WindowRadioButton->setEnabled( true );
       AreaRadioButton->setEnabled( true );
+      ScreenComboBox->setEnabled( true );
       
       TabWidgetAudioFrame->setEnabled(true);
       TabWidgetMiscellaneousFrame->setEnabled(true);
