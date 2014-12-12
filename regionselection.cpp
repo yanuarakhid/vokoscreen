@@ -112,7 +112,7 @@ void regionselection::HandleTopLeft()
   
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, borderTop - radius + penHalf, 2 * radius, 2 * radius );
   int startAngle = 0 * 16;
-  int spanAngle = 270 * 16;
+  int spanAngle = 360 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
 
   // Begin Pfeil zeichnen
@@ -150,7 +150,7 @@ void regionselection::HandleTopMiddle()
   
   QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, borderTop - radius + penHalf, 2 * radius, 2 * radius );
   int startAngle = 0 * 16;
-  int spanAngle = 180 * 16;
+  int spanAngle = 360 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
   painter->setPen( QPen( arrow, 2 ) );
   QPainterPath * painterPath = new QPainterPath();
@@ -184,7 +184,8 @@ void regionselection::HandleTopRight()
 
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, borderTop - radius + penHalf, 2 * radius, 2 * radius );
   int startAngle = 180 * 16;
-  int spanAngle =  -270  * 16;
+  int spanAngle =  -360  * 16;
+  
   painter->drawPie( rectangle, startAngle, spanAngle );
 
   // Begin Pfeil zeichnen
@@ -226,7 +227,7 @@ void regionselection::HandleRightMiddle()
   
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius,  2 * radius, 2 * radius );
   int startAngle = 90 * 16;
-  int spanAngle =  -180  * 16;
+  int spanAngle =  -360  * 16;
   painter->drawPie( rectangle, startAngle, spanAngle ); 
   
    // Begin Pfeil zeichnen
@@ -267,7 +268,7 @@ void regionselection::HandleBottomRight()
   
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
   int startAngle = 90 * 16;
-  int spanAngle =  -270  * 16;
+  int spanAngle =  -360  * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
   
   // Begin Pfeil zeichnen
@@ -310,7 +311,7 @@ void regionselection::HandleBottomMiddle()
 
   QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
   int startAngle = 0 * 16;
-  int spanAngle =  -180  * 16;
+  int spanAngle =  -360  * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
   
   // Begin Pfeil zeichnen
@@ -351,7 +352,7 @@ void regionselection::HandleBottomLeft()
 
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
   int startAngle = 90 * 16;
-  int spanAngle =  270  * 16;
+  int spanAngle =  360  * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
 
   // Begin Pfeil zeichnen
@@ -394,7 +395,7 @@ void regionselection::HandleLeftMiddle()
 
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius, 2 * radius, 2 * radius );
   int startAngle = 90 * 16;
-  int spanAngle =  180  * 16;
+  int spanAngle =  360  * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
   
   // Begin Pfeil zeichnen
@@ -547,11 +548,11 @@ void regionselection::paintEvent( QPaintEvent *event )
     
     QRegion RegionWidget( 0, 0, width(), height() );
     
-    // RecordArea
-    QRegion RegionArea  ( borderLeft + frameWidth / 2,
-                          borderTop + frameWidth / 2,
-                          width() - ( borderLeft + frameWidth / 2 ) - ( borderRight + frameWidth / 2 ),
-                          height() - ( borderTop + frameWidth / 2 ) - ( borderBottom + frameWidth / 2 ) );
+    QRegion RegionArea  ( borderLeft + frameWidth / 2 + radius,
+                          borderTop + frameWidth / 2 + radius,
+                          width() - ( borderLeft + frameWidth / 2 ) - ( borderRight + frameWidth / 2 + 2 * radius ),
+                          height() - ( borderTop + frameWidth / 2 ) - ( borderBottom + frameWidth / 2 + 2 * radius) );
+    
 
     // subtract the record Area
     #ifdef QT4
@@ -734,7 +735,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
   if ( ( event->x() > ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius ) and
        ( event->x() < ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius ) and
        ( event->y() > borderTop - radius ) and
-       ( event->y() < borderTop ) )
+       ( event->y() < borderTop + frameWidth + radius) )
   {
     setCursor( Qt::SizeVerCursor );  
     handleUnderMouse = TopMiddle;
@@ -751,7 +752,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
     return;
   }
   
-  if ( ( event->x() > width() - borderRight ) and
+  if ( ( event->x() > width() - borderRight - frameWidth - radius ) and
        ( event->x() < width() - borderRight + radius ) and
        ( event->y() > ( ( height() - borderTop - borderBottom ) / 2 + borderTop - radius ) ) and
        ( event->y() < ( ( height() - borderTop - borderBottom ) / 2 + borderTop + radius ) ) )
@@ -774,7 +775,7 @@ void regionselection::mouseMoveEvent( QMouseEvent *event )
   if ( ( event->x() > ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius ) and 
        ( event->x() < ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius ) and 
        ( event->y() < height() - borderBottom + radius ) and 
-       ( event->y() > height() - borderBottom ) )
+       ( event->y() > height() - borderBottom - frameWidth  - radius) )
   {
     setCursor( Qt::SizeVerCursor );
     handleUnderMouse = BottomMiddle;

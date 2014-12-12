@@ -4,7 +4,7 @@
 QvkCredits::QvkCredits()
 {
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-  //if( QX11Info::isCompositingManagerRunning() ) // ************************************* vorerst Erssatzlos gestrichen *****************************************************
+  //if( QX11Info::isCompositingManagerRunning() ) // ************************************* vorerst Ersatzlos gestrichen *****************************************************
     setAttribute( Qt::WA_TranslucentBackground, true );
 
   resize( 600, 650 );
@@ -29,12 +29,10 @@ QvkCredits::QvkCredits()
   creditsStringlist.removeFirst();
   creditsStringlist.removeLast();
   creditsStringlist.insert( 0, "Michael Kohaupt (public relations, support)" );
-  //creditsStringlist.insert( 0, "Volker Kohaupt (developer by vokoscreen)" );
 }
 
 QvkCredits::~QvkCredits()
 {
-  
   delete painter;
 }
 
@@ -60,7 +58,6 @@ void QvkCredits::paintEvent( QPaintEvent *event )
     painter->setFont( font );
     painter->drawPixmap( 0, 0, pixmap );
 
-//    painter->drawText( x - 1 * deltaX, y + 1 * deltaY, creditsStringlist.value( 0 ) );
     painter->drawText( 230, 70, "Volker Kohaupt" );
     painter->drawText( 230, 90, "Developer of vokoscreen" );
     
@@ -106,8 +103,6 @@ void QvkCredits::mousePressEvent ( QMouseEvent * event )
  */
 void QvkCredits::closeEvent( QCloseEvent * event )
 {
-  //qDebug() << "Begin void QvkCredits::closeEvent( QCloseEvent * event ) *****************************";
   (void)event;
   emit closeCredits();
-  //qDebug() << "End   void QvkCredits::closeEvent( QCloseEvent * event ) *****************************";
 }
