@@ -552,7 +552,6 @@ void regionselection::paintEvent( QPaintEvent *event )
                           borderTop + frameWidth / 2 + radius,
                           width() - ( borderLeft + frameWidth / 2 ) - ( borderRight + frameWidth / 2 + 2 * radius ),
                           height() - ( borderTop + frameWidth / 2 ) - ( borderBottom + frameWidth / 2 + 2 * radius) );
-    
 
     // subtract the record Area
     #ifdef QT4
@@ -841,11 +840,11 @@ void regionselection::moveTopLeft( QMouseEvent *event )
   
   // Maximale Größe begrenzen
 //  if ( mouseGlobalY - currentMouseLocalY < 0 )
-  if ( mouseGlobalY - currentMouseLocalY < radius * -1 ) // Neu ****************************************************************************
+  if ( mouseGlobalY - currentMouseLocalY < radius * -1 - frameWidth/2 )
     mouseGlobalY = widgetY + currentMouseLocalY;
   
   //if ( mouseGlobalX - currentMouseLocalX < 0 )
-  if ( mouseGlobalX - currentMouseLocalX < radius * -1 ) // Neu ****************************************************************************
+  if ( mouseGlobalX - currentMouseLocalX < radius * -1 - frameWidth/2 )
     mouseGlobalX = widgetX + currentMouseLocalX;
   
   // Neue Geometry des Dialogfenster setzen
@@ -875,7 +874,7 @@ void regionselection::moveTopMiddle( QMouseEvent *event )
   
   // Maximale Größe begrenzen
 //  if ( mouseGlobalY - currentMouseLocalY < 0 )
-  if ( mouseGlobalY - currentMouseLocalY < radius * -1 ) // Neu *****************************************************************************************************
+  if ( mouseGlobalY - currentMouseLocalY < radius * -1 - frameWidth/2 )
     mouseGlobalY = widgetY + currentMouseLocalY;
   
   // Neue Geometry des HauptWidget setzen
@@ -907,12 +906,12 @@ void regionselection::moveTopRight( QMouseEvent *event )
   
   // Maximale Größe begrenzen
   //if ( mouseGlobalY - currentMouseLocalY < 0 )
-  if ( mouseGlobalY - currentMouseLocalY < radius * -1 ) // Neu ***************************************************************************
+  if ( mouseGlobalY - currentMouseLocalY < radius * -1 - frameWidth/2 )
     mouseGlobalY = widgetY + currentMouseLocalY;
   
   QDesktopWidget *desk = QApplication::desktop();
   // if ( mouseGlobalX + currentMouseRightLocalX > desk->width() )
-  if ( mouseGlobalX + currentMouseRightLocalX > desk->width() - radius * -1) // neu *****************************************************
+  if ( mouseGlobalX + currentMouseRightLocalX > desk->width() - radius * -1 + frameWidth/2 )
     mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
   
   // Neue Geometry des Fenster setzen
@@ -941,7 +940,7 @@ void regionselection::moveRightMiddle( QMouseEvent *event )
   // Maximale größe begrenzen
   QDesktopWidget *desk = QApplication::desktop();
   //if ( mouseGlobalX + currentMouseRightLocalX > desk->width() )
-  if ( mouseGlobalX + currentMouseRightLocalX > desk->width() - radius * -1) // Neu **************************************************************
+  if ( mouseGlobalX + currentMouseRightLocalX > desk->width() - radius * -1 + frameWidth/2)
     mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
   
   this->setGeometry( widgetX,
@@ -973,11 +972,11 @@ void regionselection::moveBottomRight( QMouseEvent *event )
   // Maximale größe begrenzen
   QDesktopWidget *desk = QApplication::desktop();
   //if ( mouseGlobalX + currentMouseRightLocalX > desk->width() )
-  if ( mouseGlobalX + currentMouseRightLocalX > desk->width() - radius * -1)// Neu **************************************************************
+  if ( mouseGlobalX + currentMouseRightLocalX > desk->width() - radius * -1 + frameWidth/2 )
     mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
   
   //if ( mouseGlobalY + currentMouseRightLocalY > desk->height() )
-  if ( mouseGlobalY + currentMouseRightLocalY > desk->height() - radius * -1)// Neu ****************************************************************
+  if ( mouseGlobalY + currentMouseRightLocalY > desk->height() - radius * -1 + frameWidth/2 )
     mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
   
   this->setGeometry( widgetX,
@@ -1006,7 +1005,7 @@ void regionselection::moveBottomMiddle( QMouseEvent *event )
   QDesktopWidget *desk = QApplication::desktop();
 
   //if ( mouseGlobalY + currentMouseRightLocalY > desk->height() )
-  if ( mouseGlobalY + currentMouseRightLocalY > desk->height() - radius * -1 ) // Neu *************************************************************
+  if ( mouseGlobalY + currentMouseRightLocalY > desk->height() - radius * -1 + frameWidth/2)
     mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
 
   this->setGeometry( widgetX,
@@ -1037,12 +1036,12 @@ void regionselection::moveBottomLeft( QMouseEvent *event )
 
   // Maximale Größe des Widget begrenzen
   //if ( mouseGlobalX - currentMouseLocalX < 0 )  
-  if ( mouseGlobalX - currentMouseLocalX < radius * -1) // Neu ******************************************************************************
+  if ( mouseGlobalX - currentMouseLocalX < radius * -1 - frameWidth/2 )
     mouseGlobalX = widgetX + currentMouseLocalX;
 
   QDesktopWidget *desk = QApplication::desktop();
   //if ( mouseGlobalY + currentMouseRightLocalY > desk->height() )
-  if ( mouseGlobalY + currentMouseRightLocalY > desk->height() - radius * -1 ) // Neu ********************************************************
+  if ( mouseGlobalY + currentMouseRightLocalY > desk->height() - radius * -1 + frameWidth/2 )
     mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
   
   this->setGeometry( mouseGlobalX - currentMouseLocalX,
@@ -1069,7 +1068,7 @@ void regionselection::moveLeftMiddle( QMouseEvent *event )
   
   // Maximale Größe des Widget begrenzen
   //if ( mouseGlobalX - currentMouseLocalX < 0 )  
-  if ( mouseGlobalX - currentMouseLocalX < radius * -1) // Neu *********************************************************
+  if ( mouseGlobalX - currentMouseLocalX < radius * -1 - frameWidth/2)
     mouseGlobalX = widgetX + currentMouseLocalX;
   
   // Neue Geometry des Dialogfenster setzen
@@ -1098,22 +1097,22 @@ void regionselection::moveMiddle( QMouseEvent *event )
     // Das Verschieben begrenzen
     // Top
     //if ( mouseGlobalY - currentMouseLocalY < 0 )
-    if ( mouseGlobalY - currentMouseLocalY < radius * -1 ) // Neu *************************************************************
+    if ( mouseGlobalY - currentMouseLocalY < radius * -1 - frameWidth/2 )
       mouseGlobalY = widgetY + currentMouseLocalY;
 
     // Right
     //if ( mouseGlobalX + currentMouseRightLocalX > desk->width() )
-    if ( mouseGlobalX + currentMouseRightLocalX > desk->width() - radius * -1 ) // Neu ************************************************
+    if ( mouseGlobalX + currentMouseRightLocalX > desk->width() - radius * -1 + frameWidth/2 )
       mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
   
     // Bottom
     //if ( mouseGlobalY + currentMouseRightLocalY > desk->height() )
-    if ( mouseGlobalY + currentMouseRightLocalY > desk->height() - radius * -1 ) // Neu *********************************************************
+    if ( mouseGlobalY + currentMouseRightLocalY > desk->height() - radius * -1 + frameWidth/2 )
       mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
     
     // Left
     //if ( mouseGlobalX - currentMouseLocalX < 0 )  
-    if ( mouseGlobalX - currentMouseLocalX < radius * -1 ) // Neu **********************************************************
+    if ( mouseGlobalX - currentMouseLocalX < radius * -1 - frameWidth/2 )
       mouseGlobalX = widgetX + currentMouseLocalX;
   }
   
