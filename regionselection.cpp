@@ -19,10 +19,9 @@
 #include "regionselection.h" 
 #include <QSettings>
 
-using namespace std;
+#include <QTest>
 
-// Double Buffering
-//http://books.google.de/books?id=T373zcyFfvoC&pg=PA168&lpg=PA168&dq=qt+double+buffering&source=bl&ots=Wavv6fM_7D&sig=eOilngWo3WQzrrRPcoP4oOycWbE&hl=de&sa=X&ei=_hgAUoKNIcjwsgaiiIHgCw&ved=0CDEQ6AEwAA#v=onepage&q=qt%20double%20buffering&f=false
+using namespace std;
 
 /**
  * int x : 
@@ -1096,22 +1095,18 @@ void regionselection::moveMiddle( QMouseEvent *event )
   {
     // Das Verschieben begrenzen
     // Top
-    //if ( mouseGlobalY - currentMouseLocalY < 0 )
     if ( mouseGlobalY - currentMouseLocalY < radius * -1 - frameWidth/2 )
       mouseGlobalY = widgetY + currentMouseLocalY;
 
     // Right
-    //if ( mouseGlobalX + currentMouseRightLocalX > desk->width() )
     if ( mouseGlobalX + currentMouseRightLocalX > desk->width() - radius * -1 + frameWidth/2 )
       mouseGlobalX = widgetX + widgetWidth - currentMouseRightLocalX;
   
     // Bottom
-    //if ( mouseGlobalY + currentMouseRightLocalY > desk->height() )
     if ( mouseGlobalY + currentMouseRightLocalY > desk->height() - radius * -1 + frameWidth/2 )
       mouseGlobalY = widgetY + widgetHeight - currentMouseRightLocalY;
     
     // Left
-    //if ( mouseGlobalX - currentMouseLocalX < 0 )  
     if ( mouseGlobalX - currentMouseLocalX < radius * -1 - frameWidth/2 )
       mouseGlobalX = widgetX + currentMouseLocalX;
   }
@@ -1156,4 +1151,76 @@ void regionselection::mouseReleaseEvent( QMouseEvent * event )
   (void)event;
   handlePressed = NoHandle;
   event->accept();  
+}
+
+
+void regionselection::mouseDoubleClickEvent( QMouseEvent * event )
+{
+  (void)event;
+  QDesktopWidget *desk = QApplication::desktop();
+  
+  if ( handleUnderMouse == TopLeft )
+  {
+    setGeometry( 0 - radius - frameWidth / 2,
+		 0 - radius - frameWidth / 2,
+		 geometry().x() + geometry().width() + radius + frameWidth / 2,
+		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
+  }
+  
+  if ( handleUnderMouse == TopMiddle )
+  {
+    setGeometry( geometry().x(),
+		 0 - radius - frameWidth / 2,
+		 geometry().width(),
+		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
+  }
+
+  if ( handleUnderMouse == TopRight )
+  {
+    setGeometry( geometry().x(),
+		 0 - radius - frameWidth / 2,
+		 desk->width() - geometry().x() + radius + frameWidth / 2,
+		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
+  }
+    
+  if ( handleUnderMouse == RightMiddle )
+  {
+    setGeometry( geometry().x(),
+                 geometry().y(),
+		 desk->width() - geometry().x() + radius + frameWidth / 2,
+		 geometry().height() );
+  }
+    
+  if ( handleUnderMouse == BottomRight )
+  {
+    setGeometry( geometry().x(),
+                 geometry().y(),
+		 desk->width() - geometry().x() + radius + frameWidth / 2,
+		 desk->height() - geometry().y() + radius + frameWidth / 2 );
+  }
+  
+  if ( handleUnderMouse == BottomMiddle )
+  {
+    setGeometry( geometry().x(),
+                 geometry().y(),
+ 		 geometry().width(),
+		 desk->height() - geometry().y() + radius + frameWidth / 2 );
+  }
+  
+  if ( handleUnderMouse == BottomLeft )
+  {
+    setGeometry( 0 - radius - frameWidth / 2,
+                 geometry().y(),
+		 geometry().x() + geometry().width() + radius + frameWidth / 2,
+		 desk->height() - geometry().y() + radius + frameWidth / 2 );
+  }
+ 
+  if ( handleUnderMouse == Middle )
+  {
+    setGeometry( 0 - radius - frameWidth / 2,
+                 0 - radius - frameWidth / 2,
+		 desk->width() + 2 * radius + frameWidth,
+		 desk->height() + 2 * radius + frameWidth );
+  }
+  
 }
