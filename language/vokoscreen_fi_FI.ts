@@ -1,312 +1,314 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fi_FI" version="2.0">
 <context>
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"></translation>
+        <translation>Laite on varattu</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuntematon</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Laite</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttäjä</translation>
     </message>
 </context>
 <context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähetä viimeisin video sähköpostilla</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähetä sähköpostilla yksi tai useampi valittu video</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähetä</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Peru</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Ole hyvä ja asenna videotoistin</translation>
     </message>
 </context>
 <context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation type="unfinished"></translation>
+        <translation>Liitteenä on video</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse yksi tai useampi tiedosto</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcam</name>
     <message>
         <source>Noborder</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei kehystä</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>Kehykset</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Sulje</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>Kehykset</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Sulje</translation>
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä kokoruutuisen päällä</translation>
     </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"></translation>
+        <translation>Laite on varattu</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Laite</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttäjä</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuntematon</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Koko näyttö</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikkuna</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Alue</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
+        <translation>Suurennus</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Ääni</translation>
     </message>
     <message>
         <source>Alsa</source>
-        <translation type="unfinished"></translation>
+        <translation>Alsa</translation>
     </message>
     <message>
         <source>Pulse</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulse</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Oletus</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation type="unfinished"></translation>
+        <translation>Koodekki</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Älä tallenna hiiren osoitinta</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation type="unfinished"></translation>
+        <translation>Videon polku</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Toistin</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation type="unfinished"></translation>
+        <translation>Pienennä Vokoscreen, kun tallennus alkaa</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Aloita</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Lopeta</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Tauko</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Toista</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähetä</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation type="unfinished"></translation>
+        <translation>Tallennusaika</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation type="unfinished"></translation>
+        <translation>Koko kilotavuina</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"></translation>
+        <translation>Tallennettavan ruudun koko</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Tallennusmuoto</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuvanopeus asetuksissa</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa kansio</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähtölaskenta</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Toista viimeisin video</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähetä video</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse yksi tai useampi laite</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"></translation>
+        <translation>Todellinen kuvanopeus</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"></translation>
+        <translation>Mene</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Kotisivu</translation>
+    </message>
+    <message>
+        <source>Mailinglist</source>
+        <translation>Sähköpostilista</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuki</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"></translation>
+        <translation>Kehittäjä</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruutuja</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Lahjoita</translation>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Tallentamiseen käytettävä ohjelma</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Käännökset</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähdekoodi</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä ilmoitusalueella</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusi versio saatavilla</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Videokoodekki</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Audiokoodekki</translation>
     </message>
     <message>
         <source>Webcam</source>
-        <translation type="unfinished"></translation>
+        <translation>Webbikamera</translation>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse webbikamera</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"></translation>
+        <translation>Peilattu</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Näyttö</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaikki näytöt</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Kehittäjän kotisivu</translation>
     </message>
 </context>
 </TS>
