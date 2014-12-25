@@ -19,10 +19,6 @@
 #include "regionselection.h" 
 #include <QSettings>
 
-#include <QTest>
-
-using namespace std;
-
 /**
  * int x : 
  * int y :
