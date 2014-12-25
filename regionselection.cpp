@@ -1210,7 +1210,15 @@ void regionselection::mouseDoubleClickEvent( QMouseEvent * event )
 		 geometry().x() + geometry().width() + radius + frameWidth / 2,
 		 desk->height() - geometry().y() + radius + frameWidth / 2 );
   }
- 
+
+  if ( handleUnderMouse == LeftMiddle )
+  {
+    setGeometry( 0 - radius - frameWidth / 2,
+                 geometry().y(),
+		 geometry().x() + geometry().width() + radius + frameWidth / 2,
+		 geometry().height() );
+  }
+  
   if ( handleUnderMouse == Middle )
   {
     setGeometry( 0 - radius - frameWidth / 2,
@@ -1218,5 +1226,4 @@ void regionselection::mouseDoubleClickEvent( QMouseEvent * event )
 		 desk->width() + 2 * radius + frameWidth,
 		 desk->height() + 2 * radius + frameWidth );
   }
-  
 }
