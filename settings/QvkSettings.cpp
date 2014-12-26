@@ -77,12 +77,12 @@ void QvkSettings::readAll()
     settings.endGroup();
 
     settings.beginGroup( "Webcam" );
-	webcamX = settings.value( "X", 0 ).toUInt();
-	webcamY = settings.value( "Y", 0 ).toUInt();
+	webcamX = settings.value( "X", 400 ).toUInt();
+	webcamY = settings.value( "Y", 400 ).toUInt();
 	webcamWidth = settings.value( "Width", 320 ).toUInt();
 	webcamHeight = settings.value( "Height", 240 ).toUInt();
 	webcamMirrored = settings.value( "Mirrored", false ).toBool();
-	webcamBorder = settings.value( "Border" ).toBool();
+	webcamBorder = settings.value( "Border", true ).toBool();
     settings.endGroup();
 }
 
