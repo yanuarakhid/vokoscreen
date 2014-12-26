@@ -1,9 +1,16 @@
 #include "QvkWebcamWindow.h" 
 
+
+//Wenn webcamfenster mit der Maus verändert wird Haken setzen
+
+
 using namespace std;
 
 QvkWebcamWindow::QvkWebcamWindow()
 {
+  vkSettings.readAll();
+  setGeometry( vkSettings.getWebcamX(), vkSettings.getWebcamY(), vkSettings.getWebcamWidth(), vkSettings.getWebcamHeight() );
+
   setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
   setWindowTitle( "vokoscreen webcam");
 
@@ -18,22 +25,23 @@ QvkWebcamWindow::QvkWebcamWindow()
   
   action160x120 = new QAction( "160 x 120", this );
   action160x120->setCheckable( true );
-  action160x120->setChecked( false );
   connect( action160x120, SIGNAL( triggered() ), this, SLOT( set160x120() ) );
    
   action320x240 = new QAction( "320 x 240", this );
   action320x240->setCheckable( true );
-  action320x240->setChecked( true );
   connect( action320x240, SIGNAL( triggered() ), this, SLOT( set320x240() ) );
 
   action640x480 = new QAction( "640 x 480", this );
   action640x480->setCheckable( true );
-  action640x480->setChecked( false );
   connect( action640x480, SIGNAL( triggered() ), this, SLOT( set640x480() ) );
+
+  actionUserDefined = new QAction( "User-defined", this );
+  actionUserDefined->setCheckable( true );
+  connect( actionUserDefined, SIGNAL( triggered() ), this, SLOT( setActionUserDefined() ) );
 
   actionBorder = new QAction( tr ( "Border" ), this );
   actionBorder->setCheckable( true );
-  actionBorder->setChecked( true );
+  actionBorder->setChecked( true );  
   connect( actionBorder, SIGNAL( triggered() ), this, SLOT( setBorder() ) );
 
   actionVisibleOverFullscreen = new QAction( tr ( "Show over fullscreen" ), this );
@@ -42,7 +50,22 @@ QvkWebcamWindow::QvkWebcamWindow()
   connect( actionVisibleOverFullscreen, SIGNAL( triggered() ), this, SLOT( setVisibleOverFullscreen() ) );
 
   actionClose = new QAction( tr ( "Close" ), this );
-  connect( actionClose, SIGNAL( triggered() ), this, SLOT( closeMenue() ) ); 
+  connect( actionClose, SIGNAL( triggered() ), this, SLOT( closeMenue() ) );
+  
+  if ( ( vkSettings.getWebcamWidth() == 160 ) and ( vkSettings.getWebcamHeight() == 120 ) )
+  {
+    set160x120();
+  }
+  else if ( ( vkSettings.getWebcamWidth() == 320 ) and ( vkSettings.getWebcamHeight() == 240 ) )
+       {
+         set320x240();
+       }else if ( ( vkSettings.getWebcamWidth() == 640 ) and ( vkSettings.getWebcamHeight() == 480 ) )
+             {
+               set640x480();
+             }else
+              {
+                setActionUserDefined();
+              }
 }
 
 
@@ -98,6 +121,7 @@ void QvkWebcamWindow::contextMenuEvent( QContextMenuEvent *event )
      menu.addAction( action160x120 );
      menu.addAction( action320x240 );
      menu.addAction( action640x480 );
+     menu.addAction( actionUserDefined );
      menu.addSeparator();
      menu.addAction( actionBorder );
      menu.addAction( actionVisibleOverFullscreen );
@@ -121,6 +145,7 @@ void QvkWebcamWindow::set160x120()
   action160x120->setChecked( true );
   action320x240->setChecked( false );
   action640x480->setChecked( false );
+  actionUserDefined->setChecked( false );
 }
 
 
@@ -130,7 +155,7 @@ void QvkWebcamWindow::set320x240()
   action160x120->setChecked( false );
   action320x240->setChecked( true );
   action640x480->setChecked( false );
-  
+  actionUserDefined->setChecked( false );
 }
 
 
@@ -140,6 +165,16 @@ void QvkWebcamWindow::set640x480()
   action160x120->setChecked( false );
   action320x240->setChecked( false );
   action640x480->setChecked( true );
+  actionUserDefined->setChecked( false );
+}
+
+
+void QvkWebcamWindow::setActionUserDefined()
+{
+  action160x120->setChecked( false );
+  action320x240->setChecked( false );
+  action640x480->setChecked( false );
+  actionUserDefined->setChecked( true );
 }
 
 
@@ -183,4 +218,21 @@ void QvkWebcamWindow::setVisibleOverFullscreen()
 void QvkWebcamWindow::resizeEvent ( QResizeEvent * )
 {
   webcamLabel->setGeometry( 0, 0, this->width(), this->height() );
+
+  if ( ( width() == 160 ) and ( height() == 120 ) )
+  { 
+    return;
+  } 
+  else if ( ( width() == 320 ) and ( height() == 240 ) )
+       { 
+         return;
+       }
+       else if ( ( width() == 640 ) and ( height() == 480 ) )
+            { 
+              return;
+            }
+            else
+            {
+              setActionUserDefined();
+            }
 }
