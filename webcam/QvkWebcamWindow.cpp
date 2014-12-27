@@ -1,9 +1,5 @@
 #include "QvkWebcamWindow.h" 
 
-
-//Wenn webcamfenster mit der Maus verändert wird Haken setzen
-
-
 using namespace std;
 
 QvkWebcamWindow::QvkWebcamWindow()
@@ -13,6 +9,7 @@ QvkWebcamWindow::QvkWebcamWindow()
 
   setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
   setWindowTitle( "vokoscreen webcam");
+  setToolTip( tr( "Right click for menu" ) );
 
   //if( QX11Info::isCompositingManagerRunning() ) // QT5 *************************** vorerst Ersatzlos gestrichen ******************************************************
     setAttribute( Qt::WA_TranslucentBackground, true );
@@ -35,7 +32,7 @@ QvkWebcamWindow::QvkWebcamWindow()
   action640x480->setCheckable( true );
   connect( action640x480, SIGNAL( triggered() ), this, SLOT( set640x480() ) );
 
-  actionUserDefined = new QAction( "User-defined", this );
+  actionUserDefined = new QAction( tr( "User-defined" ), this );
   actionUserDefined->setCheckable( true );
   connect( actionUserDefined, SIGNAL( triggered() ), this, SLOT( setActionUserDefined() ) );
 
@@ -146,6 +143,7 @@ void QvkWebcamWindow::set160x120()
   action320x240->setChecked( false );
   action640x480->setChecked( false );
   actionUserDefined->setChecked( false );
+  actionUserDefined->setVisible ( false );
 }
 
 
@@ -156,6 +154,7 @@ void QvkWebcamWindow::set320x240()
   action320x240->setChecked( true );
   action640x480->setChecked( false );
   actionUserDefined->setChecked( false );
+  actionUserDefined->setVisible ( false );
 }
 
 
@@ -166,6 +165,7 @@ void QvkWebcamWindow::set640x480()
   action320x240->setChecked( false );
   action640x480->setChecked( true );
   actionUserDefined->setChecked( false );
+  actionUserDefined->setVisible ( false );
 }
 
 
@@ -175,6 +175,7 @@ void QvkWebcamWindow::setActionUserDefined()
   action320x240->setChecked( false );
   action640x480->setChecked( false );
   actionUserDefined->setChecked( true );
+  actionUserDefined->setVisible ( true );
 }
 
 
