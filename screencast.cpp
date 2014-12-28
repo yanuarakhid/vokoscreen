@@ -779,7 +779,7 @@ screencast::~screencast()
 {
 }
 
-#ifdef QT4
+
 void screencast::myScreenCountChanged( int newCount )
 {
     (void)newCount;
@@ -787,49 +787,21 @@ void screencast::myScreenCountChanged( int newCount )
     QDesktopWidget *desk = QApplication::desktop();
     qDebug() << "[vokoscreen]" << "---Begin search Screen---";
     qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
-    qDebug() << "[vokoscreen] Primary screen is: Display" << desk->primaryScreen() + 1;
+    qDebug() << "[vokoscreen] Primary screen is: Display" << desk->primaryScreen()+1;
     qDebug() << "[vokoscreen] VirtualDesktop:" << desk->isVirtualDesktop();
-    for ( int i = 0; i < desk->screenCount(); i++ )
+    for ( int i = 1; i < desk->screenCount()+1; i++ )
     {
-      QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i + 1 ).left() );
-      QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i + 1 ).top() );      
-      QString ScreenGeometryX = QString::number( desk->screenGeometry( i + 1 ).width() );
-      QString ScreenGeometryY = QString::number( desk->screenGeometry( i + 1 ).height() );
-      ScreenComboBox->addItem( tr( "Display" ) + " " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i );
-      qDebug() << "[vokoscreen]" << "Display " + QString::number( i + 1 ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY + "+" + ScreenGeometryX1 + "+" + ScreenGeometryY1;
+      QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i-1 ).left() );
+      QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i-1 ).top() );      
+      QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).width() );
+      QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).height() );
+      ScreenComboBox->addItem( tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i-1 );
+      qDebug() << "[vokoscreen]" << "Display " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY;
     }
     ScreenComboBox->addItem( tr( "All Displays" ), -1 );    
     qDebug() << "[vokoscreen]" << "---End search Screen---";
     qDebug();
 }
-#endif
-
-
-#ifdef QT5
-void screencast::myScreenCountChanged( int newCount )
-{
-    (void)newCount;
-    ScreenComboBox->clear();
-    QDesktopWidget *desk = new QDesktopWidget();
-    qDebug() << "[vokoscreen]" << "---Begin search Screen---";
-    qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
-    qDebug() << "[vokoscreen] Primary screen is: Display" << desk->primaryScreen() + 1;
-    qDebug() << "[vokoscreen] VirtualDesktop:" << desk->isVirtualDesktop();
-    for ( int i = 0; i < desk->screenCount(); i++ )
-    {
-      QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i ).left() );
-      QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i ).top() );      
-      QString ScreenGeometryX = QString::number( desk->screenGeometry( i ).width() );
-      QString ScreenGeometryY = QString::number( desk->screenGeometry( i ).height() );
-      ScreenComboBox->addItem( tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i );
-      qDebug() << "[vokoscreen]" << "Display " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY + "+" + ScreenGeometryX1 + "+" + ScreenGeometryY1;
-    }
-    ScreenComboBox->addItem( tr( "All Displays" ), -1 );    
-    qDebug() << "[vokoscreen]" << "---End search Screen---";
-    qDebug();
-}
-#endif
-
 
 
 // Only for testing no funktion
@@ -2663,40 +2635,10 @@ void screencast::record()
       firststartWininfo = true;
   }
 
-#ifdef QT4  
   if( FullScreenRadioButton->isChecked() )
   {
       int screen = ScreenComboBox->itemData( ScreenComboBox->currentIndex() ).toInt();
-      qDebug() << "[vokoscreen]" << "recording fullscreen: " << screen;
-
-      int fullScreenWidth = 0;
-      int fullScreenHeight = 0;
-
-      QDesktopWidget *desk = QApplication::desktop();
-      for ( int i = 0; i < desk->screenCount(); i++ )
-      {
-          // skip if we are recording a specific screen and this isn't it.
-          if( screen != -1 && screen != i ) continue;
-          // set the offset if we are recording a specific screen.
-          if( screen != -1 )
-          {
-              deltaX = QString::number( desk->screenGeometry( i + 1 ).left() );
-              deltaY = QString::number( desk->screenGeometry( i + 1 ).top() );
-          }
-          fullScreenWidth += desk->screenGeometry( i + 1 ).width();
-          fullScreenHeight = std::max( fullScreenHeight, desk->screenGeometry( i + 1 ).height() );
-      }
-
-      setRecordWidth( QString::number( fullScreenWidth ) );
-      setRecordHeight( QString::number( fullScreenHeight) );
-  }  
-#endif
-
-#ifdef QT5
-  if( FullScreenRadioButton->isChecked() )
-  {
-      int screen = ScreenComboBox->itemData( ScreenComboBox->currentIndex() ).toInt();
-      qDebug() << "[vokoscreen]" << "recording fullscreen: " << screen;
+      qDebug() << "[vokoscreen]" << "recording fullscreen Display: " << screen;
 
       int fullScreenWidth = 0;
       int fullScreenHeight = 0;
@@ -2719,7 +2661,6 @@ void screencast::record()
       setRecordWidth( QString::number( fullScreenWidth ) );
       setRecordHeight( QString::number( fullScreenHeight) );
   }  
-#endif
 
   if ( AreaRadioButton->isChecked() )
   {
