@@ -41,7 +41,8 @@ private slots:
   void webcamChangedEvent( QStringList deviceList );
   void webcamAddedEvent( QStringList deviceList, QStringList addedDevices );
   void webcamRemovedEvent( QStringList deviceList, QString removedDevice );
-  void setWebcamOnOff( bool value );
+  void setWebcamOnOff( int value );
+  
   void setNewImage( QImage image );
   void setMirrorOnOff( bool value );
   void rotateDialclicked();

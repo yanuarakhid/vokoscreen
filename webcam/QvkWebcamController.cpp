@@ -7,7 +7,7 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   
   checkBox = myCheckBox;
   checkBox->setEnabled( false );
-  connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( setWebcamOnOff( bool ) ) );
+  connect( checkBox, SIGNAL( stateChanged( int ) ), this, SLOT( setWebcamOnOff( int ) ) );
   
   rotateFrame = myRotateFrame;
   
@@ -126,9 +126,10 @@ void QvkWebcamController::setMirrorOnOff( bool value )
 /*
  * Wird ausgelößt wenn checkbox getätigt wird
  */
-void QvkWebcamController::setWebcamOnOff( bool value )
+//void QvkWebcamController::setWebcamOnOff( bool value )
+void QvkWebcamController::setWebcamOnOff( int value )
 {
-  if ( value == false )
+  if ( value == Qt::Unchecked )
   {
     captureThread->stop();
     webcamWindow->close();
@@ -166,7 +167,7 @@ void QvkWebcamController::setWebcamOnOff( bool value )
     return;
   }
   
-  if ( value == true )
+  if ( value == Qt::Checked )
   {
     comboBox->setEnabled( false );
     mirrorCheckBox->setEnabled( true );
