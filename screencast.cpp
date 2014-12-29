@@ -114,6 +114,7 @@ screencast::screencast()
     QDesktopWidget *desk = QApplication::desktop();
     myScreenCountChanged( desk->screenCount() );
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( myScreenCountChanged(int) ) );
+    connect( desk, SIGNAL( resized(int) ), SLOT( myScreenCountChanged(int) ) );
 
     // Give the Display :0 or :1 etc.
     qDebug() << "[vokoscreen]" << "---Begin Environment---";
@@ -2609,21 +2610,21 @@ void screencast::record()
       qDebug() << "[vokoscreen]" << "recording window";
       setRecordWidth( vkWinInfo->width() );
       setRecordHeight( vkWinInfo->height() );
-      QDesktopWidget *desk = QApplication::desktop();
+/*      QDesktopWidget *desk = QApplication::desktop();
       if ( getRecordWidth().toInt() >= desk->screenGeometry().width() )
       {
         deltaX = "0";
         setRecordWidth( QString::number( desk->screenGeometry().width() ) );
       }
-      else
+      else*/
         deltaX = QString::number( vkWinInfo->x().toUInt() );
 
-      if ( getRecordHeight().toUInt() >= QString::number( desk->screenGeometry().height() ).toUInt() )
+/*      if ( getRecordHeight().toUInt() >= QString::number( desk->screenGeometry().height() ).toUInt() )
       {
         deltaY = "0";
         setRecordHeight( QString::number( desk->screenGeometry().height() ) );
       }
-      else
+      else*/
 	deltaY = QString::number( vkWinInfo->y().toUInt() );
 
       moveWindowID = vkWinInfo->getWinID();
