@@ -890,32 +890,43 @@ void screencast::send()
 }
 
 
-void screencast::clickedRecordButtonScreenSize()
-{
-  if ( FullScreenRadioButton->isChecked() )
-    statusbarLabelScreenSize->setText( "F:" + getRecordWidth() + "x" + getRecordHeight() );
-  
-  if ( WindowRadioButton->isChecked() )
-    statusbarLabelScreenSize->setText( "W:" + getRecordWidth() + "x" + getRecordHeight() );
-  
-  if ( AreaRadioButton->isChecked() )
-    statusbarLabelScreenSize->setText( "A:" + getRecordWidth() + "x" + getRecordHeight() );
-}
-
-
 /**
  * Statusbar
  */
 void screencast::clickedScreenSize()
 {
   if ( FullScreenRadioButton->isChecked() )
-    statusbarLabelScreenSize->setText( "F" );
+  {
+    if ( SystemCall->state() == QProcess::Running )
+      statusbarLabelScreenSize->setText( "F:" + getRecordWidth() + "x" + getRecordHeight() );
+    else
+      statusbarLabelScreenSize->setText( "F" );
+    
+    if ( ( SystemCall->state() == QProcess::Running ) or ( PauseButton->isChecked() ) )
+      ScreenComboBox->setEnabled( false );
+    else
+      ScreenComboBox->setEnabled( true );
+  }
   
   if ( WindowRadioButton->isChecked() )
-    statusbarLabelScreenSize->setText( "W" );
+  {
+    if ( SystemCall->state() == QProcess::Running )
+      statusbarLabelScreenSize->setText( "W:" + getRecordWidth() + "x" + getRecordHeight() );
+    else
+      statusbarLabelScreenSize->setText( "W" );
+    
+    ScreenComboBox->setEnabled( false );
+  }
   
   if ( AreaRadioButton->isChecked() )
-    statusbarLabelScreenSize->setText( "A" );
+  {
+    if ( SystemCall->state() == QProcess::Running )
+      statusbarLabelScreenSize->setText( "A:" + getRecordWidth() + "x" + getRecordHeight() );
+    else
+      statusbarLabelScreenSize->setText( "A" );
+    
+    ScreenComboBox->setEnabled( false );
+  }
 }
 
 
@@ -1450,7 +1461,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       FullScreenRadioButton->setEnabled( false );
       WindowRadioButton->setEnabled( false );
       AreaRadioButton->setEnabled( false );
-      ScreenComboBox->setEnabled( false );
+      clickedScreenSize();
 
       TabWidgetAudioFrame->setEnabled(false);
       TabWidgetMiscellaneousFrame->setEnabled(false);
@@ -1473,7 +1484,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       FullScreenRadioButton->setEnabled( true );
       WindowRadioButton->setEnabled( true );
       AreaRadioButton->setEnabled( true );
-      ScreenComboBox->setEnabled( true );
+      clickedScreenSize();
 
       TabWidgetAudioFrame->setEnabled(true);
       TabWidgetMiscellaneousFrame->setEnabled(true);
@@ -1500,8 +1511,8 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       FullScreenRadioButton->setEnabled( false );
       WindowRadioButton->setEnabled( false );
       AreaRadioButton->setEnabled( false );
-      ScreenComboBox->setEnabled( false );
-
+      clickedScreenSize();
+      
       TabWidgetAudioFrame->setEnabled(false);
       TabWidgetMiscellaneousFrame->setEnabled(false);
       TabWidgetVideoOptionFrame->setEnabled( false );
@@ -1524,7 +1535,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       FullScreenRadioButton->setEnabled( false );
       WindowRadioButton->setEnabled( false );
       AreaRadioButton->setEnabled( false );
-      ScreenComboBox->setEnabled( false );
+      clickedScreenSize();
       
       TabWidgetAudioFrame->setEnabled(false);
       TabWidgetMiscellaneousFrame->setEnabled(false);
@@ -1547,7 +1558,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       FullScreenRadioButton->setEnabled( true );
       WindowRadioButton->setEnabled( true );
       AreaRadioButton->setEnabled( true );
-      ScreenComboBox->setEnabled( true );
+      clickedScreenSize()      ;
       
       TabWidgetAudioFrame->setEnabled(true);
       TabWidgetMiscellaneousFrame->setEnabled(true);
@@ -2586,7 +2597,6 @@ void screencast::Countdown()
 
 void screencast::record()
 {
-  
   Countdown();
 #ifdef QT4
   shortcutStart->setEnabled( false );
@@ -2724,8 +2734,6 @@ void screencast::record()
   else
     quality = " -q:v 1 ";
 
-  clickedRecordButtonScreenSize();
-
   ffmpegString = recordApplikation + " "
                + myReport + " "
                + "-f x11grab" + " "
@@ -2835,7 +2843,8 @@ void screencast::Stop()
 #ifdef QT4
   shortcutStart->setEnabled( true );
   shortcutStop->setEnabled( false );
-#endif  
+#endif
+  
   if ( SystemCall->state() == QProcess::Running )
   {
     SystemCall->terminate();

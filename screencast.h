@@ -177,7 +177,6 @@ private slots:
     void clickedAudioPulse( bool checked );
     void valueChangedFrames( int i );
     void clickedScreenSize();
-    void clickedRecordButtonScreenSize();
 
     void setRecordWidth( QString value );
     QString getRecordWidth();
