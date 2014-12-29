@@ -2594,14 +2594,7 @@ void screencast::record()
 #endif   
   if ( MinimizedCheckBox->checkState() == Qt::Checked )
     WindowMinimized();
-/*  
-  if ( FullScreenRadioButton->isChecked() )
-  {
-    QDesktopWidget *desk = QApplication::desktop();
-    setRecordWidth( QString::number( desk->screenGeometry().width() ) );
-    setRecordHeight( QString::number( desk->screenGeometry().height() ) );
-  }
-*/
+
   QString deltaX = "0";
   QString deltaY = "0";
   
@@ -2610,22 +2603,8 @@ void screencast::record()
       qDebug() << "[vokoscreen]" << "recording window";
       setRecordWidth( vkWinInfo->width() );
       setRecordHeight( vkWinInfo->height() );
-/*      QDesktopWidget *desk = QApplication::desktop();
-      if ( getRecordWidth().toInt() >= desk->screenGeometry().width() )
-      {
-        deltaX = "0";
-        setRecordWidth( QString::number( desk->screenGeometry().width() ) );
-      }
-      else*/
-        deltaX = QString::number( vkWinInfo->x().toUInt() );
-
-/*      if ( getRecordHeight().toUInt() >= QString::number( desk->screenGeometry().height() ).toUInt() )
-      {
-        deltaY = "0";
-        setRecordHeight( QString::number( desk->screenGeometry().height() ) );
-      }
-      else*/
-	deltaY = QString::number( vkWinInfo->y().toUInt() );
+      deltaX = QString::number( vkWinInfo->x().toUInt() );
+      deltaY = QString::number( vkWinInfo->y().toUInt() );
 
       moveWindowID = vkWinInfo->getWinID();
       
