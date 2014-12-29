@@ -471,7 +471,7 @@ screencast::screencast()
     PauseButton->setGeometry( 300, 200, 90, 30 );
     PauseButton->setCheckable( true );
     PauseButton->setEnabled( false );
-    if ( needProgram( "mkvmerge" ) )
+    if ( searchProgramm( "mkvmerge" ) )
       PauseButton->show();
     else
       PauseButton->hide();
@@ -497,7 +497,7 @@ screencast::screencast()
     sendPushButton->setText( tr( "Send" ) );
     sendPushButton->setToolTip( tr( "Send Video" ) );
     connect( sendPushButton, SIGNAL( clicked() ), SLOT( send() ) );
-    if ( needProgram( "xdg-email" ) )
+    if ( searchProgramm( "xdg-email" ) )
       sendPushButton->setEnabled( true );
     else
       sendPushButton->setEnabled( false );
@@ -1283,42 +1283,45 @@ void screencast::searchExternalPrograms()
       recordApplikation = "avconv";
       qDebug() << "[vokoscreen] use avconv as ffmpeg-link";
     }
-/*    
-    if ( fileInfo.baseName() == "ffmpeg" )
-    {
-      recordApplikation = "ffmpeg";
-      qDebug() << "[vokoscreen] use ffmpeg as ffmpeg-link";
-    }
-*/    
   }
   else
   {
-    if ( needProgram( "avconv" ) )
+    if ( searchProgramm( "avconv" ) )
     {
       recordApplikation = "avconv";
-      qDebug() << "[vokoscreen]" << "Find avconv" << "Version:" << getAvconvVersion();
+      qDebug() << "[vokoscreen]" << "Search avconv ..... found" << "Version:" << getAvconvVersion();
     }
     else
     {
-      if ( needProgram( "ffmpeg" ) )
+      qDebug() << "[vokoscreen]" << "Search avconv ..... not found";
+      if ( searchProgramm( "ffmpeg" ) )
       {
         recordApplikation = "ffmpeg";
-        qDebug() << "[vokoscreen]" << "Find ffmpeg" << "Version:" << getFfmpegVersion();
+        qDebug() << "[vokoscreen]" << "Search ffmpeg ..... found" << "Version:" << getFfmpegVersion();
+      }
+      else
+      {
+        qDebug() << "[vokoscreen]" << "Search ffmpeg ..... not found";
       }
     }
   }
   
-  if ( needProgram("pactl") )
-     qDebug() << "[vokoscreen]" << "Find pactl Version:" << getPactlVersion();
+  if ( searchProgramm("pactl") )
+     qDebug() << "[vokoscreen]" << "Search pactl  ..... found Version:" << getPactlVersion();
   else
      qDebug() << "[vokoscreen]" << "Error: pactl is not found, this is an PulseAudio-utils tool. Please install pactl";
   
-  if ( needProgram("mkvmerge") )
-     qDebug() << "[vokoscreen]" << "Find mkvmerge Version:" << getMkvmergeVersion();
+  if ( searchProgramm("mkvmerge") )
+     qDebug() << "[vokoscreen]" << "Search mkvmerge ... found Version:" << getMkvmergeVersion();
   else
      qDebug() << "[vokoscreen]" << "Error: mkvmerge is not found, this is an mkvtoolnix tool. Please install mkvmerge";
   
   qDebug() << "[vokoscreen]" << "---End search external tools---";
+  qDebug();
+  
+  qDebug() << "[vokoscreen] ---Begin RecordApplikation---";
+  qDebug() << "[vokoscreen] Used" << recordApplikation;
+  qDebug() << "[vokoscreen] ---End RecordApplikation---";
   qDebug();
 }
 
@@ -1651,7 +1654,7 @@ void screencast::error( QProcess::ProcessError error )
 /**
  * Search program foo in PATH
  */
-bool screencast::needProgram( QString ProgName )
+bool screencast::searchProgramm( QString ProgName )
 {
     bool find = false;
     QString prog;
