@@ -5,8 +5,9 @@ using namespace std;
 QvkWebcamWindow::QvkWebcamWindow()
 {
   vkSettings.readAll();
-  setGeometry( vkSettings.getWebcamX(), vkSettings.getWebcamY(), vkSettings.getWebcamWidth(), vkSettings.getWebcamHeight() );
-
+  move( vkSettings.getWebcamX(), vkSettings.getWebcamY() );
+  resize( vkSettings.getWebcamWidth(), vkSettings.getWebcamHeight() );
+  
   setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
   setWindowTitle( "vokoscreen webcam");
   setToolTip( tr( "Right click for menu" ) );
@@ -138,7 +139,8 @@ void QvkWebcamWindow::closeMenue()
  
 void QvkWebcamWindow::set160x120()
 {
-  setGeometry( x(), y(), 160, 120 );
+  move( x(), y() );
+  resize( 160, 120 );
   action160x120->setChecked( true );
   action320x240->setChecked( false );
   action640x480->setChecked( false );
@@ -149,7 +151,8 @@ void QvkWebcamWindow::set160x120()
 
 void QvkWebcamWindow::set320x240()
 {
-  setGeometry( x(), y(), 320, 240 );
+  move( x(), y() );
+  resize( 320, 240 );
   action160x120->setChecked( false );
   action320x240->setChecked( true );
   action640x480->setChecked( false );
@@ -160,7 +163,8 @@ void QvkWebcamWindow::set320x240()
 
 void QvkWebcamWindow::set640x480()
 {
-  setGeometry( x(), y(), 640, 480 );
+  move( x(), y() );
+  resize( 640, 480 );
   action160x120->setChecked( false );
   action320x240->setChecked( false );
   action640x480->setChecked( true );
