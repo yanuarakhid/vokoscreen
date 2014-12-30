@@ -671,7 +671,8 @@ screencast::screencast()
 
       HideMouseCheckbox->setCheckState( Qt::CheckState( vkSettings.getHideMouse()) );
       
-      setGeometry( vkSettings.getX(), vkSettings.getY(), width(), height() );
+      move( vkSettings.getX(),vkSettings.getY() );
+
       tabWidget->setCurrentIndex( vkSettings.getTab() );
     
     // Statusbar
