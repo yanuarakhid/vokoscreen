@@ -13,7 +13,6 @@
 class QvkWebcamWindow : public QMainWindow
 {
     Q_OBJECT
-
     
 public:
     QvkWebcamWindow();
@@ -25,23 +24,24 @@ public:
     int getValueY();
     int getValueWidth();
     int getValueHeight();
+    bool getOverFullScreen();
 
     QAction *action160x120;
     QAction *action320x240;
     QAction *action640x480;
     QAction *actionUserDefined;
+    QAction * actionBorder;
     QAction *actionVisibleOverFullscreen;
     QAction *actionClose;
     QMenu menu;
 
-    QAction * actionBorder;
 
 private:
     bool border;
+    bool overFullScreen;
     QvkSettings vkSettings;
     
 public slots:
-    void setValueBorder( bool value );
 
     
 private slots:
@@ -52,17 +52,16 @@ private slots:
     void setBorder();
     void setVisibleOverFullscreen();
     void closeMenue();
+    void setValueBorder( bool value );
+    void setOverFullScreen( bool value );
 
-    
 protected:
     void closeEvent( QCloseEvent * event );
     void contextMenuEvent( QContextMenuEvent *event );
     void resizeEvent ( QResizeEvent * );
-
     
 signals:
     void closeWebcamWindow();
-
   
 };
 

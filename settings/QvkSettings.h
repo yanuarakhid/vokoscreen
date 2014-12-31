@@ -61,6 +61,7 @@ public:
   int getWebcamWidth();
   bool getWebcamMirrored();
   bool getWebcamBorder();
+  bool getWebcamOverFullScreen();
   
 public slots:
 
@@ -113,6 +114,7 @@ private:
   int webcamWidth;
   bool webcamMirrored;
   bool webcamBorder;
+  bool webcamOverFullScreen;
 };
 
 #endif

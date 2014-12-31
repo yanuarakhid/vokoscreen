@@ -75,6 +75,7 @@ void QvkWebcamController::saveSettings()
     settings.setValue( "Width", webcamWindow->getValueWidth() );
     settings.setValue( "Height", webcamWindow->getValueHeight() );
     settings.setValue( "Border", webcamWindow->getValueBorder() );
+    settings.setValue( "OverFullScreen", webcamWindow->getOverFullScreen() );
   settings.endGroup();
 }
 
@@ -175,8 +176,8 @@ void QvkWebcamController::setWebcamOnOff( int value )
     webcamWindow->show();
     webcamWindow->currentDevice = "/dev/video" + index;
     captureThread->start( "/dev/video" + index );
-    if ( not vkSettings.getWebcamBorder( ) ) 
-      webcamWindow->actionBorder->trigger();
+//    if ( not vkSettings.getWebcamBorder( ) ) 
+//      webcamWindow->actionBorder->trigger();
   }
 }
 
