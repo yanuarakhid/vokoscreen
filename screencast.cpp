@@ -2822,7 +2822,7 @@ void screencast::startRecord( QString RecordPathName )
       SystemCall->setProcessEnvironment( env );
     }
   }
-  
+/*  
   // Webcam busybug abfangen
   bool webcamRunning = false;
   if ( webcamCheckBox->checkState() == Qt::Checked )
@@ -2830,12 +2830,12 @@ void screencast::startRecord( QString RecordPathName )
     webcamCheckBox->click();
     webcamRunning = true;
   }
-  
+*/  
   SystemCall->start( ffmpegString + RecordPathName );
-
+/*
   if ( webcamRunning == true )
    webcamCheckBox->click();  
-  
+*/  
   // Recordtime Statusbar
   beginTime  = QDateTime::currentDateTime();
 

@@ -7,7 +7,7 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   
   checkBox = myCheckBox;
   checkBox->setEnabled( false );
-  connect( checkBox, SIGNAL( stateChanged( int ) ), this, SLOT( setWebcamOnOff( int ) ) );
+  connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( setWebcamOnOff( bool ) ) );
   
   rotateFrame = myRotateFrame;
   
@@ -109,6 +109,9 @@ void QvkWebcamController::webcamCloseEvent()
 {
   checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
   comboBox->setEnabled( true );
+  mirrorCheckBox->setEnabled( false );
+  rotateFrame->setEnabled( false );
+  
   if ( captureThread->running )
     captureThread->stop();
   
@@ -127,19 +130,15 @@ void QvkWebcamController::setMirrorOnOff( bool value )
 /*
  * Wird ausgelößt wenn checkbox getätigt wird
  */
-//void QvkWebcamController::setWebcamOnOff( bool value )
-void QvkWebcamController::setWebcamOnOff( int value )
+void QvkWebcamController::setWebcamOnOff( bool value )
 {
-  if ( value == Qt::Unchecked )
+  if ( value == false )    
   {
     captureThread->stop();
     webcamWindow->close();
-    comboBox->setEnabled( true );
-    mirrorCheckBox->setEnabled( false );
-    rotateFrame->setEnabled( false );
     return;
   }
- 
+
   QString index = comboBox->currentText().left( 2 ).right( 1 );
   QProcess Process;
   Process.start( "lsof /dev/video" + index );
@@ -164,11 +163,11 @@ void QvkWebcamController::setWebcamOnOff( int value )
     (void) WebcamBusyDialog;
   
     qDebug() << "[vokoscreen] webcam device /dev/video" + index + " " + comboBox->currentText().remove( 0, 4 ) + " is busy by " + usedBy;
-    checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
+    checkBox->setChecked( Qt::Unchecked );
     return;
   }
   
-  if ( value == Qt::Checked )
+  if ( value == true )    
   {
     comboBox->setEnabled( false );
     mirrorCheckBox->setEnabled( true );
@@ -176,8 +175,6 @@ void QvkWebcamController::setWebcamOnOff( int value )
     webcamWindow->show();
     webcamWindow->currentDevice = "/dev/video" + index;
     captureThread->start( "/dev/video" + index );
-//    if ( not vkSettings.getWebcamBorder( ) ) 
-//      webcamWindow->actionBorder->trigger();
   }
 }
 
