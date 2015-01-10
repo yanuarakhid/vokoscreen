@@ -1,305 +1,310 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="id" version="2.0">
 <context>
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"></translation>
+        <translation>Perangkat sedang sibuk</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidak diketahui</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Perangkat</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"></translation>
+        <translation>Digunakan oleh</translation>
     </message>
 </context>
 <context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirim Video terakhir melalui Surat Elektronik</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirim satu atau lebih Video melalui Surat Elektronik</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirim</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Batal</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Silakan pasang sebuah pemutar video</translation>
     </message>
 </context>
 <context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation type="unfinished"></translation>
+        <translation>Anda menemukan Video sebagai lampiran</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih satu atau lebih berkas</translation>
+    </message>
+</context>
+<context>
+    <name>QvkWebcam</name>
+    <message>
+        <source>Noborder</source>
+        <translation>Tidak memiliki batas</translation>
+    </message>
+    <message>
+        <source>Border</source>
+        <translation>Batas</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Tutup</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>Batas</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutup</translation>
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Right click for menu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>User-defined</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilkan dengan layar penuh</translation>
     </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"></translation>
+        <translation>Perangkat sedang sibuk</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Perangkat</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"></translation>
+        <translation>Digunakan oleh</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidak diketahui</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Layar penuh</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Jendela</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Daerah</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
+        <translation>Pembesaran</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Alsa</source>
-        <translation type="unfinished"></translation>
+        <translation>Alsa</translation>
     </message>
     <message>
         <source>Pulse</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulse</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Standar</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodek</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Jangan rekam kursor mouse</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalur video</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Pemutar</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation type="unfinished"></translation>
+        <translation>Vokoscreen diminimalkan saat merekam dimulai</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Mulai</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Berhenti</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Berhenti Sejenak</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Putar</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirim</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation type="unfinished"></translation>
+        <translation>Waktu perekaman</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukuran dalam KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukuran layar perekaman</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Format</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengaturan fps</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Buka Direktori</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Hitung mundur</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Putar Video terakhir</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirim Video</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih satu atau lebih perangkat</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"></translation>
+        <translation>Frame per detik sebenarnya</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"></translation>
+        <translation>Pergi</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Halaman muka</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"></translation>
+        <translation>Dukungan</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengembang</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Bingkai</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Donasi</translation>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Program untuk merekam</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Terjemahan</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"></translation>
+        <translation>Kode sumber</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilkan dalam systray</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"></translation>
+        <translation>Versi baru tersedia</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodekvideo</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodekaudio</translation>
     </message>
     <message>
         <source>Webcam</source>
-        <translation type="unfinished"></translation>
+        <translation>Webcam</translation>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih webcam</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"></translation>
+        <translation>Dicerminkan</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Display</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"></translation>
+        <translation>Semua Display</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Halaman muka Pengembang</translation>
     </message>
 </context>
 </TS>
