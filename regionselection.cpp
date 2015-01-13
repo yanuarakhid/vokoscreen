@@ -19,15 +19,11 @@
 #include "regionselection.h" 
 #include <QSettings>
 
-/**
- * int x : 
- * int y :
- * int width :
- * int height :
- * int framewidth :
- */
 regionselection::regionselection()
 {
+  setAttribute ( Qt::WA_AlwaysShowToolTips );
+  setToolTip( tr( "doubleclick extended to the edge" ) );
+  
   handlePressed = NoHandle;
   handleUnderMouse = NoHandle;
   painter =  new QPainter();

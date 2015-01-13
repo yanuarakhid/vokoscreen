@@ -32,7 +32,8 @@
 
 #include <QDialog>
 
-class regionselection : public QDialog
+//class regionselection : public QDialog
+class regionselection : public QWidget
 { 
 Q_OBJECT
 public:

@@ -379,7 +379,7 @@ screencast::screencast()
     int rightSide = tabWidget->width() / 2;
     
     QLabel* labelOpensuseBetaUrl = new QLabel( TabWidgetAboutFrame );
-    labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Developer Homepage" ) + "</a>" );
+    labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
     labelOpensuseBetaUrl->setGeometry( leftSide, 10, labelWidth, 22 );
     labelOpensuseBetaUrl->setOpenExternalLinks( true );
     labelOpensuseBetaUrl->setAlignment( Qt::AlignCenter );    
