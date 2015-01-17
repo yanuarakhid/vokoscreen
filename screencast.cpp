@@ -89,6 +89,11 @@ screencast::screencast()
     MagnifierCheckBox->setGeometry( QRect( 160, 40, 120, 21 ) );
     MagnifierCheckBox->setToolTip( "CTRL+SHIFT+F9" );
     MagnifierCheckBox->show();
+    connect( MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );
+
+    magnifier = new QvkMagnifier();
+    magnifier->close();
+    connect( magnifier, SIGNAL( closeMagnifier() ), SLOT( uncheckMagnifier() ) );
 
     QPushButton *MagnifierDialogPushButton = new QPushButton( frame );
     MagnifierDialogPushButton->setGeometry( 270, 40, 20, 21 );
@@ -379,7 +384,7 @@ screencast::screencast()
     int rightSide = tabWidget->width() / 2;
     
     QLabel* labelOpensuseBetaUrl = new QLabel( TabWidgetAboutFrame );
-    labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
+    labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Developer Homepage" ) + "</a>" );
     labelOpensuseBetaUrl->setGeometry( leftSide, 10, labelWidth, 22 );
     labelOpensuseBetaUrl->setOpenExternalLinks( true );
     labelOpensuseBetaUrl->setAlignment( Qt::AlignCenter );    
@@ -674,6 +679,9 @@ screencast::screencast()
       move( vkSettings.getX(),vkSettings.getY() );
 
       tabWidget->setCurrentIndex( vkSettings.getTab() );
+      
+      if( Qt::CheckState( vkSettings.getMagnifierOnOff() ) == Qt::Checked )
+        MagnifierCheckBox->click();
     
     // Statusbar
     stateChangedAudio( AudioOnOffCheckbox->checkState() );
@@ -705,12 +713,12 @@ screencast::screencast()
 				      );
        myregionselection->close();
 */    
-    connect( MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );
+/*    connect( MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );
     magnifier = new QvkMagnifier();
     magnifier->close();
 
     connect( magnifier, SIGNAL( closeMagnifier() ), SLOT( uncheckMagnifier() ) );
-    
+*/    
     // Clean vokoscreen temp
     QDir dir( PathTempLocation() );
     QStringList stringList = dir.entryList( QDir::Files, QDir::Time | QDir::Reversed );
@@ -1152,7 +1160,6 @@ void screencast::saveSettings()
     settings.setValue( "Width", myregionselection->getWidth() );
     settings.setValue( "Height", myregionselection->getHeight() );
   settings.endGroup();
-//  myregionselection->saveSettings();
 
   settings.beginGroup( "Webcam" );
     settings.setValue( "Mirrored", mirrorCheckBox->checkState() );
@@ -1163,6 +1170,11 @@ void screencast::saveSettings()
     settings.setValue( "Left", radioButtonLeftMiddle->isChecked() );
   settings.endGroup();
   webcamController->saveSettings();
+  
+  settings.beginGroup( "Magnifier" );
+    settings.setValue( "OnOff", MagnifierCheckBox->checkState());
+  settings.endGroup();
+  
 }
 
 

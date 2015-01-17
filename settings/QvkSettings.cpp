@@ -85,6 +85,10 @@ void QvkSettings::readAll()
 	webcamBorder = settings.value( "Border", true ).toBool();
 	webcamOverFullScreen = settings.value( "OverFullScreen", false ).toBool();
     settings.endGroup();
+    
+    settings.beginGroup( "Magnifier" );
+        magnifierOnOff = settings.value( "OnOff", 0 ).toUInt();
+    settings.endGroup();
 }
 
 QString QvkSettings::getVersion()
@@ -250,4 +254,10 @@ bool QvkSettings::getWebcamBorder()
 bool QvkSettings::getWebcamOverFullScreen()
 {
   return webcamOverFullScreen;
+}
+
+int QvkSettings::getMagnifierOnOff()
+{
+  return magnifierOnOff;
+  
 }

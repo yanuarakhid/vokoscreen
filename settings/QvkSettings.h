@@ -63,6 +63,9 @@ public:
   bool getWebcamBorder();
   bool getWebcamOverFullScreen();
   
+  // Magnifier
+  int getMagnifierOnOff();
+  
 public slots:
 
   
@@ -115,6 +118,9 @@ private:
   bool webcamMirrored;
   bool webcamBorder;
   bool webcamOverFullScreen;
+  
+  // Magnifier
+  int magnifierOnOff;
 };
 
 #endif
