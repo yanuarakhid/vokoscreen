@@ -57,7 +57,7 @@ public slots:
   int getWidth();
   int getXRecordArea();
   int getYRecordArea();
-  void saveSettings();
+  //void saveSettings();
 
 private slots:
   void moveTopLeft     ( QMouseEvent *event );
@@ -119,6 +119,6 @@ private:
   QRect printSizeRectForMask;
   QRect HandleMiddleForMask;
   
-  int Setting_Area_NoShowInTaskBar;
+  // int Setting_Area_NoShowInTaskBar;
 };
 #endif

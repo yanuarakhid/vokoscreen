@@ -1152,7 +1152,7 @@ void screencast::saveSettings()
     settings.setValue( "Width", myregionselection->getWidth() );
     settings.setValue( "Height", myregionselection->getHeight() );
   settings.endGroup();
-  myregionselection->saveSettings();
+//  myregionselection->saveSettings();
 
   settings.beginGroup( "Webcam" );
     settings.setValue( "Mirrored", mirrorCheckBox->checkState() );
