@@ -23,14 +23,16 @@
 #include <QDebug>
 #include <QRegion>
 #include <QCursor>
-#include <QX11Info>
+//#include <QX11Info>
 #include <QPainterPath>
 #include <QMouseEvent>
 #include <QApplication>
 #include <QDesktopWidget>
-#include <QMainWindow>
-
+//#include <QMainWindow>
 #include <QDialog>
+
+#include "QvkSettings.h"
+
 
 //class regionselection : public QDialog
 class regionselection : public QWidget
@@ -118,6 +120,8 @@ private:
   
   QRect printSizeRectForMask;
   QRect HandleMiddleForMask;
+  
+  QvkSettings vkSettings;
   
   // int Setting_Area_NoShowInTaskBar;
 };

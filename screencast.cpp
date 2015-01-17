@@ -697,14 +697,14 @@ screencast::screencast()
     connect( AreaRadioButton,       SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
-       myregionselection = new regionselection();
-       myregionselection->setGeometry ( vkSettings.getAreaX(),
+    myregionselection = new regionselection();
+/*       myregionselection->setGeometry ( vkSettings.getAreaX(),
        				        vkSettings.getAreaY(),
 				        vkSettings.getAreaWidth() + myregionselection->borderLeft + myregionselection->borderRight + myregionselection->frameWidth,
 				        vkSettings.getAreaHeight() + myregionselection->borderTop + myregionselection->borderBottom + myregionselection->frameWidth
 				      );
        myregionselection->close();
-    
+*/    
     connect( MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );
     magnifier = new QvkMagnifier();
     magnifier->close();

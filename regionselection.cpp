@@ -17,10 +17,11 @@
  */
 
 #include "regionselection.h" 
-#include <QSettings>
 
 regionselection::regionselection()
 {
+  vkSettings.readAll();
+  
   setAttribute ( Qt::WA_AlwaysShowToolTips );
   setToolTip( tr( "doubleclick extended to the edge" ) );
   
@@ -66,6 +67,13 @@ regionselection::regionselection()
  
   // Framelock
   lockFrame( false );
+  
+  setGeometry( vkSettings.getAreaX(),
+               vkSettings.getAreaY(),
+               vkSettings.getAreaWidth() + borderLeft + borderRight + frameWidth,
+               vkSettings.getAreaHeight() + borderTop + borderBottom + frameWidth
+             );
+  
 }
 
 
