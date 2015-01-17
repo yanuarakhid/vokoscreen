@@ -640,7 +640,7 @@ void regionselection::handlingFrameLock()
  */
 int regionselection::getX()
 {
-  return this->x(); 
+  return geometry().x(); 
 }
 
 
@@ -649,7 +649,7 @@ int regionselection::getX()
  */
 int regionselection::getY()
 {
-  return  this->y();
+  return  geometry().y();
 }
 
 
@@ -658,7 +658,7 @@ int regionselection::getY()
  */
 int regionselection::getXRecordArea()
 {
-  return this->x() + borderLeft + frameWidth / 2; 
+  return geometry().x() + borderLeft + frameWidth / 2; 
 }
 
 
@@ -667,7 +667,7 @@ int regionselection::getXRecordArea()
  */
 int regionselection::getYRecordArea()
 {
-  return  this->y() + borderTop + frameWidth / 2;
+  return  geometry().y() + borderTop + frameWidth / 2;
 }
 
 
@@ -676,7 +676,7 @@ int regionselection::getYRecordArea()
  */
 int regionselection::getHeight()
 {
-  return this->height() - borderTop - borderBottom - frameWidth; 
+  return height() - borderTop - borderBottom - frameWidth; 
 }
 
 
@@ -685,7 +685,7 @@ int regionselection::getHeight()
  */
 int regionselection::getWidth()
 {
-  return this->width() - borderLeft - borderRight - frameWidth; 
+  return width() - borderLeft - borderRight - frameWidth; 
 }
 
 
