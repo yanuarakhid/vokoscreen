@@ -748,7 +748,7 @@ screencast::screencast()
    connect( SystemTrayIconRed,    SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStop( QSystemTrayIcon::ActivationReason ) ) );
    connect( SystemTrayIconYellow, SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayPause( QSystemTrayIcon::ActivationReason ) ) );
    connect( SystemTrayIconBlue,   SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayGo( QSystemTrayIcon::ActivationReason ) ) ); 
-#ifdef QT4
+//#ifdef QT4
    shortcutWebcam = new QxtGlobalShortcut( this );
    connect( shortcutWebcam, SIGNAL( activated() ), this, SLOT( ShortcutWebcam() ) );
    shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
@@ -769,7 +769,7 @@ screencast::screencast()
    shortcutPause = new QxtGlobalShortcut( this );
    connect( shortcutPause, SIGNAL( activated() ), this, SLOT( ShortcutPause() ) );
    shortcutPause->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
-#endif
+//#endif
 
    QvkAlsaWatcher * myAlsaWatcher = new QvkAlsaWatcher();
    connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( AlsaWatcherEvent( QStringList ) ) );
@@ -1713,9 +1713,9 @@ void screencast::Pause()
     pause = true;
     if ( PauseButton->isChecked() )
     {
-#ifdef QT4
+//#ifdef QT4
       shortcutStop->setEnabled( false );
-#endif
+//#endif
       windowMoveTimer->stop();
       PauseButton->setText( tr ( "Go" ) );
       SystemCall->terminate();
@@ -1733,9 +1733,9 @@ void screencast::Pause()
         return;
       }
       Countdown();
-#ifdef QT4
+//#ifdef QT4
       shortcutStop->setEnabled( true );
-#endif      
+//#endif      
       PauseButton->setText( tr( "Pause" ) );
       startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
     }
@@ -1747,9 +1747,9 @@ void screencast::Pause()
     pause = true;
     if ( PauseButton->isChecked() )
     {
-#ifdef QT4
+//#ifdef QT4
       shortcutStop->setEnabled( false );
-#endif
+//#endif
       windowMoveTimer->stop();
       PauseButton->setText( tr ( "Go" ) );
       SystemCall->terminate();
@@ -1767,9 +1767,9 @@ void screencast::Pause()
         return;
       }
       Countdown();
-#ifdef QT4
+//#ifdef QT4
       shortcutStop->setEnabled( true );
-#endif
+//#endif
       PauseButton->setText( tr( "Pause" ) );
       startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
       windowMoveTimer->start();
@@ -2615,10 +2615,10 @@ void screencast::Countdown()
 void screencast::record()
 {
   Countdown();
-#ifdef QT4
+//#ifdef QT4
   shortcutStart->setEnabled( false );
   shortcutStop->setEnabled( true );
-#endif   
+//#endif   
   if ( MinimizedCheckBox->checkState() == Qt::Checked )
     WindowMinimized();
 
@@ -2857,10 +2857,10 @@ void screencast::startRecord( QString RecordPathName )
 
 void screencast::Stop()
 {
-#ifdef QT4
+//#ifdef QT4
   shortcutStart->setEnabled( true );
   shortcutStop->setEnabled( false );
-#endif
+//#endif
   
   if ( SystemCall->state() == QProcess::Running )
   {
