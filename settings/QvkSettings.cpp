@@ -88,6 +88,7 @@ void QvkSettings::readAll()
     
     settings.beginGroup( "Magnifier" );
         magnifierOnOff = settings.value( "OnOff", 0 ).toUInt();
+	magnifierFormValue = settings.value( "FormValue", 2 ).toUInt();
     settings.endGroup();
 }
 
@@ -256,8 +257,13 @@ bool QvkSettings::getWebcamOverFullScreen()
   return webcamOverFullScreen;
 }
 
+// Magnifier
 int QvkSettings::getMagnifierOnOff()
 {
   return magnifierOnOff;
-  
+}
+
+int QvkSettings::getMagnifierFormValue()
+{
+  return magnifierFormValue; 
 }

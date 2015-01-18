@@ -1173,6 +1173,7 @@ void screencast::saveSettings()
   
   settings.beginGroup( "Magnifier" );
     settings.setValue( "OnOff", MagnifierCheckBox->checkState());
+    settings.setValue( "FormValue", magnifier->getFormValue() );
   settings.endGroup();
   
 }

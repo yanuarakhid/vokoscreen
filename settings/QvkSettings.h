@@ -65,7 +65,8 @@ public:
   
   // Magnifier
   int getMagnifierOnOff();
-  
+  int getMagnifierFormValue();
+
 public slots:
 
   
@@ -121,6 +122,7 @@ private:
   
   // Magnifier
   int magnifierOnOff;
+  int magnifierFormValue;
 };
 
 #endif

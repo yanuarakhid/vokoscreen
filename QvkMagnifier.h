@@ -15,6 +15,7 @@
 
 
 #include "ui_QvkMagnifierDialog.h"
+#include "QvkSettings.h"
 
 
 class QvkMagnifier: public QDialog
@@ -27,7 +28,7 @@ public:
 public slots:
   void getDialogMagnifier( QWidget *parent );
   void magnifierShow();
-
+  int getFormValue();
   
 private slots:
   void closeEvent( QCloseEvent * event );
@@ -44,7 +45,6 @@ private slots:
 
   void closeDialog();
   
-
 protected:  
 
   
@@ -65,7 +65,8 @@ private:
   //QDialog *dialog;
   QDialog *newDialog;
   QTimer *timer;
-
+  QvkSettings vkSettings;
+  
 };
 
 

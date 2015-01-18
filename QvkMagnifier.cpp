@@ -1,18 +1,28 @@
 #include "QvkMagnifier.h"
 
-
 using namespace std;
-
 
 // Lupe Rund, Qadratisch, Oval
 
 QvkMagnifier::QvkMagnifier()
 {
+  vkSettings.readAll();
+  
   faktor = 2;
   label = new QLabel( this );
 
-  Magnifier400x200();
-
+  switch( vkSettings.getMagnifierFormValue()){
+        case 1:  
+	        Magnifier200x200();
+		break;
+        case 2:
+	        Magnifier400x200();
+		break;
+        case 3:
+	        Magnifier600x200();
+		break;
+    }
+    
   resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
   border = 3;
@@ -104,6 +114,11 @@ void QvkMagnifier::Magnifier600x200()
   formValue = 3;
 }
 
+
+int QvkMagnifier::getFormValue()
+{
+  return formValue; 
+}
 
 
 int QvkMagnifier::getDistanceX()
