@@ -17,7 +17,7 @@
  */
 
 #include "screencast.h"  
-
+#include <QSysInfo>
 using namespace std;
 
 screencast::screencast()
@@ -39,9 +39,10 @@ screencast::screencast()
     screencast::setWindowIcon( icon );    
 
     qDebug() << "[vokoscreen]" << "Version:" << vkSettings.getVersion();
-    qDebug() << "[vokoscreen]" << "Qt Version: " << qVersion();
+    qDebug() << "[vokoscreen]" << "Qt version: " << qVersion();
+    qDebug() << "[vokoscreen]" << "Operating system:" << getOsRelease();
     QvkAlsaDevice inBox ;
-    qDebug() << "[vokoscreen]" << "asoundlib Version:" << inBox.getAlsaVersion();
+    qDebug() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
     qDebug() << "[vokoscreen] current icon-theme:" << QIcon::themeName();
     qDebug();
 
@@ -787,6 +788,40 @@ screencast::screencast()
 
 screencast::~screencast()
 {
+}
+
+
+QString screencast::getOsRelease()
+{
+  QString OS;
+  QString ID;
+  QString VersionID;
+  QString content;
+  QFile file("/etc/os-release");
+
+  if ( file.exists() )
+  {
+    file.open(QIODevice::ReadOnly);
+      content = file.readAll().constData();
+      QStringList list = content.split( "\n" );
+      QStringList listID = list.filter( QRegExp( "^ID=" ) );
+      if ( !listID.empty() )
+        ID = listID[0].remove(0, 3).replace("\"", ""  );
+      
+      QStringList listVersionID = list.filter( QRegExp( "^VERSION_ID=" ) );
+      if ( !listVersionID.empty() )
+	VersionID = listVersionID[0].remove( 0, 11 ).replace("\"", ""  );
+    
+    OS = ID + " " + VersionID;
+      
+    file.close();
+  }
+  else
+  {
+    OS = "/etc/os-release not found";
+  }
+ 
+  return OS;
 }
 
 

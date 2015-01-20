@@ -65,6 +65,7 @@ public:
     QString getAvconvVersion();
     QString getMkvmergeVersion();
     QString getPactlVersion();
+    QString getOsRelease();
 
     QString email;
     QString homepage;
