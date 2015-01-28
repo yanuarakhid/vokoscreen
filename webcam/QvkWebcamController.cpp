@@ -56,8 +56,20 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   
   webcamWindow = new QvkWebcamWindow();
   connect( webcamWindow, SIGNAL( closeWebcamWindow() ), SLOT( webcamCloseEvent() ) );
+  connect( webcamWindow, SIGNAL( enterEventWebcamWindow() ), SLOT( enterEventWebcamWindow() ) );
+  connect( webcamWindow, SIGNAL( leaveEventWebcamWindow() ), SLOT( leaveEventWebcamWindow() ) );
+  connect( webcamWindow, SIGNAL( resizeEventWebcamWindow() ), SLOT( resizeEventWebcamWindow() ) );
   
   connect( myWebcamWatcher, SIGNAL( readWebcamNames( QStringList ) ), this, SLOT( readWebcams( QStringList ) ) );
+  
+  
+  mirrorWidget = new QvkWidgetcircle( webcamWindow );
+  mirrorWidget->resize( 30, 30);
+  mirrorWidget->setToolTip( "Gespiegelt" );
+  mirrorWidget->setColor( Qt::blue );
+  mirrorWidget->setVisible ( false );
+  connect( mirrorWidget, SIGNAL( clicked( bool ) ), SLOT( setMirrorOnOff( bool ) ) );
+  
 }
 
 
@@ -264,4 +276,25 @@ void QvkWebcamController::webcamChangedEvent( QStringList deviceList )
     checkBox->setEnabled( true );
     comboBox->setEnabled( true );
   }
+}
+
+void QvkWebcamController::enterEventWebcamWindow()
+{
+   qDebug() << "In";
+   mirrorWidget->setVisible( true );
+}
+
+void QvkWebcamController::leaveEventWebcamWindow()
+{
+  qDebug() << "Out";
+  mirrorWidget->setVisible( false );
+}
+
+void QvkWebcamController::resizeEventWebcamWindow()
+{
+  int count = 1;
+  int x = 0;  
+  int y = webcamWindow->height()/(count+1);
+  mirrorWidget->move( webcamWindow->width()-40, y * ++x );
+
 }

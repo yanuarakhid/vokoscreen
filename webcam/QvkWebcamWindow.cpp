@@ -18,7 +18,7 @@ QvkWebcamWindow::QvkWebcamWindow()
   webcamLabel->setAlignment( Qt::AlignCenter );
   webcamLabel->setScaledContents( true );
   webcamLabel->show();
-  
+ 
   action160x120 = new QAction( "160 x 120", this );
   action160x120->setCheckable( true );
   connect( action160x120, SIGNAL( triggered() ), this, SLOT( set160x120() ) );
@@ -41,13 +41,14 @@ QvkWebcamWindow::QvkWebcamWindow()
 
   actionVisibleOverFullscreen = new QAction( tr ( "Show over fullscreen" ), this );
   actionVisibleOverFullscreen->setCheckable( true );
-  actionVisibleOverFullscreen->setChecked( false );
+  //actionVisibleOverFullscreen->setChecked( false );
   connect( actionVisibleOverFullscreen, SIGNAL( triggered() ), this, SLOT( setVisibleOverFullscreen() ) );
 
   actionClose = new QAction( tr ( "Close" ), this );
   connect( actionClose, SIGNAL( triggered() ), this, SLOT( closeMenue() ) );
-  
+
   setGeometry( vkSettings.getWebcamX(), vkSettings.getWebcamY(), vkSettings.getWebcamWidth(), vkSettings.getWebcamHeight() );
+
   if ( vkSettings.getWebcamBorder() == true )
   {
     setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
@@ -82,6 +83,11 @@ QvkWebcamWindow::QvkWebcamWindow()
     actionVisibleOverFullscreen->setChecked( true );
     setOverFullScreen( true );
     setVisibleOverFullscreen();
+  }
+  else // ************** Neu
+  {
+    actionVisibleOverFullscreen->setChecked( false ); //************************ Neu
+    setOverFullScreen( false ); //******* Neu
   }
 }
 
@@ -244,15 +250,18 @@ void QvkWebcamWindow::setVisibleOverFullscreen()
     setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
     actionBorder->setChecked( true );
     setOverFullScreen( false );
+    setValueBorder( true ); //******************************************** Neu
     activateWindow();
     show();
   }
 }
 
 
-void QvkWebcamWindow::resizeEvent ( QResizeEvent * )
+void QvkWebcamWindow::resizeEvent ( QResizeEvent *)
 {
-  webcamLabel->setGeometry( 0, 0, this->width(), this->height() );
+  emit resizeEventWebcamWindow();
+
+  webcamLabel->setGeometry( 0, 0, width(), height() );
 
   if ( ( width() == 160 ) and ( height() == 120 ) )
   { 
@@ -271,3 +280,14 @@ void QvkWebcamWindow::resizeEvent ( QResizeEvent * )
               setActionUserDefined();
             }
 }
+
+
+void QvkWebcamWindow::enterEvent( QEvent* )
+{
+  emit enterEventWebcamWindow();
+}
+   
+void QvkWebcamWindow::leaveEvent( QEvent* )
+{
+  emit leaveEventWebcamWindow();
+}   

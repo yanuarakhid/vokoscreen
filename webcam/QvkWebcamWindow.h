@@ -8,7 +8,9 @@
 #include <QContextMenuEvent>
 #include <QX11Info>
 #include <QDebug>
-#include <QvkSettings.h>
+
+#include "QvkSettings.h"
+#include "QvkWidgetcircle.h"
 
 class QvkWebcamWindow : public QMainWindow
 {
@@ -59,10 +61,14 @@ protected:
     void closeEvent( QCloseEvent * event );
     void contextMenuEvent( QContextMenuEvent *event );
     void resizeEvent ( QResizeEvent * );
+    void enterEvent( QEvent* );
+    void leaveEvent( QEvent* );
     
 signals:
     void closeWebcamWindow();
-  
+    void enterEventWebcamWindow();
+    void leaveEventWebcamWindow();
+    void resizeEventWebcamWindow();
 };
 
 #endif

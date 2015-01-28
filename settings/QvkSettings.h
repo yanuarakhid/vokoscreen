@@ -55,6 +55,7 @@ public:
   int getAreaHeight();
   
   // webcam
+  int getWebcamOnOff();
   int getWebcamX();
   int getWebcamY();
   int getWebcamHeight();
@@ -112,6 +113,7 @@ private:
   int AreaHeight;
 
   // webcam
+  int webcamOnOff;
   int webcamX;
   int webcamY;
   int webcamHeight;

@@ -677,6 +677,9 @@ screencast::screencast()
 
       HideMouseCheckbox->setCheckState( Qt::CheckState( vkSettings.getHideMouse()) );
       
+      if ( Qt::CheckState( vkSettings.getWebcamOnOff() ) == Qt::Checked )
+        webcamCheckBox->click();
+      
       move( vkSettings.getX(),vkSettings.getY() );
 
       tabWidget->setCurrentIndex( vkSettings.getTab() );
@@ -1197,6 +1200,7 @@ void screencast::saveSettings()
   settings.endGroup();
 
   settings.beginGroup( "Webcam" );
+    settings.setValue( "OnOff", webcamCheckBox->checkState() );
     settings.setValue( "Mirrored", mirrorCheckBox->checkState() );
     settings.setValue( "Rotate", rotateDial->value() );
     settings.setValue( "Top", radioButtonTopMiddle->isChecked() );
