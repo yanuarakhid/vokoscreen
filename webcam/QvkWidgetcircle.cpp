@@ -15,8 +15,14 @@ void QvkWidgetcircle::paintEvent( QPaintEvent *event )
 
   QRegion RegionWidget( 0, 0, width(), height() );
   QRegion RegionPaint( 0, 0, width(), height(), QRegion::Ellipse );
+#ifdef QT4
   QRegion RegionSpace = RegionWidget.subtract( RegionPaint );
   QRegion RegionPaintWidget = RegionWidget.subtract( RegionSpace );
+#endif
+#ifdef QT5
+  QRegion RegionSpace = RegionWidget.subtracted( RegionPaint );
+  QRegion RegionPaintWidget = RegionWidget.subtracted( RegionSpace );
+#endif  
   setMask(RegionPaintWidget);
 
   QPainter painter;;
