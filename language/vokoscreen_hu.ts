@@ -23,17 +23,6 @@
     </message>
 </context>
 <context>
-    <name>Dialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -50,6 +39,13 @@
     <message>
         <source>Cancel</source>
         <translation>Mégse</translation>
+    </message>
+</context>
+<context>
+    <name>NoPlayerDialog</name>
+    <message>
+        <source>Please install a videoplayer</source>
+        <translation>Telepítsen egy videólejátszót</translation>
     </message>
 </context>
 <context>
@@ -76,6 +72,14 @@
     <message>
         <source>Show over fullscreen</source>
         <translation>Teljes képernyő</translation>
+    </message>
+    <message>
+        <source>Right click for menu</source>
+        <translation>Jobb klikk a menühöz</translation>
+    </message>
+    <message>
+        <source>User-defined</source>
+        <translation>Felhasználó által definiált</translation>
     </message>
 </context>
 <context>
@@ -228,10 +232,6 @@
         <translation>Weboldal</translation>
     </message>
     <message>
-        <source>Mailinglist</source>
-        <translation>Levelezőlista</translation>
-    </message>
-    <message>
         <source>Support</source>
         <translation>Támogatás</translation>
     </message>
@@ -297,7 +297,7 @@
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Fejlesztői honlap</translation>
     </message>
 </context>
 </TS>

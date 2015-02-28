@@ -1,303 +1,303 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ar" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ja_JP" version="2.0">
 <context>
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>الجهاز مشغول حاليا</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Name</source>
-        <translation>الاسم</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>مجهول</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Device</source>
-        <translation>الجهاز</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Used by</source>
-        <translation>مستخدمة من طرف</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>أرسل آخر فيديو</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>أرسل ملفات فيديو محددة</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send</source>
-        <translation>أرسل</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>ألغِ</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>الرجاء تنصيب مشغل فيديو</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>سوف تجد الفيديو على شكل رابط</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>اختر ملفاً أو أكثر</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation>حاشية</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close</source>
-        <translation>أغلق</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation>آظهِر في وضع ملء الشاشة</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation>اُنقر باليمين لإظهار القائمة</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>User-defined</source>
-        <translation>معرَّفات المستخدم</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>الجهاز مشغول حاليا</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Name</source>
-        <translation>الاسم</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Device</source>
-        <translation>الجهاز</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Used by</source>
-        <translation>مستخدمة من طرف</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>مجهول</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>شاشة كاملة</translation>
+        <translation>全画面</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>نافذة</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Area</source>
-        <translation>منطقة</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>المكبّرة</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Audio</source>
-        <translation>الصوت</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Alsa</source>
-        <translation>Alsa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pulse</source>
-        <translation>Pulse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Default</source>
-        <translation>افتراضي</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Codec</source>
-        <translation>الكوديك</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>لا تسجل مؤشر الفأرة</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>مسار الفيديو</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Player</source>
-        <translation>المشغّل</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>تصغير البرنامج عند بدء التسجيل</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Start</source>
-        <translation>اِبدأ</translation>
+        <translation>開始</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>أوقِف</translation>
+        <translation>停止</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>ألبِث</translation>
+        <translation>一時停止</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>شغّل</translation>
+        <translation>再生</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>أرسل</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>مدة التسجيل</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>الحجم بالكيلوبايت</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>أبعاد نافذة التسجيل</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Format</source>
-        <translation>الصيغة</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>إعدادات fps</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>افتح الدليل</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>عدّ تنازلي</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>شغّل آخر ملف فيديو</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>أرسل الفيديو</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>اِختر جهازاً أو أكثر</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>عدد المشاهد \ ثا الحالية</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Go</source>
-        <translation>واصِل</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>صفحة البرنامج</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Support</source>
-        <translation>الدعم</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Developer</source>
-        <translation>المطور</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Frames</source>
-        <translation>المشاهد</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Donate</source>
-        <translation>تبرع</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation>برنامج التسجيل</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Translations</source>
-        <translation>الترجمات</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>الملف المصدري</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>أظهِر البرنامج في مساحة التبليغ</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>New version available</source>
-        <translation>نسخة جديدة متوفرة</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>ترميز الفيديو</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>ترميز الصوت</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Webcam</source>
-        <translation>كاميرا الوب</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation>اِختر كاميرا</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation>معكوس</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Display</source>
-        <translation>الشاشة</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>All Displays</source>
-        <translation>جميع الشاشات</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation>صفحة المطوّر</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

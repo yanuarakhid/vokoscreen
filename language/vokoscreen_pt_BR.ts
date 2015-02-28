@@ -44,12 +44,8 @@
 <context>
     <name>NoPlayerDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
+        <translation>Instale o reprodutor de vídeo</translation>
     </message>
 </context>
 <context>
@@ -76,6 +72,14 @@
     <message>
         <source>Show over fullscreen</source>
         <translation>Mostrar em tela cheia</translation>
+    </message>
+    <message>
+        <source>Right click for menu</source>
+        <translation>Clique com o botão direito para abrir o menu</translation>
+    </message>
+    <message>
+        <source>User-defined</source>
+        <translation>Definido pelo usuário</translation>
     </message>
 </context>
 <context>
@@ -226,10 +230,6 @@
     <message>
         <source>Homepage</source>
         <translation>Homepage</translation>
-    </message>
-    <message>
-        <source>Mailinglist</source>
-        <translation>Lista de Email</translation>
     </message>
     <message>
         <source>Support</source>

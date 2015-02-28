@@ -23,17 +23,6 @@
     </message>
 </context>
 <context>
-    <name>Dialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -50,6 +39,13 @@
     <message>
         <source>Cancel</source>
         <translation>Отмена</translation>
+    </message>
+</context>
+<context>
+    <name>NoPlayerDialog</name>
+    <message>
+        <source>Please install a videoplayer</source>
+        <translation>Пожалуйста, установите медиапроигрыватель</translation>
     </message>
 </context>
 <context>
@@ -76,6 +72,14 @@
     <message>
         <source>Show over fullscreen</source>
         <translation>Показать в полноэкранном режиме</translation>
+    </message>
+    <message>
+        <source>Right click for menu</source>
+        <translation>Щелчок правой для вызова меню</translation>
+    </message>
+    <message>
+        <source>User-defined</source>
+        <translation>Задано пользователем</translation>
     </message>
 </context>
 <context>
@@ -228,10 +232,6 @@
         <translation>Веб-сайт</translation>
     </message>
     <message>
-        <source>Mailinglist</source>
-        <translation>Рассылка</translation>
-    </message>
-    <message>
         <source>Support</source>
         <translation>Поддержка</translation>
     </message>
@@ -297,7 +297,7 @@
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Веб-сайт разработчика</translation>
     </message>
 </context>
 </TS>

@@ -108,6 +108,13 @@
     </message>
 </context>
 <context>
+    <name>regionselection</name>
+    <message>
+        <source>doubleclick extended to the edge</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
