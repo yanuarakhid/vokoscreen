@@ -3,106 +3,106 @@
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"/>
+        <translation>デバイスがビジー状態です</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>名前</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>不明</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>デバイス</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>ユーザー</translation>
     </message>
 </context>
 <context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation type="unfinished"/>
+        <translation>最後に録画したビデオをメール</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation type="unfinished"/>
+        <translation>ビデオを一つ以上選択してメール</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"/>
+        <translation>送る</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>キャンセル</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
+        <translation>ビデオプレーヤーをインストールしてください</translation>
     </message>
 </context>
 <context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation type="unfinished"/>
+        <translation>添付ファイルとしてビデオを送ります</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation type="unfinished"/>
+        <translation>一つ以上のファイルを選択</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation type="unfinished"/>
+        <translation>ウィンドウ枠</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>閉じる</translation>
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>全画面上に表示</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>右クリックでメニューを表示</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>ユーザー定義</translation>
     </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"/>
+        <translation>デバイスがビジー状態です</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>名前</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>デバイス</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>ユーザー</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>不明</translation>
     </message>
 </context>
 <context>
@@ -113,51 +113,51 @@
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"/>
+        <translation>ウィンドウ</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation type="unfinished"/>
+        <translation>範囲</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"/>
+        <translation>拡大</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"/>
+        <translation>オーディオ</translation>
     </message>
     <message>
         <source>Alsa</source>
-        <translation type="unfinished"/>
+        <translation>Alsa</translation>
     </message>
     <message>
         <source>Pulse</source>
-        <translation type="unfinished"/>
+        <translation>Pulse</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation type="unfinished"/>
+        <translation>規定</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation type="unfinished"/>
+        <translation>コーデック</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"/>
+        <translation>マウスカーソルを録画しない</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation type="unfinished"/>
+        <translation>ビデオ保存パス</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"/>
+        <translation>プレーヤー</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation type="unfinished"/>
+        <translation>録画開始時にVokoscreenを最小化</translation>
     </message>
     <message>
         <source>Start</source>
@@ -177,127 +177,127 @@
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"/>
+        <translation>送る</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation type="unfinished"/>
+        <translation>録画時間</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation type="unfinished"/>
+        <translation>サイズ(キロバイト)</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"/>
+        <translation>録画スクリーンサイズ</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>形式</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation type="unfinished"/>
+        <translation>フレームレート</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation type="unfinished"/>
+        <translation>ディレクトリを開く</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"/>
+        <translation>カウントダウン</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation type="unfinished"/>
+        <translation>録画したビデオを再生</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"/>
+        <translation>ビデオをメール送信</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"/>
+        <translation>一つ以上のデバイスを選択</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>実フレームレート</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"/>
+        <translation>再開</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"/>
+        <translation>ホームページ</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>サポート</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>開発者</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"/>
+        <translation>フレーム</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"/>
+        <translation>寄付</translation>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation type="unfinished"/>
+        <translation>録画プログラム</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"/>
+        <translation>翻訳</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"/>
+        <translation>ソースコード</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"/>
+        <translation>システムトレイに表示</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>新しいバージョンが使用可能です</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"/>
+        <translation>動画コーデック</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"/>
+        <translation>音声コーデック</translation>
     </message>
     <message>
         <source>Webcam</source>
-        <translation type="unfinished"/>
+        <translation>Webカメラ</translation>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"/>
+        <translation>Webカメラを選択</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>反転</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"/>
+        <translation>ディスプレイ</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
+        <translation>すべてのディスプレイ</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>開発者ホームページ</translation>
     </message>
 </context>
 </TS>
