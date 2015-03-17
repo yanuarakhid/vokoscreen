@@ -106,6 +106,13 @@
     </message>
 </context>
 <context>
+    <name>regionselection</name>
+    <message>
+        <source>doubleclick extended to the edge</source>
+        <translation>dupla kattintással kiterjesztve a széléig</translation>
+    </message>
+</context>
+<context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>

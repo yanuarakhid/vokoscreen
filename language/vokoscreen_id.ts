@@ -38,7 +38,7 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Batal</translation>
+        <translation>Batalkan</translation>
     </message>
 </context>
 <context>
@@ -60,21 +60,6 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
-    <message>
-        <source>Noborder</source>
-        <translation>Tidak memiliki batas</translation>
-    </message>
-    <message>
-        <source>Border</source>
-        <translation>Batas</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Tutup</translation>
-    </message>
-</context>
-<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
@@ -87,6 +72,14 @@
     <message>
         <source>Show over fullscreen</source>
         <translation>Tampilkan dengan layar penuh</translation>
+    </message>
+    <message>
+        <source>Right click for menu</source>
+        <translation>Klik kanan untuk menu</translation>
+    </message>
+    <message>
+        <source>User-defined</source>
+        <translation>Ditentukan pengguna</translation>
     </message>
 </context>
 <context>
@@ -110,6 +103,13 @@
     <message>
         <source>Unknown</source>
         <translation>Tidak diketahui</translation>
+    </message>
+</context>
+<context>
+    <name>regionselection</name>
+    <message>
+        <source>doubleclick extended to the edge</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -144,7 +144,7 @@
     </message>
     <message>
         <source>Default</source>
-        <translation>Standar</translation>
+        <translation>Baku</translation>
     </message>
     <message>
         <source>Codec</source>
@@ -152,7 +152,7 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Jangan rekam kursor mouse</translation>
+        <translation>Jangan rekam kursor tetikus</translation>
     </message>
     <message>
         <source>Videopath</source>
@@ -268,7 +268,7 @@
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Tampilkan dalam systray</translation>
+        <translation>Tampilkan dalam baki sistem</translation>
     </message>
     <message>
         <source>New version available</source>
@@ -296,11 +296,11 @@
     </message>
     <message>
         <source>Display</source>
-        <translation>Display</translation>
+        <translation>Layar</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation>Semua Display</translation>
+        <translation>Semua Layar</translation>
     </message>
     <message>
         <source>Developer Homepage</source>

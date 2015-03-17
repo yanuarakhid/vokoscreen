@@ -257,10 +257,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation type="unfinished"></translation>
     </message>

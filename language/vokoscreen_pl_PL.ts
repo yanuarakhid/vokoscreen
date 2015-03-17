@@ -7,11 +7,11 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Nazwa</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Nieznane</translation>
     </message>
     <message>
         <source>Device</source>
@@ -19,7 +19,7 @@
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>W użyciu przez</translation>
     </message>
 </context>
 <context>
@@ -44,12 +44,8 @@
 <context>
     <name>NoPlayerDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
+        <translation>Zainstaluj odtwarzacz wideo</translation>
     </message>
 </context>
 <context>
@@ -75,6 +71,14 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
+        <translation>Pokarz nad pełnym ekranem</translation>
+    </message>
+    <message>
+        <source>Right click for menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>User-defined</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -86,7 +90,7 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Nazwa</translation>
     </message>
     <message>
         <source>Device</source>
@@ -94,10 +98,17 @@
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>W użyciu przez</translation>
     </message>
     <message>
         <source>Unknown</source>
+        <translation>Nieznane</translation>
+    </message>
+</context>
+<context>
+    <name>regionselection</name>
+    <message>
+        <source>doubleclick extended to the edge</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -228,10 +239,6 @@
         <translation>Strona domowa</translation>
     </message>
     <message>
-        <source>Mailinglist</source>
-        <translation>Lista mailingowa</translation>
-    </message>
-    <message>
         <source>Support</source>
         <translation>Wsparcie</translation>
     </message>
@@ -289,11 +296,11 @@
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"/>
+        <translation>Wyświetlacz</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
+        <translation>Wszystkie wyświetlacze</translation>
     </message>
     <message>
         <source>Developer Homepage</source>

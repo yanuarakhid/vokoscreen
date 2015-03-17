@@ -23,17 +23,6 @@
     </message>
 </context>
 <context>
-    <name>Dialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
-    <message>
-        <source>Please install a videoplayer</source>
-        <translation>Bitte einen Videoplayer installieren</translation>
-    </message>
-</context>
-<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -50,6 +39,13 @@
     <message>
         <source>Cancel</source>
         <translation>Abbruch</translation>
+    </message>
+</context>
+<context>
+    <name>NoPlayerDialog</name>
+    <message>
+        <source>Please install a videoplayer</source>
+        <translation>Bitte einen Videoplayer installieren</translation>
     </message>
 </context>
 <context>
@@ -77,6 +73,14 @@
         <source>Show over fullscreen</source>
         <translation>Über Vollbild anzeigen</translation>
     </message>
+    <message>
+        <source>Right click for menu</source>
+        <translation>Rechtsklick für Menü</translation>
+    </message>
+    <message>
+        <source>User-defined</source>
+        <translation>Benutzerdefiniert</translation>
+    </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
@@ -99,6 +103,13 @@
     <message>
         <source>Unknown</source>
         <translation>Unbekannt</translation>
+    </message>
+</context>
+<context>
+    <name>regionselection</name>
+    <message>
+        <source>doubleclick extended to the edge</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -226,10 +237,6 @@
     <message>
         <source>Homepage</source>
         <translation>Webseite</translation>
-    </message>
-    <message>
-        <source>Mailinglist</source>
-        <translation>Mailliste</translation>
     </message>
     <message>
         <source>Support</source>

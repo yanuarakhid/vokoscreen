@@ -60,21 +60,6 @@
     </message>
 </context>
 <context>
-    <name>QvkWebcam</name>
-    <message>
-        <source>Noborder</source>
-        <translation>Ei kehystä</translation>
-    </message>
-    <message>
-        <source>Border</source>
-        <translation>Kehykset</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Sulje</translation>
-    </message>
-</context>
-<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
@@ -87,6 +72,14 @@
     <message>
         <source>Show over fullscreen</source>
         <translation>Näytä kokoruutuisen päällä</translation>
+    </message>
+    <message>
+        <source>Right click for menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>User-defined</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -110,6 +103,13 @@
     <message>
         <source>Unknown</source>
         <translation>Tuntematon</translation>
+    </message>
+</context>
+<context>
+    <name>regionselection</name>
+    <message>
+        <source>doubleclick extended to the edge</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -237,10 +237,6 @@
     <message>
         <source>Homepage</source>
         <translation>Kotisivu</translation>
-    </message>
-    <message>
-        <source>Mailinglist</source>
-        <translation>Sähköpostilista</translation>
     </message>
     <message>
         <source>Support</source>

@@ -23,17 +23,6 @@
     </message>
 </context>
 <context>
-    <name>Dialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -49,6 +38,13 @@
     </message>
     <message>
         <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>NoPlayerDialog</name>
+    <message>
+        <source>Please install a videoplayer</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -77,6 +73,14 @@
         <source>Show over fullscreen</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Right click for menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>User-defined</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
@@ -98,6 +102,13 @@
     </message>
     <message>
         <source>Unknown</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>regionselection</name>
+    <message>
+        <source>doubleclick extended to the edge</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -226,10 +237,6 @@
     <message>
         <source>Homepage</source>
         <translation>Ana Sayfa</translation>
-    </message>
-    <message>
-        <source>Mailinglist</source>
-        <translation>Eposta listesi</translation>
     </message>
     <message>
         <source>Support</source>

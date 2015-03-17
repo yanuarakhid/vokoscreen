@@ -11,26 +11,15 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Desconocido</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Dispositivo</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>Dialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
+        <translation>Utilizado por</translation>
     </message>
 </context>
 <context>
@@ -49,7 +38,14 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Cancelar</translation>
+    </message>
+</context>
+<context>
+    <name>NoPlayerDialog</name>
+    <message>
+        <source>Please install a videoplayer</source>
+        <translation>Por favor, instale un reproductor de vídeo</translation>
     </message>
 </context>
 <context>
@@ -75,6 +71,14 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
+        <translation>Mostrar en pantalla completa</translation>
+    </message>
+    <message>
+        <source>Right click for menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>User-defined</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -90,14 +94,21 @@
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Dispositivo</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Utilizado por</translation>
     </message>
     <message>
         <source>Unknown</source>
+        <translation>Desconocido</translation>
+    </message>
+</context>
+<context>
+    <name>regionselection</name>
+    <message>
+        <source>doubleclick extended to the edge</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -228,10 +239,6 @@
         <translation>Sitio web</translation>
     </message>
     <message>
-        <source>Mailinglist</source>
-        <translation>Lista de correo</translation>
-    </message>
-    <message>
         <source>Support</source>
         <translation>Asistencia</translation>
     </message>
@@ -269,11 +276,11 @@
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"/>
+        <translation>Códec de video</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"/>
+        <translation>Códec de audio</translation>
     </message>
     <message>
         <source>Webcam</source>
@@ -281,23 +288,23 @@
     </message>
     <message>
         <source>Select webcam</source>
-        <translation>Seleccione la cámara web</translation>
+        <translation>Seleccionar cámara web</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>Reflejo</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"/>
+        <translation>Pantalla</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
+        <translation>Todas las pantallas</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Página del desarrollador</translation>
     </message>
 </context>
 </TS>

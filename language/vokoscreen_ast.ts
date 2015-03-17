@@ -23,17 +23,6 @@
     </message>
 </context>
 <context>
-    <name>Dialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -50,6 +39,13 @@
     <message>
         <source>Cancel</source>
         <translation>Encaboxar</translation>
+    </message>
+</context>
+<context>
+    <name>NoPlayerDialog</name>
+    <message>
+        <source>Please install a videoplayer</source>
+        <translation>Por favor, instala un reproductor de videu</translation>
     </message>
 </context>
 <context>
@@ -75,6 +71,14 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
+        <translation>Amosar sobro pantalla completa</translation>
+    </message>
+    <message>
+        <source>Right click for menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>User-defined</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -99,6 +103,13 @@
     <message>
         <source>Unknown</source>
         <translation>Desconocíu</translation>
+    </message>
+</context>
+<context>
+    <name>regionselection</name>
+    <message>
+        <source>doubleclick extended to the edge</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -226,10 +237,6 @@
     <message>
         <source>Homepage</source>
         <translation>Páxina d&apos;aniciu</translation>
-    </message>
-    <message>
-        <source>Mailinglist</source>
-        <translation>Lllista de corréu</translation>
     </message>
     <message>
         <source>Support</source>
