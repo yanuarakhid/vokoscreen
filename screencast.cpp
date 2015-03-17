@@ -530,11 +530,11 @@ screencast::screencast()
     label->setScaledContents( true );
 
     // Statusbar
-    statusBarProgForRecord = new QLabel();
+/*    statusBarProgForRecord = new QLabel();
     statusBarProgForRecord->setText( recordApplikation );
     statusBarProgForRecord->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusBarProgForRecord->setToolTip( tr ( "Program for recording" ) );
-    
+*/    
     statusBarLabelTime = new QLabel();
     statusBarLabelTime->setText( "00:00:00" );
     statusBarLabelTime->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
@@ -578,7 +578,7 @@ screencast::screencast()
     QLabel * LabelTemp = new QLabel();
     statusBar->addWidget( LabelTemp, 120 );
     
-    statusBar->addWidget( statusBarProgForRecord, 0 );
+    //statusBar->addWidget( statusBarProgForRecord, 0 );
     statusBar->addWidget( statusBarLabelTime, 0);
     statusBar->addWidget( statusBarLabelFps, 0 );
     statusBar->addWidget( statusBarLabelSize, 0 );
@@ -1324,6 +1324,7 @@ void screencast::searchExternalPrograms()
 {
   qDebug() << "[vokoscreen]" << "---Begin Search external tools---";
 
+/*  
   QString Prog = "ffmpeg";
   QFileInfo info( getFileWithPath( Prog ) );
   if ( info.isSymLink() )
@@ -1358,6 +1359,18 @@ void screencast::searchExternalPrograms()
       }
     }
   }
+*/  
+  
+  if ( searchProgramm( "ffmpeg" ) )
+  {
+    recordApplikation = "ffmpeg";
+    qDebug() << "[vokoscreen]" << "Search ffmpeg ..... found" << "Version:" << getFfmpegVersion();
+  }
+  else
+  {
+    qDebug() << "[vokoscreen]" << "Search ffmpeg ..... not found";
+  }
+
   
   if ( searchProgramm("pactl") )
      qDebug() << "[vokoscreen]" << "Search pactl  ..... found Version:" << getPactlVersion();
@@ -1371,11 +1384,12 @@ void screencast::searchExternalPrograms()
   
   qDebug() << "[vokoscreen]" << "---End search external tools---";
   qDebug();
-  
+/*  
   qDebug() << "[vokoscreen] ---Begin RecordApplikation---";
   qDebug() << "[vokoscreen] Used" << recordApplikation;
   qDebug() << "[vokoscreen] ---End RecordApplikation---";
   qDebug();
+*/
 }
 
 
@@ -1696,9 +1710,12 @@ void screencast::error( QProcess::ProcessError error )
   // Noch nicht getestet
   if ( error == QProcess::FailedToStart )
   {
-    qDebug() << "The process could not be started. Either the is called program is not installed, or the ffmpeg or avconv call Faulty or you have not over sufficient permissions to to the program.";
+//    qDebug() << "The process could not be started. Either the is called program is not installed, or the ffmpeg or avconv call Faulty or you have not over sufficient permissions to to the program.";
+    qDebug() << "The process could not be started. Either the is called program is not installed, or the ffmpeg call Faulty or you have not over sufficient permissions to to the program.";
     QMessageBox msgBox;
-    msgBox.setText( "The process could not be started. Either the is called program is not installed, or the ffmpeg or avconv call Faulty or you have not over sufficient permissions to to the program." );
+//    msgBox.setText( "The process could not be started. Either the is called program is not installed, or the ffmpeg or avconv call Faulty or you have not over sufficient permissions to to the program." );
+    msgBox.setText( "The process could not be started. Either the is called program is not installed, or the ffmpeg call Faulty or you have not over sufficient permissions to to the program." );
+    
     msgBox.exec();
   }
 }
@@ -1883,7 +1900,7 @@ QString screencast::getMkvmergeVersion()
   return list[ 1 ];
 }
 
-
+/*
 QString screencast::getAvconvVersion()
 {
   QProcess Process;
@@ -1896,7 +1913,7 @@ QString screencast::getAvconvVersion()
   list = list[ 0 ].split( " " );
   return list[ 1 ];
 }
-
+*/
 
 /**
  * Versionsnummer von ffmpeg aufbereiten so diese mit "kleiner gleich" bzw. "größer gleich" ausgewertet werden kann
@@ -2721,6 +2738,9 @@ void screencast::record()
     qDebug() << "[vokoscreen]" << "recording area";
   }
   
+  QString myReport = "-report ";
+
+  /*
   // -report wird erst ab ffmpeg version 0.9 unterstützt
   QString myReport = "";
   if ( recordApplikation == "ffmpeg" )
@@ -2732,7 +2752,8 @@ void screencast::record()
 
     qDebug() << "[vokoscreen]" << "Report :" << myReport;
   }
-
+*/
+  
   // set working directory for writing and delete the ffmpegLog from Profil directory
   QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
   QFileInfo settingsPath( settings.fileName() );
@@ -2759,11 +2780,11 @@ void screencast::record()
 
   // framerate
   QString framerate;
-  if ( recordApplikation == "ffmpeg" )
-    framerate = "-framerate " + QString().number( FrameSpinBox->value() );
+  //if ( recordApplikation == "ffmpeg" )
+  framerate = "-framerate " + QString().number( FrameSpinBox->value() );
   
-  if ( recordApplikation == "avconv" )
-    framerate = "-r " + QString().number( FrameSpinBox->value() );
+//  if ( recordApplikation == "avconv" )
+//    framerate = "-r " + QString().number( FrameSpinBox->value() );
   
 
   QString myVcodec = VideocodecComboBox->currentText();
@@ -2784,12 +2805,14 @@ void screencast::record()
 
   nameInMoviesLocation = NameInMoviesLocation();
 
+  QString quality = " -q:v 1 ";
+/*
   QString quality;
   if ( ( getFfmpegVersion() < "01.01.00" ) and ( recordApplikation == "ffmpeg" ) )
     quality = " -sameq ";
   else
     quality = " -q:v 1 ";
-
+*/
   ffmpegString = recordApplikation + " "
                + myReport + " "
                + "-f x11grab" + " "
@@ -2815,10 +2838,10 @@ void screencast::record()
   stream << "Record resolution: " << getRecordWidth() << "x" << getRecordHeight() << "\n";
   stream << "Alsa string: " << myAlsa() << "\n";
   stream << "Qt Version: " << qVersion() << "\n";
-  if ( recordApplikation == "ffmpeg" )
-    stream << "ffmpeg Version: " << getFfmpegVersion() << "\n";
-  if ( recordApplikation == "avconv" )
-    stream << "avconv Version: " << getAvconvVersion() << "\n";
+  //if ( recordApplikation == "ffmpeg" )
+  stream << "ffmpeg Version: " << getFfmpegVersion() << "\n";
+//  if ( recordApplikation == "avconv" )
+//    stream << "avconv Version: " << getAvconvVersion() << "\n";
     
   stream << "Record String: " << ffmpegString << PathMoviesLocation() << QDir::separator() << nameInMoviesLocation << "\n";
 }

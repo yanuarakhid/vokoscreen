@@ -125,6 +125,7 @@ QRect QxtWindowSystem::windowGeometry(WId window)
     Display* display = QX11Info::display();
     XGetGeometry(display, window, &root, &x, &y, &width, &height, &border, &depth);
     XTranslateCoordinates(display, window, root, x, y, &x, &y, &child);
+    
     static Atom net_frame = 0;
     if (!net_frame)
         net_frame = XInternAtom(QX11Info::display(), "_NET_FRAME_EXTENTS", True);

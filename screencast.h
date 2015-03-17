@@ -62,7 +62,7 @@ public:
     screencast();
     virtual ~screencast();
     QString getFfmpegVersion();
-    QString getAvconvVersion();
+    //QString getAvconvVersion();
     QString getMkvmergeVersion();
     QString getPactlVersion();
     QString getOsRelease();

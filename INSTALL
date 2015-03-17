@@ -5,7 +5,7 @@ Requires:
   - libv4l2
   - libv4lconvert
   - libmp3lame0
-  - ffmpeg or avconv
+  - ffmpeg >= 1.1.0
   - mkvtoolnix
 
 Optional:
