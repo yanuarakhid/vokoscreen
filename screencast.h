@@ -62,7 +62,6 @@ public:
     screencast();
     virtual ~screencast();
     QString getFfmpegVersion();
-    //QString getAvconvVersion();
     QString getMkvmergeVersion();
     QString getPactlVersion();
     QString getOsRelease();
@@ -297,11 +296,7 @@ private:
 
  protected:
     void closeEvent( QCloseEvent * event );
-    
-    //bool event( QEvent *event );
-    
     void changeEvent(QEvent *e);
-    
     void styleChange( QStyle &asd );
 };
 

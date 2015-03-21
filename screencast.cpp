@@ -529,12 +529,6 @@ screencast::screencast()
     label->setPixmap(QPixmap::fromImage( *qImage, Qt::AutoColor) );
     label->setScaledContents( true );
 
-    // Statusbar
-/*    statusBarProgForRecord = new QLabel();
-    statusBarProgForRecord->setText( recordApplikation );
-    statusBarProgForRecord->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
-    statusBarProgForRecord->setToolTip( tr ( "Program for recording" ) );
-*/    
     statusBarLabelTime = new QLabel();
     statusBarLabelTime->setText( "00:00:00" );
     statusBarLabelTime->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
@@ -710,19 +704,7 @@ screencast::screencast()
     connect( FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     myregionselection = new regionselection();
-/*       myregionselection->setGeometry ( vkSettings.getAreaX(),
-       				        vkSettings.getAreaY(),
-				        vkSettings.getAreaWidth() + myregionselection->borderLeft + myregionselection->borderRight + myregionselection->frameWidth,
-				        vkSettings.getAreaHeight() + myregionselection->borderTop + myregionselection->borderBottom + myregionselection->frameWidth
-				      );
-       myregionselection->close();
-*/    
-/*    connect( MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );
-    magnifier = new QvkMagnifier();
-    magnifier->close();
 
-    connect( magnifier, SIGNAL( closeMagnifier() ), SLOT( uncheckMagnifier() ) );
-*/    
     // Clean vokoscreen temp
     QDir dir( PathTempLocation() );
     QStringList stringList = dir.entryList( QDir::Files, QDir::Time | QDir::Reversed );
@@ -1073,14 +1055,6 @@ void screencast::myVideoFileSystemWatcher( const QString & path )
 }
 
 
-/*
-QString boolToStr( bool boo )
-{
-  return ( ( true == boo ) ? "true" : "false" );
-}
-*/
-
-
 /**
  * CardxList beinhaltet "card0", "card1" ...
  * */
@@ -1323,43 +1297,6 @@ QString getFileWithPath( QString ProgName )
 void screencast::searchExternalPrograms()
 {
   qDebug() << "[vokoscreen]" << "---Begin Search external tools---";
-
-/*  
-  QString Prog = "ffmpeg";
-  QFileInfo info( getFileWithPath( Prog ) );
-  if ( info.isSymLink() )
-  {
-    QString fileName = info.symLinkTarget();  
-    QFileInfo fileInfo( fileName );
-    qDebug() << "[vokoscreen]" << getFileWithPath( Prog ) << "is a link and pointing to"<< fileName;
-    if ( fileInfo.baseName() == "avconv" )
-    {
-      recordApplikation = "avconv";
-      qDebug() << "[vokoscreen] use avconv as ffmpeg-link";
-    }
-  }
-  else
-  {
-    if ( searchProgramm( "avconv" ) )
-    {
-      recordApplikation = "avconv";
-      qDebug() << "[vokoscreen]" << "Search avconv ..... found" << "Version:" << getAvconvVersion();
-    }
-    else
-    {
-      qDebug() << "[vokoscreen]" << "Search avconv ..... not found";
-      if ( searchProgramm( "ffmpeg" ) )
-      {
-        recordApplikation = "ffmpeg";
-        qDebug() << "[vokoscreen]" << "Search ffmpeg ..... found" << "Version:" << getFfmpegVersion();
-      }
-      else
-      {
-        qDebug() << "[vokoscreen]" << "Search ffmpeg ..... not found";
-      }
-    }
-  }
-*/  
   
   if ( searchProgramm( "ffmpeg" ) )
   {
@@ -1384,12 +1321,6 @@ void screencast::searchExternalPrograms()
   
   qDebug() << "[vokoscreen]" << "---End search external tools---";
   qDebug();
-/*  
-  qDebug() << "[vokoscreen] ---Begin RecordApplikation---";
-  qDebug() << "[vokoscreen] Used" << recordApplikation;
-  qDebug() << "[vokoscreen] ---End RecordApplikation---";
-  qDebug();
-*/
 }
 
 
@@ -1710,12 +1641,9 @@ void screencast::error( QProcess::ProcessError error )
   // Noch nicht getestet
   if ( error == QProcess::FailedToStart )
   {
-//    qDebug() << "The process could not be started. Either the is called program is not installed, or the ffmpeg or avconv call Faulty or you have not over sufficient permissions to to the program.";
     qDebug() << "The process could not be started. Either the is called program is not installed, or the ffmpeg call Faulty or you have not over sufficient permissions to to the program.";
     QMessageBox msgBox;
-//    msgBox.setText( "The process could not be started. Either the is called program is not installed, or the ffmpeg or avconv call Faulty or you have not over sufficient permissions to to the program." );
     msgBox.setText( "The process could not be started. Either the is called program is not installed, or the ffmpeg call Faulty or you have not over sufficient permissions to to the program." );
-    
     msgBox.exec();
   }
 }
@@ -1900,20 +1828,6 @@ QString screencast::getMkvmergeVersion()
   return list[ 1 ];
 }
 
-/*
-QString screencast::getAvconvVersion()
-{
-  QProcess Process;
-  Process.start("avconv -version");
-  Process.waitForFinished();
-  QString avconvVersion = Process.readAllStandardOutput();
-  Process.close();
-
-  QStringList list = avconvVersion.split( "\n" );
-  list = list[ 0 ].split( " " );
-  return list[ 1 ];
-}
-*/
 
 /**
  * Versionsnummer von ffmpeg aufbereiten so diese mit "kleiner gleich" bzw. "größer gleich" ausgewertet werden kann
@@ -2739,20 +2653,6 @@ void screencast::record()
   }
   
   QString myReport = "-report ";
-
-  /*
-  // -report wird erst ab ffmpeg version 0.9 unterstützt
-  QString myReport = "";
-  if ( recordApplikation == "ffmpeg" )
-  {
-    if ( getFfmpegVersion() >= "00.09.00" )
-      myReport = "-report ";
-    else
-      myReport = "";
-
-    qDebug() << "[vokoscreen]" << "Report :" << myReport;
-  }
-*/
   
   // set working directory for writing and delete the ffmpegLog from Profil directory
   QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
@@ -2780,12 +2680,7 @@ void screencast::record()
 
   // framerate
   QString framerate;
-  //if ( recordApplikation == "ffmpeg" )
   framerate = "-framerate " + QString().number( FrameSpinBox->value() );
-  
-//  if ( recordApplikation == "avconv" )
-//    framerate = "-r " + QString().number( FrameSpinBox->value() );
-  
 
   QString myVcodec = VideocodecComboBox->currentText();
   if ( myVcodec == "libx264" )
@@ -2806,13 +2701,8 @@ void screencast::record()
   nameInMoviesLocation = NameInMoviesLocation();
 
   QString quality = " -q:v 1 ";
-/*
-  QString quality;
-  if ( ( getFfmpegVersion() < "01.01.00" ) and ( recordApplikation == "ffmpeg" ) )
-    quality = " -sameq ";
-  else
-    quality = " -q:v 1 ";
-*/
+
+  
   ffmpegString = recordApplikation + " "
                + myReport + " "
                + "-f x11grab" + " "
@@ -2838,11 +2728,7 @@ void screencast::record()
   stream << "Record resolution: " << getRecordWidth() << "x" << getRecordHeight() << "\n";
   stream << "Alsa string: " << myAlsa() << "\n";
   stream << "Qt Version: " << qVersion() << "\n";
-  //if ( recordApplikation == "ffmpeg" )
   stream << "ffmpeg Version: " << getFfmpegVersion() << "\n";
-//  if ( recordApplikation == "avconv" )
-//    stream << "avconv Version: " << getAvconvVersion() << "\n";
-    
   stream << "Record String: " << ffmpegString << PathMoviesLocation() << QDir::separator() << nameInMoviesLocation << "\n";
 }
 
@@ -2897,23 +2783,10 @@ void screencast::startRecord( QString RecordPathName )
       SystemCall->setProcessEnvironment( env );
     }
   }
-/*  
-  // Webcam busybug abfangen
-  bool webcamRunning = false;
-  if ( webcamCheckBox->checkState() == Qt::Checked )
-  {
-    webcamCheckBox->click();
-    webcamRunning = true;
-  }
-*/  
-  SystemCall->start( ffmpegString + RecordPathName );
-/*
-  if ( webcamRunning == true )
-   webcamCheckBox->click();  
-*/  
-  // Recordtime Statusbar
-  beginTime  = QDateTime::currentDateTime();
 
+  SystemCall->start( ffmpegString + RecordPathName );
+
+  beginTime  = QDateTime::currentDateTime();
 }
 
 
