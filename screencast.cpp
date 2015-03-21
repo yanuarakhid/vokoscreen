@@ -1832,6 +1832,7 @@ QString screencast::getMkvmergeVersion()
 /**
  * Versionsnummer von ffmpeg aufbereiten so diese mit "kleiner gleich" bzw. "größer gleich" ausgewertet werden kann
  */
+/*
 QString screencast::getFfmpegVersion()
 {
   QProcess Process;
@@ -1883,6 +1884,23 @@ QString screencast::getFfmpegVersion()
 
   return major + "." + minor + "." + patch;
 }
+*/
+
+QString screencast::getFfmpegVersion()
+{
+  QProcess Process;
+  Process.start("ffmpeg -version");
+  Process.waitForFinished();
+  QString ffmpegversion = Process.readAllStandardOutput();
+  Process.close();
+  
+  QStringList list = ffmpegversion.split( "\n" );
+  ffmpegversion = list[ 0 ];
+  list = ffmpegversion.split( " " );
+  
+  return list[ 2 ];
+}
+
 
 
 void screencast::windowMove()
