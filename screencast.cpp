@@ -263,41 +263,60 @@ screencast::screencast()
     TabWidgetMiscellaneousFrame->setFont( qfont );
 
     QLabel *SaveVideoPathLabel = new QLabel( TabWidgetMiscellaneousFrame );
-    SaveVideoPathLabel->setGeometry( 30, 30, 100, 25 );
+    SaveVideoPathLabel->setGeometry( 30, 10, 100, 25 );
     SaveVideoPathLabel->setText( tr( "Videopath" ) );
     SaveVideoPathLabel->show();
 
     SaveVideoPathLineEdit = new QLineEdit( TabWidgetMiscellaneousFrame );
-    SaveVideoPathLineEdit->setGeometry( 140, 30, 210, 25 );
+    SaveVideoPathLineEdit->setGeometry( 140, 10, 210, 25 );
     SaveVideoPathLineEdit->setReadOnly( true );
     SaveVideoPathLineEdit->show();
     
     QPushButton *SaveVideoPathPushButton = new QPushButton( TabWidgetMiscellaneousFrame );
-    SaveVideoPathPushButton->setGeometry( 350, 30, 20, 25);
+    SaveVideoPathPushButton->setGeometry( 350, 10, 20, 25);
     SaveVideoPathPushButton->setText( "..." );
     SaveVideoPathPushButton->show();
     connect( SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
     
     QLabel *VideoPlayerLabel = new QLabel(TabWidgetMiscellaneousFrame);
-    VideoPlayerLabel->setGeometry( 30, 60, 100, 25 );
+    VideoPlayerLabel->setGeometry( 30, 35, 100, 25 );
     VideoPlayerLabel->setText( tr( "Player" ) );
     VideoPlayerLabel->show();
     
     VideoplayerComboBox = new QComboBox( TabWidgetMiscellaneousFrame );
-    VideoplayerComboBox->setGeometry( 140, 60, 210, 25 );
+    VideoplayerComboBox->setGeometry( 140, 35, 210, 25 );
     VideoplayerComboBox->show();
 
     MinimizedCheckBox = new QCheckBox( TabWidgetMiscellaneousFrame );
-    MinimizedCheckBox->setGeometry( 30, 85, 350, 25 );
+    MinimizedCheckBox->setGeometry( 30, 60, 350, 25 );
     MinimizedCheckBox->setText( tr( "Vokoscreen minimized when recording starts" ) );
     MinimizedCheckBox->show();
     
     SystrayCheckBox = new QCheckBox( TabWidgetMiscellaneousFrame );
-    SystrayCheckBox->setGeometry( 30, 110, 350, 25 );
+    SystrayCheckBox->setGeometry( 30, 85, 350, 25 );
     SystrayCheckBox->setText( tr( "Show in systray" ) );
     SystrayCheckBox->setCheckState( Qt::Checked );
     SystrayCheckBox->show();
     connect( SystrayCheckBox, SIGNAL( stateChanged( int ) ), SLOT( stateChangedSystray( int ) ) );
+    
+    QLabel *recorderLabel = new QLabel( TabWidgetMiscellaneousFrame );
+    recorderLabel->setGeometry( 30, 110, 100, 25 );
+    recorderLabel->setText( tr( "Recorder" ) );
+    recorderLabel->show();
+
+    recorderLineEdit = new QLineEdit( TabWidgetMiscellaneousFrame );
+    recorderLineEdit->setGeometry( 140, 110, 210, 25 );
+    recorderLineEdit->setReadOnly( true );
+    recorderLineEdit->show();
+    connect( recorderLineEdit, SIGNAL( textChanged( QString ) ), SLOT( recorderLineEditTextChanged( QString ) ) );
+    recorderLineEdit->setText( getFileWithPath( "ffmpeg" ) );
+
+    QPushButton *selectRecorderPushButton = new QPushButton( TabWidgetMiscellaneousFrame );
+    selectRecorderPushButton->setGeometry( 350, 110, 20, 25);
+    selectRecorderPushButton->setText( "..." );
+    selectRecorderPushButton->show();
+    connect( selectRecorderPushButton, SIGNAL(clicked() ), SLOT( selectRecorder() ) );
+    
 
     // Tab 5 Webcam *******************************************************
     TabWidgetWebcamFrame = new QFrame( this );
@@ -1142,6 +1161,7 @@ void screencast::saveSettings()
     settings.setValue( "FullScreen", FullScreenRadioButton->isChecked() );
     settings.setValue( "Window", WindowRadioButton->isChecked() );
     settings.setValue( "Area", AreaRadioButton->isChecked() );
+    settings.setValue( "Recorder", recorderLineEdit->displayText() );
   settings.endGroup();
 
   settings.beginGroup( "Miscellaneous" );
@@ -1269,10 +1289,7 @@ void screencast::AreaOnOff()
 }
 
 
-/**
- * Search program foo in PATH
- */
-QString getFileWithPath( QString ProgName )
+QString screencast::getFileWithPath( QString ProgName )
 {
     QString find;
     QString prog;
@@ -1292,6 +1309,28 @@ QString getFileWithPath( QString ProgName )
 
 
 /**
+ * Search program foo in PATH
+ */
+bool screencast::searchProgramm( QString ProgName )
+{
+    bool find = false;
+    QString prog;
+    QString resultString( qgetenv( "PATH" ) );
+    QStringList pathList = resultString.split( ":" );
+      for ( int i = 0; i < pathList.size(); ++i )
+      {
+        prog = pathList.at( i ) + QDir::separator() + ProgName;
+        if ( QFile::exists( prog ) )
+        {
+          find = true;
+          break;
+        }
+      }
+    return find;
+}
+
+
+/**
  * Looking for external programs
  */
 void screencast::searchExternalPrograms()
@@ -1299,15 +1338,9 @@ void screencast::searchExternalPrograms()
   qDebug() << "[vokoscreen]" << "---Begin Search external tools---";
   
   if ( searchProgramm( "ffmpeg" ) )
-  {
-    recordApplikation = "ffmpeg";
     qDebug() << "[vokoscreen]" << "Search ffmpeg ..... found" << "Version:" << getFfmpegVersion();
-  }
   else
-  {
     qDebug() << "[vokoscreen]" << "Search ffmpeg ..... not found";
-  }
-
   
   if ( searchProgramm("pactl") )
      qDebug() << "[vokoscreen]" << "Search pactl  ..... found Version:" << getPactlVersion();
@@ -1397,6 +1430,27 @@ void screencast::makeAsoundrc()
   qDebug();
 
 }
+
+
+void screencast::recorderLineEditTextChanged( QString recorder )
+{
+   recordApplikation = recorder;
+}
+
+
+#ifdef QT4
+void screencast::selectRecorder()
+{
+  QString recorder = QFileDialog::getOpenFileName( this,
+					           tr( "Select recorder" ),
+					           QDesktopServices::storageLocation( QDesktopServices::HomeLocation ) );
+
+  if ( recorder > "" )
+    recorderLineEdit->setText( recorder );
+}
+#endif
+
+
 
 #ifdef QT4
 void screencast::saveVideoPath()
@@ -1649,28 +1703,6 @@ void screencast::error( QProcess::ProcessError error )
 }
 
 
-/**
- * Search program foo in PATH
- */
-bool screencast::searchProgramm( QString ProgName )
-{
-    bool find = false;
-    QString prog;
-    QString resultString( qgetenv( "PATH" ) );
-    QStringList pathList = resultString.split( ":" );
-      for ( int i = 0; i < pathList.size(); ++i )
-      {
-        prog = pathList.at( i ) + QDir::separator() + ProgName;
-        if ( QFile::exists( prog ) )
-        {
-          find = true;
-          break;
-        }
-      }
-    return find;
-}
-
-
 void screencast::moveWindowPause()
 {
   pause = true;
@@ -1829,63 +1861,6 @@ QString screencast::getMkvmergeVersion()
 }
 
 
-/**
- * Versionsnummer von ffmpeg aufbereiten so diese mit "kleiner gleich" bzw. "größer gleich" ausgewertet werden kann
- */
-/*
-QString screencast::getFfmpegVersion()
-{
-  QProcess Process;
-  Process.start("ffmpeg -version");
-  Process.waitForFinished();
-  QString ffmpegversion = Process.readAllStandardOutput();
-  Process.close();
-  
-  QStringList list = ffmpegversion.split( "\n" );
-  ffmpegversion = list[ 0 ];
-  ffmpegversion.replace(QRegExp( "[A-Z a-z ]" ), "" );
- 
-  // major
-  list.clear();
-  list = ffmpegversion.split( "." );
-
-  if ( list.count() == 1 )
-    list.append( "00" );
-    
-  if ( list.count() == 2 )
-    list.append( "00" );
-  
-  // major
-  QString major;
-  if ( list[ 0 ].size() < 2 )
-    major = list[ 0 ].prepend( "0" );
-  else
-    major = list[ 0 ];
-  
-  //minor
-  QString minor;
-  if ( list.count() > 1 )
-  {
-    if ( list[ 1 ].size() < 2 )
-      minor = list[ 1 ].prepend( "0" );
-    else
-      minor = list[ 1 ];
-  }
-  
-  //patch
-  QString patch;
-  if ( list.count() > 2 )
-  {
-    if ( list[ 2 ].size() < 2 ) 
-     patch = list[ 2 ].prepend( "0" ); 
-    else
-      patch = list[ 2 ];
-  }
-
-  return major + "." + minor + "." + patch;
-}
-*/
-
 QString screencast::getFfmpegVersion()
 {
   QProcess Process;
@@ -1900,7 +1875,6 @@ QString screencast::getFfmpegVersion()
   
   return list[ 2 ];
 }
-
 
 
 void screencast::windowMove()

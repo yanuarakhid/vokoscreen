@@ -78,8 +78,6 @@ public:
     bool firststartWininfo;
     bool moveWindow;
     
-    QMainWindow * TestFrame;
-    
     QString recordApplikation;
     
     QvkCredits * credits;
@@ -108,6 +106,7 @@ private slots:
     
     QString myAcodec();
     void searchExternalPrograms();
+    QString getFileWithPath( QString ProgName );
     void preRecord();
 
     const QString myPulseDevice();
@@ -137,6 +136,8 @@ private slots:
     QString NameInMoviesLocation();
     QString PauseNameInTmpLocation();
     void saveVideoPath();
+    void selectRecorder();
+    void recorderLineEditTextChanged( QString recorder );
     void makeAsoundrc();
     
     bool searchProgramm( QString ProgName );
@@ -229,6 +230,7 @@ private:
     QComboBox *VideoplayerComboBox;
     QLabel *recordTimeLabel;
     QLineEdit *SaveVideoPathLineEdit;
+    QLineEdit *recorderLineEdit;
     QRadioButton *PulseDeviceRadioButton;
     
     QFrame *TabWidgetAudioFrame;
