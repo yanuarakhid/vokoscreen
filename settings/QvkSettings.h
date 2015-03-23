@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QSettings>
+#include <QDebug>
 
 class QvkSettings: public QObject
 { 
@@ -34,6 +35,7 @@ public:
   QString getVideoPlayer();
   int getMinimized();
   int getCountdown();
+  QString getRecorder();
   
   // Videooptions
   int getFrames();
@@ -99,6 +101,7 @@ private:
   QString AudioCodec;
   QString VideoContainer;
   int HideMouse;
+  QString Recorder;
   
   // Gui
   int X;

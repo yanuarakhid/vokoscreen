@@ -52,6 +52,7 @@ void QvkSettings::readAll()
       VideoPlayer = settings.value( "Videoplayer" ).toString();
       Minimized = settings.value( "Minimized", 0 ).toUInt();
       Countdown = settings.value( "Countdown", 0 ).toUInt();
+      Recorder = settings.value( "Recorder", "ffmpeg" ).toString();
     settings.endGroup();
     
     settings.beginGroup( "Videooptions" );
@@ -177,6 +178,12 @@ int QvkSettings::getHideMouse()
 {
   return HideMouse; 
 }
+
+QString QvkSettings::getRecorder()
+{
+  return Recorder;  
+}
+
 
 
 // Gui

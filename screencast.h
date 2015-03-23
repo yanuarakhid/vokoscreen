@@ -230,7 +230,7 @@ private:
     QComboBox *VideoplayerComboBox;
     QLabel *recordTimeLabel;
     QLineEdit *SaveVideoPathLineEdit;
-    QLineEdit *recorderLineEdit;
+    QLineEdit *RecorderLineEdit;
     QRadioButton *PulseDeviceRadioButton;
     
     QFrame *TabWidgetAudioFrame;

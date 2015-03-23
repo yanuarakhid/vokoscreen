@@ -304,12 +304,12 @@ screencast::screencast()
     recorderLabel->setText( tr( "Recorder" ) );
     recorderLabel->show();
 
-    recorderLineEdit = new QLineEdit( TabWidgetMiscellaneousFrame );
-    recorderLineEdit->setGeometry( 140, 110, 210, 25 );
-    recorderLineEdit->setReadOnly( true );
-    recorderLineEdit->show();
-    connect( recorderLineEdit, SIGNAL( textChanged( QString ) ), SLOT( recorderLineEditTextChanged( QString ) ) );
-    recorderLineEdit->setText( getFileWithPath( "ffmpeg" ) );
+    RecorderLineEdit = new QLineEdit( TabWidgetMiscellaneousFrame );
+    RecorderLineEdit->setGeometry( 140, 110, 210, 25 );
+    RecorderLineEdit->setReadOnly( true );
+    RecorderLineEdit->show();
+    connect( RecorderLineEdit, SIGNAL( textChanged( QString ) ), SLOT( recorderLineEditTextChanged( QString ) ) );
+    RecorderLineEdit->setText( getFileWithPath( "ffmpeg" ) );
 
     QPushButton *selectRecorderPushButton = new QPushButton( TabWidgetMiscellaneousFrame );
     selectRecorderPushButton->setGeometry( 350, 110, 20, 25);
@@ -609,7 +609,7 @@ screencast::screencast()
     qfont = statusBar->font();
     qfont.setPixelSize( 12 );
     statusBar->setFont( qfont );
-    
+  
     qDebug() << "[vokoscreen]" << "---Begin search Videoplayer---";
     QStringList playerList = QStringList()  << "kaffeine"
                                             << "vlc"
@@ -648,7 +648,6 @@ screencast::screencast()
          }
        }
      }
-     
     qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
     qDebug();
 
@@ -666,7 +665,7 @@ screencast::screencast()
 
       QDir Dir;
       if ( Dir.exists( vkSettings.getVideoPath() ) )
-        SaveVideoPathLineEdit->setText( vkSettings.getVideoPath() );
+          SaveVideoPathLineEdit->setText( vkSettings.getVideoPath() );
       else
         PathMoviesLocation();
 
@@ -689,6 +688,8 @@ screencast::screencast()
       VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( vkSettings.getVideoContainer() ) );
 
       HideMouseCheckbox->setCheckState( Qt::CheckState( vkSettings.getHideMouse()) );
+      
+      RecorderLineEdit->setText( vkSettings.getRecorder() );
       
       if ( Qt::CheckState( vkSettings.getWebcamOnOff() ) == Qt::Checked )
         webcamCheckBox->click();
@@ -1161,7 +1162,6 @@ void screencast::saveSettings()
     settings.setValue( "FullScreen", FullScreenRadioButton->isChecked() );
     settings.setValue( "Window", WindowRadioButton->isChecked() );
     settings.setValue( "Area", AreaRadioButton->isChecked() );
-    settings.setValue( "Recorder", recorderLineEdit->displayText() );
   settings.endGroup();
 
   settings.beginGroup( "Miscellaneous" );
@@ -1169,6 +1169,7 @@ void screencast::saveSettings()
     settings.setValue( "Videoplayer", VideoplayerComboBox->currentText() );
     settings.setValue( "Minimized", MinimizedCheckBox->checkState() );
     settings.setValue( "Countdown", CountdownSpinBox->value() );
+    settings.setValue( "Recorder", RecorderLineEdit->displayText() );
   settings.endGroup();
 
   settings.beginGroup( "Videooptions" );
@@ -1315,6 +1316,11 @@ bool screencast::searchProgramm( QString ProgName )
 {
     bool find = false;
     QString prog;
+    
+    // if ProgName with path
+    if ( ProgName.contains("/", Qt::CaseInsensitive) and ( QFile::exists( ProgName ) ) )
+      return true;
+      
     QString resultString( qgetenv( "PATH" ) );
     QStringList pathList = resultString.split( ":" );
       for ( int i = 0; i < pathList.size(); ++i )
@@ -1337,7 +1343,8 @@ void screencast::searchExternalPrograms()
 {
   qDebug() << "[vokoscreen]" << "---Begin Search external tools---";
   
-  if ( searchProgramm( "ffmpeg" ) )
+//  if ( searchProgramm( "ffmpeg" ) )
+  if ( searchProgramm( vkSettings.getRecorder() ) )
     qDebug() << "[vokoscreen]" << "Search ffmpeg ..... found" << "Version:" << getFfmpegVersion();
   else
     qDebug() << "[vokoscreen]" << "Search ffmpeg ..... not found";
@@ -1446,7 +1453,7 @@ void screencast::selectRecorder()
 					           QDesktopServices::storageLocation( QDesktopServices::HomeLocation ) );
 
   if ( recorder > "" )
-    recorderLineEdit->setText( recorder );
+    RecorderLineEdit->setText( recorder );
 }
 #endif
 
@@ -1864,7 +1871,8 @@ QString screencast::getMkvmergeVersion()
 QString screencast::getFfmpegVersion()
 {
   QProcess Process;
-  Process.start("ffmpeg -version");
+//  Process.start("ffmpeg -version");
+  Process.start( vkSettings.getRecorder() + " -version");
   Process.waitForFinished();
   QString ffmpegversion = Process.readAllStandardOutput();
   Process.close();
@@ -2693,7 +2701,6 @@ void screencast::record()
   nameInMoviesLocation = NameInMoviesLocation();
 
   QString quality = " -q:v 1 ";
-
   
   ffmpegString = recordApplikation + " "
                + myReport + " "
@@ -2702,7 +2709,7 @@ void screencast::record()
                + "-video_size" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
                + "-i " + DISPLAY + ".0+" + deltaX + "," + deltaY
                + noMouse() + " "
-               + "-dcodec copy" + " "
+               //+ "-dcodec copy" + " "
                + myAlsa() + " "
                + "-pix_fmt yuv420p" + " "
                + "-c:v" + " " + myVcodec + " "
