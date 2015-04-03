@@ -30,7 +30,7 @@
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>ビデオを一つ以上選択してメール</translation>
+        <translation>複数のビデオを選択してメール</translation>
     </message>
     <message>
         <source>Send</source>
@@ -109,7 +109,7 @@
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>ダブルクリックで端まで広げます</translation>
     </message>
 </context>
 <context>
@@ -253,10 +253,6 @@
     <message>
         <source>Donate</source>
         <translation>寄付</translation>
-    </message>
-    <message>
-        <source>Program for recording</source>
-        <translation>録画プログラム</translation>
     </message>
     <message>
         <source>Translations</source>

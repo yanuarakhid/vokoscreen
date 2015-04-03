@@ -304,5 +304,13 @@
         <source>Developer Homepage</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Recorder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
