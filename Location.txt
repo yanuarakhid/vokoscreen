@@ -1,9 +1,0 @@
-QStandardPaths::writableLocation( QStandardPaths::MoviesLocation )
-QStandardPaths::writableLocation( QStandardPaths::HomeLocation )
-QStandardPaths::writableLocation( QStandardPaths::TempLocation )
-
-#ifdef QT4
-#endif
-
-#ifdef QT5
-#endif
