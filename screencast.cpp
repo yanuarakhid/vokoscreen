@@ -2801,7 +2801,7 @@ void screencast::Stop()
     SystemCall->terminate();
     SystemCall->waitForFinished();
   }
-  
+  /*
   if ( pause )
   {
     QString mergeString = "/usr/bin/mkvmerge ";
@@ -2821,6 +2821,33 @@ void screencast::Stop()
       dir.remove( PathTempLocation().append( QDir::separator() ).append( stringList.at( i ) ) );
 
     qDebug() << "[vokoscreen]" << "Mergestring :" << mergeString;
+  }*/
+  if ( pause )
+  {
+    QDir dir( PathTempLocation() );
+    QStringList stringList = dir.entryList(QDir::Files, QDir::Time | QDir::Reversed);
+    QString mergeFile = QDesktopServices::storageLocation ( QDesktopServices::TempLocation ) + QDir::separator() + "mergeFile.txt";
+    QFile file( mergeFile );
+    file.open( QIODevice::WriteOnly | QIODevice::Text );
+      QString videoFiles;
+      for ( int i = 0; i < stringList.size(); ++i )
+      {
+        videoFiles.append( "file " ).append( PathTempLocation() ).append( QDir::separator() ).append( stringList[ i ] ).append( "\n" );
+        file.write( videoFiles.toAscii() );
+        videoFiles = "";
+      }
+    file.close();
+
+    QString mergeString = recordApplikation + " -report -f concat -i " + mergeFile + " -c copy " + PathMoviesLocation() + QDir::separator() + nameInMoviesLocation;
+    SystemCall->start( mergeString );
+    SystemCall->waitForFinished();
+    
+    for ( int i = 0; i < stringList.size(); ++i )
+      dir.remove( PathTempLocation().append( QDir::separator() ).append( stringList.at( i ) ) );
+
+    file.remove();
+
+    qDebug() << "[vokoscreen]" << "Mergestring :" << mergeString;
   }
   else
   {
@@ -2829,8 +2856,8 @@ void screencast::Stop()
     QFile::remove ( FileInTemp );
   }
   
-  QDir dir;
-  dir.rmdir( PathTempLocation() );
+  QDir dir_1;
+  dir_1.rmdir( PathTempLocation() );
   
   pause = false;
   windowMoveTimer->stop();

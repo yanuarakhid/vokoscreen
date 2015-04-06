@@ -1,12 +1,11 @@
 Requires:
-  - Qt 4
+  - Qt4
   - alsa
   - libX11
   - libv4l2
   - libv4lconvert
   - libmp3lame0
   - ffmpeg >= 1.1.0
-  - mkvtoolnix
 
 Optional:
   - pulseaudio and pulsaudio-utils
