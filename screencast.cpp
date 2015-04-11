@@ -1460,7 +1460,12 @@ void screencast::selectRecorder()
 #ifdef QT5
 void screencast::selectRecorder()
 {
+    QString recorder = QFileDialog::getOpenFileName( this,
+                                 tr( "Select recorder" ),
+                                 QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) );
 
+    if ( recorder > "" )
+      RecorderLineEdit->setText( recorder );
 }
 #endif
 
