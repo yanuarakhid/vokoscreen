@@ -33,12 +33,10 @@ RESOURCES += screencast.qrc
 TRANSLATIONS = $$files(language/vokoscreen_*.ts)
 
 # language packages
-!isEmpty(TRANSLATIONS) 
-{
-  isEmpty(QMAKE_LRELEASE)
- {
-    win32:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\lrelease.exe
-      else:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
+!isEmpty(TRANSLATIONS) {
+  isEmpty(QMAKE_LRELEASE) {
+    win32: QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\lrelease.exe
+      else: QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
   }
   isEmpty(TS_DIR):TS_DIR = language
   TSQM.name = lrelease ${QMAKE_FILE_IN}
@@ -49,7 +47,7 @@ TRANSLATIONS = $$files(language/vokoscreen_*.ts)
   QMAKE_EXTRA_COMPILERS += TSQM
   PRE_TARGETDEPS += compiler_TSQM_make_all
 }
-else:message(No translation files in project)
+ else: message(No translation files in project)
 
 # Install paths
 image.path = /usr/share/pixmaps
