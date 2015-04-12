@@ -1457,7 +1457,17 @@ void screencast::selectRecorder()
 }
 #endif
 
+#ifdef QT5
+void screencast::selectRecorder()
+{
+    QString recorder = QFileDialog::getOpenFileName( this,
+                                 tr( "Select recorder" ),
+                                 QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) );
 
+    if ( recorder > "" )
+      RecorderLineEdit->setText( recorder );
+}
+#endif
 
 #ifdef QT4
 void screencast::saveVideoPath()
@@ -1477,7 +1487,7 @@ void screencast::saveVideoPath()
                 QStandardPaths::writableLocation( QStandardPaths::HomeLocation ), QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
 
   if ( dir > "" )
-    SaveVideoPathLineEdit->setText( dir );
+      SaveVideoPathLineEdit->setText( dir );
 }
 #endif
 
@@ -2826,14 +2836,26 @@ void screencast::Stop()
   {
     QDir dir( PathTempLocation() );
     QStringList stringList = dir.entryList(QDir::Files, QDir::Time | QDir::Reversed);
+
+#ifdef QT5
+    QString mergeFile = QStandardPaths::TempLocation + QDir::separator() + "mergeFile.txt";
+#else
     QString mergeFile = QDesktopServices::storageLocation ( QDesktopServices::TempLocation ) + QDir::separator() + "mergeFile.txt";
+#endif
+
     QFile file( mergeFile );
     file.open( QIODevice::WriteOnly | QIODevice::Text );
       QString videoFiles;
       for ( int i = 0; i < stringList.size(); ++i )
       {
         videoFiles.append( "file " ).append( PathTempLocation() ).append( QDir::separator() ).append( stringList[ i ] ).append( "\n" );
+
+#ifdef QT5
+        file.write( videoFiles.toLatin1() );
+#else
         file.write( videoFiles.toAscii() );
+#endif
+
         videoFiles = "";
       }
     file.close();
