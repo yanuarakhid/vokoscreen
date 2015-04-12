@@ -3,23 +3,23 @@
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>装置忙碌中</translation>
+        <translation>设备正在使用</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>名字</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>未知</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>设备</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>被使用</translation>
     </message>
 </context>
 <context>
@@ -34,18 +34,18 @@
     </message>
     <message>
         <source>Send</source>
-        <translation>寄送</translation>
+        <translation>发送</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
+        <translation>请安装视频播放器</translation>
     </message>
 </context>
 <context>
@@ -71,45 +71,45 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>全屏显示</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>右键菜单</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>用户自定义</translation>
     </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>装置忙碌中</translation>
+        <translation>设备正在使用</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>名字</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>设备</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>被使用</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>未知</translation>
     </message>
 </context>
 <context>
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>双击最大化</translation>
     </message>
 </context>
 <context>
@@ -135,12 +135,12 @@
         <translation>音频</translation>
     </message>
     <message>
-        <source>Alsa</source>
-        <translation>Alsa</translation>
-    </message>
-    <message>
         <source>Pulse</source>
         <translation>Pulse</translation>
+    </message>
+    <message>
+        <source>Alsa</source>
+        <translation>Alsa</translation>
     </message>
     <message>
         <source>Default</source>
@@ -164,7 +164,7 @@
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>开始录制时最小化 Vokoscreen</translation>
+        <translation>开始录制时最小化Vokoscreen</translation>
     </message>
     <message>
         <source>Start</source>
@@ -184,7 +184,7 @@
     </message>
     <message>
         <source>Send</source>
-        <translation>寄送</translation>
+        <translation>发送</translation>
     </message>
     <message>
         <source>Recording time</source>
@@ -208,7 +208,7 @@
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>开启目录</translation>
+        <translation>打开目录</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -220,7 +220,7 @@
     </message>
     <message>
         <source>Send Video</source>
-        <translation>寄送视频</translation>
+        <translation>发送视频</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
@@ -236,51 +236,55 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"/>
+        <translation>网站</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>支持</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>开发者</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"/>
+        <translation>帧率</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"/>
+        <translation>捐赠</translation>
     </message>
     <message>
         <source>Program for recording</source>
-        <translation type="unfinished"/>
+        <translation>开发日志</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"/>
+        <translation>翻译</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"/>
+        <translation>源码</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"/>
+        <translation>任务栏显示</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation>采集器</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>新版可用</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"/>
+        <translation>视频编码</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"/>
+        <translation>音频编码</translation>
     </message>
     <message>
         <source>Webcam</source>
@@ -288,23 +292,23 @@
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"/>
+        <translation>选择摄像头</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>镜面</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"/>
+        <translation>显示</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
+        <translation>显示所有</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>开发者网站</translation>
     </message>
 </context>
 </TS>
