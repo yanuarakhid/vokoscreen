@@ -496,6 +496,7 @@ screencast::screencast()
     PauseButton->setGeometry( 300, 200, 90, 30 );
     PauseButton->setCheckable( true );
     PauseButton->setEnabled( false );
+    connect( PauseButton, SIGNAL( clicked() ), SLOT( Pause() ) );
 
     PlayButton = new QPushButton( centralWidget );
     PlayButton->setText( tr( "Play" ) );
