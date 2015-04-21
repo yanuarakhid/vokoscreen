@@ -2717,7 +2717,8 @@ void screencast::record()
                + "-f x11grab" + " "
                + framerate + " "
                + "-video_size" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
-               + "-i " + DISPLAY + ".0+" + deltaX + "," + deltaY
+//               + "-i " + DISPLAY + ".0+" + deltaX + "," + deltaY
+               + "-i " + DISPLAY + "+" + deltaX + "," + deltaY
                + noMouse() + " "
                //+ "-dcodec copy" + " "
                + myAlsa() + " "
