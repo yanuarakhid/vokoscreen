@@ -496,11 +496,6 @@ screencast::screencast()
     PauseButton->setGeometry( 300, 200, 90, 30 );
     PauseButton->setCheckable( true );
     PauseButton->setEnabled( false );
-    if ( searchProgramm( "mkvmerge" ) )
-      PauseButton->show();
-    else
-      PauseButton->hide();
-    connect( PauseButton, SIGNAL( clicked() ), SLOT( Pause() ) );
 
     PlayButton = new QPushButton( centralWidget );
     PlayButton->setText( tr( "Play" ) );
@@ -1353,12 +1348,7 @@ void screencast::searchExternalPrograms()
      qDebug() << "[vokoscreen]" << "Search pactl  ..... found Version:" << getPactlVersion();
   else
      qDebug() << "[vokoscreen]" << "Error: pactl is not found, this is an PulseAudio-utils tool. Please install pactl";
-  
-  if ( searchProgramm("mkvmerge") )
-     qDebug() << "[vokoscreen]" << "Search mkvmerge ... found Version:" << getMkvmergeVersion();
-  else
-     qDebug() << "[vokoscreen]" << "Error: mkvmerge is not found, this is an mkvtoolnix tool. Please install mkvmerge";
-  
+
   qDebug() << "[vokoscreen]" << "---End search external tools---";
   qDebug();
 }
@@ -1859,20 +1849,6 @@ QString screencast::getPactlVersion()
   Process.close();
 
   QStringList list = pactlVersion.split( "\n" );
-  list = list[ 0 ].split( " " );
-  return list[ 1 ];
-}
-
-
-QString screencast::getMkvmergeVersion()
-{
-  QProcess Process;
-  Process.start("mkvmerge --version");
-  Process.waitForFinished();
-  QString mkvmergeVersion = Process.readAllStandardOutput();
-  Process.close();
-
-  QStringList list = mkvmergeVersion.split( "\n" );
   list = list[ 0 ].split( " " );
   return list[ 1 ];
 }
@@ -2812,27 +2788,7 @@ void screencast::Stop()
     SystemCall->terminate();
     SystemCall->waitForFinished();
   }
-  /*
-  if ( pause )
-  {
-    QString mergeString = "/usr/bin/mkvmerge ";
-    QDir dir( PathTempLocation() );
-    QStringList stringList = dir.entryList(QDir::Files, QDir::Time | QDir::Reversed);
-    for ( int i = 0; i < stringList.size(); ++i )
-      if ( i == 0 )    
-        mergeString.append( PathTempLocation() ).append( QDir::separator() ).append( stringList.at( i ) );
-      else
-        mergeString.append( " + " ).append( PathTempLocation() ).append( QDir::separator() ).append( stringList.at( i ) );
 
-    mergeString.append( " -o " ).append( PathMoviesLocation() + QDir::separator() + nameInMoviesLocation );
-    SystemCall->start( mergeString );
-    SystemCall->waitForFinished();
-
-    for ( int i = 0; i < stringList.size(); ++i )
-      dir.remove( PathTempLocation().append( QDir::separator() ).append( stringList.at( i ) ) );
-
-    qDebug() << "[vokoscreen]" << "Mergestring :" << mergeString;
-  }*/
   if ( pause )
   {
     QDir dir( PathTempLocation() );
