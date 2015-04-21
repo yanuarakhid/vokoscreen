@@ -280,13 +280,13 @@ void QvkWebcamController::webcamChangedEvent( QStringList deviceList )
 
 void QvkWebcamController::enterEventWebcamWindow()
 {
-   qDebug() << "In";
+   //qDebug() << "In";
    mirrorWidget->setVisible( true );
 }
 
 void QvkWebcamController::leaveEventWebcamWindow()
 {
-  qDebug() << "Out";
+  //qDebug() << "Out";
   mirrorWidget->setVisible( false );
 }
 

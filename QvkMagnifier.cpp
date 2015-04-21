@@ -271,12 +271,11 @@ void QvkMagnifier::setMagnifier()
     move( cursor.pos().x() - NewDistanceXRight() -width(), cursor.pos().y() - distanceY - width() );
 }
 
-
+#ifdef QT4
 void QvkMagnifier::mytimer()
 {
   QCursor cursor;
   QDesktopWidget *desk = QApplication::desktop();
-//    Qt::Window | Qt::WindowStaysOnTopHint
 
   setMagnifier();
 
@@ -393,3 +392,121 @@ void QvkMagnifier::mytimer()
 					2 * distanceY );
   label->setPixmap( originalPixmap );
 }
+#endif
+
+#ifdef QT5
+void QvkMagnifier::mytimer()
+{
+  QCursor cursor;
+  QDesktopWidget *desk = QApplication::desktop();
+
+  QPixmap originalPixmap = QPixmap();
+  QScreen *screen = QGuiApplication::primaryScreen();
+  
+  setMagnifier();
+
+  // Obere linke Ecke
+  if ( ( cursor.pos().x() < distanceX ) and ( cursor.pos().y() <  distanceY ) )
+  {
+    originalPixmap = screen->grabWindow( QApplication::desktop()->winId(),
+					  0,
+					  0,
+					  2 * distanceX ,
+					  2 * distanceY );
+    label->setPixmap( originalPixmap );
+    return;
+  }
+
+  // Obere rechte Ecke
+  if ( ( cursor.pos().x() > ( desk->screenGeometry().width() - distanceX ) ) and ( cursor.pos().y() < distanceY ) )
+  {
+    originalPixmap = screen->grabWindow( QApplication::desktop()->winId(),
+					  desk->screenGeometry().width() - 2 * distanceX,
+					  0,
+					  2 * distanceX ,
+					  2 * distanceY );
+    label->setPixmap( originalPixmap );
+    return;
+  }
+
+  // Linke untere Ecke
+  if ( ( cursor.pos().x() < distanceX ) and ( cursor.pos().y() > desk->screenGeometry().height() - distanceY ) )
+  {
+    originalPixmap = screen->grabWindow( QApplication::desktop()->winId(),
+					  0,
+					  desk->screenGeometry().height() - 2 * distanceY,
+					  2 * distanceX ,
+					  2 * distanceY );
+    label->setPixmap( originalPixmap );
+    return;
+  }
+
+  // Rechte untere Ecke
+  if ( ( cursor.pos().x() > desk->screenGeometry().width() - distanceX ) and ( cursor.pos().y() > desk->screenGeometry().height() - distanceY ) )
+  {
+    originalPixmap = screen->grabWindow( QApplication::desktop()->winId(),
+					  desk->screenGeometry().width() - 2 * distanceX,
+					  desk->screenGeometry().height() - 2 * distanceY,
+					  2 * distanceX ,
+					  2 * distanceY );
+    label->setPixmap( originalPixmap );
+    return;
+  }
+
+  // Unterer Rand
+  if ( cursor.pos().y() > desk->screenGeometry().height() - distanceY )
+  {
+    originalPixmap = screen->grabWindow( QApplication::desktop()->winId(),
+					  cursor.pos().x() - distanceX,
+					  desk->screenGeometry().height() - 2 * distanceY,
+					  2 * distanceX ,
+					  2 * distanceY );
+    label->setPixmap( originalPixmap );
+    return;
+  }
+
+  // Oberen Rand
+  if ( cursor.pos().y() < distanceY )
+  {
+    originalPixmap = screen->grabWindow( QApplication::desktop()->winId(),
+					  cursor.pos().x() - distanceX,
+					  0,
+					  2 * distanceX,
+					  2 * distanceY );
+    label->setPixmap( originalPixmap );
+    return;
+  }
+
+  // Rechter Rand
+  if ( cursor.pos().x() > desk->screenGeometry().width() - distanceX )
+  {
+    originalPixmap = screen->grabWindow( QApplication::desktop()->winId(),
+					  desk->screenGeometry().width() - 2 * distanceX,
+					  cursor.pos().y() - distanceY,
+					  2 * distanceX ,
+					  2 * distanceY );
+    label->setPixmap( originalPixmap );
+    return;
+  }
+
+  // Linker Rand
+  if ( cursor.pos().x() < distanceX )
+  {
+    originalPixmap = screen->grabWindow( QApplication::desktop()->winId(),
+					  0,
+					  cursor.pos().y() - distanceY,
+					  2 * distanceX ,
+					  2 * distanceY );
+    label->setPixmap( originalPixmap );
+    return;
+  }
+
+  // Fläche
+  originalPixmap = screen->grabWindow( QApplication::desktop()->winId(),
+					cursor.pos().x() - distanceX,
+					cursor.pos().y() - distanceY,
+					2 * distanceX ,
+					2 * distanceY );
+  label->setPixmap( originalPixmap );
+}
+#endif

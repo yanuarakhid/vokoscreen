@@ -1,9 +1,10 @@
 #ifndef QvkMagnifier_H 
 #define QvkMagnifier_H
 
+#include <QScreen>
+#include <QPixmap>
 #include <QDialog>
 #include <QLabel>
-#include <QPixmap>
 #include <QDesktopWidget>
 #include <QDebug>
 #include <QApplication>
@@ -13,10 +14,8 @@
 #include <QPropertyAnimation>
 #include <QPushButton>
 
-
 #include "ui_QvkMagnifierDialog.h"
 #include "QvkSettings.h"
-
 
 class QvkMagnifier: public QDialog
 { 
