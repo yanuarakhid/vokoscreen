@@ -2129,7 +2129,7 @@ void screencast::PulseMultipleChoice()
     scrollAreaPulse->setHorizontalScrollBarPolicy ( Qt::ScrollBarAlwaysOff );
     scrollAreaPulse->setGeometry( 90, 20, 345, 80 );
     scrollAreaPulse->show();
-    Pulseframe->setGeometry( 90, 20, 320, 100 ); // Mit den letzten Zahlen werden die scrollAreaPulsebalken geregelt // 90, 45, 320, 100
+    Pulseframe->setGeometry( 90, 20, 320, getPulseInputDevicesCount() * 20);
     Pulseframe->show();
 
     for ( int i = 0; i < getPulseInputDevicesCount(); ++i )
