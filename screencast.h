@@ -34,6 +34,7 @@
 #include <QStatusBar>
 #include <QDesktopWidget>
 #include <QDial>
+#include <QAction>
 
 #include "QvkSettings.h"
 #include "regionselection.h"
@@ -80,6 +81,9 @@ public:
     QString recordApplikation;
     
     QvkCredits * credits;
+    
+    QMenu *SystemTrayMenu; //*************************************************************
+    QSystemTrayIcon *SystemTrayIcon;
 
 public:
 #ifndef NO_NEW_VERSION_CHECK
@@ -87,7 +91,8 @@ public:
 #endif
     
 public slots:
-  
+  void SystemTrayKontextMenue( QAction *action ); //************************************
+
 private slots:
     void Stop(void);
     void record(void);
@@ -150,10 +155,10 @@ private slots:
     void WindowMinimized();
 
     void stateChangedSystray( int );
-    void SystemTrayStart( QSystemTrayIcon::ActivationReason );
-    void SystemTrayStop( QSystemTrayIcon::ActivationReason );
-    void SystemTrayPause( QSystemTrayIcon::ActivationReason reason );
-    void SystemTrayGo( QSystemTrayIcon::ActivationReason reason );
+//    void SystemTrayStart( QSystemTrayIcon::ActivationReason );
+//    void SystemTrayStop( QSystemTrayIcon::ActivationReason );
+//    void SystemTrayPause( QSystemTrayIcon::ActivationReason reason );
+//    void SystemTrayGo( QSystemTrayIcon::ActivationReason reason );
 
     void AreaOnOff();
     void showMagnifier();
@@ -252,10 +257,14 @@ private:
     QCheckBox *namePulse;
     
     QCheckBox *SystrayCheckBox;
-    QSystemTrayIcon *SystemTrayIconGreen;
-    QSystemTrayIcon *SystemTrayIconRed;
-    QSystemTrayIcon *SystemTrayIconYellow;
-    QSystemTrayIcon *SystemTrayIconBlue;
+    QAction *startAction;
+    QAction *stopAction;
+    QAction *pauseAction;
+    QAction *goAction;
+//    QSystemTrayIcon *SystemTrayIconGreen;
+//    QSystemTrayIcon *SystemTrayIconRed;
+//    QSystemTrayIcon *SystemTrayIconYellow;
+//    QSystemTrayIcon *SystemTrayIconBlue;
     
     QvkMagnifier *magnifier;
     regionselection *myregionselection;
