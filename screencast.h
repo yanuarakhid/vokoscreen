@@ -255,6 +255,8 @@ private:
     QAction *stopAction;
     QAction *pauseAction;
     QAction *goAction;
+    QAction *hideAction;
+    QAction *exitAction;
     
     QvkMagnifier *magnifier;
     regionselection *myregionselection;

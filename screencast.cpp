@@ -736,6 +736,7 @@ screencast::screencast()
    
    startAction = new QAction( this );
    startAction->setIcon( QIcon::fromTheme( "media-playback-start", QIcon( ":/pictures/start.png" ) ) );
+
    startAction->setText( tr( "Start" ) );
    startAction->setData( "Start" );
    
@@ -752,17 +753,32 @@ screencast::screencast()
    pauseAction->setEnabled( false );
    
    goAction = new QAction( this );
-   goAction->setIcon( QIcon::fromTheme( "media-skip-forward"  , QIcon( ":/pictures/go.png" ) ) );
+   goAction->setIcon( QIcon::fromTheme( "media-skip-forward", QIcon( ":/pictures/go.png" ) ) );
    goAction->setText( tr( "Go" ) );
    goAction->setData( "Go" );
    goAction->setEnabled( false );
    
+   hideAction = new QAction( this );
+   hideAction->setIcon( QIcon::fromTheme( "video-display", QIcon( ":/pictures/systray.png" ) ) );
+   hideAction->setText( tr( "Hide window" ) );
+   hideAction->setData( "Hide" );
+   
+   exitAction = new QAction( this );
+   exitAction->setIcon( QIcon::fromTheme( "application-exit"  , QIcon( ":/pictures/systray-exit.png" ) ) );
+   exitAction->setText( tr( "Exit" ) );
+   exitAction->setData( "Exit" );
+   
    SystemTrayMenu = new QMenu();
    SystemTrayMenu->addAction( vokoscreenAction );
+   SystemTrayMenu->addSeparator();
    SystemTrayMenu->addAction( startAction );
    SystemTrayMenu->addAction( stopAction );
    SystemTrayMenu->addAction( pauseAction );
    SystemTrayMenu->addAction( goAction );
+   SystemTrayMenu->addSeparator();
+   SystemTrayMenu->addAction( hideAction );
+   SystemTrayMenu->addSeparator();
+   SystemTrayMenu->addAction( exitAction );
    connect( SystemTrayMenu, SIGNAL( triggered( QAction * ) ), this, SLOT( SystemTrayKontextMenue( QAction * ) ) );
 
    SystemTrayIcon = new QSystemTrayIcon( QIcon( ":/pictures/systray.png" ) );
@@ -825,6 +841,23 @@ void screencast::SystemTrayKontextMenue( QAction *action )
   
   if ( data == "Go" )
     PauseButton->click();
+  
+  if ( data == "Exit" )
+    close();
+  
+  if ( data == "Hide" )
+  {
+    hideAction->setText( tr( "Show window" ) );
+    hideAction->setData( "NoHide" );
+    hide();
+  }
+  
+  if ( data == "NoHide" )
+  {
+    hideAction->setText( tr( "Hide window" ) );
+    hideAction->setData( "Hide" );
+    show();
+  }
 }
 
 
@@ -1530,6 +1563,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       
       if ( SystrayCheckBox->checkState() == Qt::Checked )
       {
+        SystemTrayIcon->setIcon( QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray-record" ) ) );
 	startAction->setEnabled( false );
 	stopAction->setEnabled( true );
 	pauseAction->setEnabled( true );
@@ -1553,6 +1587,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       
       if ( SystrayCheckBox->checkState() == Qt::Checked )
       {
+        SystemTrayIcon->setIcon( QIcon(":/pictures/systray.png" ) );
 	startAction->setEnabled( true );
 	stopAction->setEnabled( false );
 	pauseAction->setEnabled( false );
@@ -1627,6 +1662,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
 
       if ( SystrayCheckBox->checkState() == Qt::Checked )
       {
+        SystemTrayIcon->setIcon( QIcon(":/pictures/systray.png" ) );
 	startAction->setEnabled( true );
 	stopAction->setEnabled( false );
 	pauseAction->setEnabled( false );
