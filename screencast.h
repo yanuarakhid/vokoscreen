@@ -82,7 +82,7 @@ public:
     
     QvkCredits * credits;
     
-    QMenu *SystemTrayMenu; //*************************************************************
+    QMenu *SystemTrayMenu;
     QSystemTrayIcon *SystemTrayIcon;
 
 public:
@@ -91,7 +91,7 @@ public:
 #endif
     
 public slots:
-  void SystemTrayKontextMenue( QAction *action ); //************************************
+  void SystemTrayKontextMenue( QAction *action );
 
 private slots:
     void Stop(void);
@@ -155,10 +155,6 @@ private slots:
     void WindowMinimized();
 
     void stateChangedSystray( int );
-//    void SystemTrayStart( QSystemTrayIcon::ActivationReason );
-//    void SystemTrayStop( QSystemTrayIcon::ActivationReason );
-//    void SystemTrayPause( QSystemTrayIcon::ActivationReason reason );
-//    void SystemTrayGo( QSystemTrayIcon::ActivationReason reason );
 
     void AreaOnOff();
     void showMagnifier();
@@ -194,8 +190,6 @@ private slots:
     void showHomepage();
     
     void myScreenCountChanged ( int newCount );
-    
-    
     
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
@@ -261,10 +255,6 @@ private:
     QAction *stopAction;
     QAction *pauseAction;
     QAction *goAction;
-//    QSystemTrayIcon *SystemTrayIconGreen;
-//    QSystemTrayIcon *SystemTrayIconRed;
-//    QSystemTrayIcon *SystemTrayIconYellow;
-//    QSystemTrayIcon *SystemTrayIconBlue;
     
     QvkMagnifier *magnifier;
     regionselection *myregionselection;

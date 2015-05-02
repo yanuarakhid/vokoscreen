@@ -17,9 +17,6 @@
  */
 
 #include "screencast.h"  
-#include <QSysInfo>
-
-#include <QMenu>
 
 using namespace std;
 
@@ -687,9 +684,7 @@ screencast::screencast()
       VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( vkSettings.getVideoContainer() ) );
 
       HideMouseCheckbox->setCheckState( Qt::CheckState( vkSettings.getHideMouse()) );
-      
-      //RecorderLineEdit->setText( vkSettings.getRecorder() );
-      
+           
       if ( Qt::CheckState( vkSettings.getWebcamOnOff() ) == Qt::Checked )
         webcamCheckBox->click();
       
@@ -733,27 +728,7 @@ screencast::screencast()
    makeAsoundrc();
    AudioOnOff();
    pulseUnloadModule();
-/*
-   SystemTrayIconGreen = new QSystemTrayIcon( QIcon::fromTheme( "media-playback-start", QIcon( ":/pictures/start.png" ) ) );
-   SystemTrayIconGreen->setToolTip( tr( "Start" ) );
-   
-   SystemTrayIconRed = new QSystemTrayIcon( QIcon::fromTheme( "media-playback-stop", QIcon ( ":/pictures/stop.png" ) ) );
-   SystemTrayIconRed->setToolTip( tr( "Stop" ) );
-   
-   SystemTrayIconYellow = new QSystemTrayIcon( QIcon::fromTheme( "media-playback-pause", QIcon ( ":/pictures/pause.png" ) ) );
-   SystemTrayIconYellow->setToolTip( tr( "Pause" ) );
-   
-   SystemTrayIconBlue = new QSystemTrayIcon( QIcon::fromTheme( "media-skip-forward", QIcon ( ":/pictures/go.png" ) ) );
-   SystemTrayIconBlue->setToolTip( tr( "Go" ) );
 
-   SystrayCheckBox->setCheckState( Qt::CheckState( vkSettings.getSystray() ) );
-   stateChangedSystray( Qt::CheckState( vkSettings.getSystray() ) );
-   
-   connect( SystemTrayIconGreen,  SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStart( QSystemTrayIcon::ActivationReason ) ) );
-   connect( SystemTrayIconRed,    SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayStop( QSystemTrayIcon::ActivationReason ) ) );
-   connect( SystemTrayIconYellow, SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayPause( QSystemTrayIcon::ActivationReason ) ) );
-   connect( SystemTrayIconBlue,   SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayGo( QSystemTrayIcon::ActivationReason ) ) ); 
-*/
    QAction *vokoscreenAction = new QAction( this );
    vokoscreenAction->setIcon( QIcon( ":/pictures/systray.png" ) );
    vokoscreenAction->setText( "vokoscreen" );
@@ -788,19 +763,12 @@ screencast::screencast()
    SystemTrayMenu->addAction( stopAction );
    SystemTrayMenu->addAction( pauseAction );
    SystemTrayMenu->addAction( goAction );
-   
-   //SystemTrayMenu->addAction( QIcon::fromTheme( "media-playback-start", QIcon( ":/pictures/start.png" ) ), tr( "Start" ) )->setData ( "Start" );
-   //SystemTrayMenu->addAction( QIcon::fromTheme( "media-playback-stop" , QIcon( ":/pictures/stop.png" ) ) , tr( "Stop"  ) )->setData ( "Stop" );
-   //SystemTrayMenu->addAction( QIcon::fromTheme( "media-playback-pause", QIcon( ":/pictures/pause.png" ) ), tr( "Pause" ) )->setData ( "Pause" );
-   //SystemTrayMenu->addAction( QIcon::fromTheme( "media-skip-forward"  , QIcon( ":/pictures/go.png" ) )   , tr( "Go" ) )->setData ( "Go" );
    connect( SystemTrayMenu, SIGNAL( triggered( QAction * ) ), this, SLOT( SystemTrayKontextMenue( QAction * ) ) );
 
    SystemTrayIcon = new QSystemTrayIcon( QIcon( ":/pictures/systray.png" ) );
    SystemTrayIcon->setContextMenu ( SystemTrayMenu );
    SystemTrayIcon->setToolTip( "vokoscreen" );
    SystemTrayIcon->show();
-
-
 
    shortcutWebcam = new QxtGlobalShortcut( this );
    connect( shortcutWebcam, SIGNAL( activated() ), this, SLOT( ShortcutWebcam() ) );
@@ -1300,37 +1268,6 @@ void screencast::ShortcutPause()
   PauseButton->click();
 }
 
-/*
-void screencast::SystemTrayStart( QSystemTrayIcon::ActivationReason reason )
-{
-  if ( reason == QSystemTrayIcon::Trigger )
-  {
-    SystemTrayIconGreen->hide();
-    recordButton->click();
-  }
-}
-
-
-void screencast::SystemTrayStop( QSystemTrayIcon::ActivationReason reason )
-{
-  if ( reason == QSystemTrayIcon::Trigger )
-    StopButton->click();
-}
-
-
-void screencast::SystemTrayPause( QSystemTrayIcon::ActivationReason reason )
-{
-  if ( reason == QSystemTrayIcon::Trigger )
-    PauseButton->click();
-}
-
-
-void screencast::SystemTrayGo( QSystemTrayIcon::ActivationReason reason )
-{
-  if ( reason == QSystemTrayIcon::Trigger )
-    PauseButton->click();
-}
-*/
 
 void screencast::AreaOnOff()
 {
@@ -1597,10 +1534,6 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
 	stopAction->setEnabled( true );
 	pauseAction->setEnabled( true );
 	goAction->setEnabled( false );
-        //SystemTrayIconGreen->hide();
-        //SystemTrayIconYellow->show();      
-        //SystemTrayIconRed->show();
-        //SystemTrayIconBlue->hide();
       } 
     }
   
@@ -1624,10 +1557,6 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
 	stopAction->setEnabled( false );
 	pauseAction->setEnabled( false );
 	goAction->setEnabled( false );
-	//SystemTrayIconGreen->show();
-        //SystemTrayIconYellow->hide();
-        //SystemTrayIconRed->hide();      
-        //SystemTrayIconBlue->hide();
       }
       
       if ( MagnifierCheckBox->isChecked() )
@@ -1655,10 +1584,6 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
 	stopAction->setEnabled( false );
 	pauseAction->setEnabled( false );
 	goAction->setEnabled( true );
-        //SystemTrayIconGreen->hide();
-        //SystemTrayIconRed->hide();
-        //SystemTrayIconYellow->hide();
-        //SystemTrayIconBlue->show();
       } 
     }
 
@@ -1683,10 +1608,6 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
 	stopAction->setEnabled( true );
 	pauseAction->setEnabled( true );
 	goAction->setEnabled( false );
-        //SystemTrayIconGreen->hide();
-        //SystemTrayIconYellow->show();      
-        //SystemTrayIconRed->show();
-        //SystemTrayIconBlue->hide();
       } 
     } 
       
@@ -1710,10 +1631,6 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
 	stopAction->setEnabled( false );
 	pauseAction->setEnabled( false );
 	goAction->setEnabled( false );
-        //SystemTrayIconGreen->show();
-        //SystemTrayIconRed->hide();
-        //SystemTrayIconYellow->hide();
-        //SystemTrayIconBlue->hide();
       } 
     }
        
@@ -2767,10 +2684,8 @@ void screencast::record()
                + "-f x11grab" + " "
                + framerate + " "
                + "-video_size" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
-//               + "-i " + DISPLAY + ".0+" + deltaX + "," + deltaY
                + "-i " + DISPLAY + "+" + deltaX + "," + deltaY
                + noMouse() + " "
-               //+ "-dcodec copy" + " "
                + myAlsa() + " "
                + "-pix_fmt yuv420p" + " "
                + "-c:v" + " " + myVcodec + " "
