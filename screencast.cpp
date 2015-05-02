@@ -312,7 +312,7 @@ screencast::screencast()
     RecorderLineEdit->setReadOnly( true );
     RecorderLineEdit->show();
     connect( RecorderLineEdit, SIGNAL( textChanged( QString ) ), SLOT( recorderLineEditTextChanged( QString ) ) );
-    RecorderLineEdit->setText( getFileWithPath( "ffmpeg" ) );
+    RecorderLineEdit->setText( getFileWithPath( vkSettings.getRecorder() ) );
 
     QPushButton *selectRecorderPushButton = new QPushButton( TabWidgetMiscellaneousFrame );
     selectRecorderPushButton->setGeometry( 350, 110, 20, 25);
@@ -688,7 +688,7 @@ screencast::screencast()
 
       HideMouseCheckbox->setCheckState( Qt::CheckState( vkSettings.getHideMouse()) );
       
-      RecorderLineEdit->setText( vkSettings.getRecorder() );
+      //RecorderLineEdit->setText( vkSettings.getRecorder() );
       
       if ( Qt::CheckState( vkSettings.getWebcamOnOff() ) == Qt::Checked )
         webcamCheckBox->click();
@@ -979,24 +979,11 @@ void screencast::creditsCloseEvent()
 
 void screencast::stateChangedSystray( int state )
 {
-  
-  qDebug() << "******************************************************";
-/*  
   if ( state == Qt::Unchecked )
-  {
-    SystemTrayIconGreen->hide();
-    SystemTrayIconRed->hide();
-    SystemTrayIconYellow->hide();
-    SystemTrayIconBlue->hide();
-  }
+    SystemTrayIcon->hide();
+
   if ( state == Qt::Checked )
-  {
-    SystemTrayIconGreen->show();
-    SystemTrayIconRed->hide();
-    SystemTrayIconYellow->hide();
-    SystemTrayIconBlue->hide();
-  }
-*/  
+    SystemTrayIcon->show();
 }
 
 
@@ -1360,6 +1347,9 @@ void screencast::AreaOnOff()
 
 QString screencast::getFileWithPath( QString ProgName )
 {
+   if ( ProgName.contains("/", Qt::CaseInsensitive) and ( QFile::exists( ProgName ) ) )
+    return ProgName; 
+     
     QString find;
     QString prog;
     QString resultString( qgetenv( "PATH" ) );
@@ -1412,7 +1402,7 @@ void screencast::searchExternalPrograms()
   qDebug() << "[vokoscreen]" << "---Begin Search external tools---";
   
   if ( searchProgramm( vkSettings.getRecorder() ) )
-    qDebug() << "[vokoscreen]" << "Search ffmpeg ..... found" << "Version:" << getFfmpegVersion();
+    qDebug() << "[vokoscreen]" << "Search ffmpeg ..... found" << vkSettings.getRecorder() << "Version:" << getFfmpegVersion();
   else
     qDebug() << "[vokoscreen]" << "Search ffmpeg ..... not found";
   
