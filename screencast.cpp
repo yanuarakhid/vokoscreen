@@ -1932,16 +1932,21 @@ void screencast::windowMove()
   if ( ( deltaXMove == x ) and ( deltaYMove == y ) )
     if ( ( SystemCall->state() == QProcess::NotRunning ) )
     {
-      QStringList result = ffmpegString.split( ":0." );
+//      QStringList result = ffmpegString.split( ":0." );
+      QStringList result = ffmpegString.split( DISPLAY );
       QString str1 = result[ 0 ];
       QString str2 = result[ 1 ];
       result.clear();
       result = str2.split( " " );
-      result[ 0 ] = ":0.0+" + x + "," + y;
+//      result[ 0 ] = ":0.0+" + x + "," + y;
+      result[ 0 ] = DISPLAY + "+" + x + "," + y;
+      
       str2 = "";
+
       for ( int i = 0; i < result.count(); i++ )
         str2.append( result.at( i ) + " " );
       ffmpegString = str1 + str2.trimmed() + " ";
+      
       moveWindowGo();
     }
 
