@@ -91,7 +91,6 @@ public:
 #endif
     
 public slots:
-  void SystemTrayKontextMenue( QAction *action );
 
 private slots:
     void Stop(void);
@@ -155,6 +154,8 @@ private slots:
     void WindowMinimized();
 
     void stateChangedSystray( int );
+    void SystemTrayKontextMenue( QAction *action );
+    void SystemTrayMinMax( QSystemTrayIcon::ActivationReason );
 
     void AreaOnOff();
     void showMagnifier();

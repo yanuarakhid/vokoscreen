@@ -1,5 +1,5 @@
 Requires:
-  - Qt4
+  - Qt4 >= 4.8
   - alsa
   - libX11
   - libv4l2
