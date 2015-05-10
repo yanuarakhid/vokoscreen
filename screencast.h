@@ -155,7 +155,6 @@ private slots:
 
     void stateChangedSystray( int );
     void SystemTrayKontextMenue( QAction *action );
-    void SystemTrayMinMax( QSystemTrayIcon::ActivationReason );
 
     void AreaOnOff();
     void showMagnifier();

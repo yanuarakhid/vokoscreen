@@ -785,7 +785,6 @@ screencast::screencast()
    SystemTrayIcon->setContextMenu ( SystemTrayMenu );
    SystemTrayIcon->setToolTip( "vokoscreen" );
    SystemTrayIcon->show();
-   connect( SystemTrayIcon,  SIGNAL( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT( SystemTrayMinMax( QSystemTrayIcon::ActivationReason ) ) );
    
    shortcutWebcam = new QxtGlobalShortcut( this );
    connect( shortcutWebcam, SIGNAL( activated() ), this, SLOT( ShortcutWebcam() ) );
@@ -861,11 +860,6 @@ void screencast::SystemTrayKontextMenue( QAction *action )
   }
 }
 
-void screencast::SystemTrayMinMax( QSystemTrayIcon::ActivationReason reason)
-{
-  if ( reason == QSystemTrayIcon::Trigger )
-    SystemTrayMenu->show();
-}
 
 QString screencast::getOsRelease()
 {
