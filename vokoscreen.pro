@@ -64,7 +64,6 @@ INSTALLS += target image desktop man
 QMAKE_CLEAN += $$TARGET */*~
 
 CONFIG += link_pkgconfig
-CONFIG += qt debug
 
 equals(QT_MAJOR_VERSION, "4") {
   # QtSingleApplication
