@@ -23,7 +23,7 @@ regionselection::regionselection()
   vkSettings.readAll();
   
   setAttribute ( Qt::WA_AlwaysShowToolTips );
-  setToolTip( tr( "doubleclick extended to the edge" ) );
+  setToolTip( tr( "double-click to maximize" ) );
   
   handlePressed = NoHandle;
   handleUnderMouse = NoHandle;
