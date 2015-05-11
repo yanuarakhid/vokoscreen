@@ -110,7 +110,7 @@
 <context>
     <name>regionselection</name>
     <message>
-        <source>doubleclick extended to the edge</source>
+        <source>double-click to maximize</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -310,6 +310,18 @@
     </message>
     <message>
         <source>Select recorder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show window</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -14,6 +14,9 @@
 <file>pictures/start.png</file>
 <file>pictures/stop.png</file>
 <file>pictures/system-software-update.png</file>
+<file>pictures/systray-exit.png</file>
+<file>pictures/systray.png</file>
+<file>pictures/systray-record.png</file>
 <file>pictures/tools.png</file>
 <file>pictures/undo.png</file>
 <file>pictures/videooptionen.png</file>
@@ -22,9 +25,6 @@
 <file>pictures/vokoscreen.png</file>
 <file>pictures/webcamBusy.png</file>
 <file>pictures/webcam.png</file>
-<file>pictures/systray.png</file>
-<file>pictures/systray-record.png</file>
-<file>pictures/systray-exit.png</file>
 <file>language/vokoscreen_ar.qm</file>
 <file>language/vokoscreen_ast.qm</file>
 <file>language/vokoscreen_ca.qm</file>
