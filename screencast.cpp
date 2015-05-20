@@ -732,11 +732,13 @@ screencast::screencast()
    QAction *vokoscreenAction = new QAction( this );
    vokoscreenAction->setIcon( QIcon( ":/pictures/systray.png" ) );
    vokoscreenAction->setText( "vokoscreen" );
-   vokoscreenAction->setEnabled( false );
+   vokoscreenAction->setEnabled( true );
+   qfont = vokoscreenAction->font();
+   qfont.setBold( true );
+   vokoscreenAction->setFont( qfont );
    
    startAction = new QAction( this );
    startAction->setIcon( QIcon::fromTheme( "media-playback-start", QIcon( ":/pictures/start.png" ) ) );
-
    startAction->setText( tr( "Start" ) );
    startAction->setData( "Start" );
    
