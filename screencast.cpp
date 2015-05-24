@@ -658,14 +658,7 @@ screencast::screencast()
       WindowRadioButton->setChecked( vkSettings.getWindowSelect() );
       
       AreaRadioButton->setChecked( vkSettings.getAreaSelect() );
-/*
-      QDir Dir;
-      if ( Dir.exists( vkSettings.getVideoPath() ) )
-          SaveVideoPathLineEdit->setText( vkSettings.getVideoPath() );
-      else
-        PathMoviesLocation();
-*/
-      QDir Dir( vkSettings.getVideoPath() );
+
       if ( vkSettings.getVideoPath() > "" )
           SaveVideoPathLineEdit->setText( vkSettings.getVideoPath() );
       else
