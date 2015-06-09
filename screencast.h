@@ -49,9 +49,7 @@
 
 #include "ui_QvkNoPlayerDialog.h"
 
-//#ifdef QT4
 #include <QxtGlobalShortcut> 
-//#endif
 
 #include <QTest>
 #include <QDateTime>

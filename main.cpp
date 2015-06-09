@@ -17,20 +17,11 @@
  */
 
 #include "screencast.h"
-
-#ifdef QT4
-  #include <QtSingleApplicationQt4/qtsingleapplication.h>
-#endif
-
-#ifdef QT5
-  #include <QtSingleApplicationQt5/qtsingleapplication.h>
-#endif
-
-
 #include <QDebug>
 #include <QTranslator>
 #include <QLocale>
-#include <QLibraryInfo>
+//#include <QLibraryInfo>
+#include <QtSingleApplication>
 
 int main(int argc, char** argv)
 {
