@@ -2740,10 +2740,10 @@ void screencast::record()
                if( FullScreenRadioButton->isChecked() )
 	       {
                  ffmpegString.append("-s");
-		 ffmpegString.append(" ");
-		 ffmpegString.append(QString::number( getRecordWidth().toInt()+2 ));
-		 ffmpegString.append("x");
-		 ffmpegString.append(QString::number( getRecordHeight().toInt()+2 ) + " " );
+                 ffmpegString.append(" ");
+                 ffmpegString.append(QString::number( getRecordWidth().toInt()+2 ));
+                 ffmpegString.append("x");
+                 ffmpegString.append(QString::number( getRecordHeight().toInt()+2 ) + " " );
 	       }
 	       else
 	       {
