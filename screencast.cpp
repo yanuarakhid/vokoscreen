@@ -129,6 +129,14 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "---End Environment---";
     qDebug();
     
+    ScreenkeyQCheckBox = new QCheckBox( frame );
+    ScreenkeyQCheckBox->setGeometry( 160, 65, 200, 21 );
+    ScreenkeyQCheckBox->setText( tr( "Screenkey" ) );
+    screenkey = new QvkScreenkey();
+    connect( ScreenkeyQCheckBox, SIGNAL( clicked() ), SLOT( showScreenkey() ) );
+
+    
+    
     // Tab 2 Audio options ****************************************
     TabWidgetAudioFrame = new QFrame( this );
     TabWidgetAudioFrame->setGeometry( 120, 0, 300, 290 );
@@ -827,6 +835,23 @@ screencast::~screencast()
 }
 
 
+void screencast::showScreenkey()
+{
+  if ( ScreenkeyQCheckBox->checkState() == Qt::Checked )
+  {
+    qDebug() << "Screenkey on";
+    screenkey->setScreenkeyOn();
+    screenkey->readKey();
+  }
+  
+  if ( ScreenkeyQCheckBox->checkState() == Qt::Unchecked )
+  {
+    qDebug() << "Screenkey off";
+    screenkey->setScreenkeyOff();
+  }
+}
+
+
 void screencast::SystemTrayKontextMenue( QAction *action )
 {
   QString data = action->data().toString();
@@ -1182,6 +1207,7 @@ void screencast::WindowMinimized()
 void screencast::closeEvent( QCloseEvent * event )
 {
   (void)event;
+  screenkey->setScreenkeyOff();
   Stop();
   saveSettings();
   myregionselection->close();

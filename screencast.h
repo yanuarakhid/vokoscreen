@@ -54,6 +54,8 @@
 #include <QTest>
 #include <QDateTime>
 
+#include "QvkScreenkey.h"
+
 class screencast : public QMainWindow
 { 
 Q_OBJECT
@@ -189,6 +191,9 @@ private slots:
     
     void myScreenCountChanged ( int newCount );
     
+    void showScreenkey();
+
+    
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
 #endif
@@ -293,6 +298,9 @@ private:
     QPushButton * updateButton;
 
     QvkSettings vkSettings;
+    
+    QCheckBox *ScreenkeyQCheckBox;
+    QvkScreenkey *screenkey;
 
  protected:
     void closeEvent( QCloseEvent * event );

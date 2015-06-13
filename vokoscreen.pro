@@ -103,6 +103,9 @@ include(project/project.pri)
 # settings
 include(settings/settings.pri)
 
+# screenkey
+include(screenkey/screenkey.pri)
+
 equals(QT_MAJOR_VERSION, "4") {
   DEFINES += QT4
   QT += testlib
