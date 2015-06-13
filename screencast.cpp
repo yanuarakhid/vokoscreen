@@ -134,7 +134,7 @@ screencast::screencast()
     ScreenkeyQCheckBox->setText( tr( "Screenkey" ) );
     screenkey = new QvkScreenkey();
     connect( ScreenkeyQCheckBox, SIGNAL( clicked() ), SLOT( showScreenkey() ) );
-
+    connect( screenkey, SIGNAL( pressedKey( QString ) ), SLOT( showOnConsole( QString ) ) );
     
     
     // Tab 2 Audio options ****************************************
@@ -851,6 +851,10 @@ void screencast::showScreenkey()
   }
 }
 
+void screencast::showOnConsole( QString value)
+{
+  qDebug() << "********************" << value;
+}
 
 void screencast::SystemTrayKontextMenue( QAction *action )
 {

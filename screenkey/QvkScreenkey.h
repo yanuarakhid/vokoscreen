@@ -1,7 +1,7 @@
 #ifndef QVKSCREENKEY_H 
 #define QVKSCREENKEY_H
 
-#include <QtGui>
+#include <QCoreApplication>
 #include <QObject>
 
 #include <X11/Xlib.h>
@@ -16,24 +16,26 @@ public:
   QvkScreenkey();
   virtual ~QvkScreenkey();
   void readKey();
-  bool onOff;
-  
-public slots:
   void setScreenkeyOff();
   void setScreenkeyOn();
+  
+  
+public slots:
 
   
 private slots:
 
 
 signals:
+  void pressedKey( QString value );
 
   
 protected:  
 
   
 private:
-  
+    bool onOff;
+
 };
 
 #endif

@@ -192,6 +192,7 @@ private slots:
     void myScreenCountChanged ( int newCount );
     
     void showScreenkey();
+    void showOnConsole( QString value);
 
     
 #ifndef NO_NEW_VERSION_CHECK

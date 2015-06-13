@@ -68,7 +68,7 @@ void QvkScreenkey::readKey()
                          szKeyString = XKeysymToString( szKeysym );
 	 
                          XGetInputFocus( display, &focusWin, &iReverToReturn );
-			 qDebug() << szKeyString;
+			 emit pressedKey( szKeyString );
                      }
                     iCheck = iCheck << 1 ;
                 }
