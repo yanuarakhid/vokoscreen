@@ -1,332 +1,314 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="el_GR" version="2.0">
 <context>
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"></translation>
+        <translation>Η συσκευή είναι απασχολημένη</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;Ονομα</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;Αγνωστη</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Συσκευή</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρησιμοποιήθηκε από</translation>
     </message>
 </context>
 <context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποστολή πιο πρόσφατου βίντεο</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποστολή ενός ή περισσότερων επιλεγμένων βίντεο</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποστολή</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακύρωση</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Παρακαλώ εγκαταστήστε πρόγραμμα video player</translation>
     </message>
 </context>
 <context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation type="unfinished"></translation>
+        <translation>Θα βρείτε το βίντεο ως επισύναψη</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή ενός ή περισσότερων αρχείων</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλαίσιο</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλείσιμο</translation>
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Δείξε πάνω από την πλήρη οθόνη</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεξί κλικ για το μενού</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός από το χρήστη</translation>
     </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation type="unfinished"></translation>
+        <translation>Η συσκευή είναι απασχολημένη</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;Ονομα</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Συσκευή</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρησιμοποιήθηκε από</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;Αγνωστο</translation>
     </message>
 </context>
 <context>
     <name>regionselection</name>
     <message>
-        <source>double-click to maximize</source>
-        <translation type="unfinished"></translation>
+        <source>doubleclick extended to the edge</source>
+        <translation>διπλό κλικ για εξάπλωση στην άκρη</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλήρης οθόνη</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Παράθυρο</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιοχή</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
+        <translation>Μεγένθυση</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;Ηχος</translation>
     </message>
     <message>
         <source>Alsa</source>
-        <translation type="unfinished"></translation>
+        <translation>Alsa</translation>
     </message>
     <message>
         <source>Pulse</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulse</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπιλογή</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation type="unfinished"></translation>
+        <translation>Κωδικοποιητής</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Μην καταγράφεις τον κέρσορα</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation type="unfinished"></translation>
+        <translation>Τοποθεσία αρχείου</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναπαραγωγή με</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation type="unfinished"></translation>
+        <translation>Ελαχιστοποίηση όταν ξεκινήσει η εγγραφή</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχή</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοπ</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Παύση</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναπαραγωγή</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποστολή</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρόνος εγγραφής</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος σε KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος περιοχής εγγραφής</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Φορμά</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός fps</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;Ανοιγμα φακέλου</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντίστροφη μέτρηση</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Παίξε τελευταίο βίντεο</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποστολή βίντεο</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή μιας ή περισσότερων συσκευών</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"></translation>
+        <translation>Καρέ ανά δευτερόλεπτο</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκκίνηση</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχική</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"></translation>
+        <translation>Υποστήριξη</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"></translation>
+        <translation>Προγραμματιστής</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Καρέ</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Δωρεά</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Μεταφράσεις</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"></translation>
+        <translation>Πηγαίος κώδικας</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορατό στις ειδοποιήσεις</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέα έκδοση διαθέσιμη</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Κωδικοποιητής βίντεο</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Κωδικοποιητή ήχου</translation>
     </message>
     <message>
         <source>Webcam</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάμερα web</translation>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή κάμερας web</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"></translation>
+        <translation>Καθρεφτισμός</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Οθόνη</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;Ολες οι </translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχική σελίδα προγραμματιστή</translation>
     </message>
     <message>
         <source>Recorder</source>
-        <translation type="unfinished"></translation>
+        <translation>Καταγραφέας</translation>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hide window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Screenkey</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή καταγραφέα</translation>
     </message>
 </context>
 </TS>

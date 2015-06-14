@@ -79,7 +79,7 @@
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>Definíu pol usuariu</translation>
     </message>
 </context>
 <context>
@@ -255,10 +255,6 @@
         <translation>Donar</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Programa pa grabar</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Tornes</translation>
     </message>
@@ -305,6 +301,14 @@
     <message>
         <source>Developer Homepage</source>
         <translation>Páxina web del desendolcador</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation>Grabador</translation>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation>Esbilar grabador</translation>
     </message>
 </context>
 </TS>
