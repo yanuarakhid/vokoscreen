@@ -36,7 +36,7 @@ void QvkScreenkey::readKey()
     int  iCheck;
 
     char szKeysym;
-    char * szKeyString;
+    char *szKeyString;
 
     int iKeyCode;
 
@@ -68,7 +68,26 @@ void QvkScreenkey::readKey()
                          szKeyString = XKeysymToString( szKeysym );
 	 
                          XGetInputFocus( display, &focusWin, &iReverToReturn );
-			 emit pressedKey( szKeyString );
+			 
+			 QString keyString = szKeyString;
+			 if ( keyString == "space" )
+			   keyString = " ";
+			 if ( keyString == "period" )
+			   keyString = ".";
+			 if ( keyString == "asciicircum" )
+			   keyString = "^";
+			 if ( keyString == "minus" )
+			   keyString = "-";
+			 if ( keyString == "less" )
+			   keyString = "<";
+			 if ( keyString == "comma" )
+			   keyString = ",";
+			 if ( keyString == "plus" )
+			   keyString = "+";
+			 if ( keyString == "numbersign" )
+			   keyString = "#";
+			 emit pressedKey( keyString );
+			 
                      }
                     iCheck = iCheck << 1 ;
                 }
