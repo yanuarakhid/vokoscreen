@@ -325,7 +325,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Screenkey</source>
+        <source>Showkey</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

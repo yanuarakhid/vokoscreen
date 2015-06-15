@@ -131,7 +131,7 @@ screencast::screencast()
     
     ScreenkeyQCheckBox = new QCheckBox( frame );
     ScreenkeyQCheckBox->setGeometry( 160, 65, 200, 21 );
-    ScreenkeyQCheckBox->setText( tr( "Screenkey" ) );
+    ScreenkeyQCheckBox->setText( tr( "Showkey" ) );
     screenkey = new QvkScreenkey();
     screenkeyWindow = new QvkScreenkeyWindow();
     connect( ScreenkeyQCheckBox, SIGNAL( clicked() ), SLOT( screenkeyReadKey() ) );

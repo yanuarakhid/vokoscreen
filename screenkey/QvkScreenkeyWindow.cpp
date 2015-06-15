@@ -23,7 +23,7 @@ QvkScreenkeyWindow::QvkScreenkeyWindow()
   int keyWindowHeight = 120;
   
   QDesktopWidget *desk = QApplication::desktop();
-  setGeometry( 0, desk->height() / 5 * 4, desk->width(), keyWindowHeight );
+  setGeometry( 0, desk->height() / 10 * 7, desk->width(), keyWindowHeight );
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
   
   QPalette Pal(palette());

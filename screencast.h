@@ -301,7 +301,6 @@ private:
     QCheckBox *ScreenkeyQCheckBox;
     QvkScreenkey *screenkey;
     QvkScreenkeyWindow *screenkeyWindow;
-    QTime oldTime;
     QTimer *screenkeyTimer;
      
  protected:
