@@ -3,6 +3,7 @@
 
 #include <QCoreApplication>
 #include <QObject>
+#include <QTest>
 
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
