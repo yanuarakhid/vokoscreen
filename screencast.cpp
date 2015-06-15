@@ -133,8 +133,9 @@ screencast::screencast()
     ScreenkeyQCheckBox->setGeometry( 160, 65, 200, 21 );
     ScreenkeyQCheckBox->setText( tr( "Screenkey" ) );
     screenkey = new QvkScreenkey();
-    connect( ScreenkeyQCheckBox, SIGNAL( clicked() ), SLOT( showScreenkey() ) );
-    connect( screenkey, SIGNAL( pressedKey( QString ) ), SLOT( showOnConsole( QString ) ) );
+    screenkeyWindow = new QvkScreenkeyWindow();
+    connect( ScreenkeyQCheckBox, SIGNAL( clicked() ), SLOT( screenkeyReadKey() ) );
+    connect( screenkey, SIGNAL( pressedKey( QString ) ), SLOT( showScreenkeyWindow( QString ) ) );
     
     
     // Tab 2 Audio options ****************************************
@@ -826,7 +827,9 @@ screencast::screencast()
    
    clickedScreenSize();
    AreaOnOff();
-   
+
+   screenkeyTimer = new QTimer( this );
+   connect( screenkeyTimer, SIGNAL( timeout() ), this, SLOT( hideScreenkeyWindow() ) );
 }
 
 
@@ -835,26 +838,38 @@ screencast::~screencast()
 }
 
 
-void screencast::showScreenkey()
+void screencast::screenkeyReadKey()
 {
   if ( ScreenkeyQCheckBox->checkState() == Qt::Checked )
   {
-    qDebug() << "Screenkey on";
     screenkey->setScreenkeyOn();
     screenkey->readKey();
   }
   
   if ( ScreenkeyQCheckBox->checkState() == Qt::Unchecked )
   {
-    qDebug() << "Screenkey off";
     screenkey->setScreenkeyOff();
+    screenkeyWindow->hide();
   }
 }
 
-void screencast::showOnConsole( QString value)
+
+void screencast::showScreenkeyWindow( QString value)
 {
-  qDebug() << "********************" << value;
+   screenkeyTimer->stop();
+   screenkeyTimer->start( 3000 );
+   screenkeyWindow->show();
+   screenkeyWindow->keyLabel->setText( screenkeyWindow->keyLabel->text() + value );
 }
+
+
+void screencast::hideScreenkeyWindow()
+{
+  screenkeyWindow->keyLabel->setText( "" );
+  screenkeyWindow->hide();
+  screenkeyTimer->stop();
+}
+
 
 void screencast::SystemTrayKontextMenue( QAction *action )
 {

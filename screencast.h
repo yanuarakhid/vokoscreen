@@ -35,6 +35,8 @@
 #include <QDesktopWidget>
 #include <QDial>
 #include <QAction>
+#include <QTest>
+#include <QDateTime>
 
 #include "QvkSettings.h"
 #include "regionselection.h"
@@ -46,15 +48,10 @@
 #include "QvkWinInfo.h"
 #include "QvkCredits.h"
 #include "QvkVersion.h"
-
 #include "ui_QvkNoPlayerDialog.h"
-
 #include <QxtGlobalShortcut> 
-
-#include <QTest>
-#include <QDateTime>
-
 #include "QvkScreenkey.h"
+#include "QvkScreenkeyWindow.h"
 
 class screencast : public QMainWindow
 { 
@@ -191,8 +188,9 @@ private slots:
     
     void myScreenCountChanged ( int newCount );
     
-    void showScreenkey();
-    void showOnConsole( QString value);
+    void showScreenkeyWindow( QString value);
+    void screenkeyReadKey();
+    void hideScreenkeyWindow();
 
     
 #ifndef NO_NEW_VERSION_CHECK
@@ -302,7 +300,10 @@ private:
     
     QCheckBox *ScreenkeyQCheckBox;
     QvkScreenkey *screenkey;
-
+    QvkScreenkeyWindow *screenkeyWindow;
+    QTime oldTime;
+    QTimer *screenkeyTimer;
+     
  protected:
     void closeEvent( QCloseEvent * event );
     void changeEvent(QEvent *e);
