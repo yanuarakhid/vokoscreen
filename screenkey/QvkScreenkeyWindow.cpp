@@ -27,7 +27,8 @@ QvkScreenkeyWindow::QvkScreenkeyWindow()
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
   
   QPalette Pal(palette());
-  Pal.setColor( QPalette::Background, Qt::gray );
+  Pal.setColor( QPalette::Background, Qt::lightGray );
+  Pal.setColor( QPalette::Foreground, Qt::black );
   setAutoFillBackground( true );
   setPalette( Pal );  
   
@@ -37,6 +38,8 @@ QvkScreenkeyWindow::QvkScreenkeyWindow()
   keyLabel->setGeometry( 0, 0, desk->width(), keyWindowHeight );
   keyLabel->setAlignment( Qt::AlignCenter );    
   keyLabel->setFont( qfont );
+
+  setWindowOpacity( 0.7 );
 }
 
 

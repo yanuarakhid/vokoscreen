@@ -848,6 +848,7 @@ void screencast::screenkeyReadKey()
   
   if ( ScreenkeyQCheckBox->checkState() == Qt::Unchecked )
   {
+    screenkeyWindow->keyLabel->setText( "" );
     screenkey->setScreenkeyOff();
     screenkeyWindow->hide();
   }
