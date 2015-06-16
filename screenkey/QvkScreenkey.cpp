@@ -1,5 +1,10 @@
-
 #include "QvkScreenkey.h" 
+
+// For Qt5 the X11 include file must be here, then compile fine.
+#include <X11/Xlib.h>
+#include <X11/XKBlib.h>
+#include <stdio.h>
+#include <string.h>
 
 using namespace std;
 

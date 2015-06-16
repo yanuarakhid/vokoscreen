@@ -5,11 +5,6 @@
 #include <QObject>
 #include <QTest>
 
-#include <X11/Xlib.h>
-#include <X11/XKBlib.h>
-#include <stdio.h>
-#include <string.h>
-
 class QvkScreenkey: public QObject
 { 
 Q_OBJECT
