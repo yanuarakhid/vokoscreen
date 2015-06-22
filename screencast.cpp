@@ -2696,11 +2696,8 @@ void screencast::record()
               deltaX = QString::number( desk->screenGeometry( i ).left() );
               deltaY = QString::number( desk->screenGeometry( i ).top() );
           }
-//          fullScreenWidth += desk->screenGeometry( i ).width();
-//          fullScreenHeight = std::max( fullScreenHeight, desk->screenGeometry( i ).height() );
-          // ffmpeg 2.6.3 want 2 Pixel smaller 
-          fullScreenWidth += desk->screenGeometry( i ).width() - 2;
-          fullScreenHeight = std::max( fullScreenHeight, desk->screenGeometry( i ).height() -2 );
+          fullScreenWidth += desk->screenGeometry( i ).width();
+          fullScreenHeight = std::max( fullScreenHeight, desk->screenGeometry( i ).height() );
       }
 
       setRecordWidth( QString::number( fullScreenWidth ) );
@@ -2781,20 +2778,8 @@ void screencast::record()
                + "-pix_fmt yuv420p" + " "
                + "-c:v" + " " + myVcodec + " "
                + myAcodec() + " "
-               + quality + " ";
-               // ffmpeg 2.6.3 want 2 Pixel smaller 
-               if( FullScreenRadioButton->isChecked() )
-	       {
-                 ffmpegString.append("-s");
-                 ffmpegString.append(" ");
-                 ffmpegString.append(QString::number( getRecordWidth().toInt()+2 ));
-                 ffmpegString.append("x");
-                 ffmpegString.append(QString::number( getRecordHeight().toInt()+2 ) + " " );
-	       }
-	       else
-	       {
-                 ffmpegString + "-s" + " " + getRecordWidth() + "x" + getRecordHeight() + " ";
-	       }
+               + quality + " "
+               + "-s" + " " + getRecordWidth() + "x" + getRecordHeight() + " ";
   
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   
