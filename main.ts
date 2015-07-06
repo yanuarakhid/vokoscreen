@@ -339,5 +339,9 @@
         <source>Showkey</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Showclick</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
