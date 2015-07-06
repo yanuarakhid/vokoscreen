@@ -75,11 +75,11 @@
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>Prawy przycisk otwiera menu</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>Zdefiniowany przez użytkownika</translation>
     </message>
 </context>
 <context>
@@ -255,10 +255,6 @@
         <translation>Darowizna</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Program nagrywający</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Tłumaczenia</translation>
     </message>
@@ -305,6 +301,14 @@
     <message>
         <source>Developer Homepage</source>
         <translation>Strona programisty</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

@@ -109,7 +109,7 @@
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>Doppelklick zum Maximieren</translation>
     </message>
 </context>
 <context>
@@ -255,10 +255,6 @@
         <translation>Spende</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Aufnahme über</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Übersetzungen</translation>
     </message>
@@ -305,6 +301,14 @@
     <message>
         <source>Developer Homepage</source>
         <translation>Entwickler homepage</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

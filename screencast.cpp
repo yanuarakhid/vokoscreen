@@ -103,12 +103,12 @@ screencast::screencast()
     connect( MagnifierDialogPushButton, SIGNAL( clicked() ), SLOT( MagnifierDialog() ) );
     
     QLabel *CountdownLabel = new QLabel( frame );
-    CountdownLabel->setGeometry( 160, 110, 80, 25 );
+    CountdownLabel->setGeometry( 160, 115, 80, 25 );
     CountdownLabel->setText( tr( "Countdown" ) );
     CountdownLabel->show();
     
     CountdownSpinBox = new QSpinBox( frame );
-    CountdownSpinBox->setGeometry( 250, 110, 50, 21 );
+    CountdownSpinBox->setGeometry( 250, 115, 50, 21 );
     CountdownSpinBox->setMinimum( 0 );
     CountdownSpinBox->setMaximum( 999 );
     CountdownSpinBox->setSingleStep( 1 );
@@ -137,6 +137,34 @@ screencast::screencast()
     connect( ScreenkeyQCheckBox, SIGNAL( clicked() ), SLOT( screenkeyReadKey() ) );
     connect( screenkey, SIGNAL( pressedKey( QString ) ), SLOT( showScreenkeyWindow( QString ) ) );
     
+    //-----------------------------------------------------------
+    pointerQCheckBox = new QCheckBox( frame );
+  pointerQCheckBox->setGeometry( 160, 90, 200, 21 );
+  pointerQCheckBox->setText( tr( "Showclick" ) );
+  connect( pointerQCheckBox, SIGNAL( clicked() ), this, SLOT( pointerOnOff() ) );
+
+  pointerDialogPushButton = new QPushButton( frame );
+  pointerDialogPushButton->setGeometry( 270, 90, 20, 21 );
+  pointerDialogPushButton->setText( "..." );
+  connect( pointerDialogPushButton, SIGNAL( clicked() ), this, SLOT( pointerDialog() ) );
+  
+  QColor color = Qt::red;
+  bool radiant = false;
+  double opacity = 0.5;
+  ShowClickDialog = new QvkShowClickDialog( color, radiant, opacity );
+  
+  animateControl = new QvkAnimateControl( (double) ShowClickDialog->myUiDialog.horizontalSliderShowtime->value()/10,
+					  ShowClickDialog->myUiDialog.horizontalSliderCircle->value(),
+					  ShowClickDialog->myUiDialog.checkBoxRadiant->checkState(),
+					  (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100,
+					  color );
+
+  connect( ShowClickDialog, SIGNAL( newCircleWidgetValue( int, QColor ) ), animateControl, SLOT( setDiameterColor( int, QColor ) ) );
+  connect( ShowClickDialog, SIGNAL( newShowtime( double ) ), animateControl, SLOT( setShowTime( double ) ) );
+  connect( ShowClickDialog, SIGNAL( newOpacity( double ) ), animateControl, SLOT( setOpacity( double ) ) );
+  connect( ShowClickDialog, SIGNAL( newRadiant( bool ) ), animateControl, SLOT( setRadiant( bool ) ) );
+    
+    //-----------------------------------------------------------
     
     // Tab 2 Audio options ****************************************
     TabWidgetAudioFrame = new QFrame( this );
@@ -871,6 +899,20 @@ void screencast::hideScreenkeyWindow()
   screenkeyTimer->stop();
 }
 
+void screencast::pointerOnOff()
+{
+  if ( pointerQCheckBox->checkState() == Qt::Checked )
+    animateControl->animateWindowOn();
+  
+  if ( pointerQCheckBox->checkState() == Qt::Unchecked )
+    animateControl->animateWindowOff();
+}
+
+void screencast::pointerDialog()
+{
+  ShowClickDialog->show();
+}
+
 
 void screencast::SystemTrayKontextMenue( QAction *action )
 {
@@ -1228,6 +1270,8 @@ void screencast::closeEvent( QCloseEvent * event )
 {
   (void)event;
   screenkey->setScreenkeyOff();
+  if ( pointerQCheckBox->checkState() == Qt::Checked )
+    pointerQCheckBox->click();
   Stop();
   saveSettings();
   myregionselection->close();

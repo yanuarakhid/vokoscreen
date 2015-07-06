@@ -2,6 +2,10 @@
 <qresource>
 <file>pictures/about.png</file>
 <file>pictures/community.png</file>
+<file>pictures/cursor.png</file>
+<file>pictures/farbeimer-gelb.png</file>
+<file>pictures/farbeimer-gruen.png</file>
+<file>pictures/farbeimer-rot.png</file>
 <file>pictures/go.png</file>
 <file>pictures/magnifier.png</file>
 <file>pictures/microbusy.png</file>
@@ -9,6 +13,8 @@
 <file>pictures/monitor.png</file>
 <file>pictures/novideoplayer.png</file>
 <file>pictures/pause.png</file>
+<file>pictures/radiant.png</file>
+<file>pictures/sandglass.png</file>
 <file>pictures/Scroll.png</file>
 <file>pictures/sem_soc_net.png</file>
 <file>pictures/start.png</file>
@@ -18,6 +24,7 @@
 <file>pictures/systray.png</file>
 <file>pictures/systray-record.png</file>
 <file>pictures/tools.png</file>
+<file>pictures/transparenz.png</file>
 <file>pictures/undo.png</file>
 <file>pictures/videooptionen.png</file>
 <file>pictures/VokoCola-1.png</file>

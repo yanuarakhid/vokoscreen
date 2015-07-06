@@ -26,11 +26,11 @@
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Kirim Video terakhir melalui Surat Elektronik</translation>
+        <translation>Kirim Video terakhir melalui Surel</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Kirim satu atau lebih Video melalui Surat Elektronik</translation>
+        <translation>Kirim satu atau lebih Video melalui Surel</translation>
     </message>
     <message>
         <source>Send</source>
@@ -109,7 +109,7 @@
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>klik dobel memperluas ke tepi</translation>
     </message>
 </context>
 <context>
@@ -176,7 +176,7 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation>Berhenti Sejenak</translation>
+        <translation>Tangguhkan</translation>
     </message>
     <message>
         <source>Play</source>
@@ -248,15 +248,11 @@
     </message>
     <message>
         <source>Frames</source>
-        <translation>Bingkai</translation>
+        <translation>Frame</translation>
     </message>
     <message>
         <source>Donate</source>
         <translation>Donasi</translation>
-    </message>
-    <message>
-        <source>Program for recording</source>
-        <translation>Program untuk merekam</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -305,6 +301,14 @@
     <message>
         <source>Developer Homepage</source>
         <translation>Halaman muka Pengembang</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation>Perekam</translation>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation>Pilih perekam</translation>
     </message>
 </context>
 </TS>

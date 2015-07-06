@@ -53,6 +53,9 @@
 #include "QvkScreenkey.h"
 #include "QvkScreenkeyWindow.h"
 
+#include "QvkAnimateControl.h"
+#include "QvkShowClickDialog.h"
+
 class screencast : public QMainWindow
 { 
 Q_OBJECT
@@ -82,6 +85,9 @@ public:
     QMenu *SystemTrayMenu;
     QSystemTrayIcon *SystemTrayIcon;
 
+    QvkShowClickDialog *ShowClickDialog;
+
+    
 public:
 #ifndef NO_NEW_VERSION_CHECK
     QvkVersion version;
@@ -197,6 +203,11 @@ private slots:
     void buttonVersion();
 #endif
     
+  void pointerOnOff();
+  void pointerDialog();
+    
+    
+    
 private:
     QString DISPLAY;
     
@@ -303,10 +314,18 @@ private:
     QvkScreenkeyWindow *screenkeyWindow;
     QTimer *screenkeyTimer;
      
+  QCheckBox *pointerQCheckBox;
+  QvkAnimateControl *animateControl;
+  QPushButton *pointerDialogPushButton;
+    
+    
  protected:
     void closeEvent( QCloseEvent * event );
     void changeEvent(QEvent *e);
     void styleChange( QStyle &asd );
+    
+ // void closeEvent(QCloseEvent *event);
+    
 };
 
 
