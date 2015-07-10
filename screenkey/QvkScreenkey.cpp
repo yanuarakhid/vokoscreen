@@ -29,7 +29,7 @@ void QvkScreenkey::setScreenkeyOn()
 }
 
 
-void QvkScreenkey::readKey()
+void QvkScreenkey::run()
 {
     Display * display;
 

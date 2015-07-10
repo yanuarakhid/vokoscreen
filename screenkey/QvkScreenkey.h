@@ -4,14 +4,14 @@
 #include <QCoreApplication>
 #include <QObject>
 #include <QTest>
+#include <QThread>
 
-class QvkScreenkey: public QObject
+class QvkScreenkey: public QThread
 { 
 Q_OBJECT
 public:
   QvkScreenkey();
   virtual ~QvkScreenkey();
-  void readKey();
   void setScreenkeyOff();
   void setScreenkeyOn();
   
@@ -27,7 +27,7 @@ signals:
 
   
 protected:  
-
+  void run();
   
 private:
     bool onOff;

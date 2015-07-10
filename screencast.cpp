@@ -871,7 +871,7 @@ void screencast::screenkeyReadKey()
   if ( ScreenkeyQCheckBox->checkState() == Qt::Checked )
   {
     screenkey->setScreenkeyOn();
-    screenkey->readKey();
+    screenkey->start();
   }
   
   if ( ScreenkeyQCheckBox->checkState() == Qt::Unchecked )
