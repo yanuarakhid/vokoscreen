@@ -50,13 +50,17 @@ TRANSLATIONS = $$files(language/vokoscreen_*.ts)
  else: message(No translation files in project)
 
 # Install paths
-image.path = /usr/share/pixmaps
+isEmpty(PREFIX) {
+    PREFIX = /usr
+}
+
+image.path = $$PREFIX/share/pixmaps
 image.files += applications/vokoscreen.png
-desktop.path = /usr/share/applications
+desktop.path = $$PREFIX/share/applications
 desktop.files += applications/vokoscreen.desktop
-man.path = /usr/share
+man.path = $$PREFIX/share
 man.files += man
-target.path = /usr/bin
+target.path = $$PREFIX/bin
 
 INSTALLS += target image desktop man
 
