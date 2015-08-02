@@ -97,9 +97,6 @@ include(webcam/webcam.pri)
 PKGCONFIG += libv4l2
 PKGCONFIG += libv4lconvert
 
-# project
-include(project/project.pri)
-
 # settings
 include(settings/settings.pri)
 
