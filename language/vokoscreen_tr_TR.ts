@@ -7,19 +7,19 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Ad</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Blinmeyen</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Aygıt</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Kullanan</translation>
     </message>
 </context>
 <context>
@@ -38,14 +38,14 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>İptal</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
+        <translation>Lütfen video oynacısı kurun</translation>
     </message>
 </context>
 <context>
@@ -71,15 +71,15 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Tam ekran üzerinde göster</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>Menü için sağ tıklayın</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>Kullanıcı tanımlı</translation>
     </message>
 </context>
 <context>
@@ -90,19 +90,19 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Ad</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Aygıt</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Kullanan</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Blinmeyen</translation>
     </message>
 </context>
 <context>
@@ -255,32 +255,28 @@
         <translation>Yardım et</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Kayıt programı</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Çeviriler</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"/>
+        <translation>Kaynak kodu</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"/>
+        <translation>Sistem tepsisinde göster</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>Yeni sürüm mevcut</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"/>
+        <translation>Videocodec</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"/>
+        <translation>Audiocodec</translation>
     </message>
     <message>
         <source>Webcam</source>
@@ -292,19 +288,27 @@
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>Yansıtılmış</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"/>
+        <translation>Görüntü</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
+        <translation>Tüm Görüntüler</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Geliştirici Anasayfası</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation>Kaydedici</translation>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation>Kaydedici seçin</translation>
     </message>
 </context>
 </TS>
