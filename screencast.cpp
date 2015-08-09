@@ -1975,17 +1975,18 @@ QString screencast::getPactlVersion()
 QString screencast::getFfmpegVersion()
 {
   QProcess Process;
-//  Process.start("ffmpeg -version");
   Process.start( vkSettings.getRecorder() + " -version");
   Process.waitForFinished();
   QString ffmpegversion = Process.readAllStandardOutput();
   Process.close();
   
   QStringList list = ffmpegversion.split( "\n" );
-  ffmpegversion = list[ 0 ];
-  list = ffmpegversion.split( " " );
-  
-  return list[ 2 ];
+  if ( list.empty() )
+    ffmpegversion = "";
+  else
+    ffmpegversion = list[ 0 ];
+
+  return ffmpegversion;
 }
 
 
