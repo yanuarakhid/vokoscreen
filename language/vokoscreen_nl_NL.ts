@@ -7,19 +7,19 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Naam</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Onbekend</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Apparaat</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikt door</translation>
     </message>
 </context>
 <context>
@@ -38,14 +38,14 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuleren</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
+        <translation>Installeer een videoplayer</translation>
     </message>
 </context>
 <context>
@@ -71,15 +71,15 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Toon over volledig scherm</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>Rechtsklikken voor menu</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>Gebruiker-gedefinieerd</translation>
     </message>
 </context>
 <context>
@@ -90,26 +90,26 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Naam</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Apparaat</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikt door</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Onbekend</translation>
     </message>
 </context>
 <context>
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>dubbelklikken breidde uit naar de rand</translation>
     </message>
 </context>
 <context>
@@ -224,11 +224,11 @@
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"/>
+        <translation>Selecteer één of meer apparaten</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>Actueel aantal frames per seconde</translation>
     </message>
     <message>
         <source>Go</source>
@@ -236,51 +236,47 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Startpagina</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>Ondersteuning</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>Ontwikkelaar</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"/>
+        <translation>Frames</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Program for recording</source>
-        <translation type="unfinished"/>
+        <translation>Doneren</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"/>
+        <translation>Vertalingen</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"/>
+        <translation>Broncode</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"/>
+        <translation>Tonen in systray</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>Nieuwe versie beschikbaar</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"/>
+        <translation>Videocodec</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"/>
+        <translation>Audiocodec</translation>
     </message>
     <message>
         <source>Webcam</source>
@@ -288,23 +284,31 @@
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"/>
+        <translation>Selecteren webcam</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>Gemirrord</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"/>
+        <translation>Scherm</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
+        <translation>Alle schermen</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Homepage van de ontwikkelaar</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation>Recorder</translation>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation>Selecteren recorder</translation>
     </message>
 </context>
 </TS>
