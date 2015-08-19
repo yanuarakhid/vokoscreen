@@ -11,7 +11,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>I panjohur</translation>
     </message>
     <message>
         <source>Device</source>
@@ -19,18 +19,18 @@
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Përdorur nga</translation>
     </message>
 </context>
 <context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation type="unfinished"/>
+        <translation>Dërgo videon e fundit</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation type="unfinished"/>
+        <translation>Dërgo një ose më shumë video të zgjedhur</translation>
     </message>
     <message>
         <source>Send</source>
@@ -45,14 +45,14 @@
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
+        <translation>Instaloni një riprodhues video</translation>
     </message>
 </context>
 <context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation type="unfinished"/>
+        <translation>Do ta gjeni videon si bashkëngjitje</translation>
     </message>
     <message>
         <source>Select one or more files</source>
@@ -63,7 +63,7 @@
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation type="unfinished"/>
+        <translation>Kufiri</translation>
     </message>
     <message>
         <source>Close</source>
@@ -71,15 +71,15 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Shfaqe sipër ekranit të plotë</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>Klikim të djathtë për menynë</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>Përcaktuar nga përdoruesi</translation>
     </message>
 </context>
 <context>
@@ -98,18 +98,18 @@
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Përdorur nga</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>I panjohur</translation>
     </message>
 </context>
 <context>
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>klikim i dyfishtë i shtrirë deri tek kufijtë</translation>
     </message>
 </context>
 <context>
@@ -144,27 +144,27 @@
     </message>
     <message>
         <source>Default</source>
-        <translation type="unfinished"/>
+        <translation>I parazgjedhur</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation type="unfinished"/>
+        <translation>Codec</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"/>
+        <translation>Mos regjistro kursorin e miut</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation type="unfinished"/>
+        <translation>Vendndodhja</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"/>
+        <translation>Riprodhuesi</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation type="unfinished"/>
+        <translation>Minimizo Vokoscreen kur fillon regjistrimi</translation>
     </message>
     <message>
         <source>Start</source>
@@ -176,7 +176,7 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"/>
+        <translation>Pusho</translation>
     </message>
     <message>
         <source>Play</source>
@@ -188,7 +188,7 @@
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Koha e regjistrimit</translation>
+        <translation>Kohëzgjatja e regjistrimit</translation>
     </message>
     <message>
         <source>Size in KB</source>
@@ -196,7 +196,7 @@
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"/>
+        <translation>Përmasat e ekranit për të regjistruar</translation>
     </message>
     <message>
         <source>Format</source>
@@ -204,15 +204,15 @@
     </message>
     <message>
         <source>Settings fps</source>
-        <translation type="unfinished"/>
+        <translation>Parametrat fps</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation type="unfinished"/>
+        <translation>Hap dosjen</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"/>
+        <translation>Numërim nga fundi</translation>
     </message>
     <message>
         <source>Play last Video</source>
@@ -228,27 +228,27 @@
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>Fotogramët aktualë për sekondë</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"/>
+        <translation>Shko</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Faqja e projektit</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>Mbështetja</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>Zhvilluesi</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"/>
+        <translation>Fotogramët</translation>
     </message>
     <message>
         <source>Donate</source>
@@ -264,7 +264,7 @@
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"/>
+        <translation>Shfaqe në zonën e sistemit</translation>
     </message>
     <message>
         <source>New version available</source>
@@ -272,23 +272,23 @@
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"/>
+        <translation>Codec video</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"/>
+        <translation>Codec audio</translation>
     </message>
     <message>
         <source>Webcam</source>
-        <translation type="unfinished"/>
+        <translation>Webcam</translation>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"/>
+        <translation>Zgjidh webcam</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>Pasqyro</translation>
     </message>
     <message>
         <source>Display</source>
@@ -296,19 +296,19 @@
     </message>
     <message>
         <source>All Displays</source>
-        <translation>Të gjithë ekranet</translation>
+        <translation>Të gjitha ekranet</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Faqja e zhvilluesit</translation>
     </message>
     <message>
         <source>Recorder</source>
-        <translation type="unfinished"/>
+        <translation>Regjistruesi</translation>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation type="unfinished"/>
+        <translation>Zgjidh regjistruesin</translation>
     </message>
 </context>
 </TS>

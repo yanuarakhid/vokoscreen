@@ -304,11 +304,11 @@
     </message>
     <message>
         <source>Recorder</source>
-        <translation type="unfinished"/>
+        <translation>Recorder</translation>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation type="unfinished"/>
+        <translation>Gewählter Recorder</translation>
     </message>
 </context>
 </TS>
