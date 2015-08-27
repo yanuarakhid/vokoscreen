@@ -1,314 +1,314 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr_FR" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fa" version="2.0">
 <context>
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>Le périphérique est en cours d&apos;utilisation</translation>
+        <translation>دستگاه مشغول است</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Nom</translation>
+        <translation>نام</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Inconnu</translation>
+        <translation>ناشناس</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation>Périphérique</translation>
+        <translation>دستگاه</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation>Utilisé par</translation>
+        <translation>استفاده شده توسط</translation>
     </message>
 </context>
 <context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Envoyer la dernière vidéo</translation>
+        <translation>ارسال آخرین ویدیو با ایمیل</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Envoyer une ou plusieurs vidéos sélectionnées</translation>
+        <translation>ارسال یک یا چند ویدیو با ایمیل</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Envoyer</translation>
+        <translation>ارسال</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Annuler</translation>
+        <translation>انصراف</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>Veuillez installer un lecteur vidéo</translation>
+        <translation>لطفا یک نرم افزار پخش کننده ویدیو نصب کنید</translation>
     </message>
 </context>
 <context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Vous trouverez la vidéo en pièce jointe</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Sélectionnez un ou plusieurs fichiers</translation>
+        <translation>انتخاب یک یا چند فایل</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation>Bordure</translation>
+        <translation>حاشیه</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Fermer</translation>
+        <translation>بستن</translation>
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation>Afficher en plein écran</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation>Clic droit pour le menu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>User-defined</source>
-        <translation>Défini par l&apos;utilisateur</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>Le périphérique est en cours d&apos;utilisation</translation>
+        <translation>دستگاه مشفول است</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Nom</translation>
+        <translation>نام</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation>Périphérique</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Used by</source>
-        <translation>Utilisé par</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Inconnu</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation>Double-cliquez pour étendre au maximum</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Plein écran</translation>
+        <translation>تمام صفحه</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fenêtre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Area</source>
-        <translation>Zone</translation>
+        <translation>ناحیه</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Agrandissement</translation>
+        <translation>بزرگنمایی</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Alsa</source>
-        <translation>Alsa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pulse</source>
-        <translation>Pulse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Default</source>
-        <translation>Par défaut</translation>
+        <translation>پیش فرض</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Codec</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Ne pas enregistrer le curseur de la souris</translation>
+        <translation>عدم نمایش موس</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Chemin de la vidéo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Player</source>
-        <translation>Lecteur</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Minimiser Vokoscreen quand l&apos;enregistrement commence</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Start</source>
-        <translation>Démarrer</translation>
+        <translation>شروع</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Arrêter</translation>
+        <translation>پایان</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>توقف</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Lire</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send</source>
-        <translation>Envoyer</translation>
+        <translation>ارسال</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Temps d&apos;enregistrement</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>Taille en KB</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Taille d&apos;écran de l&apos;enregistrement</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Réglage des FPS</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Ouvrir le répertoire</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Compte à rebours</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Jouer la dernière vidéo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>Envoyer la vidéo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Sélectionnez un ou plusieurs fichiers</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Images par secondes actuelles</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Go</source>
-        <translation>Démarrer</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Page d&apos;accueil</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Support</source>
-        <translation>Support</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Developer</source>
-        <translation>Développeur</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Images</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Faire un don</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Traductions</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Code source</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Afficher dans la zone de notification</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>New version available</source>
-        <translation>Une nouvelle version est disponible</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Codec vidéo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Codec audio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Webcam</source>
-        <translation>Webcam</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation>Sélectionner la webcam</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation>Miroir</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Display</source>
-        <translation>Écran</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>All Displays</source>
-        <translation>Tous les écrans</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation>Page d&apos;accueil du développeur</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recorder</source>
-        <translation>Enregistreur</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation>Sélectionner l&apos;enregistreur</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>
