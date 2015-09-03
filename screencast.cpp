@@ -2411,12 +2411,16 @@ QString screencast::myAlsa()
             counter++;
         }
 
-      if ( counter > 0 )
-        value = "-f alsa -i pulse ";
-      else
-	value = "";
+        if (counter > 1)
+        { 
+          value = "-f alsa -f pulse -i vokoscreenMix.monitor ";
+        }
+        else if ( counter > 0 )
+        {
+          value = "-f alsa -i pulse ";
+        }
+        
     }
-
   }
   else
       value = "";
