@@ -7,7 +7,7 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Nombre</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -75,11 +75,11 @@
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>Clic derecho para menú</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>Definido por el usuario</translation>
     </message>
 </context>
 <context>
@@ -90,7 +90,7 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Nombre</translation>
     </message>
     <message>
         <source>Device</source>
@@ -109,7 +109,7 @@
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>doble-clic para ampliar al margen</translation>
     </message>
 </context>
 <context>
@@ -255,10 +255,6 @@
         <translation>Donar</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Programa para grabar</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Traducciones</translation>
     </message>
@@ -305,6 +301,14 @@
     <message>
         <source>Developer Homepage</source>
         <translation>Página del desarrollador</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation>Capturadora</translation>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation>Seleccionar capturadora</translation>
     </message>
 </context>
 </TS>
