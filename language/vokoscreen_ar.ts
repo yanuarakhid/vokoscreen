@@ -19,7 +19,7 @@
     </message>
     <message>
         <source>Used by</source>
-        <translation>مستخدمة من طرف</translation>
+        <translation>مستخدمة بواسطة</translation>
     </message>
 </context>
 <context>
@@ -98,7 +98,7 @@
     </message>
     <message>
         <source>Used by</source>
-        <translation>مستخدمة من طرف</translation>
+        <translation>مستخدمة بواسطة</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -109,7 +109,7 @@
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>نقرة مزدوجة لملئ الشاشة</translation>
     </message>
 </context>
 <context>
@@ -255,10 +255,6 @@
         <translation>تبرع</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>برنامج التسجيل</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>الترجمات</translation>
     </message>
@@ -296,7 +292,7 @@
     </message>
     <message>
         <source>Display</source>
-        <translation>الشاشة</translation>
+        <translation>العرض</translation>
     </message>
     <message>
         <source>All Displays</source>
@@ -305,6 +301,14 @@
     <message>
         <source>Developer Homepage</source>
         <translation>صفحة المطوّر</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation>المسجّل</translation>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation>اختر المسجّل</translation>
     </message>
 </context>
 </TS>

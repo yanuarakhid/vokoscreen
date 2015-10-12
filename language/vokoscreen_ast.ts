@@ -52,7 +52,7 @@
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Pues alcontrar el vidéu como axuntu</translation>
+        <translation>Alcuentres el vidéu como axuntu</translation>
     </message>
     <message>
         <source>Select one or more files</source>
@@ -63,7 +63,7 @@
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation>Bervesu</translation>
+        <translation>Berbesu</translation>
     </message>
     <message>
         <source>Close</source>
@@ -75,7 +75,7 @@
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>Clic drechu pal menú</translation>
     </message>
     <message>
         <source>User-defined</source>
