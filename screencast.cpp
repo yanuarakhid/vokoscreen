@@ -243,6 +243,7 @@ screencast::screencast()
     VideocodecComboBox->show();
     VideocodecComboBox->addItem( "libx264" );
     VideocodecComboBox->addItem( "mpeg4" );
+    VideocodecComboBox->addItem( "huffyuv" );    
     connect( VideocodecComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
     
     QLabel *VideoContainerLabel = new QLabel(TabWidgetVideoOptionFrame );
@@ -275,6 +276,7 @@ screencast::screencast()
     AudiocodecComboBox->show();
     AudiocodecComboBox->addItem( "libmp3lame" );
     AudiocodecComboBox->addItem( "libvorbis" );
+    AudiocodecComboBox->addItem( "pcm_s16le" );    
     
     QPushButton *AudiocodecStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
     AudiocodecStandardButton->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
