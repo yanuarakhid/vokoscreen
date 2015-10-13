@@ -2327,8 +2327,7 @@ QString screencast::PathMoviesLocation()
 
 QString screencast::PathTempLocation()
 {
-  // Doppelter ProgName um Eindeutigkeit in tmp zuerreichen
-  QString tmpName = vkSettings.getProgName() + "-" + vkSettings.getProgName();
+  QString tmpName = vkSettings.getProgName() + "-" + qgetenv( "USER" );  
 
   #ifdef QT4
   QString tempPathProg = QDesktopServices::storageLocation ( QDesktopServices::TempLocation ) + QDir::separator() + tmpName;
