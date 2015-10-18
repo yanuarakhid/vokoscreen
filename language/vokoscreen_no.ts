@@ -1,126 +1,126 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="no" version="2.0">
 <context>
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>Enheten är upptagen</translation>
+        <translation>Enheten er opptatt</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Namn</translation>
+        <translation>Navn</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>okänd</translation>
+        <translation>ukjent</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation>utrustning</translation>
+        <translation>Utstyr</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation>används av</translation>
+        <translation>brukt av</translation>
     </message>
 </context>
 <context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Mejla sensaste video</translation>
+        <translation>Send siste video via e - post</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Mejla en eller flera valda video</translation>
+        <translation>Send en eller flere videoer via e - post</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Skicka</translation>
+        <translation>sende</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>avboka</translation>
+        <translation>abortere</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>Installera en videospelare</translation>
+        <translation>Vennligst installer en videospiller</translation>
     </message>
 </context>
 <context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Du hittar videon som bilaga</translation>
+        <translation>Du finner videoen som vedlegg</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Välj en eller flera filer</translation>
+        <translation>Velg én eller flere filer</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation>Ram</translation>
+        <translation>rammeverk</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Stäng</translation>
+        <translation>Lukk</translation>
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation>Om Visa i fullskärmsläge</translation>
+        <translation>Vis løpet fullskjerm</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation>Högerklicka på Menu</translation>
+        <translation>Høyre klikk for meny</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation>anpassad</translation>
+        <translation>Brukerdefinert</translation>
     </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>Enheten är upptagen</translation>
+        <translation>Enheten er opptatt</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Namn</translation>
+        <translation>Navn</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation>utrustning</translation>
+        <translation>Utstyr</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation>används av</translation>
+        <translation>brukt av</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>okänd</translation>
+        <translation>ukjent</translation>
     </message>
 </context>
 <context>
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation>Dubbelklicka för att maximera</translation>
+        <translation>Dobbeltklikk utvidet til kanten</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Fullskärm</translation>
+        <translation>fullskjerm</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fönster</translation>
+        <translation>Vindu</translation>
     </message>
     <message>
         <source>Area</source>
@@ -128,11 +128,11 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>forstørrelse</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Ljud</translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Alsa</source>
@@ -144,59 +144,59 @@
     </message>
     <message>
         <source>Default</source>
-        <translation>Standard</translation>
+        <translation>standart</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Codec</translation>
+        <translation>codec</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Spela inte in muspekaren</translation>
+        <translation>ikke ta opp muse courser</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videosökväg</translation>
+        <translation>Video Sti</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Spelare</translation>
+        <translation>Spiller</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Vokoscreen är förminskad när inspelningen startas</translation>
+        <translation>Vokoscreen minimert når opptaket starter</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stopp</translation>
+        <translation>Stoppe</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Spela</translation>
+        <translation>Spille</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Skicka</translation>
+        <translation>sende</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Inspelningstid</translation>
+        <translation>Opptakstid</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>Storlek in kb</translation>
+        <translation>Størrelse i KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Inspelning skärmstorlek</translation>
+        <translation>opptak Skjermstørrelse</translation>
     </message>
     <message>
         <source>Format</source>
@@ -204,75 +204,75 @@
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Inställningar fps</translation>
+        <translation>innstillinger fps</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Öppen katalog</translation>
+        <translation>åpent katalog</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Nedräkning</translation>
+        <translation>nedtelling</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Spela förra videon</translation>
+        <translation>Spill siste video</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>Skicka video</translation>
+        <translation>sende video</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Mejla en eller flera valda video</translation>
+        <translation>Velg én til flere enheter</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Aktuella antal bilder per sekund</translation>
+        <translation>Faktiske bilder per sekund</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation>Starta</translation>
+        <translation>gå</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Hemsida</translation>
+        <translation>hjemmeside</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation>Stöd</translation>
+        <translation>bærebjelke</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation>Utvecklare</translation>
+        <translation>Utvikler</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Ramar</translation>
+        <translation>Rammer</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>donation</translation>
+        <translation>Donasjon</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>översättning</translation>
+        <translation>Oversettelser</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>källkod</translation>
+        <translation>Sourcekode</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Visa i Systray</translation>
+        <translation>Show i systemstatusfeltet</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation>Ny version tillgänglig</translation>
+        <translation>Ny versjon tilgjengelig</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Videocoedc</translation>
     </message>
     <message>
         <source>Audiocodec</source>
@@ -280,35 +280,35 @@
     </message>
     <message>
         <source>Webcam</source>
-        <translation>Webcam</translation>
+        <translation>Webkamera</translation>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation>Välj Webcam</translation>
+        <translation>Velg kamera</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation>speglad</translation>
+        <translation>Speiles</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation>skärm</translation>
+        <translation>Skjerm</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation>alla skärmar</translation>
+        <translation>alla Skjerm</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation>Utvecklare Hemsida</translation>
+        <translation>Utvikler Hjemmeside</translation>
     </message>
     <message>
         <source>Recorder</source>
-        <translation>inspelningsapparat</translation>
+        <translation>opptaker</translation>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation>Välj inspelningsapparat</translation>
+        <translation>Velg Opptaker</translation>
     </message>
 </context>
 </TS>
