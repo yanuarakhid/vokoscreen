@@ -49,9 +49,8 @@
 #include "QvkCredits.h"
 #include "QvkVersion.h"
 #include "ui_QvkNoPlayerDialog.h"
-#include <QxtGlobalShortcut> 
-#include "QvkScreenkey.h"
-#include "QvkScreenkeyWindow.h"
+#include <QxtGlobalShortcut>
+#include "QvkShowkeyController.h"
 
 #include "QvkAnimateControl.h"
 #include "QvkShowClickDialog.h"
@@ -194,11 +193,6 @@ private slots:
     
     void myScreenCountChanged ( int newCount );
     
-    void showScreenkeyWindow( QString value);
-    void screenkeyReadKey();
-    void hideScreenkeyWindow();
-
-    
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
 #endif
@@ -309,22 +303,17 @@ private:
 
     QvkSettings vkSettings;
     
-    QCheckBox *ScreenkeyQCheckBox;
-    QvkScreenkey *screenkey;
-    QvkScreenkeyWindow *screenkeyWindow;
-    QTimer *screenkeyTimer;
+    QCheckBox *ShowkeyQCheckBox;
      
-  QCheckBox *pointerQCheckBox;
-  QvkAnimateControl *animateControl;
-  QPushButton *pointerDialogPushButton;
+    QCheckBox *pointerQCheckBox;
+    QvkAnimateControl *animateControl;
+    QPushButton *pointerDialogPushButton;
     
     
  protected:
     void closeEvent( QCloseEvent * event );
     void changeEvent(QEvent *e);
     void styleChange( QStyle &asd );
-    
- // void closeEvent(QCloseEvent *event);
     
 };
 

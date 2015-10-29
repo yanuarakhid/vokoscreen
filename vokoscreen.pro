@@ -105,7 +105,7 @@ PKGCONFIG += libv4lconvert
 include(settings/settings.pri)
 
 # screenkey
-include(screenkey/screenkey.pri)
+include(showkey/showkey.pri)
 
 # animatepointer
 include(showclick/showclick.pri)

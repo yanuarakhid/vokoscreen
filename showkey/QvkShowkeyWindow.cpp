@@ -16,9 +16,9 @@
  * Boston, MA  02110-1301 USA 
  */
 
-#include "QvkScreenkeyWindow.h" 
+#include "QvkShowkeyWindow.h" 
 
-QvkScreenkeyWindow::QvkScreenkeyWindow()
+QvkShowkeyWindow::QvkShowkeyWindow()
 {
   int keyWindowHeight = 120;
   
@@ -43,7 +43,7 @@ QvkScreenkeyWindow::QvkScreenkeyWindow()
 }
 
 
-QvkScreenkeyWindow::~QvkScreenkeyWindow()
+QvkShowkeyWindow::~QvkShowkeyWindow()
 {
 }
 

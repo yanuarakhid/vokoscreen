@@ -129,16 +129,15 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "---End Environment---";
     qDebug();
     
-    ScreenkeyQCheckBox = new QCheckBox( frame );
-    ScreenkeyQCheckBox->setGeometry( 160, 65, 200, 21 );
-    ScreenkeyQCheckBox->setText( tr( "Showkey" ) );
-    screenkey = new QvkScreenkey();
-    screenkeyWindow = new QvkScreenkeyWindow();
-    connect( ScreenkeyQCheckBox, SIGNAL( clicked() ), SLOT( screenkeyReadKey() ) );
-    connect( screenkey, SIGNAL( pressedKey( QString ) ), SLOT( showScreenkeyWindow( QString ) ) );
+    ShowkeyQCheckBox = new QCheckBox( frame );
+    ShowkeyQCheckBox->setGeometry( 160, 65, 200, 21 );
+    ShowkeyQCheckBox->setText( tr( "Showkey" ) );
+  
+    QvkShowkeyController *showkeyController = new QvkShowkeyController( ShowkeyQCheckBox );
+    (void)showkeyController;
     
-    //-----------------------------------------------------------
-    pointerQCheckBox = new QCheckBox( frame );
+  //-----------------------------------------------------------
+  pointerQCheckBox = new QCheckBox( frame );
   pointerQCheckBox->setGeometry( 160, 90, 200, 21 );
   pointerQCheckBox->setText( tr( "Showclick" ) );
   connect( pointerQCheckBox, SIGNAL( clicked() ), this, SLOT( pointerOnOff() ) );
@@ -857,9 +856,6 @@ screencast::screencast()
    
    clickedScreenSize();
    AreaOnOff();
-
-   screenkeyTimer = new QTimer( this );
-   connect( screenkeyTimer, SIGNAL( timeout() ), this, SLOT( hideScreenkeyWindow() ) );
 }
 
 
@@ -867,39 +863,6 @@ screencast::~screencast()
 {
 }
 
-
-void screencast::screenkeyReadKey()
-{
-  if ( ScreenkeyQCheckBox->checkState() == Qt::Checked )
-  {
-    screenkey->setScreenkeyOn();
-    screenkey->start();
-  }
-  
-  if ( ScreenkeyQCheckBox->checkState() == Qt::Unchecked )
-  {
-    screenkeyWindow->keyLabel->setText( "" );
-    screenkey->setScreenkeyOff();
-    screenkeyWindow->hide();
-  }
-}
-
-
-void screencast::showScreenkeyWindow( QString value)
-{
-   screenkeyTimer->stop();
-   screenkeyTimer->start( 3000 );
-   screenkeyWindow->show();
-   screenkeyWindow->keyLabel->setText( screenkeyWindow->keyLabel->text() + value );
-}
-
-
-void screencast::hideScreenkeyWindow()
-{
-  screenkeyWindow->keyLabel->setText( "" );
-  screenkeyWindow->hide();
-  screenkeyTimer->stop();
-}
 
 void screencast::pointerOnOff()
 {
@@ -1271,7 +1234,6 @@ void screencast::WindowMinimized()
 void screencast::closeEvent( QCloseEvent * event )
 {
   (void)event;
-  screenkey->setScreenkeyOff();
   if ( pointerQCheckBox->checkState() == Qt::Checked )
     pointerQCheckBox->click();
   Stop();

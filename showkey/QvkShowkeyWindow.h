@@ -16,20 +16,20 @@
  * Boston, MA  02110-1301 USA 
  */
 
-#ifndef QvkScreenkeyWindow_H 
-#define QvkScreenkeyWindow_H
+#ifndef QvkShowkeyWindow_H 
+#define QvkShowkeyWindow_H
 
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QWidget>
 #include <QLabel>
 
-class QvkScreenkeyWindow : public QWidget
+class QvkShowkeyWindow : public QWidget
 { 
   Q_OBJECT
 public:
-  QvkScreenkeyWindow();
-  virtual ~QvkScreenkeyWindow();
+  QvkShowkeyWindow();
+  virtual ~QvkShowkeyWindow();
   QLabel *keyLabel;
   
   
