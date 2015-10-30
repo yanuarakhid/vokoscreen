@@ -188,27 +188,9 @@ namespace {
   }
 }
 
-//  Dient zur Zeit nur zum testen
-void QvkShowkeyGetkey::getKey()
-{
-  char str[256+1];
-  KeySym ks;
-  int nbytes;
-
-  XEvent event;
-  printf( "0\n" );
-  XNextEvent ( display, &event );
-  printf( "1\n" );
-  XKeyEvent *e = (XKeyEvent *) &event;
-  printf( "2\n" );
-  nbytes = XLookupString (e, str, 256, &ks, NULL);
-  printf( "XLookupString:%i\n", nbytes );
-}
-
 
 void QvkShowkeyGetkey::run()
 {
-  
    const timespec sleeptime = { 0, 1000000 };
 
   /*
@@ -290,13 +272,13 @@ void QvkShowkeyGetkey::run()
                   key = key_map_upper[code];
 
                 if (meta)
-                  key = "M-" + key;
+                  key = " META-" + key + " ";
 
                 if (alt)
-                  key = "A-" + key;
+                  key = " ALT-" + key + " ";
 
                 if (ctrl)
-                  key = "C-" + key;
+                  key = " CTRL-" + key + " ";
               }
               
               switch (key.size()) {

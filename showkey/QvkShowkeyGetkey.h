@@ -16,7 +16,6 @@ public:
 
   
 public slots:
-  void getKey();
 
   
 private:
