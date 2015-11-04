@@ -1,5 +1,7 @@
 #include "QvkShowkeyGetkey.h"
 
+#include <QCoreApplication>
+
 #include <iostream>
 #include <map>
 #include <set>
@@ -15,6 +17,7 @@
 #include <X11/Xproto.h>
 #include <X11/extensions/Xrandr.h>
 #include <X11/XKBlib.h> // VK
+
 
 QvkShowkeyGetkey::QvkShowkeyGetkey()
 {
@@ -35,163 +38,259 @@ namespace {
   std::string key_map_upper[256]; // key names, upper case
 
   std::set<int> caps_set, shift_set, ctrl_set, alt_set, meta_set;
-/*  
-  void quitter( int sig )
-  {
-    cont = false;
-  }
-*/
-  void fill_mappings()
-  {
-    /*
-     * shorten names of some keys
-     */
-    const char *const names_map_raw[] = {
-      "Caps_Lock",      "",
-      "Control_L",      "",
-      "Control_R",      "",
-      "Shift_L",        "",
-      "Shift_R",        "",
-      "Alt_L",          "",
-      "Alt_R",          "",
-      "Meta_L",         "",
-      "Meta_R",         "",
-      "ISO_Prev_Group", "",
-      "ISO_Next_Group", "",
-  
-      "Home",         "Nav",
-      "Up",           "Nav",
-      "Prior",        "Nav",
-      "Left",         "Nav",
-      "Right",        "Nav",
-      "End",          "Nav",
-      "Down",         "Nav",
-      "Next",         "Nav",
-      "Insert",       "Nav",
-      "Delete",       "Del",
-      "KP_Home",      "Nav",
-      "KP_Up",        "Nav",
-      "KP_Prior",     "Nav",
-      "KP_Left",      "Nav",
-      "KP_Begin",     "Nav",
-      "KP_Right",     "Nav",
-      "KP_End",       "Nav",
-      "KP_Down",      "Nav",
-      "KP_Next",      "Nav",
-      "KP_Insert",    "Nav",
-      "KP_Delete",    "Del",
-  
-      "Return",       "\n",
-      "KP_Enter",     "\n",
-      "Escape",       "Esc",
-      "BackSpace",    "Bsp",
-
-      "exclam",       "!",
-      "at",           "@",
-      "numbersign",   "#",
-      "dollar",       "$",
-      "percent",      "%",
-      "asciicircum",  "^",
-      "ampersand",    "&",
-      "asterisk",     "*",
-      "parenleft",    "(",
-      "parenright",   ")",
-      "minus",        "-",
-      "underscore",   "_",
-      "equal",        "=",
-      "plus",         "+",
-      "bracketleft",  "[",
-      "bracketright", "]",
-      "braceleft",    "{",
-      "braceright",   "}",
-      "semicolon",    ";",
-      "colon",        ":",
-      "apostrophe",   "'",
-      "quotedbl",     "\"",
-      "grave",        "`",
-      "asciitilde",   "~",
-      "backslash",    "\\",
-      "bar",          "|",
-      "comma",        ",",
-      "less",         "<",
-      "greater",      ">",
-      "period",       ".",
-      "slash",        "/",
-      "question",     "?",
-      "space",        " ",
-      "KP_0",         "0",
-      "KP_1",         "1",
-      "KP_2",         "2",
-      "KP_3",         "3",
-      "KP_4",         "4",
-      "KP_5",         "5",
-      "KP_6",         "6",
-      "KP_7",         "7",
-      "KP_8",         "8",
-      "KP_9",         "9",
-      "KP_Multiply",  "*",
-      "KP_Subtract",  "-",
-      "KP_Add",       "+",
-      "KP_Decimal",   ".",
-      "KP_Divide",    "/",
-// German    
-      "odiaeresis",   "ö",
-      "Odiaeresis",   "Ö",
-      "udiaeresis",   "ü",
-      "Udiaeresis",   "Ü",
-      "adiaeresis",   "ä",
-      "Adiaeresis",   "Ä",
-      "ssharp",       "ß" //0x00df
-// Turkey
-// etc.
-      
-    };
-
-    std::map<std::string, std::string> names_map;
-    //printf( "Test: %s\n", names_map_raw[0] );///////////////////////////////////////////////////////////////
-    for (unsigned i = 0; i < sizeof(names_map_raw)/sizeof(const char *); i += 2)
-      names_map[names_map_raw[i]] = names_map_raw[i+1];
-
-    /*
-     * fill up keyboard mapping
-     */
-    int min_key_code, max_key_code; // key codes range
-    XDisplayKeycodes(display, &min_key_code, &max_key_code);
-  
-    for (int code = min_key_code; code <= max_key_code; ++code) {
-      const char *keysym  = XKeysymToString(XkbKeycodeToKeysym( display, code, 0, 0 )); // Volker XkbKeycodeToKeysym
-      key_map[code]       = keysym ? keysym : "NoSymbol";
-
-      keysym              = XKeysymToString(XkbKeycodeToKeysym(display, code, 0, 1)); // Volker XkbKeycodeToKeysym
-      //printf("Volker: %s\n", keysym);
-      key_map_upper[code] = keysym ? keysym : "NoSymbol";
-
-      if (key_map[code] == "Caps_Lock")
-        caps_set.insert(code);
-      else if (key_map[code] == "Shift_L"   || key_map[code] == "Shift_R")
-        shift_set.insert(code);
-      else if (key_map[code] == "Control_L" || key_map[code] == "Control_R")
-        ctrl_set.insert(code);
-      else if (key_map[code] == "Alt_L"     || key_map[code] == "Alt_R")
-        alt_set.insert(code);
-      else if (key_map[code] == "Meta_L"    || key_map[code] == "Meta_R")
-        meta_set.insert(code);
-
-      std::map<std::string,std::string>::const_iterator loc = names_map.find(key_map[code]);
-      if (loc != names_map.end())
-        key_map[code] = loc->second;
-
-      loc = names_map.find(key_map_upper[code]);
-      if (loc != names_map.end())
-        key_map_upper[code] = loc->second;
-    }
-  }
 }
 
 
+/*
+ * Gibt die Tastaturtabelle in einer QStringList zurück
+ */
+QStringList QvkShowkeyGetkey::PrintKeyTable()
+{
+    bool exprs = false;
+    QString line;
+    QStringList stringList;
+
+    if (! ( display = XOpenDisplay( NULL ) ) )
+    {
+       qDebug() << "Can't open display NULL" << '\n';
+       return stringList;
+    }
+
+    int i;
+    int min_keycode, max_keycode, keysyms_per_keycode;
+    KeySym *keymap, *origkeymap;
+
+    XDisplayKeycodes (display, &min_keycode, &max_keycode);
+    origkeymap = XGetKeyboardMapping( display, min_keycode, (max_keycode - min_keycode + 1), &keysyms_per_keycode );
+
+    if (!origkeymap)
+    {
+	qDebug() << "unable to get keyboard mapping table.";
+	return stringList;
+    }
+
+    keymap = origkeymap;
+    for (i = min_keycode; i <= max_keycode; i++) {
+	int  j, max;
+        line = "";
+	
+        line.append( QString::number( i ) );
+	
+	max = keysyms_per_keycode - 1;
+	while ((max >= 0) && (keymap[max] == NoSymbol))
+	    max--;
+	
+	for (j = 0; j <= max; j++)
+	{
+	    register KeySym ks = keymap[j];
+	    const char *s;
+	    if (ks != NoSymbol)
+		s = XKeysymToString (ks);
+	    else
+		s = "NoSymbol";
+	    
+	    if (!exprs)
+	    {
+		line.append( " " ); // Delemiter
+		line.append( "0x" ); // Identifier 
+		QString hexStr = QString::number( (unsigned int)ks, 16 ); // convert to hex
+		line.append( hexStr );
+		line.append( " " ); // Delemiter
+		line.append( "" ).append( s ).append( "" );
+	    }
+	    else 
+	      if (s)
+		fprintf (stdout, " %s", s);
+	      else
+		fprintf (stdout, " 0x%04x", (unsigned int)ks);
+	}
+
+	keymap += keysyms_per_keycode;
+	stringList <<  line;
+	
+    }
+    XFree ((char *) origkeymap);
+    
+    return stringList;
+}
+
+
+bool isNumLockOn()
+{
+    Display *display = XOpenDisplay( NULL );
+    bool mumlock_state = false;
+    XKeyboardState x;
+    XGetKeyboardControl( display, &x );
+    mumlock_state = x.led_mask & 2;
+    XCloseDisplay( display );
+    return mumlock_state;
+}
+
+
+bool isCapsLockOn()
+{
+    Display *display = XOpenDisplay( NULL );
+    bool caps_state = false;
+    unsigned n;
+    XkbGetIndicatorState( display, XkbUseCoreKbd, &n );
+    caps_state = ( n & 0x01 ) == 1;
+    XCloseDisplay( display );
+    return caps_state;
+}
+
+
+/*
+ * gibt den ermittelten Buchstaben zurück einschließliech Umlaute
+ */
+QString QvkShowkeyGetkey::getKey( QStringList list, int code )
+{
+  QString keyFromList;
+  QStringList splitValuesList;
+  QString key;
+  
+  QRegExp rx( "^" + QString::number( code ) + " " );
+  QStringList keyList = list.filter( rx );
+  QString keyValues = keyList[0];
+  splitValuesList = keyValues.split( " " );
+  keyFromList = splitValuesList[ 1 ];
+  
+  int integer = keyFromList.toInt( 0, 16 );
+  key = (QString)integer;
+  
+  // Bei folgen Tasten Flag setzen und kein Wert zurückgeben
+  keyFromList = splitValuesList[ 2 ];
+  if ( keyFromList == "Caps_Lock")
+  {
+     key = "";
+     caps_set.insert(code);
+  }
+  else if ( keyFromList == "Shift_L"   || keyFromList == "Shift_R")
+  {
+     key = "";
+     shift_set.insert(code);
+  }
+  else if ( keyFromList == "Control_L" || keyFromList == "Control_R")
+  {
+     key = "";
+     ctrl_set.insert(code);
+  }
+  else if ( keyFromList == "Alt_L"     || keyFromList == "Alt_R")
+  {
+     key = "";
+     alt_set.insert(code);
+  }
+  else if ( keyFromList == "Meta_L"    || keyFromList == "Meta_R")
+  {
+     key = "";
+     meta_set.insert(code);
+  }
+  else if ( keyFromList == "Super_L"    || keyFromList == "Super_R")
+  {
+     key = "";
+     meta_set.insert(code);
+  }
+
+  // Mit "xset q" kann der status abgefragt werden
+  // http://www.qtcentre.org/threads/30180-how-to-determine-if-CapsLock-is-on-crossplatform
+  // http://stackoverflow.com/questions/24822505/how-to-tell-if-shift-is-pressed-on-numpad-input-with-numlock-on-or-at-least-get
+  
+  if ( keyFromList == "F1" ) key = "F1";
+  if ( keyFromList == "F2" ) key = "F2";
+  if ( keyFromList == "F3" ) key = "F3";
+  if ( keyFromList == "F4" ) key = "F4";
+  if ( keyFromList == "F5" ) key = "F5";
+  if ( keyFromList == "F6" ) key = "F6";
+  if ( keyFromList == "F7" ) key = "F7";
+  if ( keyFromList == "F8" ) key = "F8";
+  if ( keyFromList == "F9" ) key = "F9";
+  if ( keyFromList == "F10" ) key = "F10";
+  if ( keyFromList == "F11" ) key = "F11";
+  if ( keyFromList == "F12" ) key = "F12";
+  if ( keyFromList == "Escape" ) key = "Esc";
+  if ( keyFromList == "BackSpace" ) key = "Bsp";
+  if ( keyFromList == "Tab" ) key = "Tab";
+  if ( keyFromList == "Num_Lock" ) key = "";
+  if ( keyFromList == "Return" ) key = "Return";
+  
+  if ( isNumLockOn() == true )
+  {
+    keyFromList = splitValuesList[ 4 ];
+    if ( keyFromList == "KP_0" ) key = "0";
+    if ( keyFromList == "KP_1" ) key = "1";
+    if ( keyFromList == "KP_2" ) key = "2";
+    if ( keyFromList == "KP_3" ) key = "3";
+    if ( keyFromList == "KP_4" ) key = "4";
+    if ( keyFromList == "KP_5" ) key = "5";
+    if ( keyFromList == "KP_6" ) key = "6";
+    if ( keyFromList == "KP_7" ) key = "7";
+    if ( keyFromList == "KP_8" ) key = "8";
+    if ( keyFromList == "KP_9" ) key = "9";
+    if ( keyFromList == "KP_Multiply" ) key = "*";
+    if ( keyFromList == "KP_Subtract" ) key = "-";
+    if ( keyFromList == "KP_Add" ) key = "+";
+    if ( keyFromList == "KP_Decimal" ) key = ".";
+    if ( keyFromList == "KP_Divide" ) key = "/";
+    if ( keyFromList == "KP_Separator" ) key = ",";
+  }
+
+  if ( isNumLockOn() == false )
+  {
+    keyFromList = splitValuesList[ 2 ];
+    if ( keyFromList == "KP_Home" )      key = "Home";
+    if ( keyFromList == "KP_Up" )        key = "Up";
+    if ( keyFromList == "KP_Prior" )     key = "Prior";
+    if ( keyFromList == "KP_Left" )      key = "Left";
+    if ( keyFromList == "KP_Begin" )     key = "Begin";
+    if ( keyFromList == "KP_Right" )     key = "Right";
+    if ( keyFromList == "KP_End" )       key = "End";
+    if ( keyFromList == "KP_Down" )      key = "Down";
+    if ( keyFromList == "KP_Next" )      key = "Next";
+    if ( keyFromList == "KP_Insert" )    key = "insert";
+    if ( keyFromList == "KP_Delete" )    key = "Delete";
+    if ( keyFromList == "KP_Enter" )     key = "Enter";
+    if ( keyFromList == "KP_Add" )       key = "+";
+    if ( keyFromList == "KP_Subtract" )  key = "-";
+    if ( keyFromList == "KP_Multiply" )  key = "*";
+    if ( keyFromList == "KP_Divide" )    key = "/";
+  }
+  
+  qDebug() << "Numlook" << isNumLockOn() << "|" << "keycode" << code << "|" << "Keysym" << keyFromList << "|" << "Print key:" << key;
+  
+  return key;
+}
+
+
+QString QvkShowkeyGetkey::getKeyShift( QStringList list, int code )
+{
+  QRegExp rx( "^" + QString::number( code ) + " " );
+  QStringList keyList = list.filter( rx );
+  QString keyValues = keyList[0];
+  QStringList splitValuesList = keyValues.split( " " );
+  QString keyFromList = splitValuesList[ 3 ];
+  
+  int integer = keyFromList.toInt( 0, 16 );
+  QString key = (QString)integer;
+  return key;
+}
+
+/*
+QString QvkShowkeyGetkey::getKeyCaps( QStringList list, int code )
+{
+    QRegExp rx( "^" + QString::number( code ) + " " );
+    QStringList keyList = list.filter( rx );
+    QString keyValues = keyList[0];
+    QStringList splitValuesList = keyValues.split( " " );
+    QString keyFromList = splitValuesList[ 5 ];
+  
+    int integer = keyFromList.toInt( 0, 16 );
+    QString key = (QString)integer;
+    return key;
+}
+*/
+
 void QvkShowkeyGetkey::run()
 {
-   const timespec sleeptime = { 0, 1000000 };
+  const timespec sleeptime = { 0, 1000000 };
 
   /*
    * open the display
@@ -205,7 +304,12 @@ void QvkShowkeyGetkey::run()
   /*
    * fill up keyboard mapping
    */
-  fill_mappings();
+  
+  //fill_mappings();
+  
+  // keys aus eigene Routine ermitteln
+  QStringList keyList = PrintKeyTable();
+  
 
   /*
    * fill relevant key buffers
@@ -219,12 +323,11 @@ void QvkShowkeyGetkey::run()
    * query keyboard in loop
    */
   bool last_is_nav  = false;    // navigation key indicator
-  bool last_is_char = false;    // spaces adjustment
-  
+//  bool last_is_char = false;    // spaces adjustment
   while (cont) {
     nanosleep(&sleeptime, 0);   // avoid busy waiting
     
-    XQueryKeymap(display, keys);
+    XQueryKeymap( display, keys );
     
     // read modifiers (caps lock is ignored)
     bool shift = false;
@@ -234,12 +337,16 @@ void QvkShowkeyGetkey::run()
 
     for (unsigned i = 0; i < sizeof(keys); ++i)
       for (unsigned j = 0, test = 1; j < 8; ++j, test *= 2)
-        if (keys[i] & test) {
+        if (keys[i] & test)
+	{
           const int code = i*8+j;
 
           if (shift_set.find(code) != shift_set.end())
+	  {
             shift = true;
-
+	    qDebug() << "Shift = true";
+	  }
+	  
           if (ctrl_set.find(code) != ctrl_set.end())
             ctrl = true;
 
@@ -248,6 +355,7 @@ void QvkShowkeyGetkey::run()
 
           if (meta_set.find(code) != meta_set.end())
             meta = true;
+	  
         }
     
     // print changed keys
@@ -256,48 +364,41 @@ void QvkShowkeyGetkey::run()
         // check which key got changed
         for (unsigned j = 0, test = 1; j < 8; ++j, test *= 2)
           // if the key was pressed, and it wasn't before, print this
-          if ((keys[i] & test) && 
-              ((keys[i] & test) != (lastkeys[i] & test))) {
+          if ((keys[i] & test) && ((keys[i] & test) != (lastkeys[i] & test)))
+	  {
             const int code = i*8+j;
-            std::string key = key_map[code];///////////////
-            //std::cout << "QvkShowkeyGetkey::run() in if:" << key << std::flush << std::endl;
+            QString key = getKey( keyList, code );
 
-            const bool key_is_nav = (key == "Nav");
+            const bool key_is_nav = ( key == "Nav" );
 
             // only print navigation keys once
-            if (! (last_is_nav && key_is_nav) && key.size() > 0) {
+            if ( ! (last_is_nav && key_is_nav) && key.size() > 0 )
+	    {
               // change key according to modifiers
-              if (! key_is_nav) {
-                if (shift)
-                  key = key_map_upper[code];
+              if ( ! key_is_nav)
+	      {
+		if ( meta )
+                  key = " Meta-" + key + " ";
 
-                if (meta)
-                  key = " META-" + key + " ";
+                if ( alt )
+                  key = " Alt-" + key + " ";
 
-                if (alt)
-                  key = " ALT-" + key + " ";
+                if ( ctrl )
+                  key = " Ctrl-" + key + " ";
 
-                if (ctrl)
-                  key = " CTRL-" + key + " ";
+	        if ( ( not shift ) )
+	        {
+	          emit pressedKey( key );
+	        }
+		
+		// shift
+                if ( shift )
+		{
+                  emit pressedKey( getKeyShift( keyList, code ) );
+		}
+		
               }
-              
-              switch (key.size()) {
-              case 1:
-		// Hier werden alle Zeichen ausgegeben die ein Byte lang sind
-                //std::cout << "QvkShowkeyGetkey::run() in case:" << key << std::flush << std::endl;
-                last_is_char = (key != "\n");
-		emit pressedKey( QString::fromStdString( key )); //VK
-                break;
-              default:
-                if (last_is_char) {
-                  std::cout << ' ';
-                  last_is_char = false;
-                }
-                //std::cout << '[' << key << "] " << std::flush << std::endl;
-		emit pressedKey( QString::fromUtf8(key.data(), key.size() ) ); // VK
-                break;
-              }
-              
+	      
               last_is_nav = key_is_nav;
             }
           }
@@ -307,5 +408,4 @@ void QvkShowkeyGetkey::run()
   }
 
   XCloseDisplay(display);
-  std::cout << std::endl;
 }

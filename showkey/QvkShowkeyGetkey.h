@@ -4,18 +4,23 @@
 #include <QDebug>
 #include <QObject>
 #include <QThread>
+#include <QStringList>
 
 class QvkShowkeyGetkey: public QThread
 {
 Q_OBJECT
 public:    
-    QvkShowkeyGetkey();
-    virtual ~QvkShowkeyGetkey();
+  QvkShowkeyGetkey();
+  virtual ~QvkShowkeyGetkey();
+  QStringList PrintKeyTable();
 
 public:
 
   
 public slots:
+  QString getKey( QStringList list, int code );
+  QString getKeyShift( QStringList list, int code );
+  //QString getKeyCaps( QStringList list, int code );
 
   
 private:
