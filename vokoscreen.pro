@@ -4,7 +4,6 @@ TARGET = vokoscreen
 # Input
 HEADERS += screencast.h \
            regionselection.h \
-           QvkMagnifier.h \
            QvkWinInfo.h \
            QvkCredits.h \
            QvkVersion.h
@@ -12,13 +11,11 @@ HEADERS += screencast.h \
 SOURCES += main.cpp \
            screencast.cpp \
            regionselection.cpp \
-           QvkMagnifier.cpp \
            QvkWinInfo.cpp \
            QvkCredits.cpp \
            QvkVersion.cpp
            
-FORMS += QvkMagnifierDialog.ui \
-         QvkNoPlayerDialog.ui
+FORMS += QvkNoPlayerDialog.ui
          
 # In der screencast.qrc stehen *.qm Einträge, diese Dateien sind aber noch nicht
 # im Unterverzeichnis "language" vorhanden da diese "eigentlich" erst mit make geniert werden,
@@ -104,12 +101,14 @@ PKGCONFIG += libv4lconvert
 # settings
 include(settings/settings.pri)
 
-# screenkey
+# showkey
 include(showkey/showkey.pri)
 
-# animatepointer
+# showclick
 include(showclick/showclick.pri)
 
+# magnifier
+include(magnifier/magnifier.pri)
 
 equals(QT_MAJOR_VERSION, "4") {
   DEFINES += QT4
