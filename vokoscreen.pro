@@ -4,14 +4,12 @@ TARGET = vokoscreen
 # Input
 HEADERS += screencast.h \
            regionselection.h \
-           QvkWinInfo.h \
-           QvkVersion.h
+           QvkWinInfo.h
 
 SOURCES += main.cpp \
            screencast.cpp \
            regionselection.cpp \
-           QvkWinInfo.cpp \
-           QvkVersion.cpp
+           QvkWinInfo.cpp
            
 FORMS += QvkNoPlayerDialog.ui
          
@@ -110,6 +108,9 @@ include(magnifier/magnifier.pri)
 
 # credits
 include(credits/credits.pri)
+
+# version
+include(version/version.pri)
 
 equals(QT_MAJOR_VERSION, "4") {
   DEFINES += QT4
