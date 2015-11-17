@@ -23,18 +23,14 @@
 #include <QDebug>
 #include <QRegion>
 #include <QCursor>
-//#include <QX11Info>
 #include <QPainterPath>
 #include <QMouseEvent>
 #include <QApplication>
 #include <QDesktopWidget>
-//#include <QMainWindow>
 #include <QDialog>
 
 #include "QvkSettings.h"
 
-
-//class regionselection : public QDialog
 class regionselection : public QWidget
 { 
 Q_OBJECT
@@ -59,7 +55,6 @@ public slots:
   int getWidth();
   int getXRecordArea();
   int getYRecordArea();
-  //void saveSettings();
 
 private slots:
   void moveTopLeft     ( QMouseEvent *event );
@@ -123,6 +118,5 @@ private:
   
   QvkSettings vkSettings;
   
-  // int Setting_Area_NoShowInTaskBar;
 };
 #endif

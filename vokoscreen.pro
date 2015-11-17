@@ -2,12 +2,10 @@ TEMPLATE = app
 TARGET = vokoscreen
 
 # Input
-HEADERS += screencast.h \
-           regionselection.h
+HEADERS += screencast.h
 
 SOURCES += main.cpp \
-           screencast.cpp \
-           regionselection.cpp
+           screencast.cpp
            
 FORMS += QvkNoPlayerDialog.ui
          
@@ -112,6 +110,9 @@ include(version/version.pri)
 
 # winInfo
 include(winInfo/winInfo.pri)
+
+# region
+include( region/regionselection.pri)
 
 equals(QT_MAJOR_VERSION, "4") {
   DEFINES += QT4

@@ -29,22 +29,7 @@ regionselection::regionselection()
   handleUnderMouse = NoHandle;
   painter =  new QPainter();
   
-//  Deaktiviert am 17.01.2014  
-//  Muß in die vokoscreen.conf von Hand eingetragen werden. Keine GUI Unterstützung.
-//  NoShowInTaskBar=1
-//  QSettings settings( "vokoscreen", "vokoscreen" );
-//  settings.beginGroup( "Area" );
-//    if ( settings.value( "NoShowInTaskBar", 1 ).toUInt() == 1 )
-//    {
-      setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
-//      Setting_Area_NoShowInTaskBar = 1;
-//    }
-//    else
-//    {
-//      setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-//      Setting_Area_NoShowInTaskBar = 0;
-//    }
-//  settings.endGroup();
+  setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
   
   //if( QX11Info::isCompositingManagerRunning() ) // ******************************* vorerst ersatzlos gestrichen ********************************************************
     setAttribute( Qt::WA_TranslucentBackground, true );
@@ -81,15 +66,6 @@ regionselection::~regionselection()
 {
 }
 
-/*
-void regionselection::saveSettings()
-{
-  QSettings settings( "vokoscreen", "vokoscreen" );   
-  settings.beginGroup( "Area" );
-    settings.setValue( "NoShowInTaskBar", Setting_Area_NoShowInTaskBar );
-  settings.endGroup();
-}
-*/
 
 void regionselection::HandleTopLeft()
 {
