@@ -30,7 +30,6 @@ public:
   virtual ~QvkWebcamController();
   
   QStringList webcamList;
-  QvkWidgetcircle *mirrorWidget;
  
   
 public slots:
@@ -50,10 +49,6 @@ private slots:
   
   void readWebcams( QStringList );
   void webcams();
-
-  void enterEventWebcamWindow();
-  void leaveEventWebcamWindow();
-  void resizeEventWebcamWindow();
 
   
 private:

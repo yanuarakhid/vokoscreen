@@ -127,7 +127,6 @@ QString CaptureThread::getNameFromDevice( QString device )
 	QString dev_name = device;
 	int fd = -1;
 
-//	fd = v4l2_open( dev_name.toStdString().c_str(), O_RDONLY, 0 );
 	fd = v4l2_open(dev_name.toStdString().c_str(), O_RDWR | O_NONBLOCK, 0);
 	
 	qDebug();

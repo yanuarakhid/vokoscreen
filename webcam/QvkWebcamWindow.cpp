@@ -41,7 +41,6 @@ QvkWebcamWindow::QvkWebcamWindow()
 
   actionVisibleOverFullscreen = new QAction( tr ( "Show over fullscreen" ), this );
   actionVisibleOverFullscreen->setCheckable( true );
-  //actionVisibleOverFullscreen->setChecked( false );
   connect( actionVisibleOverFullscreen, SIGNAL( triggered() ), this, SLOT( setVisibleOverFullscreen() ) );
 
   actionClose = new QAction( tr ( "Close" ), this );
@@ -84,10 +83,10 @@ QvkWebcamWindow::QvkWebcamWindow()
     setOverFullScreen( true );
     setVisibleOverFullscreen();
   }
-  else // ************** Neu
+  else
   {
-    actionVisibleOverFullscreen->setChecked( false ); //************************ Neu
-    setOverFullScreen( false ); //******* Neu
+    actionVisibleOverFullscreen->setChecked( false );
+    setOverFullScreen( false );
   }
 }
 
@@ -250,7 +249,7 @@ void QvkWebcamWindow::setVisibleOverFullscreen()
     setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
     actionBorder->setChecked( true );
     setOverFullScreen( false );
-    setValueBorder( true ); //******************************************** Neu
+    setValueBorder( true );
     activateWindow();
     show();
   }
@@ -259,7 +258,7 @@ void QvkWebcamWindow::setVisibleOverFullscreen()
 
 void QvkWebcamWindow::resizeEvent ( QResizeEvent *)
 {
-  emit resizeEventWebcamWindow();
+  //emit resizeEventWebcamWindow();
 
   webcamLabel->setGeometry( 0, 0, width(), height() );
 
@@ -280,14 +279,3 @@ void QvkWebcamWindow::resizeEvent ( QResizeEvent *)
               setActionUserDefined();
             }
 }
-
-
-void QvkWebcamWindow::enterEvent( QEvent* )
-{
-  emit enterEventWebcamWindow();
-}
-   
-void QvkWebcamWindow::leaveEvent( QEvent* )
-{
-  emit leaveEventWebcamWindow();
-}   
