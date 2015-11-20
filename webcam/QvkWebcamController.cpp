@@ -201,7 +201,9 @@ void QvkWebcamController::setNewImage( QImage image )
   QTransform transform;
   transform.rotate( rotateDial->value() );
   QImage transformedImage = image.transformed( transform );
-  
+
+  // Passt Bild beim resizen des Fensters an
+  transformedImage = transformedImage.scaled( webcamWindow->webcamLabel->width(), webcamWindow->webcamLabel->height(), Qt::KeepAspectRatio, Qt::FastTransformation);
   webcamWindow->webcamLabel->setPixmap( QPixmap::fromImage( transformedImage, Qt::AutoColor) );
 }
 

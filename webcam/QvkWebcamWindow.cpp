@@ -16,7 +16,6 @@ QvkWebcamWindow::QvkWebcamWindow()
   
   webcamLabel = new QLabel( this );
   webcamLabel->setAlignment( Qt::AlignCenter );
-  webcamLabel->setScaledContents( true );
   webcamLabel->show();
  
   action160x120 = new QAction( "160 x 120", this );
@@ -258,8 +257,6 @@ void QvkWebcamWindow::setVisibleOverFullscreen()
 
 void QvkWebcamWindow::resizeEvent ( QResizeEvent *)
 {
-  //emit resizeEventWebcamWindow();
-
   webcamLabel->setGeometry( 0, 0, width(), height() );
 
   if ( ( width() == 160 ) and ( height() == 120 ) )
