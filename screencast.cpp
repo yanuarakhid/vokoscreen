@@ -897,19 +897,19 @@ void screencast::SystemTrayKontextMenue( QAction *action )
   
   if ( data == "Exit" )
     close();
-  
+
   if ( data == "Hide" )
   {
     hideAction->setText( tr( "Show window" ) );
     hideAction->setData( "NoHide" );
-    hide();
+    showMinimized();
   }
   
   if ( data == "NoHide" )
   {
     hideAction->setText( tr( "Hide window" ) );
     hideAction->setData( "Hide" );
-    show();
+    showMaximized();
   }
 }
 
