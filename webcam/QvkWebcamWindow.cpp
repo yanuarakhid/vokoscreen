@@ -171,6 +171,9 @@ void QvkWebcamWindow::closeMenue()
  
 void QvkWebcamWindow::set160x120()
 {
+  if ( isMaximized() )
+    showNormal();
+
   setGeometry( geometry().x(), geometry().y(), 160, 120 );
   action160x120->setChecked( true );
   action320x240->setChecked( false );
@@ -182,6 +185,9 @@ void QvkWebcamWindow::set160x120()
 
 void QvkWebcamWindow::set320x240()
 {
+  if ( isMaximized() )
+    showNormal();
+
   setGeometry( geometry().x(), geometry().y(), 320, 240 );
   action160x120->setChecked( false );
   action320x240->setChecked( true );
@@ -193,6 +199,9 @@ void QvkWebcamWindow::set320x240()
 
 void QvkWebcamWindow::set640x480()
 {
+  if ( isMaximized() )
+    showNormal();
+  
   setGeometry( geometry().x(), geometry().y(), 640, 480 );
   action160x120->setChecked( false );
   action320x240->setChecked( false );
