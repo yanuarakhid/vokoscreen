@@ -1670,6 +1670,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
 
       if ( SystrayCheckBox->checkState() == Qt::Checked )
       {
+	SystemTrayIcon->setIcon( QIcon::fromTheme( "media-playback-pause", QIcon( ":/pictures/pause.png" ) ) );
 	startAction->setEnabled( false );
 	stopAction->setEnabled( false );
 	pauseAction->setEnabled( false );
@@ -1694,6 +1695,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
 
       if ( SystrayCheckBox->checkState() == Qt::Checked )
       {
+        SystemTrayIcon->setIcon( QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray-record" ) ) );
 	startAction->setEnabled( false );
 	stopAction->setEnabled( true );
 	pauseAction->setEnabled( true );
