@@ -874,8 +874,7 @@ void screencast::AudioOff( int state )
   {
     QIcon myIcon = tabWidget->tabIcon( 1 );
     QSize size = tabWidget->iconSize();
-    QPixmap myPixmap = myIcon.pixmap( size );
-    QPixmap workPixmap( myPixmap );
+    QPixmap workPixmap( myIcon.pixmap( size ) );
     QPainter painter;
     QPen pen;
     painter.begin( &workPixmap );
@@ -885,8 +884,7 @@ void screencast::AudioOff( int state )
       painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
       painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
     painter.end();
-    workPixmap.save( "/tmp/noMicro.png" );
-    tabWidget->setTabIcon( 1, QIcon( "/tmp/noMicro.png" ) );
+    tabWidget->setTabIcon( 1, QIcon( workPixmap ) );
   }
   else{
     tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
