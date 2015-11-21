@@ -180,6 +180,7 @@ screencast::screencast()
     AudioOnOffCheckbox->setText( tr( "Audio" ) );
     AudioOnOffCheckbox->show();
     connect( AudioOnOffCheckbox,  SIGNAL( stateChanged( int ) ), SLOT( stateChangedAudio( int ) ) );
+    connect( AudioOnOffCheckbox,  SIGNAL( stateChanged( int ) ), SLOT( AudioOff( int ) ) );
 
     AlsaRadioButton= new QRadioButton( TabWidgetAudioFrame );
     AlsaRadioButton->setGeometry( 25, 110, 100, 25 );
@@ -686,6 +687,7 @@ screencast::screencast()
     qDebug();
 
       AudioOnOffCheckbox->setCheckState( Qt::CheckState( vkSettings.getAudioOnOff() ) );
+      AudioOff( Qt::CheckState( vkSettings.getAudioOnOff() ) );
 
       AlsaRadioButton->setChecked( vkSettings.getAlsaSelect() );
 
@@ -861,6 +863,34 @@ screencast::screencast()
 
 screencast::~screencast()
 {
+}
+
+/*
+ * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
+ */
+void screencast::AudioOff( int state )
+{
+  if ( state == Qt::Unchecked )  
+  {
+    QIcon myIcon = tabWidget->tabIcon( 1 );
+    QSize size = tabWidget->iconSize();
+    QPixmap myPixmap = myIcon.pixmap( size );
+    QPixmap workPixmap( myPixmap );
+    QPainter painter;
+    QPen pen;
+    painter.begin( &workPixmap );
+      pen.setColor( Qt::red );
+      pen.setWidth( 2 );
+      painter.setPen( pen );
+      painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
+      painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
+    painter.end();
+    workPixmap.save( "/tmp/noMicro.png" );
+    tabWidget->setTabIcon( 1, QIcon( "/tmp/noMicro.png" ) );
+  }
+  else{
+    tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
+  }
 }
 
 
