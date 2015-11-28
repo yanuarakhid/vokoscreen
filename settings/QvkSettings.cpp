@@ -56,7 +56,13 @@ void QvkSettings::readAll()
     settings.endGroup();
     
     settings.beginGroup( "Videooptions" );
+      // Als Beispiel:
+      // Frames könnte "" sein dann wird Wert 0 zugewiesen
+      // er könnte aber auch größer 200 haben. In beiden Fällen wird der Standardwert 25 zugewiesen.
       Frames = settings.value( "Frames", 25 ).toInt();
+      if ( ( Frames == 0 ) or ( Frames > 200 ) ) {
+	Frames = 25; }
+      
       VideoCodec = settings.value( "Videocodec", "libx264" ).toString();
       AudioCodec = settings.value( "Audiocodec", "libmp3lame" ).toString();
       VideoContainer = settings.value( "Format", "mkv" ).toString();
