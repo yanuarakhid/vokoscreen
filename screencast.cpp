@@ -242,6 +242,7 @@ screencast::screencast()
     VideocodecComboBox->setGeometry( 100, 40, 100, 25 );
     VideocodecComboBox->show();
     VideocodecComboBox->addItem( "libx264" );
+    VideocodecComboBox->addItem( "libx265" );
     VideocodecComboBox->addItem( "mpeg4" );
     VideocodecComboBox->addItem( "huffyuv" );
     connect( VideocodecComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
@@ -276,6 +277,7 @@ screencast::screencast()
     AudiocodecComboBox->show();
     AudiocodecComboBox->addItem( "libmp3lame" );
     AudiocodecComboBox->addItem( "libvorbis" );
+    AudiocodecComboBox->addItem( "vorbis" );
     AudiocodecComboBox->addItem( "pcm_s16le" );
     AudiocodecComboBox->addItem( "libvo_aacenc" );
     
@@ -2806,6 +2808,22 @@ void screencast::record()
     myVcodec = "libx264 -preset veryfast";
   }  
 
+  // https://trac.ffmpeg.org/wiki/Encode/H.265  
+  if ( myVcodec == "libx265" )
+  {
+    // Number of pixels must be divisible by two
+    int intRecordX = getRecordWidth().toInt();
+    if ( ( intRecordX % 2 ) == 1 )
+      setRecordWidth( QString().number( --intRecordX ) );
+
+    // Number of pixels must be divisible by two
+    int intRecordY = getRecordHeight().toInt();
+    if ( ( intRecordY % 2 ) == 1 )
+      setRecordHeight( QString().number( --intRecordY ) );
+    
+    myVcodec = "libx265 -preset veryfast -x265-params crf=28";
+  }  
+  
   nameInMoviesLocation = NameInMoviesLocation();
 
   QString quality = " -q:v 1 ";
