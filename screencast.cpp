@@ -277,7 +277,6 @@ screencast::screencast()
     AudiocodecComboBox->show();
     AudiocodecComboBox->addItem( "libmp3lame" );
     AudiocodecComboBox->addItem( "libvorbis" );
-    AudiocodecComboBox->addItem( "vorbis" );
     AudiocodecComboBox->addItem( "pcm_s16le" );
     AudiocodecComboBox->addItem( "libvo_aacenc" );
     
@@ -1621,12 +1620,6 @@ void screencast::readyReadStandardError()
 }
 
 
-void screencast::readyReadStandardOutput()
-{
-//   qDebug() << SystemCall->readAllStandardOutput();
-}
-
-
 /**
  * Je nach Prozessstaus von ffmpeg werden die Widget enabled bzw. disabled
  */
@@ -2021,13 +2014,11 @@ void screencast::windowMove()
   if ( ( deltaXMove == x ) and ( deltaYMove == y ) )
     if ( ( SystemCall->state() == QProcess::NotRunning ) )
     {
-//      QStringList result = ffmpegString.split( ":0." );
       QStringList result = ffmpegString.split( DISPLAY );
       QString str1 = result[ 0 ];
       QString str2 = result[ 1 ];
       result.clear();
       result = str2.split( " " );
-//      result[ 0 ] = ":0.0+" + x + "," + y;
       result[ 0 ] = DISPLAY + "+" + x + "," + y;
       
       str2 = "";
@@ -2695,10 +2686,8 @@ void screencast::Countdown()
 void screencast::record()
 {
   Countdown();
-//#ifdef QT4
   shortcutStart->setEnabled( false );
   shortcutStop->setEnabled( true );
-//#endif   
   if ( MinimizedCheckBox->checkState() == Qt::Checked )
     WindowMinimized();
 

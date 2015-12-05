@@ -149,7 +149,6 @@ private slots:
     void stateChanged( QProcess::ProcessState newState );
     void error ( QProcess::ProcessError error );
     void readyReadStandardError();
-    void readyReadStandardOutput();
     
     void saveSettings();
     
