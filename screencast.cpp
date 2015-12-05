@@ -2810,7 +2810,7 @@ void screencast::record()
     if ( ( intRecordY % 2 ) == 1 )
       setRecordHeight( QString().number( --intRecordY ) );
     
-    myVcodec = "libx265 -preset veryfast -x265-params crf=28";
+    myVcodec = "libx265 -preset ultrafast -x265-params crf=28";
   }  
   
   nameInMoviesLocation = NameInMoviesLocation();
