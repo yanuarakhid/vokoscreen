@@ -197,7 +197,6 @@ private slots:
 #endif
     
   void pointerOnOff();
-  void pointerDialog();
     
   void AudioOff( int value );
     

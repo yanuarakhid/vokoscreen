@@ -145,12 +145,12 @@ screencast::screencast()
   pointerDialogPushButton = new QPushButton( frame );
   pointerDialogPushButton->setGeometry( 270, 90, 20, 21 );
   pointerDialogPushButton->setText( "..." );
-  connect( pointerDialogPushButton, SIGNAL( clicked() ), this, SLOT( pointerDialog() ) );
-  
+
   QColor color = Qt::red;
   bool radiant = false;
   double opacity = 0.5;
   ShowClickDialog = new QvkShowClickDialog( color, radiant, opacity );
+  connect( pointerDialogPushButton, SIGNAL( clicked() ), ShowClickDialog, SLOT( show() ) );
   
   animateControl = new QvkAnimateControl( (double) ShowClickDialog->myUiDialog.horizontalSliderShowtime->value()/10,
 					  ShowClickDialog->myUiDialog.horizontalSliderCircle->value(),
@@ -901,11 +901,6 @@ void screencast::pointerOnOff()
   
   if ( pointerQCheckBox->checkState() == Qt::Unchecked )
     animateControl->animateWindowOff();
-}
-
-void screencast::pointerDialog()
-{
-  ShowClickDialog->show();
 }
 
 
