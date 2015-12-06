@@ -196,8 +196,6 @@ private slots:
     void buttonVersion();
 #endif
     
-  void pointerOnOff();
-    
   void AudioOff( int value );
     
     

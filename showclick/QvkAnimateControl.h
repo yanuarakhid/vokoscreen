@@ -21,6 +21,7 @@ public slots:
   void setShowTime( double value );
   void setOpacity( double value );
   void setRadiant( bool value );
+  void pointerOnOff( bool value );
 
   
 private:

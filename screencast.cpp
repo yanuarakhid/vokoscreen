@@ -140,7 +140,6 @@ screencast::screencast()
   pointerQCheckBox = new QCheckBox( frame );
   pointerQCheckBox->setGeometry( 160, 90, 200, 21 );
   pointerQCheckBox->setText( tr( "Showclick" ) );
-  connect( pointerQCheckBox, SIGNAL( clicked() ), this, SLOT( pointerOnOff() ) );
 
   pointerDialogPushButton = new QPushButton( frame );
   pointerDialogPushButton->setGeometry( 270, 90, 20, 21 );
@@ -158,6 +157,8 @@ screencast::screencast()
 					  (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100,
 					  color );
 
+  connect( pointerQCheckBox, SIGNAL( clicked( bool ) ), animateControl, SLOT( pointerOnOff( bool ) ) );
+  
   connect( ShowClickDialog, SIGNAL( newCircleWidgetValue( int, QColor ) ), animateControl, SLOT( setDiameterColor( int, QColor ) ) );
   connect( ShowClickDialog, SIGNAL( newShowtime( double ) ), animateControl, SLOT( setShowTime( double ) ) );
   connect( ShowClickDialog, SIGNAL( newOpacity( double ) ), animateControl, SLOT( setOpacity( double ) ) );
@@ -891,16 +892,6 @@ void screencast::AudioOff( int state )
   else{
     tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
   }
-}
-
-
-void screencast::pointerOnOff()
-{
-  if ( pointerQCheckBox->checkState() == Qt::Checked )
-    animateControl->animateWindowOn();
-  
-  if ( pointerQCheckBox->checkState() == Qt::Unchecked )
-    animateControl->animateWindowOff();
 }
 
 

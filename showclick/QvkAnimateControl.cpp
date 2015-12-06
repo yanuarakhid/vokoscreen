@@ -26,6 +26,15 @@ QvkAnimateControl::~QvkAnimateControl()
 {
 }
 
+void QvkAnimateControl::pointerOnOff( bool value )
+{
+  if ( value == true )
+    animateWindowOn();
+  
+  if ( value == false )
+    animateWindowOff();
+}
+
 void QvkAnimateControl::animateWindowOn()
 {
   globalMouse->setCursorOn();
