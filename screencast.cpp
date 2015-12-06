@@ -136,35 +136,34 @@ screencast::screencast()
     QvkShowkeyController *showkeyController = new QvkShowkeyController( ShowkeyQCheckBox );
     (void)showkeyController;
     
-  //-----------------------------------------------------------
-  pointerQCheckBox = new QCheckBox( frame );
-  pointerQCheckBox->setGeometry( 160, 90, 200, 21 );
-  pointerQCheckBox->setText( tr( "Showclick" ) );
+    // Begin showclick
+    pointerQCheckBox = new QCheckBox( frame );
+    pointerQCheckBox->setGeometry( 160, 90, 200, 21 );
+    pointerQCheckBox->setText( tr( "Showclick" ) );
 
-  pointerDialogPushButton = new QPushButton( frame );
-  pointerDialogPushButton->setGeometry( 270, 90, 20, 21 );
-  pointerDialogPushButton->setText( "..." );
+    pointerDialogPushButton = new QPushButton( frame );
+    pointerDialogPushButton->setGeometry( 270, 90, 20, 21 );
+    pointerDialogPushButton->setText( "..." );
 
-  QColor color = Qt::red;
-  bool radiant = false;
-  double opacity = 0.5;
-  ShowClickDialog = new QvkShowClickDialog( color, radiant, opacity );
-  connect( pointerDialogPushButton, SIGNAL( clicked() ), ShowClickDialog, SLOT( show() ) );
+    QColor color = Qt::red;
+    bool radiant = false;
+    double opacity = 0.5;
+    ShowClickDialog = new QvkShowClickDialog( color, radiant, opacity );
+    connect( pointerDialogPushButton, SIGNAL( clicked() ), ShowClickDialog, SLOT( show() ) );
   
-  animateControl = new QvkAnimateControl( (double) ShowClickDialog->myUiDialog.horizontalSliderShowtime->value()/10,
-					  ShowClickDialog->myUiDialog.horizontalSliderCircle->value(),
-					  ShowClickDialog->myUiDialog.checkBoxRadiant->checkState(),
-					  (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100,
-					  color );
+    animateControl = new QvkAnimateControl( (double) ShowClickDialog->myUiDialog.horizontalSliderShowtime->value()/10,
+					    ShowClickDialog->myUiDialog.horizontalSliderCircle->value(),
+					    ShowClickDialog->myUiDialog.checkBoxRadiant->checkState(),
+					    (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100,
+					    color );
 
-  connect( pointerQCheckBox, SIGNAL( clicked( bool ) ), animateControl, SLOT( pointerOnOff( bool ) ) );
+    connect( pointerQCheckBox, SIGNAL( clicked( bool ) ), animateControl, SLOT( pointerOnOff( bool ) ) );
   
-  connect( ShowClickDialog, SIGNAL( newCircleWidgetValue( int, QColor ) ), animateControl, SLOT( setDiameterColor( int, QColor ) ) );
-  connect( ShowClickDialog, SIGNAL( newShowtime( double ) ), animateControl, SLOT( setShowTime( double ) ) );
-  connect( ShowClickDialog, SIGNAL( newOpacity( double ) ), animateControl, SLOT( setOpacity( double ) ) );
-  connect( ShowClickDialog, SIGNAL( newRadiant( bool ) ), animateControl, SLOT( setRadiant( bool ) ) );
-    
-    //-----------------------------------------------------------
+    connect( ShowClickDialog, SIGNAL( newCircleWidgetValue( int, QColor ) ), animateControl, SLOT( setDiameterColor( int, QColor ) ) );
+    connect( ShowClickDialog, SIGNAL( newShowtime( double ) ), animateControl, SLOT( setShowTime( double ) ) );
+    connect( ShowClickDialog, SIGNAL( newOpacity( double ) ), animateControl, SLOT( setOpacity( double ) ) );
+    connect( ShowClickDialog, SIGNAL( newRadiant( bool ) ), animateControl, SLOT( setRadiant( bool ) ) );
+    // End showclick
     
     // Tab 2 Audio options ****************************************
     TabWidgetAudioFrame = new QFrame( this );
