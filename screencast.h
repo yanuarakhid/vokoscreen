@@ -52,8 +52,10 @@
 #include <QxtGlobalShortcut>
 #include "QvkShowkeyController.h"
 
+
 #include "QvkAnimateControl.h"
 #include "QvkShowClickDialog.h"
+
 
 class screencast : public QMainWindow
 { 

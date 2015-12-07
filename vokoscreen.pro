@@ -112,7 +112,10 @@ include(version/version.pri)
 include(winInfo/winInfo.pri)
 
 # region
-include( region/regionselection.pri)
+include(region/regionselection.pri)
+
+# formatsAndCodecs
+include(formatsAndCodecs/formatsAndCodecs.pri)
 
 equals(QT_MAJOR_VERSION, "4") {
   DEFINES += QT4

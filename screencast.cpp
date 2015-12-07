@@ -17,6 +17,7 @@
  */
 
 #include "screencast.h"  
+#include "QvkFormatsAndCodecs.h"
 
 using namespace std;
 
@@ -241,10 +242,6 @@ screencast::screencast()
     VideocodecComboBox = new QComboBox( TabWidgetVideoOptionFrame );
     VideocodecComboBox->setGeometry( 100, 40, 100, 25 );
     VideocodecComboBox->show();
-    VideocodecComboBox->addItem( "libx264" );
-    VideocodecComboBox->addItem( "libx265" );
-    VideocodecComboBox->addItem( "mpeg4" );
-    VideocodecComboBox->addItem( "huffyuv" );
     connect( VideocodecComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
     
     QLabel *VideoContainerLabel = new QLabel(TabWidgetVideoOptionFrame );
@@ -275,10 +272,6 @@ screencast::screencast()
     AudiocodecComboBox = new QComboBox( TabWidgetVideoOptionFrame );
     AudiocodecComboBox->setGeometry( 100, 70, 100, 25 );
     AudiocodecComboBox->show();
-    AudiocodecComboBox->addItem( "libmp3lame" );
-    AudiocodecComboBox->addItem( "libvorbis" );
-    AudiocodecComboBox->addItem( "pcm_s16le" );
-    AudiocodecComboBox->addItem( "libvo_aacenc" );
     
     QPushButton *AudiocodecStandardButton = new QPushButton( TabWidgetVideoOptionFrame );
     AudiocodecStandardButton->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
@@ -857,6 +850,40 @@ screencast::screencast()
    VideoFileSystemWatcher->addPath( SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
    myVideoFileSystemWatcher( "" );
+   
+   qDebug() << "[vokoscreen] ---Begin search audio and video codec---";
+   QvkFormatsAndCodecs *formatsAndCodecs = new QvkFormatsAndCodecs( RecorderLineEdit->displayText() );
+   QStringList videoCodecList;
+   videoCodecList << "libx264" << "libx265" << "mpeg4" << "huffyuv";
+   for ( int i = 0; i < videoCodecList.count(); i++ )
+   {
+     if ( formatsAndCodecs->getCodec( videoCodecList[ i ] ) )
+     {
+       qDebug() << "[vokoscreen] find Videocodec" << videoCodecList[ i ];
+       VideocodecComboBox->addItem( videoCodecList[ i ] );
+     }
+     else
+     {
+       qDebug() << "[vokoscreen] not found" << videoCodecList[ i ];
+     }
+   }
+   
+   QStringList audioCodecList;
+   audioCodecList << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc";
+   for ( int i = 0; i < audioCodecList.count(); i++ )
+   {
+     if ( formatsAndCodecs->getCodec( audioCodecList[ i ] ) )
+     {
+       qDebug() << "[vokoscreen] find Audiocodec" << audioCodecList[ i ];
+       AudiocodecComboBox->addItem( audioCodecList[ i ] );
+     }
+     else
+     {
+       qDebug() << "[vokoscreen] not found" << audioCodecList[ i ];
+     }
+   }
+   qDebug() << "[vokoscreen] ---End search audio and video codec---";
+   qDebug();
    
    clickedScreenSize();
    AreaOnOff();
