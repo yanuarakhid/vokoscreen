@@ -163,7 +163,6 @@ private slots:
     void showMagnifier();
     void MagnifierDialog();
     
-    void ShortcutWebcam();
     void ShortcutPause();
     void ShortcutMagnifier();
     void uncheckMagnifier();

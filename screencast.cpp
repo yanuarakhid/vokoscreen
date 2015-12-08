@@ -742,7 +742,6 @@ screencast::screencast()
     connect( SystemCall, SIGNAL( stateChanged ( QProcess::ProcessState) ),this, SLOT( stateChanged( QProcess::ProcessState) ) );
     connect( SystemCall, SIGNAL( error( QProcess::ProcessError) ),        this, SLOT( error( QProcess::ProcessError) ) );
     connect( SystemCall, SIGNAL( readyReadStandardError() ),              this, SLOT( readyReadStandardError() ) );
-    connect( SystemCall, SIGNAL( readyReadStandardOutput() ),             this, SLOT( readyReadStandardOutput() ) );
 
     windowMoveTimer = new QTimer( this );
     connect( windowMoveTimer, SIGNAL( timeout() ), this, SLOT( windowMove() ) );
@@ -823,7 +822,7 @@ screencast::screencast()
    SystemTrayIcon->show();
    
    shortcutWebcam = new QxtGlobalShortcut( this );
-   connect( shortcutWebcam, SIGNAL( activated() ), this, SLOT( ShortcutWebcam() ) );
+   connect( shortcutWebcam, SIGNAL( activated() ), webcamCheckBox, SLOT( click() ) );
    shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
    
    shortcutMagnifier = new QxtGlobalShortcut( this );
@@ -1365,11 +1364,6 @@ void screencast::saveSettings()
   
 }
 
-
-void screencast::ShortcutWebcam()
-{
-  webcamCheckBox->click(); 
-}
 
 void screencast::ShortcutMagnifier()
 {
