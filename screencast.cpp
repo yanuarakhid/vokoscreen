@@ -101,7 +101,7 @@ screencast::screencast()
     MagnifierDialogPushButton->setGeometry( 270, 40, 20, 21 );
     MagnifierDialogPushButton->setText( "..." );
     MagnifierDialogPushButton->show();
-    connect( MagnifierDialogPushButton, SIGNAL( clicked() ), SLOT( MagnifierDialog() ) );
+    connect( MagnifierDialogPushButton, SIGNAL( clicked() ), magnifier,  SLOT( showDialogMagnifier() ) );
     
     QLabel *CountdownLabel = new QLabel( frame );
     CountdownLabel->setGeometry( 160, 115, 80, 25 );
@@ -1195,12 +1195,6 @@ void screencast::currentIndexChangedFormat( int index )
 {
  (void)index;
  statusBarLabelFormat->setText( VideoContainerComboBox->currentText() );
-}
-
-
-void screencast::MagnifierDialog()
-{
-  magnifier->getDialogMagnifier( this );
 }
 
 

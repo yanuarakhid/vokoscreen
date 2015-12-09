@@ -52,10 +52,8 @@ void QvkMagnifier::closeEvent( QCloseEvent * event )
 }
 
 
-void QvkMagnifier::getDialogMagnifier( QWidget *parent )
+void QvkMagnifier::showDialogMagnifier()
 {
-  (void)parent;
-  
   newDialog = new QDialog;
   newDialog->setModal( true );
 

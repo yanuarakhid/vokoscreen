@@ -25,7 +25,7 @@ public:
   virtual ~QvkMagnifier();
   
 public slots:
-  void getDialogMagnifier( QWidget *parent );
+  void showDialogMagnifier();
   void magnifierShow();
   int getFormValue();
   

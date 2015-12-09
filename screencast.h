@@ -161,7 +161,6 @@ private slots:
 
     void AreaOnOff();
     void showMagnifier();
-    void MagnifierDialog();
     
     void ShortcutPause();
     void uncheckMagnifier();
