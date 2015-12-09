@@ -164,7 +164,6 @@ private slots:
     void MagnifierDialog();
     
     void ShortcutPause();
-    void ShortcutMagnifier();
     void uncheckMagnifier();
     
     void send();

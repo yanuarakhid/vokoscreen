@@ -826,7 +826,7 @@ screencast::screencast()
    shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
    
    shortcutMagnifier = new QxtGlobalShortcut( this );
-   connect( shortcutMagnifier, SIGNAL( activated() ), this, SLOT( ShortcutMagnifier() ) );
+   connect( shortcutMagnifier, SIGNAL( activated() ), MagnifierCheckBox, SLOT( click() ) );
    shortcutMagnifier->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
 
    shortcutStart = new QxtGlobalShortcut( this );
@@ -1362,12 +1362,6 @@ void screencast::saveSettings()
     settings.setValue( "FormValue", magnifier->getFormValue() );
   settings.endGroup();
   
-}
-
-
-void screencast::ShortcutMagnifier()
-{
-  MagnifierCheckBox->click();
 }
 
 
