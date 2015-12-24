@@ -254,7 +254,8 @@ QString QvkShowkeyGetkey::getKey( QStringList list, int code )
     if ( keyFromList == "KP_Divide" )    key = "/";
   }
   
-  qDebug() << "Numlook" << isNumLockOn() << "|" << "keycode" << code << "|" << "Keysym" << keyFromList << "|" << "Print key:" << key;
+  // Only for testing
+  // qDebug() << "Numlook" << isNumLockOn() << "|" << "keycode" << code << "|" << "Keysym" << keyFromList << "|" << "Print key:" << key;
   
   return key;
 }
@@ -301,15 +302,8 @@ void QvkShowkeyGetkey::run()
     std::exit(1);
   }
 
-  /*
-   * fill up keyboard mapping
-   */
-  
-  //fill_mappings();
-  
   // keys aus eigene Routine ermitteln
   QStringList keyList = PrintKeyTable();
-  
 
   /*
    * fill relevant key buffers
@@ -344,7 +338,8 @@ void QvkShowkeyGetkey::run()
           if (shift_set.find(code) != shift_set.end())
 	  {
             shift = true;
-	    qDebug() << "Shift = true";
+	    // Only for testing
+	    //qDebug() << "Shift = true";
 	  }
 	  
           if (ctrl_set.find(code) != ctrl_set.end())

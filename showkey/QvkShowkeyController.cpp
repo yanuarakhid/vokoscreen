@@ -45,9 +45,17 @@ void QvkShowkeyController::showkeyReadKey( int value )
 void QvkShowkeyController::showScreenkeyWindow( QString value)
 {
    screenkeyTimer->stop();
-   screenkeyTimer->start( 3000 );
+   screenkeyTimer->start( 5000 );
    showkeyWindow->show();
-   showkeyWindow->keyLabel->setText( showkeyWindow->keyLabel->text() + value );
+   if ( value == "Bsp" )
+   {
+     QString string = showkeyWindow->keyLabel->text();
+     int length = string.length();
+     string = string.left( length -1 );
+     showkeyWindow->keyLabel->setText( string );
+   }
+   else
+     showkeyWindow->keyLabel->setText( showkeyWindow->keyLabel->text() + value );
 }
 
 
