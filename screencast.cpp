@@ -815,11 +815,12 @@ screencast::screencast()
    SystemTrayMenu->addSeparator();
    SystemTrayMenu->addAction( exitAction );
    connect( SystemTrayMenu, SIGNAL( triggered( QAction * ) ), this, SLOT( SystemTrayKontextMenue( QAction * ) ) );
-
+   
    SystemTrayIcon = new QSystemTrayIcon( QIcon( ":/pictures/systray.png" ) );
    SystemTrayIcon->setContextMenu ( SystemTrayMenu );
    SystemTrayIcon->setToolTip( "vokoscreen" );
    SystemTrayIcon->show();
+   SystrayCheckBox->setCheckState( Qt::CheckState( vkSettings.getSystray() ) );
    
    shortcutWebcam = new QxtGlobalShortcut( this );
    connect( shortcutWebcam, SIGNAL( activated() ), webcamCheckBox, SLOT( click() ) );
