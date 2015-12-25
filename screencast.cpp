@@ -42,10 +42,11 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "Version:" << vkSettings.getVersion();
     qDebug() << "[vokoscreen]" << "Qt version: " << qVersion();
     qDebug() << "[vokoscreen]" << "Operating system:" << getOsRelease();
-    QvkAlsaDevice inBox ;
+    qDebug() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
+    QvkAlsaDevice inBox;
     qDebug() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
     qDebug() << "[vokoscreen] current icon-theme:" << QIcon::themeName();
-    qDebug();
+    qDebug( " " );
 
     searchExternalPrograms();
     
@@ -128,7 +129,7 @@ screencast::screencast()
     DISPLAY = qgetenv( "DISPLAY" );
     qDebug() << "[vokoscreen] runs on DISPLAY" << DISPLAY;
     qDebug() << "[vokoscreen]" << "---End Environment---";
-    qDebug();
+    qDebug( " " );
     
     ShowkeyQCheckBox = new QCheckBox( frame );
     ShowkeyQCheckBox->setGeometry( 160, 65, 200, 21 );
@@ -679,7 +680,7 @@ screencast::screencast()
        }
      }
     qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
-    qDebug();
+    qDebug( " " );
 
       AudioOnOffCheckbox->setCheckState( Qt::CheckState( vkSettings.getAudioOnOff() ) );
       AudioOff( Qt::CheckState( vkSettings.getAudioOnOff() ) );
@@ -883,7 +884,7 @@ screencast::screencast()
      }
    }
    qDebug() << "[vokoscreen] ---End search audio and video codec---";
-   qDebug();
+   qDebug( " " );
    
    clickedScreenSize();
    AreaOnOff();
@@ -1010,7 +1011,7 @@ void screencast::myScreenCountChanged( int newCount )
     }
     ScreenComboBox->addItem( tr( "All Displays" ), -1 );    
     qDebug() << "[vokoscreen]" << "---End search Screen---";
-    qDebug();
+    qDebug( " " );
 }
 
 
@@ -1243,7 +1244,7 @@ void screencast::AlsaWatcherEvent( QStringList CardxList )
     AlsaHwComboBox->setCurrentIndex( x );
   settings.endGroup();
   qDebug() << "[vokoscreen] ---End search Alsa capture device---";
-  qDebug();
+  qDebug( " " );
 
   settings.beginGroup( "Pulse" );
     PulseMultipleChoice();
@@ -1462,7 +1463,7 @@ void screencast::searchExternalPrograms()
      qDebug() << "[vokoscreen]" << "Error: pactl is not found, this is an PulseAudio-utils tool. Please install pactl";
 
   qDebug() << "[vokoscreen]" << "---End search external tools---";
-  qDebug();
+  qDebug( " " );
 }
 
 
@@ -1536,7 +1537,7 @@ void screencast::makeAsoundrc()
     qDebug() << "[vokoscreen] Found file .asound for PulseAudio Plugin";
   
   qDebug() << "[vokoscreen]" << "---End search PulseAudio Plugin---";
-  qDebug();
+  qDebug( " " );
 
 }
 
@@ -1748,14 +1749,14 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
        
     if ( newState == QProcess::Running )
     {
-      qDebug();
       qDebug() << "[vokoscreen]" << recordApplikation << "is running and is ready for reading and writing";
+      qDebug( " " );
     }
    
     if ( newState == QProcess::NotRunning )
     {
-      qDebug();
       qDebug() << "[vokoscreen]" << recordApplikation << "is not running";
+      qDebug( " " );
 
       //Enables the customarea rectangle again. (Is diabled in record() )
       if ( !PauseButton->isChecked() )
@@ -1800,7 +1801,7 @@ void screencast::error( QProcess::ProcessError error )
     QDateTime dateTime = QDateTime::currentDateTime();
     QString time = dateTime.toString( "hh:mm" );
     QString day = dateTime.toString( "dddd" );
-    qDebug();
+    qDebug( " " );
     qDebug() << "********************************************************";
     qDebug() << crashedtext + day + ", " + time;
     qDebug() << "********************************************************";
@@ -2263,7 +2264,7 @@ void screencast::PulseMultipleChoice()
   AudioOnOff();
   
   qDebug() << "[vokoscreen]" << "---End search PulseAudio Capture Devices---";
-  qDebug();
+  qDebug( " " );
 }
 
 
@@ -2413,7 +2414,7 @@ QString screencast::myAlsa()
 
 void screencast::pulseUnloadModule()
 {
-  qDebug() << "";
+  //qDebug( " " );
   qDebug() << "[vokoscreen] ---Begin Pulse unload Module---";
   QProcess Process;
   QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
@@ -2452,7 +2453,7 @@ void screencast::pulseUnloadModule()
     qDebug() << "[vokoscreen] pactl unload-module number" << modulNumberList[ i ] ;
   }
   qDebug() << "[vokoscreen] ---End Pulse unload Module---";
-  qDebug() << "";
+  qDebug( " " );
 }
 
 
@@ -2845,7 +2846,8 @@ void screencast::record()
 void screencast::startRecord( QString RecordPathName )
 {
   qDebug() << "[vokoscreen]"<< "Executive command :" << ffmpegString + RecordPathName;
-
+  qDebug( " " );
+  
   if ( PulseDeviceRadioButton->isChecked() )
   {
     QProcess Process;
@@ -2882,7 +2884,7 @@ void screencast::startRecord( QString RecordPathName )
         qDebug() << "[vokoscreen] pactl load-module module-loopback source=" << box->accessibleName() << "sink=vokoscreenMix number" << modulNumber;
       }
       qDebug() << "[vokoscreen] ---End Pulse loade module---";
-      qDebug();
+      qDebug( " " );
     }
   
     if ( value > "" )
