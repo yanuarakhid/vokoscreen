@@ -117,6 +117,10 @@ include(region/regionselection.pri)
 # formatsAndCodecs
 include(formatsAndCodecs/formatsAndCodecs.pri)
 
+# countdown
+include(countdown/countdown.pri)
+
+
 equals(QT_MAJOR_VERSION, "4") {
   DEFINES += QT4
   QT += testlib
