@@ -2,24 +2,38 @@
 #define QvkCountdown_H
 
 #include <QObject>
+#include <QWidget>
+#include <QPainter>
+#include <QLabel>
 
-class QvkCountdown: public QObject
+class QvkCountdown: public QWidget
 {
     Q_OBJECT
 public:
-    QvkCountdown();
+    QvkCountdown( int value );
     virtual ~QvkCountdown();
 
     
 public slots:
-    void Countdown( int value );
 
   
 private:
+    int countValue;
+    int oldCountValue;
+    int gradValue;
+    QTimer *timer;
+    QTimer *animationTimer;
+    QPainter painter;
 
-  
+    
 private slots:
+   void updateTimer();
+   void updateAnimationTimer();
 
+
+protected:
+    void paintEvent( QPaintEvent *event );
+  
   
 signals:
   

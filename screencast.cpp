@@ -2626,9 +2626,8 @@ void screencast::Countdown()
   if ( CountdownSpinBox->value() > 0 )
   {
     recordButton->setEnabled( false );
-
-    QvkCountdown *countdown = new QvkCountdown();
-    countdown->Countdown( CountdownSpinBox->value() );
+    QvkCountdown *countdown = new QvkCountdown( CountdownSpinBox->value() );
+    (void)countdown;
   } 
 }
 
