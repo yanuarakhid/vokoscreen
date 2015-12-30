@@ -50,8 +50,8 @@ QvkCountdown::~QvkCountdown()
 
 void QvkCountdown::updateTimer()
 {
-  countValue--;
   gradValue = 0;
+  countValue--;
 
   if ( countValue == 0 )
   {
