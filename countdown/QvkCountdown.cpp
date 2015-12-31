@@ -56,6 +56,7 @@ void QvkCountdown::updateTimer()
   if ( countValue == 0 )
   {
     timer->stop();
+    animationTimer->stop();
     close();
   }
 }
