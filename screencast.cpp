@@ -873,7 +873,7 @@ screencast::screencast()
    VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( vkSettings.getVideoCodec() ) );
    
    QStringList audioCodecList;
-   audioCodecList << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc";
+   audioCodecList << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac";
    for ( int i = 0; i < audioCodecList.count(); i++ )
    {
      if ( formatsAndCodecs->getCodec( audioCodecList[ i ] ) )
@@ -1282,6 +1282,7 @@ void screencast::closeEvent( QCloseEvent * event )
   myregionselection->close();
   magnifier->close();
   webcamController->webcamCloseEvent();  
+  SystemTrayIcon->hide();  
 }
 
 
