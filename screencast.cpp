@@ -713,9 +713,9 @@ screencast::screencast()
       
       FrameSpinBox->setValue( vkSettings.getFrames() );
 
-      VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( vkSettings.getVideoCodec() ) );
+      //VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( vkSettings.getVideoCodec() ) );
       
-      AudiocodecComboBox->setCurrentIndex( AudiocodecComboBox->findText( vkSettings.getAudioCodec() ) );
+      //AudiocodecComboBox->setCurrentIndex( AudiocodecComboBox->findText( vkSettings.getAudioCodec() ) );
 
       VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( vkSettings.getVideoContainer() ) );
 
@@ -869,6 +869,7 @@ screencast::screencast()
        qDebug() << "[vokoscreen] not found" << videoCodecList[ i ];
      }
    }
+   VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( vkSettings.getVideoCodec() ) );
    
    QStringList audioCodecList;
    audioCodecList << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc";
@@ -886,6 +887,7 @@ screencast::screencast()
    }
    qDebug() << "[vokoscreen] ---End search audio and video codec---";
    qDebug( " " );
+   AudiocodecComboBox->setCurrentIndex( AudiocodecComboBox->findText( vkSettings.getAudioCodec() ) );
    
    clickedScreenSize();
    AreaOnOff();
