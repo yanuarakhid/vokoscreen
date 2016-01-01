@@ -657,7 +657,8 @@ screencast::screencast()
                                             << "dragon"
                                             << "banshee"
 					    << "openshot"
-					    << "kdenlive";
+					    << "kdenlive"
+					    << "mpv";
     playerList.sort();
     QString playerName;
     QString resultString( qgetenv( "PATH" ) );
