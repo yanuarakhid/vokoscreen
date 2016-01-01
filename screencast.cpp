@@ -1940,7 +1940,7 @@ void screencast::play()
   else
   {
     QProcess *SystemCall = new QProcess();
-    SystemCall->start( player + " " + PathMoviesLocation() + QDir::separator() + List.at( 0 ) );
+    SystemCall->start( player + " " + '"' + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + '"' );
   }
 }
 
