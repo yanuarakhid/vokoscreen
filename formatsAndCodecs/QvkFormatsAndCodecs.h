@@ -19,14 +19,17 @@ signals:
 
  
 public slots:
-  bool getCodec( QString value );
+  bool getCodec( QString typeOfCodec, QString nameOfCodec, bool *experimental );
+  
 
 private slots:
 
   
 private:
   QString recordApplikation;
-  QString codecs;
+  QStringList ListCodecs;
+  
+  enum Codec{ Video, Audio };
   
 protected:  
 

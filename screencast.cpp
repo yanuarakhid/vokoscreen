@@ -714,10 +714,6 @@ screencast::screencast()
       
       FrameSpinBox->setValue( vkSettings.getFrames() );
 
-      //VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( vkSettings.getVideoCodec() ) );
-      
-      //AudiocodecComboBox->setCurrentIndex( AudiocodecComboBox->findText( vkSettings.getAudioCodec() ) );
-
       VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( vkSettings.getVideoContainer() ) );
 
       HideMouseCheckbox->setCheckState( Qt::CheckState( vkSettings.getHideMouse()) );
@@ -854,41 +850,45 @@ screencast::screencast()
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
    myVideoFileSystemWatcher( "" );
    
-   qDebug() << "[vokoscreen] ---Begin search audio and video codec---";
+   qDebug() << "[vokoscreen] ---Begin search video codec---";
    QvkFormatsAndCodecs *formatsAndCodecs = new QvkFormatsAndCodecs( RecorderLineEdit->displayText() );
    QStringList videoCodecList;
+   bool experimental = false;
    videoCodecList << "libx264" << "libx265" << "mpeg4" << "huffyuv";
    for ( int i = 0; i < videoCodecList.count(); i++ )
    {
-     if ( formatsAndCodecs->getCodec( videoCodecList[ i ] ) )
+     if ( formatsAndCodecs->getCodec( "Video", videoCodecList[ i ], &experimental ) )
      {
        qDebug() << "[vokoscreen] find Videocodec" << videoCodecList[ i ];
-       VideocodecComboBox->addItem( videoCodecList[ i ] );
+       VideocodecComboBox->addItem( videoCodecList[ i ], experimental );
      }
      else
      {
-       qDebug() << "[vokoscreen] not found" << videoCodecList[ i ];
+       qDebug() << "[vokoscreen] not found Videocodec" << videoCodecList[ i ];
      }
    }
    VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( vkSettings.getVideoCodec() ) );
+   qDebug() << "[vokoscreen] ---End search video codec---";
+   qDebug( " " );
    
+   qDebug() << "[vokoscreen] ---Begin search audio codec---";
    QStringList audioCodecList;
    audioCodecList << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac";
    for ( int i = 0; i < audioCodecList.count(); i++ )
    {
-     if ( formatsAndCodecs->getCodec( audioCodecList[ i ] ) )
+     if ( formatsAndCodecs->getCodec( "Audio", audioCodecList[ i ], &experimental ) )
      {
        qDebug() << "[vokoscreen] find Audiocodec" << audioCodecList[ i ];
-       AudiocodecComboBox->addItem( audioCodecList[ i ] );
+       AudiocodecComboBox->addItem( audioCodecList[ i ], experimental );
      }
      else
      {
-       qDebug() << "[vokoscreen] not found" << audioCodecList[ i ];
+       qDebug() << "[vokoscreen] not found Audiocodec" << audioCodecList[ i ];
      }
    }
-   qDebug() << "[vokoscreen] ---End search audio and video codec---";
-   qDebug( " " );
    AudiocodecComboBox->setCurrentIndex( AudiocodecComboBox->findText( vkSettings.getAudioCodec() ) );
+   qDebug() << "[vokoscreen] ---End search audio codec---";
+   qDebug( " " );
    
    clickedScreenSize();
    AreaOnOff();
@@ -2553,12 +2553,21 @@ const QString screencast::myPulseDevice()
 
 QString screencast::myAcodec()
 {
-  QString acodec;
   if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( AlsaRadioButton->isChecked() ) and ( AlsaHwComboBox->currentText() > "" ) )
-     return "-c:a " + AudiocodecComboBox->currentText(); //"-c:a libmp3lame";
+  {
+    if ( AudiocodecComboBox->itemData( AudiocodecComboBox->currentIndex() ) == true )
+     return "-c:a " + AudiocodecComboBox->currentText() + " -strict experimental";
+    else
+     return "-c:a " + AudiocodecComboBox->currentText();
+  }
   
   if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( PulseDeviceRadioButton->isChecked() ) and ( myPulseDevice() > "" ) )
-     return "-c:a " + AudiocodecComboBox->currentText(); //"-c:a libmp3lame";
+  {
+    if ( AudiocodecComboBox->itemData( AudiocodecComboBox->currentIndex() ) == true )
+     return "-c:a " + AudiocodecComboBox->currentText() + " -strict experimental";
+    else
+     return "-c:a " + AudiocodecComboBox->currentText();
+  }
 
   return "";
 }
@@ -2751,7 +2760,7 @@ void screencast::record()
     myVcodec = "libx264 -preset veryfast";
   }  
 
-  // https://trac.ffmpeg.org/wiki/Encode/H.265  
+  // https://trac.ffmpeg.org/wiki/Encode/H.265
   if ( myVcodec == "libx265" )
   {
     // Number of pixels must be divisible by two

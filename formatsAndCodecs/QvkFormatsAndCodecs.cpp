@@ -4,7 +4,7 @@
 #include "QvkFormatsAndCodecs.h"
 
 /**
- * value is ffmpeg
+ * value: is ffmpeg
  */
 QvkFormatsAndCodecs::QvkFormatsAndCodecs( QString value )
 {
@@ -13,9 +13,22 @@ QvkFormatsAndCodecs::QvkFormatsAndCodecs( QString value )
   QProcess SystemCall;
     SystemCall.start( recordApplikation + " " + "-encoders" );
     SystemCall.waitForFinished();
-    codecs = SystemCall.readAllStandardOutput();
+    QString codecs = SystemCall.readAllStandardOutput();
   SystemCall.close();
   
+  ListCodecs = codecs.split( "\n" );
+  
+  // delete Header inclusive " ------"
+  int index = ListCodecs.indexOf( " ------" );
+  for ( int i = 0; i <= index; i++ )
+    ListCodecs.removeFirst();
+
+  // remove spaces and gives then the first and the second columns back
+  for ( int i = 0; i < ListCodecs.count(); i++ )
+  {
+    ListCodecs[ i ] = ListCodecs[ i ].simplified();
+    ListCodecs[ i ] = ListCodecs[ i ].section( " ", 0, 1 );
+  }
 }
 
 
@@ -25,38 +38,34 @@ QvkFormatsAndCodecs::~QvkFormatsAndCodecs()
 
 
 /**
- * value is videocodec libx264, libx265, mpeg4 etc.
+ * typeOfCodec: is string "Audio" or "Video"
+ * 
+ * nameOfcodec: is videocodec libx264, libx265, mpeg4 etc.
  * or Audiocodec libmp3lame, libvorbis etc.
  * see output from "ffmpeg -encoders" second column
  */
-bool QvkFormatsAndCodecs::getCodec( QString value )
+bool QvkFormatsAndCodecs::getCodec( QString typeOfCodec, QString nameOfCodec, bool *experimental )
 {
-  QStringList listAll = codecs.split( "\n" );
-  if ( listAll.isEmpty() )
-    return false;
-    
-  for ( int i = 0; i < listAll.count(); i++ )
-  {
-    listAll[ i ] = listAll[ i ].simplified();
-    listAll[ i ] = listAll[ i ].remove( 0, 7 );
-  }
+  // Give all Audio or Vidocodec
+  QStringList TypeListCodec = ListCodecs.filter( QRegExp( "^" + typeOfCodec.left( 1 ) ) );
 
-  QStringList listCodec = listAll.filter( QRegExp( "^" + value ) );
-  if ( listCodec.isEmpty() )
-    return false;
-  
-  QString stringCodec = listCodec[ 0 ];
-  
-  QStringList codec = stringCodec.split( " " );
-  if ( codec.isEmpty() )
+  bool available;
+  for ( int i = 0; i < TypeListCodec.count(); i++ )
   {
-    return false;
+    if ( TypeListCodec[ i ].section( " ", 1, 1 ) == nameOfCodec )
+    {
+      if ( TypeListCodec[ i ].section( " ", 0, 0 ).mid( 3, 1 ) == "X" )
+	*experimental = true;
+      else
+	*experimental = false;
+	
+      available = true;
+      break; 
+    }
+    else
+      available = false;
   }
-  else
-  {
-    return true;
-  }
+  
+  return available;
 }
-
-
 
