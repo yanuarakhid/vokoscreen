@@ -1308,7 +1308,7 @@ void screencast::saveSettings()
   settings.beginGroup( "Pulse" );
     settings.setValue( "Pulse", PulseDeviceRadioButton->isChecked() );
     for ( int i = 1; i < getCountCheckedPulseDevices() + 1; i++ )
-      settings.setValue( "NameCaptureCard-" + QString::number( i ), getPulseDeviceName( i ) );
+      settings.setValue( "NameCaptureCard-" + QString::number( i ), getPulseDeviceName( i ).replace( "&", "" ) );
   settings.endGroup();
 
   settings.beginGroup( "Record" );
