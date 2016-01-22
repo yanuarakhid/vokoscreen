@@ -120,6 +120,8 @@ include(formatsAndCodecs/formatsAndCodecs.pri)
 # countdown
 include(countdown/countdown.pri)
 
+# pulse
+include(pulse/pulse.pri)
 
 equals(QT_MAJOR_VERSION, "4") {
   DEFINES += QT4
