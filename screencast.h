@@ -116,16 +116,16 @@ private slots:
     QString getFileWithPath( QString ProgName );
     void preRecord();
 
-    const QString myPulseDevice();
-    int getCountCheckedPulseDevices();
-    QString getPulseDeviceName( int value );
-    int getPulseInputDevicesCount();
+    //const QString myPulseDevice();
+    //int getCountCheckedPulseDevices();
+    //QString getPulseDeviceName( int value );
+    //int getPulseInputDevicesCount();
     QCheckBox * getCheckBoxPulseDevice( int value );
-    QString getPulseInputName( int value );
-    QString getPulseInputDevices( int value );
-    QString getPulseSample( int value );
-    void pulseUnloadModule();
-    QString mySample();
+    //QString getPulseInputName( int value );
+    //QString getPulseInputDevices( int value );
+    //QString getPulseSample( int value );
+    //void pulseUnloadModule();
+    //QString mySample();
 
     QString noMouse();
     

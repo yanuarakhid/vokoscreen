@@ -19,6 +19,7 @@
 #include "screencast.h"  
 #include "QvkFormatsAndCodecs.h"
 #include "QvkCountdown.h"
+#include "QvkPulse.h"
 
 using namespace std;
 
@@ -759,7 +760,7 @@ screencast::screencast()
 
    makeAsoundrc();
    AudioOnOff();
-   pulseUnloadModule();
+   QvkPulse::pulseUnloadModule();
 
    QAction *vokoscreenAction = new QAction( this );
    vokoscreenAction->setIcon( QIcon( ":/pictures/systray.png" ) );
@@ -1253,7 +1254,7 @@ void screencast::AlsaWatcherEvent( QStringList CardxList )
   settings.beginGroup( "Pulse" );
     PulseMultipleChoice();
     for ( int x = 0; x < 10; x++ )
-       for ( int i = 0; i < getPulseInputDevicesCount(); i++ )
+       for ( int i = 0; i < QvkPulse::getPulseInputDevicesCount(); i++ )
        {
           QCheckBox *aa = getCheckBoxPulseDevice( i );
           if ( aa->text() == settings.value( "NameCaptureCard-" + QString::number( x + 1 ) ).toString() )
@@ -1307,8 +1308,8 @@ void screencast::saveSettings()
 
   settings.beginGroup( "Pulse" );
     settings.setValue( "Pulse", PulseDeviceRadioButton->isChecked() );
-    for ( int i = 1; i < getCountCheckedPulseDevices() + 1; i++ )
-      settings.setValue( "NameCaptureCard-" + QString::number( i ), getPulseDeviceName( i ).replace( "&", "" ) );
+    for ( int i = 1; i < QvkPulse::getCountCheckedPulseDevices( Pulseframe ) + 1; i++ )
+      settings.setValue( "NameCaptureCard-" + QString::number( i ), QvkPulse::getPulseDeviceName( i, Pulseframe ).replace( "&", "" ) );
   settings.endGroup();
 
   settings.beginGroup( "Record" );
@@ -1834,7 +1835,7 @@ void screencast::moveWindowPause()
   PauseButton->setText( tr( "Go" ) );
   SystemCall->terminate();
   SystemCall->waitForFinished();
-  pulseUnloadModule();
+  QvkPulse::pulseUnloadModule();
 }
 
 
@@ -1858,7 +1859,7 @@ void screencast::Pause()
       PauseButton->setText( tr ( "Go" ) );
       SystemCall->terminate();
       SystemCall->waitForFinished();
-      pulseUnloadModule();
+      QvkPulse::pulseUnloadModule();
     }
     else
     {
@@ -1888,7 +1889,7 @@ void screencast::Pause()
       PauseButton->setText( tr ( "Go" ) );
       SystemCall->terminate();
       SystemCall->waitForFinished();
-      pulseUnloadModule();
+      QvkPulse::pulseUnloadModule();
     }
     else
     {
@@ -2039,6 +2040,7 @@ void screencast::windowMove()
 /**
  * 
  */
+/*
 int screencast::getPulseInputDevicesCount()
 {
   QProcess *Process = new QProcess( this );
@@ -2056,11 +2058,12 @@ int screencast::getPulseInputDevicesCount()
   QStringList result = list.filter( "Source #", Qt::CaseInsensitive );
   return result.count();
 }
-
+*/
 
 /**
  * 
  */
+/*
 QString screencast::getPulseInputName( int value )
 {
   QProcess *Process = new QProcess( this );
@@ -2084,11 +2087,12 @@ QString screencast::getPulseInputName( int value )
   name = resultList[ 1 ].trimmed();
   return name;
 }
-
+*/
 
 /**
  * Get Pulse Devicname
  */
+/*
 QString screencast::getPulseInputDevices( int value )
 {
   QProcess *Process = new QProcess( this );
@@ -2112,11 +2116,12 @@ QString screencast::getPulseInputDevices( int value )
   device = resultList[ 1 ].trimmed();
   return device;
 }
-
+*/
 
 /**
  * Get Pulse Samplerate
  */
+/*
 QString screencast::getPulseSample( int value )
 {
   QProcess *Process = new QProcess( this );
@@ -2148,7 +2153,7 @@ QString screencast::getPulseSample( int value )
   QString sample = result[ 0 ].replace("Hz","");
   return sample;
 }
-
+*/
 
 /**
  * Englisch:
@@ -2159,6 +2164,7 @@ QString screencast::getPulseSample( int value )
  * Gibt Samplerrate von ausgewählten Geräten zurück.
  * Pulse: Wenn mehrere Geräte ausgewählt wurden wird die niedrigste Samplerrate herangezogen
  */
+/*
 QString screencast::mySample()
 {
   QString ret = "41000";
@@ -2193,7 +2199,7 @@ QString screencast::mySample()
     
    return ret;
 }
-
+*/
 
 void screencast::AudioOnOff()
 {
@@ -2251,15 +2257,15 @@ void screencast::PulseMultipleChoice()
     scrollAreaPulse->setHorizontalScrollBarPolicy ( Qt::ScrollBarAlwaysOff );
     scrollAreaPulse->setGeometry( 90, 20, 345, 80 );
     scrollAreaPulse->show();
-    Pulseframe->setGeometry( 90, 20, 320, getPulseInputDevicesCount() * 20);
+    Pulseframe->setGeometry( 90, 20, 320, QvkPulse::getPulseInputDevicesCount() * 20);
     Pulseframe->show();
 
-    for ( int i = 0; i < getPulseInputDevicesCount(); ++i )
+    for ( int i = 0; i < QvkPulse::getPulseInputDevicesCount(); ++i )
     {
       namePulse = new QCheckBox( Pulseframe );
       namePulse->setGeometry( QRect( 0,  i * 20, 400, 21 ) );
-      namePulse->setText( getPulseInputName( i + 1 ) );
-      namePulse->setAccessibleName( getPulseInputDevices( i + 1 ) );
+      namePulse->setText( QvkPulse::getPulseInputName( i + 1 ) );
+      namePulse->setAccessibleName( QvkPulse::getPulseInputDevices( i + 1 ) );
       namePulse->setToolTip( tr ( "Select one or more devices" ) );
       namePulse->show();
       qDebug() << "[vokoscreen]" << "Find CaptureCard:" << namePulse->text() << "with device:" << namePulse->accessibleName();
@@ -2308,8 +2314,6 @@ QString screencast::PathMoviesLocation()
   }
   return Path;
 }
-
-
 
 
 QString screencast::PathTempLocation()
@@ -2416,7 +2420,7 @@ QString screencast::myAlsa()
   return value;
 }
 
-
+/*
 void screencast::pulseUnloadModule()
 {
   //qDebug( " " );
@@ -2460,7 +2464,7 @@ void screencast::pulseUnloadModule()
   qDebug() << "[vokoscreen] ---End Pulse unload Module---";
   qDebug( " " );
 }
-
+*/
 
 /**
  * Returns Checkbox from Pulse device
@@ -2478,6 +2482,7 @@ QCheckBox * screencast::getCheckBoxPulseDevice( int value )
 /**
  * Returns xte checked pulse devicename
  */
+/*
 QString screencast::getPulseDeviceName( int value )
 {
   QList<QCheckBox *> listQFrame = Pulseframe->findChildren<QCheckBox *>();
@@ -2497,11 +2502,12 @@ QString screencast::getPulseDeviceName( int value )
   }
   return name;
 }
-
+*/
 
 /**
  *  Returns count checked pulse devices
  */
+/*
 int screencast::getCountCheckedPulseDevices()
 {
   QList<QCheckBox *> listQFrame = Pulseframe->findChildren<QCheckBox *>();
@@ -2516,11 +2522,12 @@ int screencast::getCountCheckedPulseDevices()
   }
   return x;
 }
-
+*/
 
 /**
  * Return checked Pulse Device
  */
+/*
 const QString screencast::myPulseDevice()
 {
   QList<QCheckBox *> listQFrame = Pulseframe->findChildren<QCheckBox *>();
@@ -2549,7 +2556,7 @@ const QString screencast::myPulseDevice()
 
   return ret;
 }
-
+*/
 
 QString screencast::myAcodec()
 {
@@ -2561,7 +2568,7 @@ QString screencast::myAcodec()
      return "-c:a " + AudiocodecComboBox->currentText();
   }
   
-  if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( PulseDeviceRadioButton->isChecked() ) and ( myPulseDevice() > "" ) )
+  if ( ( AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( PulseDeviceRadioButton->isChecked() ) and ( QvkPulse::myPulseDevice( Pulseframe ) > "" ) )
   {
     if ( AudiocodecComboBox->itemData( AudiocodecComboBox->currentIndex() ) == true )
      return "-c:a " + AudiocodecComboBox->currentText() + " -strict experimental";
@@ -2818,7 +2825,7 @@ void screencast::startRecord( QString RecordPathName )
   if ( PulseDeviceRadioButton->isChecked() )
   {
     QProcess Process;
-    QString value = myPulseDevice();
+    QString value = QvkPulse::myPulseDevice( Pulseframe );
     if ( value == "vokoscreenMix.monitor" )
     {
       Process.start("pactl load-module module-null-sink sink_name=vokoscreenMix");
@@ -2930,7 +2937,7 @@ void screencast::Stop()
   windowMoveTimer->stop();
   firststartWininfo = false;
 
-  pulseUnloadModule();
+  QvkPulse::pulseUnloadModule();
   
 }
 
