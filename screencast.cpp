@@ -2257,7 +2257,13 @@ QString screencast::myAlsa()
         }
         else if ( counter > 0 )
         {
-          value = "-f alsa -i pulse ";
+          //value = "-f alsa -i pulse "; // with alsa plugin
+          for ( int i = 0; i < listQFrame.count(); i++ )
+          {
+            box = listQFrame.at( i );
+            if ( box->checkState() == Qt::Checked  )
+              value = "-f pulse -i " + box->accessibleName();
+          }
         }
         
     }
