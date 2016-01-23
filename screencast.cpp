@@ -1225,6 +1225,18 @@ void screencast::myVideoFileSystemWatcher( const QString & path )
   }
 }
 
+/**
+ * Returns Checkbox from Pulse device
+ * 
+ */
+QCheckBox * screencast::getCheckBoxPulseDevice( int value )
+{
+  QList<QCheckBox *> listQFrame = Pulseframe->findChildren<QCheckBox *>();  
+  QCheckBox *inBox;  
+  inBox = listQFrame.at( value );
+  return inBox;
+}
+
 
 /**
  * CardxList beinhaltet "card0", "card1" ...
@@ -2465,18 +2477,6 @@ void screencast::pulseUnloadModule()
   qDebug( " " );
 }
 */
-
-/**
- * Returns Checkbox from Pulse device
- * 
- */
-QCheckBox * screencast::getCheckBoxPulseDevice( int value )
-{
-  QList<QCheckBox *> listQFrame = Pulseframe->findChildren<QCheckBox *>();  
-  QCheckBox *inBox;  
-  inBox = listQFrame.at( value );
-  return inBox;
-}
 
 
 /**

@@ -120,7 +120,7 @@ private slots:
     //int getCountCheckedPulseDevices();
     //QString getPulseDeviceName( int value );
     //int getPulseInputDevicesCount();
-    QCheckBox * getCheckBoxPulseDevice( int value );
+    //QCheckBox * getCheckBoxPulseDevice( int value );
     //QString getPulseInputName( int value );
     //QString getPulseInputDevices( int value );
     //QString getPulseSample( int value );
