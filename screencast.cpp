@@ -758,7 +758,7 @@ screencast::screencast()
     for ( int i = 0; i < stringList.size(); ++i )
       dir.remove( PathTempLocation().append( QDir::separator() ).append( stringList.at( i ) ) );
 
-   makeAsoundrc();
+   //makeAsoundrc();
    AudioOnOff();
    QvkPulse::pulseUnloadModule();
 
@@ -1518,6 +1518,7 @@ void screencast::setFrameStandardSpinbox()
  * -Die .asoundrc sollte nur erstellt werden wenn der Start von ffmpeg fehlschägt.
  * Hint: Abfrage muß noch eingebaut werden.
  */
+/*
 void screencast::makeAsoundrc()
 {
   #ifdef QT4
@@ -1558,7 +1559,7 @@ void screencast::makeAsoundrc()
   qDebug( " " );
 
 }
-
+*/
 
 void screencast::recorderLineEditTextChanged( QString recorder )
 {
@@ -2253,7 +2254,9 @@ QString screencast::myAlsa()
 
         if (counter > 1)
         { 
-          value = "-f alsa -f pulse -i vokoscreenMix.monitor ";
+          //value = "-f alsa -f pulse -i vokoscreenMix.monitor "; // alsa plugin
+          value = "-f pulse -i vokoscreenMix.monitor";
+	  
         }
         else if ( counter > 0 )
         {

@@ -136,7 +136,7 @@ private slots:
     void saveVideoPath();
     void selectRecorder();
     void recorderLineEditTextChanged( QString recorder );
-    void makeAsoundrc();
+    //void makeAsoundrc();
     
     bool searchProgramm( QString ProgName );
     void stateChanged( QProcess::ProcessState newState );
