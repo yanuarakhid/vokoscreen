@@ -2303,9 +2303,9 @@ QString screencast::myAcodec()
 QString screencast::noMouse()
 {
   if ( HideMouseCheckbox->checkState() == Qt::Checked  )
-    return "+nomouse";
+    return "-draw_mouse 0";
   else
-    return "";
+    return "-draw_mouse 1";
 }
 
 
@@ -2441,8 +2441,6 @@ void screencast::record()
     qDebug() << "[vokoscreen]" << "recording area";
   }
   
-  QString myReport = "-report ";
-  
   // set working directory for writing and delete the ffmpegLog from Profil directory
   QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
   QFileInfo settingsPath( settings.fileName() );
@@ -2505,20 +2503,18 @@ void screencast::record()
   
   nameInMoviesLocation = NameInMoviesLocation();
 
-  QString quality = " -q:v 1 ";
-  
   ffmpegString = recordApplikation + " "
-               + myReport + " "
+               + "-report" + " "
                + "-f x11grab" + " "
+               + noMouse() + " "
                + framerate + " "
                + "-video_size" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
-               + "-i " + DISPLAY + "+" + deltaX + "," + deltaY
-               + noMouse() + " "
+               + "-i " + DISPLAY + "+" + deltaX + "," + deltaY + " "
                + myAlsa() + " "
                + "-pix_fmt yuv420p" + " "
                + "-c:v" + " " + myVcodec + " "
                + myAcodec() + " "
-               + quality + " "
+               + "-q:v 1" + " "
                + "-s" + " " + getRecordWidth() + "x" + getRecordHeight() + " ";
   
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
