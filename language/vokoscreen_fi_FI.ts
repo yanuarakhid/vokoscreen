@@ -255,10 +255,6 @@
         <translation>Lahjoita</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Tallentamiseen käytettävä ohjelma</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Käännökset</translation>
     </message>
@@ -305,6 +301,14 @@
     <message>
         <source>Developer Homepage</source>
         <translation>Kehittäjän kotisivu</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

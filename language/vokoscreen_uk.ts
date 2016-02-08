@@ -1,9 +1,9 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="es_ES" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="uk" version="2.0">
 <context>
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>El dispositivo está ocupado</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Name</source>
@@ -26,15 +26,15 @@
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Envia por email el último vídeo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Enviar a uno o más vídeos seleccionados</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send</source>
-        <translation>Enviar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cancel</source>
@@ -52,22 +52,22 @@
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Puedes encontrar el vídeo como archivo adjunto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Seleccione uno o más archivos</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation>Borde</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close</source>
-        <translation>Cerrar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show over fullscreen</source>
@@ -86,7 +86,7 @@
     <name>WebcamBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>El dispositivo está ocupado</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Name</source>
@@ -116,123 +116,123 @@
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>pantalla</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Window</source>
-        <translation>ventana</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Area</source>
-        <translation>área</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Alsa</source>
-        <translation>Alsa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pulse</source>
-        <translation>Pulse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Default</source>
-        <translation>Predeterminado</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Codec</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>No grabar el cursor del ratón</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Ubicación del vídeo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Player</source>
-        <translation>Reproductor</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Minimizar Vokoscreen al comenzar la grabación</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Start</source>
-        <translation>iniciar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Stop</source>
-        <translation>detener</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send</source>
-        <translation>Enviar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Tiempo de grabación</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>Tamaño en KB</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Tamaño de la pantalla a grabar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formato</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Ajustes fps</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Abrir directorio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Cuenta regresiva</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Reproducir último vídeo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>Enviar vídeo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Fotogramas por segundo actuales</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Go</source>
-        <translation>iniciar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Homepage</source>
@@ -280,7 +280,7 @@
     </message>
     <message>
         <source>Webcam</source>
-        <translation>Webcam</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select webcam</source>

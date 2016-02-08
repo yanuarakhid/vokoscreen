@@ -255,10 +255,6 @@
         <translation>Зробити внесок</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Програма для запису</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Переклади</translation>
     </message>
@@ -304,6 +300,14 @@
     </message>
     <message>
         <source>Developer Homepage</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select recorder</source>
         <translation type="unfinished"/>
     </message>
 </context>

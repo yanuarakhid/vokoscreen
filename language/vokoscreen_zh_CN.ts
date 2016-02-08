@@ -19,7 +19,7 @@
     </message>
     <message>
         <source>Used by</source>
-        <translation>被使用</translation>
+        <translation>使用者</translation>
     </message>
 </context>
 <context>
@@ -98,7 +98,7 @@
     </message>
     <message>
         <source>Used by</source>
-        <translation>被使用</translation>
+        <translation>使用者</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -135,12 +135,12 @@
         <translation>音频</translation>
     </message>
     <message>
-        <source>Pulse</source>
-        <translation>Pulse</translation>
-    </message>
-    <message>
         <source>Alsa</source>
         <translation>Alsa</translation>
+    </message>
+    <message>
+        <source>Pulse</source>
+        <translation>Pulse</translation>
     </message>
     <message>
         <source>Default</source>
@@ -224,7 +224,7 @@
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>选取一个或多个装置</translation>
+        <translation>选取一个或多个设备</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
@@ -255,10 +255,6 @@
         <translation>捐赠</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>开发日志</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>翻译</translation>
     </message>
@@ -268,11 +264,7 @@
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>任务栏显示</translation>
-    </message>
-    <message>
-        <source>Recorder</source>
-        <translation>采集器</translation>
+        <translation>系统托盘显示</translation>
     </message>
     <message>
         <source>New version available</source>
@@ -309,6 +301,14 @@
     <message>
         <source>Developer Homepage</source>
         <translation>开发者网站</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation>采集器</translation>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation>选择采集器</translation>
     </message>
 </context>
 </TS>

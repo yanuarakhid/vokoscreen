@@ -71,7 +71,7 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation>Pokarz nad pełnym ekranem</translation>
+        <translation>Pokaż nad pełnym ekranem</translation>
     </message>
     <message>
         <source>Right click for menu</source>
@@ -109,7 +109,7 @@
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>podwójne kliknięcie rozszerzone do krawędzi</translation>
     </message>
 </context>
 <context>
@@ -156,7 +156,7 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Ścieżka wideo</translation>
+        <translation>Zapisz nagranie w</translation>
     </message>
     <message>
         <source>Player</source>
@@ -204,7 +204,7 @@
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Ustawiona liczba klatek</translation>
+        <translation>Żądany klatkaż</translation>
     </message>
     <message>
         <source>Open Directory</source>
@@ -228,7 +228,7 @@
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Aktualna liczba klatek na sekundę</translation>
+        <translation>Rzeczywisty klatkaż</translation>
     </message>
     <message>
         <source>Go</source>
@@ -264,7 +264,7 @@
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Pokazuj w tacce systemowej</translation>
+        <translation>Pokazuj w panelu systemowym</translation>
     </message>
     <message>
         <source>New version available</source>
@@ -304,11 +304,11 @@
     </message>
     <message>
         <source>Recorder</source>
-        <translation type="unfinished"/>
+        <translation>Rejestrator</translation>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation type="unfinished"/>
+        <translation>Wybierz rejestrator</translation>
     </message>
 </context>
 </TS>

@@ -255,10 +255,6 @@
         <translation>Feu una donació</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Programa per a l’enregistrament</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Traduccions</translation>
     </message>
@@ -304,6 +300,14 @@
     </message>
     <message>
         <source>Developer Homepage</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select recorder</source>
         <translation type="unfinished"/>
     </message>
 </context>

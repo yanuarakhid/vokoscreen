@@ -255,10 +255,6 @@
         <translation>Adományozás</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Képrögzítő program</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Fordítás</translation>
     </message>
@@ -305,6 +301,14 @@
     <message>
         <source>Developer Homepage</source>
         <translation>Fejlesztői honlap</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation>Felvevő</translation>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation>Válassz felvevőt</translation>
     </message>
 </context>
 </TS>

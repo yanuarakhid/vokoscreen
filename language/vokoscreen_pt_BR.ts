@@ -255,10 +255,6 @@
         <translation>Doações</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Programa para gravação</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Traduções</translation>
     </message>
@@ -305,6 +301,14 @@
     <message>
         <source>Developer Homepage</source>
         <translation>Página Web do desenvolvedor</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

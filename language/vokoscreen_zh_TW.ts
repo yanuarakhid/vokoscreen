@@ -7,19 +7,19 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>名字</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>未知</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>裝置</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>被使用</translation>
     </message>
 </context>
 <context>
@@ -38,14 +38,14 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
+        <translation>請安裝一個影片播放器</translation>
     </message>
 </context>
 <context>
@@ -71,15 +71,15 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>全熒屏顯示</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>點擊右鍵以開啟選單</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>用戶自定義</translation>
     </message>
 </context>
 <context>
@@ -90,26 +90,26 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>名字</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>裝置</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>被使用</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>未知</translation>
     </message>
 </context>
 <context>
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>雙擊最大化</translation>
     </message>
 </context>
 <context>
@@ -236,75 +236,79 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"/>
+        <translation>官方網頁</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>使用支援</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>軟體開發者</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"/>
+        <translation>影格率</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Program for recording</source>
-        <translation type="unfinished"/>
+        <translation>捐款支持</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"/>
+        <translation>軟體介面翻譯</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"/>
+        <translation>來源程式碼</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"/>
+        <translation>顯示在系統匣中</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>有新的軟體版本</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"/>
+        <translation>影像編碼</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"/>
+        <translation>音訊編碼</translation>
     </message>
     <message>
         <source>Webcam</source>
-        <translation>網路攝影機</translation>
+        <translation>Web 攝影機</translation>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"/>
+        <translation>選擇 Web 攝影機</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>鏡面</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"/>
+        <translation>顯示</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
+        <translation>顯示所有</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>開發者官方網頁</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation>採集器</translation>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation>選擇採集器</translation>
     </message>
 </context>
 </TS>

@@ -3,7 +3,7 @@
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>Dispositivo ocupado</translation>
+        <translation>O dispositivo está ocupado</translation>
     </message>
     <message>
         <source>Name</source>

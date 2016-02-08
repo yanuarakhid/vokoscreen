@@ -255,10 +255,6 @@
         <translation>Donează</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Program pentru înregistrare</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Traduceri</translation>
     </message>
@@ -304,6 +300,14 @@
     </message>
     <message>
         <source>Developer Homepage</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select recorder</source>
         <translation type="unfinished"/>
     </message>
 </context>

@@ -255,10 +255,6 @@
         <translation>Ủng hộ tài chính</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Chương trình dùng để ghi hình</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Chuyển ngữ</translation>
     </message>
@@ -304,6 +300,14 @@
     </message>
     <message>
         <source>Developer Homepage</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select recorder</source>
         <translation type="unfinished"/>
     </message>
 </context>

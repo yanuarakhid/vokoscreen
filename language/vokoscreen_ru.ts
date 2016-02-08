@@ -109,7 +109,7 @@
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>двойной клик расширит до краёв</translation>
     </message>
 </context>
 <context>
@@ -255,10 +255,6 @@
         <translation>Пожертвовать</translation>
     </message>
     <message>
-        <source>Program for recording</source>
-        <translation>Программа для записи</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Переводы</translation>
     </message>
@@ -305,6 +301,14 @@
     <message>
         <source>Developer Homepage</source>
         <translation>Веб-сайт разработчика</translation>
+    </message>
+    <message>
+        <source>Recorder</source>
+        <translation>Программа</translation>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation>Выберите программу записи</translation>
     </message>
 </context>
 </TS>

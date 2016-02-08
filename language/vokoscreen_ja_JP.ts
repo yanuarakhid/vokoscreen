@@ -302,5 +302,13 @@
         <source>Developer Homepage</source>
         <translation>開発者ホームページ</translation>
     </message>
+    <message>
+        <source>Recorder</source>
+        <translation>録画プログラム</translation>
+    </message>
+    <message>
+        <source>Select recorder</source>
+        <translation>録画プログラムを選択</translation>
+    </message>
 </context>
 </TS>
