@@ -97,7 +97,7 @@ bool QvkFormatsAndCodecs::isCodecAvailable( QString typeOfCodec, QString nameOfC
  */
 bool QvkFormatsAndCodecs::isFormatAvailable( QString nameOfFormat )
 {
-  bool available;
+  bool available = false;
   for ( int i = 0; i < ListFormats.count(); i++ )
   {
     if ( ListFormats[ i ].section( " ", 1, 1 ) == nameOfFormat )

@@ -856,7 +856,7 @@ screencast::screencast()
    videoCodecList << "libx264" << "libx265" << "mpeg4" << "huffyuv";
    for ( int i = 0; i < videoCodecList.count(); i++ )
    {
-     if ( formatsAndCodecs->isCodecAvailable( "Video", videoCodecList[ i ], &experimental ) )
+     if ( formatsAndCodecs->isCodecAvailable( "Video", videoCodecList[ i ], &experimental ) == true )
      {
        qDebug() << "[vokoscreen] find Videocodec" << videoCodecList[ i ];
        VideocodecComboBox->addItem( videoCodecList[ i ], experimental );
@@ -875,7 +875,7 @@ screencast::screencast()
    audioCodecList << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac";
    for ( int i = 0; i < audioCodecList.count(); i++ )
    {
-     if ( formatsAndCodecs->isCodecAvailable( "Audio", audioCodecList[ i ], &experimental ) )
+     if ( formatsAndCodecs->isCodecAvailable( "Audio", audioCodecList[ i ], &experimental ) == true )
      {
        qDebug() << "[vokoscreen] find Audiocodec" << audioCodecList[ i ];
        AudiocodecComboBox->addItem( audioCodecList[ i ], experimental );
@@ -891,14 +891,14 @@ screencast::screencast()
    
    
    qDebug() << "[vokoscreen] ---Begin search formats---";
-   QStringList formatList;
-   formatList << "mkv" << "avi";
+   QStringList formatList   = ( QStringList() << "mkv"      << "avi" );
+   QStringList userDataList = ( QStringList() << "matroska" << "avi" );
    for ( int i = 0; i < formatList.count(); i++ )
    {
-     if ( formatsAndCodecs->isFormatAvailable( formatList[ i ] ) )
+     if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
      {
        qDebug() << "[vokoscreen] find Format" << formatList[ i ];
-       VideoContainerComboBox->addItem( formatList[ i ] );
+       VideoContainerComboBox->addItem( formatList[ i ], userDataList[ i ] );
      }
      else
        qDebug() << "[vokoscreen] not found Format" << formatList[ i ];
