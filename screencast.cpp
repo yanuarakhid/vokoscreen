@@ -907,6 +907,8 @@ screencast::screencast()
    qDebug() << "[vokoscreen] ---End search formats---";
    qDebug( " " );
   
+   qDebug() <<  VideoContainerComboBox->itemData( VideoContainerComboBox->currentIndex() ).toString();
+   
    clickedScreenSize();
    AreaOnOff();
 }
@@ -2531,7 +2533,8 @@ void screencast::record()
                + "-c:v" + " " + myVcodec + " "
                + myAcodec() + " "
                + "-q:v 1" + " "
-               + "-s" + " " + getRecordWidth() + "x" + getRecordHeight() + " ";
+               + "-s" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
+	       + "-f" + " " + VideoContainerComboBox->itemData( VideoContainerComboBox->currentIndex() ).toString() + " ";
   
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   
