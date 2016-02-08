@@ -69,13 +69,12 @@ QvkFormatsAndCodecs::~QvkFormatsAndCodecs()
  * or Audiocodec libmp3lame, libvorbis etc.
  * see output from "ffmpeg -encoders" second column
  */
-//bool QvkFormatsAndCodecs::getCodec( QString typeOfCodec, QString nameOfCodec, bool *experimental )
 bool QvkFormatsAndCodecs::isCodecAvailable( QString typeOfCodec, QString nameOfCodec, bool *experimental )
 {
   // Give all Audio or Vidocodec
   QStringList TypeListCodec = ListCodecs.filter( QRegExp( "^" + typeOfCodec.left( 1 ) ) );
 
-  bool available;
+  bool available = false;
   for ( int i = 0; i < TypeListCodec.count(); i++ )
   {
     if ( TypeListCodec[ i ].section( " ", 1, 1 ) == nameOfCodec )
@@ -88,8 +87,6 @@ bool QvkFormatsAndCodecs::isCodecAvailable( QString typeOfCodec, QString nameOfC
       available = true;
       break; 
     }
-    else
-      available = false;
   }
   
   return available;
@@ -101,8 +98,7 @@ bool QvkFormatsAndCodecs::isCodecAvailable( QString typeOfCodec, QString nameOfC
  */
 bool QvkFormatsAndCodecs::isFormatAvailable( QString nameOfFormat )
 {
-  // Give all Audio or Vidocodec
-  QStringList TypeListCodec = ListFormats.filter( QRegExp( "^" + nameOfFormat.left( 1 ) ) );
-  qDebug() << TypeListCodec;
+  bool available;
+  
   return false;
 }

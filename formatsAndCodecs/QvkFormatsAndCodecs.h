@@ -20,7 +20,7 @@ signals:
  
 public slots:
   bool isCodecAvailable( QString typeOfCodec, QString nameOfCodec, bool *experimental );
-  bool isFormatAvailable( QString typeOfFormat );
+  bool isFormatAvailable( QString nameOfFormat );
 
 
 private slots:
