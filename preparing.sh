@@ -42,6 +42,11 @@ echo Make main.ts
 echo ============
 lupdate -locations none -recursive ./ -ts main.ts
 
+echo =====================
+echo Remove language packs
+echo =====================
+rm language/*.ts
+
 echo ======================
 echo Download language pack
 echo ======================
