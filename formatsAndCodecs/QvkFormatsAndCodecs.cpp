@@ -29,6 +29,31 @@ QvkFormatsAndCodecs::QvkFormatsAndCodecs( QString value )
     ListCodecs[ i ] = ListCodecs[ i ].simplified();
     ListCodecs[ i ] = ListCodecs[ i ].section( " ", 0, 1 );
   }
+
+  //**************************************
+  SystemCall.start( recordApplikation + " " + "-formats" );
+  SystemCall.waitForFinished();
+  QString formats = SystemCall.readAllStandardOutput();
+  SystemCall.close();
+  
+  ListFormats = formats.split( "\n" );
+  
+  // delete Header inclusive " --"
+  index = ListFormats.indexOf( " --" );
+  for ( int i = 0; i <= index; i++ )
+    ListFormats.removeFirst();
+
+  // remove spaces and gives then the first and the second columns back
+  for ( int i = 0; i < ListFormats.count(); i++ )
+  {
+    ListFormats[ i ] = ListFormats[ i ].remove( 0, 1 ); // First space remove
+    if ( ListFormats[ i ].mid( 0, 1 ) == " " )
+      ListFormats[ i ].replace( 0, 1, "." );
+    if ( ListFormats[ i ].mid( 1, 1 ) == " " )
+      ListFormats[ i ].replace( 1, 1, "." );
+    
+    ListFormats[ i ] = ListFormats[ i ].section( " ", 0, 1 );
+  }
 }
 
 
@@ -71,10 +96,13 @@ bool QvkFormatsAndCodecs::isCodecAvailable( QString typeOfCodec, QString nameOfC
 }
 
 /*
- * 
+ * typeOfFormat. is string "mkv" or "avi"
  * 
  */
-bool QvkFormatsAndCodecs::isFormatAvailable( QString format)
+bool QvkFormatsAndCodecs::isFormatAvailable( QString nameOfFormat )
 {
-  
+  // Give all Audio or Vidocodec
+  QStringList TypeListCodec = ListFormats.filter( QRegExp( "^" + nameOfFormat.left( 1 ) ) );
+  qDebug() << TypeListCodec;
+  return false;
 }
