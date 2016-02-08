@@ -254,8 +254,6 @@ screencast::screencast()
     
     VideoContainerComboBox = new QComboBox( TabWidgetVideoOptionFrame );
     VideoContainerComboBox->setGeometry( 260, 40, 70, 25 );
-    VideoContainerComboBox->addItem( "avi");
-    VideoContainerComboBox->addItem( "mkv");
     VideoContainerComboBox->show();
     connect( VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedFormat( int ) ) );
     
@@ -891,6 +889,24 @@ screencast::screencast()
    qDebug() << "[vokoscreen] ---End search audio codec---";
    qDebug( " " );
    
+   
+   qDebug() << "[vokoscreen] ---Begin search formats---";
+   QStringList formatList;
+   formatList << "mkv" << "avi";
+   for ( int i = 0; i < formatList.count(); i++ )
+   {
+     if ( formatsAndCodecs->isFormatAvailable( formatList[ i ] ) )
+     {
+       qDebug() << "[vokoscreen] find Format" << formatList[ i ];
+       VideoContainerComboBox->addItem( formatList[ i ] );
+     }
+     else
+       qDebug() << "[vokoscreen] not found Format" << formatList[ i ];
+       
+   }
+   qDebug() << "[vokoscreen] ---End search formats---";
+   qDebug( " " );
+  
    clickedScreenSize();
    AreaOnOff();
 }

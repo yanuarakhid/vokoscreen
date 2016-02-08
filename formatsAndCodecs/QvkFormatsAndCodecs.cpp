@@ -88,17 +88,23 @@ bool QvkFormatsAndCodecs::isCodecAvailable( QString typeOfCodec, QString nameOfC
       break; 
     }
   }
-  
   return available;
 }
 
 /*
- * typeOfFormat. is string "mkv" or "avi"
+ * typeOfFormat: is string mkv, avi etc.
  * 
  */
 bool QvkFormatsAndCodecs::isFormatAvailable( QString nameOfFormat )
 {
   bool available;
-  
-  return false;
+  for ( int i = 0; i < ListFormats.count(); i++ )
+  {
+    if ( ListFormats[ i ].section( " ", 1, 1 ) == nameOfFormat )
+    {
+      available = true;
+      break;
+    }
+  }
+  return available;
 }
