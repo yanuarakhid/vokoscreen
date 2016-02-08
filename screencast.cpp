@@ -254,8 +254,8 @@ screencast::screencast()
     
     VideoContainerComboBox = new QComboBox( TabWidgetVideoOptionFrame );
     VideoContainerComboBox->setGeometry( 260, 40, 70, 25 );
-    VideoContainerComboBox->addItem( "avi" );
-    VideoContainerComboBox->addItem( "mkv" );
+    VideoContainerComboBox->addItem( "avi");
+    VideoContainerComboBox->addItem( "mkv");
     VideoContainerComboBox->show();
     connect( VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedFormat( int ) ) );
     
@@ -858,7 +858,7 @@ screencast::screencast()
    videoCodecList << "libx264" << "libx265" << "mpeg4" << "huffyuv";
    for ( int i = 0; i < videoCodecList.count(); i++ )
    {
-     if ( formatsAndCodecs->getCodec( "Video", videoCodecList[ i ], &experimental ) )
+     if ( formatsAndCodecs->isCodecAvailable( "Video", videoCodecList[ i ], &experimental ) )
      {
        qDebug() << "[vokoscreen] find Videocodec" << videoCodecList[ i ];
        VideocodecComboBox->addItem( videoCodecList[ i ], experimental );
@@ -877,7 +877,7 @@ screencast::screencast()
    audioCodecList << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac";
    for ( int i = 0; i < audioCodecList.count(); i++ )
    {
-     if ( formatsAndCodecs->getCodec( "Audio", audioCodecList[ i ], &experimental ) )
+     if ( formatsAndCodecs->isCodecAvailable( "Audio", audioCodecList[ i ], &experimental ) )
      {
        qDebug() << "[vokoscreen] find Audiocodec" << audioCodecList[ i ];
        AudiocodecComboBox->addItem( audioCodecList[ i ], experimental );

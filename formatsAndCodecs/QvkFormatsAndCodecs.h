@@ -19,8 +19,9 @@ signals:
 
  
 public slots:
-  bool getCodec( QString typeOfCodec, QString nameOfCodec, bool *experimental );
-  
+  bool isCodecAvailable( QString typeOfCodec, QString nameOfCodec, bool *experimental );
+  bool isFormatAvailable( QString format);
+
 
 private slots:
 
