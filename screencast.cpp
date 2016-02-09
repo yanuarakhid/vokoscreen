@@ -713,8 +713,6 @@ screencast::screencast()
       
       FrameSpinBox->setValue( vkSettings.getFrames() );
 
-      VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( vkSettings.getVideoContainer() ) );
-
       HideMouseCheckbox->setCheckState( Qt::CheckState( vkSettings.getHideMouse()) );
            
       if ( Qt::CheckState( vkSettings.getWebcamOnOff() ) == Qt::Checked )
@@ -853,7 +851,7 @@ screencast::screencast()
    QvkFormatsAndCodecs *formatsAndCodecs = new QvkFormatsAndCodecs( RecorderLineEdit->displayText() );
    QStringList videoCodecList;
    bool experimental = false;
-   videoCodecList << "libx264" << "libx265" << "mpeg4" << "huffyuv";
+   videoCodecList << "libx264" << "libx265" << "mpeg4" << "huffyuv" << "gif";
    for ( int i = 0; i < videoCodecList.count(); i++ )
    {
      if ( formatsAndCodecs->isCodecAvailable( "Video", videoCodecList[ i ], &experimental ) == true )
@@ -891,8 +889,8 @@ screencast::screencast()
    
    
    qDebug() << "[vokoscreen] ---Begin search formats---";
-   QStringList formatList   = ( QStringList() << "mkv"      << "avi" );
-   QStringList userDataList = ( QStringList() << "matroska" << "avi" );
+   QStringList formatList   = ( QStringList() << "mkv"      << "avi" << "gif" );
+   QStringList userDataList = ( QStringList() << "matroska" << "avi" << "gif" );
    for ( int i = 0; i < formatList.count(); i++ )
    {
      if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
@@ -904,6 +902,7 @@ screencast::screencast()
        qDebug() << "[vokoscreen] not found Format" << formatList[ i ];
        
    }
+   VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( vkSettings.getVideoContainer() ) );
    qDebug() << "[vokoscreen] ---End search formats---";
    qDebug( " " );
   
@@ -1207,7 +1206,21 @@ void screencast::clickedAudioPulse( bool checked )
 void screencast::currentIndexChangedCodec( int index )
 {
   (void)index;
-  statusBarLabelCodec->setText( VideocodecComboBox->currentText() );  
+  statusBarLabelCodec->setText( VideocodecComboBox->currentText() );
+
+  if ( VideocodecComboBox->currentText() == "gif" )
+  {
+    VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( "gif" ) );
+    if ( AudioOnOffCheckbox->checkState() == Qt::Checked )
+    {
+      AudioOnOffCheckbox->click();
+      AudioOnOffCheckbox->setEnabled( false );
+    }
+  }
+  
+  if ( ( VideocodecComboBox->currentText() != "gif" ) and ( VideoContainerComboBox->currentText() != "gif" ) )
+    AudioOnOffCheckbox->setEnabled( true );
+    
 }
 
 
@@ -1216,8 +1229,22 @@ void screencast::currentIndexChangedCodec( int index )
  */
 void screencast::currentIndexChangedFormat( int index )
 {
- (void)index;
- statusBarLabelFormat->setText( VideoContainerComboBox->currentText() );
+  (void)index;
+  statusBarLabelFormat->setText( VideoContainerComboBox->currentText() );
+ 
+  if ( VideoContainerComboBox->currentText() == "gif" )
+  {
+    VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( "gif" ) );
+    if ( AudioOnOffCheckbox->checkState() == Qt::Checked )
+    {
+      AudioOnOffCheckbox->click();
+      AudioOnOffCheckbox->setEnabled( false );
+    }
+  }
+ 
+  if ( ( VideocodecComboBox->currentText() != "gif" ) and ( VideoContainerComboBox->currentText() != "gif" ) )
+    AudioOnOffCheckbox->setEnabled( true );
+
 }
 
 
