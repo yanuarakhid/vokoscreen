@@ -1219,8 +1219,9 @@ void screencast::currentIndexChangedCodec( int index )
   }
   
   if ( ( VideocodecComboBox->currentText() != "gif" ) and ( VideoContainerComboBox->currentText() != "gif" ) )
+  {
     AudioOnOffCheckbox->setEnabled( true );
-    
+  } 
 }
 
 
@@ -1243,8 +1244,9 @@ void screencast::currentIndexChangedFormat( int index )
   }
  
   if ( ( VideocodecComboBox->currentText() != "gif" ) and ( VideoContainerComboBox->currentText() != "gif" ) )
+  {
     AudioOnOffCheckbox->setEnabled( true );
-
+  }
 }
 
 
@@ -1824,6 +1826,11 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       if ( !PauseButton->isChecked() )
          myregionselection->lockFrame( false );
     }
+
+    if ( ( VideocodecComboBox->currentText() == "gif" ) or ( VideoContainerComboBox->currentText() == "gif" ) )
+    {
+      PauseButton->setEnabled( false );
+    } 
 }
 
 
