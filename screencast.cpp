@@ -642,8 +642,8 @@ screencast::screencast()
     statusBar->setFont( qfont );
   
     qDebug() << "[vokoscreen]" << "---Begin search Videoplayer---";
-    QStringList playerList = QStringList()  << "kaffeine"
-                                            << "vlc"
+    QStringList playerList = QStringList()  << "vlc"
+                                            << "kaffeine"
                                             << "gnome-mplayer"
                                             << "totem"
                                             << "pia"
@@ -658,7 +658,7 @@ screencast::screencast()
 					    << "openshot"
 					    << "kdenlive"
 					    << "mpv";
-    playerList.sort();
+    //playerList.sort();
     QString playerName;
     QString resultString( qgetenv( "PATH" ) );
     QStringList pathList = resultString.split( ":" );
@@ -683,6 +683,19 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
     qDebug( " " );
 
+    qDebug() << "[vokoscreen]" << "---Begin search GIFplayer---";
+    QStringList GIFList = QStringList()  << "firefox"
+                                         << "mpv"
+					 << "chromium"
+					 << "konqueror";
+    for ( int x = 0; x < GIFList.size(); ++x )
+    {
+      if ( searchProgramm( GIFList[ x ] ) == true )
+        qDebug() << "[vokoscreen]" << "Find GIFplayer :" << GIFList[ x ];
+    }
+    qDebug() << "[vokoscreen]" << "---End search GIFoplayer---";
+    qDebug( " " );
+    
       AudioOnOffCheckbox->setCheckState( Qt::CheckState( vkSettings.getAudioOnOff() ) );
       AudioOff( Qt::CheckState( vkSettings.getAudioOnOff() ) );
 
