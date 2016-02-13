@@ -1245,10 +1245,7 @@ void screencast::currentIndexChangedCodec( int index )
     
     AudioOnOffCheckbox->setEnabled( false );
   }
-  
-  if ( VideocodecComboBox->currentText() != "gif" )
-    VideoContainerComboBox->setCurrentIndex( 0 );
-  
+
   if ( ( VideocodecComboBox->currentText() != "gif" ) and ( VideoContainerComboBox->currentText() != "gif" ) )
   {
     AudioOnOffCheckbox->setEnabled( true );
@@ -1267,6 +1264,7 @@ void screencast::currentIndexChangedFormat( int index )
   if ( VideoContainerComboBox->currentText() == "gif" )
   {
     VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( "gif" ) );
+    VideocodecComboBox->setEnabled( false );
     if ( AudioOnOffCheckbox->checkState() == Qt::Checked )
     {
       AudioOnOffCheckbox->click();
@@ -1274,10 +1272,11 @@ void screencast::currentIndexChangedFormat( int index )
     
     AudioOnOffCheckbox->setEnabled( false );
   }
- 
-  if ( VideoContainerComboBox->currentText() != "gif" )
+  else
+  {
+    VideocodecComboBox->setEnabled( true );
     VideocodecComboBox->setCurrentIndex( 0 );
-    
+  }
  
   if ( ( VideocodecComboBox->currentText() != "gif" ) and ( VideoContainerComboBox->currentText() != "gif" ) )
   {
