@@ -1024,8 +1024,22 @@ QString screencast::getOsRelease()
 }
 
 
+#ifdef QT5
+#include <QScreen>
+#endif 
 void screencast::myScreenCountChanged( int newCount )
 {
+  #ifdef QT5
+    foreach( QScreen *screen, QGuiApplication::screens() )
+    {
+      qDebug() << "[vokoscreen] Qt5 availableGeometry()" << screen->availableGeometry();
+      qDebug() << "[vokoscreen] Qt5 availableSize()" << screen->availableSize();
+      qDebug() << "[vokoscreen] Qt5 physicalSize()" << screen->physicalSize();
+      qDebug() << "[vokoscreen] Qt5 size()" << screen->size();      
+    }
+    qDebug( " " );
+  #endif
+    
     (void)newCount;
     ScreenComboBox->clear();
     QDesktopWidget *desk = QApplication::desktop();
