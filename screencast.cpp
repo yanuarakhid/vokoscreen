@@ -1029,18 +1029,7 @@ QString screencast::getOsRelease()
 #endif 
 void screencast::myScreenCountChanged( int newCount )
 {
-  
   //QList < QScreen *> screens = QGuiApplication::screens();
-  
-  #ifdef QT5
-      QScreen *screen = QGuiApplication::primaryScreen();    
-      qDebug() << "[vokoscreen] Qt5 availableGeometry()" << screen->availableGeometry();
-      qDebug() << "[vokoscreen] Qt5 availableSize()" << screen->availableSize();
-      qDebug() << "[vokoscreen] Qt5 physicalSize()" << screen->physicalSize();
-      qDebug() << "[vokoscreen] Qt5 size()" << screen->size();
-      qDebug() << "[vokoscreen] Qt5 devicePixelRatio()" << screen->devicePixelRatio();
-      qDebug( " " );
-  #endif
     
     (void)newCount;
     ScreenComboBox->clear();
@@ -1049,6 +1038,13 @@ void screencast::myScreenCountChanged( int newCount )
     qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
     qDebug() << "[vokoscreen] Primary screen is: Display" << desk->primaryScreen()+1;
     qDebug() << "[vokoscreen] VirtualDesktop:" << desk->isVirtualDesktop();
+  #ifdef QT5
+      //QList < QScreen *> screens = QGuiApplication::screens();
+    
+      QScreen *screen = QGuiApplication::primaryScreen();    
+      qDebug() << "[vokoscreen] DevicePixelRatio:" << screen->devicePixelRatio() << " (On normal displays is 1 and on Retina is 2)";
+  #endif
+    
     for ( int i = 1; i < desk->screenCount()+1; i++ )
     {
       QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i-1 ).left() );
@@ -2516,9 +2512,16 @@ void screencast::record()
           fullScreenWidth += desk->screenGeometry( i ).width();
           fullScreenHeight = std::max( fullScreenHeight, desk->screenGeometry( i ).height() );
       }
-
+   #ifdef QT4
       setRecordWidth( QString::number( fullScreenWidth ) );
       setRecordHeight( QString::number( fullScreenHeight) );
+   #endif
+
+   #ifdef QT5
+      QScreen *qscreen = QGuiApplication::primaryScreen();    
+      setRecordWidth( QString::number( fullScreenWidth * qscreen->devicePixelRatio() ) );
+      setRecordHeight( QString::number( fullScreenHeight * qscreen->devicePixelRatio() ) );
+   #endif   
   }  
 
   if ( AreaRadioButton->isChecked() )
