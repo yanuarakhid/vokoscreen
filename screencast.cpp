@@ -23,10 +23,27 @@
 
 using namespace std;
 
+#ifdef QT5
+  #include "log/QvkLog.h"
+  #include <QPointer>
+
+  QPointer<QvkLog> myLog;
+
+  void myMessageOutput( QtMsgType type, const QMessageLogContext &context, const QString &msg )
+  {
+    myLog->outputMessage( type, context, msg );
+  }
+#endif
+
 screencast::screencast()
 {
     vkSettings.readAll();
- 
+
+  #ifdef QT5
+    // http://qt-project.org/doc/qt-5/qtglobal.html#qInstallMessageHandler
+    qInstallMessageHandler( myMessageOutput );
+  #endif
+    
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
     
     email = "<a href ='mailto:tux@kohaupt-online.de?subject=vokoscreen ";

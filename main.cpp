@@ -23,6 +23,7 @@
 //#include <QLibraryInfo>
 #include <QtSingleApplication>
 
+
 int main(int argc, char** argv)
 {
     QtSingleApplication app(argc, argv);
