@@ -1029,15 +1029,17 @@ QString screencast::getOsRelease()
 #endif 
 void screencast::myScreenCountChanged( int newCount )
 {
+  
+  //QList < QScreen *> screens = QGuiApplication::screens();
+  
   #ifdef QT5
-    foreach( QScreen *screen, QGuiApplication::screens() )
-    {
+      QScreen *screen = QGuiApplication::primaryScreen();    
       qDebug() << "[vokoscreen] Qt5 availableGeometry()" << screen->availableGeometry();
       qDebug() << "[vokoscreen] Qt5 availableSize()" << screen->availableSize();
       qDebug() << "[vokoscreen] Qt5 physicalSize()" << screen->physicalSize();
-      qDebug() << "[vokoscreen] Qt5 size()" << screen->size();      
-    }
-    qDebug( " " );
+      qDebug() << "[vokoscreen] Qt5 size()" << screen->size();
+      qDebug() << "[vokoscreen] Qt5 devicePixelRatio()" << screen->devicePixelRatio();
+      qDebug( " " );
   #endif
     
     (void)newCount;
@@ -1050,9 +1052,15 @@ void screencast::myScreenCountChanged( int newCount )
     for ( int i = 1; i < desk->screenCount()+1; i++ )
     {
       QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i-1 ).left() );
-      QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i-1 ).top() );      
-      QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).width() );
-      QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).height() );
+      QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i-1 ).top() );
+      #ifdef QT4
+        QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).width() );
+        QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).height() );
+      #endif
+      #ifdef QT5
+        QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).width() * screen->devicePixelRatio() ); // devicePixelRatio() for Retina Displays
+        QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).height() * screen->devicePixelRatio() );
+      #endif
       ScreenComboBox->addItem( tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i-1 );
       qDebug() << "[vokoscreen]" << "Display " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY;
     }
