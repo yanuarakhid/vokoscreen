@@ -1111,8 +1111,6 @@ QString screencast::getOsRelease()
 #endif 
 void screencast::myScreenCountChanged( int newCount )
 {
-  //QList < QScreen *> screens = QGuiApplication::screens();
-    
     (void)newCount;
     ScreenComboBox->clear();
     QDesktopWidget *desk = QApplication::desktop();
@@ -1122,7 +1120,6 @@ void screencast::myScreenCountChanged( int newCount )
     qDebug() << "[vokoscreen] VirtualDesktop:" << desk->isVirtualDesktop();
   #ifdef QT5
       //QList < QScreen *> screens = QGuiApplication::screens();
-    
       QScreen *screen = QGuiApplication::primaryScreen();    
       qDebug() << "[vokoscreen] DevicePixelRatio:" << screen->devicePixelRatio() << " (On normal displays is 1 and on Retina is 2)";
   #endif
