@@ -37,6 +37,7 @@
 #include <QAction>
 #include <QTest>
 #include <QDateTime>
+#include <QListWidget>
 
 #include "QvkSettings.h"
 #include "regionselection.h"
@@ -185,7 +186,9 @@ private slots:
     void searchVideoPlayer();
     void searchGIFPlayer();
     
-    
+    void showLog();
+    void addLogVokoscreen( QString value );
+
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
 #endif
@@ -300,6 +303,9 @@ private:
     QvkAnimateControl *animateControl;
     QPushButton *pointerDialogPushButton;
     
+    QPushButton *LogPushButton;
+    QListWidget *ListWidgetVokoscreen;
+    QListWidget *ListWidgetFFmpeg;
     
  protected:
     void closeEvent( QCloseEvent * event );

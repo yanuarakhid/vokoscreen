@@ -41,9 +41,13 @@ screencast::screencast()
 
   #ifdef QT5
     // http://qt-project.org/doc/qt-5/qtglobal.html#qInstallMessageHandler
+    myLog = new QvkLog();
     qInstallMessageHandler( myMessageOutput );
-  #endif
     
+    ListWidgetVokoscreen = new QListWidget();
+    connect( myLog, SIGNAL( newLogText( QString ) ), this, SLOT( addLogVokoscreen( QString ) ) );
+  #endif
+
     homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
     
     email = "<a href ='mailto:tux@kohaupt-online.de?subject=vokoscreen ";
@@ -105,6 +109,25 @@ screencast::screencast()
     AreaRadioButton->setGeometry( QRect( 20, 65, 85, 21 ) );
     AreaRadioButton->setText( tr( "Area" ) );
     connect( AreaRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
+    
+#ifdef QT5    
+    LogPushButton = new QPushButton( frame );
+    LogPushButton->setGeometry( 20, 90, 42, 42 );
+    LogPushButton->setIconSize( QSize( 38, 38 ) );
+    LogPushButton->setIcon ( QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/undo.png" ) ) );
+    LogPushButton->setCheckable( true );
+    connect( LogPushButton, SIGNAL( clicked() ), this, SLOT( showLog() ) );
+
+    QTabWidget *logTabWidget = new QTabWidget( this );
+    logTabWidget->setGeometry( 10, 260, 560, 210 );
+    logTabWidget->setIconSize( QSize( 32, 32 ) );
+    logTabWidget->addTab( ListWidgetVokoscreen, "" );
+    logTabWidget->setTabIcon( 0, QIcon( ":/pictures/vokoscreen.png" ) );
+    
+    ListWidgetFFmpeg = new QListWidget();
+    logTabWidget->addTab( ListWidgetFFmpeg, "" );
+    logTabWidget->setTabIcon( 1, QIcon( ":/pictures/FFmpeg.png" ) );
+#endif    
     
     MagnifierCheckBox = new QCheckBox( frame );
     MagnifierCheckBox->setText( tr( "Magnification" ) );
@@ -890,6 +913,25 @@ screencast::screencast()
 screencast::~screencast()
 {
   
+}
+
+void screencast::addLogVokoscreen( QString value )
+{
+  ListWidgetVokoscreen->addItem( value );
+  ListWidgetVokoscreen->scrollToBottom();
+}
+
+
+void screencast::showLog()
+{
+  if ( LogPushButton->isChecked() )
+  {
+    resize( 580, 500 );
+  }
+  else
+  {
+    resize( 580, 260 );
+  }
 }
 
 void screencast::searchGIFPlayer()

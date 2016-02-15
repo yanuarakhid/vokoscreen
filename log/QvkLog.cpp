@@ -49,5 +49,5 @@ void QvkLog::outputMessage(QtMsgType type, const QMessageLogContext &context, co
     outFile.flush();
     outFile.close();
 */
-    //emit newLogText( txt );
+    emit newLogText( txt );
 }

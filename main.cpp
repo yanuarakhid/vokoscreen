@@ -54,7 +54,8 @@ int main(int argc, char** argv)
     int vokoscreenHeight = 260;
     
     screencast foo;
-      foo.setFixedSize( vokoscreenWidth, vokoscreenHeight );
+      foo.resize( vokoscreenWidth, vokoscreenHeight );
+      //foo.setFixedSize( vokoscreenWidth, vokoscreenHeight );
       app.setActivationWindow( &foo );
     foo.show();
 
