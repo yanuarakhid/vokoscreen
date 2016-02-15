@@ -182,6 +182,10 @@ private slots:
     
     void myScreenCountChanged ( int newCount );
     
+    void searchVideoPlayer();
+    void searchGIFPlayer();
+    
+    
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
 #endif

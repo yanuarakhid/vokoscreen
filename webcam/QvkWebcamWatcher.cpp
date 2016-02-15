@@ -72,6 +72,7 @@ void QvkWebcamWatcher::myfileSystemWatcher( QString path )
   {
     qDebug() << "[vokoscreen] removed device" << removedDevice();
     qDebug() << "[vokoscreen] connected devices" <<  deviceList;
+    qDebug( " " );
     
     webcamCount = deviceList.count();
     emit changed( deviceList );
@@ -83,6 +84,7 @@ void QvkWebcamWatcher::myfileSystemWatcher( QString path )
   {
     qDebug() << "[vokoscreen] added device" << addedDevices();
     qDebug() << "[vokoscreen] connected devices" <<  deviceList;
+    qDebug( " " );
     
     webcamCount = deviceList.count();
     emit changed( deviceList );

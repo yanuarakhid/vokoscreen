@@ -639,7 +639,6 @@ screencast::screencast()
     QLabel * LabelTemp = new QLabel();
     statusBar->addWidget( LabelTemp, 120 );
     
-    //statusBar->addWidget( statusBarProgForRecord, 0 );
     statusBar->addWidget( statusBarLabelTime, 0);
     statusBar->addWidget( statusBarLabelFps, 0 );
     statusBar->addWidget( statusBarLabelSize, 0 );
@@ -657,61 +656,9 @@ screencast::screencast()
     qfont = statusBar->font();
     qfont.setPixelSize( 12 );
     statusBar->setFont( qfont );
-  
-    qDebug() << "[vokoscreen]" << "---Begin search Videoplayer---";
-    QStringList playerList = QStringList()  << "vlc"
-                                            << "kaffeine"
-                                            << "gnome-mplayer"
-                                            << "totem"
-                                            << "pia"
-                                            << "xine"
-                                            << "gxine"
-                                            << "gmplayer"
-                                            << "kplayer"
-                                            << "smplayer"
-                                            << "smplayer2"
-                                            << "dragon"
-                                            << "banshee"
-					    << "openshot"
-					    << "kdenlive"
-					    << "mpv";
-    //playerList.sort();
-    QString playerName;
-    QString resultString( qgetenv( "PATH" ) );
-    QStringList pathList = resultString.split( ":" );
-    for ( int x = 0; x < playerList.size(); ++x )
-     {
-       for ( int i = 0; i < pathList.size(); ++i )
-       {
-         playerName = pathList.at( i );
-         playerName = playerName.append( QDir::separator() ).append( playerList.at( x ) );
-         if ( QFile::exists( playerName ) )
-         {
-           qDebug() << "[vokoscreen]" << "Find Videoplayer :" << playerName;
-	   QFileInfo playProg( playerName );
-	   if ( playProg.fileName() == "kdenlive" )
-	     playerName = playerName + " -i";
 
-	   VideoplayerComboBox->addItem( playerList.at( x ), playerName );
-           break;
-         }
-       }
-     }
-    qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
-    qDebug( " " );
-
-    qDebug() << "[vokoscreen]" << "---Begin search GIFplayer---";
-    QStringList GIFList = QStringList()  << "firefox"
-                                         << "mpv"
-					 << "chromium"
-					 << "konqueror";
-    for ( int x = 0; x < GIFList.size(); ++x )
-    {
-      if ( searchProgramm( GIFList[ x ] ) == true )
-        qDebug() << "[vokoscreen]" << "Find GIFplayer :" << GIFList[ x ];
-    }
-    qDebug() << "[vokoscreen]" << "---End search GIFoplayer---";
-    qDebug( " " );
+    searchVideoPlayer();
+    searchGIFPlayer();
     
       AudioOnOffCheckbox->setCheckState( Qt::CheckState( vkSettings.getAudioOnOff() ) );
       AudioOff( Qt::CheckState( vkSettings.getAudioOnOff() ) );
@@ -784,7 +731,6 @@ screencast::screencast()
     for ( int i = 0; i < stringList.size(); ++i )
       dir.remove( PathTempLocation().append( QDir::separator() ).append( stringList.at( i ) ) );
 
-   //makeAsoundrc();
    AudioOnOff();
    QvkPulse::pulseUnloadModule();
 
@@ -943,7 +889,71 @@ screencast::screencast()
 
 screencast::~screencast()
 {
+  
 }
+
+void screencast::searchGIFPlayer()
+{
+    qDebug() << "[vokoscreen]" << "---Begin search GIFplayer---";
+    QStringList GIFList = QStringList()  << "firefox"
+                                         << "mpv"
+					 << "chromium"
+					 << "konqueror";
+    for ( int x = 0; x < GIFList.size(); ++x )
+    {
+      if ( searchProgramm( GIFList[ x ] ) == true )
+        qDebug() << "[vokoscreen]" << "Find GIFplayer :" << GIFList[ x ];
+    }
+    qDebug() << "[vokoscreen]" << "---End search GIFoplayer---";
+    qDebug( " " );
+}
+
+
+void screencast::searchVideoPlayer()
+{
+    qDebug() << "[vokoscreen]" << "---Begin search Videoplayer---";
+    QStringList playerList = QStringList()  << "vlc"
+                                            << "kaffeine"
+                                            << "gnome-mplayer"
+                                            << "totem"
+                                            << "pia"
+                                            << "xine"
+                                            << "gxine"
+                                            << "gmplayer"
+                                            << "kplayer"
+                                            << "smplayer"
+                                            << "smplayer2"
+                                            << "dragon"
+                                            << "banshee"
+					    << "openshot"
+					    << "kdenlive"
+					    << "mpv";
+
+    QString playerName;
+    QString resultString( qgetenv( "PATH" ) );
+    QStringList pathList = resultString.split( ":" );
+    for ( int x = 0; x < playerList.size(); ++x )
+     {
+       for ( int i = 0; i < pathList.size(); ++i )
+       {
+         playerName = pathList.at( i );
+         playerName = playerName.append( QDir::separator() ).append( playerList.at( x ) );
+         if ( QFile::exists( playerName ) )
+         {
+           qDebug() << "[vokoscreen]" << "Find Videoplayer :" << playerName;
+	   QFileInfo playProg( playerName );
+	   if ( playProg.fileName() == "kdenlive" )
+	     playerName = playerName + " -i";
+
+	   VideoplayerComboBox->addItem( playerList.at( x ), playerName );
+           break;
+         }
+       }
+     }
+    qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
+    qDebug( " " );
+}
+
 
 /*
  * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
@@ -1613,54 +1623,6 @@ void screencast::setFrameStandardSpinbox()
   FrameSpinBox->setValue( 25 );
 }
 
-
-/**
- * Erstellt ~/.asoundrc wenn nicht im Userhome vorhanden
- * -Die .asoundrc sollte nur erstellt werden wenn der Start von ffmpeg fehlschägt.
- * Hint: Abfrage muß noch eingebaut werden.
- */
-/*
-void screencast::makeAsoundrc()
-{
-  #ifdef QT4
-  QString homeLocation = QDesktopServices::storageLocation( QDesktopServices:: QDesktopServices::HomeLocation );
-  #endif
-  
-  #ifdef QT5
-  QString homeLocation = QStandardPaths::writableLocation( QStandardPaths::HomeLocation );
-  #endif  
-  
-  QString asoundrc = homeLocation + "/.asoundrc";
-  
-  qDebug() << "[vokoscreen]" << "---Begin search PulseAudio Plugin---";
-  QFile qFile( asoundrc );
-  if ( not qFile.exists() )
-  {
-    qFile.open( QIODevice::WriteOnly );
-    qDebug() << "[vokoscreen] File not found .asound for PulseAudio Plugin";
-    qDebug() << "[vokoscreen] Create file .asound for PulseAudio Plugin";
-    QTextStream out( &qFile );
-    out << "# create by vokoscreen " << vkSettings.getVersion() << "\n";
-    out << "\n";
-    out << "pcm.pulse {\n";
-    out << "  type pulse\n";
-    out << "}\n";
-    out << "\n";
-    out << "ctl.pulse {\n";
-    out << "  type pulse\n";
-    out << "}\n";
-    out << "\n";
-    qFile.flush();
-    qFile.close();
-  }
-  else
-    qDebug() << "[vokoscreen] Found file .asound for PulseAudio Plugin";
-  
-  qDebug() << "[vokoscreen]" << "---End search PulseAudio Plugin---";
-  qDebug( " " );
-
-}
-*/
 
 void screencast::recorderLineEditTextChanged( QString recorder )
 {

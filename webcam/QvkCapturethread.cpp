@@ -140,6 +140,7 @@ QString CaptureThread::getNameFromDevice( QString device )
 	{
 		//printf( "[vokoscreen] v4l2 device info [%s]\n", dev_name.toStdString().c_str() );
 		qDebug() << "[vokoscreen] v4l2 device info " << dev_name.toStdString().c_str();
+		qDebug( " " );
 	} else
 	  {
 		fprintf( stderr, "[vokoscreen] CaptureThread::getNameFromDevice %s: not an video4linux device\n", dev_name.toStdString().c_str() );
