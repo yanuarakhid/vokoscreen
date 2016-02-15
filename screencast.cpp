@@ -894,6 +894,8 @@ screencast::~screencast()
 
 void screencast::searchGIFPlayer()
 {
+    VideoplayerComboBox->clear();
+  
     qDebug() << "[vokoscreen]" << "---Begin search GIFplayer---";
     QStringList GIFList = QStringList()  << "firefox"
                                          << "mpv"
@@ -902,7 +904,10 @@ void screencast::searchGIFPlayer()
     for ( int x = 0; x < GIFList.size(); ++x )
     {
       if ( searchProgramm( GIFList[ x ] ) == true )
+      {
         qDebug() << "[vokoscreen]" << "Find GIFplayer :" << GIFList[ x ];
+	VideoplayerComboBox->addItem( GIFList.at( x ), GIFList.at( x ) );
+      }	
     }
     qDebug() << "[vokoscreen]" << "---End search GIFoplayer---";
     qDebug( " " );
@@ -911,6 +916,8 @@ void screencast::searchGIFPlayer()
 
 void screencast::searchVideoPlayer()
 {
+    VideoplayerComboBox->clear();
+  
     qDebug() << "[vokoscreen]" << "---Begin search Videoplayer---";
     QStringList playerList = QStringList()  << "vlc"
                                             << "kaffeine"
@@ -1294,6 +1301,7 @@ void screencast::currentIndexChangedFormat( int index )
  
   if ( VideoContainerComboBox->currentText() == "gif" )
   {
+    searchGIFPlayer();
     VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( "gif" ) );
     VideocodecComboBox->setEnabled( false );
     if ( AudioOnOffCheckbox->checkState() == Qt::Checked )
@@ -1305,6 +1313,7 @@ void screencast::currentIndexChangedFormat( int index )
   }
   else
   {
+    searchVideoPlayer();
     VideocodecComboBox->setEnabled( true );
     VideocodecComboBox->setCurrentIndex( 0 );
   }
@@ -2010,21 +2019,31 @@ void screencast::play()
     return;
   }
   
-  QVariant aa = VideoplayerComboBox->itemData( VideoplayerComboBox->currentIndex() ); // get userdata from ComboBox
-  QString player = aa.toString();
-  player = player.replace( "\n", "" ); 
-  
   QDir Dira( PathMoviesLocation() );
   QStringList filters;
   filters << "vokoscreen*";
   QStringList List = Dira.entryList( filters, QDir::Files, QDir::Time );
   if ( List.isEmpty() )
   {
+    QVariant aa = VideoplayerComboBox->itemData( VideoplayerComboBox->currentIndex() ); // get userdata from ComboBox
+    QString player = aa.toString();
+    player = player.replace( "\n", "" ); 
+    
     QProcess *SystemCall = new QProcess();
     SystemCall->start( player );
   }
   else
   {
+    QFileInfo fileinfo( List.at( 0 ) );
+    if ( fileinfo.suffix() == "gif" )
+       searchGIFPlayer();
+    else
+      searchVideoPlayer();
+    
+    QVariant aa = VideoplayerComboBox->itemData( VideoplayerComboBox->currentIndex() ); // get userdata from ComboBox
+    QString player = aa.toString();
+    player = player.replace( "\n", "" ); 
+    
     QProcess *SystemCall = new QProcess();
     SystemCall->start( player + " " + '"' + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + '"' );
   }

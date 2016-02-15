@@ -123,8 +123,10 @@ include(countdown/countdown.pri)
 # pulse
 include(pulse/pulse.pri)
 
+equals(QT_MAJOR_VERSION, "5") {
 # log
 include(log/log.pri)
+}
 
 equals(QT_MAJOR_VERSION, "4") {
   DEFINES += QT4

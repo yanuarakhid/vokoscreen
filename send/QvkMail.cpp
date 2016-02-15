@@ -21,48 +21,6 @@ QvkMail::QvkMail( QWidget *object )
   
   connect( myUiMailDialog.sendPushButton, SIGNAL( clicked() ), this, SLOT( selection() ) );
   connect( myUiMailDialog.cancelPushButton, SIGNAL( clicked() ), this, SLOT( closeDialog() ) ) ;
-
-  
-/*  
-  dialog = new QDialog( object );
-  dialog->setFixedSize( 470, 200 );
-  
-  QFont qfont = dialog->font();
-  qfont.setPixelSize( 12 );
-  dialog->setFont( qfont );
-  
-  QLabel* label = new QLabel( dialog );
-  label->setText("");
-  label->setGeometry( QRect( 20, 30, 150, 150) );
-  label->setAlignment( Qt::AlignCenter );
-  label->show();
-  QImage* qImage = new QImage( ":pictures/sem_soc_net.png" );
-  label->setPixmap( QPixmap::fromImage( *qImage, Qt::AutoColor ) );
-  label->setScaledContents( true );
-  
-  mailRadioButton = new QRadioButton( dialog );
-  mailRadioButton->setGeometry( QRect( 200, 60, 200, 21 ) );
-  mailRadioButton->setText( tr( "Mail last Video" ) );
-  mailRadioButton->setChecked( true );
-  
-  mailSelectedRadioButton = new QRadioButton( dialog );
-  mailSelectedRadioButton->setGeometry( QRect( 200, 90, 300, 21 ) );
-  mailSelectedRadioButton->setText( tr( "Mail one or more selected Video" ) );
-  
-  QPushButton * sendPushbutton = new QPushButton( dialog );
-  sendPushbutton->setGeometry( 290, 170, 80, 30 );
-  sendPushbutton->setText( tr( "Send" ) );
-  sendPushbutton->show();
-  connect( sendPushbutton, SIGNAL( clicked() ), this, SLOT( selection() ) );
-  
-  QPushButton * closePushbutton = new QPushButton( dialog );
-  closePushbutton->setGeometry( 380, 170, 80, 30 );
-  closePushbutton->setText( tr( "Close" ) );
-  closePushbutton->show();
-  connect( closePushbutton, SIGNAL( clicked() ), this, SLOT( closeDialog() ) ) ;
-  
-  dialog->exec();
-*/  
 }
 
 
