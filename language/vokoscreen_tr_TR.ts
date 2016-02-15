@@ -109,7 +109,7 @@
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>Çift tıklama ile kenar genişletildi.</translation>
     </message>
 </context>
 <context>
