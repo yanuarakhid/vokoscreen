@@ -227,6 +227,7 @@ private:
     
     QLabel *ChannelLabel;
     QComboBox *VideoplayerComboBox;
+    QComboBox *GIFplayerComboBox;
     QLabel *recordTimeLabel;
     QLineEdit *SaveVideoPathLineEdit;
     QLineEdit *RecorderLineEdit;

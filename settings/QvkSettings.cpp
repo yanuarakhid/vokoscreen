@@ -50,6 +50,7 @@ void QvkSettings::readAll()
     settings.beginGroup( "Miscellaneous" );
       VideoPath = settings.value( "VideoPath" ).toString();
       VideoPlayer = settings.value( "Videoplayer" ).toString();
+      GIFPlayer = settings.value( "GIFplayer" ).toString();
       Minimized = settings.value( "Minimized", 0 ).toUInt();
       Countdown = settings.value( "Countdown", 0 ).toUInt();
       Recorder = settings.value( "Recorder", "ffmpeg" ).toString();
@@ -150,6 +151,11 @@ QString QvkSettings::getVideoPath()
 QString QvkSettings::getVideoPlayer()
 {
   return VideoPlayer; 
+}
+
+QString QvkSettings::getGIFPlayer()
+{
+  return GIFPlayer;
 }
 
 int QvkSettings::getMinimized()

@@ -362,6 +362,10 @@ screencast::screencast()
     VideoplayerComboBox->setGeometry( 140, 35, 210, 25 );
     VideoplayerComboBox->show();
 
+    GIFplayerComboBox = new QComboBox( TabWidgetMiscellaneousFrame );
+    GIFplayerComboBox->setGeometry( 140, 35, 210, 25 );
+    GIFplayerComboBox->show();
+    
     MinimizedCheckBox = new QCheckBox( TabWidgetMiscellaneousFrame );
     MinimizedCheckBox->setGeometry( 30, 60, 350, 25 );
     MinimizedCheckBox->setText( tr( "Vokoscreen minimized when recording starts" ) );
@@ -707,6 +711,12 @@ screencast::screencast()
       else
         VideoplayerComboBox->setCurrentIndex( x );
       
+      x = GIFplayerComboBox->findText( vkSettings.getGIFPlayer(), Qt::MatchExactly );
+      if ( x == -1 )
+        GIFplayerComboBox->setCurrentIndex( 0 );
+      else
+        GIFplayerComboBox->setCurrentIndex( x );
+      
       MinimizedCheckBox->setCheckState( Qt::CheckState( vkSettings.getMinimized() ) );
       
       CountdownSpinBox->setValue( vkSettings.getCountdown() );
@@ -936,8 +946,6 @@ void screencast::showLog()
 
 void screencast::searchGIFPlayer()
 {
-    VideoplayerComboBox->clear();
-  
     qDebug() << "[vokoscreen]" << "---Begin search GIFplayer---";
     QStringList GIFList = QStringList()  << "firefox"
                                          << "mpv"
@@ -948,7 +956,7 @@ void screencast::searchGIFPlayer()
       if ( searchProgramm( GIFList[ x ] ) == true )
       {
         qDebug() << "[vokoscreen]" << "Find GIFplayer :" << GIFList[ x ];
-	VideoplayerComboBox->addItem( GIFList.at( x ), GIFList.at( x ) );
+	GIFplayerComboBox->addItem( GIFList.at( x ), GIFList.at( x ) );
       }	
     }
     qDebug() << "[vokoscreen]" << "---End search GIFoplayer---";
@@ -958,8 +966,6 @@ void screencast::searchGIFPlayer()
 
 void screencast::searchVideoPlayer()
 {
-    VideoplayerComboBox->clear();
-  
     qDebug() << "[vokoscreen]" << "---Begin search Videoplayer---";
     QStringList playerList = QStringList()  << "vlc"
                                             << "kaffeine"
@@ -1343,7 +1349,8 @@ void screencast::currentIndexChangedFormat( int index )
  
   if ( VideoContainerComboBox->currentText() == "gif" )
   {
-    searchGIFPlayer();
+    GIFplayerComboBox->show();
+    VideoplayerComboBox->hide();
     VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( "gif" ) );
     VideocodecComboBox->setEnabled( false );
     if ( AudioOnOffCheckbox->checkState() == Qt::Checked )
@@ -1355,9 +1362,11 @@ void screencast::currentIndexChangedFormat( int index )
   }
   else
   {
-    searchVideoPlayer();
+    GIFplayerComboBox->hide();
+    VideoplayerComboBox->show();
     VideocodecComboBox->setEnabled( true );
-    VideocodecComboBox->setCurrentIndex( 0 );
+    if ( VideocodecComboBox->currentText() == "gif" )
+      VideocodecComboBox->setCurrentIndex( 0 ); 
   }
  
   if ( ( VideocodecComboBox->currentText() != "gif" ) and ( VideoContainerComboBox->currentText() != "gif" ) )
@@ -1495,6 +1504,7 @@ void screencast::saveSettings()
   settings.beginGroup( "Miscellaneous" );
     settings.setValue( "VideoPath", SaveVideoPathLineEdit->displayText() );
     settings.setValue( "Videoplayer", VideoplayerComboBox->currentText() );
+    settings.setValue( "GIFplayer", GIFplayerComboBox->currentText() );
     settings.setValue( "Minimized", MinimizedCheckBox->checkState() );
     settings.setValue( "Countdown", CountdownSpinBox->value() );
     settings.setValue( "Recorder", RecorderLineEdit->displayText() );
@@ -2065,30 +2075,23 @@ void screencast::play()
   QStringList filters;
   filters << "vokoscreen*";
   QStringList List = Dira.entryList( filters, QDir::Files, QDir::Time );
-  if ( List.isEmpty() )
+  QString player;
+  QFileInfo fileinfo( List.at( 0 ) );
+  if ( fileinfo.suffix() == "gif" )
   {
-    QVariant aa = VideoplayerComboBox->itemData( VideoplayerComboBox->currentIndex() ); // get userdata from ComboBox
-    QString player = aa.toString();
+    QVariant aa = GIFplayerComboBox->itemData( GIFplayerComboBox->currentIndex() ); // get userdata from ComboBox
+    player = aa.toString();
     player = player.replace( "\n", "" ); 
-    
-    QProcess *SystemCall = new QProcess();
-    SystemCall->start( player );
   }
   else
   {
-    QFileInfo fileinfo( List.at( 0 ) );
-    if ( fileinfo.suffix() == "gif" )
-       searchGIFPlayer();
-    else
-      searchVideoPlayer();
-    
     QVariant aa = VideoplayerComboBox->itemData( VideoplayerComboBox->currentIndex() ); // get userdata from ComboBox
-    QString player = aa.toString();
+    player = aa.toString();
     player = player.replace( "\n", "" ); 
-    
-    QProcess *SystemCall = new QProcess();
-    SystemCall->start( player + " " + '"' + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + '"' );
   }
+    
+  QProcess *SystemCall = new QProcess();
+  SystemCall->start( player + " " + '"' + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + '"' );
 }
 
 

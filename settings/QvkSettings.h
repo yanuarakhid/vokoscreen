@@ -33,6 +33,7 @@ public:
   // Miscellaneous
   QString getVideoPath();
   QString getVideoPlayer();
+  QString getGIFPlayer();
   int getMinimized();
   int getCountdown();
   QString getRecorder();
@@ -94,6 +95,7 @@ private:
   bool AreaSelect;
   QString VideoPath;
   QString VideoPlayer;
+  QString GIFPlayer;
   int Minimized;
   int Countdown;
   int Frames;
