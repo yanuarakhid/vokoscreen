@@ -855,6 +855,7 @@ screencast::screencast()
    VideoFileSystemWatcher->addPath( SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
    myVideoFileSystemWatcher( "" );
+
    
    qDebug() << "[vokoscreen] ---Begin search video codec---";
    QvkFormatsAndCodecs *formatsAndCodecs = new QvkFormatsAndCodecs( RecorderLineEdit->displayText() );
@@ -873,9 +874,15 @@ screencast::screencast()
        qDebug() << "[vokoscreen] not found Videocodec" << videoCodecList[ i ];
      }
    }
-   VideocodecComboBox->setCurrentIndex( VideocodecComboBox->findText( vkSettings.getVideoCodec() ) );
+   // Fallback
+   x = VideocodecComboBox->findText( vkSettings.getVideoCodec() );
+   if ( x == -1 )
+      VideocodecComboBox->setCurrentIndex( 0 );
+   else
+      VideocodecComboBox->setCurrentIndex( x );
    qDebug() << "[vokoscreen] ---End search video codec---";
    qDebug( " " );
+
    
    qDebug() << "[vokoscreen] ---Begin search audio codec---";
    QStringList audioCodecList;
@@ -892,10 +899,15 @@ screencast::screencast()
        qDebug() << "[vokoscreen] not found Audiocodec" << audioCodecList[ i ];
      }
    }
-   AudiocodecComboBox->setCurrentIndex( AudiocodecComboBox->findText( vkSettings.getAudioCodec() ) );
+   // Fallback
+   x = AudiocodecComboBox->findText( vkSettings.getAudioCodec() );
+   if ( x == -1 )
+      AudiocodecComboBox->setCurrentIndex( 0 );
+   else
+      AudiocodecComboBox->setCurrentIndex( x );
    qDebug() << "[vokoscreen] ---End search audio codec---";
    qDebug( " " );
-   
+
    
    qDebug() << "[vokoscreen] ---Begin search formats---";
    QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" );
@@ -909,16 +921,20 @@ screencast::screencast()
      }
      else
        qDebug() << "[vokoscreen] not found Format" << formatList[ i ];
-       
    }
-   VideoContainerComboBox->setCurrentIndex( VideoContainerComboBox->findText( vkSettings.getVideoContainer() ) );
+   // Fallback
+   x = VideoContainerComboBox->findText( vkSettings.getVideoContainer() );
+   if ( x == -1 )
+      VideoContainerComboBox->setCurrentIndex( 0 );
+   else
+      VideoContainerComboBox->setCurrentIndex( x );
    qDebug() << "[vokoscreen] ---End search formats---";
    qDebug( " " );
   
    clickedScreenSize();
    AreaOnOff();
 }
-
+ 
 
 screencast::~screencast()
 {
