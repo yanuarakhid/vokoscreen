@@ -898,8 +898,8 @@ screencast::screencast()
    
    
    qDebug() << "[vokoscreen] ---Begin search formats---";
-   QStringList formatList   = ( QStringList() << "mkv"      << "avi" << "gif" );
-   QStringList userDataList = ( QStringList() << "matroska" << "avi" << "gif" );
+   QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" );
+   QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" );
    for ( int i = 0; i < formatList.count(); i++ )
    {
      if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
