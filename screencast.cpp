@@ -20,11 +20,11 @@
 #include "QvkFormatsAndCodecs.h"
 #include "QvkCountdown.h"
 #include "QvkPulse.h"
-#include "QvkLogListWidget.h"
 
 using namespace std;
 
 #ifdef QT5
+  #include "QvkLogListWidget.h"
   #include "log/QvkLog.h"
   #include <QPointer>
 
