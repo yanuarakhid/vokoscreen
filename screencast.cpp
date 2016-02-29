@@ -20,6 +20,7 @@
 #include "QvkFormatsAndCodecs.h"
 #include "QvkCountdown.h"
 #include "QvkPulse.h"
+#include "QvkLogListWidget.h"
 
 using namespace std;
 
@@ -44,7 +45,8 @@ screencast::screencast()
     myLog = new QvkLog();
     qInstallMessageHandler( myMessageOutput );
     
-    ListWidgetVokoscreen = new QListWidget();
+    ListWidgetVokoscreen = new QvkLogListWidget();
+    
     connect( myLog, SIGNAL( newLogText( QString ) ), this, SLOT( addLogVokoscreen( QString ) ) );
   #endif
 
@@ -940,6 +942,7 @@ screencast::~screencast()
 {
   
 }
+
 
 void screencast::addLogVokoscreen( QString value )
 {
