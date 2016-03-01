@@ -113,9 +113,11 @@ screencast::screencast()
     connect( AreaRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
     
 #ifdef QT5    
-    LogPushButton = new QPushButton( frame );
-    LogPushButton->setGeometry( 20, 90, 42, 42 );
-    LogPushButton->setIconSize( QSize( 38, 38 ) );
+//    LogPushButton = new QPushButton( frame );
+    LogPushButton = new QPushButton( this );
+//    LogPushButton->setGeometry( 20, 90, 42, 42 );
+    LogPushButton->setGeometry( 10, 200, 30, 30 );
+    LogPushButton->setIconSize( QSize( 28, 28 ) );
     LogPushButton->setIcon ( QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/undo.png" ) ) );
     LogPushButton->setCheckable( true );
     connect( LogPushButton, SIGNAL( clicked() ), this, SLOT( showLog() ) );
