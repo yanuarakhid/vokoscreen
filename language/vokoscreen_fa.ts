@@ -11,7 +11,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation>ناشناس</translation>
+        <translation>ناشناخته</translation>
     </message>
     <message>
         <source>Device</source>
@@ -26,11 +26,11 @@
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>ارسال آخرین ویدیو با ایمیل</translation>
+        <translation>ارسال آخرین ویدئو با ایمیل</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>ارسال یک یا چند ویدیو با ایمیل</translation>
+        <translation>ارسال یک یا چند ویدئو با ایمیل</translation>
     </message>
     <message>
         <source>Send</source>
@@ -45,18 +45,18 @@
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>لطفا یک نرم افزار پخش کننده ویدیو نصب کنید</translation>
+        <translation>لطفا یک نرم افزار پخش کننده ویدئو نصب کنید</translation>
     </message>
 </context>
 <context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation type="unfinished"/>
+        <translation>شما یک ویدئوی ضمیمه شده پیدا کردید</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>انتخاب یک یا چند فایل</translation>
+        <translation>یک یا چند پرنده را انتخاب کن</translation>
     </message>
 </context>
 <context>
@@ -71,15 +71,15 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>تمام صفحه نمایش بده</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>راست کلیک برای فهرست</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>تعریف شده توسط کاربر</translation>
     </message>
 </context>
 <context>
@@ -94,22 +94,22 @@
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>دستگاه</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>در حال استفاده توسط</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>ناشناخته</translation>
     </message>
 </context>
 <context>
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>دوبار کلیک تا لبه گسترش می‌دهد</translation>
     </message>
 </context>
 <context>
@@ -120,7 +120,7 @@
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"/>
+        <translation>پنجره</translation>
     </message>
     <message>
         <source>Area</source>
@@ -132,15 +132,15 @@
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"/>
+        <translation>صوتی</translation>
     </message>
     <message>
         <source>Alsa</source>
-        <translation type="unfinished"/>
+        <translation>آلسا</translation>
     </message>
     <message>
         <source>Pulse</source>
-        <translation type="unfinished"/>
+        <translation>ضربان</translation>
     </message>
     <message>
         <source>Default</source>
@@ -148,23 +148,23 @@
     </message>
     <message>
         <source>Codec</source>
-        <translation type="unfinished"/>
+        <translation>کُدِک</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>عدم نمایش موس</translation>
+        <translation>اشاره‌گر موس را ضبط نکن</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation type="unfinished"/>
+        <translation>مسیر ویدئو</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"/>
+        <translation>پخش‌کننده</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation type="unfinished"/>
+        <translation>وُکوسکرین از زمان شروع ضبط مینی‌مایز بشود</translation>
     </message>
     <message>
         <source>Start</source>
@@ -180,7 +180,7 @@
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"/>
+        <translation>شروع</translation>
     </message>
     <message>
         <source>Send</source>
@@ -188,127 +188,127 @@
     </message>
     <message>
         <source>Recording time</source>
-        <translation type="unfinished"/>
+        <translation>زمان ضبط شدن</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation type="unfinished"/>
+        <translation>اندازه به کیلوبایت</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"/>
+        <translation>ظبط اندازه صفحه نمایش</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>قالب</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation type="unfinished"/>
+        <translation>تنظیمات فریم در ثانیه</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation type="unfinished"/>
+        <translation>فهرست راهنما را باز کن</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"/>
+        <translation>شمارش معکوس</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation type="unfinished"/>
+        <translation>آخرین ویدئو را نمایش بده</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"/>
+        <translation>ویدئو را ارسال کن</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"/>
+        <translation>یکی یا چندتا وسیله را انتخاب کن</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation type="unfinished"/>
+        <translation>فریم در ثانیه‌ی واقعی</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation type="unfinished"/>
+        <translation>برو</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"/>
+        <translation>صفحه‌ی اصلی</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>پشتیبانی</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>توسعه دهنده</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"/>
+        <translation>فریم‌ها</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"/>
+        <translation>هدیه دادن</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"/>
+        <translation>ترجمه‌ها</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"/>
+        <translation>کدمنبع</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"/>
+        <translation>در سیس‌تری نمایش بده</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>نسخه‌ی جدید در دسترس است</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"/>
+        <translation>کُدِک تصویری</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"/>
+        <translation>کُدِک صوتی</translation>
     </message>
     <message>
         <source>Webcam</source>
-        <translation type="unfinished"/>
+        <translation>وبکم</translation>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"/>
+        <translation>وبکم را انتخاب کن</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>منعکس کردن</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"/>
+        <translation>نمایش</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
+        <translation>تمام نمایش‌ها</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>صفحه‌ی اصلیِ توسعه دهنده</translation>
     </message>
     <message>
         <source>Recorder</source>
-        <translation type="unfinished"/>
+        <translation>ضبط کننده</translation>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation type="unfinished"/>
+        <translation>ظبط کننده را انتخاب کن</translation>
     </message>
 </context>
 </TS>
