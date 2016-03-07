@@ -6,9 +6,13 @@ HEADERS += screencast.h
 
 SOURCES += main.cpp \
            screencast.cpp
-           
+
 FORMS += QvkNoPlayerDialog.ui
-         
+FORMS += vokoscreen.ui
+
+
+           
+
 # In der screencast.qrc stehen *.qm Einträge, diese Dateien sind aber noch nicht
 # im Unterverzeichnis "language" vorhanden da diese "eigentlich" erst mit make geniert werden,
 # daher gibt es eine Fehlermeldung wenn der Befehl qmake aufgerufen und "RESOURCES += screencast.qrc" abgearbeitet wird.

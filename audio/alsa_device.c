@@ -36,7 +36,7 @@ AlsaDevice *alsa_device_sample( const char *device_name, unsigned int rate )
    else
    {
         rc = 1;
-        fprintf (stderr, "[vokoscreen] alsa_device_sample() in alsadevice.c: open audio device %s (%s)\n", dev->device_name, snd_strerror (err) );
+        // fprintf (stderr, "[vokoscreen] alsa_device_sample() in alsadevice.c: open audio device %s (%s)\n", dev->device_name, snd_strerror (err) );
    }
 
    if ( ( err = snd_pcm_hw_params_malloc ( &hw_params ) ) < 0 )
@@ -61,7 +61,7 @@ AlsaDevice *alsa_device_sample( const char *device_name, unsigned int rate )
       rcSampleRate = rate;
    }
    
-   fprintf ( stderr, "[vokoscreen] alsa_device_sample() in alsadevice.c: Samplerate = %d\n", rate );
+   //fprintf ( stderr, "[vokoscreen] alsa_device_sample() in alsadevice.c: Samplerate = %d\n", rate );
 
    snd_pcm_close( dev->capture_handle );
    free( dev->device_name );

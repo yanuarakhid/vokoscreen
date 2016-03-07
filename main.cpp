@@ -17,6 +17,7 @@
  */
 
 #include "screencast.h"
+
 #include <QDebug>
 #include <QTranslator>
 #include <QLocale>
@@ -50,11 +51,11 @@ int main(int argc, char** argv)
     qDebug();
     qDebug() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
     
-    int vokoscreenWidth = 580;
-    int vokoscreenHeight = 260;
+    //int vokoscreenWidth = 580;
+    //int vokoscreenHeight = 260;
     
     screencast foo;
-      foo.resize( vokoscreenWidth, vokoscreenHeight );
+      //foo.resize( vokoscreenWidth, vokoscreenHeight );
       //foo.setFixedSize( vokoscreenWidth, vokoscreenHeight );
       app.setActivationWindow( &foo );
     foo.show();
