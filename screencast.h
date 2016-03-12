@@ -16,8 +16,8 @@
  * Boston, MA  02110-1301 USA
  */
 
-#ifndef screencast_H 
-#define screencast_H
+#ifndef VOKOSCREEN_H
+#define VOKOSCREEN_H
 
 #include <QMainWindow>
 #include <QPushButton>
@@ -57,227 +57,134 @@
 #include "QvkAnimateControl.h"
 #include "QvkShowClickDialog.h"
 
+#include "ui_vokoscreen.h"
 
 class screencast : public QMainWindow
 { 
 Q_OBJECT
 public:
-    screencast();
-    virtual ~screencast();
-    QString getFfmpegVersion();
-    QString getPactlVersion();
-    QString getOsRelease();
-
-    QString email;
-    QString homepage;
-    QString ffmpegString;
-    QString nameInMoviesLocation;
-    QString winID;
-    QString deltaXMove;
-    QString deltaYMove;
-    bool pause;
-    QStringList MoveWindowlist;
-    bool firststartWininfo;
-    bool moveWindow;
-    
-    QString recordApplikation;
-    
-    QvkCredits * credits;
-    
-    QMenu *SystemTrayMenu;
-    QSystemTrayIcon *SystemTrayIcon;
-
-    QvkShowClickDialog *ShowClickDialog;
-
-    
+  screencast();
+  virtual ~screencast();
+  QString recordApplikation;
+  QProcess *SystemCall;
+  bool pause;
+  QString deltaXMove;
+  QString deltaYMove;
+  QString nameInMoviesLocation;
+  QString ffmpegString;
+  bool firststartWininfo;
+  
 public:
 #ifndef NO_NEW_VERSION_CHECK
     QvkVersion version;
 #endif
     
+    
 public slots:
 
+  
 private slots:
-    void Stop(void);
-    void record(void);
-    void play();
+  void closeEvent( QCloseEvent * event );
+  
+  void addLogVokoscreen( QString value );
+  void VisibleHideKonsole();
+  void myScreenCountChanged( int newCount );
+  void showMagnifier();
+  void uncheckMagnifier();
+  void searchExternalPrograms();
+  QString getOsRelease();
+  bool searchProgramm( QString ProgName );
+  QString getFfmpegVersion();
+  QString getPactlVersion();
+  void AudioOff( int state );
+  void AlsaWatcherEvent( QStringList CardxList );
+  void PulseMultipleChoice();
+  QCheckBox *getCheckBoxPulseDevice( int value );
+  void AudioOnOff();
+  void WindowMinimized();
 
-    void Countdown();
+  void setRecordWidth( QString value );
+  QString getRecordWidth();
+  void setRecordHeight( QString value );
+  QString getRecordHeight();
+  
+  void stateChangedAudio( int state );
+  void clickedAudioAlsa( bool checked );
+  void clickedAudioPulse( bool checked );
+  void valueChangedFrames( int i );
+  void clickedScreenSize();
+  
+  void currentIndexChangedCodec( int index );
+  void currentIndexChangedFormat( int index );
+  
+  
+  // Tab Videooptionen
+  void setFrameStandardSpinbox();
+  void setVideocodecStandardComboBox();
+  void setAudiocodecStandardComboBox();
 
-    void PulseMultipleChoice();
+  void searchGIFPlayer();
+  void searchVideoPlayer();
+  
+  // Tab  Verschiedenes
+  QString PathMoviesLocation();
+  void saveVideoPath();
+  void myVideoFileSystemWatcher( const QString & path );
+  QString getFileWithPath( QString ProgName );
+  void recorderLineEditTextChanged( QString recorder );
+  void selectRecorder();
+  void showCredits();
+  void creditsCloseEvent();
+  
+  
+  QString PathTempLocation();
+  QString NameInMoviesLocation();
+  QString PauseNameInTmpLocation();
+  QString myAlsa();
+  QString myAcodec();
+  QString noMouse();
+  void AreaOnOff();
+  void preRecord();
+  void Countdown();
+  void record();
+  void startRecord( QString RecordPathName );
+  void Stop();
+  void Pause();
+  void play();
+  void send();
 
-    void AudioOnOff();
-    
-    void Pause();
-    void startRecord( QString RecordPathName );
-    QString myAlsa();
-    
-    QString myAcodec();
-    void searchExternalPrograms();
-    QString getFileWithPath( QString ProgName );
-    void preRecord();
-
-    QCheckBox * getCheckBoxPulseDevice( int value );
-
-    QString noMouse();
-    
-    void windowMove();
-    void moveWindowPause();
-    void moveWindowGo();
-    
-    // Tab Videooptionen
-    void setFrameStandardSpinbox();
-    void setVideocodecStandardComboBox();
-    void setAudiocodecStandardComboBox();
-    
-    QString PathMoviesLocation();
-    QString PathTempLocation();
-    QString NameInMoviesLocation();
-    QString PauseNameInTmpLocation();
-    void saveVideoPath();
-    void selectRecorder();
-    void recorderLineEditTextChanged( QString recorder );
-    //void makeAsoundrc();
-    
-    bool searchProgramm( QString ProgName );
-    void stateChanged( QProcess::ProcessState newState );
-    void error ( QProcess::ProcessError error );
-    void readyReadStandardError();
-    
-    void saveSettings();
-    
-    void WindowMinimized();
-
-    void stateChangedSystray( int );
-    void SystemTrayKontextMenue( QAction *action );
-
-    void AreaOnOff();
-    void showMagnifier();
-    
-    void ShortcutPause();
-    void uncheckMagnifier();
-    
-    void send();
-
-    void AlsaWatcherEvent( QStringList CardxList );
-    void myVideoFileSystemWatcher( const QString & path );
-    
-    void currentIndexChangedCodec( int index );
-    void currentIndexChangedFormat( int index );
-
-    void stateChangedAudio( int state );
-    void clickedAudioAlsa( bool checked );
-    void clickedAudioPulse( bool checked );
-    void valueChangedFrames( int i );
-    void clickedScreenSize();
-
-    void setRecordWidth( QString value );
-    QString getRecordWidth();
-    void setRecordHeight( QString value );
-    QString getRecordHeight();
-    
-    void showCredits();
-    void creditsCloseEvent();
-
-    void showHomepage();
-    
-    void myScreenCountChanged ( int newCount );
-    
-    void searchVideoPlayer();
-    void searchGIFPlayer();
-    
-    void showLog();
-    void addLogVokoscreen( QString value );
-
+  void error ( QProcess::ProcessError error );
+  void readyReadStandardError();
+  void stateChanged( QProcess::ProcessState newState );
+  
+  void ShortcutPause();
+  
+  
+  
+  
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
 #endif
-    
-  void AudioOff( int value );
-    
+  
     
 private:
     QString DISPLAY;
-    
-    QTabWidget *tabWidget;
   
-    QPushButton *recordButton;
-    QPushButton *StopButton;
-    QPushButton *PauseButton;
-    QPushButton *PlayButton;
-    QPushButton *sendPushButton;
-    QCheckBox *webcamCheckBox;
-    QCheckBox *mirrorCheckBox;
-    QDial *rotateDial;
-    QRadioButton *radioButtonTopMiddle;
-    QRadioButton *radioButtonRightMiddle;
-    QRadioButton *radioButtonBottomMiddle;
-    QRadioButton *radioButtonLeftMiddle;
-        
-    QProcess *SystemCall;
-    QRadioButton *AlsaRadioButton;
-    QComboBox *AlsaHwComboBox;
-    QCheckBox *AudioOnOffCheckbox;
-    QRadioButton * FullScreenRadioButton;
-    QRadioButton * WindowRadioButton;
-    QRadioButton *AreaRadioButton;
-    QCheckBox *MagnifierCheckBox;
-    QSpinBox * CountdownSpinBox;
-    QComboBox * ScreenComboBox;
-    
-    QLabel *ChannelLabel;
-    QComboBox *VideoplayerComboBox;
-    QComboBox *GIFplayerComboBox;
-    QLabel *recordTimeLabel;
-    QLineEdit *SaveVideoPathLineEdit;
-    QLineEdit *RecorderLineEdit;
-    QRadioButton *PulseDeviceRadioButton;
-    
-    QFrame *TabWidgetAudioFrame;
-    QFrame *TabWidgetVideoOptionFrame;
-    QFrame *TabWidgetMiscellaneousFrame;
-    QFrame *TabWidgetWebcamFrame;
-    QFrame *TabWidgetSocialFrame;
-    
-    QSpinBox *FrameSpinBox;
-    QComboBox *VideocodecComboBox;
-    QComboBox *VideoContainerComboBox;
-    QComboBox *AudiocodecComboBox;
-    QCheckBox *HideMouseCheckbox;
-    QCheckBox *MinimizedCheckBox;
-    
-    QTimer *windowMoveTimer;
-    
-    QFrame *Pulseframe;
-    QScrollArea *scrollAreaPulse;
-    QCheckBox *namePulse;
-    
-    QCheckBox *SystrayCheckBox;
-    QAction *startAction;
-    QAction *stopAction;
-    QAction *pauseAction;
-    QAction *goAction;
-    QAction *hideAction;
-    QAction *exitAction;
-    
+    QvkSettings vkSettings;
+    Ui_screencast  myUi;
+    int oldMainWindowHeight;
     QvkMagnifier *magnifier;
     regionselection *myregionselection;
-    QvkWebcamController *webcamController;
-
-//#ifdef QT4
-    QxtGlobalShortcut *shortcutWebcam;
-    QxtGlobalShortcut *shortcutMagnifier;
-    QxtGlobalShortcut *shortcutPause;
-    QxtGlobalShortcut *shortcutStart;
-    QxtGlobalShortcut *shortcutStop;
-//#endif
-
-    QvkWinInfo *vkWinInfo;
-    WId moveWindowID;
     
-
+    
+    QvkShowClickDialog *ShowClickDialog;
+    QvkAnimateControl *animateControl;
     QList<QvkAlsaDevice *> AlsaDeviceList;
 
+    QScrollArea *scrollAreaPulse;
+    QCheckBox *namePulse;
+    QFrame *PulseFrame;
+    
     QLabel * statusBarLabelTime;
     QLabel * statusBarLabelFps;
     QLabel * statusBarLabelSize;
@@ -290,28 +197,33 @@ private:
     
     QString screenRecordWidth;
     QString screenRecordHeight;
-    
-    QDateTime beginTime;
-    
-    QPushButton * creditsQPushButton;
-    QPushButton * updateButton;
 
-    QvkSettings vkSettings;
+    QMenu *SystemTrayMenu;
+    QSystemTrayIcon *SystemTrayIcon;
+    QAction *startAction;
+    QAction *stopAction;
+    QAction *pauseAction;
+    QAction *goAction;
+    QAction *hideAction;
+    QAction *exitAction;
     
-    QCheckBox *ShowkeyQCheckBox;
-     
-    QCheckBox *pointerQCheckBox;
-    QvkAnimateControl *animateControl;
-    QPushButton *pointerDialogPushButton;
+    QvkWebcamController *webcamController;
+
+    QvkCredits *credits;
     
-    QPushButton *LogPushButton;
-    QListWidget *ListWidgetVokoscreen;
-    QListWidget *ListWidgetFFmpeg;
+    QvkWinInfo *vkWinInfo;
+    WId moveWindowID;
     
- protected:
-    void closeEvent( QCloseEvent * event );
-    void changeEvent(QEvent *e);
-    void styleChange( QStyle &asd );
+    QxtGlobalShortcut *shortcutWebcam;
+    QxtGlobalShortcut *shortcutMagnifier;
+    QxtGlobalShortcut *shortcutPause;
+    QxtGlobalShortcut *shortcutStart;
+    QxtGlobalShortcut *shortcutStop;
+    
+    QTimer *windowMoveTimer;
+    QDateTime beginTime;
+
+protected:
     
 };
 

@@ -103,7 +103,7 @@ void QvkPulse::pulseUnloadModule()
 /**
  * Return checked Pulse Device
  */
-const QString QvkPulse::myPulseDevice( QFrame *Pulseframe )
+const QString QvkPulse::myPulseDevice( QVBoxLayout *Pulseframe )
 {
   QList<QCheckBox *> listQFrame = Pulseframe->findChildren<QCheckBox *>();
   QCheckBox *box;
