@@ -21,6 +21,7 @@ signals:
 public slots:
   bool isCodecAvailable( QString typeOfCodec, QString nameOfCodec, bool *experimental );
   bool isFormatAvailable( QString nameOfFormat );
+  bool isDeviceAvailable( QString nameOfDevice );
 
 
 private slots:
@@ -30,7 +31,7 @@ private:
   QString recordApplikation;
   QStringList ListCodecs;
   QStringList ListFormats;
-  //enum Codec{ Video, Audio };
+  QStringList ListDevices;
   
 protected:  
 

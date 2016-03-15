@@ -40,9 +40,6 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
         <property name="iconSize">
          <size>
           <width>48</width>

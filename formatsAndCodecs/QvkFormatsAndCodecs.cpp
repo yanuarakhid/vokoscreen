@@ -54,6 +54,25 @@ QvkFormatsAndCodecs::QvkFormatsAndCodecs( QString value )
     
     ListFormats[ i ] = ListFormats[ i ].section( " ", 0, 1 );
   }
+  
+  //*************************************
+  SystemCall.start( recordApplikation + " " + "-devices" );
+  SystemCall.waitForFinished();
+  QString devices = SystemCall.readAllStandardOutput();
+  SystemCall.close();
+  
+  ListDevices  = devices.split( "\n" );
+  
+  // delete Header inclusive " --"
+  index = ListDevices.indexOf( " --" );
+  for ( int i = 0; i <= index; i++ )
+    ListDevices.removeFirst();
+  
+  for ( int i = 0; i < ListDevices.count(); i++ )
+  {
+    ListDevices[ i ] = ListDevices[ i ].simplified();
+    ListDevices[ i ] = ListDevices[ i ].section( " ", 1, 1 );
+  }
 }
 
 
@@ -101,6 +120,24 @@ bool QvkFormatsAndCodecs::isFormatAvailable( QString nameOfFormat )
   for ( int i = 0; i < ListFormats.count(); i++ )
   {
     if ( ListFormats[ i ].section( " ", 1, 1 ) == nameOfFormat )
+    {
+      available = true;
+      break;
+    }
+  }
+  return available;
+}
+
+/*
+ * typeOfDevice: is string x11grab etc.
+ * 
+ */
+bool QvkFormatsAndCodecs::isDeviceAvailable( QString nameOfDevice )
+{
+  bool available = false;
+  for ( int i = 0; i < ListDevices.count(); i++ )
+  {
+    if ( ListDevices[ i ] == nameOfDevice )
     {
       available = true;
       break;

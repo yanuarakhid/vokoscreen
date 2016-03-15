@@ -185,7 +185,7 @@ private:
     QCheckBox *namePulse;
     QFrame *PulseFrame;
     
-    QLabel * statusBarLabelTime;
+    QLabel *statusBarLabelTime;
     QLabel * statusBarLabelFps;
     QLabel * statusBarLabelSize;
     QLabel * statusBarLabelCodec;

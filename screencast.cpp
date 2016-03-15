@@ -279,16 +279,16 @@ screencast::screencast()
     statusBarLabelFpsSettings->setToolTip( tr( "Settings fps" ) );
 
     QLabel * LabelTemp = new QLabel();
-    myUi.statusBar->addWidget( LabelTemp, 1 );
+    myUi.statusBar->addWidget( LabelTemp, 0 );
     
-    myUi.statusBar->addWidget( statusBarLabelTime, 1 );
-    myUi.statusBar->addWidget( statusBarLabelFps, 1 );
-    myUi.statusBar->addWidget( statusBarLabelSize, 1 );
-    myUi.statusBar->addWidget( statusbarLabelScreenSize, 1 );
-    myUi.statusBar->addWidget( statusBarLabelCodec, 1 );
-    myUi.statusBar->addWidget( statusBarLabelFormat, 1 );
-    myUi.statusBar->addWidget( statusBarLabelAudio, 1 );
-    myUi.statusBar->addWidget( statusBarLabelFpsSettings, 1 );
+    myUi.statusBar->addWidget( statusBarLabelTime, 2 );
+    myUi.statusBar->addWidget( statusBarLabelFps, 2 );
+    myUi.statusBar->addWidget( statusBarLabelSize, 2 );
+    myUi.statusBar->addWidget( statusbarLabelScreenSize, 2 );
+    myUi.statusBar->addWidget( statusBarLabelCodec, 2 );
+    myUi.statusBar->addWidget( statusBarLabelFormat, 2 );
+    myUi.statusBar->addWidget( statusBarLabelAudio, 2 );
+    myUi.statusBar->addWidget( statusBarLabelFpsSettings, 2 );
     
     searchVideoPlayer();
     searchGIFPlayer();
@@ -300,6 +300,11 @@ screencast::screencast()
        PathMoviesLocation();
 
     SystemCall = new QProcess( this );
+    
+    connect( myUi.AudioOnOffCheckbox,     SIGNAL( clicked() ), SLOT( AudioOnOff() ) );
+    connect( myUi.AlsaRadioButton,        SIGNAL( clicked() ), SLOT( AudioOnOff() ) );
+    connect( myUi.PulseDeviceRadioButton, SIGNAL( clicked() ), SLOT( AudioOnOff() ) );
+
     connect( SystemCall, SIGNAL( stateChanged ( QProcess::ProcessState) ),this, SLOT( stateChanged( QProcess::ProcessState) ) );
     connect( SystemCall, SIGNAL( error( QProcess::ProcessError) ),        this, SLOT( error( QProcess::ProcessError) ) );
     connect( SystemCall, SIGNAL( readyReadStandardError() ),              this, SLOT( readyReadStandardError() ) );
@@ -379,10 +384,6 @@ screencast::screencast()
    SystemTrayIcon->show();
    myUi.SystrayCheckBox->setCheckState( Qt::CheckState( vkSettings.getSystray() ) );
     
-   connect( myUi.AudioOnOffCheckbox,     SIGNAL( clicked() ), SLOT( AudioOnOff() ) );
-   connect( myUi.AlsaRadioButton,        SIGNAL( clicked() ), SLOT( AudioOnOff() ) );
-   connect( myUi.PulseDeviceRadioButton, SIGNAL( clicked() ), SLOT( AudioOnOff() ) );
-
    shortcutWebcam = new QxtGlobalShortcut( this );
    connect( shortcutWebcam, SIGNAL( activated() ), myUi.webcamCheckBox, SLOT( click() ) );
    shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
@@ -486,9 +487,19 @@ screencast::screencast()
       myUi.VideoContainerComboBox->setCurrentIndex( x );
    qDebug() << "[vokoscreen] ---End search formats---";
    qDebug( " " );
+
    
+   qDebug() << "[vokoscreen] ---Begin search devices---";
+     QString device = "x11grab";
+     if ( formatsAndCodecs->isDeviceAvailable( device ) == true ) 
+       qDebug() << "[vokoscreen] find device" << device;
+     else
+       qDebug() << "[vokoscreen] not found device" << device;
+   qDebug() << "[vokoscreen] ---End search devices---";
+   qDebug( " " );
+   
+   clickedScreenSize();
    AreaOnOff();
-   
 }
 
 screencast::~screencast()
