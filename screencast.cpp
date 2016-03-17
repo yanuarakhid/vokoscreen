@@ -491,10 +491,19 @@ screencast::screencast()
    
    qDebug() << "[vokoscreen] ---Begin search devices---";
      QString device = "x11grab";
-     if ( formatsAndCodecs->isDeviceAvailable( device ) == true ) 
+     if ( formatsAndCodecs->isDeviceAvailable( device ) == true )
+     {
        qDebug() << "[vokoscreen] find device" << device;
+     }
      else
+     {
        qDebug() << "[vokoscreen] not found device" << device;
+       QMessageBox msgBox;
+       msgBox.setText("Your ffmpeg is not compatible with vokoscreen");
+       msgBox.setInformativeText("ffmpeg must copmpiled with option --enable-x11grab");
+       msgBox.setStandardButtons( QMessageBox::Ok );
+       msgBox.setDefaultButton( QMessageBox::Ok );
+     }
    qDebug() << "[vokoscreen] ---End search devices---";
    qDebug( " " );
    
