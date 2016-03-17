@@ -11,8 +11,7 @@ QvkWebcamWindow::QvkWebcamWindow()
   setWindowTitle( "vokoscreen webcam");
   setToolTip( tr( "Right click for menu" ) );
 
-  //if( QX11Info::isCompositingManagerRunning() ) // QT5 *************************** vorerst Ersatzlos gestrichen ******************************************************
-    setAttribute( Qt::WA_TranslucentBackground, true );
+  setAttribute( Qt::WA_TranslucentBackground, true );
   
   webcamLabel = new QLabel( this );
   webcamLabel->setAlignment( Qt::AlignCenter );

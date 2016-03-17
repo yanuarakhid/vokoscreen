@@ -16,7 +16,6 @@ public:
     static QString getPulseDeviceName( int value, QFrame *Pulseframe );
     static int getCountCheckedPulseDevices( QFrame *Pulseframe );
     static void pulseUnloadModule();
-    //static const QString myPulseDevice( QFrame *Pulseframe );// original
     static const QString myPulseDevice( QVBoxLayout *Pulseframe );
     
     static QString getPulseInputDevices( int value );

@@ -45,7 +45,6 @@ screencast::screencast()
     myUi.ListWidgetLogVokoscreen->setVisible( false );
 
 #ifdef QT5
-    // http://qt-project.org/doc/qt-5/qtglobal.html#qInstallMessageHandler
     myLog = new QvkLog();
     qInstallMessageHandler( myMessageOutput );
     connect( myLog, SIGNAL( newLogText( QString ) ), this, SLOT( addLogVokoscreen( QString ) ) );
@@ -177,8 +176,6 @@ screencast::screencast()
     (void)webcamController;
 
     // Tab 6 About *********************************************************
-    // http://doc.qt.io/qt-5/qdesktopservices.html#openUrl
-    
     myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
     myUi.labelOpensuseBetaUrl->setOpenExternalLinks( true );
     myUi.labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Developer Homepage" ) + "</a>" );
@@ -211,7 +208,6 @@ screencast::screencast()
     creditsIcon.addFile( ":/pictures/community.png", QSize(), QIcon::Normal, QIcon::On );
     myUi.creditsQPushButton->setIcon( creditsIcon );
     connect( myUi.creditsQPushButton, SIGNAL( clicked() ), SLOT( showCredits() ) );
-
     
     
     // Start Stop Pause etc. Buttons
@@ -243,39 +239,31 @@ screencast::screencast()
     // StatusBar
     statusBarLabelTime = new QLabel();
     statusBarLabelTime->setText( "00:00:00" );
-    //statusBarLabelTime->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusBarLabelTime->setToolTip( tr ( "Recording time" ) );
 
     statusBarLabelFps = new QLabel();
     statusBarLabelFps->setText( "0" );
-    //statusBarLabelFps->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusBarLabelFps->setToolTip( tr( "Actual frames per second" ) );
 
     statusBarLabelSize = new QLabel();
     statusBarLabelSize->setText( "0" );
-    //statusBarLabelSize->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusBarLabelSize->setToolTip( tr( "Size in KB" ) );
     
     statusbarLabelScreenSize = new QLabel();
-    //statusbarLabelScreenSize->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusbarLabelScreenSize->setToolTip( tr( "Recording screensize" ) );
 
     statusBarLabelCodec = new QLabel();
     statusBarLabelCodec->setText( myUi.VideocodecComboBox->currentText() );
-    //statusBarLabelCodec->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusBarLabelCodec->setToolTip( tr( "Codec" ) );
     
     statusBarLabelFormat = new QLabel();
     statusBarLabelFormat->setText( myUi.VideoContainerComboBox->currentText() );
-    //statusBarLabelFormat->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusBarLabelFormat->setToolTip( tr( "Format" ) );
 
     statusBarLabelAudio = new QLabel();
-    //statusBarLabelAudio->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusBarLabelAudio->setToolTip( tr( "Audio" ) );
     
     statusBarLabelFpsSettings = new QLabel();
-    //statusBarLabelFpsSettings->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     statusBarLabelFpsSettings->setToolTip( tr( "Settings fps" ) );
 
     QLabel * LabelTemp = new QLabel();
@@ -415,7 +403,7 @@ screencast::screencast()
    myVideoFileSystemWatcher( "" );
     
    qDebug() << "[vokoscreen] ---Begin search video codec---";
-   QvkFormatsAndCodecs *formatsAndCodecs = new QvkFormatsAndCodecs( "/usr/bin/ffmpeg" );// RecorderLineEdit->displayText() );*************************************************************************
+   QvkFormatsAndCodecs *formatsAndCodecs = new QvkFormatsAndCodecs( myUi.RecorderLineEdit->displayText() );
    QStringList videoCodecList;
    bool experimental = false;
    videoCodecList << "libx264" << "libx265" << "mpeg4" << "huffyuv" << "gif";
@@ -826,7 +814,6 @@ void screencast::SystemTrayKontextMenue( QAction *action )
  */
 QCheckBox * screencast::getCheckBoxPulseDevice( int value )
 {
-//  QList<QCheckBox *> listQFrame = Pulseframe->findChildren<QCheckBox *>();
   QList<QCheckBox *> listQFrame = PulseFrame->findChildren<QCheckBox *>();  
   QCheckBox *inBox;  
   inBox = listQFrame.at( value );
@@ -1263,7 +1250,6 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       clickedScreenSize();
 
       myUi.TabWidgetAudioFrame->setEnabled(false);
-      //myUi.TabWidgetMiscellaneousFrame->setEnabled(false);
       myUi.tab_2->setEnabled( false );
       myUi.TabWidgetVideoOptionFrame->setEnabled( false );
 
@@ -1288,7 +1274,6 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       clickedScreenSize();
 
       myUi.TabWidgetAudioFrame->setEnabled(true);
-//      myUi.TabWidgetMiscellaneousFrame->setEnabled(true);
       myUi.tab_2->setEnabled(true);
 
       myUi.TabWidgetVideoOptionFrame->setEnabled( true );
@@ -1318,7 +1303,6 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       clickedScreenSize();
       
       myUi.TabWidgetAudioFrame->setEnabled(false);
-//      myUi.TabWidgetMiscellaneousFrame->setEnabled(false);
       myUi.tab_2->setEnabled(false);
       myUi.TabWidgetVideoOptionFrame->setEnabled( false );
 
@@ -1344,7 +1328,6 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       clickedScreenSize();
       
       myUi.TabWidgetAudioFrame->setEnabled(false);
-//      myUi.TabWidgetMiscellaneousFrame->setEnabled(false);
       myUi.tab_2->setEnabled(false);
       myUi.TabWidgetVideoOptionFrame->setEnabled( false );
 
@@ -1369,7 +1352,6 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       clickedScreenSize()      ;
       
       myUi.TabWidgetAudioFrame->setEnabled(true);
-//      myUi.TabWidgetMiscellaneousFrame->setEnabled(true);
       myUi.tab_2->setEnabled(true);
       myUi.TabWidgetVideoOptionFrame->setEnabled( true );
 
@@ -1788,7 +1770,6 @@ QString screencast::myAlsa()
     {
       QCheckBox *box;
       int counter = 0;
-      //QList<QCheckBox *> listQFrame = myUi.Pulseframe->findChildren<QCheckBox *>(); // original
       QList<QCheckBox *> listQFrame = myUi.scrollAreaWidgetContents->findChildren<QCheckBox *>();
       
       if ( listQFrame.count() > 0 )
@@ -1801,13 +1782,10 @@ QString screencast::myAlsa()
 
         if (counter > 1)
         { 
-          //value = "-f alsa -f pulse -i vokoscreenMix.monitor "; // alsa plugin
           value = "-f pulse -i vokoscreenMix.monitor";
-	  
         }
         else if ( counter > 0 )
         {
-          //value = "-f alsa -i pulse "; // with alsa plugin
           for ( int i = 0; i < listQFrame.count(); i++ )
           {
             box = listQFrame.at( i );
@@ -1834,7 +1812,6 @@ QString screencast::myAcodec()
     else
      return "-c:a " + myUi.AudiocodecComboBox->currentText();
   }
-  //if ( ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( myUi.PulseDeviceRadioButton->isChecked() ) and ( QvkPulse::myPulseDevice( myUi.Pulseframe ) > "" ) )// original
   if ( ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( myUi.PulseDeviceRadioButton->isChecked() ) and ( QvkPulse::myPulseDevice( myUi.verticalLayout_3 ) > "" ) )
   {
     if ( myUi.AudiocodecComboBox->itemData( myUi.AudiocodecComboBox->currentIndex() ) == true )
@@ -2086,7 +2063,6 @@ void screencast::startRecord( QString RecordPathName )
       modulNumber.replace("\n", "");    
       qDebug() << "[vokoscreen] pactl load-module module-null-sink sink_name=vokoscreenMix " << modulNumber;
     
-//      QList<QCheckBox *> listQFrame = Pulseframe->findChildren<QCheckBox *>();// Original
       QList<QCheckBox *> listQFrame = myUi.scrollAreaWidgetContents->findChildren<QCheckBox *>();
       QCheckBox *box;
       QList<int> integerList;

@@ -61,7 +61,6 @@ private:
   QRadioButton *radioButton3;
   int faktor;
   int formValue;
-  //QDialog *dialog;
   QDialog *newDialog;
   QTimer *timer;
   QvkSettings vkSettings;

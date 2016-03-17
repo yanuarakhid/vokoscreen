@@ -17,7 +17,6 @@ public:
 public slots:
   void setCursorOn();
   void setCursorOff();
-  //void mouseReleased();
   void mousePressed();
 
   

@@ -42,10 +42,6 @@ protected:
   
 private:
   QDialog *newDialog;
-//  QDialog * dialog;
-//  QRadioButton * mailRadioButton;
-//  QRadioButton * mailSelectedRadioButton;
-  
   Ui_MailDialog myUiMailDialog;
 
 };

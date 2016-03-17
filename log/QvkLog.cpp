@@ -40,14 +40,5 @@ void QvkLog::outputMessage(QtMsgType type, const QMessageLogContext &context, co
         txt += localMsg.constData();
         abort();
     }
-/*
-    QFile outFile( "vokoscreen.log" );
-    outFile.open( QIODevice::WriteOnly | QIODevice::Append );
-
-    QTextStream textStream( &outFile );
-    textStream << txt << "\n";
-    outFile.flush();
-    outFile.close();
-*/
     emit newLogText( txt );
 }
