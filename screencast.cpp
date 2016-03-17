@@ -282,11 +282,55 @@ screencast::screencast()
     searchGIFPlayer();
     
     // Read Settings
-    if ( vkSettings.getVideoPath() > "" )
-       myUi.SaveVideoPathLineEdit->setText( vkSettings.getVideoPath() );
-    else
-       PathMoviesLocation();
+    myUi.AudioOnOffCheckbox->setCheckState( Qt::CheckState( vkSettings.getAudioOnOff() ) );
+    AudioOff( Qt::CheckState( vkSettings.getAudioOnOff() ) );
 
+    myUi.AlsaRadioButton->setChecked( vkSettings.getAlsaSelect() );
+
+    myUi.PulseDeviceRadioButton->setChecked( vkSettings.getPulseSelect() );
+
+    myUi.FullScreenRadioButton->setChecked( vkSettings.getFullScreenSelect() );
+      
+    myUi.WindowRadioButton->setChecked( vkSettings.getWindowSelect() );
+      
+    myUi.AreaRadioButton->setChecked( vkSettings.getAreaSelect() );
+
+    if ( vkSettings.getVideoPath() > "" )
+        myUi.SaveVideoPathLineEdit->setText( vkSettings.getVideoPath() );
+    else
+      PathMoviesLocation();
+
+    int x = myUi.VideoplayerComboBox->findText( vkSettings.getVideoPlayer(), Qt::MatchExactly );
+    if ( x == -1 )
+      myUi.VideoplayerComboBox->setCurrentIndex( 0 );
+    else
+      myUi.VideoplayerComboBox->setCurrentIndex( x );
+      
+    x = myUi.GIFplayerComboBox->findText( vkSettings.getGIFPlayer(), Qt::MatchExactly );
+    if ( x == -1 )
+      myUi.GIFplayerComboBox->setCurrentIndex( 0 );
+    else
+      myUi.GIFplayerComboBox->setCurrentIndex( x );
+      
+    myUi.MinimizedCheckBox->setCheckState( Qt::CheckState( vkSettings.getMinimized() ) );
+      
+    myUi.CountdownSpinBox->setValue( vkSettings.getCountdown() );
+      
+    myUi.FrameSpinBox->setValue( vkSettings.getFrames() );
+
+    myUi.HideMouseCheckbox->setCheckState( Qt::CheckState( vkSettings.getHideMouse()) );
+           
+    if ( Qt::CheckState( vkSettings.getWebcamOnOff() ) == Qt::Checked )
+      myUi.webcamCheckBox->click();
+      
+    move( vkSettings.getX(),vkSettings.getY() );
+
+    myUi.tabWidget->setCurrentIndex( vkSettings.getTab() );
+      
+    if( Qt::CheckState( vkSettings.getMagnifierOnOff() ) == Qt::Checked )
+      myUi.MagnifierCheckBox->click();
+   
+    
     SystemCall = new QProcess( this );
     
     connect( myUi.AudioOnOffCheckbox,     SIGNAL( clicked() ), SLOT( AudioOnOff() ) );
@@ -420,7 +464,7 @@ screencast::screencast()
      }
    }
    // Fallback
-   int x = myUi.VideocodecComboBox->findText( vkSettings.getVideoCodec() );
+   x = myUi.VideocodecComboBox->findText( vkSettings.getVideoCodec() );
    if ( x == -1 )
       myUi.VideocodecComboBox->setCurrentIndex( 0 );
    else
@@ -574,7 +618,7 @@ void screencast::myScreenCountChanged( int newCount )
   #ifdef QT5
       //QList < QScreen *> screens = QGuiApplication::screens();
       QScreen *screen = QGuiApplication::primaryScreen();    
-      qDebug() << "[vokoscreen] DevicePixelRatio:" << screen->devicePixelRatio() << " (On normal displays is 1 and on Retina is 2)";
+      qDebug() << "[vokoscreen] DevicePixelRatio:" << screen->devicePixelRatio() << " (Normal displays is 1, Retina display is 2)";
   #endif
     
     for ( int i = 1; i < desk->screenCount()+1; i++ )
