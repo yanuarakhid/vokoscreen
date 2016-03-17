@@ -40,6 +40,9 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
         <property name="iconSize">
          <size>
           <width>48</width>
@@ -311,8 +314,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>373</width>
-                 <height>114</height>
+                 <width>98</width>
+                 <height>28</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -535,7 +538,7 @@
         </widget>
         <widget class="QWidget" name="TabWidgetWebcamFrame">
          <attribute name="title">
-          <string/>
+          <string notr="true"/>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_9">
           <item>
@@ -797,7 +800,7 @@
         </widget>
         <widget class="QWidget" name="tab_3">
          <attribute name="title">
-          <string/>
+          <string notr="true"/>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <item>
@@ -1044,7 +1047,7 @@
             <item>
              <widget class="QLabel" name="labelDonateUrl">
               <property name="text">
-               <string>TextLabel</string>
+               <string notr="true">TextLabel</string>
               </property>
              </widget>
             </item>
