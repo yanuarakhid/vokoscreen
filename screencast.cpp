@@ -785,6 +785,41 @@ void screencast::AudioOff( int state )
 }
 
 
+void screencast::SystemTrayKontextMenue( QAction *action )
+{
+  QString data = action->data().toString();
+  
+  if ( data == "Start" )
+    myUi.recordButton->click();
+
+  if ( data == "Stop" )
+    myUi.StopButton->click();
+  
+  if ( data == "Pause" )
+    myUi.PauseButton->click();
+  
+  if ( data == "Go" )
+    myUi.PauseButton->click();
+  
+  if ( data == "Exit" )
+    close();
+
+  if ( data == "Hide" )
+  {
+    hideAction->setText( tr( "Show window" ) );
+    hideAction->setData( "NoHide" );
+    hide();
+  }
+  
+  if ( data == "NoHide" )
+  {
+    hideAction->setText( tr( "Hide window" ) );
+    hideAction->setData( "Hide" );
+    showNormal();
+  }
+}
+
+
 /**
  * Returns Checkbox from Pulse device
  * 

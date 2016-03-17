@@ -159,6 +159,7 @@ private slots:
   
   void ShortcutPause();
   
+  void SystemTrayKontextMenue( QAction *action );
   
   
   
