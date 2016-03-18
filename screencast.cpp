@@ -163,6 +163,9 @@ screencast::screencast()
 
     connect( myUi.selectRecorderPushButton, SIGNAL(clicked() ), SLOT( selectRecorder() ) );
     
+    myUi.SystrayCheckBox->setCheckState( Qt::Checked );
+    connect( myUi.SystrayCheckBox, SIGNAL( stateChanged( int ) ), SLOT( stateChangedSystray( int ) ) );
+
     
     // Tab 5 Webcam *******************************************************
     myUi.tabWidget->setTabIcon( 4, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
@@ -415,7 +418,7 @@ screencast::screencast()
    SystemTrayIcon->setToolTip( "vokoscreen" );
    SystemTrayIcon->show();
    myUi.SystrayCheckBox->setCheckState( Qt::CheckState( vkSettings.getSystray() ) );
-    
+ 
    shortcutWebcam = new QxtGlobalShortcut( this );
    connect( shortcutWebcam, SIGNAL( activated() ), myUi.webcamCheckBox, SLOT( click() ) );
    shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
@@ -1811,6 +1814,16 @@ void screencast::creditsCloseEvent()
 {
    myUi.creditsQPushButton->setEnabled( true );
    delete credits;
+}
+
+
+void screencast::stateChangedSystray( int state )
+{
+  if ( state == Qt::Unchecked )
+    SystemTrayIcon->hide();
+
+  if ( state == Qt::Checked )
+    SystemTrayIcon->show();
 }
 
 

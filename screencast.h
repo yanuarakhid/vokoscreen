@@ -136,6 +136,7 @@ private slots:
   void selectRecorder();
   void showCredits();
   void creditsCloseEvent();
+  void stateChangedSystray( int state );
   
   
   QString PathTempLocation();
