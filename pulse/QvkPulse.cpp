@@ -16,7 +16,7 @@ QvkPulse::~QvkPulse()
 /**
  * Returns xte checked pulse devicename
  */
-QString QvkPulse::getPulseDeviceName( int value, QFrame *Pulseframe )
+QString QvkPulse::getPulseDeviceName( int value, QWidget *Pulseframe )
 {
   QList<QCheckBox *> listQFrame = Pulseframe->findChildren<QCheckBox *>();
   QCheckBox *inBox;
@@ -40,12 +40,11 @@ QString QvkPulse::getPulseDeviceName( int value, QFrame *Pulseframe )
 /**
  *  Returns count checked pulse devices
  */
-int QvkPulse::getCountCheckedPulseDevices( QFrame *Pulseframe )
+int QvkPulse::getCountCheckedPulseDevices( QWidget *Pulseframe )
 {
   QList<QCheckBox *> listQFrame = Pulseframe->findChildren<QCheckBox *>();
   QCheckBox *inBox;
   int x = 0;
-  
   for ( int i = 0; i < listQFrame.count(); i++ )
   {
     inBox = listQFrame.at( i );
@@ -103,7 +102,7 @@ void QvkPulse::pulseUnloadModule()
 /**
  * Return checked Pulse Device
  */
-const QString QvkPulse::myPulseDevice( QVBoxLayout *Pulseframe )
+const QString QvkPulse::myPulseDevice( QWidget *Pulseframe )
 {
   QList<QCheckBox *> listQFrame = Pulseframe->findChildren<QCheckBox *>();
   QCheckBox *box;

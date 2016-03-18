@@ -102,6 +102,7 @@ private slots:
   QCheckBox *getCheckBoxPulseDevice( int value );
   void AudioOnOff();
   void WindowMinimized();
+  void saveSettings();
 
   void setRecordWidth( QString value );
   QString getRecordWidth();
@@ -184,7 +185,7 @@ private:
 
     QScrollArea *scrollAreaPulse;
     QCheckBox *namePulse;
-    QFrame *PulseFrame;
+    //QFrame *PulseFrame;
     
     QLabel *statusBarLabelTime;
     QLabel * statusBarLabelFps;

@@ -563,12 +563,93 @@ void screencast::closeEvent( QCloseEvent * event )
   if ( myUi.pointerQCheckBox->checkState() == Qt::Checked )
     myUi.pointerQCheckBox->click();
   Stop();
-  //saveSettings();
+  saveSettings();
   myregionselection->close();
   magnifier->close();
   webcamController->webcamCloseEvent();  
   SystemTrayIcon->hide();  
 }
+
+
+void screencast::saveSettings()
+{
+  QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
+  
+  settings.clear();
+
+  settings.beginGroup( "vokoscreen" );
+    settings.setValue( "Version", vkSettings.getVersion() );
+  settings.endGroup();
+
+  settings.beginGroup( "Audio" );
+    settings.setValue( "AudioOnOff", myUi.AudioOnOffCheckbox->checkState() );
+  settings.endGroup();
+
+  settings.beginGroup( "Alsa" );
+    settings.setValue( "Alsa", myUi.AlsaRadioButton->isChecked() );
+    settings.setValue( "NameCaptureCard", myUi.AlsaHwComboBox->currentText() );
+  settings.endGroup();
+
+  settings.beginGroup( "Pulse" );
+    settings.setValue( "Pulse", myUi.PulseDeviceRadioButton->isChecked() );
+    for ( int i = 1; i < QvkPulse::getCountCheckedPulseDevices( myUi.scrollAreaWidgetContents ) + 1; i++ )
+      settings.setValue( "NameCaptureCard-" + QString::number( i ), QvkPulse::getPulseDeviceName( i, myUi.scrollAreaWidgetContents ).replace( "&", "" ) );
+  settings.endGroup();
+
+  settings.beginGroup( "Record" );
+    settings.setValue( "FullScreen", myUi.FullScreenRadioButton->isChecked() );
+    settings.setValue( "Window", myUi.WindowRadioButton->isChecked() );
+    settings.setValue( "Area", myUi.AreaRadioButton->isChecked() );
+  settings.endGroup();
+
+  settings.beginGroup( "Miscellaneous" );
+    settings.setValue( "VideoPath", myUi.SaveVideoPathLineEdit->displayText() );
+    settings.setValue( "Videoplayer", myUi.VideoplayerComboBox->currentText() );
+    settings.setValue( "GIFplayer", myUi.GIFplayerComboBox->currentText() );
+    settings.setValue( "Minimized", myUi.MinimizedCheckBox->checkState() );
+    settings.setValue( "Countdown", myUi.CountdownSpinBox->value() );
+    settings.setValue( "Recorder", myUi.RecorderLineEdit->displayText() );
+  settings.endGroup();
+
+  settings.beginGroup( "Videooptions" );
+    settings.setValue( "Frames", myUi.FrameSpinBox->value() );
+    settings.setValue( "Videocodec", myUi.VideocodecComboBox->currentText() );
+    settings.setValue( "Audiocodec", myUi.AudiocodecComboBox->currentText() );
+    settings.setValue( "Format", myUi.VideoContainerComboBox->currentText() );
+    settings.setValue( "HideMouse", myUi.HideMouseCheckbox->checkState() );    
+  settings.endGroup();
+  
+  settings.beginGroup( "GUI" );
+    settings.setValue( "X", x() );
+    settings.setValue( "Y", y() );
+    settings.setValue( "Tab", myUi.tabWidget->currentIndex() );
+    settings.setValue( "Systray", myUi.SystrayCheckBox->checkState() );
+  settings.endGroup();
+  
+  settings.beginGroup( "Area" );
+    settings.setValue( "X", myregionselection->getX() );
+    settings.setValue( "Y", myregionselection->getY() );
+    settings.setValue( "Width", myregionselection->getWidth() );
+    settings.setValue( "Height", myregionselection->getHeight() );
+  settings.endGroup();
+
+  settings.beginGroup( "Webcam" );
+    settings.setValue( "OnOff", myUi.webcamCheckBox->checkState() );
+    settings.setValue( "Mirrored", myUi.mirrorCheckBox->checkState() );
+    settings.setValue( "Rotate", myUi.rotateDial->value() );
+    settings.setValue( "Top", myUi.radioButtonTopMiddle->isChecked() );
+    settings.setValue( "Right", myUi.radioButtonRightMiddle->isChecked() );
+    settings.setValue( "Bottom", myUi.radioButtonBottomMiddle->isChecked() );
+    settings.setValue( "Left", myUi.radioButtonLeftMiddle->isChecked() );
+  settings.endGroup();
+  webcamController->saveSettings();
+  
+  settings.beginGroup( "Magnifier" );
+    settings.setValue( "OnOff", myUi.MagnifierCheckBox->checkState());
+    settings.setValue( "FormValue", magnifier->getFormValue() );
+  settings.endGroup();
+}
+
 
 
 #ifndef NO_NEW_VERSION_CHECK
@@ -858,7 +939,7 @@ void screencast::SystemTrayKontextMenue( QAction *action )
  */
 QCheckBox * screencast::getCheckBoxPulseDevice( int value )
 {
-  QList<QCheckBox *> listQFrame = PulseFrame->findChildren<QCheckBox *>();  
+  QList<QCheckBox *> listQFrame = myUi.scrollAreaWidgetContents->findChildren<QCheckBox *>();  
   QCheckBox *inBox;  
   inBox = listQFrame.at( value );
   return inBox;
@@ -892,13 +973,18 @@ void screencast::AlsaWatcherEvent( QStringList CardxList )
 
   settings.beginGroup( "Pulse" );
     PulseMultipleChoice();
-    /*for ( int x = 0; x < 10; x++ )
-       for ( int i = 0; i < QvkPulse::getPulseInputDevicesCount(); i++ )
+    int countPulse = QvkPulse::getPulseInputDevicesCount();
+    for ( int x = 1; x <= countPulse; x++ )
+    {
+       for ( int i = 0; i < countPulse; i++ )
        {
           QCheckBox *aa = getCheckBoxPulseDevice( i );
-          if ( aa->text() == settings.value( "NameCaptureCard-" + QString::number( x + 1 ) ).toString() )
+          if ( aa->text() == settings.value( "NameCaptureCard-" + QString::number( x  ) ).toString() )
+	  {
             aa->setCheckState( Qt::Checked );
-       }  */
+	  }
+       }
+    }
   settings.endGroup();
 }
 
@@ -1856,7 +1942,7 @@ QString screencast::myAcodec()
     else
      return "-c:a " + myUi.AudiocodecComboBox->currentText();
   }
-  if ( ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( myUi.PulseDeviceRadioButton->isChecked() ) and ( QvkPulse::myPulseDevice( myUi.verticalLayout_3 ) > "" ) )
+  if ( ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( myUi.PulseDeviceRadioButton->isChecked() ) and ( QvkPulse::myPulseDevice( myUi.scrollAreaWidgetContents ) > "" ) )
   {
     if ( myUi.AudiocodecComboBox->itemData( myUi.AudiocodecComboBox->currentIndex() ) == true )
      return "-c:a " + myUi.AudiocodecComboBox->currentText() + " -strict experimental";
@@ -2095,7 +2181,7 @@ void screencast::startRecord( QString RecordPathName )
   {
     QProcess Process;
 //    QString value = QvkPulse::myPulseDevice( Pulseframe );// Original
-    QString value = QvkPulse::myPulseDevice( myUi.verticalLayout_3 );
+    QString value = QvkPulse::myPulseDevice( myUi.scrollAreaWidgetContents );
     if ( value == "vokoscreenMix.monitor" )
     {
       Process.start("pactl load-module module-null-sink sink_name=vokoscreenMix");

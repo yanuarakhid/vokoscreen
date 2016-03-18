@@ -13,10 +13,10 @@ class QvkPulse: public QObject
 public:
     QvkPulse();
     virtual ~QvkPulse();
-    static QString getPulseDeviceName( int value, QFrame *Pulseframe );
-    static int getCountCheckedPulseDevices( QFrame *Pulseframe );
+    static QString getPulseDeviceName( int value, QWidget *Pulseframe );
+    static int getCountCheckedPulseDevices( QWidget *Pulseframe );
     static void pulseUnloadModule();
-    static const QString myPulseDevice( QVBoxLayout *Pulseframe );
+    static const QString myPulseDevice( QWidget *Pulseframe );
     
     static QString getPulseInputDevices( int value );
     static QString getPulseInputName( int value );
