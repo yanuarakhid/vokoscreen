@@ -163,7 +163,8 @@ private slots:
   
   void SystemTrayKontextMenue( QAction *action );
   
-  
+  void copyToClipboard();
+
   
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
@@ -226,7 +227,11 @@ private:
     QTimer *windowMoveTimer;
     QDateTime beginTime;
 
+    //QMenu menu;
+    //QAction *actionCopyAll;
+    
 protected:
+   void contextMenuEvent( QContextMenuEvent *event );
     
 };
 

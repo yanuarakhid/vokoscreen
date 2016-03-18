@@ -21,10 +21,11 @@
 #include "QvkCountdown.h"
 #include "QvkPulse.h"
 
+#include <QClipboard>
+
 using namespace std;
 
 #ifdef QT5
-  #include "QvkLogListWidget.h"
   #include "log/QvkLog.h"
   #include <QPointer>
 
@@ -548,6 +549,34 @@ screencast::screencast()
 
 screencast::~screencast()
 { 
+}
+
+void screencast::contextMenuEvent( QContextMenuEvent *event )
+{
+    if ( myUi.ListWidgetLogVokoscreen->underMouse() == true )
+    {
+      QAction *actionCopyAll = new QAction( "Copy all", this );
+      connect( actionCopyAll, SIGNAL( triggered() ), this, SLOT( copyToClipboard() ) );
+      QMenu *menu = new QMenu();
+      menu->addAction( actionCopyAll );
+      menu->exec( event->globalPos() );
+      delete actionCopyAll;
+      delete menu;
+    }
+}
+
+
+void screencast::copyToClipboard()
+{
+  QClipboard *clipboard = QApplication::clipboard();  
+  QString string;
+  for ( int i = 0; i < myUi.ListWidgetLogVokoscreen->count(); ++i )
+  {
+    QListWidgetItem *listWidgetItem;
+    listWidgetItem = myUi.ListWidgetLogVokoscreen->item( i );
+    string = string + listWidgetItem->text() + "\n";
+  }
+  clipboard->setText( string );
 }
 
 
