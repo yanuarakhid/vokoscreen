@@ -53,6 +53,7 @@ private slots:
 
   
 private:
+  QvkSettings vkSettings;
   QFrame *rotateFrame;
   QCheckBox *checkBox;
   QComboBox *comboBox;
@@ -64,10 +65,8 @@ private:
   QRadioButton *radioButtonLeftMiddle;
   QvkWebcamWatcher * myWebcamWatcher;
   CaptureThread *captureThread;
-  //QvkWebcamWindow *webcamWindow;
   bool mirrored;
 
-  QvkSettings vkSettings;
 
 protected:
   

@@ -1,7 +1,8 @@
 #include "QvkWebcamController.h" 
 
 QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox, 
-					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle, QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle )
+					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle,
+					  QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle )
 {
   vkSettings.readAll();
   
@@ -41,11 +42,17 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   connect( rotateDial, SIGNAL( sliderPressed () ), this, SLOT( rotateDialclicked() ) );
   
   radioButtonTopMiddle = myRadioButtonTopMiddle;
+  radioButtonTopMiddle->setChecked( vkSettings.getWebcamButtonTopMiddle() );
+  
   radioButtonRightMiddle = myRadioButtonRightMiddle;
+  radioButtonRightMiddle->setChecked( vkSettings.getWebcamButtonRightMiddle() );
+  
   radioButtonBottomMiddle = myRadioButtonBottomMiddle;
-  radioButtonBottomMiddle->setChecked( true );
+  radioButtonBottomMiddle->setChecked( vkSettings.getWebcamButtonBottomMiddle() );
+  
   radioButtonLeftMiddle = myRadioButtonLeftMiddle;
- 
+  radioButtonLeftMiddle->setChecked( vkSettings.getWebcamButtonLeftMiddle() );
+  
   captureThread = new CaptureThread();
   connect( captureThread, SIGNAL( newPicture( QImage ) ), this, SLOT( setNewImage( QImage ) ) );
   
@@ -73,18 +80,22 @@ void QvkWebcamController::rotateDialclicked()
   radioButtonTopMiddle->setCheckable( false );
   radioButtonTopMiddle->setChecked( false );
   radioButtonTopMiddle->setCheckable ( true );
-
+  radioButtonTopMiddle->update();
+  
   radioButtonRightMiddle->setCheckable ( false );
   radioButtonRightMiddle->setChecked( false );
   radioButtonRightMiddle->setCheckable ( true );
-
+  radioButtonRightMiddle->update();
+  
   radioButtonBottomMiddle->setCheckable ( false );
   radioButtonBottomMiddle->setChecked( false );
   radioButtonBottomMiddle->setCheckable ( true );
- 
+  radioButtonBottomMiddle->update();
+  
   radioButtonLeftMiddle->setCheckable ( false );
   radioButtonLeftMiddle->setChecked( false );
   radioButtonLeftMiddle->setCheckable ( true );
+  radioButtonLeftMiddle->update();  
 }
 
 

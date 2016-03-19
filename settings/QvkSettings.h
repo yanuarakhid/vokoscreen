@@ -66,7 +66,11 @@ public:
   bool getWebcamMirrored();
   bool getWebcamBorder();
   bool getWebcamOverFullScreen();
-  
+  bool getWebcamButtonTopMiddle();
+  bool getWebcamButtonRightMiddle();
+  bool getWebcamButtonBottomMiddle();
+  bool getWebcamButtonLeftMiddle();
+
   // Magnifier
   int getMagnifierOnOff();
   int getMagnifierFormValue();
@@ -126,6 +130,10 @@ private:
   bool webcamMirrored;
   bool webcamBorder;
   bool webcamOverFullScreen;
+  bool webcamButtonTopMiddle;
+  bool webcamButtonRightMiddle;
+  bool webcamButtonBottomMiddle;
+  bool webcamButtonLeftMiddle;
   
   // Magnifier
   int magnifierOnOff;

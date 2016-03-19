@@ -95,6 +95,14 @@ void QvkSettings::readAll()
 	webcamMirrored = settings.value( "Mirrored", false ).toBool();
 	webcamBorder = settings.value( "Border", true ).toBool();
 	webcamOverFullScreen = settings.value( "OverFullScreen", false ).toBool();
+	webcamButtonTopMiddle = settings.value( "Top", false ).toBool();
+        webcamButtonRightMiddle = settings.value( "Right", false ).toBool();
+        webcamButtonBottomMiddle = settings.value( "Bottom", false ).toBool();
+	webcamButtonLeftMiddle = settings.value( "Left", false ).toBool();
+	if ( ( getWebcamButtonTopMiddle() == false ) and ( getWebcamButtonRightMiddle() == false ) and ( getWebcamButtonLeftMiddle() == false ) )
+	{
+	  webcamButtonBottomMiddle = true;
+	}
     settings.endGroup();
     
     settings.beginGroup( "Magnifier" );
@@ -283,6 +291,27 @@ bool QvkSettings::getWebcamOverFullScreen()
 {
   return webcamOverFullScreen;
 }
+
+bool QvkSettings::getWebcamButtonTopMiddle()
+{
+  return webcamButtonTopMiddle; 
+}
+
+bool QvkSettings::getWebcamButtonRightMiddle()
+{
+  return webcamButtonRightMiddle;
+}
+
+bool QvkSettings::getWebcamButtonBottomMiddle()
+{
+  return webcamButtonBottomMiddle;
+}
+
+bool QvkSettings::getWebcamButtonLeftMiddle()
+{
+  return webcamButtonLeftMiddle;
+}
+
 
 // Magnifier
 int QvkSettings::getMagnifierOnOff()

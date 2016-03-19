@@ -187,7 +187,6 @@ private:
 
     QScrollArea *scrollAreaPulse;
     QCheckBox *namePulse;
-    //QFrame *PulseFrame;
     
     QLabel *statusBarLabelTime;
     QLabel * statusBarLabelFps;
@@ -227,8 +226,6 @@ private:
     QTimer *windowMoveTimer;
     QDateTime beginTime;
 
-    //QMenu menu;
-    //QAction *actionCopyAll;
     
 protected:
    void contextMenuEvent( QContextMenuEvent *event );
