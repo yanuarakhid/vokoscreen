@@ -67,20 +67,6 @@ QvkWebcamController::~QvkWebcamController( void )
 }
 
 
-void QvkWebcamController::saveSettings()
-{
-  QSettings settings( "vokoscreen", "vokoscreen" );
-  settings.beginGroup( "Webcam" );
-    settings.setValue( "X", webcamWindow->getValueX() );
-    settings.setValue( "Y", webcamWindow->getValueY() );
-    settings.setValue( "Width", webcamWindow->getValueWidth() );
-    settings.setValue( "Height", webcamWindow->getValueHeight() );
-    settings.setValue( "Border", webcamWindow->getValueBorder() );
-    settings.setValue( "OverFullScreen", webcamWindow->getOverFullScreen() );
-  settings.endGroup();
-}
-
-
 void QvkWebcamController::rotateDialclicked()
 {
   // Diese drei Befehle müssen sein damit der Radiobutton unchecked ist

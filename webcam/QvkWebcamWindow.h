@@ -20,18 +20,12 @@ public:
     virtual ~QvkWebcamWindow();
     QString currentDevice;
     QLabel *webcamLabel;
-    bool getValueBorder();
-    int getValueX();
-    int getValueY();
-    int getValueWidth();
-    int getValueHeight();
-    bool getOverFullScreen();
 
     QAction *action160x120;
     QAction *action320x240;
     QAction *action640x480;
     QAction *actionUserDefined;
-    QAction * actionBorder;
+    QAction *actionBorder;
     QAction *actionVisibleOverFullscreen;
     QAction *actionClose;
     QMenu menu;
@@ -43,6 +37,12 @@ private:
     QvkSettings vkSettings;
     
 public slots:
+    int getValueX();
+    int getValueY();
+    int getValueWidth();
+    int getValueHeight();
+    bool getOverFullScreen();
+    bool getValueBorder();
 
     
 private slots:

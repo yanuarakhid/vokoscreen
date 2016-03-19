@@ -673,8 +673,13 @@ void screencast::saveSettings()
     settings.setValue( "Right", myUi.radioButtonRightMiddle->isChecked() );
     settings.setValue( "Bottom", myUi.radioButtonBottomMiddle->isChecked() );
     settings.setValue( "Left", myUi.radioButtonLeftMiddle->isChecked() );
+    settings.setValue( "X", webcamController->webcamWindow->getValueX() );
+    settings.setValue( "Y", webcamController->webcamWindow->getValueY() );
+    settings.setValue( "Width", webcamController->webcamWindow->getValueWidth() );
+    settings.setValue( "Height", webcamController->webcamWindow->getValueHeight() );
+    settings.setValue( "Border", webcamController->webcamWindow->getValueBorder() );
+    settings.setValue( "OverFullScreen", webcamController->webcamWindow->getOverFullScreen() );
   settings.endGroup();
-  webcamController->saveSettings();
   
   settings.beginGroup( "Magnifier" );
     settings.setValue( "OnOff", myUi.MagnifierCheckBox->checkState());

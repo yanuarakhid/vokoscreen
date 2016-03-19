@@ -31,10 +31,11 @@ public:
   
   QStringList webcamList;
  
+  QvkWebcamWindow *webcamWindow;
+  
   
 public slots:
   void webcamCloseEvent();
-  void saveSettings();
 
   
 private slots:
@@ -63,7 +64,7 @@ private:
   QRadioButton *radioButtonLeftMiddle;
   QvkWebcamWatcher * myWebcamWatcher;
   CaptureThread *captureThread;
-  QvkWebcamWindow *webcamWindow;
+  //QvkWebcamWindow *webcamWindow;
   bool mirrored;
 
   QvkSettings vkSettings;
