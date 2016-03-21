@@ -39,7 +39,7 @@ QvkWebcamWindow::QvkWebcamWindow()
 
   actionVisibleOverFullscreen = new QAction( tr ( "Show over fullscreen" ), this );
   actionVisibleOverFullscreen->setCheckable( true );
-  connect( actionVisibleOverFullscreen, SIGNAL( triggered() ), this, SLOT( setVisibleOverFullscreen() ) );
+  connect( actionVisibleOverFullscreen, SIGNAL( triggered() ), this, SLOT( setVisibleOverFullscreen_New() ) );
 
   actionClose = new QAction( tr ( "Close" ), this );
   connect( actionClose, SIGNAL( triggered() ), this, SLOT( closeMenue() ) );
@@ -91,6 +91,12 @@ QvkWebcamWindow::QvkWebcamWindow()
 QvkWebcamWindow::~QvkWebcamWindow()
 {
 }
+
+void QvkWebcamWindow::setVisibleOverFullscreen_New()
+{
+  emit setOverScreen();
+}
+
 
 void QvkWebcamWindow::setValueBorder( bool value )
 {
@@ -244,7 +250,7 @@ void QvkWebcamWindow::setVisibleOverFullscreen()
 {
   if ( actionVisibleOverFullscreen->isChecked() )
   {
-    setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint );
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint );
     actionBorder->setChecked( false );
     setOverFullScreen( true );
     setValueBorder( false );

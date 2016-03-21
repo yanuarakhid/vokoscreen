@@ -43,6 +43,7 @@ public slots:
     int getValueHeight();
     bool getOverFullScreen();
     bool getValueBorder();
+    void setVisibleOverFullscreen();
 
     
 private slots:
@@ -51,10 +52,12 @@ private slots:
     void set640x480();
     void setActionUserDefined();
     void setBorder();
-    void setVisibleOverFullscreen();
+//    void setVisibleOverFullscreen();
     void closeMenue();
     void setValueBorder( bool value );
     void setOverFullScreen( bool value );
+    
+    void setVisibleOverFullscreen_New();
 
 protected:
     void closeEvent( QCloseEvent * event );
@@ -64,6 +67,7 @@ protected:
 signals:
     void closeWebcamWindow();
     void enterEventWebcamWindow();
+    void setOverScreen();
 };
 
 #endif

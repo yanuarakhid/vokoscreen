@@ -50,6 +50,7 @@ private slots:
   
   void readWebcams( QStringList );
   void webcams();
+  void checkBox_OnOff();
 
   
 private:

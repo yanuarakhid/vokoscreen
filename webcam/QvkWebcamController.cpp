@@ -1,5 +1,7 @@
 #include "QvkWebcamController.h" 
 
+#include <QTest>
+
 QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox, 
 					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle,
 					  QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle )
@@ -62,8 +64,9 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
   myWebcamWatcher->myfileSystemWatcher( "/dev/" );
   
   webcamWindow = new QvkWebcamWindow();
+  connect( webcamWindow, SIGNAL( setOverScreen() ), this, SLOT( checkBox_OnOff() ) );
   connect( webcamWindow, SIGNAL( closeWebcamWindow() ), SLOT( webcamCloseEvent() ) );
-  
+
   connect( myWebcamWatcher, SIGNAL( readWebcamNames( QStringList ) ), this, SLOT( readWebcams( QStringList ) ) );
   
 }
@@ -73,6 +76,14 @@ QvkWebcamController::~QvkWebcamController( void )
 {
 }
 
+void QvkWebcamController::checkBox_OnOff()
+{
+  checkBox->clicked( false );
+  QCoreApplication::processEvents( QEventLoop::AllEvents );     
+  webcamWindow->setVisibleOverFullscreen();
+  checkBox->clicked( true );
+  checkBox->setChecked( Qt::Checked );
+}
 
 void QvkWebcamController::rotateDialclicked()
 {
