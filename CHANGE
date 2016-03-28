@@ -1,15 +1,1 @@
-1.8.0 New record area, countdown-timer, avconv support
-1.7.0 Save last tab, remove v4l-utils, time display bug, samplerate usb-mikro, filesize statusline,
-1.6.7 various changes
-1.6.6 Remove autoframe, Sample now via asoundlib 
-1.6.5 save current tab
-1.6.3 Systray Picture 64x64, gui save location
-1.6.2 Window without Border, Maximized window is now recorded.
-1.6.0 Release NEW: Statusbar, Area size display installed, Select webcam, Installed three settings for magnifier, Font size permanently, Image Audio Synchronization, Webcam noborder, Close menue and save settings, Image Audio Synchronization
-1.5.0 Relaese
-1.4.15 Rewriting the webcam modul. The package "v4l2-ctl" is no longer needed.
-1.4.6 Rewriting the Alsamodul through their own routines. The package "alsa-utils" is no longer needed.
-1.4.5 Relaese
-1.4.4 Alsa Bug fixed
-1.4.2 My own "Xwininfo" routine built-in. The package "Xwininfo" is no longer needed
-
+see http://linuxecke.volkoh.de/vokoscreen/vokoscreen-changes.html

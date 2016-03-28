@@ -92,7 +92,6 @@ bool QvkFormatsAndCodecs::isCodecAvailable( QString typeOfCodec, QString nameOfC
 {
   // Give all Audio or Vidocodec
   QStringList TypeListCodec = ListCodecs.filter( QRegExp( "^" + typeOfCodec.left( 1 ) ) );
-
   bool available = false;
   for ( int i = 0; i < TypeListCodec.count(); i++ )
   {

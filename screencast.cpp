@@ -158,7 +158,7 @@ screencast::screencast()
     myUi.tabWidget->setTabIcon( 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
 
     connect( myUi.SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
-
+    
     connect( myUi.RecorderLineEdit, SIGNAL( textChanged( QString ) ), SLOT( recorderLineEditTextChanged( QString ) ) );
     myUi.RecorderLineEdit->setText( getFileWithPath( vkSettings.getRecorder() ) );
 
@@ -449,7 +449,7 @@ screencast::screencast()
    VideoFileSystemWatcher->addPath( myUi.SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
    myVideoFileSystemWatcher( "" );
-    
+/*    
    qDebug() << "[vokoscreen] ---Begin search video codec---";
    QvkFormatsAndCodecs *formatsAndCodecs = new QvkFormatsAndCodecs( myUi.RecorderLineEdit->displayText() );
    QStringList videoCodecList;
@@ -542,7 +542,9 @@ screencast::screencast()
      }
    qDebug() << "[vokoscreen] ---End search devices---";
    qDebug( " " );
-   
+*/ 
+
+   SearchCodec();
    clickedScreenSize();
    AreaOnOff();
 }
@@ -550,6 +552,107 @@ screencast::screencast()
 screencast::~screencast()
 { 
 }
+
+
+void screencast::SearchCodec()
+{
+   qDebug() << "[vokoscreen] ---Begin search video codec---";
+   QvkFormatsAndCodecs *formatsAndCodecs = new QvkFormatsAndCodecs( myUi.RecorderLineEdit->displayText() );
+   QStringList videoCodecList;
+   bool experimental = false;
+   myUi.VideocodecComboBox->clear();
+   videoCodecList << "libx264" << "libx265" << "mpeg4" << "huffyuv" << "gif";
+   for ( int i = 0; i < videoCodecList.count(); i++ )
+   {
+     if ( formatsAndCodecs->isCodecAvailable( "Video", videoCodecList[ i ], &experimental ) == true )
+     {
+       qDebug() << "[vokoscreen] find Videocodec" << videoCodecList[ i ];
+       myUi.VideocodecComboBox->addItem( videoCodecList[ i ], experimental );
+     }
+     else
+     {
+       qDebug() << "[vokoscreen] not found Videocodec" << videoCodecList[ i ];
+     }
+   }
+   // Fallback
+   int x = myUi.VideocodecComboBox->findText( vkSettings.getVideoCodec() );
+   if ( x == -1 )
+      myUi.VideocodecComboBox->setCurrentIndex( 0 );
+   else
+      myUi.VideocodecComboBox->setCurrentIndex( x );
+   qDebug() << "[vokoscreen] ---End search video codec---";
+   qDebug( " " );
+
+   
+   qDebug() << "[vokoscreen] ---Begin search audio codec---";
+   QStringList audioCodecList;
+   myUi.AudiocodecComboBox->clear();
+   audioCodecList << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac";
+   for ( int i = 0; i < audioCodecList.count(); i++ )
+   {
+     if ( formatsAndCodecs->isCodecAvailable( "Audio", audioCodecList[ i ], &experimental ) == true )
+     {
+       qDebug() << "[vokoscreen] find Audiocodec" << audioCodecList[ i ];
+       myUi.AudiocodecComboBox->addItem( audioCodecList[ i ], experimental );
+     }
+     else
+     {
+       qDebug() << "[vokoscreen] not found Audiocodec" << audioCodecList[ i ];
+     }
+   }
+   // Fallback
+   x = myUi.AudiocodecComboBox->findText( vkSettings.getAudioCodec() );
+   if ( x == -1 )
+      myUi.AudiocodecComboBox->setCurrentIndex( 0 );
+   else
+      myUi.AudiocodecComboBox->setCurrentIndex( x );
+   qDebug() << "[vokoscreen] ---End search audio codec---";
+   qDebug( " " );
+
+   
+   qDebug() << "[vokoscreen] ---Begin search formats---";
+   myUi.VideoContainerComboBox->clear();
+   QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" );
+   QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" );
+   for ( int i = 0; i < formatList.count(); i++ )
+   {
+     if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
+     {
+       qDebug() << "[vokoscreen] find Format" << formatList[ i ];
+       myUi.VideoContainerComboBox->addItem( formatList[ i ], userDataList[ i ] );
+     }
+     else
+       qDebug() << "[vokoscreen] not found Format" << formatList[ i ];
+   }
+   // Fallback
+   x = myUi.VideoContainerComboBox->findText( vkSettings.getVideoContainer() );
+   if ( x == -1 )
+      myUi.VideoContainerComboBox->setCurrentIndex( 0 );
+   else
+      myUi.VideoContainerComboBox->setCurrentIndex( x );
+   qDebug() << "[vokoscreen] ---End search formats---";
+   qDebug( " " );
+
+   
+   qDebug() << "[vokoscreen] ---Begin search devices---";
+     QString device = "x11grab";
+     if ( formatsAndCodecs->isDeviceAvailable( device ) == true )
+     {
+       qDebug() << "[vokoscreen] find device" << device;
+     }
+     else
+     {
+       qDebug() << "[vokoscreen] not found device" << device;
+       QMessageBox msgBox;
+       msgBox.setText("Your ffmpeg is not compatible with vokoscreen");
+       msgBox.setInformativeText("ffmpeg must copmpiled with option --enable-x11grab");
+       msgBox.setStandardButtons( QMessageBox::Ok );
+       msgBox.setDefaultButton( QMessageBox::Ok );
+     }
+   qDebug() << "[vokoscreen] ---End search devices---";
+   qDebug( " " );
+}
+
 
 void screencast::contextMenuEvent( QContextMenuEvent *event )
 {
@@ -1814,7 +1917,10 @@ void screencast::selectRecorder()
 					           QDesktopServices::storageLocation( QDesktopServices::HomeLocation ) );
 
   if ( recorder > "" )
+  {
     myUi.RecorderLineEdit->setText( recorder );
+    SearchCodec();
+  }
 }
 #endif
 
@@ -1826,7 +1932,10 @@ void screencast::selectRecorder()
                                  QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) );
 
     if ( recorder > "" )
+    {
       myUi.RecorderLineEdit->setText( recorder );
+      SearchCodec();
+    }
 }
 #endif
 

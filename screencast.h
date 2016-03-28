@@ -137,7 +137,8 @@ private slots:
   void showCredits();
   void creditsCloseEvent();
   void stateChangedSystray( int state );
-  
+  void SearchCodec();
+
   
   QString PathTempLocation();
   QString NameInMoviesLocation();
