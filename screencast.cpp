@@ -2076,12 +2076,9 @@ QString screencast::myAlsa()
           {
             box = listQFrame.at( i );
             if ( box->checkState() == Qt::Checked  )
-              value = "-f pulse -i " + box->accessibleName();
-              //value = "-f pulse -name vokoscreen -i " + box->accessibleName(); // -name funktioniert erst ab ffmpeg Version?
-
+              value = "-f pulse -name vokoscreen -i " + box->accessibleName();
           }
         }
-        
     }
   }
   else
