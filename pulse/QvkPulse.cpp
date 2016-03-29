@@ -57,7 +57,6 @@ int QvkPulse::getCountCheckedPulseDevices( QWidget *Pulseframe )
 
 void QvkPulse::pulseUnloadModule()
 {
-  //qDebug( " " );
   qDebug() << "[vokoscreen] ---Begin Pulse unload Module---";
   QProcess Process;
   QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
@@ -145,7 +144,6 @@ QString QvkPulse::getPulseInputDevices( int value )
   Process.waitForFinished();
   QString output = Process.readAllStandardOutput();
   Process.close();
-//  delete Process;
  
   QStringList list = output.split( "\n" );
 
@@ -173,7 +171,6 @@ QString QvkPulse::getPulseInputName( int value )
   Process.waitForFinished();
   QString output = QString::fromUtf8(Process.readAllStandardOutput());
   Process.close();
-//  delete Process;
   
   QStringList list = output.split( "\n" );
 
@@ -201,7 +198,6 @@ int QvkPulse::getPulseInputDevicesCount()
   Process.waitForFinished();
   QString output = Process.readAllStandardOutput();
   Process.close();
-  //delete Process;
   
   QStringList list = output.split( "\n" );
 
