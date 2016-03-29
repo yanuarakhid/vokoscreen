@@ -129,9 +129,23 @@ screencast::screencast()
     myUi.tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
     connect( myUi.AudioOnOffCheckbox,  SIGNAL( stateChanged( int ) ), SLOT( stateChangedAudio( int ) ) );
     connect( myUi.AudioOnOffCheckbox,  SIGNAL( stateChanged( int ) ), SLOT( AudioOff( int ) ) );
-    connect( myUi.AlsaRadioButton,  SIGNAL( clicked( bool )  ), SLOT( clickedAudioAlsa( bool ) ) );
+    
+    myUi.labelPulsaudio->setText("");
+    myUi.labelPulsaudio->setAlignment( Qt::AlignCenter );
+    QImage qImage( ":/pictures/pulseaudio.png" );
+    qImage = qImage.scaledToWidth( 40, Qt::SmoothTransformation);
+    qImage = qImage.scaledToHeight( 40, Qt::SmoothTransformation);
+    myUi.labelPulsaudio->setPixmap( QPixmap::fromImage( qImage, Qt::AutoColor)  );
     connect( myUi.PulseDeviceRadioButton,  SIGNAL( clicked( bool )  ), SLOT( clickedAudioPulse( bool ) ) );
 
+    myUi.labelAlsa->setText("");
+    myUi.labelAlsa->setAlignment( Qt::AlignCenter );
+    QImage qImageAlsa(  ":/pictures/alsa.png" );
+    qImageAlsa = qImageAlsa.scaledToWidth( 40, Qt::SmoothTransformation);
+    qImageAlsa = qImageAlsa.scaledToHeight( 40, Qt::SmoothTransformation);
+    myUi.labelAlsa->setPixmap( QPixmap::fromImage( qImageAlsa, Qt::AutoColor)  );
+    connect( myUi.AlsaRadioButton,  SIGNAL( clicked( bool )  ), SLOT( clickedAudioAlsa( bool ) ) );
+    
     
     // Tab 3 Video options **************************************************
     myUi.tabWidget->setTabIcon( 2, QIcon::fromTheme( "applications-multimedia", QIcon( ":/pictures/videooptionen.png" ) ) );

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>531</width>
+    <width>552</width>
     <height>267</height>
    </rect>
   </property>
@@ -41,7 +41,7 @@
          </sizepolicy>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="iconSize">
          <size>
@@ -218,22 +218,6 @@
             <property name="leftMargin">
              <number>0</number>
             </property>
-            <item row="2" column="3">
-             <widget class="QComboBox" name="AlsaHwComboBox"/>
-            </item>
-            <item row="1" column="2">
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
             <item row="0" column="3">
              <spacer name="horizontalSpacer_5">
               <property name="orientation">
@@ -254,20 +238,21 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
+            <item row="3" column="1">
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <property name="leftMargin">
-               <number>20</number>
+               <number>0</number>
               </property>
               <item>
-               <widget class="QRadioButton" name="PulseDeviceRadioButton">
-                <property name="text">
-                 <string notr="true">Pulse</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
+               <layout class="QHBoxLayout" name="horizontalLayout_22">
+                <item>
+                 <widget class="QLabel" name="labelPulsaudio">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
                <spacer name="verticalSpacer_2">
@@ -284,21 +269,7 @@
               </item>
              </layout>
             </item>
-            <item row="2" column="1">
-             <layout class="QHBoxLayout" name="horizontalLayout_2">
-              <property name="leftMargin">
-               <number>20</number>
-              </property>
-              <item>
-               <widget class="QRadioButton" name="AlsaRadioButton">
-                <property name="text">
-                 <string notr="true">Alsa</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item row="1" column="3">
+            <item row="3" column="3">
              <widget class="QScrollArea" name="scrollArea">
               <property name="horizontalScrollBarPolicy">
                <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -314,8 +285,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>98</width>
-                 <height>28</height>
+                 <width>370</width>
+                 <height>112</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -332,6 +303,62 @@
                </layout>
               </widget>
              </widget>
+            </item>
+            <item row="3" column="2">
+             <layout class="QVBoxLayout" name="verticalLayout_13">
+              <item>
+               <widget class="QRadioButton" name="PulseDeviceRadioButton">
+                <property name="text">
+                 <string notr="true">Pulse</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item row="4" column="3">
+             <layout class="QVBoxLayout" name="verticalLayout_15">
+              <item>
+               <widget class="QComboBox" name="AlsaHwComboBox"/>
+              </item>
+             </layout>
+            </item>
+            <item row="4" column="2">
+             <layout class="QVBoxLayout" name="verticalLayout_14">
+              <item>
+               <widget class="QRadioButton" name="AlsaRadioButton">
+                <property name="text">
+                 <string notr="true">Alsa</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="4" column="1">
+             <layout class="QVBoxLayout" name="verticalLayout_16">
+              <item>
+               <widget class="QLabel" name="labelAlsa">
+                <property name="text">
+                 <string>TextLabel</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>
