@@ -78,10 +78,10 @@ QvkWebcamController::~QvkWebcamController( void )
 
 void QvkWebcamController::checkBox_OnOff()
 {
-  checkBox->clicked( false );
+  checkBox->click();
   QCoreApplication::processEvents( QEventLoop::AllEvents );     
   webcamWindow->setVisibleOverFullscreen();
-  checkBox->clicked( true );
+  checkBox->click();
   checkBox->setChecked( Qt::Checked );
 }
 
