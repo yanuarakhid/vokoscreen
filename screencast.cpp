@@ -1101,6 +1101,7 @@ void screencast::AlsaWatcherEvent( QStringList CardxList )
     QvkAlsaDevice * alsaDevice = new QvkAlsaDevice( CardxList[ i ] );
     AlsaDeviceList.append( alsaDevice );
     myUi.AlsaHwComboBox->addItem( AlsaDeviceList.at( i )->getAlsaName() , i );
+    myUi.AlsaHwComboBox->setItemIcon( i , QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
   }
 
   QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
@@ -1151,6 +1152,7 @@ void screencast::PulseMultipleChoice()
     namePulse->setText( QvkPulse::getPulseInputName( i ) );
     namePulse->setAccessibleName( QvkPulse::getPulseInputDevices( i  ) );
     namePulse->setToolTip( tr ( "Select one or more devices" ) );
+    namePulse->setIcon( QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
     qDebug() << "[vokoscreen]" << "Find CaptureCard:" << namePulse->text() << "with device:" << namePulse->accessibleName();
   }
 
