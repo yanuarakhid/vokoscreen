@@ -1158,7 +1158,9 @@ void screencast::PulseMultipleChoice()
   {
     delete listQScrollArea[ i ];
   }
-  
+
+  QvkPulse vkPulse;
+  vkPulse.grepPactlOutput();
   for ( int i = 1; i <= QvkPulse::getPulseInputDevicesCount(); ++i )
   {
     namePulse = new QCheckBox();
@@ -1166,7 +1168,7 @@ void screencast::PulseMultipleChoice()
     namePulse->setText( QvkPulse::getPulseInputName( i ) );
     namePulse->setAccessibleName( QvkPulse::getPulseInputDevices( i  ) );
     namePulse->setToolTip( tr ( "Select one or more devices" ) );
-    namePulse->setIcon( QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
+    namePulse->setIcon( QIcon::fromTheme( vkPulse.getIconName( i-1 ), QIcon( ":/pictures/micro.png" ) ) );
     qDebug() << "[vokoscreen]" << "Find CaptureCard:" << namePulse->text() << "with device:" << namePulse->accessibleName();
   }
 

@@ -204,3 +204,77 @@ int QvkPulse::getPulseInputDevicesCount()
   QStringList result = list.filter( "Source #", Qt::CaseInsensitive );
   return result.count();
 }
+
+//***************************************** New New New ***********************************************
+//********************************** Only for icon in Audio Widget ******************************************
+/**
+ * grep "pactl list sources" to QStringList listPactlOutput
+ */
+void QvkPulse::grepPactlOutput()
+{
+  QProcess Process;
+  QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+  env.insert("LANG", "c");
+  Process.setProcessEnvironment(env);
+  Process.start( "pactl list sources" );
+  Process.waitForFinished();
+  QString output = QString::fromUtf8( Process.readAllStandardOutput() );
+  Process.close();
+  
+  if ( !output.isEmpty() )
+  {
+    listPactlOutput.clear();
+    listPactlOutput = output.split( "\n" );
+  }
+}
+
+
+/**
+ * If unplug and then plugin, the "Source #x" changed
+ * we want the correct Sourcename.
+ */
+QString QvkPulse::getNameOfSourceNumber( int value )
+{
+  QStringList list = listPactlOutput.filter( "Source #" );
+  return list[ value ];
+}
+
+
+/**
+ * 
+ */
+QStringList QvkPulse::grepListSourceNumberX( int value )
+{
+  // Search first line from "Source #x"
+  int posBegin = listPactlOutput.indexOf( getNameOfSourceNumber( value ) );
+  
+  // Search last line from "Source #x"
+  int posEnd = listPactlOutput.indexOf( "", posBegin );
+  
+  QStringList listOfSource;
+  for ( int i = posBegin; i < posEnd; i++ )
+    listOfSource << listPactlOutput.at( i );
+  
+  return listOfSource;
+}
+
+
+QString QvkPulse::getIconName( int value )
+{
+  QString ret = "audio-input-microphone";
+
+  if ( !listPactlOutput.empty() )
+  {
+    QStringList list = grepListSourceNumberX( value );
+    QString iconName = list.filter( "device.icon_name" )[0].trimmed();
+    iconName = iconName.split('"')[ 1 ];
+  
+    if ( iconName == "audio-card-pci" )
+      ret = "audio-card";
+
+    if ( iconName == "camera-web-usb" )
+      ret = "camera-web";
+  } 
+  
+  return ret;
+}
