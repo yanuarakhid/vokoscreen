@@ -1331,7 +1331,7 @@ void screencast::searchGIFPlayer()
 	myUi.GIFplayerComboBox->addItem( GIFList.at( x ), GIFList.at( x ) );
       }	
     }
-    qDebug() << "[vokoscreen]" << "---End search GIFoplayer---";
+    qDebug() << "[vokoscreen]" << "---End search GIFplayer---";
     qDebug( " " );
 }
 

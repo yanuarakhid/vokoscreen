@@ -22,13 +22,10 @@ public:
     static QString getPulseInputName( int value );
     static int getPulseInputDevicesCount();
 
-    //*************** New New New *****************
     void grepPactlOutput();
     QStringList grepListSourceNumberX( int value );
     QString getIconName( int value );
 
-
-    
     
 signals:
 
@@ -37,7 +34,6 @@ private slots:
   
   
 private:
-    //************** New New New *****************
     QStringList listPactlOutput;
     QString getNameOfSourceNumber( int value );
 

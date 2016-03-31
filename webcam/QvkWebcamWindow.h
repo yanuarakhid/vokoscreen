@@ -52,7 +52,6 @@ private slots:
     void set640x480();
     void setActionUserDefined();
     void setBorder();
-//    void setVisibleOverFullscreen();
     void closeMenue();
     void setValueBorder( bool value );
     void setOverFullScreen( bool value );
