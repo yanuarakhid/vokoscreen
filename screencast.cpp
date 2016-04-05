@@ -261,6 +261,7 @@ screencast::screencast()
 
     statusBarLabelFps = new QLabel();
     statusBarLabelFps->setText( "0" );
+    statusBarLabelFps->setAlignment(Qt::AlignCenter);
     statusBarLabelFps->setToolTip( tr( "Actual frames per second" ) );
 
     statusBarLabelSize = new QLabel();
@@ -290,7 +291,7 @@ screencast::screencast()
     myUi.statusBar->addWidget( statusBarLabelTime, 2 );
     myUi.statusBar->addWidget( statusBarLabelFps, 2 );
     myUi.statusBar->addWidget( statusBarLabelSize, 2 );
-    myUi.statusBar->addWidget( statusbarLabelScreenSize, 2 );
+    myUi.statusBar->addWidget( statusbarLabelScreenSize, 4 );
     myUi.statusBar->addWidget( statusBarLabelCodec, 2 );
     myUi.statusBar->addWidget( statusBarLabelFormat, 2 );
     myUi.statusBar->addWidget( statusBarLabelAudio, 2 );
@@ -1082,6 +1083,79 @@ void screencast::PulseMultipleChoice()
 
   qDebug() << "[vokoscreen]" << "---End search PulseAudio Capture Devices---";
   qDebug( " " );
+}
+
+
+void screencast::windowMove()
+{
+  // Begin Window is closed
+  QStringList stringList;
+  QList<WId> list = QxtWindowSystem::windows() ;
+  for( int i = 0; i < list.count(); i++)
+    stringList << QString::number( list[ i ] );
+
+  if ( !stringList.contains( QString::number( moveWindowID ) ) )
+  {
+    windowMoveTimer->stop();
+    myUi.StopButton->click();
+    return;
+  } 
+  // End Window is closed
+
+  // Wenn Versatzwert kleiner null ist
+  QString x = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).x() );
+  int xx = x.toInt();
+  if ( xx < 0 )
+    x = "0";
+  
+  QString y = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).y() );
+  int yy = y.toInt();
+  if ( yy < 0 )
+    y = "0";
+
+  if ( ( deltaXMove != x ) or ( deltaYMove != y ) )
+    if ( SystemCall->state() == QProcess::Running ) 
+      moveWindowPause();
+  
+  if ( ( deltaXMove == x ) and ( deltaYMove == y ) )
+    if ( ( SystemCall->state() == QProcess::NotRunning ) )
+    {
+      QStringList result = ffmpegString.split( DISPLAY );
+      QString str1 = result[ 0 ];
+      QString str2 = result[ 1 ];
+      result.clear();
+      result = str2.split( " " );
+      result[ 0 ] = DISPLAY + "+" + x + "," + y;
+      
+      str2 = "";
+
+      for ( int i = 0; i < result.count(); i++ )
+        str2.append( result.at( i ) + " " );
+      ffmpegString = str1 + str2.trimmed() + " ";
+      
+      moveWindowGo();
+    }
+
+  deltaXMove = x;
+  deltaYMove = y; 
+}
+
+void screencast::moveWindowPause()
+{
+  pause = true;
+  myUi.PauseButton->setChecked( true );
+  myUi.PauseButton->setText( tr( "Go" ) );
+  SystemCall->terminate();
+  SystemCall->waitForFinished();
+  QvkPulse::pulseUnloadModule();
+}
+
+
+void screencast::moveWindowGo()
+{
+  myUi.PauseButton->setChecked( false );  
+  myUi.PauseButton->setText( tr ( "Pause" ) );
+  startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
 }
 
 

@@ -118,7 +118,10 @@ private slots:
   void currentIndexChangedCodec( int index );
   void currentIndexChangedFormat( int index );
   
-  
+  void windowMove();
+  void moveWindowPause();
+  void moveWindowGo();
+
   // Tab Videooptionen
   void setFrameStandardSpinbox();
   void setVideocodecStandardComboBox();
