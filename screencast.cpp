@@ -1114,7 +1114,7 @@ void screencast::windowMove()
                                           &win_x_return, &win_y_return, &mask_return );
   (void)boolXQueryPointer;
     
-  if ( SystemCall->state() == QProcess::Running ) //( pause == false )
+  if ( SystemCall->state() == QProcess::Running )
   {
     if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 272 ) )
     {
@@ -1157,46 +1157,6 @@ void screencast::windowMove()
       moveWindowGo();
     }
   }
-  
-    
-/*    
-  // Wenn Versatz kleiner null ist
-  QString x = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).x() );
-  int xx = x.toInt();
-  if ( xx < 0 )
-    x = "0";
-  
-  QString y = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).y() );
-  int yy = y.toInt();
-  if ( yy < 0 )
-    y = "0";
-
-  if ( ( deltaXMove != x ) or ( deltaYMove != y ) )
-    if ( SystemCall->state() == QProcess::Running ) 
-      moveWindowPause();
-  
-  if ( ( deltaXMove == x ) and ( deltaYMove == y ) )
-    if ( ( SystemCall->state() == QProcess::NotRunning ) )
-    {
-      QStringList result = ffmpegString.split( DISPLAY );
-      QString str1 = result[ 0 ];
-      QString str2 = result[ 1 ];
-      result.clear();
-      result = str2.split( " " );
-      result[ 0 ] = DISPLAY + "+" + x + "," + y;
-      
-      str2 = "";
-
-      for ( int i = 0; i < result.count(); i++ )
-        str2.append( result.at( i ) + " " );
-      ffmpegString = str1 + str2.trimmed() + " ";
-      
-      moveWindowGo();
-    }
-
-  deltaXMove = x;
-  deltaYMove = y; 
-*/  
 }
 
 void screencast::moveWindowPause()
