@@ -121,6 +121,7 @@ private slots:
   void windowMove();
   void moveWindowPause();
   void moveWindowGo();
+  void newMovedXYcoordinates();
 
   // Tab Videooptionen
   void setFrameStandardSpinbox();

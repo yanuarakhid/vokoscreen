@@ -1127,6 +1127,31 @@ void screencast::windowMove()
   {
     if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 16 ) )
     {
+      newMovedXYcoordinates();
+      moveWindowGo();
+    }
+  }
+}
+
+void screencast::moveWindowPause()
+{
+  pause = true;
+  myUi.PauseButton->setChecked( true );
+  myUi.PauseButton->setText( tr( "Go" ) );
+  SystemCall->terminate();
+  SystemCall->waitForFinished();
+  QvkPulse::pulseUnloadModule();
+}
+
+void screencast::moveWindowGo()
+{
+  myUi.PauseButton->setChecked( false );  
+  myUi.PauseButton->setText( tr ( "Pause" ) );
+  startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
+}
+
+void screencast::newMovedXYcoordinates()
+{
       // Wenn Versatz kleiner null ist
       QString x = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).x() );
       int xx = x.toInt();
@@ -1153,28 +1178,6 @@ void screencast::windowMove()
       
       deltaXMove = x;
       deltaYMove = y; 
-      
-      moveWindowGo();
-    }
-  }
-}
-
-void screencast::moveWindowPause()
-{
-  pause = true;
-  myUi.PauseButton->setChecked( true );
-  myUi.PauseButton->setText( tr( "Go" ) );
-  SystemCall->terminate();
-  SystemCall->waitForFinished();
-  QvkPulse::pulseUnloadModule();
-}
-
-
-void screencast::moveWindowGo()
-{
-  myUi.PauseButton->setChecked( false );  
-  myUi.PauseButton->setText( tr ( "Pause" ) );
-  startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
 }
 
 
@@ -1791,6 +1794,7 @@ void screencast::Pause()
       Countdown();
       shortcutStop->setEnabled( true );
       myUi.PauseButton->setText( tr( "Pause" ) );
+      newMovedXYcoordinates();
       startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
       windowMoveTimer->start();
     }
