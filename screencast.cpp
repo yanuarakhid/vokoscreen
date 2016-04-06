@@ -1091,7 +1091,6 @@ void screencast::PulseMultipleChoice()
 #include <xcb/xcb_atom.h>
 void screencast::windowMove()
 {
-  //Display* display = QX11Info::display();
   Window root_return, child_return;
   int root_x_return, root_y_return;
   int win_x_return, win_y_return;
@@ -1133,17 +1132,6 @@ void screencast::windowMove()
     return;
   } 
   // --End-- Window is closed
-  
-}
-
-void screencast::moveWindowPause()
-{
-  SystemCall->terminate();
-  SystemCall->waitForFinished();
-  pause = true;
-  //myUi.PauseButton->setChecked( true );
-  //myUi.PauseButton->setText( tr( "Go" ) );
-  QvkPulse::pulseUnloadModule();
 }
 
 void screencast::moveWindowGo()

@@ -119,7 +119,6 @@ private slots:
   void currentIndexChangedFormat( int index );
   
   void windowMove();
-  void moveWindowPause();
   void moveWindowGo();
   void newMovedXYcoordinates();
 
