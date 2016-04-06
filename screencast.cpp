@@ -1091,6 +1091,35 @@ void screencast::PulseMultipleChoice()
 #include <xcb/xcb_atom.h>
 void screencast::windowMove()
 {
+  //Display* display = QX11Info::display();
+  Window root_return, child_return;
+  int root_x_return, root_y_return;
+  int win_x_return, win_y_return;
+  unsigned int mask_return;
+  XQueryPointer( QX11Info::display(), moveWindowID, &root_return, &child_return, &root_x_return, &root_y_return, 
+                                          &win_x_return, &win_y_return, &mask_return );
+    
+  if ( SystemCall->state() == QProcess::Running )
+  {
+    if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 272 ) )
+    {
+      SystemCall->terminate();
+      SystemCall->waitForFinished();
+      pause = true;
+      QvkPulse::pulseUnloadModule();
+      return;
+    }
+  }
+  
+  if ( ( pause == true ) and ( SystemCall->state() == QProcess::NotRunning ) )
+  {
+    if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 16 ) )
+    {
+      newMovedXYcoordinates();
+      moveWindowGo();
+    }
+  }
+  
   // --Begin-- Window is closed
   QStringList stringList;
   QList<WId> list = QxtWindowSystem::windows() ;
@@ -1104,42 +1133,16 @@ void screencast::windowMove()
     return;
   } 
   // --End-- Window is closed
-
-  Display* display = QX11Info::display();
-  Window root_return, child_return;
-  int root_x_return, root_y_return;
-  int win_x_return, win_y_return;
-  unsigned int mask_return;
-  bool boolXQueryPointer = XQueryPointer( display, moveWindowID, &root_return, &child_return, &root_x_return, &root_y_return, 
-                                          &win_x_return, &win_y_return, &mask_return );
-  (void)boolXQueryPointer;
-    
-  if ( SystemCall->state() == QProcess::Running )
-  {
-    if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 272 ) )
-    {
-      moveWindowPause();
-      return;
-    }
-  }
   
-  if ( ( pause == true ) and ( SystemCall->state() == QProcess::NotRunning ) )
-  {
-    if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 16 ) )
-    {
-      newMovedXYcoordinates();
-      moveWindowGo();
-    }
-  }
 }
 
 void screencast::moveWindowPause()
 {
-  pause = true;
-  myUi.PauseButton->setChecked( true );
-  myUi.PauseButton->setText( tr( "Go" ) );
   SystemCall->terminate();
   SystemCall->waitForFinished();
+  pause = true;
+  //myUi.PauseButton->setChecked( true );
+  //myUi.PauseButton->setText( tr( "Go" ) );
   QvkPulse::pulseUnloadModule();
 }
 
@@ -2418,7 +2421,7 @@ void screencast::Stop()
     SystemCall->waitForFinished();
   }
 
-  if ( pause )
+  if ( ( pause == true ) and (  myUi.VideocodecComboBox->currentText() != "gif" ) )
   {
     QDir dir( PathTempLocation() );
     QStringList stringList = dir.entryList(QDir::Files, QDir::Time | QDir::Reversed);
