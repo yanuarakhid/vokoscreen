@@ -72,7 +72,7 @@ WId QxtWindowSystem::activeWindow()
 
     return qxt_getWindows(net_active).value(0);
 }
-
+/*
 WId QxtWindowSystem::findWindow(const QString& title)
 {
     Window result = 0;
@@ -114,7 +114,7 @@ QString QxtWindowSystem::windowTitle(WId window)
         XFree(str);
     return name;
 }
-
+*/
 
 /*
 QRect QxtWindowSystem::windowGeometry(WId window)
@@ -158,7 +158,7 @@ QRect QxtWindowSystem::windowGeometry(WId window)
  * Returns the Windows dimensions and coordinates
  **/
 
-QRect QxtWindowSystem::windowGeometry( WId child)
+QRect QxtWindowSystem::windowGeometryWithoutFrame( WId child)
 {
     int x, y;
     Window root;

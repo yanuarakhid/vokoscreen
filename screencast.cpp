@@ -1144,12 +1144,12 @@ void screencast::moveWindowGo()
 void screencast::newMovedXYcoordinates()
 {
       // Wenn Versatz kleiner null ist
-      QString x = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).x() );
+      QString x = QString::number( QxtWindowSystem::windowGeometryWithoutFrame( moveWindowID ).x() );
       int xx = x.toInt();
       if ( xx < 0 )
         x = "0";
   
-      QString y = QString::number( QxtWindowSystem::windowGeometry( moveWindowID ).y() );
+      QString y = QString::number( QxtWindowSystem::windowGeometryWithoutFrame( moveWindowID ).y() );
       int yy = y.toInt();
       if ( yy < 0 )
         y = "0";

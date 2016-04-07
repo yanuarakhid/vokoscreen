@@ -109,10 +109,10 @@ void QvkWinInfo::selectWindow()
     windowTimer->stop();
     mouseTimer->stop();
 
-    myX = QxtWindowSystem::windowGeometry( newWinID ).x();
-    myY = QxtWindowSystem::windowGeometry( newWinID ).y();
-    myWidth = QxtWindowSystem::windowGeometry( newWinID ).width();
-    myHeight = QxtWindowSystem::windowGeometry( newWinID ).height();
+    myX = QxtWindowSystem::windowGeometryWithoutFrame( newWinID ).x();
+    myY = QxtWindowSystem::windowGeometryWithoutFrame( newWinID ).y();
+    myWidth = QxtWindowSystem::windowGeometryWithoutFrame( newWinID ).width();
+    myHeight = QxtWindowSystem::windowGeometryWithoutFrame( newWinID ).height();
 
     // Cursor resize does not show in video in the first Frames
     resize( 10, 10 );

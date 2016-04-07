@@ -41,11 +41,12 @@ class QXT_GUI_EXPORT QxtWindowSystem
 public:
     static WindowList windows();
     static WId activeWindow();
-    static WId findWindow(const QString& title);
-    static WId windowAt(const QPoint& pos);
-    static QString windowTitle(WId window);
+    //static WId findWindow(const QString& title);
+    //static WId windowAt(const QPoint& pos);
+    //static QString windowTitle(WId window);
     static QStringList windowTitles();
-    static QRect windowGeometry(WId window);
+    static QRect windowGeometryWithFrame(WId window);
+    static QRect windowGeometryWithoutFrame( WId child);
 
     //static uint idleTime();
 };
