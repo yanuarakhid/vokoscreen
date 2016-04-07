@@ -1098,6 +1098,9 @@ void screencast::windowMove()
   XQueryPointer( QX11Info::display(), moveWindowID, &root_return, &child_return, &root_x_return, &root_y_return, 
                                           &win_x_return, &win_y_return, &mask_return );
     
+  qDebug() << "Höhe Titelzeile" << QxtWindowSystem::windowGeometryWithoutFrame( moveWindowID ).y() - QxtWindowSystem::windowGeometryWithFrame( moveWindowID ).y();
+  
+  // window would be moved
   if ( SystemCall->state() == QProcess::Running )
   {
     if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 272 ) )
@@ -1110,16 +1113,18 @@ void screencast::windowMove()
     }
   }
   
+  // Window have new position
   if ( ( pause == true ) and ( SystemCall->state() == QProcess::NotRunning ) )
   {
     if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 16 ) )
     {
       newMovedXYcoordinates();
       moveWindowGo();
+      return;
     }
   }
   
-  // --Begin-- Window is closed
+  // Window is closed
   QStringList stringList;
   QList<WId> list = QxtWindowSystem::windows() ;
   for( int i = 0; i < list.count(); i++)
@@ -1131,7 +1136,6 @@ void screencast::windowMove()
     myUi.StopButton->click();
     return;
   } 
-  // --End-- Window is closed
 }
 
 void screencast::moveWindowGo()
