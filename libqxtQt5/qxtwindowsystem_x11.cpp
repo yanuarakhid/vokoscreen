@@ -72,49 +72,7 @@ WId QxtWindowSystem::activeWindow()
 
     return qxt_getWindows(net_active).value(0);
 }
-/*
-WId QxtWindowSystem::findWindow(const QString& title)
-{
-    Window result = 0;
-    WindowList list = windows();
-    foreach (const Window &wid, list)
-    {
-        if (windowTitle(wid) == title)
-        {
-            result = wid;
-            break;
-        }
-    }
-    return result;
-}
 
-WId QxtWindowSystem::windowAt(const QPoint& pos)
-{
-    Window result = 0;
-    WindowList list = windows();
-    for (int i = list.size() - 1; i >= 0; --i)
-    {
-        WId wid = list.at(i);
-        if (windowGeometry(wid).contains(pos))
-        {
-            result = wid;
-            break;
-        }
-    }
-    return result;
-}
-
-QString QxtWindowSystem::windowTitle(WId window)
-{
-    QString name;
-    char* str = 0;
-    if (XFetchName(QX11Info::display(), window, &str))
-        name = QString::fromLatin1(str);
-    if (str)
-        XFree(str);
-    return name;
-}
-*/
 QRect QxtWindowSystem::windowGeometryWithoutFrame( WId child)
 {
     int x, y;
@@ -182,45 +140,3 @@ QRect QxtWindowSystem::windowGeometryWithFrame(WId window)
     }
     return rect;
 }
-
-typedef struct {
-    Window  window;     /* screen saver window - may not exist */
-    int     state;      /* ScreenSaverOff, ScreenSaverOn, ScreenSaverDisabled*/
-    int     kind;       /* ScreenSaverBlanked, ...Internal, ...External */
-    unsigned long    til_or_since;   /* time til or since screen saver */
-    unsigned long    idle;      /* total time since last user input */
-    unsigned long   eventMask; /* currently selected events for this client */
-} XScreenSaverInfo;
-
-typedef XScreenSaverInfo* (*XScreenSaverAllocInfo)();
-typedef Status (*XScreenSaverQueryInfo)(Display* display, Drawable* drawable, XScreenSaverInfo* info);
-
-//static XScreenSaverAllocInfo _xScreenSaverAllocInfo = 0;
-//static XScreenSaverQueryInfo _xScreenSaverQueryInfo = 0;
-/*
-uint QxtWindowSystem::idleTime()
-{
-    static bool xssResolved = false;
-    if (!xssResolved) {
-        QLibrary xssLib(QLatin1String("Xss"), 1);
-        if (xssLib.load()) {
-            _xScreenSaverAllocInfo = (XScreenSaverAllocInfo) xssLib.resolve("XScreenSaverAllocInfo");
-            _xScreenSaverQueryInfo = (XScreenSaverQueryInfo) xssLib.resolve("XScreenSaverQueryInfo");
-            xssResolved = true;
-        }
-    }
-
-    uint idle = 0;
-    if (xssResolved)
-    {
-        XScreenSaverInfo* info = _xScreenSaverAllocInfo();
-        const int screen = QX11Info::appScreen();
-        Qt::HANDLE rootWindow = QX11Info::appRootWindow(screen);
-        _xScreenSaverQueryInfo(QX11Info::display(), (Drawable*) rootWindow, info);
-        idle = info->idle;
-        if (info)
-            XFree(info);
-    }
-    return idle;
-}
-*/
