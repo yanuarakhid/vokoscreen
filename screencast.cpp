@@ -1103,8 +1103,7 @@ void screencast::windowMove()
   // window would be moved
   if ( SystemCall->state() == QProcess::Running )
   {
-//    if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 272 ) )
-    if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == XCB_BUTTON_PRESS ) )
+    if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 272 ) )
     {
       SystemCall->terminate();
       SystemCall->waitForFinished();
