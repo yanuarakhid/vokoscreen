@@ -1103,7 +1103,8 @@ void screencast::windowMove()
   // window would be moved
   if ( SystemCall->state() == QProcess::Running )
   {
-    if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 272 ) )
+//    if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 272 ) )
+    if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == XCB_BUTTON_PRESS ) )
     {
       SystemCall->terminate();
       SystemCall->waitForFinished();
@@ -1119,7 +1120,9 @@ void screencast::windowMove()
     if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 16 ) )
     {
       newMovedXYcoordinates();
-      moveWindowGo();
+      myUi.PauseButton->setChecked( false );  
+      myUi.PauseButton->setText( tr ( "Pause" ) );
+      startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
       return;
     }
   }
@@ -1135,13 +1138,6 @@ void screencast::windowMove()
     windowMoveTimer->stop();
     Stop();
   } 
-}
-
-void screencast::moveWindowGo()
-{
-  myUi.PauseButton->setChecked( false );  
-  myUi.PauseButton->setText( tr ( "Pause" ) );
-  startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
 }
 
 void screencast::newMovedXYcoordinates()

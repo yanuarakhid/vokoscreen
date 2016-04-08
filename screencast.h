@@ -119,7 +119,6 @@ private slots:
   void currentIndexChangedFormat( int index );
   
   void windowMove();
-  void moveWindowGo();
   void newMovedXYcoordinates();
 
   // Tab Videooptionen
