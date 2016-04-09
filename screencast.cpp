@@ -1086,9 +1086,6 @@ void screencast::PulseMultipleChoice()
 }
 
 #include <X11/Xlib.h>
-#include <X11/Xutil.h>
-#include <xcb/xcb.h>
-#include <xcb/xcb_atom.h>
 void screencast::windowMove()
 {
   Window root_return, child_return;
@@ -1097,19 +1094,20 @@ void screencast::windowMove()
   unsigned int mask_return;
   XQueryPointer( QX11Info::display(), moveWindowID, &root_return, &child_return, &root_x_return, &root_y_return, 
                                           &win_x_return, &win_y_return, &mask_return );
-    
-  //qDebug() << "Höhe Titelzeile" << QxtWindowSystem::windowGeometryWithoutFrame( moveWindowID ).y() - QxtWindowSystem::windowGeometryWithFrame( moveWindowID ).y();
 
   // window would be moved
-  if ( SystemCall->state() == QProcess::Running )
+  if ( ( root_y_return < QxtWindowSystem::windowGeometryWithoutFrame( moveWindowID ).y() ) and ( root_y_return > QxtWindowSystem::windowGeometryWithFrame( moveWindowID ).y() ) )
   {
-    if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 272 ) )
+    if ( SystemCall->state() == QProcess::Running )
     {
-      SystemCall->terminate();
-      SystemCall->waitForFinished();
-      pause = true;
-      QvkPulse::pulseUnloadModule();
-      return;
+      if ( ( QxtWindowSystem::activeWindow() == moveWindowID ) and ( mask_return == 272 ) )
+      {
+        SystemCall->terminate();
+        SystemCall->waitForFinished();
+        pause = true;
+        QvkPulse::pulseUnloadModule();
+        return;
+      }
     }
   }
   
