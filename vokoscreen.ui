@@ -1111,7 +1111,10 @@
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0,0,0,0">
+        <property name="spacing">
+         <number>6</number>
+        </property>
         <item>
          <widget class="QPushButton" name="recordButton">
           <property name="font">
@@ -1179,6 +1182,12 @@
         </item>
         <item>
          <widget class="QToolButton" name="LogPushButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string notr="true"/>
           </property>
