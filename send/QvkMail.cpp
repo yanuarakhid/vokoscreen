@@ -52,7 +52,14 @@ void QvkMail::startMailClientWithLastFile( QString file )
     // The body String like not Space
     QString bodyString = tr( "You find the Video as attachment" );
   
-    QString processString = "xdg-email --utf8 --attach " + file + " --body \"" + bodyString + "\"";
+    QString processString = "xdg-email --utf8 --attach ";
+            processString.append( "\"" );
+	    processString.append( file );
+            processString.append( "\"" );
+            processString.append( " --body ");
+	    processString.append( "\"" );
+	    processString.append( bodyString );
+	    processString.append( "\"" );
 
     qDebug() << "[vokoscreen]" << "startMailClientWithLastFile:" << processString;
   
@@ -74,7 +81,9 @@ void QvkMail::startMailClientWithSelectedFiles( QStringList fileList )
   for ( int i = 1; i <= fileList.count(); i++ )
   {
     files = files + " --attach ";
+    files.append( "\"" );
     files = files + fileList[ i - 1 ] ;
+    files.append( "\"" );
   }
   
   if ( not fileList.empty())
