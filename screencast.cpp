@@ -868,6 +868,13 @@ void screencast::searchExternalPrograms()
   else
      qDebug() << "[vokoscreen]" << "Error: pactl is not found, this is an PulseAudio-utils tool. Please install pactl";
 
+  if ( searchProgramm("xdg-email") )
+     qDebug() << "[vokoscreen]" << "Search xdg-email  ..... found Version:" << getXdgemail();
+  else
+     qDebug() << "[vokoscreen]" << "Error: xdg-email is not found, this is an xdg-utils tool. Please install xdg-email";
+  
+  
+  
   qDebug() << "[vokoscreen]" << "---End search external tools---";
   qDebug( " " );
 }
@@ -927,10 +934,34 @@ QString screencast::getPactlVersion()
   Process.close();
 
   QStringList list = pactlVersion.split( "\n" );
-  list = list[ 0 ].split( " " );
-  return list[ 1 ];
+  
+  if ( list.empty() )
+    pactlVersion = "";
+  else
+    pactlVersion = list[ 0 ];
+  
+  return pactlVersion  ;
 }
 
+
+QString screencast::getXdgemail()
+{
+  QProcess Process;
+  Process.start("xdg-email --version");
+  Process.waitForFinished();
+  QString xdgemailVersion = Process.readAllStandardOutput();
+  Process.close();
+
+  QStringList list = xdgemailVersion.split( "\n" );
+  
+  if ( list.empty() )
+    xdgemailVersion = "";
+  else
+    xdgemailVersion = list[ 0 ];
+  
+  return xdgemailVersion;
+  
+}
 
 /*
  * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist

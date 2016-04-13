@@ -96,6 +96,7 @@ private slots:
   bool searchProgramm( QString ProgName );
   QString getFfmpegVersion();
   QString getPactlVersion();
+  QString getXdgemail();
   void AudioOff( int state );
   void AlsaWatcherEvent( QStringList CardxList );
   void PulseMultipleChoice();
