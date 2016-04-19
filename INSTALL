@@ -1,5 +1,5 @@
 Requires:
-  - Qt4 >= 4.8
+  - Qt5
   - alsa
   - libX11
   - libv4l2
@@ -12,8 +12,8 @@ Optional:
   
 BuildRequires:
   - pkgconfig
-  - libqt4-devel
-  - libqt4-linguist
+  - libqt5-devel
+  - libqt5-linguist
   - alsa-devel
   - libX11-devel
   - libv4l-devel
@@ -32,7 +32,7 @@ qmake options:
 DEFINES+=NO_NEW_VERSION_CHECK
   
 openSUSE:
-Install Schemata: QT 4-Development
+Install Schemata: QT 5-Development
   
 Hint:
 To check that all external programs are installed,
