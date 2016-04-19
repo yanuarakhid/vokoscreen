@@ -48,20 +48,13 @@ QvkWinInfo::QvkWinInfo()
 		       23,
 		       23,
                        QRegion::Rectangle );
-#ifdef QT4
-  QRegion r1 = Fenster.QRegion::subtract( mouseHole );
-  QRegion r2 = r1.QRegion::subtract( Rechteck_LO );
-  QRegion r3 = r2.QRegion::subtract( Rechteck_RO );
-  QRegion r4 = r3.QRegion::subtract( Rechteck_LU );
-  QRegion r5 = r4.QRegion::subtract( Rechteck_RU );
-#endif
-#ifdef QT5
+
   QRegion r1 = Fenster.QRegion::subtracted( mouseHole );
   QRegion r2 = r1.QRegion::subtracted( Rechteck_LO );
   QRegion r3 = r2.QRegion::subtracted( Rechteck_RO );
   QRegion r4 = r3.QRegion::subtracted( Rechteck_LU );
   QRegion r5 = r4.QRegion::subtracted( Rechteck_RU );
-#endif  
+
   this->setMask( r5 );
 
   lastWinID = this->winId();

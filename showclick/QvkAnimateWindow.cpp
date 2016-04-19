@@ -21,12 +21,7 @@ QvkAnimateWindow::QvkAnimateWindow()
 		     2,
 		     QRegion::Rectangle );
   
-#ifdef QT4
-  QRegion r1 = window.QRegion::subtract( mouseHole );
-#endif
-#ifdef QT5
   QRegion r1 = window.QRegion::subtracted( mouseHole );
-#endif  
   
   this->setMask( r1 );
 }

@@ -25,7 +25,6 @@
 
 using namespace std;
 
-#ifdef QT5
   #include "log/QvkLog.h"
   #include <QPointer>
 
@@ -35,7 +34,6 @@ using namespace std;
   {
     myLog->outputMessage( type, context, msg );
   }
-#endif
 
 
 screencast::screencast()
@@ -45,11 +43,9 @@ screencast::screencast()
     myUi.setupUi( this );
     myUi.ListWidgetLogVokoscreen->setVisible( false );
 
-#ifdef QT5
     myLog = new QvkLog();
     qInstallMessageHandler( myMessageOutput );
     connect( myLog, SIGNAL( newLogText( QString ) ), this, SLOT( addLogVokoscreen( QString ) ) );
-#endif
     
     oldMainWindowHeight = height();
 
@@ -745,9 +741,7 @@ void screencast::VisibleHideKonsole()
   }
 }
 
-#ifdef QT5
 #include <QScreen>
-#endif 
 void screencast::myScreenCountChanged( int newCount )
 {
     (void)newCount;
@@ -757,24 +751,17 @@ void screencast::myScreenCountChanged( int newCount )
     qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
     qDebug() << "[vokoscreen] Primary screen is: Display" << desk->primaryScreen()+1;
     qDebug() << "[vokoscreen] VirtualDesktop:" << desk->isVirtualDesktop();
-  #ifdef QT5
+
       //QList < QScreen *> screens = QGuiApplication::screens();
       QScreen *screen = QGuiApplication::primaryScreen();    
       qDebug() << "[vokoscreen] DevicePixelRatio:" << screen->devicePixelRatio() << " (Normal displays is 1, Retina display is 2)";
-  #endif
     
     for ( int i = 1; i < desk->screenCount()+1; i++ )
     {
       QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i-1 ).left() );
       QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i-1 ).top() );
-      #ifdef QT4
-        QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).width() );
-        QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).height() );
-      #endif
-      #ifdef QT5
-        QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).width() * screen->devicePixelRatio() ); // devicePixelRatio() for Retina Displays
-        QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).height() * screen->devicePixelRatio() );
-      #endif
+      QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).width() * screen->devicePixelRatio() ); // devicePixelRatio() for Retina Displays
+      QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).height() * screen->devicePixelRatio() );
       myUi.ScreenComboBox->addItem( tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i-1 );
       qDebug() << "[vokoscreen]" << "Display " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY;
     }
@@ -1496,18 +1483,6 @@ void screencast::searchVideoPlayer()
 }
 
 
-#ifdef QT4
-void screencast::saveVideoPath()
-{
-  QString dir = QFileDialog::getExistingDirectory( this, tr( "Open Directory" ),
-                QDesktopServices::storageLocation( QDesktopServices::HomeLocation ), QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
-
-  if ( dir > "" )
-    myUi.SaveVideoPathLineEdit->setText( dir );
-}
-#endif
-
-#ifdef QT5
 void screencast::saveVideoPath()
 {
   QString dir = QFileDialog::getExistingDirectory( this, tr( "Open Directory" ),
@@ -1516,7 +1491,6 @@ void screencast::saveVideoPath()
   if ( dir > "" )
       myUi.SaveVideoPathLineEdit->setText( dir );
 }
-#endif
 
 
 void screencast::readyReadStandardError()
@@ -1870,29 +1844,14 @@ QString screencast::PathMoviesLocation()
      Path = myUi.SaveVideoPathLineEdit->displayText();
   else
   { 
-    #ifdef QT4
-    if ( QDesktopServices::storageLocation( QDesktopServices::MoviesLocation).isEmpty() )
-    #endif
-    #ifdef QT5
     if ( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ).isEmpty() )
-    #endif 
     {
-       #ifdef QT4
-       Path = QDesktopServices::storageLocation( QDesktopServices::HomeLocation );
-       #endif
-       #ifdef QT5
        Path = QStandardPaths::writableLocation( QStandardPaths::HomeLocation );
-       #endif
        myUi.SaveVideoPathLineEdit->setText(Path);
     }
     else
     {
-      #ifdef QT4
-      Path = QDesktopServices::storageLocation( QDesktopServices::MoviesLocation );
-      #endif
-      #ifdef QT5
       Path = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
-      #endif
       myUi.SaveVideoPathLineEdit->setText( Path );
     }
   }
@@ -1948,22 +1907,6 @@ void screencast::recorderLineEditTextChanged( QString recorder )
 }
 
 
-#ifdef QT4
-void screencast::selectRecorder()
-{
-  QString recorder = QFileDialog::getOpenFileName( this,
-					           tr( "Select recorder" ),
-					           QDesktopServices::storageLocation( QDesktopServices::HomeLocation ) );
-
-  if ( recorder > "" )
-  {
-    myUi.RecorderLineEdit->setText( recorder );
-    SearchCodec();
-  }
-}
-#endif
-
-#ifdef QT5
 void screencast::selectRecorder()
 {
     QString recorder = QFileDialog::getOpenFileName( this,
@@ -1976,7 +1919,6 @@ void screencast::selectRecorder()
       SearchCodec();
     }
 }
-#endif
 
 
 void screencast::showCredits()
@@ -2021,23 +1963,12 @@ QString screencast::PathTempLocation()
 {
   QString tmpName = vkSettings.getProgName() + "-" + qgetenv( "USER" );  
 
-  #ifdef QT4
-  QString tempPathProg = QDesktopServices::storageLocation ( QDesktopServices::TempLocation ) + QDir::separator() + tmpName;
-  #endif
-
-  #ifdef QT5
   QString tempPathProg = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + QDir::separator() + tmpName;
-  #endif
   
   QDir dirTempPathProg( tempPathProg );
   if ( not dirTempPathProg.exists() )
   {
-      #ifdef QT4
-      QString tempPath = QDesktopServices::storageLocation ( QDesktopServices::TempLocation );
-      #endif
-      #ifdef QT5
       QString tempPath = QStandardPaths::writableLocation( QStandardPaths::TempLocation );
-      #endif      
       QDir dirTempPath( tempPath );
       dirTempPath.mkdir( tmpName );
   }
@@ -2248,16 +2179,9 @@ void screencast::record()
           fullScreenWidth += desk->screenGeometry( i ).width();
           fullScreenHeight = std::max( fullScreenHeight, desk->screenGeometry( i ).height() );
       }
-   #ifdef QT4
-      setRecordWidth( QString::number( fullScreenWidth ) );
-      setRecordHeight( QString::number( fullScreenHeight) );
-   #endif
-
-   #ifdef QT5
       QScreen *qscreen = QGuiApplication::primaryScreen();    
       setRecordWidth( QString::number( fullScreenWidth * qscreen->devicePixelRatio() ) );
       setRecordHeight( QString::number( fullScreenHeight * qscreen->devicePixelRatio() ) );
-   #endif   
   }  
 
   if ( myUi.AreaRadioButton->isChecked() )
@@ -2440,24 +2364,14 @@ void screencast::Stop()
   {
     QDir dir( PathTempLocation() );
     QStringList stringList = dir.entryList(QDir::Files, QDir::Time | QDir::Reversed);
-#ifdef QT4    
-    QString mergeFile = QDesktopServices::storageLocation ( QDesktopServices::TempLocation ) + QDir::separator() + "mergeFile.txt";
-#endif
-#ifdef QT5
     QString mergeFile = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + QDir::separator() + "mergeFile.txt";
-#endif
     QFile file( mergeFile );
     file.open( QIODevice::WriteOnly | QIODevice::Text );
       QString videoFiles;
       for ( int i = 0; i < stringList.size(); ++i )
       {
         videoFiles.append( "file " ).append( PathTempLocation() ).append( QDir::separator() ).append( stringList[ i ] ).append( "\n" );
-#ifdef QT4	
-        file.write( videoFiles.toAscii() );
-#endif
-#ifdef QT5
         file.write( videoFiles.toLatin1() );
-#endif
         videoFiles = "";
       }
     file.close();
