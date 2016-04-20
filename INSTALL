@@ -5,6 +5,8 @@ Requires:
   - libv4l2
   - libv4lconvert
   - libmp3lame0
+  - xdg-utils
+  - lsof
   - ffmpeg >= 1.1.0
 
 Optional:

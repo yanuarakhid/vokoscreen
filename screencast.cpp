@@ -849,18 +849,25 @@ void screencast::searchExternalPrograms()
     qDebug() << "[vokoscreen]" << "Search ffmpeg ..... found" << vkSettings.getRecorder() << "Version:" << getFfmpegVersion();
   else
     qDebug() << "[vokoscreen]" << "Search ffmpeg ..... not found";
-  
+
+// https://wiki.qt.io/Get-OS-name-in-Qt  
+#ifdef Q_OS_LINUX
   if ( searchProgramm("pactl") )
      qDebug() << "[vokoscreen]" << "Search pactl  ..... found Version:" << getPactlVersion();
   else
      qDebug() << "[vokoscreen]" << "Error: pactl is not found, this is an PulseAudio-utils tool. Please install pactl";
-
+#endif 
+#ifdef Q_OS_WIN
+#endif  
+  
+#ifdef Q_OS_LINUX
   if ( searchProgramm("xdg-email") )
      qDebug() << "[vokoscreen]" << "Search xdg-email  ..... found Version:" << getXdgemail();
   else
      qDebug() << "[vokoscreen]" << "Error: xdg-email is not found, this is an xdg-utils tool. Please install xdg-email";
-  
-  
+#endif  
+#ifdef Q_OS_WIN
+#endif  
   
   qDebug() << "[vokoscreen]" << "---End search external tools---";
   qDebug( " " );
