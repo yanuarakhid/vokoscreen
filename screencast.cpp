@@ -848,26 +848,36 @@ void screencast::searchExternalPrograms()
   if ( searchProgramm( vkSettings.getRecorder() ) )
     qDebug() << "[vokoscreen]" << "Search ffmpeg ..... found" << vkSettings.getRecorder() << "Version:" << getFfmpegVersion();
   else
-    qDebug() << "[vokoscreen]" << "Search ffmpeg ..... not found";
+    qDebug() << "[vokoscreen]" << "Search ffmpeg ..... not found. Please install ffmpeg";
 
 // https://wiki.qt.io/Get-OS-name-in-Qt  
 #ifdef Q_OS_LINUX
   if ( searchProgramm("pactl") )
      qDebug() << "[vokoscreen]" << "Search pactl  ..... found Version:" << getPactlVersion();
   else
-     qDebug() << "[vokoscreen]" << "Error: pactl is not found, this is an PulseAudio-utils tool. Please install pactl";
+     qDebug() << "[vokoscreen]" << "Error: pactl not found, this is an pulseaudio-utils tool. Please install pulseaudio-utils";
 #endif 
 #ifdef Q_OS_WIN
 #endif  
   
 #ifdef Q_OS_LINUX
   if ( searchProgramm("xdg-email") )
-     qDebug() << "[vokoscreen]" << "Search xdg-email  ..... found Version:" << getXdgemail();
+     qDebug() << "[vokoscreen]" << "Search xdg-email  ..... found Version:" << getXdgemailVersion();
   else
-     qDebug() << "[vokoscreen]" << "Error: xdg-email is not found, this is an xdg-utils tool. Please install xdg-email";
+     qDebug() << "[vokoscreen]" << "Error: xdg-email not found, this is an xdg-utils tool. Please install xdg-utils";
 #endif  
 #ifdef Q_OS_WIN
 #endif  
+  
+#ifdef Q_OS_LINUX
+  if ( searchProgramm("lsof") )
+     qDebug() << "[vokoscreen]" << "Search lsof  ..... found Version:" << getLsofVersion();
+  else
+     qDebug() << "[vokoscreen]" << "Error: lsof not found. Please install lsof";
+#endif  
+#ifdef Q_OS_WIN
+#endif  
+  
   
   qDebug() << "[vokoscreen]" << "---End search external tools---";
   qDebug( " " );
@@ -938,7 +948,7 @@ QString screencast::getPactlVersion()
 }
 
 
-QString screencast::getXdgemail()
+QString screencast::getXdgemailVersion()
 {
   QProcess Process;
   Process.start("xdg-email --version");
@@ -954,8 +964,29 @@ QString screencast::getXdgemail()
     xdgemailVersion = list[ 0 ];
   
   return xdgemailVersion;
-  
 }
+
+
+QString screencast::getLsofVersion()
+{
+  QProcess Process;
+  Process.start("lsof -v");
+  Process.waitForFinished();
+  QString lsofVersion = Process.readAllStandardError();
+  Process.close();
+
+  QStringList list = lsofVersion.split( "\n" );
+  if ( list.empty() )
+    lsofVersion = "";
+  else
+  {
+    if ( list.count() >= 2 )
+      lsofVersion = list[ 1 ].trimmed();
+  }
+
+  return lsofVersion;
+}
+
 
 /*
  * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
