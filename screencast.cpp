@@ -2173,7 +2173,11 @@ void screencast::record()
   shortcutStart->setEnabled( false );
   shortcutStop->setEnabled( true );
   if ( myUi.MinimizedCheckBox->checkState() == Qt::Checked )
+  {
     WindowMinimized();
+    hideAction->setText( tr( "Show window" ) );
+    hideAction->setData( "NoHide" );
+  }
 
   QString deltaX = "0";
   QString deltaY = "0";
