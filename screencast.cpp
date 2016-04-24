@@ -35,7 +35,7 @@ using namespace std;
     myLog->outputMessage( type, context, msg );
   }
 
-
+#include <QLibraryInfo>
 screencast::screencast()
 {
     vkSettings.readAll();
@@ -62,6 +62,7 @@ screencast::screencast()
     QvkAlsaDevice inBox;
     qDebug() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
     qDebug() << "[vokoscreen] current icon-theme:" << QIcon::themeName();
+    qDebug() << "[vokoscreen]" << QLibraryInfo::location(QLibraryInfo::PluginsPath);
     qDebug( " " );
 
     searchExternalPrograms();
