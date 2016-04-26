@@ -1873,11 +1873,11 @@ void screencast::play()
   QProcess *SystemCall = new QProcess();
   QString playerAndPath = player;
   playerAndPath.append( " " );
-  playerAndPath.append( "\"" );
+  //playerAndPath.append( "\'" );
   playerAndPath.append( PathMoviesLocation() );
   playerAndPath.append( QDir::separator() );
   playerAndPath.append( List.at( 0 ) );
-  playerAndPath.append( "\"" );
+  //playerAndPath.append( "\'" );
   qDebug() << "[vokoscreen] play video: " << playerAndPath;
   SystemCall->start( playerAndPath );  
   //SystemCall->start( player + " " + "\"" + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + "\"" );
