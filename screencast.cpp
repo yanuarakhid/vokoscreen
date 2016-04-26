@@ -1878,6 +1878,7 @@ void screencast::play()
   playerAndPath.append( QDir::separator() );
   playerAndPath.append( List.at( 0 ) );
   playerAndPath.append( '"' );
+  qDebug() << "[vokoscreen] play video: " << playerAndPath;
   SystemCall->start( playerAndPath );
   //SystemCall->start( player + " " + '"' + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + '"' );
 }
