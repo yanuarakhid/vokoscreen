@@ -1871,7 +1871,15 @@ void screencast::play()
   }
     
   QProcess *SystemCall = new QProcess();
-  SystemCall->start( player + " " + '"' + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + '"' );
+  QString playerAndPath = player;
+  playerAndPath.append( " " );
+  playerAndPath.append( '"' );
+  playerAndPath.append( PathMoviesLocation() );
+  playerAndPath.append( QDir::separator() );
+  playerAndPath.append( List.at( 0 ) );
+  playerAndPath.append( '"' );
+  SystemCall->start( playerAndPath );
+  //SystemCall->start( player + " " + '"' + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + '"' );
 }
 
 
