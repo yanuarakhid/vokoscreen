@@ -1761,9 +1761,9 @@ void screencast::error( QProcess::ProcessError error )
   // Noch nicht getestet
   if ( error == QProcess::FailedToStart )
   {
-    qDebug() << "The process could not be started. Either the is called program is not installed, or the ffmpeg call Faulty or you have not over sufficient permissions to to the program.";
+    qDebug() << "The process could not be started. Either the is called program is not installed, or the ffmpeg call Faulty or you have not over sufficient permissions to the program.";
     QMessageBox msgBox;
-    msgBox.setText( "The process could not be started. Either the is called program is not installed, or the ffmpeg call Faulty or you have not over sufficient permissions to to the program." );
+    msgBox.setText( "The process could not be started. Either the is called program is not installed, or the ffmpeg call Faulty or you have not over sufficient permissions to the program." );
     msgBox.exec();
   }
 }
@@ -1850,6 +1850,16 @@ void screencast::play()
     newDialog->show();
     return;
   }
+  //****************** Test
+  QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
+  QFileInfo settingsPath( settings.fileName() );
+  QFile file( settingsPath.absolutePath() );
+  QString workDirectory = file.fileName();
+  QDir Dir( "" );
+  Dir.setCurrent( workDirectory );
+qDebug() << "11111111111111111111111111111111111" << Dir.current();
+  
+  //*******************Test
   
   QDir Dira( PathMoviesLocation() );
   QStringList filters;
@@ -1873,17 +1883,19 @@ void screencast::play()
   QProcess *SystemCall = new QProcess();
   QString playerAndPath = player;
   playerAndPath.append( " " );
-  //playerAndPath.append( "\'" );
+  playerAndPath.append( "\"" );
   playerAndPath.append( PathMoviesLocation() );
   playerAndPath.append( QDir::separator() );
   playerAndPath.append( List.at( 0 ) );
-  //playerAndPath.append( "\'" );
+  playerAndPath.append( "\"" );
   qDebug() << "[vokoscreen] play video: " << playerAndPath;
-  SystemCall->start( playerAndPath );  
-  //SystemCall->start( player + " " + "\"" + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + "\"" );
+  SystemCall->startDetached( playerAndPath );  
+qDebug() << "***************************" << SystemCall->workingDirectory();
+
+  //SystemCall->startDetached( player + " " + "\"" + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + "\"" );
+  SystemCall->close();
   //SystemCall->start( player + " " + '"' + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + '"' );
 }
-
 
 
 QString screencast::PathMoviesLocation()
