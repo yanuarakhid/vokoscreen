@@ -1838,6 +1838,17 @@ void screencast::Pause()
  */
 void screencast::play()
 {
+  // This part must have for VLC for vokoscreen-with-libs
+  // I start vokoscreen and as first "Play"
+  // Without this part VLC do not start
+  QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
+  QFileInfo settingsPath( settings.fileName() );
+  QFile file( settingsPath.absolutePath() );
+  QString workDirectory = file.fileName();
+  QDir Dir( "" );
+  Dir.setCurrent( workDirectory );  
+  // --------------------------
+  
   if ( myUi.MagnifierCheckBox->isChecked() )
 	myUi.MagnifierCheckBox->click();
   
@@ -1879,7 +1890,13 @@ void screencast::play()
   playerAndPath.append( List.at( 0 ) );
   playerAndPath.append( "\"" );
   qDebug() << "[vokoscreen] play video: " << playerAndPath;
-  SystemCall->startDetached( playerAndPath );  
+
+  QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+  SystemCall->setProcessEnvironment( env );
+  qDebug() << env.toStringList();
+
+  SystemCall->startDetached( playerAndPath );
+  
   SystemCall->close();
 }
 
