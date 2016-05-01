@@ -1850,16 +1850,6 @@ void screencast::play()
     newDialog->show();
     return;
   }
-  //****************** Test
-  QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
-  QFileInfo settingsPath( settings.fileName() );
-  QFile file( settingsPath.absolutePath() );
-  QString workDirectory = file.fileName();
-  QDir Dir( "" );
-  Dir.setCurrent( workDirectory );
-qDebug() << "11111111111111111111111111111111111" << Dir.current();
-  
-  //*******************Test
   
   QDir Dira( PathMoviesLocation() );
   QStringList filters;
@@ -1890,11 +1880,7 @@ qDebug() << "11111111111111111111111111111111111" << Dir.current();
   playerAndPath.append( "\"" );
   qDebug() << "[vokoscreen] play video: " << playerAndPath;
   SystemCall->startDetached( playerAndPath );  
-qDebug() << "***************************" << SystemCall->workingDirectory();
-
-  //SystemCall->startDetached( player + " " + "\"" + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + "\"" );
   SystemCall->close();
-  //SystemCall->start( player + " " + '"' + PathMoviesLocation() + QDir::separator() + List.at( 0 ) + '"' );
 }
 
 
