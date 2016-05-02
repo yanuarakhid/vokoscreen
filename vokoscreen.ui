@@ -47,7 +47,7 @@
          </sizepolicy>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <property name="iconSize">
          <size>
@@ -511,6 +511,9 @@
               <property name="text">
                <string notr="true"/>
               </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item row="0" column="2">
@@ -531,6 +534,9 @@
              <widget class="QLineEdit" name="RecorderLineEdit">
               <property name="text">
                <string notr="true"/>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
               </property>
              </widget>
             </item>

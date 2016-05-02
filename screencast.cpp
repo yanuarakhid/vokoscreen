@@ -171,8 +171,19 @@ screencast::screencast()
     connect( myUi.SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
     
     connect( myUi.RecorderLineEdit, SIGNAL( textChanged( QString ) ), SLOT( recorderLineEditTextChanged( QString ) ) );
-    myUi.RecorderLineEdit->setText( getFileWithPath( vkSettings.getRecorder() ) );
-
+    
+    // This part is for detect vokoscreen-with-libs
+    QString appPath = qApp->applicationDirPath();
+    QFile file;
+    if ( file.exists( appPath.append( "/bin/ffmpeg" ) ) == true )
+    {
+      myUi.RecorderLineEdit->setText( getFileWithPath( appPath ) );
+    }
+    else
+    {
+      myUi.RecorderLineEdit->setText( getFileWithPath( vkSettings.getRecorder() ) );
+    }
+    
     connect( myUi.selectRecorderPushButton, SIGNAL(clicked() ), SLOT( selectRecorder() ) );
     
     myUi.SystrayCheckBox->setCheckState( Qt::Checked );
