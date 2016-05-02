@@ -1891,10 +1891,6 @@ void screencast::play()
   playerAndPath.append( "\"" );
   qDebug() << "[vokoscreen] play video: " << playerAndPath;
 
-  QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-  SystemCall->setProcessEnvironment( env );
-  qDebug() << env.toStringList();
-
   SystemCall->startDetached( playerAndPath );
   
   SystemCall->close();
