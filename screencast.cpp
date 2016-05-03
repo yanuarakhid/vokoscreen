@@ -62,7 +62,7 @@ screencast::screencast()
     QvkAlsaDevice inBox;
     qDebug() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
     qDebug() << "[vokoscreen] current icon-theme:" << QIcon::themeName();
-    qDebug() << "[vokoscreen]" << QLibraryInfo::location(QLibraryInfo::PluginsPath);
+    qDebug() << "[vokoscreen] PluginsPath:" << QLibraryInfo::location(QLibraryInfo::PluginsPath);
     qDebug( " " );
 
     searchExternalPrograms();
