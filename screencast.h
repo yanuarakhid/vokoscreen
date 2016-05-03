@@ -67,7 +67,6 @@ public:
   virtual ~screencast();
   QString recordApplikation;
   QProcess *SystemCall;
-  bool pause;
   QString deltaXMove;
   QString deltaYMove;
   QString nameInMoviesLocation;
@@ -146,7 +145,9 @@ private slots:
   
   QString PathTempLocation();
   QString NameInMoviesLocation();
-  QString PauseNameInTmpLocation();
+  QString newPauseNameInTmpLocation();
+  QString getPauseNameInTmpLocation();
+  void setPauseNameInTmpLocation( QString value );
   QString myAlsa();
   QString myAcodec();
   QString noMouse();
@@ -231,6 +232,8 @@ private:
     QTimer *windowMoveTimer;
     QDateTime beginTime;
 
+    bool pause;
+    QString pauseName;
     
 protected:
    void contextMenuEvent( QContextMenuEvent *event );

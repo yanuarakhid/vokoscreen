@@ -1188,7 +1188,7 @@ void screencast::windowMove()
       newMovedXYcoordinates();
       myUi.PauseButton->setChecked( false );  
       myUi.PauseButton->setText( tr ( "Pause" ) );
-      startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
+      startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation() );
       return;
     }
   }
@@ -1560,8 +1560,15 @@ void screencast::readyReadStandardError()
     int x = output.indexOf( "fps" );
     statusBarLabelFps->setText( output.mid( x + 4, 3 ).replace( " ", "" ) );
   }
-
-  QFileInfo fileInfo( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
+  QFileInfo fileInfo;
+  if ( pause == true )
+  {
+    fileInfo.setFile( PathTempLocation() + QDir::separator() + getPauseNameInTmpLocation() );
+  }
+  else
+  {
+    fileInfo.setFile( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
+  }
   statusBarLabelSize->setText( QString::number( fileInfo.size() / 1024 ) );
 }
 
@@ -1807,7 +1814,7 @@ void screencast::Pause()
       Countdown();
       shortcutStop->setEnabled( true );
       myUi.PauseButton->setText( tr( "Pause" ) );
-      startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
+      startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation() );
     }
   }
   
@@ -1838,7 +1845,7 @@ void screencast::Pause()
       shortcutStop->setEnabled( true );
       myUi.PauseButton->setText( tr( "Pause" ) );
       newMovedXYcoordinates();
-      startRecord( PathTempLocation() + QDir::separator() + PauseNameInTmpLocation() );
+      startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation() );
       windowMoveTimer->start();
     }
   }
@@ -2060,7 +2067,7 @@ QString screencast::NameInMoviesLocation()
 /**
  * Return the new pausename
  */
-QString screencast::PauseNameInTmpLocation()
+QString screencast::newPauseNameInTmpLocation()
 {
   QString myFilename = "screencast-pause";
   QString myFilenameExtension = "." + myUi.VideoContainerComboBox->currentText();
@@ -2075,9 +2082,20 @@ QString screencast::PauseNameInTmpLocation()
     myName = myFile->fileName();
   } while ( myFile->exists() );
 
+  setPauseNameInTmpLocation( myFilename + "-" + QString().number( x ) + myFilenameExtension );
+  
   return myFilename + "-" + QString().number( x ) + myFilenameExtension;
 }
 
+void screencast::setPauseNameInTmpLocation( QString value )
+{
+  pauseName = value;
+}
+
+QString screencast::getPauseNameInTmpLocation()
+{
+  return pauseName;
+}
 
 QString screencast::myAlsa()
 {
