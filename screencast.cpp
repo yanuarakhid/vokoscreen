@@ -178,6 +178,7 @@ screencast::screencast()
     if ( file.exists( appPath.append( "/bin/ffmpeg" ) ) == true )
     {
       myUi.RecorderLineEdit->setText( getFileWithPath( appPath ) );
+      myUi.selectRecorderPushButton->hide();
     }
     else
     {
