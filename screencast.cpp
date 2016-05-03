@@ -1560,6 +1560,7 @@ void screencast::readyReadStandardError()
     int x = output.indexOf( "fps" );
     statusBarLabelFps->setText( output.mid( x + 4, 3 ).replace( " ", "" ) );
   }
+  
   QFileInfo fileInfo;
   if ( pause == true )
   {
@@ -1569,6 +1570,7 @@ void screencast::readyReadStandardError()
   {
     fileInfo.setFile( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
   }
+  
   statusBarLabelSize->setText( QString::number( fileInfo.size() / 1024 ) );
 }
 
