@@ -2472,7 +2472,7 @@ void screencast::Stop()
       }
     file.close();
 
-    QString mergeString = recordApplikation + " -report -f concat -i " + mergeFile + " -c copy " + PathMoviesLocation() + QDir::separator() + nameInMoviesLocation;
+    QString mergeString = recordApplikation + " -report -safe 0 -f concat -i " + mergeFile + " -c copy " + PathMoviesLocation() + QDir::separator() + nameInMoviesLocation;
     SystemCall->start( mergeString );
     SystemCall->waitForFinished(8000);
 
