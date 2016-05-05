@@ -2474,8 +2474,8 @@ void screencast::Stop()
 
     QString mergeString = recordApplikation + " -report -f concat -i " + mergeFile + " -c copy " + PathMoviesLocation() + QDir::separator() + nameInMoviesLocation;
     SystemCall->start( mergeString );
-    SystemCall->waitForFinished();
-    
+    SystemCall->waitForFinished(8000);
+
     for ( int i = 0; i < stringList.size(); ++i )
       dir.remove( PathTempLocation().append( QDir::separator() ).append( stringList.at( i ) ) );
 
