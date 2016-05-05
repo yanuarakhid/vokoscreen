@@ -7,8 +7,10 @@ Requires:
   - libmp3lame0
   - xdg-utils
   - lsof
-  - ffmpeg >= 1.1.0
-
+  - ffmpeg >= 1.1.0 <=2.8.6
+    
+Hint: Since ffmpeg 2.8.7 pause is broken
+  
 Optional:
   - pulseaudio and pulsaudio-utils
   
