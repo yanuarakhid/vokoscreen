@@ -517,7 +517,7 @@ void screencast::SearchCodec()
    qDebug() << "[vokoscreen] ---Begin search audio codec---";
    QStringList audioCodecList;
    myUi.AudiocodecComboBox->clear();
-   audioCodecList << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac";
+   audioCodecList << "libmp3lame" << "vorbis" << "pcm_s16le" << "libvo_aacenc" << "aac";
    for ( int i = 0; i < audioCodecList.count(); i++ )
    {
      if ( formatsAndCodecs->isCodecAvailable( "Audio", audioCodecList[ i ], &experimental ) == true )
