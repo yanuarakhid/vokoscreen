@@ -22,7 +22,7 @@ QvkShowClickDialog::QvkShowClickDialog( QColor color, bool radiant, double opaci
     myUiDialog.pushButton_magenta->setStyleSheet( "background-color: magenta;" );
     myUiDialog.pushButton_darkMagenta->setStyleSheet( "background-color: darkMagenta;" );
     myUiDialog.pushButton_yellow->setStyleSheet( "background-color: yellow;" );
-    myUiDialog.pushButton_darkYellow->setStyleSheet( "background-color: darkYellow;" );
+    myUiDialog.pushButton_darkYellow->setStyleSheet( "background-color: darkkhaki;" );
     myUiDialog.pushButton_gray->setStyleSheet( "background-color: gray;" );
     myUiDialog.pushButton_darkGray->setStyleSheet( "background-color: darkGray;" );
     
