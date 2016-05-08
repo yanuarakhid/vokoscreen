@@ -138,9 +138,6 @@
        </item>
        <item row="0" column="0">
         <widget class="QPushButton" name="pushButton_white">
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
          <property name="text">
           <string/>
          </property>
@@ -482,16 +479,9 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButtonStandard">
-         <property name="text">
-          <string>Standard</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QDialogButtonBox" name="buttonBox">
          <property name="standardButtons">
-          <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+          <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::RestoreDefaults</set>
          </property>
         </widget>
        </item>

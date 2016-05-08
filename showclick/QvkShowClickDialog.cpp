@@ -9,47 +9,22 @@ QvkShowClickDialog::QvkShowClickDialog( QColor color, bool radiant, double opaci
 
     myUiDialog.setupUi( newDialog );
    
-    QPalette *palette = new QPalette();
-    
-    palette->setColor( QPalette::Button, Qt::white );
-    myUiDialog.pushButton_white->setPalette( *palette );
-    palette->setColor( QPalette::Button, Qt::black );
-    myUiDialog.pushButton_black->setPalette( *palette );
-    
-    palette->setColor( QPalette::Button, Qt::red );
-    myUiDialog.pushButton_red->setPalette( *palette );
-    palette->setColor( QPalette::Button, Qt::darkRed );
-    myUiDialog.pushButton_darkRed->setPalette( *palette );
-    
-    palette->setColor( QPalette::Button, Qt::green );
-    myUiDialog.pushButton_green->setPalette( *palette );
-    palette->setColor( QPalette::Button, Qt::darkGreen );
-    myUiDialog.pushButton_darkGreen->setPalette( *palette );
-    
-    palette->setColor( QPalette::Button, Qt::blue );
-    myUiDialog.pushButton_blue->setPalette( *palette );
-    palette->setColor( QPalette::Button, Qt::darkBlue );
-    myUiDialog.pushButton_darkBlue->setPalette( *palette );
-
-    palette->setColor( QPalette::Button, Qt::cyan );
-    myUiDialog.pushButton_cyan->setPalette( *palette );
-    palette->setColor( QPalette::Button, Qt::darkCyan );
-    myUiDialog.pushButton_darkCyan->setPalette( *palette );
-
-    palette->setColor( QPalette::Button, Qt::magenta );
-    myUiDialog.pushButton_magenta->setPalette( *palette );
-    palette->setColor( QPalette::Button, Qt::darkMagenta );
-    myUiDialog.pushButton_darkMagenta->setPalette( *palette );
-
-    palette->setColor( QPalette::Button, Qt::yellow );
-    myUiDialog.pushButton_yellow->setPalette( *palette );
-    palette->setColor( QPalette::Button, Qt::darkYellow );
-    myUiDialog.pushButton_darkYellow->setPalette( *palette );
-
-    palette->setColor( QPalette::Button, Qt::gray );
-    myUiDialog.pushButton_gray->setPalette( *palette );
-    palette->setColor( QPalette::Button, Qt::darkGray );
-    myUiDialog.pushButton_darkGray->setPalette( *palette );
+    myUiDialog.pushButton_white->setStyleSheet( "background-color: white;" );
+    myUiDialog.pushButton_black->setStyleSheet( "background-color: black;" );
+    myUiDialog.pushButton_red->setStyleSheet( "background-color: red;" );
+    myUiDialog.pushButton_darkRed->setStyleSheet( "background-color: darkRed;" );
+    myUiDialog.pushButton_green->setStyleSheet( "background-color: green;" );
+    myUiDialog.pushButton_darkGreen->setStyleSheet( "background-color: darkGreen;" );
+    myUiDialog.pushButton_blue->setStyleSheet( "background-color: blue;" );
+    myUiDialog.pushButton_darkBlue->setStyleSheet( "background-color: darkBlue;" );
+    myUiDialog.pushButton_cyan->setStyleSheet( "background-color: cyan;" );
+    myUiDialog.pushButton_darkCyan->setStyleSheet( "background-color: darkCyan;" );
+    myUiDialog.pushButton_magenta->setStyleSheet( "background-color: magenta;" );
+    myUiDialog.pushButton_darkMagenta->setStyleSheet( "background-color: darkMagenta;" );
+    myUiDialog.pushButton_yellow->setStyleSheet( "background-color: yellow;" );
+    myUiDialog.pushButton_darkYellow->setStyleSheet( "background-color: darkYellow;" );
+    myUiDialog.pushButton_gray->setStyleSheet( "background-color: gray;" );
+    myUiDialog.pushButton_darkGray->setStyleSheet( "background-color: darkGray;" );
     
     connect( myUiDialog.pushButton_white, SIGNAL( clicked() ), this, SLOT( white() ) );
     connect( myUiDialog.pushButton_black, SIGNAL( clicked() ), this, SLOT( black() ) );
@@ -75,8 +50,7 @@ QvkShowClickDialog::QvkShowClickDialog( QColor color, bool radiant, double opaci
 
     connect( myUiDialog.buttonBox, SIGNAL( accepted() ), this, SLOT( ok() ) );
     connect( myUiDialog.buttonBox, SIGNAL( rejected() ), this, SLOT( cancel() ) );
-    connect( myUiDialog.pushButtonStandard, SIGNAL( clicked() ), this, SLOT( Standard() ) );
-    myUiDialog.pushButtonStandard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+    connect( myUiDialog.buttonBox->button( QDialogButtonBox::RestoreDefaults )   , SIGNAL( clicked() ), this, SLOT( Standard() ) );
     
     circleWidget = new QvkCircleWidget( myUiDialog.graphicsView );
     circleWidget->show();

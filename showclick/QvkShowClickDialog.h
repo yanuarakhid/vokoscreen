@@ -5,6 +5,7 @@
 #include "QvkCircleWidget.h"
 
 #include <QDialog>
+#include <QAbstractButton>
 
 class QvkShowClickDialog: public QDialog
 
