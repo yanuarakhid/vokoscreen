@@ -73,7 +73,6 @@ screencast::screencast()
 
     // Tab 1 Screen options ***************************************************
     myUi.tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
-    myUi.updateButton->setIcon( QIcon( ":/pictures/system-software-update.png" ) );
 
     connect( myUi.FullScreenRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
     connect( myUi.WindowRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
@@ -262,6 +261,15 @@ screencast::screencast()
     
     myUi.LogPushButton->setIcon ( QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
     connect( myUi.LogPushButton, SIGNAL( clicked() ), this, SLOT( VisibleHideKonsole() ) );
+    
+  #ifndef NO_NEW_VERSION_CHECK
+    QTimer::singleShot( 15000, &version, SLOT( doDownload() ) );
+    connect( &version, SIGNAL( versionDownloadFinish() ), SLOT( buttonVersion() ) );
+    myUi.updateButton->setIcon( QIcon( ":/pictures/system-software-update.png" ) );
+    myUi.updateButton->setToolTip( tr( "New version available" ) );
+    myUi.updateButton->hide();
+    connect( myUi.updateButton, SIGNAL( clicked() ), SLOT( showHomepage() ) );  
+  #endif
     
     // StatusBar
     statusBarLabelTime = new QLabel();
@@ -1999,6 +2007,12 @@ void screencast::selectRecorder()
       myUi.RecorderLineEdit->setText( recorder );
       SearchCodec();
     }
+}
+
+
+void screencast::showHomepage()
+{
+   QDesktopServices::openUrl( QUrl( "http://www.kohaupt-online.de/hp", QUrl::StrictMode ) );
 }
 
 

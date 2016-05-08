@@ -175,7 +175,7 @@ private slots:
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
 #endif
-  
+  void showHomepage();
     
 private:
     QString DISPLAY;
