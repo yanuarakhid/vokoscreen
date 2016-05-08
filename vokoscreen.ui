@@ -47,7 +47,7 @@
          </sizepolicy>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>1</number>
         </property>
         <property name="iconSize">
          <size>
@@ -254,7 +254,7 @@
                 <item>
                  <widget class="QLabel" name="labelPulsaudio">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string notr="true">TextLabel</string>
                   </property>
                  </widget>
                 </item>
@@ -291,8 +291,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>98</width>
-                 <height>28</height>
+                 <width>370</width>
+                 <height>112</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -360,7 +360,7 @@
               <item>
                <widget class="QLabel" name="labelAlsa">
                 <property name="text">
-                 <string>TextLabel</string>
+                 <string notr="true">TextLabel</string>
                 </property>
                </widget>
               </item>
