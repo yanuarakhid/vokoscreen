@@ -47,6 +47,7 @@ screencast::screencast()
     qInstallMessageHandler( myMessageOutput );
     connect( myLog, SIGNAL( newLogText( QString ) ), this, SLOT( addLogVokoscreen( QString ) ) );
     
+
     oldMainWindowHeight = height();
 
     screencast::setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
@@ -56,6 +57,7 @@ screencast::screencast()
     screencast::setWindowIcon( icon );    
 
     qDebug() << "[vokoscreen]" << "Version:" << vkSettings.getVersion();
+    qDebug() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
     qDebug() << "[vokoscreen]" << "Qt version: " << qVersion();
     qDebug() << "[vokoscreen]" << "Operating system:" << getOsRelease();
     qDebug() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
@@ -63,6 +65,7 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
     qDebug() << "[vokoscreen] current icon-theme:" << QIcon::themeName();
     qDebug() << "[vokoscreen] PluginsPath:" << QLibraryInfo::location(QLibraryInfo::PluginsPath);
+    qDebug() << "[vokoscreen] Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
     qDebug( " " );
 
     searchExternalPrograms();

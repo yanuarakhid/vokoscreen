@@ -21,7 +21,7 @@
 #include <QDebug>
 #include <QTranslator>
 #include <QLocale>
-//#include <QLibraryInfo>
+#include <QLibraryInfo>
 #include <QtSingleApplication>
 
 
@@ -35,21 +35,13 @@ int main(int argc, char** argv)
       return !app.sendMessage("aa");
     }
     
-/**
- * qt_ muß um z.b mit "de" erweitert werden und nicht um "de_DE" dann sollte es funktionieren
- */    
-/*    
-    // Dies sollte für die fertigen qt-Dialoge sein, funktioniert aber nicht.
     QTranslator * qtTranslator = new QTranslator();
     qtTranslator->load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
     app.installTranslator( qtTranslator );
-    qDebug() << QLibraryInfo::location( QLibraryInfo::TranslationsPath ) << QLocale::system().name();
-*/    
+    
     QTranslator translator;
     translator.load( "vokoscreen_" + QLocale::system().name(), ":/language" );
     app.installTranslator( &translator );
-    qDebug();
-    qDebug() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
     
     screencast foo;
       app.setActivationWindow( &foo );
