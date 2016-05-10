@@ -172,22 +172,17 @@ screencast::screencast()
 
     connect( myUi.SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
     
-    connect( myUi.RecorderLineEdit, SIGNAL( textChanged( QString ) ), SLOT( recorderLineEditTextChanged( QString ) ) );
-    
-    // This part is for detect vokoscreen-with-libs
-    QString appPath = qApp->applicationDirPath();
-    QFile file;
-    if ( file.exists( appPath.append( "/bin/ffmpeg" ) ) == true )
+    if ( vkSettings.isVokoscrenWithLibs() == true )
     {
-      myUi.RecorderLineEdit->setText( getFileWithPath( appPath ) );
+      myUi.RecorderLineEdit->setText( vkSettings.getRecorder() );
       myUi.selectRecorderPushButton->hide();
     }
     else
     {
       myUi.RecorderLineEdit->setText( getFileWithPath( vkSettings.getRecorder() ) );
+      connect( myUi.RecorderLineEdit, SIGNAL( textChanged( QString ) ), SLOT( recorderLineEditTextChanged( QString ) ) );
+      connect( myUi.selectRecorderPushButton, SIGNAL(clicked() ), SLOT( selectRecorder() ) );
     }
-    
-    connect( myUi.selectRecorderPushButton, SIGNAL(clicked() ), SLOT( selectRecorder() ) );
     
     myUi.SystrayCheckBox->setCheckState( Qt::Checked );
     connect( myUi.SystrayCheckBox, SIGNAL( stateChanged( int ) ), SLOT( stateChangedSystray( int ) ) );
@@ -684,7 +679,8 @@ void screencast::saveSettings()
     settings.setValue( "GIFplayer", myUi.GIFplayerComboBox->currentText() );
     settings.setValue( "Minimized", myUi.MinimizedCheckBox->checkState() );
     settings.setValue( "Countdown", myUi.CountdownSpinBox->value() );
-    settings.setValue( "Recorder", myUi.RecorderLineEdit->displayText() );
+    if ( vkSettings.isVokoscrenWithLibs() == false )
+      settings.setValue( "Recorder", myUi.RecorderLineEdit->displayText() );
   settings.endGroup();
 
   settings.beginGroup( "Videooptions" );

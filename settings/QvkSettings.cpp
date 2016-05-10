@@ -1,5 +1,8 @@
 #include "QvkSettings.h" 
 
+#include <QFile>
+#include <QApplication>
+
 using namespace std;
 
 QvkSettings::QvkSettings(){}
@@ -53,7 +56,17 @@ void QvkSettings::readAll()
       GIFPlayer = settings.value( "GIFplayer" ).toString();
       Minimized = settings.value( "Minimized", 0 ).toUInt();
       Countdown = settings.value( "Countdown", 0 ).toUInt();
-      Recorder = settings.value( "Recorder", "ffmpeg" ).toString();
+      QFile file;
+      if ( file.exists( qApp->applicationDirPath().append( "/bin/ffmpeg" ) ) == true )
+      {
+	vokoscrenWithLibs = true;
+        Recorder = qApp->applicationDirPath().append( "/bin/ffmpeg" );
+      }
+      else
+      {
+	vokoscrenWithLibs = false;
+        Recorder = settings.value( "Recorder", "ffmpeg" ).toString();
+      }
     settings.endGroup();
     
     settings.beginGroup( "Videooptions" );
@@ -110,6 +123,12 @@ void QvkSettings::readAll()
 	magnifierFormValue = settings.value( "FormValue", 2 ).toUInt();
     settings.endGroup();
 }
+
+bool QvkSettings::isVokoscrenWithLibs()
+{
+  return vokoscrenWithLibs;
+}
+
 
 QString QvkSettings::getVersion()
 {

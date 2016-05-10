@@ -76,7 +76,7 @@ public:
   int getMagnifierFormValue();
 
 public slots:
-
+  bool isVokoscrenWithLibs();
   
 private slots:
 
@@ -108,6 +108,7 @@ private:
   QString VideoContainer;
   int HideMouse;
   QString Recorder;
+  bool vokoscrenWithLibs;
   
   // Gui
   int X;
