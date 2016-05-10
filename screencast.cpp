@@ -171,7 +171,8 @@ screencast::screencast()
     myUi.tabWidget->setTabIcon( 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
 
     connect( myUi.SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
-    
+    connect( myUi.RecorderLineEdit, SIGNAL( textChanged( QString ) ), SLOT( recorderLineEditTextChanged( QString ) ) );
+
     if ( vkSettings.isVokoscrenWithLibs() == true )
     {
       myUi.RecorderLineEdit->setText( vkSettings.getRecorder() );
@@ -180,7 +181,6 @@ screencast::screencast()
     else
     {
       myUi.RecorderLineEdit->setText( getFileWithPath( vkSettings.getRecorder() ) );
-      connect( myUi.RecorderLineEdit, SIGNAL( textChanged( QString ) ), SLOT( recorderLineEditTextChanged( QString ) ) );
       connect( myUi.selectRecorderPushButton, SIGNAL(clicked() ), SLOT( selectRecorder() ) );
     }
     
