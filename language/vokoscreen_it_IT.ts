@@ -7,19 +7,19 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Nome</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Sconosciuto</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Dispositivo</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Usato da</translation>
     </message>
 </context>
 <context>
@@ -38,21 +38,21 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annulla</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
+        <translation>Installa un lettore multimediale</translation>
     </message>
 </context>
 <context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Troverete il video come allegato</translation>
+        <translation>Il video è in allegato</translation>
     </message>
     <message>
         <source>Select one or more files</source>
@@ -71,15 +71,15 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Mostra su schermo intero</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>Clic destro per il menù</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>Definito dall&apos;utente</translation>
     </message>
 </context>
 <context>
@@ -90,45 +90,45 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Nome</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Dispositivo</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Usato da</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Sconosciuto</translation>
     </message>
 </context>
 <context>
     <name>regionselection</name>
     <message>
         <source>doubleclick extended to the edge</source>
-        <translation type="unfinished"/>
+        <translation>Doppio clic per estendere al bordo</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>schermo intero</translation>
+        <translation>Schermo intero</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>finestre</translation>
+        <translation>Finestra</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>area</translation>
+        <translation>Area</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lente di ingrandimento</translation>
+        <translation>Ingrandimento</translation>
     </message>
     <message>
         <source>Audio</source>
@@ -156,11 +156,11 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Ubicazione del video</translation>
+        <translation>Salva in</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Riproduttore</translation>
+        <translation>Riproduci con</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
@@ -168,7 +168,7 @@
     </message>
     <message>
         <source>Start</source>
-        <translation>inizio</translation>
+        <translation>Avvia</translation>
     </message>
     <message>
         <source>Stop</source>
@@ -192,7 +192,7 @@
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>Dimensioni in KB</translation>
+        <translation>Dimensione in KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
@@ -204,7 +204,7 @@
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Impostazioni fps</translation>
+        <translation>Impostazione fps</translation>
     </message>
     <message>
         <source>Open Directory</source>
@@ -212,7 +212,7 @@
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Conto alla rovescia</translation>
+        <translation>Ritarda avvio</translation>
     </message>
     <message>
         <source>Play last Video</source>
@@ -224,15 +224,15 @@
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selezionare una o più periferiche</translation>
+        <translation>Seleziona una o più periferiche</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Fotogrammi al secondo attuale</translation>
+        <translation>Fotogrammi al secondo reali</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation>inizio</translation>
+        <translation>Avvia</translation>
     </message>
     <message>
         <source>Homepage</source>
@@ -248,11 +248,11 @@
     </message>
     <message>
         <source>Frames</source>
-        <translation>Fotogrammi</translation>
+        <translation>FPS</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donate</translation>
+        <translation>Fai una donazione</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -288,27 +288,27 @@
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>Specchiato</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"/>
+        <translation>Schermo</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
+        <translation>Tutti gli schermi</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Pagina dello sviluppatore</translation>
     </message>
     <message>
         <source>Recorder</source>
-        <translation type="unfinished"/>
+        <translation>Recorder</translation>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation type="unfinished"/>
+        <translation>Selezionare un recorder</translation>
     </message>
 </context>
 </TS>
