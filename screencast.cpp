@@ -1568,17 +1568,27 @@ void screencast::readyReadStandardError()
     statusBarLabelFps->setText( output.mid( x + 4, 3 ).replace( " ", "" ) );
   }
   
+  qint64 summFileSize = 0;
   QFileInfo fileInfo;
   if ( pause == true )
   {
-    fileInfo.setFile( PathTempLocation() + QDir::separator() + getPauseNameInTmpLocation() );
+    QDir dir( PathTempLocation() + QDir::separator() );
+    QStringList stringList = dir.entryList(QDir::Files, QDir::Time | QDir::Reversed);
+    
+    for ( int i = 0; i < stringList.size(); ++i )
+    {
+      fileInfo.setFile( PathTempLocation() + QDir::separator() + stringList[ i ] );
+      summFileSize = summFileSize + fileInfo.size() / 1024;
+    }
   }
   else
   {
     fileInfo.setFile( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
+    summFileSize = fileInfo.size() / 1024 ;
+   
   }
-  
-  statusBarLabelSize->setText( QString::number( fileInfo.size() / 1024 ) );
+
+  statusBarLabelSize->setText( QString::number( summFileSize ) );
 }
 
 

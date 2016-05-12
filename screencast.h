@@ -234,7 +234,7 @@ private:
 
     bool pause;
     QString pauseName;
-    
+        
 protected:
    void contextMenuEvent( QContextMenuEvent *event );
     
