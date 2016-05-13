@@ -22,20 +22,18 @@
 #include "QvkPulse.h"
 
 #include <QClipboard>
+#include <QLibraryInfo>
 
 using namespace std;
 
   #include "log/QvkLog.h"
   #include <QPointer>
-
   QPointer<QvkLog> myLog;
-
   void myMessageOutput( QtMsgType type, const QMessageLogContext &context, const QString &msg )
   {
     myLog->outputMessage( type, context, msg );
   }
 
-#include <QLibraryInfo>
 screencast::screencast()
 {
     vkSettings.readAll();
@@ -46,7 +44,6 @@ screencast::screencast()
     myLog = new QvkLog();
     qInstallMessageHandler( myMessageOutput );
     connect( myLog, SIGNAL( newLogText( QString ) ), this, SLOT( addLogVokoscreen( QString ) ) );
-    
 
     oldMainWindowHeight = height();
 
