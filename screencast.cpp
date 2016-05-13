@@ -2353,9 +2353,8 @@ void screencast::record()
   
   // bestehendes ffmpegLog löschen
   QDir Dira( "" );
-  QStringList filters;
-  filters << "ffmpeg*";
-  QStringList List = Dira.entryList(filters, QDir::Files, QDir::Name );
+  QStringList filters( QStringList() << "ffmpeg*" );
+  QStringList List = Dira.entryList( filters, QDir::Files, QDir::Name );
   QFile FfmpegFile;
   for (int i = 0; i < List.size(); ++i)
      FfmpegFile.remove( List.at(i) );
@@ -2368,8 +2367,7 @@ void screencast::record()
      dir.remove( PathTempLocation().append(QDir::separator() ).append(stringList.at( i ) ) );
 
   // framerate
-  QString framerate;
-  framerate = "-framerate " + QString().number( myUi.FrameSpinBox->value() );
+  QString framerate = "-framerate " + QString().number( myUi.FrameSpinBox->value() );
 
   QString myVcodec = myUi.VideocodecComboBox->currentText();
   if ( myVcodec == "libx264" )
