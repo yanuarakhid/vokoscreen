@@ -2424,18 +2424,6 @@ void screencast::record()
                + "-f" + " " + myUi.VideoContainerComboBox->itemData( myUi.VideoContainerComboBox->currentIndex() ).toString() + " ";
   
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
-  
-  QFile FileVokoscreenLog(settingsPath.absolutePath() + QDir::separator() + vkSettings.getProgName() + ".log");
-  if ( !FileVokoscreenLog.open( QIODevice::WriteOnly ) ) 
-    qDebug() << "Datei konnte nicht angelegt werden: " << FileVokoscreenLog.errorString();
-  
-  QTextStream stream( &FileVokoscreenLog );
-  stream << vkSettings.getProgName() << " Version: " << vkSettings.getVersion() << "\n";
-  stream << "Record resolution: " << getRecordWidth() << "x" << getRecordHeight() << "\n";
-  stream << "Alsa string: " << myAlsa() << "\n";
-  stream << "Qt Version: " << qVersion() << "\n";
-  stream << "ffmpeg Version: " << getFfmpegVersion() << "\n";
-  stream << "Record String: " << ffmpegString << PathMoviesLocation() << QDir::separator() << nameInMoviesLocation << "\n";
 }
 
 
