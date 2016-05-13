@@ -64,8 +64,10 @@ screencast::screencast()
     QvkAlsaDevice inBox;
     qDebug() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
     qDebug() << "[vokoscreen] current icon-theme:" << QIcon::themeName();
-    qDebug() << "[vokoscreen] PluginsPath:" << QLibraryInfo::location(QLibraryInfo::PluginsPath);
+    qDebug() << "[vokoscreen] Qt-PluginsPath:     " << QLibraryInfo::location(QLibraryInfo::PluginsPath);
     qDebug() << "[vokoscreen] Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
+    qDebug() << "[vokoscreen] Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
+    
     qDebug( " " );
 
     searchExternalPrograms();
@@ -1929,9 +1931,37 @@ void screencast::play()
   playerAndPath.append( "\"" );
   qDebug() << "[vokoscreen] play video: " << playerAndPath;
 
+  // Dieser Part ist das Original
   SystemCall->startDetached( playerAndPath );
-  
   SystemCall->close();
+
+  // Problem mit vlc und Qt5 "vokoscreen-with-libs"
+  // Test:
+  // Kopiere /usr/bin/vlc nach .
+  // mit qt.conf startet vlc nicht, ohne qt.conf startet vlc.
+
+  // Erster Part zum testen wo der Fehler liegt unter "vokoscreen-with-libs"
+  // Beim Auruf von VLC wird dieser nicht gestartet, er kann den plugin Pfad zu xcb nicht finden
+  // Siehe Ausgabe von qDebug()
+/*  SystemCall->start( playerAndPath );
+  SystemCall->waitForFinished( 3000 );
+  QString output = SystemCall->readAllStandardError();
+  qDebug() << output;
+*/
+/*
+  // Zweiter Part zum testen wo der Fehler liegt unter "vokoscreen-with-libs"
+  SystemCall->start( "strace /usr/bin/vlc" );
+  SystemCall->waitForFinished( 3000 );
+  QString output = SystemCall->readAllStandardError();
+  qDebug() << output;
+*/
+/*
+  // Dritter Part zum testen wo der Fehler liegt unter "vokoscreen-with-libs"
+  SystemCall->start( "env" );
+  SystemCall->waitForFinished( 3000 );
+  QString output = SystemCall->readAllStandardOutput();
+  qDebug() << output;
+*/
 }
 
 
