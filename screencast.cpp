@@ -1929,9 +1929,9 @@ void screencast::play()
   qDebug() << "[vokoscreen] play video: " << playerAndPath;
 
   // Dieser Part ist das Original
-  SystemCall->startDetached( playerAndPath );
+/*  SystemCall->startDetached( playerAndPath );
   SystemCall->close();
-
+*/
   // Problem mit vlc und Qt5 "vokoscreen-with-libs"
   // Test:
   // Kopiere /usr/bin/vlc nach .
@@ -1940,11 +1940,11 @@ void screencast::play()
   // Erster Part zum testen wo der Fehler liegt unter "vokoscreen-with-libs"
   // Beim Auruf von VLC wird dieser nicht gestartet, er kann den plugin Pfad zu xcb nicht finden
   // Siehe Ausgabe von qDebug()
-/*  SystemCall->start( playerAndPath );
+  SystemCall->start( playerAndPath );
   SystemCall->waitForFinished( 3000 );
   QString output = SystemCall->readAllStandardError();
   qDebug() << output;
-*/
+
 /*
   // Zweiter Part zum testen wo der Fehler liegt unter "vokoscreen-with-libs"
   SystemCall->start( "strace /usr/bin/vlc" );
@@ -2435,7 +2435,8 @@ void screencast::startRecord( QString RecordPathName )
     if ( value == "vokoscreenMix.monitor" )
     {
       Process.start("pactl load-module module-null-sink sink_name=vokoscreenMix");
-      Process.waitForFinished();
+      //Process.waitForFinished();
+      Process.waitForFinished( 3000 ); //****************************************************** new 14.05.2016
       QString modulNumber = Process.readAllStandardOutput();
       Process.close();
       qDebug();
@@ -2457,7 +2458,8 @@ void screencast::startRecord( QString RecordPathName )
       {
         box = listQFrame[ integerList[ i ] ];
         Process.start("pactl load-module module-loopback source=" + box->accessibleName() + " sink=vokoscreenMix");
-        Process.waitForFinished();
+        // Process.waitForFinished();
+        Process.waitForFinished( 3000 ); //*********************************************** new 14.05.2016
         QString modulNumber = Process.readAllStandardOutput();
         modulNumber.replace("\n", "");
         Process.close();
@@ -2489,7 +2491,8 @@ void screencast::Stop()
   if ( SystemCall->state() == QProcess::Running )
   {
     SystemCall->terminate();
-    SystemCall->waitForFinished();
+    //SystemCall->waitForFinished(;
+    SystemCall->waitForFinished( 3000 ); //********************************************************* new 14.05.20116
   }
 
   if ( ( pause == true ) and (  myUi.VideocodecComboBox->currentText() != "gif" ) )
