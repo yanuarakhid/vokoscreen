@@ -40,7 +40,9 @@
 #include <QListWidget>
 
 #include "QvkSettings.h"
-#include "regionselection.h"
+//#include "regionselection.h"
+#include "QvkRegionController.h"
+
 #include "QvkMagnifier.h"
 #include "QvkWebcamController.h"
 #include "QvkAlsaDevice.h"
@@ -184,8 +186,8 @@ private:
     Ui_screencast  myUi;
     int oldMainWindowHeight;
     QvkMagnifier *magnifier;
-    regionselection *myregionselection;
-    
+    //regionselection *myregionselection;
+    QvkRegionController *myregionselection;
     
     QvkShowClickDialog *ShowClickDialog;
     QvkAnimateControl *animateControl;

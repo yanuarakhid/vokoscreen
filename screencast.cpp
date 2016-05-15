@@ -21,6 +21,8 @@
 #include "QvkCountdown.h"
 #include "QvkPulse.h"
 
+#include "QvkRegionController.h"
+
 #include <QClipboard>
 #include <QLibraryInfo>
 
@@ -79,6 +81,8 @@ screencast::screencast()
     connect( myUi.FullScreenRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
     connect( myUi.WindowRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
     connect( myUi.AreaRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
+    
+    
     
     QDesktopWidget *desk = QApplication::desktop();
     myScreenCountChanged( desk->screenCount() );
@@ -381,7 +385,8 @@ screencast::screencast()
     connect( myUi.AreaRadioButton,       SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( myUi.FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( myUi.WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
-    myregionselection = new regionselection();
+    //myregionselection = new regionselection();
+    myregionselection = new QvkRegionController();
     
     // Clean vokoscreen temp
     QDir dir( PathTempLocation() );
@@ -1735,7 +1740,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       qDebug( " " );
 
       //Enables the customarea rectangle again. (Is diabled in record() )
-      if ( !myUi.PauseButton->isChecked() )
+      if ( !myUi.PauseButton->isChecked() and myUi.AreaRadioButton->isChecked() )
       {
         myregionselection->lockFrame( false );
       }
@@ -2336,13 +2341,12 @@ void screencast::record()
     setRecordHeight( QString().number( myregionselection->getHeight() ) );
     deltaX  = QString().number( myregionselection->getXRecordArea() );
     deltaY  = QString().number( myregionselection->getYRecordArea() );
-
     //Makes the rectangle unmovable and unresizeable (Is enabled yet again when process finished)
     myregionselection->lockFrame( true );
 
     qDebug() << "[vokoscreen]" << "recording area";
   }
-  
+ 
   // set working directory for writing and delete the ffmpegLog from Profil directory
   QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
   QFileInfo settingsPath( settings.fileName() );
