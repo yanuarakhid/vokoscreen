@@ -5,6 +5,14 @@ QvkRegionController::QvkRegionController()
 {
   regionChoise = new QvkRegionChoise();
   regionRecord = new QvkRegionRecord();
+  
+  // Unter Ubuntu 16.04 bleibt beim starten der Hintergrund im Rahmen hängen
+  // Um dem entgegezuwirken wird einfach x-mal umgeschaltet
+  // Irgenwo fehlt an de richtigen Stelle ein repaint und ein update
+  lockFrame( false );
+  lockFrame( true );
+  lockFrame( false );
+  
 }
 
 QvkRegionController::~QvkRegionController()
@@ -53,18 +61,18 @@ int QvkRegionController::getYRecordArea()
 
 void QvkRegionController::lockFrame( bool status )
 {
-  regionChoise->lockFrame( status );
+  regionRecord->setRecordGeometry( getX(), getY(), getWidth(), getHeight() );
   
   if ( status == true )
   {
     regionChoise->hide();
     regionRecord->show();
-    regionRecord->setRecordGeometry( getX(), getY(), getWidth(), getHeight() );
   }
   else
   {
     regionRecord->hide();
     regionChoise->show();
   }
+  regionChoise->lockFrame( status );
     
 }
