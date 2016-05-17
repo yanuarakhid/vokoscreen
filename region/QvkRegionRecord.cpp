@@ -77,18 +77,6 @@ void QvkRegionRecord::HandleTopLeft()
   int startAngle = 0 * 16;
   int spanAngle = 360 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
-
-  // Begin Pfeil zeichnen
-  double h = 2 * radius / 3;
-  painter->setPen( QPen( arrow, 2 ) );
-
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( borderLeft - frameWidth / 2 , borderTop - frameWidth / 2 );
-  painterPath->lineTo( borderLeft - h + penHalf, borderTop - h + penHalf );
-  painterPath->lineTo( borderLeft - h + penHalf + 7, borderTop - h + penHalf + 3 );
-  painterPath->lineTo( borderLeft - h + penHalf + 3, borderTop - h + penHalf + 7 );
-  painterPath->lineTo( borderLeft - h + penHalf, borderTop - h + penHalf );
-  painter->drawPath( *painterPath );
 }
 
 
@@ -107,14 +95,6 @@ void QvkRegionRecord::HandleTopMiddle()
   int startAngle = 0 * 16;
   int spanAngle = 360 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
-  painter->setPen( QPen( arrow, 2 ) );
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop - radius + penWidth + penHalf );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, borderTop - radius + penWidth+7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, borderTop - radius + penWidth+7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop - radius + penWidth + penHalf );
-  painter->drawPath( *painterPath );
 }
 
 
@@ -134,22 +114,6 @@ void QvkRegionRecord::HandleTopRight()
   int spanAngle =  -360  * 16;
   
   painter->drawPie( rectangle, startAngle, spanAngle );
-
-  // Begin Pfeil zeichnen
-  double h = 2 * radius / 3;
-  painter->setPen( QPen( arrow, 2 ) );
-
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( width() - borderRight + frameWidth / 2  , borderTop - frameWidth / 2 );
-  painterPath->lineTo( width() - borderRight + h - penWidth / 2, borderTop - h + penWidth / 2 );
-  painterPath->lineTo( width() - borderRight + h - 7           , borderTop - h + 3 );
-  painterPath->lineTo( width() - borderRight + h - 3           , borderTop - h + 7 );
-  painterPath->lineTo( width() - borderRight + h - penWidth    , borderTop - h + penWidth );  
-  
-  painterPath->setFillRule( Qt::OddEvenFill );
-  
-  painter->drawPath( *painterPath );
-  // End Pfeil zeichnen
 }
 
 
@@ -168,21 +132,6 @@ void QvkRegionRecord::HandleRightMiddle()
   int startAngle = 90 * 16;
   int spanAngle =  -360  * 16;
   painter->drawPie( rectangle, startAngle, spanAngle ); 
-  
-   // Begin Pfeil zeichnen
-  painter->setPen( QPen( arrow, 2 ) );
-
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( width() - borderRight + frameWidth / 2       , ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( width() - borderRight + radius - penWidth - 1, ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( width() - borderRight + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
-  painterPath->lineTo( width() - borderRight + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
-  painterPath->lineTo( width() - borderRight + radius - penWidth - 1, ( height() - borderTop - borderBottom ) / 2 + borderTop );
-
-  painterPath->setFillRule( Qt::OddEvenFill );
-  
-  painter->drawPath( *painterPath );
-  // End Pfeil zeichnen
 }
 
 
@@ -201,23 +150,6 @@ void QvkRegionRecord::HandleBottomRight()
   int startAngle = 90 * 16;
   int spanAngle =  -360  * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
-  
-  // Begin Pfeil zeichnen
-  double h = 2 * radius / 3;
-  
-  painter->setPen( QPen( arrow, 2 ) );
-
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( width() - borderRight + frameWidth / 2  , height() - borderBottom + frameWidth / 2 );
-  painterPath->lineTo( width() - borderRight + h - penWidth / 2, height() - borderBottom + h - penWidth / 2 );
-  painterPath->lineTo( width() - borderRight + h - 7           , height() - borderBottom + h - 3 );
-  painterPath->lineTo( width() - borderRight + h - 3           , height() - borderBottom + h - 7 );
-  painterPath->lineTo( width() - borderRight + h - penWidth / 2, height() - borderBottom + h - penWidth / 2);
-  
-  painterPath->setFillRule( Qt::OddEvenFill );
-  
-  painter->drawPath( *painterPath );
-  // End Pfeil zeichnen
 }
 
 
@@ -236,21 +168,6 @@ void QvkRegionRecord::HandleBottomMiddle()
   int startAngle = 0 * 16;
   int spanAngle =  -360  * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
-  
-  // Begin Pfeil zeichnen
-  painter->setPen( QPen( arrow, 2 ) );
-
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     height() - borderBottom );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     height() - borderBottom + radius - penWidth - 1 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, height() - borderBottom + radius - penWidth - 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, height() - borderBottom + radius - penWidth - 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     height() - borderBottom + radius - penWidth - 1 );
-  
-  painterPath->setFillRule( Qt::OddEvenFill );
-  
-  painter->drawPath( *painterPath );
-  // End Pfeil zeichnen
 }
 
 
@@ -269,23 +186,6 @@ void QvkRegionRecord::HandleBottomLeft()
   int startAngle = 90 * 16;
   int spanAngle =  360  * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
-
-  // Begin Pfeil zeichnen
-  painter->setPen( QPen( arrow, 2 ) );
-
-  double h = 2 * radius / 3;
-
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( borderLeft - frameWidth / 2, height() - borderBottom + frameWidth / 2 );
-  painterPath->lineTo( borderLeft - h + penHalf,    height() - borderBottom + h - penHalf );
-  painterPath->lineTo( borderLeft - h + 3,          height() - borderBottom + h - 7 );
-  painterPath->lineTo( borderLeft - h + 7,          height() - borderBottom + h - 3 );
-  painterPath->lineTo( borderLeft - h + penHalf,    height() - borderBottom + h - penHalf );
-  
-  painterPath->setFillRule( Qt::OddEvenFill );
-  
-  painter->drawPath( *painterPath );
-  // End Pfeil zeichnen
 }
 
 
@@ -304,21 +204,6 @@ void QvkRegionRecord::HandleLeftMiddle()
   int startAngle = 90 * 16;
   int spanAngle =  360  * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
-  
-  // Begin Pfeil zeichnen
-  painter->setPen( QPen( arrow, 2 ) );
-
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( borderLeft - frameWidth / 2,        ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( borderLeft - radius + penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( borderLeft - radius + penWidth + 7, ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
-  painterPath->lineTo( borderLeft - radius + penWidth + 7, ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
-  painterPath->lineTo( borderLeft - radius + penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  
-  painterPath->setFillRule( Qt::OddEvenFill );
-  
-  painter->drawPath( *painterPath );
-  // End Pfeil zeichnen
 }
 
 
@@ -369,8 +254,7 @@ void QvkRegionRecord::paintEvent( QPaintEvent *event )
 
   painter->end();
 
-  event->accept();  
-
+  event->accept();
 }
 
 
