@@ -447,15 +447,14 @@ QRect QvkRegionChoise::getPrintSizeRectForMask()
 
 void QvkRegionChoise::paintEvent( QPaintEvent *event ) 
 {
-  (void)event;
+  //(void)event;
   painter->begin( this );
   painter->setRenderHints( QPainter::Antialiasing, true );
-//  clearMask();
+  clearMask();
 
   // Maskiert den Bereich für PrintSize und HandleMiddle
   printSize();
   HandleMiddle();
-
     
   QRegion RegionWidget( 0, 0, width(), height() );
     
@@ -502,8 +501,6 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
   painter->end();
 
   event->accept();
-  
-  //qDebug() << "paintevent" << "-------------------------------------------------------";
 }
 
 
@@ -1029,8 +1026,8 @@ void QvkRegionChoise::mouseReleaseEvent( QMouseEvent * event )
 
 void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
 {
-  //(void)event;
-  int sleep = 3;
+  int sleep = 8;
+  int slowMotionWay = 100;
   QDesktopWidget *desk = QApplication::desktop();
   
   if ( handleUnderMouse == TopLeft )
@@ -1047,11 +1044,6 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
 		 0 - radius - frameWidth / 2,
 		 geometry().width(),
 		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
-      repaint();
-      update();
-      qApp->processEvents();
-      QTest::qSleep( sleep );
-    
   }
 
   if ( handleUnderMouse == TopRight )
@@ -1064,24 +1056,23 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
     
   if ( handleUnderMouse == RightMiddle )
   {
+    setGeometry( geometry().x(),
+                 geometry().y(),
+                 desk->width() - geometry().x() + radius + frameWidth / 2 - slowMotionWay,
+                 geometry().height() );
+    
     int width = this->width();
     for (int i = width; i <= desk->width() - geometry().x() + radius + frameWidth / 2; i+=1)
     {
       setGeometry( geometry().x(),
                    geometry().y(),
-                   i, //desk->width() - geometry().x() + radius + frameWidth / 2,
+                   i,
                    geometry().height() );
       repaint();
+      update();
       qApp->processEvents();
       QTest::qSleep( sleep );
     }
-/*      
-      setGeometry( geometry().x(),
-                   geometry().y(),
-                   desk->width() - geometry().x() + radius + frameWidth / 2,
-                   geometry().height() );
-      qApp->processEvents();
-*/
   }
     
   if ( handleUnderMouse == BottomRight )
@@ -1110,6 +1101,11 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
 
   if ( handleUnderMouse == LeftMiddle )
   {
+    setGeometry( 0 - radius - frameWidth / 2 + slowMotionWay,
+                 geometry().y(),
+		 geometry().x() + geometry().width() + radius + frameWidth / 2 - slowMotionWay,
+		 geometry().height() );
+    
     int x = this->x();
     int width = this->width();
     for ( int i = x; i >= 0 - radius - frameWidth / 2; i-- )
@@ -1118,19 +1114,10 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
                    geometry().y(),
                    x-i + width,
                    geometry().height() );
-
-      
       repaint();
       qApp->processEvents();
       QTest::qSleep( sleep );
     }
-/*    
-    setGeometry( 0 - radius - frameWidth / 2,
-                 geometry().y(),
-		 geometry().x() + geometry().width() + radius + frameWidth / 2,
-		 geometry().height() );
-*/		 
-    
   }
   
   if ( handleUnderMouse == Middle )
