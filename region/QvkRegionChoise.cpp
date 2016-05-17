@@ -1037,6 +1037,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
 		 0 - radius - frameWidth / 2,
 		 geometry().x() + geometry().width() + radius + frameWidth / 2,
 		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
+    event->accept();  
+    return;
   }
   
   if ( handleUnderMouse == TopMiddle )
@@ -1045,6 +1047,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
 		 0 - radius - frameWidth / 2,
 		 geometry().width(),
 		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
+    event->accept();  
+    return;
   }
 
   if ( handleUnderMouse == TopRight )
@@ -1053,6 +1057,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
 		 0 - radius - frameWidth / 2,
 		 desk->width() - geometry().x() + radius + frameWidth / 2,
 		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
+    event->accept();  
+    return;
   }
     
   if ( handleUnderMouse == RightMiddle )
@@ -1074,6 +1080,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
       qApp->processEvents();
       QTest::qSleep( sleep );
     }
+    event->accept();  
+    return;
   }
     
   if ( handleUnderMouse == BottomRight )
@@ -1082,6 +1090,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
                  geometry().y(),
 		 desk->width() - geometry().x() + radius + frameWidth / 2,
 		 desk->height() - geometry().y() + radius + frameWidth / 2 );
+    event->accept();  
+    return;
   }
   
   if ( handleUnderMouse == BottomMiddle )
@@ -1090,6 +1100,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
                  geometry().y(),
  		 geometry().width(),
 		 desk->height() - geometry().y() + radius + frameWidth / 2 );
+    event->accept();  
+    return;
   }
   
   if ( handleUnderMouse == BottomLeft )
@@ -1098,6 +1110,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
                  geometry().y(),
 		 geometry().x() + geometry().width() + radius + frameWidth / 2,
 		 desk->height() - geometry().y() + radius + frameWidth / 2 );
+    event->accept();  
+    return;
   }
 
   if ( handleUnderMouse == LeftMiddle )
@@ -1119,6 +1133,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
       qApp->processEvents();
       QTest::qSleep( sleep );
     }
+    event->accept();  
+    return;
   }
   
   if ( handleUnderMouse == Middle )
