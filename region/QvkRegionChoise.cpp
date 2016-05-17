@@ -87,13 +87,13 @@ void QvkRegionChoise::HandleTopLeft()
   double h = 2 * radius / 3;
   painter->setPen( QPen( arrow, 2 ) );
 
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( borderLeft - frameWidth / 2 , borderTop - frameWidth / 2 );
-  painterPath->lineTo( borderLeft - h + penHalf, borderTop - h + penHalf );
-  painterPath->lineTo( borderLeft - h + penHalf + 7, borderTop - h + penHalf + 3 );
-  painterPath->lineTo( borderLeft - h + penHalf + 3, borderTop - h + penHalf + 7 );
-  painterPath->lineTo( borderLeft - h + penHalf, borderTop - h + penHalf );
-  painter->drawPath( *painterPath );
+  QPainterPath painterPath;
+  painterPath.moveTo( borderLeft - frameWidth / 2 , borderTop - frameWidth / 2 );
+  painterPath.lineTo( borderLeft - h + penHalf, borderTop - h + penHalf );
+  painterPath.lineTo( borderLeft - h + penHalf + 7, borderTop - h + penHalf + 3 );
+  painterPath.lineTo( borderLeft - h + penHalf + 3, borderTop - h + penHalf + 7 );
+  painterPath.lineTo( borderLeft - h + penHalf, borderTop - h + penHalf );
+  painter->drawPath( painterPath );
 }
 
 
@@ -113,13 +113,13 @@ void QvkRegionChoise::HandleTopMiddle()
   int spanAngle = 360 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
   painter->setPen( QPen( arrow, 2 ) );
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop - radius + penWidth + penHalf );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, borderTop - radius + penWidth+7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, borderTop - radius + penWidth+7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop - radius + penWidth + penHalf );
-  painter->drawPath( *painterPath );
+  QPainterPath painterPath;
+  painterPath.moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop - radius + penWidth + penHalf );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, borderTop - radius + penWidth+7 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, borderTop - radius + penWidth+7 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop - radius + penWidth + penHalf );
+  painter->drawPath( painterPath );
 }
 
 
@@ -144,16 +144,17 @@ void QvkRegionChoise::HandleTopRight()
   double h = 2 * radius / 3;
   painter->setPen( QPen( arrow, 2 ) );
 
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( width() - borderRight + frameWidth / 2  , borderTop - frameWidth / 2 );
-  painterPath->lineTo( width() - borderRight + h - penWidth / 2, borderTop - h + penWidth / 2 );
-  painterPath->lineTo( width() - borderRight + h - 7           , borderTop - h + 3 );
-  painterPath->lineTo( width() - borderRight + h - 3           , borderTop - h + 7 );
-  painterPath->lineTo( width() - borderRight + h - penWidth    , borderTop - h + penWidth );  
+  QPainterPath painterPath;
+  painterPath.moveTo( width() - borderRight + frameWidth / 2  , borderTop - frameWidth / 2 );
+  painterPath.lineTo( width() - borderRight + h - penWidth / 2, borderTop - h + penWidth / 2 );
+  painterPath.lineTo( width() - borderRight + h - 7           , borderTop - h + 3 );
+  painterPath.lineTo( width() - borderRight + h - 3           , borderTop - h + 7 );
+  painterPath.lineTo( width() - borderRight + h - penWidth    , borderTop - h + penWidth );  
   
-  painterPath->setFillRule( Qt::OddEvenFill );
+  painterPath.setFillRule( Qt::OddEvenFill );
   
-  painter->drawPath( *painterPath );
+  painter->drawPath( painterPath );
+  
   // End Pfeil zeichnen
 }
 
@@ -177,16 +178,16 @@ void QvkRegionChoise::HandleRightMiddle()
    // Begin Pfeil zeichnen
   painter->setPen( QPen( arrow, 2 ) );
 
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( width() - borderRight + frameWidth / 2       , ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( width() - borderRight + radius - penWidth - 1, ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( width() - borderRight + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
-  painterPath->lineTo( width() - borderRight + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
-  painterPath->lineTo( width() - borderRight + radius - penWidth - 1, ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  QPainterPath painterPath;
+  painterPath.moveTo( width() - borderRight + frameWidth / 2       , ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath.lineTo( width() - borderRight + radius - penWidth - 1, ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath.lineTo( width() - borderRight + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
+  painterPath.lineTo( width() - borderRight + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
+  painterPath.lineTo( width() - borderRight + radius - penWidth - 1, ( height() - borderTop - borderBottom ) / 2 + borderTop );
 
-  painterPath->setFillRule( Qt::OddEvenFill );
+  painterPath.setFillRule( Qt::OddEvenFill );
   
-  painter->drawPath( *painterPath );
+  painter->drawPath( painterPath );
   // End Pfeil zeichnen
 }
 
@@ -212,16 +213,16 @@ void QvkRegionChoise::HandleBottomRight()
   
   painter->setPen( QPen( arrow, 2 ) );
 
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( width() - borderRight + frameWidth / 2  , height() - borderBottom + frameWidth / 2 );
-  painterPath->lineTo( width() - borderRight + h - penWidth / 2, height() - borderBottom + h - penWidth / 2 );
-  painterPath->lineTo( width() - borderRight + h - 7           , height() - borderBottom + h - 3 );
-  painterPath->lineTo( width() - borderRight + h - 3           , height() - borderBottom + h - 7 );
-  painterPath->lineTo( width() - borderRight + h - penWidth / 2, height() - borderBottom + h - penWidth / 2);
+  QPainterPath painterPath;
+  painterPath.moveTo( width() - borderRight + frameWidth / 2  , height() - borderBottom + frameWidth / 2 );
+  painterPath.lineTo( width() - borderRight + h - penWidth / 2, height() - borderBottom + h - penWidth / 2 );
+  painterPath.lineTo( width() - borderRight + h - 7           , height() - borderBottom + h - 3 );
+  painterPath.lineTo( width() - borderRight + h - 3           , height() - borderBottom + h - 7 );
+  painterPath.lineTo( width() - borderRight + h - penWidth / 2, height() - borderBottom + h - penWidth / 2);
   
-  painterPath->setFillRule( Qt::OddEvenFill );
+  painterPath.setFillRule( Qt::OddEvenFill );
   
-  painter->drawPath( *painterPath );
+  painter->drawPath( painterPath );
   // End Pfeil zeichnen
 }
 
@@ -245,16 +246,16 @@ void QvkRegionChoise::HandleBottomMiddle()
   // Begin Pfeil zeichnen
   painter->setPen( QPen( arrow, 2 ) );
 
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     height() - borderBottom );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     height() - borderBottom + radius - penWidth - 1 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, height() - borderBottom + radius - penWidth - 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, height() - borderBottom + radius - penWidth - 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     height() - borderBottom + radius - penWidth - 1 );
+  QPainterPath painterPath;
+  painterPath.moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     height() - borderBottom );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     height() - borderBottom + radius - penWidth - 1 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, height() - borderBottom + radius - penWidth - 7 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, height() - borderBottom + radius - penWidth - 7 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     height() - borderBottom + radius - penWidth - 1 );
   
-  painterPath->setFillRule( Qt::OddEvenFill );
+  painterPath.setFillRule( Qt::OddEvenFill );
   
-  painter->drawPath( *painterPath );
+  painter->drawPath( painterPath );
   // End Pfeil zeichnen
 }
 
@@ -280,16 +281,16 @@ void QvkRegionChoise::HandleBottomLeft()
 
   double h = 2 * radius / 3;
 
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( borderLeft - frameWidth / 2, height() - borderBottom + frameWidth / 2 );
-  painterPath->lineTo( borderLeft - h + penHalf,    height() - borderBottom + h - penHalf );
-  painterPath->lineTo( borderLeft - h + 3,          height() - borderBottom + h - 7 );
-  painterPath->lineTo( borderLeft - h + 7,          height() - borderBottom + h - 3 );
-  painterPath->lineTo( borderLeft - h + penHalf,    height() - borderBottom + h - penHalf );
+  QPainterPath painterPath;
+  painterPath.moveTo( borderLeft - frameWidth / 2, height() - borderBottom + frameWidth / 2 );
+  painterPath.lineTo( borderLeft - h + penHalf,    height() - borderBottom + h - penHalf );
+  painterPath.lineTo( borderLeft - h + 3,          height() - borderBottom + h - 7 );
+  painterPath.lineTo( borderLeft - h + 7,          height() - borderBottom + h - 3 );
+  painterPath.lineTo( borderLeft - h + penHalf,    height() - borderBottom + h - penHalf );
   
-  painterPath->setFillRule( Qt::OddEvenFill );
+  painterPath.setFillRule( Qt::OddEvenFill );
   
-  painter->drawPath( *painterPath );
+  painter->drawPath( painterPath );
   // End Pfeil zeichnen
 }
 
@@ -313,16 +314,16 @@ void QvkRegionChoise::HandleLeftMiddle()
   // Begin Pfeil zeichnen
   painter->setPen( QPen( arrow, 2 ) );
 
-  QPainterPath * painterPath = new QPainterPath();
-  painterPath->moveTo( borderLeft - frameWidth / 2,        ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( borderLeft - radius + penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( borderLeft - radius + penWidth + 7, ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
-  painterPath->lineTo( borderLeft - radius + penWidth + 7, ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
-  painterPath->lineTo( borderLeft - radius + penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  QPainterPath painterPath;
+  painterPath.moveTo( borderLeft - frameWidth / 2,        ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath.lineTo( borderLeft - radius + penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath.lineTo( borderLeft - radius + penWidth + 7, ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
+  painterPath.lineTo( borderLeft - radius + penWidth + 7, ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
+  painterPath.lineTo( borderLeft - radius + penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
   
-  painterPath->setFillRule( Qt::OddEvenFill );
+  painterPath.setFillRule( Qt::OddEvenFill );
   
-  painter->drawPath( *painterPath );
+  painter->drawPath( painterPath );
   // End Pfeil zeichnen
 }
 
@@ -348,38 +349,38 @@ void QvkRegionChoise::HandleMiddle()
   //Begin Pfeil zeichnen
   painter->setPen( QPen( arrow, 2 ) );
 
-  QPainterPath * painterPath = new QPainterPath();
+  QPainterPath painterPath;
   //arrow left
-  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,                        ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius + penWidth,    ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius + penWidth + 7,( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius + penWidth + 7,( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius + penWidth,    ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath.moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,                        ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius + penWidth,    ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius + penWidth + 7,( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius + penWidth + 7,( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius + penWidth,    ( height() - borderTop - borderBottom ) / 2 + borderTop );
   
   //arrow top
-  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop - radius + penWidth );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius + penWidth + 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius + penWidth + 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop - radius + penWidth );
+  painterPath.moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop - radius + penWidth );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius + penWidth + 7 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius + penWidth + 7 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop - radius + penWidth );
   
   //arrow right
-  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,                         ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius - penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius - penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath.moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,                         ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius - penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop + 3 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius - penWidth - 7, ( height() - borderTop - borderBottom ) / 2 + borderTop - 3 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + radius - penWidth,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
 
   //arrow bottom
-  painterPath->moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop + radius - penWidth );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, ( height() - borderTop - borderBottom ) / 2 + borderTop + radius - penWidth - 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, ( height() - borderTop - borderBottom ) / 2 + borderTop + radius - penWidth - 7 );
-  painterPath->lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop + radius - penWidth );
+  painterPath.moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop + radius - penWidth );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft + 3, ( height() - borderTop - borderBottom ) / 2 + borderTop + radius - penWidth - 7 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft - 3, ( height() - borderTop - borderBottom ) / 2 + borderTop + radius - penWidth - 7 );
+  painterPath.lineTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     ( height() - borderTop - borderBottom ) / 2 + borderTop + radius - penWidth );
   
-  painterPath->setFillRule( Qt::OddEvenFill );
+  painterPath.setFillRule( Qt::OddEvenFill );
   
-  painter->drawPath( *painterPath );
+  painter->drawPath( painterPath );
   // End Pfeil zeichnen
   
   rect.setLeft( rect.left() - 2 );
