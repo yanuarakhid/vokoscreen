@@ -1027,6 +1027,13 @@ void QvkRegionChoise::mouseReleaseEvent( QMouseEvent * event )
 
 void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
 {
+  // Hint:
+  // 1. Without slow motion, hide() and show() must have under Ubuntu 16.04 otherwise glitch
+  // 2. With slow motion, repaint must have otherwise glitch
+  // 3. return wird gebraucht da ansonsten evtl. auch mal "Middle" aufgerufen wird
+  
+  // Am besten ist es wenn alle Knöpfe slow motion sind, dann werden keine ungereimtheiten unter opensuse und Ubuntu beobachtet.
+  
   int sleep = 8;
   int slowMotionWay = 100;
   QDesktopWidget *desk = QApplication::desktop();
@@ -1037,6 +1044,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
 		 0 - radius - frameWidth / 2,
 		 geometry().x() + geometry().width() + radius + frameWidth / 2,
 		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
+    hide();
+    show();
     event->accept();  
     return;
   }
@@ -1047,6 +1056,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
 		 0 - radius - frameWidth / 2,
 		 geometry().width(),
 		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
+    hide();
+    show();
     event->accept();  
     return;
   }
@@ -1057,6 +1068,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
 		 0 - radius - frameWidth / 2,
 		 desk->width() - geometry().x() + radius + frameWidth / 2,
 		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
+    hide();
+    show();
     event->accept();  
     return;
   }
@@ -1076,8 +1089,6 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
                    i,
                    geometry().height() );
       repaint();
-      update();
-      qApp->processEvents();
       QTest::qSleep( sleep );
     }
     event->accept();  
@@ -1090,6 +1101,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
                  geometry().y(),
 		 desk->width() - geometry().x() + radius + frameWidth / 2,
 		 desk->height() - geometry().y() + radius + frameWidth / 2 );
+    hide();
+    show();
     event->accept();  
     return;
   }
@@ -1100,6 +1113,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
                  geometry().y(),
  		 geometry().width(),
 		 desk->height() - geometry().y() + radius + frameWidth / 2 );
+    hide();
+    show();
     event->accept();  
     return;
   }
@@ -1110,6 +1125,8 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
                  geometry().y(),
 		 geometry().x() + geometry().width() + radius + frameWidth / 2,
 		 desk->height() - geometry().y() + radius + frameWidth / 2 );
+    hide();
+    show();
     event->accept();  
     return;
   }
@@ -1130,7 +1147,6 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
                    x-i + width,
                    geometry().height() );
       repaint();
-      qApp->processEvents();
       QTest::qSleep( sleep );
     }
     event->accept();  
@@ -1143,7 +1159,9 @@ void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
                  0 - radius - frameWidth / 2,
 		 desk->width() + 2 * radius + frameWidth,
 		 desk->height() + 2 * radius + frameWidth );
+    hide();
+    show();
   }
-  
+
   event->accept();  
 }
