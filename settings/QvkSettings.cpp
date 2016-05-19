@@ -59,12 +59,12 @@ void QvkSettings::readAll()
       QFile file;
       if ( file.exists( qApp->applicationDirPath().append( "/bin/ffmpeg" ) ) == true )
       {
-	vokoscrenWithLibs = true;
+	vokoscreenWithLibs = true;
         Recorder = qApp->applicationDirPath().append( "/bin/ffmpeg" );
       }
       else
       {
-	vokoscrenWithLibs = false;
+	vokoscreenWithLibs = false;
         Recorder = settings.value( "Recorder", "ffmpeg" ).toString();
       }
     settings.endGroup();
@@ -124,9 +124,9 @@ void QvkSettings::readAll()
     settings.endGroup();
 }
 
-bool QvkSettings::isVokoscrenWithLibs()
+bool QvkSettings::isVokoscreenWithLibs()
 {
-  return vokoscrenWithLibs;
+  return vokoscreenWithLibs;
 }
 
 

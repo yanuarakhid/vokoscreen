@@ -176,7 +176,7 @@ screencast::screencast()
     connect( myUi.SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
     connect( myUi.RecorderLineEdit, SIGNAL( textChanged( QString ) ), SLOT( recorderLineEditTextChanged( QString ) ) );
 
-    if ( vkSettings.isVokoscrenWithLibs() == true )
+    if ( vkSettings.isVokoscreenWithLibs() == true )
     {
       myUi.RecorderLineEdit->setText( vkSettings.getRecorder() );
       myUi.selectRecorderPushButton->hide();
@@ -527,7 +527,8 @@ void screencast::SearchCodec()
    qDebug() << "[vokoscreen] ---Begin search audio codec---";
    QStringList audioCodecList;
    myUi.AudiocodecComboBox->clear();
-   audioCodecList << "libmp3lame" << "vorbis" << "pcm_s16le" << "libvo_aacenc" << "aac";
+   
+   audioCodecList << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac";
    for ( int i = 0; i < audioCodecList.count(); i++ )
    {
      if ( formatsAndCodecs->isCodecAvailable( "Audio", audioCodecList[ i ], &experimental ) == true )
@@ -683,7 +684,7 @@ void screencast::saveSettings()
     settings.setValue( "GIFplayer", myUi.GIFplayerComboBox->currentText() );
     settings.setValue( "Minimized", myUi.MinimizedCheckBox->checkState() );
     settings.setValue( "Countdown", myUi.CountdownSpinBox->value() );
-    if ( vkSettings.isVokoscrenWithLibs() == false )
+    if ( vkSettings.isVokoscreenWithLibs() == false )
       settings.setValue( "Recorder", myUi.RecorderLineEdit->displayText() );
   settings.endGroup();
 
