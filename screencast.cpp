@@ -501,7 +501,7 @@ void screencast::SearchCodec()
    QStringList videoCodecList;
    bool experimental = false;
    myUi.VideocodecComboBox->clear();
-   videoCodecList << "libx264" << "libx265" << "mpeg4" << "huffyuv" << "gif";
+   videoCodecList << "libx264" << "mpeg4" << "huffyuv" << "gif"; //<< "libx265" to time to many artifacts
    for ( int i = 0; i < videoCodecList.count(); i++ )
    {
      if ( formatsAndCodecs->isCodecAvailable( "Video", videoCodecList[ i ], &experimental ) == true )
@@ -1468,6 +1468,7 @@ void screencast::setVideocodecStandardComboBox()
 {
   myUi.VideocodecComboBox->setCurrentIndex( myUi.VideocodecComboBox->findText( "libx264", Qt::MatchExactly ) );
   myUi.VideoContainerComboBox->setCurrentIndex( myUi.VideoContainerComboBox->findText( "mkv", Qt::MatchExactly ) );
+  myUi.x264LosslessCheckBox->setChecked( false );
 }
 
 
@@ -2424,7 +2425,7 @@ void screencast::record()
     if ( ( intRecordY % 2 ) == 1 )
       setRecordHeight( QString().number( --intRecordY ) );
     
-    myVcodec = "libx265 -preset ultrafast -x265-params crf=28";
+    myVcodec = "libx265 -preset ultrafast -qp 0";//-x265-params crf=20";
   }  
   
   nameInMoviesLocation = NameInMoviesLocation();
