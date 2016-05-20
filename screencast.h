@@ -173,6 +173,8 @@ private slots:
   
   void copyToClipboard();
 
+  QString x264Lossless();
+
   
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();

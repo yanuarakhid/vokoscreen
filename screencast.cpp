@@ -1335,6 +1335,15 @@ void screencast::currentIndexChangedCodec( int index )
   (void)index;
   statusBarLabelCodec->setText( myUi.VideocodecComboBox->currentText() );
 
+  if ( myUi.VideocodecComboBox->currentText() == "libx264" )
+  {
+     myUi.x264LosslessCheckBox->show();
+  }
+  else
+  {
+     myUi.x264LosslessCheckBox->hide();
+  }
+  
   if ( myUi.VideocodecComboBox->currentText() == "gif" )
   {
     myUi.VideoContainerComboBox->setCurrentIndex( myUi.VideoContainerComboBox->findText( "gif" ) );
@@ -2276,6 +2285,18 @@ void screencast::Countdown()
   } 
 }
 
+QString screencast::x264Lossless()
+{
+   if ( myUi.x264LosslessCheckBox->isVisible() and myUi.x264LosslessCheckBox->isChecked() )
+   {
+    return "-qp 0";
+   }
+   else
+   {
+    return ""; 
+   }
+
+}
 
 void screencast::record()
 {
@@ -2418,6 +2439,7 @@ void screencast::record()
                + myAlsa() + " "
                + "-pix_fmt yuv420p" + " "
                + "-c:v" + " " + myVcodec + " "
+	       + x264Lossless() + " "
                + myAcodec() + " "
                + "-q:v 1" + " "
                + "-s" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
