@@ -747,10 +747,6 @@ void screencast::buttonVersion()
 
 void screencast::addLogVokoscreen( QString value )
 {
-//  QFont font;
-//  font.setStyleHint(QFont::Monospace);
-       
-  //myUi.ListWidgetLogVokoscreen->setFont( font );
   myUi.ListWidgetLogVokoscreen->addItem( value );
   myUi.ListWidgetLogVokoscreen->scrollToBottom();
 }
