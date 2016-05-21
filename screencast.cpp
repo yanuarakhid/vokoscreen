@@ -745,9 +745,12 @@ void screencast::buttonVersion()
 }
 #endif
 
-
 void screencast::addLogVokoscreen( QString value )
 {
+//  QFont font;
+//  font.setStyleHint(QFont::Monospace);
+       
+  //myUi.ListWidgetLogVokoscreen->setFont( font );
   myUi.ListWidgetLogVokoscreen->addItem( value );
   myUi.ListWidgetLogVokoscreen->scrollToBottom();
 }
@@ -871,16 +874,16 @@ void screencast::searchExternalPrograms()
   qDebug() << "[vokoscreen]" << "---Begin Search external tools---";
   
   if ( searchProgramm( vkSettings.getRecorder() ) )
-    qDebug() << "[vokoscreen]" << "Search ffmpeg ..... found" << vkSettings.getRecorder() << "Version:" << getFfmpegVersion();
+     qDebug() << "[vokoscreen]" << "Search ffmpeg     ..... found" << vkSettings.getRecorder() << "Version:" << getFfmpegVersion();
   else
-    qDebug() << "[vokoscreen]" << "Search ffmpeg ..... not found. Please install ffmpeg";
+     qDebug() << "[vokoscreen]" << "Search ffmpeg     ..... not found. Please install ffmpeg";
 
 // https://wiki.qt.io/Get-OS-name-in-Qt  
 #ifdef Q_OS_LINUX
   if ( searchProgramm("pactl") )
-     qDebug() << "[vokoscreen]" << "Search pactl  ..... found Version:" << getPactlVersion();
+     qDebug() << "[vokoscreen]" << "Search pactl      ..... found Version:" << getPactlVersion();
   else
-     qDebug() << "[vokoscreen]" << "Error: pactl not found, this is an pulseaudio-utils tool. Please install pulseaudio-utils";
+     qDebug() << "[vokoscreen]" << "Search pactl      ..... pactl not found, this is an pulseaudio-utils tool. Please install pulseaudio-utils";
 #endif 
 #ifdef Q_OS_WIN
 #endif  
@@ -889,16 +892,16 @@ void screencast::searchExternalPrograms()
   if ( searchProgramm("xdg-email") )
      qDebug() << "[vokoscreen]" << "Search xdg-email  ..... found Version:" << getXdgemailVersion();
   else
-     qDebug() << "[vokoscreen]" << "Error: xdg-email not found, this is an xdg-utils tool. Please install xdg-utils";
+     qDebug() << "[vokoscreen]" << "Search xdg-email  ..... xdg-email not found, this is an xdg-utils tool. Please install xdg-utils";
 #endif  
 #ifdef Q_OS_WIN
 #endif  
   
 #ifdef Q_OS_LINUX
   if ( searchProgramm("lsof") )
-     qDebug() << "[vokoscreen]" << "Search lsof  ..... found Version:" << getLsofVersion();
+     qDebug() << "[vokoscreen]" << "Search lsof       ..... found Version:" << getLsofVersion();
   else
-     qDebug() << "[vokoscreen]" << "Error: lsof not found. Please install lsof";
+     qDebug() << "[vokoscreen]" << "Search lsof       ..... lsof not found. Please install lsof";
 #endif  
 #ifdef Q_OS_WIN
 #endif  
