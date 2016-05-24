@@ -174,7 +174,6 @@ private slots:
   void copyToClipboard();
 
   QString x264Lossless();
-
   
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
@@ -238,7 +237,10 @@ private:
 
     bool pause;
     QString pauseName;
-        
+    
+    QFileSystemWatcher *VideoFileSystemWatcher;
+    
+    
 protected:
    void contextMenuEvent( QContextMenuEvent *event );
     

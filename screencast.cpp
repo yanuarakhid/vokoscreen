@@ -479,7 +479,7 @@ screencast::screencast()
    QvkAlsaWatcher * myAlsaWatcher = new QvkAlsaWatcher();
    connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( AlsaWatcherEvent( QStringList ) ) );
     
-   QFileSystemWatcher * VideoFileSystemWatcher = new QFileSystemWatcher();
+   VideoFileSystemWatcher = new QFileSystemWatcher();
    VideoFileSystemWatcher->addPath( myUi.SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
    myVideoFileSystemWatcher( "" );
@@ -492,7 +492,6 @@ screencast::screencast()
 screencast::~screencast()
 { 
 }
-
 
 void screencast::SearchCodec()
 {
@@ -1561,7 +1560,12 @@ void screencast::saveVideoPath()
                 QStandardPaths::writableLocation( QStandardPaths::HomeLocation ), QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
 
   if ( dir > "" )
-      myUi.SaveVideoPathLineEdit->setText( dir );
+  {
+      VideoFileSystemWatcher->removePath( myUi.SaveVideoPathLineEdit->displayText() );
+        myUi.SaveVideoPathLineEdit->setText( dir );
+      VideoFileSystemWatcher->addPath( myUi.SaveVideoPathLineEdit->displayText() );
+      myVideoFileSystemWatcher( "" );
+  }
 }
 
 
