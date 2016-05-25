@@ -9,9 +9,9 @@ QvkMail::QvkMail()
 }
 
 
-QvkMail::QvkMail( QWidget *object )
+QvkMail::QvkMail( QString value )
 {
-  (void)object;
+  videoPath = value;
   
   newDialog = new QDialog;
   newDialog->setModal( true );
@@ -103,7 +103,7 @@ void QvkMail::startMailClientWithSelectedFiles( QStringList fileList )
 
 QString QvkMail::lastMovie()
 {
-  QDir dir( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+  QDir dir( videoPath );
   
   QStringList filters;
   filters << "vokoscreen*";
@@ -117,11 +117,9 @@ QString QvkMail::lastMovie()
 
 QStringList QvkMail::selectedMail()
 {
-  QString a = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
-  
   QStringList files = QFileDialog::getOpenFileNames( newDialog,
                                                      tr( "Select one or more files" ),
-                                                     QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) , 
+						     videoPath,
                                                      "*.*" );
   
   return files;

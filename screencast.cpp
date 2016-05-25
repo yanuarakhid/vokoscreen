@@ -2103,7 +2103,7 @@ void screencast::stateChangedSystray( int state )
 
 void screencast::send()
 {
-  QvkMail *vkMail = new QvkMail( this );
+  QvkMail *vkMail = new QvkMail( myUi.SaveVideoPathLineEdit->displayText() );
   (void)vkMail;
 }
 

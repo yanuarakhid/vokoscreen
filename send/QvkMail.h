@@ -18,7 +18,7 @@ Q_OBJECT
 public:
   QvkMail();
   virtual ~QvkMail();
-  QvkMail( QWidget *object );
+  QvkMail( QString value );
 
 
 public slots:
@@ -43,7 +43,9 @@ protected:
 private:
   QDialog *newDialog;
   Ui_MailDialog myUiMailDialog;
-
+  QString videoPath;
+  
+  
 };
 
 #endif
