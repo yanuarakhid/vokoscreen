@@ -1335,11 +1335,11 @@ void screencast::currentIndexChangedCodec( int index )
 
   if ( myUi.VideocodecComboBox->currentText() == "libx264" )
   {
-     myUi.x264LosslessCheckBox->show();
+     myUi.x264LosslessCheckBox->setEnabled( true );
   }
   else
   {
-     myUi.x264LosslessCheckBox->hide();
+     myUi.x264LosslessCheckBox->setEnabled( false );
   }
   
   if ( myUi.VideocodecComboBox->currentText() == "gif" )

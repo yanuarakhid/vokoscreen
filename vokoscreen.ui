@@ -291,8 +291,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>98</width>
-                 <height>28</height>
+                 <width>21</width>
+                 <height>16</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -377,13 +377,77 @@
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="0" column="0">
            <layout class="QGridLayout" name="gridLayout_4">
-            <item row="0" column="1">
-             <widget class="QSpinBox" name="FrameSpinBox">
-              <property name="maximum">
-               <number>200</number>
+            <item row="1" column="3">
+             <widget class="QLabel" name="VideocodecOptionLabel">
+              <property name="text">
+               <string>Videocodec</string>
               </property>
-              <property name="value">
-               <number>25</number>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QLabel" name="AudiocodecLabel">
+              <property name="text">
+               <string>Audiocodec</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="4">
+             <widget class="QComboBox" name="VideocodecComboBox"/>
+            </item>
+            <item row="2" column="4">
+             <widget class="QComboBox" name="AudiocodecComboBox"/>
+            </item>
+            <item row="0" column="9">
+             <widget class="QToolButton" name="FrameStandardButton">
+              <property name="text">
+               <string notr="true"/>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QComboBox" name="VideoContainerComboBox"/>
+            </item>
+            <item row="1" column="9">
+             <widget class="QToolButton" name="VideocodecStandardButton">
+              <property name="text">
+               <string notr="true"/>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="9">
+             <widget class="QToolButton" name="AudiocodecStandardButton">
+              <property name="text">
+               <string notr="true"/>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="7">
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QCheckBox" name="x264LosslessCheckBox">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="text">
+                 <string>Lossless</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="VideoContainerLabel">
+              <property name="text">
+               <string>Format</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -397,105 +461,15 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="VideocodecOptionLabel">
-              <property name="text">
-               <string>Videocodec</string>
+            <item row="0" column="1">
+             <widget class="QSpinBox" name="FrameSpinBox">
+              <property name="maximum">
+               <number>200</number>
               </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="AudiocodecLabel">
-              <property name="text">
-               <string>Audiocodec</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <property name="value">
+               <number>25</number>
               </property>
              </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QComboBox" name="VideocodecComboBox"/>
-            </item>
-            <item row="1" column="5">
-             <widget class="QComboBox" name="VideoContainerComboBox"/>
-            </item>
-            <item row="2" column="1">
-             <widget class="QComboBox" name="AudiocodecComboBox"/>
-            </item>
-            <item row="0" column="7">
-             <widget class="QToolButton" name="FrameStandardButton">
-              <property name="text">
-               <string notr="true"/>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="7">
-             <widget class="QToolButton" name="VideocodecStandardButton">
-              <property name="text">
-               <string notr="true"/>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="7">
-             <widget class="QToolButton" name="AudiocodecStandardButton">
-              <property name="text">
-               <string notr="true"/>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="4">
-             <layout class="QHBoxLayout" name="horizontalLayout_2">
-              <item>
-               <widget class="QCheckBox" name="x264LosslessCheckBox">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="text">
-                 <string>Lossless</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_19">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QLabel" name="VideoContainerLabel">
-                <property name="text">
-                 <string>Format</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item row="1" column="6">
-             <spacer name="horizontalSpacer_29">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
             </item>
            </layout>
           </item>
@@ -507,19 +481,6 @@
                <string>Do not record mouse cursor</string>
               </property>
              </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_4">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
             </item>
            </layout>
           </item>
