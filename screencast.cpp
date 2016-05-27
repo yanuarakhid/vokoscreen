@@ -484,7 +484,12 @@ screencast::screencast()
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
    myVideoFileSystemWatcher( "" );
 
-   SearchCodec();
+   
+   
+   connect( myUi.VideoContainerComboBox, SIGNAL( currentTextChanged( const QString ) ), this, SLOT( currentFormatChanged( const QString  ) ) );
+   SearchFormats();
+   
+   //SearchCodec();
    clickedScreenSize();
    AreaOnOff();
 }
@@ -493,7 +498,130 @@ screencast::~screencast()
 { 
 }
 
-void screencast::SearchCodec()
+void screencast::currentFormatChanged( const QString value )
+{
+   /*
+    * Jedes Format kann nur mit bestimmte Codecs umgehen
+    */
+   QStringList MKV_videoCodecList = ( QStringList() << "libx264" << "mpeg4" << "huffyuv");
+   QStringList MKV_AudioCodecLIst = ( QStringList() << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac" );
+   
+   QStringList MP4_videoCodecList = ( QStringList() << "libx264" << "mpeg4" );
+   QStringList MP4_AudioCodecList = ( QStringList() << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac" );
+   
+   QStringList GIF_videoCodecList = ( QStringList() << "gif" );
+   QStringList GIF_AudioCodecList = ( QStringList() << "" );
+
+  
+  if ( value == "mkv" )
+  {
+    searchVideoCodec( MKV_videoCodecList );
+    searchAudioCodec( MKV_AudioCodecLIst );
+  }
+  
+  if ( value == "mp4" )
+  {
+    searchVideoCodec( MP4_videoCodecList );
+    searchAudioCodec( MP4_AudioCodecList );
+}
+  
+  if ( value == "gif" )
+  {
+    searchVideoCodec( GIF_videoCodecList );
+    searchAudioCodec( GIF_AudioCodecList );
+  }
+}
+
+void screencast::searchAudioCodec( QStringList audioCodecList )
+{
+   qDebug() << "[vokoscreen] ---Begin search audio codec---";
+   QvkFormatsAndCodecs formatsAndCodecs( myUi.RecorderLineEdit->displayText() );
+   //QStringList audioCodecList;
+   bool experimental = false;
+   myUi.AudiocodecComboBox->clear();
+   // audioCodecList << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac";
+   for ( int i = 0; i < audioCodecList.count(); i++ )
+   {
+     if ( formatsAndCodecs.isCodecAvailable( "Audio", audioCodecList[ i ], &experimental ) == true )
+     {
+       qDebug() << "[vokoscreen] find Audiocodec" << audioCodecList[ i ];
+       myUi.AudiocodecComboBox->addItem( audioCodecList[ i ], experimental );
+     }
+     else
+     {
+       qDebug() << "[vokoscreen] not found Audiocodec" << audioCodecList[ i ];
+     }
+   }
+   // Fallback
+   int x = myUi.AudiocodecComboBox->findText( vkSettings.getAudioCodec() );
+   if ( x == -1 )
+      myUi.AudiocodecComboBox->setCurrentIndex( 0 );
+   else
+      myUi.AudiocodecComboBox->setCurrentIndex( x );
+   qDebug() << "[vokoscreen] ---End search audio codec---";
+   qDebug( " " );
+}
+
+void screencast::searchVideoCodec( QStringList videoCodecList )
+{
+   qDebug() << "[vokoscreen] ---Begin search video codec---";
+   QvkFormatsAndCodecs formatsAndCodecs( myUi.RecorderLineEdit->displayText() );
+
+   bool experimental = false;
+   myUi.VideocodecComboBox->clear();
+   for ( int i = 0; i < videoCodecList.count(); i++ )
+   {
+     if ( formatsAndCodecs.isCodecAvailable( "Video", videoCodecList[ i ], &experimental ) == true )
+     {
+       qDebug() << "[vokoscreen] find Videocodec" << videoCodecList[ i ];
+       myUi.VideocodecComboBox->addItem( videoCodecList[ i ], experimental );
+     }
+     else
+     {
+       qDebug() << "[vokoscreen] not found Videocodec" << videoCodecList[ i ];
+     }
+   }
+   // Fallback
+   int x = myUi.VideocodecComboBox->findText( vkSettings.getVideoCodec() );
+   if ( x == -1 )
+      myUi.VideocodecComboBox->setCurrentIndex( 0 );
+   else
+      myUi.VideocodecComboBox->setCurrentIndex( x );
+   qDebug() << "[vokoscreen] ---End search video codec---";
+   qDebug( " " );
+}
+
+
+void screencast::SearchFormats()
+{
+   QvkFormatsAndCodecs formatsAndCodecs( myUi.RecorderLineEdit->displayText() );
+  
+   qDebug() << "[vokoscreen] ---Begin search formats---";
+   myUi.VideoContainerComboBox->clear();
+   QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" );
+   QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" );
+   for ( int i = 0; i < formatList.count(); i++ )
+   {
+     if ( formatsAndCodecs.isFormatAvailable( userDataList[ i ] ) == true )
+     {
+       qDebug() << "[vokoscreen] find Format" << formatList[ i ];
+       myUi.VideoContainerComboBox->addItem( formatList[ i ], userDataList[ i ] );
+     }
+     else
+       qDebug() << "[vokoscreen] not found Format" << formatList[ i ];
+   }
+   // Fallback
+   int x = myUi.VideoContainerComboBox->findText( vkSettings.getVideoContainer() );
+   if ( x == -1 )
+      myUi.VideoContainerComboBox->setCurrentIndex( 0 );
+   else
+      myUi.VideoContainerComboBox->setCurrentIndex( x );
+   qDebug() << "[vokoscreen] ---End search formats---";
+   qDebug( " " );
+}
+
+
+void screencast::SearchCodec() // old
 {
    qDebug() << "[vokoscreen] ---Begin search video codec---";
    QvkFormatsAndCodecs *formatsAndCodecs = new QvkFormatsAndCodecs( myUi.RecorderLineEdit->displayText() );
@@ -689,8 +817,8 @@ void screencast::saveSettings()
 
   settings.beginGroup( "Videooptions" );
     settings.setValue( "Frames", myUi.FrameSpinBox->value() );
-    settings.setValue( "Videocodec", myUi.VideocodecComboBox->currentText() );
-    settings.setValue( "Audiocodec", myUi.AudiocodecComboBox->currentText() );
+    //settings.setValue( "Videocodec", myUi.VideocodecComboBox->currentText() );
+    //settings.setValue( "Audiocodec", myUi.AudiocodecComboBox->currentText() );
     settings.setValue( "Format", myUi.VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", myUi.HideMouseCheckbox->checkState() );    
   settings.endGroup();
@@ -2060,7 +2188,8 @@ void screencast::selectRecorder()
     if ( recorder > "" )
     {
       myUi.RecorderLineEdit->setText( recorder );
-      SearchCodec();
+      //SearchCodec(); // old
+      SearchFormats();
     }
 }
 

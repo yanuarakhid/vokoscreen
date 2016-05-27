@@ -132,6 +132,8 @@ private slots:
   void searchGIFPlayer();
   void searchVideoPlayer();
   
+  void currentFormatChanged( const QString value );
+  
   // Tab  Verschiedenes
   QString PathMoviesLocation();
   void saveVideoPath();
@@ -142,7 +144,11 @@ private slots:
   void showCredits();
   void creditsCloseEvent();
   void stateChangedSystray( int state );
-  void SearchCodec();
+
+  void SearchCodec(); // old
+  void searchVideoCodec( QStringList videoCodecList );
+  void searchAudioCodec( QStringList audioCodecList );
+  void SearchFormats();
 
   
   QString PathTempLocation();
