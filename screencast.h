@@ -40,7 +40,6 @@
 #include <QListWidget>
 
 #include "QvkSettings.h"
-//#include "regionselection.h"
 #include "QvkRegionController.h"
 
 #include "QvkMagnifier.h"
@@ -54,7 +53,6 @@
 #include "ui_QvkNoPlayerDialog.h"
 #include <QxtGlobalShortcut>
 #include "QvkShowkeyController.h"
-
 
 #include "QvkAnimateControl.h"
 #include "QvkShowClickDialog.h"
@@ -145,7 +143,6 @@ private slots:
   void creditsCloseEvent();
   void stateChangedSystray( int state );
 
-  void SearchCodec(); // old
   void searchVideoCodec( QStringList videoCodecList );
   void searchAudioCodec( QStringList audioCodecList );
   void SearchFormats();

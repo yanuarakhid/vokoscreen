@@ -385,7 +385,6 @@ screencast::screencast()
     connect( myUi.AreaRadioButton,       SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( myUi.FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( myUi.WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
-    //myregionselection = new regionselection();
     myregionselection = new QvkRegionController();
     
     // Clean vokoscreen temp
@@ -483,15 +482,31 @@ screencast::screencast()
    VideoFileSystemWatcher->addPath( myUi.SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
    myVideoFileSystemWatcher( "" );
-
-   
    
    connect( myUi.VideoContainerComboBox, SIGNAL( currentTextChanged( const QString ) ), this, SLOT( currentFormatChanged( const QString  ) ) );
    SearchFormats();
    
-   //SearchCodec();
    clickedScreenSize();
    AreaOnOff();
+   
+   qDebug() << "[vokoscreen] ---Begin search devices---";
+     QvkFormatsAndCodecs formatsAndCodecs( myUi.RecorderLineEdit->displayText() );
+     QString device = "x11grab";
+     if ( formatsAndCodecs.isDeviceAvailable( device ) == true )
+     {
+       qDebug() << "[vokoscreen] find device" << device;
+     }
+     else
+     {
+       qDebug() << "[vokoscreen] not found device" << device;
+       QMessageBox msgBox;
+       msgBox.setText("Your ffmpeg is not compatible with vokoscreen");
+       msgBox.setInformativeText("ffmpeg must copmpiled with option --enable-x11grab");
+       msgBox.setStandardButtons( QMessageBox::Ok );
+       msgBox.setDefaultButton( QMessageBox::Ok );
+     }
+   qDebug() << "[vokoscreen] ---End search devices---";
+   qDebug( " " );
 }
 
 screencast::~screencast()
@@ -631,107 +646,6 @@ void screencast::SearchFormats()
 }
 
 
-void screencast::SearchCodec() // old
-{
-   qDebug() << "[vokoscreen] ---Begin search video codec---";
-   QvkFormatsAndCodecs *formatsAndCodecs = new QvkFormatsAndCodecs( myUi.RecorderLineEdit->displayText() );
-   QStringList videoCodecList;
-   bool experimental = false;
-   myUi.VideocodecComboBox->clear();
-   videoCodecList << "libx264" << "mpeg4" << "huffyuv" << "gif"; //<< "libx265" to time to many artifacts
-   for ( int i = 0; i < videoCodecList.count(); i++ )
-   {
-     if ( formatsAndCodecs->isCodecAvailable( "Video", videoCodecList[ i ], &experimental ) == true )
-     {
-       qDebug() << "[vokoscreen] find Videocodec" << videoCodecList[ i ];
-       myUi.VideocodecComboBox->addItem( videoCodecList[ i ], experimental );
-     }
-     else
-     {
-       qDebug() << "[vokoscreen] not found Videocodec" << videoCodecList[ i ];
-     }
-   }
-   // Fallback
-   int x = myUi.VideocodecComboBox->findText( vkSettings.getVideoCodec() );
-   if ( x == -1 )
-      myUi.VideocodecComboBox->setCurrentIndex( 0 );
-   else
-      myUi.VideocodecComboBox->setCurrentIndex( x );
-   qDebug() << "[vokoscreen] ---End search video codec---";
-   qDebug( " " );
-
-   
-   qDebug() << "[vokoscreen] ---Begin search audio codec---";
-   QStringList audioCodecList;
-   myUi.AudiocodecComboBox->clear();
-   
-   audioCodecList << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac";
-   for ( int i = 0; i < audioCodecList.count(); i++ )
-   {
-     if ( formatsAndCodecs->isCodecAvailable( "Audio", audioCodecList[ i ], &experimental ) == true )
-     {
-       qDebug() << "[vokoscreen] find Audiocodec" << audioCodecList[ i ];
-       myUi.AudiocodecComboBox->addItem( audioCodecList[ i ], experimental );
-     }
-     else
-     {
-       qDebug() << "[vokoscreen] not found Audiocodec" << audioCodecList[ i ];
-     }
-   }
-   // Fallback
-   x = myUi.AudiocodecComboBox->findText( vkSettings.getAudioCodec() );
-   if ( x == -1 )
-      myUi.AudiocodecComboBox->setCurrentIndex( 0 );
-   else
-      myUi.AudiocodecComboBox->setCurrentIndex( x );
-   qDebug() << "[vokoscreen] ---End search audio codec---";
-   qDebug( " " );
-
-   
-   qDebug() << "[vokoscreen] ---Begin search formats---";
-   myUi.VideoContainerComboBox->clear();
-   QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" );
-   QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" );
-   for ( int i = 0; i < formatList.count(); i++ )
-   {
-     if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
-     {
-       qDebug() << "[vokoscreen] find Format" << formatList[ i ];
-       myUi.VideoContainerComboBox->addItem( formatList[ i ], userDataList[ i ] );
-     }
-     else
-       qDebug() << "[vokoscreen] not found Format" << formatList[ i ];
-   }
-   // Fallback
-   x = myUi.VideoContainerComboBox->findText( vkSettings.getVideoContainer() );
-   if ( x == -1 )
-      myUi.VideoContainerComboBox->setCurrentIndex( 0 );
-   else
-      myUi.VideoContainerComboBox->setCurrentIndex( x );
-   qDebug() << "[vokoscreen] ---End search formats---";
-   qDebug( " " );
-
-   
-   qDebug() << "[vokoscreen] ---Begin search devices---";
-     QString device = "x11grab";
-     if ( formatsAndCodecs->isDeviceAvailable( device ) == true )
-     {
-       qDebug() << "[vokoscreen] find device" << device;
-     }
-     else
-     {
-       qDebug() << "[vokoscreen] not found device" << device;
-       QMessageBox msgBox;
-       msgBox.setText("Your ffmpeg is not compatible with vokoscreen");
-       msgBox.setInformativeText("ffmpeg must copmpiled with option --enable-x11grab");
-       msgBox.setStandardButtons( QMessageBox::Ok );
-       msgBox.setDefaultButton( QMessageBox::Ok );
-     }
-   qDebug() << "[vokoscreen] ---End search devices---";
-   qDebug( " " );
-}
-
-
 void screencast::contextMenuEvent( QContextMenuEvent *event )
 {
     if ( myUi.ListWidgetLogVokoscreen->underMouse() == true )
@@ -827,8 +741,8 @@ void screencast::saveSettings()
 
   settings.beginGroup( "Videooptions" );
     settings.setValue( "Frames", myUi.FrameSpinBox->value() );
-    //settings.setValue( "Videocodec", myUi.VideocodecComboBox->currentText() );
-    //settings.setValue( "Audiocodec", myUi.AudiocodecComboBox->currentText() );
+    settings.setValue( "Videocodec", myUi.VideocodecComboBox->currentText() );
+    settings.setValue( "Audiocodec", myUi.AudiocodecComboBox->currentText() );
     settings.setValue( "Format", myUi.VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", myUi.HideMouseCheckbox->checkState() );    
   settings.endGroup();
