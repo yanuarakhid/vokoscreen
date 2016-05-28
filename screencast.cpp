@@ -195,7 +195,6 @@ screencast::screencast()
     // Tab 3 Video options **************************************************
     myUi.tabWidget->setTabIcon( 2, QIcon::fromTheme( "applications-multimedia", QIcon( ":/pictures/videooptionen.png" ) ) );
     
-    // This is for statusbar and audio-widget
     connect( myUi.VideocodecComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
 
     connect( myUi.VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ),          this, SLOT( currentIndexChangedFormat( int ) ) );
@@ -1433,7 +1432,6 @@ void screencast::currentIndexChangedFormat( int index )
   {
     myUi.GIFplayerComboBox->show();
     myUi.VideoplayerComboBox->hide();
-    myUi.VideocodecComboBox->setCurrentIndex( myUi.VideocodecComboBox->findText( "gif" ) );
     myUi.VideocodecComboBox->setEnabled( false );
     if ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked )
     {
@@ -1447,13 +1445,8 @@ void screencast::currentIndexChangedFormat( int index )
     myUi.GIFplayerComboBox->hide();
     myUi.VideoplayerComboBox->show();
     myUi.VideocodecComboBox->setEnabled( true );
-    if ( myUi.VideocodecComboBox->currentText() == "gif" )
-      myUi.VideocodecComboBox->setCurrentIndex( 0 ); 
-  }
- 
-  if ( ( myUi.VideocodecComboBox->currentText() != "gif" ) and ( myUi.VideoContainerComboBox->currentText() != "gif" ) )
-  {
-    myUi.AudioOnOffCheckbox->setEnabled( true );
+    
+    myUi.AudioOnOffCheckbox->setEnabled( false );
   }
 }
 
