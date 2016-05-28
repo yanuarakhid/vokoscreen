@@ -195,8 +195,11 @@ screencast::screencast()
     // Tab 3 Video options **************************************************
     myUi.tabWidget->setTabIcon( 2, QIcon::fromTheme( "applications-multimedia", QIcon( ":/pictures/videooptionen.png" ) ) );
     
+    // This is for statusbar and audio-widget
     connect( myUi.VideocodecComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
-    connect( myUi.VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedFormat( int ) ) );// **********************************************************************************
+
+    connect( myUi.VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ),          this, SLOT( currentIndexChangedFormat( int ) ) );
+    connect( myUi.VideoContainerComboBox, SIGNAL( currentTextChanged( const QString ) ), this, SLOT( currentFormatChanged( const QString  ) ) );
 
     myUi.FrameStandardButton->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.FrameStandardButton->setToolTip( tr( "Default" ) );
@@ -487,9 +490,6 @@ screencast::screencast()
    VideoFileSystemWatcher->addPath( myUi.SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
    myVideoFileSystemWatcher( "" );
-
-   connect( myUi.VideoContainerComboBox, SIGNAL( currentTextChanged( const QString ) ), this, SLOT( currentFormatChanged( const QString  ) ) );
-   SearchFormats();
 
    clickedScreenSize();
    AreaOnOff();
