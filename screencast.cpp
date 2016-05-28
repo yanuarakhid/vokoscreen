@@ -1387,7 +1387,7 @@ void screencast::clickedAudioPulse( bool checked )
 
 
 /**
- * Statusbar
+ * Statusbar and widgets
  */
 void screencast::currentIndexChangedCodec( int index )
 {
@@ -1402,27 +1402,11 @@ void screencast::currentIndexChangedCodec( int index )
   {
      myUi.x264LosslessCheckBox->setEnabled( false );
   }
-  
-  if ( myUi.VideocodecComboBox->currentText() == "gif" )
-  {
-    myUi.VideoContainerComboBox->setCurrentIndex( myUi.VideoContainerComboBox->findText( "gif" ) );
-    if ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked )
-    {
-      myUi.AudioOnOffCheckbox->click();
-    }
-    
-    myUi.AudioOnOffCheckbox->setEnabled( false );
-  }
-
-  if ( ( myUi.VideocodecComboBox->currentText() != "gif" ) and ( myUi.VideoContainerComboBox->currentText() != "gif" ) )
-  {
-    myUi.AudioOnOffCheckbox->setEnabled( true );
-  } 
 }
 
 
 /**
- * Statusbar
+ * Statusbar and widgets
  */
 void screencast::currentIndexChangedFormat( int index )
 {
@@ -1445,8 +1429,7 @@ void screencast::currentIndexChangedFormat( int index )
     myUi.GIFplayerComboBox->hide();
     myUi.VideoplayerComboBox->show();
     myUi.VideocodecComboBox->setEnabled( true );
-    
-    myUi.AudioOnOffCheckbox->setEnabled( false );
+    myUi.AudioOnOffCheckbox->setEnabled( true );
   }
 }
 
@@ -1474,7 +1457,7 @@ QString screencast::getRecordHeight()
 }
 
 /**
- * Statusbar
+ * Statusbar and widgets
  */
 void screencast::clickedScreenSize()
 {
