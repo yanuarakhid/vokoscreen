@@ -234,7 +234,6 @@ screencast::screencast()
       connect( myUi.selectRecorderPushButton, SIGNAL(clicked() ), SLOT( selectRecorder() ) );
     }
     
-    
     myUi.SystrayCheckBox->setCheckState( Qt::Checked );
     connect( myUi.SystrayCheckBox, SIGNAL( stateChanged( int ) ), SLOT( stateChangedSystray( int ) ) );
 
@@ -250,6 +249,7 @@ screencast::screencast()
 						myUi.radioButtonRightMiddle, myUi.radioButtonBottomMiddle, myUi.radioButtonLeftMiddle );
     (void)webcamController;
 
+    
     // Tab 6 About *********************************************************
     myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
     myUi.labelOpensuseBetaUrl->setOpenExternalLinks( true );
@@ -319,50 +319,7 @@ screencast::screencast()
     myUi.updateButton->hide();
     connect( myUi.updateButton, SIGNAL( clicked() ), SLOT( showHomepage() ) );  
   #endif
-/*    
-    // StatusBar
-    statusBarLabelTime = new QLabel();
-    statusBarLabelTime->setText( "00:00:00" );
-    statusBarLabelTime->setToolTip( tr ( "Recording time" ) );
 
-    statusBarLabelFps = new QLabel();
-    statusBarLabelFps->setText( "0" );
-    statusBarLabelFps->setAlignment(Qt::AlignCenter);
-    statusBarLabelFps->setToolTip( tr( "Actual frames per second" ) );
-
-    statusBarLabelSize = new QLabel();
-    statusBarLabelSize->setText( "0" );
-    statusBarLabelSize->setToolTip( tr( "Size in KB" ) );
-    
-    statusbarLabelScreenSize = new QLabel();
-    statusbarLabelScreenSize->setToolTip( tr( "Recording screensize" ) );
-
-    statusBarLabelCodec = new QLabel();
-    statusBarLabelCodec->setText( myUi.VideocodecComboBox->currentText() );
-    statusBarLabelCodec->setToolTip( tr( "Codec" ) );
-    
-    statusBarLabelFormat = new QLabel();
-    statusBarLabelFormat->setText( myUi.VideoContainerComboBox->currentText() );
-    statusBarLabelFormat->setToolTip( tr( "Format" ) );
-
-    statusBarLabelAudio = new QLabel();
-    statusBarLabelAudio->setToolTip( tr( "Audio" ) );
-    
-    statusBarLabelFpsSettings = new QLabel();
-    statusBarLabelFpsSettings->setToolTip( tr( "Settings fps" ) );
-
-    QLabel * LabelTemp = new QLabel();
-    myUi.statusBar->addWidget( LabelTemp, 0 );
-    
-    myUi.statusBar->addWidget( statusBarLabelTime, 2 );
-    myUi.statusBar->addWidget( statusBarLabelFps, 2 );
-    myUi.statusBar->addWidget( statusBarLabelSize, 2 );
-    myUi.statusBar->addWidget( statusbarLabelScreenSize, 4 );
-    myUi.statusBar->addWidget( statusBarLabelCodec, 2 );
-    myUi.statusBar->addWidget( statusBarLabelFormat, 2 );
-    myUi.statusBar->addWidget( statusBarLabelAudio, 2 );
-    myUi.statusBar->addWidget( statusBarLabelFpsSettings, 2 );
-*/    
     searchVideoPlayer();
     searchGIFPlayer();
     
@@ -530,11 +487,6 @@ screencast::screencast()
    VideoFileSystemWatcher->addPath( myUi.SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
    myVideoFileSystemWatcher( "" );
-/*  
-   // Leeren Konstruktor aufrufen und dann Formats und Codecs ermitteln
-   formatsAndCodecs = new QvkFormatsAndCodecs();
-   formatsAndCodecs->getFormatsAndCodecs( myUi.RecorderLineEdit->displayText() );
-*/   
 
    connect( myUi.VideoContainerComboBox, SIGNAL( currentTextChanged( const QString ) ), this, SLOT( currentFormatChanged( const QString  ) ) );
    SearchFormats();
@@ -608,7 +560,6 @@ void screencast::currentFormatChanged( const QString value )
     searchVideoCodec( WEBM_videoCodecList );
     searchAudioCodec( WEBM_AudioCodecList );
   }
-  
 }
 
 void screencast::searchAudioCodec( QStringList audioCodecList )
@@ -829,7 +780,6 @@ void screencast::saveSettings()
     settings.setValue( "FormValue", magnifier->getFormValue() );
   settings.endGroup();
 }
-
 
 
 #ifndef NO_NEW_VERSION_CHECK
@@ -2573,13 +2523,11 @@ void screencast::startRecord( QString RecordPathName )
   if ( myUi.PulseDeviceRadioButton->isChecked() )
   {
     QProcess Process;
-//    QString value = QvkPulse::myPulseDevice( Pulseframe );// Original
     QString value = QvkPulse::myPulseDevice( myUi.scrollAreaWidgetContents );
     if ( value == "vokoscreenMix.monitor" )
     {
       Process.start("pactl load-module module-null-sink sink_name=vokoscreenMix");
-      //Process.waitForFinished();
-      Process.waitForFinished( 3000 ); //****************************************************** new 14.05.2016
+      Process.waitForFinished( 3000 );
       QString modulNumber = Process.readAllStandardOutput();
       Process.close();
       qDebug();
@@ -2601,8 +2549,7 @@ void screencast::startRecord( QString RecordPathName )
       {
         box = listQFrame[ integerList[ i ] ];
         Process.start("pactl load-module module-loopback source=" + box->accessibleName() + " sink=vokoscreenMix");
-        // Process.waitForFinished();
-        Process.waitForFinished( 3000 ); //*********************************************** new 14.05.2016
+        Process.waitForFinished( 3000 );
         QString modulNumber = Process.readAllStandardOutput();
         modulNumber.replace("\n", "");
         Process.close();
@@ -2634,8 +2581,7 @@ void screencast::Stop()
   if ( SystemCall->state() == QProcess::Running )
   {
     SystemCall->terminate();
-    //SystemCall->waitForFinished(;
-    SystemCall->waitForFinished( 3000 ); //********************************************************* new 14.05.20116
+    SystemCall->waitForFinished( 3000 );
   }
 
   if ( ( pause == true ) and (  myUi.VideocodecComboBox->currentText() != "gif" ) )

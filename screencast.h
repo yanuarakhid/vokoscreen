@@ -68,7 +68,6 @@ Q_OBJECT
 public:
   screencast();
   virtual ~screencast();
-  //QString recordApplikation;
   QProcess *SystemCall;
   QString deltaXMove;
   QString deltaYMove;
@@ -193,7 +192,6 @@ private:
     Ui_screencast  myUi;
     int oldMainWindowHeight;
     QvkMagnifier *magnifier;
-    //regionselection *myregionselection;
     QvkRegionController *myregionselection;
     
     QvkShowClickDialog *ShowClickDialog;
