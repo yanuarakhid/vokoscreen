@@ -125,6 +125,49 @@ screencast::screencast()
     connect( ShowClickDialog, SIGNAL( newOpacity( double ) ), animateControl, SLOT( setOpacity( double ) ) );
     connect( ShowClickDialog, SIGNAL( newRadiant( bool ) ), animateControl, SLOT( setRadiant( bool ) ) );
     // End showclick
+
+    // StatusBar
+    statusBarLabelTime = new QLabel();
+    statusBarLabelTime->setText( "00:00:00" );
+    statusBarLabelTime->setToolTip( tr ( "Recording time" ) );
+
+    statusBarLabelFps = new QLabel();
+    statusBarLabelFps->setText( "0" );
+    statusBarLabelFps->setAlignment(Qt::AlignCenter);
+    statusBarLabelFps->setToolTip( tr( "Actual frames per second" ) );
+
+    statusBarLabelSize = new QLabel();
+    statusBarLabelSize->setText( "0" );
+    statusBarLabelSize->setToolTip( tr( "Size in KB" ) );
+    
+    statusbarLabelScreenSize = new QLabel();
+    statusbarLabelScreenSize->setToolTip( tr( "Recording screensize" ) );
+
+    statusBarLabelCodec = new QLabel();
+    statusBarLabelCodec->setText( myUi.VideocodecComboBox->currentText() );
+    statusBarLabelCodec->setToolTip( tr( "Codec" ) );
+    
+    statusBarLabelFormat = new QLabel();
+    statusBarLabelFormat->setText( myUi.VideoContainerComboBox->currentText() );
+    statusBarLabelFormat->setToolTip( tr( "Format" ) );
+
+    statusBarLabelAudio = new QLabel();
+    statusBarLabelAudio->setToolTip( tr( "Audio" ) );
+    
+    statusBarLabelFpsSettings = new QLabel();
+    statusBarLabelFpsSettings->setToolTip( tr( "Settings fps" ) );
+
+    QLabel * LabelTemp = new QLabel();
+    myUi.statusBar->addWidget( LabelTemp, 0 );
+    
+    myUi.statusBar->addWidget( statusBarLabelTime, 2 );
+    myUi.statusBar->addWidget( statusBarLabelFps, 2 );
+    myUi.statusBar->addWidget( statusBarLabelSize, 2 );
+    myUi.statusBar->addWidget( statusbarLabelScreenSize, 4 );
+    myUi.statusBar->addWidget( statusBarLabelCodec, 2 );
+    myUi.statusBar->addWidget( statusBarLabelFormat, 2 );
+    myUi.statusBar->addWidget( statusBarLabelAudio, 2 );
+    myUi.statusBar->addWidget( statusBarLabelFpsSettings, 2 );
     
     
     // Tab 2 Audio options ****************************************
@@ -153,7 +196,7 @@ screencast::screencast()
     myUi.tabWidget->setTabIcon( 2, QIcon::fromTheme( "applications-multimedia", QIcon( ":/pictures/videooptionen.png" ) ) );
     
     connect( myUi.VideocodecComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
-    connect( myUi.VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedFormat( int ) ) );
+    connect( myUi.VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedFormat( int ) ) );// **********************************************************************************
 
     myUi.FrameStandardButton->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.FrameStandardButton->setToolTip( tr( "Default" ) );
@@ -172,8 +215,12 @@ screencast::screencast()
 
     // Tab 4 Miscellaneous options **************************************************
     myUi.tabWidget->setTabIcon( 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
-
+    
     connect( myUi.SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
+
+    // Leeren Konstruktor aufrufen und dann wird über den Slot recorderLineEditTextChanged die Formate und Codecs ermittelt
+    // so bald das Feld RecorderLineEdit geändert wird
+    formatsAndCodecs = new QvkFormatsAndCodecs();
     connect( myUi.RecorderLineEdit, SIGNAL( textChanged( QString ) ), SLOT( recorderLineEditTextChanged( QString ) ) );
 
     if ( vkSettings.isVokoscreenWithLibs() == true )
@@ -186,6 +233,7 @@ screencast::screencast()
       myUi.RecorderLineEdit->setText( getFileWithPath( vkSettings.getRecorder() ) );
       connect( myUi.selectRecorderPushButton, SIGNAL(clicked() ), SLOT( selectRecorder() ) );
     }
+    
     
     myUi.SystrayCheckBox->setCheckState( Qt::Checked );
     connect( myUi.SystrayCheckBox, SIGNAL( stateChanged( int ) ), SLOT( stateChangedSystray( int ) ) );
@@ -271,7 +319,7 @@ screencast::screencast()
     myUi.updateButton->hide();
     connect( myUi.updateButton, SIGNAL( clicked() ), SLOT( showHomepage() ) );  
   #endif
-    
+/*    
     // StatusBar
     statusBarLabelTime = new QLabel();
     statusBarLabelTime->setText( "00:00:00" );
@@ -314,7 +362,7 @@ screencast::screencast()
     myUi.statusBar->addWidget( statusBarLabelFormat, 2 );
     myUi.statusBar->addWidget( statusBarLabelAudio, 2 );
     myUi.statusBar->addWidget( statusBarLabelFpsSettings, 2 );
-    
+*/    
     searchVideoPlayer();
     searchGIFPlayer();
     
@@ -482,17 +530,21 @@ screencast::screencast()
    VideoFileSystemWatcher->addPath( myUi.SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
    myVideoFileSystemWatcher( "" );
-   
+/*  
+   // Leeren Konstruktor aufrufen und dann Formats und Codecs ermitteln
+   formatsAndCodecs = new QvkFormatsAndCodecs();
+   formatsAndCodecs->getFormatsAndCodecs( myUi.RecorderLineEdit->displayText() );
+*/   
+
    connect( myUi.VideoContainerComboBox, SIGNAL( currentTextChanged( const QString ) ), this, SLOT( currentFormatChanged( const QString  ) ) );
    SearchFormats();
-   
+
    clickedScreenSize();
    AreaOnOff();
    
    qDebug() << "[vokoscreen] ---Begin search devices---";
-     QvkFormatsAndCodecs formatsAndCodecs( myUi.RecorderLineEdit->displayText() );
      QString device = "x11grab";
-     if ( formatsAndCodecs.isDeviceAvailable( device ) == true )
+     if ( formatsAndCodecs->isDeviceAvailable( device ) == true )
      {
        qDebug() << "[vokoscreen] find device" << device;
      }
@@ -562,12 +614,11 @@ void screencast::currentFormatChanged( const QString value )
 void screencast::searchAudioCodec( QStringList audioCodecList )
 {
    qDebug() << "[vokoscreen] ---Begin search audio codec---";
-   QvkFormatsAndCodecs formatsAndCodecs( myUi.RecorderLineEdit->displayText() );
    bool experimental = false;
    myUi.AudiocodecComboBox->clear();
    for ( int i = 0; i < audioCodecList.count(); i++ )
    {
-     if ( formatsAndCodecs.isCodecAvailable( "Audio", audioCodecList[ i ], &experimental ) == true )
+     if ( formatsAndCodecs->isCodecAvailable( "Audio", audioCodecList[ i ], &experimental ) == true )
      {
        qDebug() << "[vokoscreen] find Audiocodec" << audioCodecList[ i ];
        myUi.AudiocodecComboBox->addItem( audioCodecList[ i ], experimental );
@@ -590,13 +641,11 @@ void screencast::searchAudioCodec( QStringList audioCodecList )
 void screencast::searchVideoCodec( QStringList videoCodecList )
 {
    qDebug() << "[vokoscreen] ---Begin search video codec---";
-   QvkFormatsAndCodecs formatsAndCodecs( myUi.RecorderLineEdit->displayText() );
-
    bool experimental = false;
    myUi.VideocodecComboBox->clear();
    for ( int i = 0; i < videoCodecList.count(); i++ )
    {
-     if ( formatsAndCodecs.isCodecAvailable( "Video", videoCodecList[ i ], &experimental ) == true )
+     if ( formatsAndCodecs->isCodecAvailable( "Video", videoCodecList[ i ], &experimental ) == true )
      {
        qDebug() << "[vokoscreen] find Videocodec" << videoCodecList[ i ];
        myUi.VideocodecComboBox->addItem( videoCodecList[ i ], experimental );
@@ -619,15 +668,13 @@ void screencast::searchVideoCodec( QStringList videoCodecList )
 
 void screencast::SearchFormats()
 {
-   QvkFormatsAndCodecs formatsAndCodecs( myUi.RecorderLineEdit->displayText() );
-  
    qDebug() << "[vokoscreen] ---Begin search formats---";
    myUi.VideoContainerComboBox->clear();
    QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" );
    QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" );
    for ( int i = 0; i < formatList.count(); i++ )
    {
-     if ( formatsAndCodecs.isFormatAvailable( userDataList[ i ] ) == true )
+     if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
      {
        qDebug() << "[vokoscreen] find Format" << formatList[ i ];
        myUi.VideoContainerComboBox->addItem( formatList[ i ], userDataList[ i ] );
@@ -1000,6 +1047,19 @@ QString screencast::getFfmpegVersion()
   else
     ffmpegversion = list[ 0 ];
 
+  return ffmpegversion;
+}
+
+/*
+ * Zum überprüfen ob der gesetzte FFmpeg der richtige ist
+ */
+QString screencast::getFfmpegVersionFullOutput()
+{
+  QProcess Process;
+  Process.start( myUi.RecorderLineEdit->displayText() + " -version");
+  Process.waitForFinished();
+  QString ffmpegversion = Process.readAllStandardOutput();
+  Process.close();
   return ffmpegversion;
 }
 
@@ -1419,7 +1479,6 @@ void screencast::currentIndexChangedFormat( int index )
 {
   (void)index;
   statusBarLabelFormat->setText( myUi.VideoContainerComboBox->currentText() );
- 
   if ( myUi.VideoContainerComboBox->currentText() == "gif" )
   {
     myUi.GIFplayerComboBox->show();
@@ -1796,13 +1855,13 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
        
     if ( newState == QProcess::Running )
     {
-      qDebug() << "[vokoscreen]" << recordApplikation << "is running and is ready for reading and writing";
+      qDebug() << "[vokoscreen]" << myUi.RecorderLineEdit->displayText() << "is running and is ready for reading and writing";
       qDebug( " " );
     }
    
     if ( newState == QProcess::NotRunning )
     {
-      qDebug() << "[vokoscreen]" << recordApplikation << "is not running";
+      qDebug() << "[vokoscreen]" << myUi.RecorderLineEdit->displayText() << "is not running";
       qDebug( " " );
 
       //Enables the customarea rectangle again. (Is diabled in record() )
@@ -1852,7 +1911,7 @@ void screencast::error( QProcess::ProcessError error )
     for ( int i = 0; i < stringList.count(); ++i )
       QFile::copy( workDirectory + QDir::separator() + stringList[ i ], workDirectory + QDir::separator() + "crashed" + QDir::separator() + stringList[ i ]);
     
-    QString crashedtext = "[vokoscreen] " + recordApplikation + " is crashed on ";
+    QString crashedtext = "[vokoscreen] " + myUi.RecorderLineEdit->displayText() + " is crashed on ";
     QDateTime dateTime = QDateTime::currentDateTime();
     QString time = dateTime.toString( "hh:mm" );
     QString day = dateTime.toString( "dddd" );
@@ -2099,7 +2158,9 @@ QString screencast::getFileWithPath( QString ProgName )
 
 void screencast::recorderLineEditTextChanged( QString recorder )
 {
-   recordApplikation = recorder;
+   (void)recorder;
+   formatsAndCodecs->getFormatsAndCodecs( myUi.RecorderLineEdit->displayText() );
+   SearchFormats();
 }
 
 
@@ -2112,8 +2173,6 @@ void screencast::selectRecorder()
     if ( recorder > "" )
     {
       myUi.RecorderLineEdit->setText( recorder );
-      //SearchCodec(); // old
-      SearchFormats();
     }
 }
 
@@ -2486,7 +2545,7 @@ void screencast::record()
   
   nameInMoviesLocation = NameInMoviesLocation();
 
-  ffmpegString = recordApplikation + " "
+  ffmpegString = myUi.RecorderLineEdit->displayText() + " "
                + "-report" + " "
                + "-f x11grab" + " "
                + noMouse() + " "
@@ -2595,7 +2654,7 @@ void screencast::Stop()
       }
     file.close();
 
-    QString mergeString = recordApplikation + " -report -safe 0 -f concat -i " + mergeFile + " -c copy " + PathMoviesLocation() + QDir::separator() + nameInMoviesLocation;
+    QString mergeString = myUi.RecorderLineEdit->displayText() + " -report -safe 0 -f concat -i " + mergeFile + " -c copy " + PathMoviesLocation() + QDir::separator() + nameInMoviesLocation;
     SystemCall->start( mergeString );
     SystemCall->waitForFinished(8000);
 

@@ -11,7 +11,8 @@ class QvkFormatsAndCodecs: public QObject
     Q_OBJECT
     
 public:
-    QvkFormatsAndCodecs( QString recordApplikation );
+    QvkFormatsAndCodecs();
+    void getFormatsAndCodecs( QString recordApplikation );
     virtual ~QvkFormatsAndCodecs();
   
     

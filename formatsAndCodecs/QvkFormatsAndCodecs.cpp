@@ -3,11 +3,18 @@
 
 #include "QvkFormatsAndCodecs.h"
 
+
+QvkFormatsAndCodecs::QvkFormatsAndCodecs()
+{
+}
+
+
 /**
  * value: is ffmpeg
  */
-QvkFormatsAndCodecs::QvkFormatsAndCodecs( QString value )
+void QvkFormatsAndCodecs::getFormatsAndCodecs( QString value )
 {
+  qDebug() << "[vokoscreen] detect codecs with" << value;
   recordApplikation = value;
   
   QProcess SystemCall;

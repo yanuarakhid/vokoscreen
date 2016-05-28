@@ -57,6 +57,9 @@
 #include "QvkAnimateControl.h"
 #include "QvkShowClickDialog.h"
 
+#include "QvkFormatsAndCodecs.h"
+
+
 #include "ui_vokoscreen.h"
 
 class screencast : public QMainWindow
@@ -65,7 +68,7 @@ Q_OBJECT
 public:
   screencast();
   virtual ~screencast();
-  QString recordApplikation;
+  //QString recordApplikation;
   QProcess *SystemCall;
   QString deltaXMove;
   QString deltaYMove;
@@ -242,6 +245,9 @@ private:
     QString pauseName;
     
     QFileSystemWatcher *VideoFileSystemWatcher;
+    
+    QvkFormatsAndCodecs *formatsAndCodecs;
+    QString getFfmpegVersionFullOutput();
     
     
 protected:
