@@ -1235,8 +1235,7 @@ void screencast::windowMove()
   XQueryPointer( QX11Info::display(), moveWindowID, &root_return, &child_return, &root_x_return, &root_y_return, 
                                           &win_x_return, &win_y_return, &mask_return );
 
-  // window would be moved
-  if ( ( root_y_return < QxtWindowSystem::windowGeometryWithoutFrame( moveWindowID ).y() ) and ( root_y_return > QxtWindowSystem::windowGeometryWithFrame( moveWindowID ).y() ) )
+  if ( ( root_y_return < QxtWindowSystem::windowGeometryWithoutFrame( moveWindowID ).y() ) )
   {
     if ( SystemCall->state() == QProcess::Running )
     {
