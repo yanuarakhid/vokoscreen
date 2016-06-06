@@ -82,6 +82,7 @@ private slots:
   QRect getPrintSizeRectForMask();
   void setHandleMiddleForMask( QRect rec );
   QRect getHandleMiddleForMask();
+ 
 
 protected:
   void mouseMoveEvent( QMouseEvent *event );
@@ -90,6 +91,7 @@ protected:
   void mouseDoubleClickEvent( QMouseEvent *event);
   void paintEvent( QPaintEvent *event );
   QPainter * painter;
+  
   
 private:
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };

@@ -34,6 +34,9 @@ signals:
 private slots:
   
   
+public slots:
+  
+  
 private:
   QvkRegionChoise *regionChoise;
   QvkRegionRecord *regionRecord;

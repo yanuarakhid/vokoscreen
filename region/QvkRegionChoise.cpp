@@ -17,7 +17,6 @@
  */
 
 #include <QTest>
-
 #include "QvkRegionChoise.h"
 
 QvkRegionChoise::QvkRegionChoise()

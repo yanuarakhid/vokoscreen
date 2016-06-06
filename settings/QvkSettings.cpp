@@ -93,8 +93,8 @@ void QvkSettings::readAll()
     settings.endGroup();
     
     settings.beginGroup( "Area" );
-        AreaX = settings.value( "X", 200 ).toUInt();
-        AreaY = settings.value( "Y", 200 ).toUInt();
+        AreaX = settings.value( "X", 200 ).toInt();
+        AreaY = settings.value( "Y", 200 ).toInt();
         AreaWidth = settings.value( "Width", 200 ).toUInt();
         AreaHeight = settings.value( "Height", 200 ).toUInt();
     settings.endGroup();

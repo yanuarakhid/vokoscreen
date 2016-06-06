@@ -393,7 +393,7 @@ screencast::screencast()
     connect( myUi.FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( myUi.WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     myregionselection = new QvkRegionController();
-    
+
     // Clean vokoscreen temp
     QDir dir( PathTempLocation() );
     QStringList stringList = dir.entryList( QDir::Files, QDir::Time | QDir::Reversed );
