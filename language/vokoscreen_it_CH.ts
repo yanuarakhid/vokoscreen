@@ -23,6 +23,13 @@
     </message>
 </context>
 <context>
+    <name>Dialog</name>
+    <message>
+        <source>Show Click Settings</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -108,7 +115,7 @@
 <context>
     <name>regionselection</name>
     <message>
-        <source>doubleclick extended to the edge</source>
+        <source>double-click to maximize</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -308,6 +315,18 @@
     </message>
     <message>
         <source>Select recorder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hide window</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show window</source>
         <translation type="unfinished"/>
     </message>
 </context>

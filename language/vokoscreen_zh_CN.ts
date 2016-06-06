@@ -23,6 +23,13 @@
     </message>
 </context>
 <context>
+    <name>Dialog</name>
+    <message>
+        <source>Show Click Settings</source>
+        <translation>显示单击设置</translation>
+    </message>
+</context>
+<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -108,7 +115,7 @@
 <context>
     <name>regionselection</name>
     <message>
-        <source>doubleclick extended to the edge</source>
+        <source>double-click to maximize</source>
         <translation>双击最大化</translation>
     </message>
 </context>
@@ -309,6 +316,18 @@
     <message>
         <source>Select recorder</source>
         <translation>选择采集器</translation>
+    </message>
+    <message>
+        <source>Hide window</source>
+        <translation>隐藏窗口</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>退出</translation>
+    </message>
+    <message>
+        <source>Show window</source>
+        <translation>显示窗口</translation>
     </message>
 </context>
 </TS>

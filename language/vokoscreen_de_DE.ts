@@ -23,6 +23,13 @@
     </message>
 </context>
 <context>
+    <name>Dialog</name>
+    <message>
+        <source>Show Click Settings</source>
+        <translation>Klickeinstellungen anzeigen</translation>
+    </message>
+</context>
+<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -108,8 +115,8 @@
 <context>
     <name>regionselection</name>
     <message>
-        <source>doubleclick extended to the edge</source>
-        <translation>Doppelklick zum Maximieren</translation>
+        <source>double-click to maximize</source>
+        <translation>Zum Maximieren doppelklicken</translation>
     </message>
 </context>
 <context>
@@ -309,6 +316,18 @@
     <message>
         <source>Select recorder</source>
         <translation>Aufnahmegerät auswählen</translation>
+    </message>
+    <message>
+        <source>Hide window</source>
+        <translation>Fenster ausblenden</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>Beenden</translation>
+    </message>
+    <message>
+        <source>Show window</source>
+        <translation>Fenster anzeigen</translation>
     </message>
 </context>
 </TS>

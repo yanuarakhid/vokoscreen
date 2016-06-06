@@ -23,6 +23,13 @@
     </message>
 </context>
 <context>
+    <name>Dialog</name>
+    <message>
+        <source>Show Click Settings</source>
+        <translation>نمایش تنظیمات کلیک</translation>
+    </message>
+</context>
+<context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
@@ -108,8 +115,8 @@
 <context>
     <name>regionselection</name>
     <message>
-        <source>doubleclick extended to the edge</source>
-        <translation>دوبار کلیک تا لبه گسترش می‌دهد</translation>
+        <source>double-click to maximize</source>
+        <translation>دابل کلیک برای بزرگ نمایی</translation>
     </message>
 </context>
 <context>
@@ -309,6 +316,18 @@
     <message>
         <source>Select recorder</source>
         <translation>ظبط کننده را انتخاب کن</translation>
+    </message>
+    <message>
+        <source>Hide window</source>
+        <translation>مخفی کردن پنجره</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>خروج</translation>
+    </message>
+    <message>
+        <source>Show window</source>
+        <translation>نمایش پنجره</translation>
     </message>
 </context>
 </TS>
