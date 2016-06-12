@@ -359,8 +359,9 @@ screencast::screencast()
     myUi.MinimizedCheckBox->setCheckState( Qt::CheckState( vkSettings.getMinimized() ) );
       
     myUi.CountdownSpinBox->setValue( vkSettings.getCountdown() );
-      
+
     myUi.FrameSpinBox->setValue( vkSettings.getFrames() );
+    statusBarLabelFpsSettings->setText( QString::number( myUi.FrameSpinBox->value() ) );
 
     myUi.HideMouseCheckbox->setCheckState( Qt::CheckState( vkSettings.getHideMouse()) );
            

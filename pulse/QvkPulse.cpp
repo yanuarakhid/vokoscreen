@@ -173,7 +173,7 @@ QString QvkPulse::getPulseInputName( int value )
   Process.close();
   
   QStringList list = output.split( "\n" );
-
+//qDebug() << list;
   QStringList result = list.filter( "Source #", Qt::CaseInsensitive );
   QString SourceNummber = result[ value - 1 ];
   
