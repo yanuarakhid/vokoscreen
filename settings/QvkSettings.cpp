@@ -105,7 +105,7 @@ void QvkSettings::readAll()
 	webcamY = settings.value( "Y", 400 ).toUInt();
 	webcamWidth = settings.value( "Width", 320 ).toUInt();
 	webcamHeight = settings.value( "Height", 240 ).toUInt();
-	webcamMirrored = settings.value( "Mirrored", false ).toBool();
+        webcamMirrored = settings.value( "Mirrored", 0 ).toInt();
 	webcamBorder = settings.value( "Border", true ).toBool();
 	webcamOverFullScreen = settings.value( "OverFullScreen", false ).toBool();
 	webcamButtonTopMiddle = settings.value( "Top", false ).toBool();
@@ -296,7 +296,7 @@ int QvkSettings::getWebcamWidth()
   return webcamWidth;
 }
 
-bool QvkSettings::getWebcamMirrored()
+int QvkSettings::getWebcamMirrored()
 {
   return webcamMirrored;
 }

@@ -30,7 +30,7 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
     rotateFrame->setEnabled( false );
   }
   connect( mirrorCheckBox, SIGNAL( clicked( bool ) ), this, SLOT( setMirrorOnOff( bool ) ) );
-  if ( vkSettings.getWebcamMirrored() == true )
+  if ( vkSettings.getWebcamMirrored() == Qt::Checked )
   {
     mirrorCheckBox->setEnabled( true );
     mirrorCheckBox->click();
