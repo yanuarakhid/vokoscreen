@@ -67,6 +67,13 @@
     </message>
 </context>
 <context>
+    <name>QvkRegionChoise</name>
+    <message>
+        <source>double-click to maximize</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
@@ -328,6 +335,10 @@
     <message>
         <source>Show window</source>
         <translation>显示窗口</translation>
+    </message>
+    <message>
+        <source>Lossless</source>
+        <translation>无损</translation>
     </message>
 </context>
 </TS>

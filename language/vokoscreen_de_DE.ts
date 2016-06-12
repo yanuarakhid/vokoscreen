@@ -67,6 +67,13 @@
     </message>
 </context>
 <context>
+    <name>QvkRegionChoise</name>
+    <message>
+        <source>double-click to maximize</source>
+        <translation>Maximieren durch Doppelklick</translation>
+    </message>
+</context>
+<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
@@ -328,6 +335,10 @@
     <message>
         <source>Show window</source>
         <translation>Fenster anzeigen</translation>
+    </message>
+    <message>
+        <source>Lossless</source>
+        <translation>verlustfrei</translation>
     </message>
 </context>
 </TS>

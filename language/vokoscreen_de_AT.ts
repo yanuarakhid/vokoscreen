@@ -26,7 +26,7 @@
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation type="unfinished"/>
+        <translation>Einstellungen anzeigen</translation>
     </message>
 </context>
 <context>
@@ -64,6 +64,13 @@
     <message>
         <source>Select one or more files</source>
         <translation>Eine oder mehrere Dateien auswählen</translation>
+    </message>
+</context>
+<context>
+    <name>QvkRegionChoise</name>
+    <message>
+        <source>double-click to maximize</source>
+        <translation>Maximieren durch Doppelklick</translation>
     </message>
 </context>
 <context>
@@ -116,7 +123,7 @@
     <name>regionselection</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>Maximieren durch Doppelklick</translation>
     </message>
 </context>
 <context>
@@ -323,11 +330,15 @@
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Verlassen</translation>
     </message>
     <message>
         <source>Show window</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Lossless</source>
+        <translation>verlustfrei</translation>
     </message>
 </context>
 </TS>
