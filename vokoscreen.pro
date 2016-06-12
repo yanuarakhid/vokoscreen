@@ -114,4 +114,4 @@ include(pulse/pulse.pri)
 # log
 include(log/log.pri)
 
-QT += core gui widgets x11extras network testlib
+QT += core gui widgets x11extras network testlib multimedia
