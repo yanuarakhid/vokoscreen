@@ -38,6 +38,7 @@
 #include <QTest>
 #include <QDateTime>
 #include <QListWidget>
+#include <QFileSystemWatcher>
 
 #include "QvkSettings.h"
 #include "QvkRegionController.h"
