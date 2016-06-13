@@ -31,7 +31,7 @@ int main(int argc, char** argv)
 
     if (app.isRunning())
     {
-      QString msg = "vokoscreen can only be started once, vokoscreen runs";
+      QString msg = "vokoscreen can be started only once";
       qDebug() << "[vokoscreen]" << msg;
       QMessageBox::StandardButton ret = QMessageBox::information( NULL,
                              "Info",
