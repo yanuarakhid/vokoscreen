@@ -27,7 +27,7 @@
 
 int main(int argc, char** argv)
 {
-    QtSingleApplication app(argc, argv);
+    QtSingleApplication app( "vokoscreen", argc, argv);
 
     if (app.isRunning())
     {

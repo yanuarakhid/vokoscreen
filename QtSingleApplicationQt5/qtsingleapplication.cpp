@@ -148,11 +148,10 @@ void QtSingleApplication::sysInit(const QString &appId)
     GUIenabled to false), you may consider using
     QtSingleCoreApplication instead.
 */
-
 QtSingleApplication::QtSingleApplication(int &argc, char **argv, bool GUIenabled)
     : QApplication(argc, argv, GUIenabled)
 {
-    sysInit();
+   sysInit();
 }
 
 

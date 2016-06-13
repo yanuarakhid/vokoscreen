@@ -103,6 +103,22 @@ QtLocalPeer::QtLocalPeer(QObject* parent, const QString &appId)
                        + QLatin1String("-lockfile");
     lockFile.setFileName(lockName);
     lockFile.open(QIODevice::ReadWrite);
+    
+/*    
+    // Begin VK
+    QString filename = QDir(QDir::tempPath()).absolutePath()
+                       + QLatin1Char('/') + QLatin1String("vokoscreen-lock-file");
+    
+    QFile file( filename );
+    if ( file.open( QFile::WriteOnly | QIODevice::Truncate ) )
+    {
+      QTextStream out(&file);
+      out << lockName; // write lockfile in file
+      out.flush();
+    }    
+    file.close();    
+    // End VK
+*/    
 }
 
 
