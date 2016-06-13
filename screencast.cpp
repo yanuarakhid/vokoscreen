@@ -691,7 +691,7 @@ void screencast::closeEvent( QCloseEvent * event )
   saveSettings();
   myregionselection->close();
   magnifier->close();
-  webcamController->webcamCloseEvent();  
+  webcamController->webcamCloseEvent();
   SystemTrayIcon->hide();  
 }
 

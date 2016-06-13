@@ -66,6 +66,12 @@ void QvkVersion::readVersionTempFile( QString localVersionFilename )
     settings.beginGroup( "Info" );
        setRemoteVersion( settings.value( "Version" ).toString() );
     settings.endGroup();
+    
+    QFile file( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + QDir::separator() + localVersionFilename  );
+    if ( file.exists() == true )
+    {
+      file.remove(); 
+    }
 }
 
 
