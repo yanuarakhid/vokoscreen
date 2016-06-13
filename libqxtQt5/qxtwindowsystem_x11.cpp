@@ -29,7 +29,6 @@
 ** <http://libqxt.org>  <foundation@libqxt.org>
 *****************************************************************************/
 
-#include <QLibrary>
 #include <QX11Info>
 #include <QRect>
 #include <X11/Xutil.h>
