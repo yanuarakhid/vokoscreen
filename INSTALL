@@ -8,9 +8,8 @@ Requires:
   - xdg-utils
   - lsof
   - ffmpeg >= 1.1.0
-    
-Optional:
-  - pulseaudio and pulsaudio-utils
+  - pulseaudio
+  - pulsaudio-utils
   
 BuildRequires:
   - pkgconfig
@@ -28,7 +27,6 @@ Compile:
   - change into the vokoscreen-<version> directory
   - run "qmake <option>"
   - run "make"
-
   
 qmake options:
 DEFINES+=NO_NEW_VERSION_CHECK
