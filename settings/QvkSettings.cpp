@@ -122,6 +122,10 @@ void QvkSettings::readAll()
         magnifierOnOff = settings.value( "OnOff", 0 ).toUInt();
 	magnifierFormValue = settings.value( "FormValue", 2 ).toUInt();
     settings.endGroup();
+    
+    settings.beginGroup( "ShowClick" );
+        showClickRadiant = settings.value( "Radiant", 0 ).toInt();
+    settings.endGroup();
 }
 
 bool QvkSettings::isVokoscreenWithLibs()
@@ -341,4 +345,10 @@ int QvkSettings::getMagnifierOnOff()
 int QvkSettings::getMagnifierFormValue()
 {
   return magnifierFormValue; 
+}
+
+// ShowClick
+int QvkSettings::getShowClickRadiant()
+{
+  return showClickRadiant; 
 }

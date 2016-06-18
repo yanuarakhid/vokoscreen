@@ -2,7 +2,7 @@
 
 #include <QDebug>
 
-QvkShowClickDialog::QvkShowClickDialog( QColor color, bool radiant, double opacity )
+QvkShowClickDialog::QvkShowClickDialog( QColor color, int radiant, double opacity )
 {
     newDialog = new QDialog;
     newDialog->setModal( true );
@@ -45,9 +45,8 @@ QvkShowClickDialog::QvkShowClickDialog( QColor color, bool radiant, double opaci
 
     connect( myUiDialog.horizontalSliderCircle, SIGNAL( valueChanged( int ) ), this, SLOT( valueChangedSliderCircle( int ) ) );
     connect( myUiDialog.horizontalSliderOpacity, SIGNAL( valueChanged( int ) ), this, SLOT( valueChangedOpacity( int ) ) );
-    
-    connect( myUiDialog.checkBoxRadiant, SIGNAL( stateChanged( int ) ), this, SLOT( stateChangedRadiant( int ) ) );
 
+    
     connect( myUiDialog.buttonBox, SIGNAL( accepted() ), this, SLOT( ok() ) );
     connect( myUiDialog.buttonBox, SIGNAL( rejected() ), this, SLOT( cancel() ) );
     connect( myUiDialog.buttonBox->button( QDialogButtonBox::RestoreDefaults )   , SIGNAL( clicked() ), this, SLOT( Standard() ) );
@@ -58,6 +57,9 @@ QvkShowClickDialog::QvkShowClickDialog( QColor color, bool radiant, double opaci
     circleWidget->setColor( color );
     circleWidget->setRadiant( radiant );
     circleWidget->setOpacity( opacity );
+
+    connect( myUiDialog.checkBoxRadiant, SIGNAL( stateChanged( int ) ), this, SLOT( stateChangedRadiant( int ) ) );
+    myUiDialog.checkBoxRadiant->setCheckState( Qt::CheckState( radiant ) );
 }
 
 QvkShowClickDialog::~QvkShowClickDialog()

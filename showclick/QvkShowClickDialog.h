@@ -11,7 +11,7 @@ class QvkShowClickDialog: public QDialog
 {
 Q_OBJECT
 public:    
-    QvkShowClickDialog( QColor color, bool radiant, double opacity );
+    QvkShowClickDialog( QColor color, int radiant, double opacity );
     virtual ~QvkShowClickDialog();
     Ui_Dialog myUiDialog;
 
@@ -54,7 +54,7 @@ signals:
     void newCircleWidgetValue( int, QColor );
     void newShowtime( double value );
     void newOpacity( double value );
-    void newRadiant( bool value);
+    void newRadiant( int value);
 
     
 protected:

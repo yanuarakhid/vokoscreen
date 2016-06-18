@@ -74,6 +74,9 @@ public:
   // Magnifier
   int getMagnifierOnOff();
   int getMagnifierFormValue();
+  
+  // ShowClick
+  int getShowClickRadiant();
 
 public slots:
   bool isVokoscreenWithLibs();
@@ -139,6 +142,10 @@ private:
   // Magnifier
   int magnifierOnOff;
   int magnifierFormValue;
+  
+  // ShowClick
+  int showClickRadiant;
+  
 };
 
 #endif

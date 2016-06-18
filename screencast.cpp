@@ -107,7 +107,8 @@ screencast::screencast()
     
     // Begin showclick
     QColor color = Qt::red;
-    bool radiant = false;
+    //bool radiant = false;
+    int radiant = vkSettings.getShowClickRadiant();
     double opacity = 0.5;
     ShowClickDialog = new QvkShowClickDialog( color, radiant, opacity );
     connect( myUi.pointerDialogPushButton, SIGNAL( clicked() ), ShowClickDialog, SLOT( show() ) );
@@ -778,6 +779,14 @@ void screencast::saveSettings()
   settings.beginGroup( "Magnifier" );
     settings.setValue( "OnOff", myUi.MagnifierCheckBox->checkState());
     settings.setValue( "FormValue", magnifier->getFormValue() );
+  settings.endGroup();
+  
+  settings.beginGroup( "ShowClick" );
+    settings.setValue( "Showtime", (double) ShowClickDialog->myUiDialog.horizontalSliderShowtime->value()/10 );
+    settings.setValue( "Circle", ShowClickDialog->myUiDialog.horizontalSliderCircle->value() );
+    settings.setValue( "Radiant", ShowClickDialog->myUiDialog.checkBoxRadiant->checkState() );
+    settings.setValue( "Opacity", (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100 );
+    //color );
   settings.endGroup();
 }
 
