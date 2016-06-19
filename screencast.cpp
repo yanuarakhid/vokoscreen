@@ -106,8 +106,8 @@ screencast::screencast()
     (void)showkeyController;
     
     // Begin showclick
-    QColor color = Qt::red;
-    //QColor color = vkSettings.getShowClickColor();
+    //QColor color = Qt::red;
+    QColor color = vkSettings.getShowClickColor();
     int radiant = vkSettings.getShowClickRadiant();
     double opacity = 0.5;
     ShowClickDialog = new QvkShowClickDialog( color, radiant, opacity );
@@ -786,8 +786,7 @@ void screencast::saveSettings()
     settings.setValue( "Circle", ShowClickDialog->myUiDialog.horizontalSliderCircle->value() );
     settings.setValue( "Radiant", ShowClickDialog->myUiDialog.checkBoxRadiant->isChecked() );
     settings.setValue( "Opacity", (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100 );
-    settings.setValue( "Color", ShowClickDialog->getColor() );
-    //color );
+    settings.setValue( "Color", (QVariant)ShowClickDialog->getColor() );
   settings.endGroup();
 }
 

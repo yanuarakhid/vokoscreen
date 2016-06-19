@@ -2,7 +2,7 @@
 
 #include <QFile>
 #include <QApplication>
-
+#include <QColor>
 using namespace std;
 
 QvkSettings::QvkSettings(){}
@@ -125,7 +125,7 @@ void QvkSettings::readAll()
     
     settings.beginGroup( "ShowClick" );
         showClickRadiant = settings.value( "Radiant", false ).toBool();
-	//showClickColor = settings.value( "Color", Qt::red );
+	showClickColor = settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
     settings.endGroup();
 }
 
@@ -353,9 +353,8 @@ bool QvkSettings::getShowClickRadiant()
 {
   return showClickRadiant; 
 }
-/*
+
 QColor QvkSettings::getShowClickColor()
 {
   return showClickColor;
 }
-*/

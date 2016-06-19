@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QSettings>
 #include <QDebug>
+#include <QColor>
 
 class QvkSettings: public QObject
 { 
@@ -77,7 +78,10 @@ public:
   
   // ShowClick
   bool getShowClickRadiant();
+  QColor getShowClickColor();
 
+  
+  
 public slots:
   bool isVokoscreenWithLibs();
   
@@ -145,7 +149,7 @@ private:
   
   // ShowClick
   bool showClickRadiant;
-  //Qt:red showClickColor;
+  QColor showClickColor;
   
 };
 
