@@ -124,7 +124,7 @@ void QvkSettings::readAll()
     settings.endGroup();
     
     settings.beginGroup( "ShowClick" );
-        showClickRadiant = settings.value( "Radiant", 0 ).toInt();
+        showClickRadiant = settings.value( "Radiant", false ).toBool();
 	//showClickColor = settings.value( "Color", Qt::red );
     settings.endGroup();
 }
@@ -349,7 +349,7 @@ int QvkSettings::getMagnifierFormValue()
 }
 
 // ShowClick
-int QvkSettings::getShowClickRadiant()
+bool QvkSettings::getShowClickRadiant()
 {
   return showClickRadiant; 
 }

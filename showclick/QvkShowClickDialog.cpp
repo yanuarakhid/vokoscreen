@@ -2,7 +2,7 @@
 
 #include <QDebug>
 
-QvkShowClickDialog::QvkShowClickDialog( QColor color, int radiant, double opacity )
+QvkShowClickDialog::QvkShowClickDialog( QColor color, bool radiant, double opacity )
 {
     newDialog = new QDialog;
     newDialog->setModal( true );
@@ -58,7 +58,11 @@ QvkShowClickDialog::QvkShowClickDialog( QColor color, int radiant, double opacit
     circleWidget->setOpacity( opacity );
     
     connect( myUiDialog.checkBoxRadiant, SIGNAL( stateChanged( int ) ), this, SLOT( stateChangedRadiant( int ) ) );
-    myUiDialog.checkBoxRadiant->setCheckState( Qt::CheckState( radiant ) );
+    
+    if ( radiant == true )
+      myUiDialog.checkBoxRadiant->setCheckState( Qt::Checked );
+    else
+      myUiDialog.checkBoxRadiant->setCheckState( Qt::Unchecked );
 }
 
 QvkShowClickDialog::~QvkShowClickDialog()

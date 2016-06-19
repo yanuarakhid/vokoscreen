@@ -76,7 +76,7 @@ public:
   int getMagnifierFormValue();
   
   // ShowClick
-  int getShowClickRadiant();
+  bool getShowClickRadiant();
 
 public slots:
   bool isVokoscreenWithLibs();
@@ -144,7 +144,7 @@ private:
   int magnifierFormValue;
   
   // ShowClick
-  int showClickRadiant;
+  bool showClickRadiant;
   //Qt:red showClickColor;
   
 };

@@ -784,7 +784,7 @@ void screencast::saveSettings()
   settings.beginGroup( "ShowClick" );
     settings.setValue( "Showtime", (double) ShowClickDialog->myUiDialog.horizontalSliderShowtime->value()/10 );
     settings.setValue( "Circle", ShowClickDialog->myUiDialog.horizontalSliderCircle->value() );
-    settings.setValue( "Radiant", ShowClickDialog->myUiDialog.checkBoxRadiant->checkState() );
+    settings.setValue( "Radiant", ShowClickDialog->myUiDialog.checkBoxRadiant->isChecked() );
     settings.setValue( "Opacity", (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100 );
     settings.setValue( "Color", ShowClickDialog->getColor() );
     //color );
