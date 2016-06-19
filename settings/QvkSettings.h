@@ -77,9 +77,9 @@ public:
   int getMagnifierFormValue();
   
   // ShowClick
-  bool getShowClickRadiant();
+  bool   getShowClickRadiant();
   QColor getShowClickColor();
-
+  double getShowClickOpacity();
   
   
 public slots:
@@ -150,7 +150,7 @@ private:
   // ShowClick
   bool showClickRadiant;
   QColor showClickColor;
-  
+  double showClickOpacity;
 };
 
 #endif

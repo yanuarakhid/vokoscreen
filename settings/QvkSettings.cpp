@@ -125,7 +125,8 @@ void QvkSettings::readAll()
     
     settings.beginGroup( "ShowClick" );
         showClickRadiant = settings.value( "Radiant", false ).toBool();
-	showClickColor = settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
+        showClickColor = settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
+        showClickOpacity = settings.value( "Opacity", 0.5 ).toDouble();
     settings.endGroup();
 }
 
@@ -357,4 +358,9 @@ bool QvkSettings::getShowClickRadiant()
 QColor QvkSettings::getShowClickColor()
 {
   return showClickColor;
+}
+
+double QvkSettings::getShowClickOpacity()
+{
+  return showClickOpacity;
 }
