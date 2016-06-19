@@ -4,6 +4,9 @@
 #include "ui_showclickDialog.h"
 #include "QvkCircleWidget.h"
 
+
+#include "QvkSettings.h"
+
 #include <QDialog>
 
 class QvkShowClickDialog: public QDialog
@@ -24,6 +27,7 @@ public slots:
 private:
     QDialog *newDialog;
     QvkCircleWidget *circleWidget;
+    QvkSettings vkSettings;
 
     
 private slots:

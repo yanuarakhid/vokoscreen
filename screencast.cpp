@@ -106,9 +106,10 @@ screencast::screencast()
     (void)showkeyController;
     
     // Begin showclick
-    QColor color = vkSettings.getShowClickColor();
-    int radiant = vkSettings.getShowClickRadiant();
+    QColor color   = vkSettings.getShowClickColor();
+    int radiant    = vkSettings.getShowClickRadiant();
     double opacity = vkSettings.getShowClickOpacity();
+    
     ShowClickDialog = new QvkShowClickDialog( color, radiant, opacity );
     connect( myUi.pointerDialogPushButton, SIGNAL( clicked() ), ShowClickDialog, SLOT( show() ) );
   

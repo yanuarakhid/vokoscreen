@@ -77,6 +77,7 @@ public:
   int getMagnifierFormValue();
   
   // ShowClick
+  int    getShowClickCircle();
   bool   getShowClickRadiant();
   QColor getShowClickColor();
   double getShowClickOpacity();
@@ -148,6 +149,7 @@ private:
   int magnifierFormValue;
   
   // ShowClick
+  int showClickCircle;
   bool showClickRadiant;
   QColor showClickColor;
   double showClickOpacity;
