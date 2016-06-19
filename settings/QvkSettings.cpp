@@ -125,6 +125,7 @@ void QvkSettings::readAll()
     
     settings.beginGroup( "ShowClick" );
         showClickRadiant = settings.value( "Radiant", 0 ).toInt();
+	//showClickColor = settings.value( "Color", Qt::red );
     settings.endGroup();
 }
 
@@ -352,3 +353,9 @@ int QvkSettings::getShowClickRadiant()
 {
   return showClickRadiant; 
 }
+/*
+QColor QvkSettings::getShowClickColor()
+{
+  return showClickColor;
+}
+*/

@@ -18,6 +18,7 @@ public:
 
 public slots:
     void show();
+    QColor getColor();
 
     
 private:
@@ -54,7 +55,7 @@ signals:
     void newCircleWidgetValue( int, QColor );
     void newShowtime( double value );
     void newOpacity( double value );
-    void newRadiant( int value);
+    void newRadiant( bool value);
 
     
 protected:

@@ -145,6 +145,7 @@ private:
   
   // ShowClick
   int showClickRadiant;
+  //Qt:red showClickColor;
   
 };
 
