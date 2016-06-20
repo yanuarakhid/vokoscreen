@@ -251,7 +251,7 @@ private:
     
 protected:
    void contextMenuEvent( QContextMenuEvent *event );
-    
+
 };
 
 

@@ -73,7 +73,6 @@ screencast::screencast()
 
     pause = false;
     firststartWininfo = false;
-    
 
     // Tab 1 Screen options ***************************************************
     myUi.tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
@@ -81,8 +80,6 @@ screencast::screencast()
     connect( myUi.FullScreenRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
     connect( myUi.WindowRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
     connect( myUi.AreaRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
-    
-    
     
     QDesktopWidget *desk = QApplication::desktop();
     myScreenCountChanged( desk->screenCount() );
@@ -118,13 +115,15 @@ screencast::screencast()
 					    ShowClickDialog->myUiDialog.checkBoxRadiant->checkState(),
 					    (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100,
 					    color );
-
-    connect( myUi.pointerQCheckBox, SIGNAL( clicked( bool ) ), animateControl, SLOT( pointerOnOff( bool ) ) );
-  
+    
+    
     connect( ShowClickDialog, SIGNAL( newCircleWidgetValue( int, QColor ) ), animateControl, SLOT( setDiameterColor( int, QColor ) ) );
     connect( ShowClickDialog, SIGNAL( newShowtime( double ) ), animateControl, SLOT( setShowTime( double ) ) );
     connect( ShowClickDialog, SIGNAL( newOpacity( double ) ), animateControl, SLOT( setOpacity( double ) ) );
     connect( ShowClickDialog, SIGNAL( newRadiant( bool ) ), animateControl, SLOT( setRadiant( bool ) ) );
+
+    connect( myUi.pointerCheckBox, SIGNAL( clicked( bool ) ), animateControl, SLOT( pointerOnOff( bool ) ) );
+  
     // End showclick
 
     // StatusBar
@@ -376,7 +375,6 @@ screencast::screencast()
     if( Qt::CheckState( vkSettings.getMagnifierOnOff() ) == Qt::Checked )
       myUi.MagnifierCheckBox->click();
    
-    
     SystemCall = new QProcess( this );
     
     connect( myUi.AudioOnOffCheckbox,     SIGNAL( clicked() ), SLOT( AudioOnOff() ) );
@@ -686,10 +684,10 @@ void screencast::WindowMinimized()
 void screencast::closeEvent( QCloseEvent * event )
 {
   (void)event;
-  if ( myUi.pointerQCheckBox->checkState() == Qt::Checked )
-    myUi.pointerQCheckBox->click();
   Stop();
   saveSettings();
+  if ( myUi.pointerCheckBox->checkState() == Qt::Checked )
+    myUi.pointerCheckBox->click();
   myregionselection->close();
   magnifier->close();
   webcamController->webcamCloseEvent();
@@ -777,12 +775,13 @@ void screencast::saveSettings()
   settings.endGroup();
   
   settings.beginGroup( "Magnifier" );
-    settings.setValue( "OnOff", myUi.MagnifierCheckBox->checkState());
+    settings.setValue( "OnOff", myUi.MagnifierCheckBox->checkState() );
     settings.setValue( "FormValue", magnifier->getFormValue() );
   settings.endGroup();
   
   settings.beginGroup( "ShowClick" );
-    settings.setValue( "Showtime", (double) ShowClickDialog->myUiDialog.horizontalSliderShowtime->value() ); ///10 );
+    settings.setValue( "OnOff", myUi.pointerCheckBox->checkState() );
+    settings.setValue( "Showtime", (double) ShowClickDialog->myUiDialog.horizontalSliderShowtime->value() );
     settings.setValue( "Circle", ShowClickDialog->myUiDialog.horizontalSliderCircle->value() );
     settings.setValue( "Radiant", ShowClickDialog->myUiDialog.checkBoxRadiant->isChecked() );
     settings.setValue( "Opacity", (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100 );

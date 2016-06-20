@@ -124,11 +124,12 @@ void QvkSettings::readAll()
     settings.endGroup();
     
     settings.beginGroup( "ShowClick" );
-        showClickTime    = settings.value( "Showtime", 5 ).toDouble();
-        showClickCircle  = settings.value( "Circle", 70 ).toInt();
-        showClickRadiant = settings.value( "Radiant", false ).toBool();
-        showClickColor   = settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
-        showClickOpacity = settings.value( "Opacity", 0.5 ).toDouble();
+        showClickOnOff    = settings.value( "OnOff", 0 ).toInt();
+        showClickTime     = settings.value( "Showtime", 5 ).toDouble();
+        showClickCircle   = settings.value( "Circle", 70 ).toInt();
+        showClickRadiant  = settings.value( "Radiant", false ).toBool();
+        showClickColor    = settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
+        showClickOpacity  = settings.value( "Opacity", 0.5 ).toDouble();
     settings.endGroup();
 }
 
@@ -352,6 +353,11 @@ int QvkSettings::getMagnifierFormValue()
 }
 
 // ShowClick
+int QvkSettings::getShowClickOnOff()
+{
+  return showClickOnOff;
+}
+
 bool QvkSettings::getShowClickRadiant()
 {
   return showClickRadiant; 
