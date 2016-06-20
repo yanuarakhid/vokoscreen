@@ -1,7 +1,11 @@
 #!/bin/bash 
 
-countCommit=6
+begintime="2015-06-16"
 
-echo "Eingefügte Zeilen: "$(git log --shortstat -n $countCommit | grep insertions | cut -d "," -f2 | sed 's/^[ \t]*//' | cut -d" " -f1 | paste -sd+ | bc)
+echo "Commits seit dem:  "$begintime
 
-echo "Gelöschte Zeilen:  "$(git log --shortstat -n $countCommit | grep deletions  | cut -d "," -f3 | sed 's/^[ \t]*//' | cut -d" " -f1 | paste -sd+ | bc)
+echo "Anzahl commits:    "$(git log --shortstat --since="$begintime" | grep commit | wc -l)
+
+echo "Eingefügte Zeilen: "$(git log --shortstat --since="$begintime" | grep insertions | cut -d "," -f2 | sed 's/^[ \t]*//' | cut -d" " -f1 | paste -sd+ | tr -s "+" | bc)
+echo "Gelöschte Zeilen:  "$(git log --shortstat --since="$begintime" | grep deletions  | cut -d "," -f3 | sed 's/^[ \t]*//' | cut -d" " -f1 | paste -sd+ | tr -s "+" | bc)
+
