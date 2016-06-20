@@ -81,7 +81,8 @@ public:
   bool   getShowClickRadiant();
   QColor getShowClickColor();
   double getShowClickOpacity();
-  
+  double getShowClickTime();
+
   
 public slots:
   bool isVokoscreenWithLibs();
@@ -153,6 +154,7 @@ private:
   bool showClickRadiant;
   QColor showClickColor;
   double showClickOpacity;
+  double showClickTime;
 };
 
 #endif

@@ -124,9 +124,10 @@ void QvkSettings::readAll()
     settings.endGroup();
     
     settings.beginGroup( "ShowClick" );
-        showClickCircle =  settings.value( "Circle", 70 ).toInt();
+        showClickTime    = settings.value( "Showtime", 5 ).toDouble();
+        showClickCircle  = settings.value( "Circle", 70 ).toInt();
         showClickRadiant = settings.value( "Radiant", false ).toBool();
-        showClickColor =   settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
+        showClickColor   = settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
         showClickOpacity = settings.value( "Opacity", 0.5 ).toDouble();
     settings.endGroup();
 }
@@ -369,4 +370,9 @@ double QvkSettings::getShowClickOpacity()
 int QvkSettings::getShowClickCircle()
 {
   return showClickCircle; 
+}
+
+double QvkSettings::getShowClickTime()
+{
+  return showClickTime;
 }
