@@ -84,6 +84,9 @@ public:
   double getShowClickOpacity();
   double getShowClickTime();
 
+  // ShowKey
+  int getShowKeyOnOff();
+  
   
 public slots:
   bool isVokoscreenWithLibs();
@@ -157,6 +160,10 @@ private:
   QColor showClickColor;
   double showClickOpacity;
   double showClickTime;
+  
+  // ShowKey
+  int showKeyOnOff;
+  
 };
 
 #endif

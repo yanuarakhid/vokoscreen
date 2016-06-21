@@ -131,6 +131,10 @@ void QvkSettings::readAll()
         showClickColor    = settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
         showClickOpacity  = settings.value( "Opacity", 0.5 ).toDouble();
     settings.endGroup();
+    
+    settings.beginGroup( "ShowKey" );
+        showKeyOnOff = settings.value( "OnOff", 0 ).toInt();
+    settings.endGroup();
 }
 
 bool QvkSettings::isVokoscreenWithLibs()
@@ -352,6 +356,7 @@ int QvkSettings::getMagnifierFormValue()
   return magnifierFormValue; 
 }
 
+
 // ShowClick
 int QvkSettings::getShowClickOnOff()
 {
@@ -381,4 +386,10 @@ int QvkSettings::getShowClickCircle()
 double QvkSettings::getShowClickTime()
 {
   return showClickTime;
+}
+
+// ShowKey
+int QvkSettings::getShowKeyOnOff()
+{
+  return showKeyOnOff; 
 }

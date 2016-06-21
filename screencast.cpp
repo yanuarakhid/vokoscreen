@@ -99,8 +99,10 @@ screencast::screencast()
     connect( magnifier, SIGNAL( closeMagnifier() ), SLOT( uncheckMagnifier() ) );
     connect( myUi.MagnifierDialogPushButton, SIGNAL( clicked() ), magnifier,  SLOT( showDialogMagnifier() ) );
 
-    QvkShowkeyController *showkeyController = new QvkShowkeyController( myUi.ShowkeyQCheckBox );
+    QvkShowkeyController *showkeyController = new QvkShowkeyController( myUi.ShowkeyCheckBox );
     (void)showkeyController;
+    if( Qt::CheckState( vkSettings.getShowKeyOnOff() ) == Qt::Checked )
+      myUi.ShowkeyCheckBox->click();
     
     // Begin showclick
     QColor color   = vkSettings.getShowClickColor();
@@ -116,15 +118,13 @@ screencast::screencast()
 					    (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100,
 					    color );
     
-    
+    connect( myUi.pointerCheckBox, SIGNAL( clicked( bool ) ), animateControl, SLOT( pointerOnOff( bool ) ) );
+     
     connect( ShowClickDialog, SIGNAL( newCircleWidgetValue( int, QColor ) ), animateControl, SLOT( setDiameterColor( int, QColor ) ) );
     connect( ShowClickDialog, SIGNAL( newShowtime( double ) ), animateControl, SLOT( setShowTime( double ) ) );
     connect( ShowClickDialog, SIGNAL( newOpacity( double ) ), animateControl, SLOT( setOpacity( double ) ) );
     connect( ShowClickDialog, SIGNAL( newRadiant( bool ) ), animateControl, SLOT( setRadiant( bool ) ) );
-
-    connect( myUi.pointerCheckBox, SIGNAL( clicked( bool ) ), animateControl, SLOT( pointerOnOff( bool ) ) );
-  
-    // End showclick
+   // End showclick
 
     // StatusBar
     statusBarLabelTime = new QLabel();
@@ -787,6 +787,12 @@ void screencast::saveSettings()
     settings.setValue( "Opacity", (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100 );
     settings.setValue( "Color", (QVariant)ShowClickDialog->getColor() );
   settings.endGroup();
+  
+  settings.beginGroup( "ShowKey" );
+    settings.setValue(  "OnOff", myUi.ShowkeyCheckBox->checkState() );
+  settings.endGroup();
+  
+  
 }
 
 

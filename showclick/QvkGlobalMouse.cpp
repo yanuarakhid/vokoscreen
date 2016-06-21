@@ -40,7 +40,7 @@ void QvkGlobalMouse::mousePressed()
 
   while( onOff )
   {
-    QCoreApplication::processEvents( QEventLoop::AllEvents );     
+    QCoreApplication::processEvents( QEventLoop::AllEvents );
     XQueryPointer(display, root, &root_return, &child_return, &x, &y, &win_x, &win_y, &mask);
     QTest::qSleep( 10 );
 
