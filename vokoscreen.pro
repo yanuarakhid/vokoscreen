@@ -115,5 +115,3 @@ include(pulse/pulse.pri)
 include(log/log.pri)
 
 QT += core gui widgets x11extras network testlib multimedia
-
-DEFINES+=NO_NEW_VERSION_CHECK
