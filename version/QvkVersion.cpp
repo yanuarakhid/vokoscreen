@@ -8,7 +8,8 @@ QvkVersion::QvkVersion()
 
 void QvkVersion::doDownload()
 {
-    QNetworkRequest request( QUrl( "http://kohaupt-online.de/hp/version/VERSION" ) );
+    //QNetworkRequest request( QUrl( "http://kohaupt-online.de/hp/version/VERSION" ) );
+    QNetworkRequest request( QUrl( "http://linuxecke.volkoh.de/vokoscreen/version/VERSION" ) );
     
     QNetworkReply *reply = manager.get( request );
     currentDownloadsQList.append( reply );

@@ -326,7 +326,7 @@
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>Fenster minimieren</translation>
     </message>
     <message>
         <source>Exit</source>
@@ -334,7 +334,7 @@
     </message>
     <message>
         <source>Show window</source>
-        <translation type="unfinished"/>
+        <translation>Fenster anzeigen</translation>
     </message>
     <message>
         <source>Lossless</source>

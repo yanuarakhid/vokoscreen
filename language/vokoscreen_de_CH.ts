@@ -26,7 +26,7 @@
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation type="unfinished"/>
+        <translation>Klick - Einstellungen</translation>
     </message>
 </context>
 <context>
@@ -70,7 +70,7 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>Doppelklick zum Maximieren</translation>
     </message>
 </context>
 <context>
@@ -123,7 +123,7 @@
     <name>regionselection</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>Doppelklick zum Maximieren</translation>
     </message>
 </context>
 <context>
@@ -326,19 +326,19 @@
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>Fenster minimieren</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Verlassen</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation type="unfinished"/>
+        <translation>Fenster anzeigen</translation>
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation>Verlustfrei</translation>
     </message>
 </context>
 </TS>
