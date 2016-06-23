@@ -313,12 +313,12 @@ screencast::screencast()
     myUi.LogPushButton->setIcon ( QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
     connect( myUi.LogPushButton, SIGNAL( clicked() ), this, SLOT( VisibleHideKonsole() ) );
     
+    myUi.updateButton->hide();
   #ifndef NO_NEW_VERSION_CHECK
     QTimer::singleShot( 15000, &version, SLOT( doDownload() ) );
     connect( &version, SIGNAL( versionDownloadFinish() ), SLOT( buttonVersion() ) );
     myUi.updateButton->setIcon( QIcon( ":/pictures/system-software-update.png" ) );
     myUi.updateButton->setToolTip( tr( "New version available" ) );
-    myUi.updateButton->hide();
     connect( myUi.updateButton, SIGNAL( clicked() ), SLOT( showHomepage() ) );  
   #endif
 
