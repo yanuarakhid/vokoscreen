@@ -1,344 +1,344 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sr" version="2.0">
 <context>
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>El dispositivo está ocupado</translation>
+        <translation>Уређај је заузет</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Nombre</translation>
+        <translation>Име</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Desconocido</translation>
+        <translation>Непознато</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation>Dispositivo</translation>
+        <translation>Уређај</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation>Utilizado por</translation>
+        <translation>Користе</translation>
     </message>
 </context>
 <context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation>Mostrar configuraciones de Click</translation>
+        <translation>Прикажи клик подешавања</translation>
     </message>
 </context>
 <context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Enviar último video por correo</translation>
+        <translation>Пошаљи задњи видео</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Enviar uno o más vídeos seleccionados</translation>
+        <translation>Пошаљи један или више обележених видеа</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Enviar</translation>
+        <translation>Пошаљи</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation>Откажи</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>Por favor, instale un reproductor de vídeo</translation>
+        <translation>Молимо вас инсталирајте видео плејер</translation>
     </message>
 </context>
 <context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Encontrará el vídeo como un archivo adjunto</translation>
+        <translation>Неђи видеокао додатак</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Seleccione uno o más archivos</translation>
+        <translation>Обележи један или више фајлова</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation>Doble click para maximizar</translation>
+        <translation>двоклик за максимизирање</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation>Borde</translation>
+        <translation>Граница</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Cerrar</translation>
+        <translation>Затвори</translation>
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation>Mostrar en pantalla completa</translation>
+        <translation>Прикажи преко пуног екрана</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation>Clic derecho para menú</translation>
+        <translation>Десни клик за мени</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation>Definido por el usuario</translation>
+        <translation>Кориснички-дефинисано</translation>
     </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>El dispositivo está ocupado</translation>
+        <translation>Уређај је заузет</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Nombre</translation>
+        <translation>Име</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation>Dispositivo</translation>
+        <translation>Уређај</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation>Utilizado por</translation>
+        <translation>Користе</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Desconocido</translation>
+        <translation>Непознато</translation>
     </message>
 </context>
 <context>
     <name>regionselection</name>
     <message>
         <source>double-click to maximize</source>
-        <translation>Doble click para maximizar</translation>
+        <translation>двоклик за максимизирање</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
+        <translation>Пун екран</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Ventana</translation>
+        <translation>Прозор</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Подручје</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Увеличавање</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Sonido</translation>
+        <translation>Аудио</translation>
     </message>
     <message>
         <source>Alsa</source>
-        <translation>ALSA</translation>
+        <translation>Алса</translation>
     </message>
     <message>
         <source>Pulse</source>
-        <translation>Pulse</translation>
+        <translation>Пулс</translation>
     </message>
     <message>
         <source>Default</source>
-        <translation>Predeterminado</translation>
+        <translation>Уобичајено</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Códec</translation>
+        <translation>Кодек</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>No grabar el puntero del ratón</translation>
+        <translation>Немој снимати стрелицу</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Ruta del vídeo</translation>
+        <translation>Видео пут</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Reproductor</translation>
+        <translation>Плејер</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Minimizar Vokoscreen al iniciar la grabación</translation>
+        <translation>Vokoscreen минимизиран кад снимање почне</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Iniciar</translation>
+        <translation>Старт</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Стоп</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Пауза</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>Почни</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Enviar</translation>
+        <translation>Пошаљи</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Tiempo de grabación</translation>
+        <translation>Време снимања</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>Tamaño en kB</translation>
+        <translation>Величина у KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>screensize grabación</translation>
+        <translation>Површина сниманог простора</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formato</translation>
+        <translation>Формат</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Configuración de fps</translation>
+        <translation>Подешавања фпс</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Abrir directorio</translation>
+        <translation>Отвори директоријум</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Cuenta regresiva</translation>
+        <translation>Одбројавање</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Reproducir último vídeo</translation>
+        <translation>Пусти задњи видео</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>Enviar vídeo</translation>
+        <translation>Пошаљи видео</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation>Означи један или више уређаја</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Cuadros por segundo actuales</translation>
+        <translation>Реални фрејмови по секунди</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation>Ir</translation>
+        <translation>Крени</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Sitio web</translation>
+        <translation>Почетна</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation>Asistencia</translation>
+        <translation>Подршка</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation>Desarrollador</translation>
+        <translation>Програмер</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Fotogramas</translation>
+        <translation>Фрејмови</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation>Донирај</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Traducciones</translation>
+        <translation>Преводи</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Código fuente</translation>
+        <translation>Изворни код</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostrar en bandeja del sistema</translation>
+        <translation>Прикажи у &apos;&apos;systray&apos;&apos;</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation>Nueva versión disponible</translation>
+        <translation>Нова верзија је доступна</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Códec de video</translation>
+        <translation>Видео кодек</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Códec de audio</translation>
+        <translation>Аудио кодек</translation>
     </message>
     <message>
         <source>Webcam</source>
-        <translation>Cámara web</translation>
+        <translation>Веб камера</translation>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation>Seleccionar cámara web</translation>
+        <translation>Обележи веб камеру</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation>Reflejo</translation>
+        <translation>Пресликано</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation>Pantalla</translation>
+        <translation>Приказ</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation>Todas las pantallas</translation>
+        <translation>Сви прикази</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation>Página del desarrollador</translation>
+        <translation>Почетна програмера</translation>
     </message>
     <message>
         <source>Recorder</source>
-        <translation>Capturadora</translation>
+        <translation>Снимач</translation>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation>Seleccionar capturadora</translation>
+        <translation>Обележи снимач</translation>
     </message>
     <message>
         <source>Hide window</source>
-        <translation>Esconder ventana</translation>
+        <translation>Сакриј прозор</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Salir</translation>
+        <translation>Излаз</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation>Mostrar ventana</translation>
+        <translation>Прикажи прозор</translation>
     </message>
     <message>
         <source>Lossless</source>
-        <translation>Sin pérdidas</translation>
+        <translation>Луслес</translation>
     </message>
 </context>
 </TS>
