@@ -42,6 +42,7 @@ public:
   // Videooptions
   int getFrames();
   QString getVideoCodec();
+  int getX264Lossless();
   QString getAudioCodec();
   QString getVideoContainer();
   int getHideMouse();
@@ -110,17 +111,21 @@ private:
   bool FullScreenSelect;
   bool WindowSelect;
   bool AreaSelect;
+  int Countdown;
+  
   QString VideoPath;
   QString VideoPlayer;
   QString GIFPlayer;
   int Minimized;
-  int Countdown;
+  
   int Frames;
   QString VideoCodec;
+  int x264Lossless;
   QString AudioCodec;
   QString VideoContainer;
   int HideMouse;
   QString Recorder;
+  
   bool vokoscreenWithLibs;
   
   // Gui

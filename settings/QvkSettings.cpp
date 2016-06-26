@@ -80,6 +80,7 @@ void QvkSettings::readAll()
       }
       
       VideoCodec = settings.value( "Videocodec", "libx264" ).toString();
+      x264Lossless = settings.value( "X264Lossless", 0 ).toInt();
       AudioCodec = settings.value( "Audiocodec", "libmp3lame" ).toString();
       VideoContainer = settings.value( "Format", "mkv" ).toString();
       HideMouse = settings.value( "HideMouse").toUInt();
@@ -216,6 +217,11 @@ int QvkSettings::getFrames()
 QString QvkSettings::getVideoCodec()
 {
   return VideoCodec; 
+}
+
+int QvkSettings::getX264Lossless()
+{
+  return x264Lossless;
 }
 
 QString QvkSettings::getAudioCodec()

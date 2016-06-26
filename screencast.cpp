@@ -356,6 +356,8 @@ screencast::screencast()
     else
       myUi.GIFplayerComboBox->setCurrentIndex( x );
       
+    myUi.x264LosslessCheckBox->setCheckState( Qt::CheckState( vkSettings.getX264Lossless() )  );
+    
     myUi.MinimizedCheckBox->setCheckState( Qt::CheckState( vkSettings.getMinimized() ) );
       
     myUi.CountdownSpinBox->setValue( vkSettings.getCountdown() );
@@ -739,6 +741,7 @@ void screencast::saveSettings()
   settings.beginGroup( "Videooptions" );
     settings.setValue( "Frames", myUi.FrameSpinBox->value() );
     settings.setValue( "Videocodec", myUi.VideocodecComboBox->currentText() );
+    settings.setValue( "X264Lossless", myUi.x264LosslessCheckBox->checkState() );
     settings.setValue( "Audiocodec", myUi.AudiocodecComboBox->currentText() );
     settings.setValue( "Format", myUi.VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", myUi.HideMouseCheckbox->checkState() );    
