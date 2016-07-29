@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>552</width>
-    <height>267</height>
+    <height>287</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -561,21 +561,29 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_9"/>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="MinimizedCheckBox">
-            <property name="text">
-             <string>Vokoscreen minimized when recording starts</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="SystrayCheckBox">
-            <property name="text">
-             <string>Show in systray</string>
-            </property>
-           </widget>
+           <layout class="QVBoxLayout" name="verticalLayout_17">
+            <item>
+             <widget class="QCheckBox" name="MinimizedCheckBox">
+              <property name="text">
+               <string>Vokoscreen minimized when recording starts</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="MinimizedByStartCheckBox">
+              <property name="text">
+               <string>Vokoscreen starts minimized</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="SystrayCheckBox">
+              <property name="text">
+               <string>Show in systray</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>

@@ -55,6 +55,7 @@ void QvkSettings::readAll()
       VideoPlayer = settings.value( "Videoplayer" ).toString();
       GIFPlayer = settings.value( "GIFplayer" ).toString();
       Minimized = settings.value( "Minimized", 0 ).toUInt();
+      MinimizedByStart = settings.value( "MinimizedByStart", 0 ).toUInt();
       Countdown = settings.value( "Countdown", 0 ).toUInt();
       QFile file;
       if ( file.exists( qApp->applicationDirPath().append( "/bin/ffmpeg" ) ) == true )
@@ -202,6 +203,11 @@ QString QvkSettings::getGIFPlayer()
 int QvkSettings::getMinimized()
 {
   return Minimized; 
+}
+
+int QvkSettings::getMinimizedByStart()
+{
+  return MinimizedByStart;
 }
 
 int QvkSettings::getCountdown()

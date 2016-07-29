@@ -359,7 +359,13 @@ screencast::screencast()
     myUi.x264LosslessCheckBox->setCheckState( Qt::CheckState( vkSettings.getX264Lossless() )  );
     
     myUi.MinimizedCheckBox->setCheckState( Qt::CheckState( vkSettings.getMinimized() ) );
-      
+    
+    if ( Qt::CheckState( vkSettings.getMinimizedByStart() ) == Qt::Checked )
+    {
+      myUi.MinimizedByStartCheckBox->click();
+      setWindowState( Qt::WindowMinimized );
+    }
+    
     myUi.CountdownSpinBox->setValue( vkSettings.getCountdown() );
 
     myUi.FrameSpinBox->setValue( vkSettings.getFrames() );
@@ -733,6 +739,7 @@ void screencast::saveSettings()
     settings.setValue( "Videoplayer", myUi.VideoplayerComboBox->currentText() );
     settings.setValue( "GIFplayer", myUi.GIFplayerComboBox->currentText() );
     settings.setValue( "Minimized", myUi.MinimizedCheckBox->checkState() );
+    settings.setValue( "MinimizedByStart", myUi.MinimizedByStartCheckBox->checkState() );
     settings.setValue( "Countdown", myUi.CountdownSpinBox->value() );
     if ( vkSettings.isVokoscreenWithLibs() == false )
       settings.setValue( "Recorder", myUi.RecorderLineEdit->displayText() );

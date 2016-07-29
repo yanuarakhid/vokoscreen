@@ -36,6 +36,7 @@ public:
   QString getVideoPlayer();
   QString getGIFPlayer();
   int getMinimized();
+  int getMinimizedByStart();
   int getCountdown();
   QString getRecorder();
   
@@ -117,6 +118,7 @@ private:
   QString VideoPlayer;
   QString GIFPlayer;
   int Minimized;
+  int MinimizedByStart;
   
   int Frames;
   QString VideoCodec;
