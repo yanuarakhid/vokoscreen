@@ -342,5 +342,9 @@
         <source>Lossless</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Vokoscreen starts minimized</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
