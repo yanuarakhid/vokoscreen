@@ -734,6 +734,11 @@ void screencast::saveSettings()
     settings.setValue( "Area", myUi.AreaRadioButton->isChecked() );
   settings.endGroup();
 
+  settings.beginGroup( "Screen" );
+    QDesktopWidget *desk = QApplication::desktop();
+    settings.setValue( "Count", desk->screenCount() );
+  settings.endGroup();
+  
   settings.beginGroup( "Miscellaneous" );
     settings.setValue( "VideoPath", myUi.SaveVideoPathLineEdit->displayText() );
     settings.setValue( "Videoplayer", myUi.VideoplayerComboBox->currentText() );
