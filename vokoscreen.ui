@@ -291,8 +291,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>98</width>
-                 <height>28</height>
+                 <width>370</width>
+                 <height>132</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -577,11 +577,22 @@
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="SystrayCheckBox">
-              <property name="text">
-               <string>Show in systray</string>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="horizontalLayout_9">
+              <item>
+               <widget class="QCheckBox" name="SystrayCheckBox">
+                <property name="text">
+                 <string>Show in systray</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="ResetCheckBox">
+                <property name="text">
+                 <string>Reset all settings at next start</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>

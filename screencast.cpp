@@ -734,6 +734,7 @@ void screencast::saveSettings()
     settings.setValue( "Area", myUi.AreaRadioButton->isChecked() );
   settings.endGroup();
 
+  // Have to time no function
   settings.beginGroup( "Screen" );
     QDesktopWidget *desk = QApplication::desktop();
     settings.setValue( "Count", desk->screenCount() );
@@ -746,6 +747,7 @@ void screencast::saveSettings()
     settings.setValue( "Minimized", myUi.MinimizedCheckBox->checkState() );
     settings.setValue( "MinimizedByStart", myUi.MinimizedByStartCheckBox->checkState() );
     settings.setValue( "Countdown", myUi.CountdownSpinBox->value() );
+    settings.setValue( "Reset", myUi.ResetCheckBox->checkState() );
     if ( vkSettings.isVokoscreenWithLibs() == false )
       settings.setValue( "Recorder", myUi.RecorderLineEdit->displayText() );
   settings.endGroup();

@@ -27,6 +27,15 @@ void QvkSettings::readAll()
     // Einstellungen aus .conf einlesen
     QSettings settings( getProgName(), getProgName() );
     
+    // Reset all settings at next start from vokoscreen
+    settings.beginGroup( "Miscellaneous" );
+      int reset = settings.value( "Reset", 0 ).toUInt();
+      if ( reset == 2 )
+      {
+	settings.clear();
+      }
+    settings.endGroup();
+    
     // Dient nur zum anlegen des Profils damit ffmpeglog erstellt werden kann
     settings.beginGroup("vokoscreen");
       settings.setValue("Version", getVersion());
