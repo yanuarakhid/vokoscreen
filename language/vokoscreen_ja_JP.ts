@@ -26,7 +26,7 @@
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation type="unfinished"/>
+        <translation>クリック設定の表示</translation>
     </message>
 </context>
 <context>
@@ -70,7 +70,7 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>ダブルクリックで最大化</translation>
     </message>
 </context>
 <context>
@@ -123,7 +123,7 @@
     <name>regionselection</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>ダブルクリックで最大化</translation>
     </message>
 </context>
 <context>
@@ -326,19 +326,23 @@
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>ウインドウを隠す</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>終了する</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation type="unfinished"/>
+        <translation>ウインドウを表示</translation>
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation>ロス無し</translation>
+    </message>
+    <message>
+        <source>Vokoscreen starts minimized</source>
+        <translation>Vokoscreenを最小表示で起動</translation>
     </message>
 </context>
 </TS>

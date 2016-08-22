@@ -340,5 +340,9 @@
         <source>Lossless</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Vokoscreen starts minimized</source>
+        <translation>بدء Vokoscreen بوضع التصغير</translation>
+    </message>
 </context>
 </TS>

@@ -26,7 +26,7 @@
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation type="unfinished"/>
+        <translation>Pokaż ustawienia klikania</translation>
     </message>
 </context>
 <context>
@@ -70,7 +70,7 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>Podwójne kliknięcie zmaksymalizuje</translation>
     </message>
 </context>
 <context>
@@ -123,7 +123,7 @@
     <name>regionselection</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>Podwójne kliknięcie zmaksymalizuje</translation>
     </message>
 </context>
 <context>
@@ -326,19 +326,23 @@
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>Ukryj okno</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Zakończ</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation type="unfinished"/>
+        <translation>Pokaż okno</translation>
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation>Bezstratny</translation>
+    </message>
+    <message>
+        <source>Vokoscreen starts minimized</source>
+        <translation>Vokoscreen uruchomi się zminimalizowany</translation>
     </message>
 </context>
 </TS>

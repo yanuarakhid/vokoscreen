@@ -70,7 +70,7 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>kattintson duplán maximalizáláshoz</translation>
     </message>
 </context>
 <context>
@@ -123,7 +123,7 @@
     <name>regionselection</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>kattintson duplán maximalizáláshoz</translation>
     </message>
 </context>
 <context>
@@ -326,11 +326,11 @@
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>Ablak elrejtése</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Kilépés</translation>
     </message>
     <message>
         <source>Show window</source>
@@ -338,7 +338,11 @@
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation> Veszteségmentes</translation>
+    </message>
+    <message>
+        <source>Vokoscreen starts minimized</source>
+        <translation>Vokoscreen indítása minimalizálva</translation>
     </message>
 </context>
 </TS>

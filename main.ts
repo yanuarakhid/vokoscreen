@@ -346,5 +346,9 @@
         <source>Vokoscreen starts minimized</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Reset all settings at next start</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

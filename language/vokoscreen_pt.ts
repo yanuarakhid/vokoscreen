@@ -340,5 +340,9 @@
         <source>Lossless</source>
         <translation>Sem perda</translation>
     </message>
+    <message>
+        <source>Vokoscreen starts minimized</source>
+        <translation>Vokoscreen inicia minimizado</translation>
+    </message>
 </context>
 </TS>
