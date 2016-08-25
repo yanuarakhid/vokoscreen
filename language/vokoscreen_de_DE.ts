@@ -344,5 +344,9 @@
         <source>Vokoscreen starts minimized</source>
         <translation>Vokoscreen startet minimiert</translation>
     </message>
+    <message>
+        <source>Reset all settings at next start</source>
+        <translation>Alle Einstellungen beim nächsten Start zurücksetzen</translation>
+    </message>
 </context>
 </TS>

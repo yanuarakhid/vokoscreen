@@ -344,5 +344,9 @@
         <source>Vokoscreen starts minimized</source>
         <translation>بدء Vokoscreen بوضع التصغير</translation>
     </message>
+    <message>
+        <source>Reset all settings at next start</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 </TS>
