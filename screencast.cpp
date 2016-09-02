@@ -540,7 +540,7 @@ void screencast::currentFormatChanged( const QString value )
    QStringList MKV_AudioCodecLIst = ( QStringList() << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac" );
    
    QStringList MP4_videoCodecList = ( QStringList() << "libx264" << "mpeg4" );
-   QStringList MP4_AudioCodecList = ( QStringList() << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac" );
+   QStringList MP4_AudioCodecList = ( QStringList() << "libmp3lame" << "libvorbis" << "libvo_aacenc" << "aac" );
    
    QStringList GIF_videoCodecList = ( QStringList() << "gif" );
    QStringList GIF_AudioCodecList = ( QStringList() << "" );
