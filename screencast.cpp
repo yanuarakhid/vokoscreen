@@ -49,7 +49,14 @@ screencast::screencast()
 
     oldMainWindowHeight = height();
 
-    screencast::setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
+    if ( vkSettings.isVokoscreenWithLibs() == true )
+    {
+      screencast::setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() + " " + "WithLibs");
+    }
+    else
+    {
+      screencast::setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
+    }
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
