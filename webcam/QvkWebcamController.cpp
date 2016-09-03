@@ -69,6 +69,10 @@ QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myCo
 
   connect( myWebcamWatcher, SIGNAL( readWebcamNames( QStringList ) ), this, SLOT( readWebcams( QStringList ) ) );
   
+  if ( vkSettings.getWebcamOnOff() == Qt::Unchecked )
+  {
+    webcamCloseEvent();
+  }
 }
 
 
