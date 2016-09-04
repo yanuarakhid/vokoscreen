@@ -1,7 +1,6 @@
 [main]
 host = https://www.transifex.com
 
-
 [vokoscreen.maints]
 file_filter = language/vokoscreen_<lang>.ts
 #source_file = main.ts
