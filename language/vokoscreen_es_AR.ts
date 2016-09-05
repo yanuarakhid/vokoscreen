@@ -70,7 +70,7 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>doble click para maximizar</translation>
     </message>
 </context>
 <context>
@@ -123,7 +123,7 @@
     <name>regionselection</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>doble click para maximizar</translation>
     </message>
 </context>
 <context>
@@ -326,27 +326,27 @@
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>Esconder ventana</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Salir</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar ventana</translation>
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation>Sin perdidas</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen se inicia minimizado</translation>
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation>Restablecer todos los ajustes en el siguiente inicio</translation>
     </message>
 </context>
 </TS>
