@@ -2367,15 +2367,14 @@ void screencast::Countdown()
 
 QString screencast::x264Lossless()
 {
-   if ( myUi.x264LosslessCheckBox->isVisible() and myUi.x264LosslessCheckBox->isChecked() )
+   if ( myUi.x264LosslessCheckBox->isChecked() == true )
    {
-    return "-qp 0";
+     return "-qp 0";
    }
    else
    {
-    return ""; 
+     return ""; 
    }
-
 }
 
 void screencast::record()
