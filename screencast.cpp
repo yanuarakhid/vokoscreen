@@ -539,16 +539,20 @@ void screencast::currentFormatChanged( const QString value )
    QStringList MKV_videoCodecList = ( QStringList() << "libx264" << "mpeg4" << "huffyuv");
    QStringList MKV_AudioCodecLIst = ( QStringList() << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac" );
    
-   QStringList MP4_videoCodecList = ( QStringList() << "libx264" << "mpeg4" );
-   QStringList MP4_AudioCodecList = ( QStringList() << "libmp3lame" << "libvorbis" << "libvo_aacenc" << "aac" );
+   QStringList MP4_videoCodecList = ( QStringList() << "libx264" << "mpeg4");
+   QStringList MP4_AudioCodecList = ( QStringList() << "libmp3lame" << "libvorbis" << "libvo_aacenc" << "aac");
+
+   // https://de.wikipedia.org/wiki/QuickTime
+   QStringList MOV_videoCodecList = ( QStringList() << "libx264" << "mpeg4" );
+   QStringList MOV_AudioCodecList = ( QStringList() << "alac" << "aac" << "libmp3lame" );
    
    QStringList GIF_videoCodecList = ( QStringList() << "gif" );
    QStringList GIF_AudioCodecList = ( QStringList() << "" );
    
    // https://trac.ffmpeg.org/wiki/Encode/VP8
    // /usr/bin/ffmpeg -y -report  -threads 4 -f x11grab -draw_mouse 1 -framerate 25 -video_size 1680x1050 -i :0+0,0 -pix_fmt yuv420p -c:v libvpx -quality realtime -vpre libvpx-720p  -s 1680x1050 -f webm vokoscreen-2016-05-27_08-32-31.webm
-   QStringList WEBM_videoCodecList = ( QStringList() << "libvpx" );
-   QStringList WEBM_AudioCodecList = ( QStringList() << "vorbis" );
+   //QStringList WEBM_videoCodecList = ( QStringList() << "libvpx-vp9" );
+   //QStringList WEBM_AudioCodecList = ( QStringList() << "vorbis" );
    
   
   if ( value == "mkv" )
@@ -561,7 +565,7 @@ void screencast::currentFormatChanged( const QString value )
   {
     searchVideoCodec( MP4_videoCodecList );
     searchAudioCodec( MP4_AudioCodecList );
-}
+  }
   
   if ( value == "gif" )
   {
@@ -569,11 +573,19 @@ void screencast::currentFormatChanged( const QString value )
     searchAudioCodec( GIF_AudioCodecList );
   }
   
+  if ( value == "mov" )
+  {
+    searchVideoCodec( MOV_videoCodecList );
+    searchAudioCodec( MOV_AudioCodecList );
+  }
+  
+  /*
   if ( value == "webm" )
   {
     searchVideoCodec( WEBM_videoCodecList );
     searchAudioCodec( WEBM_AudioCodecList );
   }
+  */
 }
 
 void screencast::searchAudioCodec( QStringList audioCodecList )
@@ -635,8 +647,8 @@ void screencast::SearchFormats()
 {
    qDebug() << "[vokoscreen] ---Begin search formats---";
    myUi.VideoContainerComboBox->clear();
-   QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" );
-   QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" );
+   QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" << "mov");
+   QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" << "mov");
    for ( int i = 0; i < formatList.count(); i++ )
    {
      if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
