@@ -51,7 +51,7 @@ screencast::screencast()
 
     if ( vkSettings.isVokoscreenWithLibs() == true )
     {
-      screencast::setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() + " " + "WithLibs");
+      screencast::setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() + " " + "RUN-Version");
     }
     else
     {
@@ -220,7 +220,6 @@ screencast::screencast()
     myUi.AudiocodecStandardButton->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.AudiocodecStandardButton->setToolTip( tr( "Default" ) );
     connect( myUi.AudiocodecStandardButton, SIGNAL( clicked() ), SLOT( setAudiocodecStandardComboBox() ) );
-
 
     // Tab 4 Miscellaneous options **************************************************
     myUi.tabWidget->setTabIcon( 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
@@ -1467,6 +1466,7 @@ void screencast::currentIndexChangedFormat( int index )
     myUi.GIFplayerComboBox->show();
     myUi.VideoplayerComboBox->hide();
     myUi.VideocodecComboBox->setEnabled( false );
+    myUi.AudiocodecLabel->setEnabled( false );
     if ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked )
     {
       myUi.AudioOnOffCheckbox->click();
@@ -1479,6 +1479,7 @@ void screencast::currentIndexChangedFormat( int index )
     myUi.GIFplayerComboBox->hide();
     myUi.VideoplayerComboBox->show();
     myUi.VideocodecComboBox->setEnabled( true );
+    myUi.AudiocodecLabel->setEnabled( true );
     myUi.AudioOnOffCheckbox->setEnabled( true );
   }
 }
