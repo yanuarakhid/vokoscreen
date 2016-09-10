@@ -94,7 +94,6 @@ private slots:
   void showMagnifier();
   void uncheckMagnifier();
   void searchExternalPrograms();
-  QString getOsRelease();
   bool searchProgramm( QString ProgName );
   QString getFfmpegVersion();
   QString getPactlVersion();

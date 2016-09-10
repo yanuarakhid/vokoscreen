@@ -65,7 +65,7 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "Version:" << vkSettings.getVersion();
     qDebug() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
     qDebug() << "[vokoscreen]" << "Qt version: " << qVersion();
-    qDebug() << "[vokoscreen]" << "Operating system:" << getOsRelease();
+    qDebug() << "[vokoscreen]" << "Operating system:" << QSysInfo::prettyProductName();
     qDebug() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     QvkAlsaDevice inBox;
     qDebug() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
@@ -335,10 +335,20 @@ screencast::screencast()
     myUi.AudioOnOffCheckbox->setCheckState( Qt::CheckState( vkSettings.getAudioOnOff() ) );
     AudioOff( Qt::CheckState( vkSettings.getAudioOnOff() ) );
 
-    myUi.AlsaRadioButton->setChecked( vkSettings.getAlsaSelect() );
+//    myUi.AlsaRadioButton->setChecked( vkSettings.getAlsaSelect() );
+    if ( vkSettings.getAlsaSelect() == true )
+    {
+       myUi.AlsaRadioButton->setChecked( true ) ;
+       clickedAudioAlsa( true );
+    }
 
-    myUi.PulseDeviceRadioButton->setChecked( vkSettings.getPulseSelect() );
-
+    //myUi.PulseDeviceRadioButton->setChecked( vkSettings.getPulseSelect() );
+    if ( vkSettings.getPulseSelect() == true )
+    {
+       myUi.PulseDeviceRadioButton->setChecked( true ) ;
+       clickedAudioPulse( true );
+    }
+    
     myUi.FullScreenRadioButton->setChecked( vkSettings.getFullScreenSelect() );
       
     myUi.WindowRadioButton->setChecked( vkSettings.getWindowSelect() );
@@ -922,40 +932,6 @@ void screencast::AreaOnOff()
     myregionselection->close();
     myregionselection->show();
   }
-}
-
-
-QString screencast::getOsRelease()
-{
-  QString OS;
-  QString ID;
-  QString VersionID;
-  QString content;
-  QFile file("/etc/os-release");
-
-  if ( file.exists() )
-  {
-    file.open(QIODevice::ReadOnly);
-      content = file.readAll().constData();
-      QStringList list = content.split( "\n" );
-      QStringList listID = list.filter( QRegExp( "^ID=" ) );
-      if ( !listID.empty() )
-        ID = listID[0].remove(0, 3).replace("\"", ""  );
-      
-      QStringList listVersionID = list.filter( QRegExp( "^VERSION_ID=" ) );
-      if ( !listVersionID.empty() )
-	VersionID = listVersionID[0].remove( 0, 11 ).replace("\"", ""  );
-    
-    OS = ID + " " + VersionID;
-      
-    file.close();
-  }
-  else
-  {
-    OS = "/etc/os-release not found";
-  }
- 
-  return OS;
 }
 
 
