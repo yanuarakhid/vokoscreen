@@ -346,7 +346,7 @@
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation>Redefinir todas as configurações no próximo início</translation>
     </message>
 </context>
 </TS>
