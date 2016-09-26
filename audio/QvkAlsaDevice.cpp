@@ -256,13 +256,33 @@ void QvkAlsaDevice::setAlsaHw()
          printf( "Can't get next wave device number: %s\n", snd_strerror( err ) );
          break;
       }
-
+      
       if ( devNum < 0 )
 	break;
  
       AlsaHw = "hw:" + QString::number( cardNum ) + "," + QString::number( devNum );
+
+/////////////////////////////////////      
+// For detect devices
+      int countDevices = -1;
+      int devNext = -1;
+      for (;;)
+      {
+         snd_ctl_pcm_next_device( cardHandle, &devNext );
+         if ( devNext == -1 )
+	 {
+	   break;
+	 }
+	 else
+	 {
+	   countDevices++;
+           qDebug() << "countDevices:" << countDevices << "devNext:" << devNext;
+	 }
+      }
     }
    }
+/////////////////////////////////////
+
    snd_config_update_free_global();
 }
 
