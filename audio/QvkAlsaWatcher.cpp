@@ -24,7 +24,7 @@ void QvkAlsaWatcher::AlsaWatcherTimer()
    register int  err;
    int           cardNum;
    cardNum = -1;
-   QStringList deviceList;
+   QStringList cardList;
    for (;;)
    {
       if ( ( err = snd_card_next( &cardNum ) ) < 0 )
@@ -35,16 +35,16 @@ void QvkAlsaWatcher::AlsaWatcherTimer()
       else
       {
 	if ( cardNum > -1 ) 
-	  deviceList.append( "card" + QString::number( cardNum ) );
+	  cardList.append( "card" + QString::number( cardNum ) );
       }
       
       if ( cardNum < 0 ) break;
    }
    
-   if ( AlsaCardCounter != deviceList.count() )
+   if ( AlsaCardCounter != cardList.count() )
    {
-      AlsaCardCounter = deviceList.count() ;
-      emit changed( deviceList );
+      AlsaCardCounter = cardList.count() ;
+      emit changed( cardList );
    }
 }
 
