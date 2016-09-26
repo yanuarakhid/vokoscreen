@@ -1183,7 +1183,7 @@ void screencast::AlsaWatcherEvent( QStringList CardxList )
   myUi.AlsaHwComboBox->clear();
   AlsaDeviceList.clear();
   // Für jede card wird eine Instanz erzeugt und in AlsaDeviceList abgelegt
-  for( int i = 0; i <= CardxList.count() - 1; i++ )
+  for( int i = 0; i < CardxList.count(); i++ )
   {
     QvkAlsaDevice * alsaDevice = new QvkAlsaDevice( CardxList[ i ] );
     AlsaDeviceList.append( alsaDevice );
