@@ -1181,13 +1181,13 @@ void screencast::AlsaWatcherEvent( QStringList CardxList )
   qDebug() << "[vokoscreen] ---Begin search Alsa capture device---";
 
   myUi.AlsaHwComboBox->clear();
-  AlsaDeviceList.clear();
+  AlsaCardList.clear();
   // Für jede card wird eine Instanz erzeugt und in AlsaDeviceList abgelegt
   for( int i = 0; i < CardxList.count(); i++ )
   {
-    QvkAlsaDevice * alsaDevice = new QvkAlsaDevice( CardxList[ i ] );
-    AlsaDeviceList.append( alsaDevice );
-    myUi.AlsaHwComboBox->addItem( AlsaDeviceList.at( i )->getAlsaName() , i );
+    QvkAlsaDevice * alsaCard = new QvkAlsaDevice( CardxList[ i ] );
+    AlsaCardList.append( alsaCard );
+    myUi.AlsaHwComboBox->addItem( AlsaCardList.at( i )->getAlsaName() , i );
     myUi.AlsaHwComboBox->setItemIcon( i , QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
   }
 
@@ -1905,7 +1905,7 @@ void screencast::Pause()
     else
     {
       QVariant aa = myUi.AlsaHwComboBox->itemData( myUi.AlsaHwComboBox->currentIndex() );
-      QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
+      QvkAlsaDevice *inBox = AlsaCardList.at( aa.toInt() );
       if ( inBox->isbusy() and myUi.AlsaRadioButton->isChecked() )
       {
         inBox->busyDialog( inBox->getAlsaHw(), inBox->getPurAlsaName() );
@@ -1935,7 +1935,7 @@ void screencast::Pause()
     else
     {
       QVariant aa = myUi.AlsaHwComboBox->itemData( myUi.AlsaHwComboBox->currentIndex() );
-      QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
+      QvkAlsaDevice *inBox = AlsaCardList.at( aa.toInt() );
       if ( inBox->isbusy() and myUi.AlsaRadioButton->isChecked() )
       {
         inBox->busyDialog( inBox->getAlsaHw(), inBox->getPurAlsaName() );
@@ -2241,7 +2241,7 @@ QString screencast::myAlsa()
     if ( myUi.AlsaRadioButton->isChecked() )  
     {
       QVariant aa = myUi.AlsaHwComboBox->itemData( myUi.AlsaHwComboBox->currentIndex() );
-      QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
+      QvkAlsaDevice *inBox = AlsaCardList.at( aa.toInt() );
       if ( myUi.AlsaHwComboBox->currentIndex() > -1 )
         value = "-f alsa -ac " + inBox->getChannel() + " -i " + inBox->getAlsaHw() + " ";
       else
@@ -2319,7 +2319,7 @@ void screencast::preRecord()
   if ( myUi.AlsaRadioButton->isChecked() and myUi.AudioOnOffCheckbox->isChecked() )
   {
     QVariant aa = myUi.AlsaHwComboBox->itemData( myUi.AlsaHwComboBox->currentIndex() );
-    QvkAlsaDevice *inBox = AlsaDeviceList.at( aa.toInt() );
+    QvkAlsaDevice *inBox = AlsaCardList.at( aa.toInt() );
     if ( inBox->isbusy() )
     {
       inBox->busyDialog( inBox->getAlsaHw(), inBox->getPurAlsaName() );

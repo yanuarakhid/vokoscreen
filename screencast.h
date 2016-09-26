@@ -196,7 +196,7 @@ private:
     
     QvkShowClickDialog *ShowClickDialog;
     QvkAnimateControl *animateControl;
-    QList<QvkAlsaDevice *> AlsaDeviceList;
+    QList<QvkAlsaDevice *> AlsaCardList;
 
     QScrollArea *scrollAreaPulse;
     QCheckBox *namePulse;
