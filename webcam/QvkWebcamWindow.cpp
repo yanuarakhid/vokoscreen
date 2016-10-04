@@ -11,7 +11,7 @@ QvkWebcamWindow::QvkWebcamWindow()
   setWindowTitle( "vokoscreen webcam");
   setToolTip( tr( "Right click for menu" ) );
 
-  setAttribute( Qt::WA_TranslucentBackground, true );
+  setStyleSheet( "background-color: black;" );
   
   webcamLabel = new QLabel( this );
   webcamLabel->setAlignment( Qt::AlignCenter );
