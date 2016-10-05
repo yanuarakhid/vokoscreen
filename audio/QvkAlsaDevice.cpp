@@ -262,26 +262,8 @@ void QvkAlsaDevice::setAlsaHw()
  
       AlsaHw = "hw:" + QString::number( cardNum ) + "," + QString::number( devNum );
 
-/////////////////////////////////////      
-// For detect devices
-      int countDevices = -1;
-      int devNext = -1;
-      for (;;)
-      {
-         snd_ctl_pcm_next_device( cardHandle, &devNext );
-         if ( devNext == -1 )
-	 {
-	   break;
-	 }
-	 else
-	 {
-	   countDevices++;
-           qDebug() << "countDevices:" << countDevices << "devNext:" << devNext;
-	 }
-      }
     }
    }
-/////////////////////////////////////
 
    snd_config_update_free_global();
 }

@@ -14,7 +14,6 @@ QvkFormatsAndCodecs::QvkFormatsAndCodecs()
  */
 void QvkFormatsAndCodecs::getFormatsAndCodecs( QString value )
 {
-  qDebug() << "[vokoscreen] detect codecs with" << value;
   recordApplikation = value;
   
   QProcess SystemCall;
