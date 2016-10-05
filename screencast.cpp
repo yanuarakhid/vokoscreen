@@ -100,6 +100,7 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "---End Environment---";
     qDebug( " " );
 
+    myUi.MagnifierCheckBox->setToolTip( "CTRL+SHIFT+F9" );
     connect( myUi.MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );
     magnifier = new QvkMagnifier();
     magnifier->close();
