@@ -258,9 +258,12 @@ screencast::screencast()
 						myUi.radioButtonRightMiddle, myUi.radioButtonBottomMiddle, myUi.radioButtonLeftMiddle );
     (void)webcamController;
 
+    // Tab shortcuts ******************************************************
+    myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "preferences-desktop-keyboard", QIcon( ":/pictures/shortcuts.png" ) ) );
     
-    // Tab 6 About *********************************************************
-    myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
+    
+    // Tab 7 About *********************************************************
+    myUi.tabWidget->setTabIcon( 6, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
     myUi.labelOpensuseBetaUrl->setOpenExternalLinks( true );
     myUi.labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Developer Homepage" ) + "</a>" );
     
@@ -485,13 +488,34 @@ screencast::screencast()
    SystemTrayIcon->show();
    myUi.SystrayCheckBox->setCheckState( Qt::CheckState( vkSettings.getSystray() ) );
  
+   // shortcuts
+   
+   // enable/disable shortcuts
+   connect( myUi.checkBoxShortcuts, SIGNAL( stateChanged( int ) ), this, SLOT( setShortcuts( int ) ) );
+
+   QStringList shortcut_ABC_Stringlist;
+   shortcut_ABC_Stringlist << "";	
+   for( int i = 0; i < 26; ++i )
+   {
+      shortcut_ABC_Stringlist << QString( 'A' + i );
+   }
+   shortcut_ABC_Stringlist << "F1" << "F2" << "F3" << "F4" << "F5" << "F6" << "F7" << "F8" << "F9" << "F10" << "F11" << "F12";
+
+   myUi.shortcut_magnifier_ABC->addItems( shortcut_ABC_Stringlist );
+   connect( myUi.shortcut_magnifier_CTRL, SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
+   connect( myUi.shortcut_magnifier_SHIFT, SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
+   connect( myUi.shortcut_magnifier_ALT, SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
+   connect( myUi.shortcut_magnifier_ABC, SIGNAL( currentIndexChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
+
+   // *******
+
    shortcutWebcam = new QxtGlobalShortcut( this );
    connect( shortcutWebcam, SIGNAL( activated() ), myUi.webcamCheckBox, SLOT( click() ) );
    shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
    
    shortcutMagnifier = new QxtGlobalShortcut( this );
    connect( shortcutMagnifier, SIGNAL( activated() ), myUi.MagnifierCheckBox, SLOT( click() ) );
-   shortcutMagnifier->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
+   //shortcutMagnifier->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
 
    shortcutStart = new QxtGlobalShortcut( this );
    connect( shortcutStart, SIGNAL( activated() ), this, SLOT( preRecord() ) );
@@ -537,9 +561,47 @@ screencast::screencast()
    qDebug( " " );
 }
 
+
 screencast::~screencast()
 { 
 }
+
+void screencast::setShortcuts( int value )
+{
+  if ( value == Qt::Checked )
+    myUi.shortcutWidget->setEnabled( true );
+
+  if ( value == Qt::Unchecked )
+   myUi.shortcutWidget->setEnabled( false );
+}
+
+void screencast::shortcut_magnifier_Changed( int value )
+{
+  (void) value;
+  QString shortcut;
+  
+  if ( myUi.shortcut_magnifier_CTRL->checkState() == Qt::Checked )
+    shortcut = "Ctrl";
+  
+  if ( myUi.shortcut_magnifier_SHIFT->checkState() == Qt::Checked )
+    shortcut = shortcut + "+Shift";
+    
+  if ( myUi.shortcut_magnifier_ALT->checkState() == Qt::Checked )
+    shortcut = shortcut + "+Alt";
+  
+  shortcut = shortcut + "+" + myUi.shortcut_magnifier_ABC->currentText();
+
+  if ( shortcut.left( 1 ) == "+" )
+    shortcut.remove( 0, 1 );
+  
+  shortcutMagnifier->setDisabled();
+  shortcutMagnifier->setShortcut( QKeySequence( shortcut ) );
+  shortcutMagnifier->setEnabled();
+  
+ qDebug() << "[vokoscreen] set shortcut" << shortcut;
+  
+}
+
 
 void screencast::currentFormatChanged( const QString value )
 {
