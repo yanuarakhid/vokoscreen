@@ -291,8 +291,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>98</width>
-                 <height>28</height>
+                 <width>445</width>
+                 <height>134</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -862,7 +862,7 @@
         </widget>
         <widget class="QWidget" name="TabWidgetShortcut">
          <attribute name="title">
-          <string/>
+          <string notr="true"/>
          </attribute>
          <layout class="QHBoxLayout" name="horizontalLayout_23">
           <item>
