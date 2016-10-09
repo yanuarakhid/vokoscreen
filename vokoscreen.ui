@@ -291,8 +291,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>445</width>
-                 <height>134</height>
+                 <width>98</width>
+                 <height>28</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -2051,7 +2051,7 @@
                     </spacer>
                    </item>
                    <item>
-                    <widget class="QCheckBox" name="checkBox_14">
+                    <widget class="QCheckBox" name="shortcut_magnifier_META">
                      <property name="text">
                       <string notr="true"/>
                      </property>

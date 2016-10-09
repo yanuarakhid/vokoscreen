@@ -502,10 +502,11 @@ screencast::screencast()
    shortcut_ABC_Stringlist << "F1" << "F2" << "F3" << "F4" << "F5" << "F6" << "F7" << "F8" << "F9" << "F10" << "F11" << "F12";
 
    myUi.shortcut_magnifier_ABC->addItems( shortcut_ABC_Stringlist );
-   connect( myUi.shortcut_magnifier_CTRL, SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
+   connect( myUi.shortcut_magnifier_CTRL,  SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
    connect( myUi.shortcut_magnifier_SHIFT, SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
-   connect( myUi.shortcut_magnifier_ALT, SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
-   connect( myUi.shortcut_magnifier_ABC, SIGNAL( currentIndexChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
+   connect( myUi.shortcut_magnifier_ALT,   SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
+   connect( myUi.shortcut_magnifier_META,  SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
+   connect( myUi.shortcut_magnifier_ABC,   SIGNAL( currentIndexChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
 
    // *******
 
@@ -566,6 +567,7 @@ screencast::~screencast()
 { 
 }
 
+
 void screencast::setShortcuts( int value )
 {
   if ( value == Qt::Checked )
@@ -574,6 +576,7 @@ void screencast::setShortcuts( int value )
   if ( value == Qt::Unchecked )
    myUi.shortcutWidget->setEnabled( false );
 }
+
 
 void screencast::shortcut_magnifier_Changed( int value )
 {
@@ -588,6 +591,9 @@ void screencast::shortcut_magnifier_Changed( int value )
     
   if ( myUi.shortcut_magnifier_ALT->checkState() == Qt::Checked )
     shortcut = shortcut + "+Alt";
+  
+  if ( myUi.shortcut_magnifier_META->checkState() == Qt::Checked )
+    shortcut = shortcut + "+Meta";
   
   shortcut = shortcut + "+" + myUi.shortcut_magnifier_ABC->currentText();
 
