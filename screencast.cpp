@@ -258,9 +258,14 @@ screencast::screencast()
 						myUi.radioButtonRightMiddle, myUi.radioButtonBottomMiddle, myUi.radioButtonLeftMiddle );
     (void)webcamController;
 
-    // Tab shortcuts ******************************************************
+    // Tab 6 shortcuts *****************************************************
     myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "preferences-desktop-keyboard", QIcon( ":/pictures/shortcuts.png" ) ) );
-    
+    myUi.toolbutton_shortcut_start_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+    myUi.toolbutton_shortcut_stop_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+    myUi.toolbutton_shortcut_pause_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+    myUi.toolbutton_shortcut_magnifier_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+    myUi.toolbutton_shortcut_webcam_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+
     
     // Tab 7 About *********************************************************
     myUi.tabWidget->setTabIcon( 6, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
