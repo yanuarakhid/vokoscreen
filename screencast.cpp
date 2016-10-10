@@ -602,16 +602,23 @@ void screencast::shortcut_magnifier_Changed( int value )
   
   shortcut = shortcut + "+" + myUi.shortcut_magnifier_ABC->currentText();
 
-  if ( shortcut.left( 1 ) == "+" )
+  if ( shortcut.startsWith( "+" ) )
     shortcut.remove( 0, 1 );
+
+  if ( shortcut.endsWith( "+" ) )
+    shortcut.remove( shortcut.length() - 1, 1 );
   
   shortcutMagnifier->setDisabled();
   shortcutMagnifier->setShortcut( QKeySequence( shortcut ) );
   shortcutMagnifier->setEnabled();
+
+  myUi.MagnifierCheckBox->setToolTip( shortcut );
   
  qDebug() << "[vokoscreen] set shortcut" << shortcut;
   
 }
+
+
 
 
 void screencast::currentFormatChanged( const QString value )
