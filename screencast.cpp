@@ -496,7 +496,7 @@ screencast::screencast()
    // shortcuts
    
    // enable/disable shortcuts
-   connect( myUi.checkBoxShortcuts, SIGNAL( stateChanged( int ) ), this, SLOT( setShortcuts( int ) ) );
+   connect( myUi.checkBoxShortcuts, SIGNAL( stateChanged( int ) ), this, SLOT( setShortcutsOnOff( int ) ) );
 
    QStringList shortcut_ABC_Stringlist;
    shortcut_ABC_Stringlist << "";	
@@ -573,7 +573,7 @@ screencast::~screencast()
 }
 
 
-void screencast::setShortcuts( int value )
+void screencast::setShortcutsOnOff( int value )
 {
   if ( value == Qt::Checked )
     myUi.shortcutWidget->setEnabled( true );
