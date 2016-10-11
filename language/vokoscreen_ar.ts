@@ -338,7 +338,7 @@
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation>ضياع</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
@@ -346,7 +346,7 @@
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation> ضبط الإعدادات الافتراضيه في المره القادمه</translation>
     </message>
 </context>
 </TS>

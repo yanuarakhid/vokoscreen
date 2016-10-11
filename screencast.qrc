@@ -20,6 +20,7 @@
 <file>pictures/sandglass.png</file>
 <file>pictures/Scroll.png</file>
 <file>pictures/sem_soc_net.png</file>
+<file>pictures/shortc.qm.png</file>
 <file>pictures/start.png</file>
 <file>pictures/stop.png</file>
 <file>pictures/system-software-update.png</file>
@@ -33,7 +34,6 @@
 <file>pictures/vokoscreen.png</file>
 <file>pictures/webcamBusy.png</file>
 <file>pictures/webcam.png</file>
-<file>pictures/shortcuts.png</file>
 <file>language/vokoscreen_ar.qm</file>
 <file>language/vokoscreen_ast.qm</file>
 <file>language/vokoscreen_ca.qm</file>
