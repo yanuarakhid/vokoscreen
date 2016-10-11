@@ -495,7 +495,7 @@ screencast::screencast()
  
    // shortcuts
    
-   // enable/disable shortcuts
+   // enable/disable all shortcuts
    connect( myUi.checkBoxShortcuts, SIGNAL( stateChanged( int ) ), this, SLOT( setShortcutsOnOff( int ) ) );
 
    QStringList shortcut_ABC_Stringlist;
@@ -615,10 +615,7 @@ void screencast::shortcut_magnifier_Changed( int value )
   myUi.MagnifierCheckBox->setToolTip( shortcut );
   
  qDebug() << "[vokoscreen] set shortcut" << shortcut;
-  
 }
-
-
 
 
 void screencast::currentFormatChanged( const QString value )

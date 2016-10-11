@@ -291,8 +291,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>445</width>
-                 <height>134</height>
+                 <width>98</width>
+                 <height>28</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1050,7 +1050,7 @@
                     </spacer>
                    </item>
                    <item>
-                    <widget class="QCheckBox" name="shortcut_webcam_STRG">
+                    <widget class="QCheckBox" name="shortcut_webcam_CTRL">
                      <property name="text">
                       <string notr="true"/>
                      </property>
@@ -1740,7 +1740,7 @@
                   </widget>
                  </item>
                  <item row="12" column="5">
-                  <widget class="QComboBox" name="comboBox_4">
+                  <widget class="QComboBox" name="shortcut_webcam_ABC">
                    <property name="currentText">
                     <string notr="true"/>
                    </property>
@@ -1792,7 +1792,7 @@
                     </spacer>
                    </item>
                    <item>
-                    <widget class="QCheckBox" name="checkBox_7">
+                    <widget class="QCheckBox" name="shortcut_webcam_SHIFT">
                      <property name="text">
                       <string notr="true"/>
                      </property>
@@ -1829,7 +1829,7 @@
                     </spacer>
                    </item>
                    <item>
-                    <widget class="QCheckBox" name="checkBox_8">
+                    <widget class="QCheckBox" name="shortcut_webcam_ALT">
                      <property name="text">
                       <string notr="true"/>
                      </property>
@@ -2014,7 +2014,7 @@
                     </spacer>
                    </item>
                    <item>
-                    <widget class="QCheckBox" name="checkBox_13">
+                    <widget class="QCheckBox" name="shortcut_webcam_META">
                      <property name="text">
                       <string notr="true"/>
                      </property>
