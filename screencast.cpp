@@ -259,7 +259,7 @@ screencast::screencast()
     (void)webcamController;
 
     // Tab 6 shortcuts *****************************************************
-    myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "preferences-desktop-keyboard", QIcon( ":/pictures/shortcuts.png" ) ) );
+    myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "preferences-desktop-keyboard", QIcon( ":/pictures/shortkeys.png" ) ) );
     myUi.toolbutton_shortcut_start_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.toolbutton_shortcut_stop_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.toolbutton_shortcut_pause_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
