@@ -259,16 +259,16 @@ screencast::screencast()
     (void)webcamController;
 
     // Tab 6 shortcuts *****************************************************
-    myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "preferences-desktop-keyboard", QIcon( ":/pictures/shortkeys.png" ) ) );
+/*    myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "preferences-desktop-keyboard", QIcon( ":/pictures/shortkeys.png" ) ) );
     myUi.toolbutton_shortcut_start_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.toolbutton_shortcut_stop_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.toolbutton_shortcut_pause_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.toolbutton_shortcut_magnifier_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.toolbutton_shortcut_webcam_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
-
-    
+*/
+    myUi.tabWidget->removeTab( 5 );
     // Tab 7 About *********************************************************
-    myUi.tabWidget->setTabIcon( 6, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
+    myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
     myUi.labelOpensuseBetaUrl->setOpenExternalLinks( true );
     myUi.labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Developer Homepage" ) + "</a>" );
     
