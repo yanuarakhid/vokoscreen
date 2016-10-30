@@ -181,8 +181,8 @@ private slots:
   QString x264Lossless();
   
   // shortcutStart
-  void setShortcutsOnOff( int );
-  void shortcut_magnifier_Changed( int value );
+  // void setShortcutsOnOff( int );
+  // void shortcut_magnifier_Changed( int value );
 
   
 #ifndef NO_NEW_VERSION_CHECK

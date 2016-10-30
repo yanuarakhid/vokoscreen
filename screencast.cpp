@@ -266,7 +266,6 @@ screencast::screencast()
     myUi.toolbutton_shortcut_magnifier_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.toolbutton_shortcut_webcam_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
 */
-    myUi.tabWidget->removeTab( 5 );
     // Tab 7 About *********************************************************
     myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
     myUi.labelOpensuseBetaUrl->setOpenExternalLinks( true );
@@ -496,7 +495,7 @@ screencast::screencast()
    // shortcuts
    
    // enable/disable all shortcuts
-   connect( myUi.checkBoxShortcuts, SIGNAL( stateChanged( int ) ), this, SLOT( setShortcutsOnOff( int ) ) );
+/*   connect( myUi.checkBoxShortcuts, SIGNAL( stateChanged( int ) ), this, SLOT( setShortcutsOnOff( int ) ) );
 
    QStringList shortcut_ABC_Stringlist;
    shortcut_ABC_Stringlist << "";	
@@ -512,7 +511,7 @@ screencast::screencast()
    connect( myUi.shortcut_magnifier_ALT,   SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
    connect( myUi.shortcut_magnifier_META,  SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
    connect( myUi.shortcut_magnifier_ABC,   SIGNAL( currentIndexChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
-
+*/
    // *******
 
    shortcutWebcam = new QxtGlobalShortcut( this );
@@ -572,7 +571,7 @@ screencast::~screencast()
 { 
 }
 
-
+/*
 void screencast::setShortcutsOnOff( int value )
 {
   if ( value == Qt::Checked )
@@ -616,7 +615,7 @@ void screencast::shortcut_magnifier_Changed( int value )
   
  qDebug() << "[vokoscreen] set shortcut" << shortcut;
 }
-
+*/
 
 void screencast::currentFormatChanged( const QString value )
 {
