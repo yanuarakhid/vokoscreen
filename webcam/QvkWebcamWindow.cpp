@@ -11,6 +11,10 @@ QvkWebcamWindow::QvkWebcamWindow()
   setWindowTitle( "vokoscreen webcam");
   setToolTip( tr( "Right click for menu" ) );
 
+  QIcon icon;
+  icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
+  QvkWebcamWindow::setWindowIcon( icon );    
+  
   setStyleSheet( "background-color: black;" );
   
   webcamLabel = new QLabel( this );
