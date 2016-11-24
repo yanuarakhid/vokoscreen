@@ -120,13 +120,6 @@
     </message>
 </context>
 <context>
-    <name>regionselection</name>
-    <message>
-        <source>double-click to maximize</source>
-        <translation>duplo clique para maximizimar</translation>
-    </message>
-</context>
-<context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
@@ -347,6 +340,26 @@
     <message>
         <source>Reset all settings at next start</source>
         <translation>Redefinir todas as configurações no próximo início</translation>
+    </message>
+    <message>
+        <source>Shortcuts</source>
+        <translation>Atalhos</translation>
+    </message>
+    <message>
+        <source>Ctrl</source>
+        <translation>Ctrl</translation>
+    </message>
+    <message>
+        <source>Shift</source>
+        <translation>Shift</translation>
+    </message>
+    <message>
+        <source>Alt</source>
+        <translation>Alt</translation>
+    </message>
+    <message>
+        <source>Meta</source>
+        <translation>Meta</translation>
     </message>
 </context>
 </TS>
