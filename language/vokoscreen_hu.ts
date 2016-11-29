@@ -341,25 +341,5 @@
         <source>Reset all settings at next start</source>
         <translation>Az összes beállítás visszaállítása a következő indításkor</translation>
     </message>
-    <message>
-        <source>Shortcuts</source>
-        <translation>Parancsikonok</translation>
-    </message>
-    <message>
-        <source>Ctrl</source>
-        <translation>Ctrl</translation>
-    </message>
-    <message>
-        <source>Shift</source>
-        <translation>Shift</translation>
-    </message>
-    <message>
-        <source>Alt</source>
-        <translation>Alt</translation>
-    </message>
-    <message>
-        <source>Meta</source>
-        <translation>Metaadat</translation>
-    </message>
 </context>
 </TS>

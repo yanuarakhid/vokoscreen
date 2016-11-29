@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Testen ob lupdate auf dem System vorhanden ist.
-progname=$(which lupdate)
+progname=$(which lupdate-qt5)
 if [ $? = 0 ]; then
     echo
 else
-    kdialog --title "preparing.sh" --msgbox "lupdate nicht auf System vorhanden. lupdate ist bestandteil von Programmpacket libqt4-devel"
-    echo "[preparing.sh] lupdate nicht auf System vorhanden"
-    echo "[preparing.sh] lupdate ist bestandteil von Programmpacket libqt4-devel"
+    kdialog --title "preparing.sh" --msgbox "lupdate-qt5 nicht auf System vorhanden. lupdate-qt5 ist bestandteil von Programmpacket libqt5-linguist"
+    echo "[preparing.sh] lupdate-qt5 nicht auf System vorhanden"
+    echo "[preparing.sh] lupdate-qt5 ist bestandteil von Programmpacket libqt5-linguist"
     exit 1
 fi
 
@@ -40,7 +40,7 @@ rm *.log
 echo ============
 echo Make main.ts
 echo ============
-lupdate -locations none -recursive ./ -ts main.ts
+lupdate-qt5 -locations none -recursive ./ -ts main.ts
 
 echo =====================
 echo Remove language packs

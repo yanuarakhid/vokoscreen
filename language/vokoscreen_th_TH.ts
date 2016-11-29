@@ -26,7 +26,7 @@
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation type="unfinished"/>
+        <translation>แสดงการตั้งค่าคลิก</translation>
     </message>
 </context>
 <context>
@@ -70,7 +70,7 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>ดับเบิลคลิกเพื่อขยาย</translation>
     </message>
 </context>
 <context>
@@ -319,47 +319,27 @@
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>ซ่อนหน้าต่าง</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>ออก</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation type="unfinished"/>
+        <translation>แสดงหน้าต่าง</translation>
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation>โลสเลส</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen พับหน้าต่างแล้ว</translation>
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Shortcuts</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Ctrl</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Shift</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Alt</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Meta</source>
-        <translation type="unfinished"/>
+        <translation>ล้างการตั้งค่าเมื่อเริ่มใหม่</translation>
     </message>
 </context>
 </TS>

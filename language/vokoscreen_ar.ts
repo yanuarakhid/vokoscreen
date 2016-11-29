@@ -341,25 +341,5 @@
         <source>Reset all settings at next start</source>
         <translation> ضبط الإعدادات الافتراضيه في المره القادمه</translation>
     </message>
-    <message>
-        <source>Shortcuts</source>
-        <translation>اختصارات لوحة المفاتيح</translation>
-    </message>
-    <message>
-        <source>Ctrl</source>
-        <translation>Ctrl</translation>
-    </message>
-    <message>
-        <source>Shift</source>
-        <translation>Shift</translation>
-    </message>
-    <message>
-        <source>Alt</source>
-        <translation>Alt</translation>
-    </message>
-    <message>
-        <source>Meta</source>
-        <translation>ميتا</translation>
-    </message>
 </context>
 </TS>

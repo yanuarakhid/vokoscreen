@@ -341,25 +341,5 @@
         <source>Reset all settings at next start</source>
         <translation>Restablecer todos los ajustes en el siguiente inicio</translation>
     </message>
-    <message>
-        <source>Shortcuts</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Ctrl</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Shift</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Alt</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Meta</source>
-        <translation type="unfinished"/>
-    </message>
 </context>
 </TS>
