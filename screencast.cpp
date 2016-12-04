@@ -2584,7 +2584,7 @@ void screencast::record()
                + myAlsa() + " "
                + "-pix_fmt yuv420p" + " "
                + "-c:v" + " " + myVcodec + " "
-	       + x264Lossless() + " "
+               + x264Lossless() + " "
                + myAcodec() + " "
                + "-q:v 1" + " "
                + "-s" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
