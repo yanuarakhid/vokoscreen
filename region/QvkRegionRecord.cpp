@@ -213,20 +213,59 @@ void QvkRegionRecord::paintEvent( QPaintEvent *event )
   painter->begin( this );
   painter->setRenderHints( QPainter::Antialiasing, true );
 
-  // Maskiert den Bereich für PrintSize und HandleMiddle
-  // Widget
   clearMask();
+
+  // Aufruf von QRegion = x,y,w,h
   QRegion RegionWidget( 0, 0, width(), height() );
-    
-  // RecordArea
+  RegionWidget = RegionWidget.subtracted( RegionWidget );
+  
+  QRegion RegionHandleTopLeft( borderLeft - radius, borderTop - radius, 2*radius + penWidth, 2*radius + penWidth);
+  RegionWidget = RegionWidget.united( RegionHandleTopLeft );
+  
+  QRegion RegionHandleTopMiddle( ( width() - borderLeft - borderRight ) / 2 - penHalf, borderTop - radius, 2*radius + penWidth, 2*radius + penWidth );
+  RegionWidget = RegionWidget.united( RegionHandleTopMiddle );
+  
+  QRegion RegionHandleTopRight( width() - borderRight - radius - penWidth, borderTop - radius, 2*radius + penWidth, 2*radius + penWidth );
+  RegionWidget = RegionWidget.united( RegionHandleTopRight );
+  
+  QRegion RegionHandleRightMiddle( width() - borderRight - radius - penHalf, ( height() - borderTop - borderBottom ) / 2 - penHalf,  2*radius + penWidth, 2*radius + penWidth );
+  RegionWidget = RegionWidget.united( RegionHandleRightMiddle );
+  
+  QRegion RegionHandleRightBottom( width() - borderRight - radius - penWidth, height() - borderBottom - radius - penWidth, 2*radius + penWidth, 2*radius + penWidth );
+  RegionWidget = RegionWidget.united( RegionHandleRightBottom );
+  
+  QRegion RegionHandleBottomMiddle( ( width() - borderLeft - borderRight ) / 2 - penHalf, height() - borderBottom - radius - penHalf, 2*radius + penWidth, 2*radius + penWidth );
+  RegionWidget = RegionWidget.united( RegionHandleBottomMiddle );
+  
+  QRegion RegionHandleBottomLeft( borderLeft - radius, height() - borderBottom - radius - penWidth, 2*radius + penWidth, 2*radius + penWidth );
+  RegionWidget = RegionWidget.united( RegionHandleBottomLeft );
+  
+  QRegion RegionHandleLeftMiddle( borderLeft - radius, ( height() - borderTop - borderBottom ) / 2 - penHalf, 2*radius + penWidth, 2*radius + penWidth );
+  RegionWidget = RegionWidget.united( RegionHandleLeftMiddle );
+  
+  // Aufruf von QRegion = x,y,w,h
+  QRegion RegionTopLine( borderLeft - frameWidth, borderTop - frameWidth/2, width() - borderLeft - borderRight - penWidth, frameWidth );
+  RegionWidget = RegionWidget.united( RegionTopLine );
+  
+  QRegion RegionRightLine(  width() - borderRight - frameWidth/2, borderTop - frameWidth/2, frameWidth, height() - borderBottom );
+  RegionWidget = RegionWidget.united( RegionRightLine );
+  
+  QRegion RegionBottomLine( borderLeft, height() - borderBottom - frameWidth/2, width() - borderRight, frameWidth );
+  RegionWidget = RegionWidget.united( RegionBottomLine );
+
+  QRegion RegionLeftLine( borderLeft - frameWidth/2, borderTop, frameWidth, height() - borderTop - borderBottom );
+  RegionWidget = RegionWidget.united( RegionLeftLine );
+
+  
+  // subtract the record Area
   QRegion RegionArea  ( borderLeft + frameWidth / 2,
                         borderTop + frameWidth / 2,
                         width() - ( borderLeft + frameWidth / 2 ) - ( borderRight + frameWidth / 2 ),
                         height() - ( borderTop + frameWidth / 2 ) - ( borderBottom + frameWidth / 2 ) );
+  RegionWidget = RegionWidget.subtracted( RegionArea );
 
-  // subtract the record Area
-  QRegion RegionNew = RegionWidget.subtracted( RegionArea );
-  setMask( RegionNew );
+  
+  setMask( RegionWidget );
 
   HandleTopLeft();
   HandleTopMiddle();
