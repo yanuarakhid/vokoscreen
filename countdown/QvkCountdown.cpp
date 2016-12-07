@@ -30,6 +30,7 @@ QvkCountdown::QvkCountdown( int value )
     animationTimer = new QTimer( this );
     connect( animationTimer, SIGNAL( timeout() ), this, SLOT( updateAnimationTimer() ) ); 
     animationTimer->start( 25 );
+
     
     // Mit screencast erst beginnen, also hier warten bis 0 erreicht ist 
     while ( countValue > 0 )
@@ -37,10 +38,15 @@ QvkCountdown::QvkCountdown( int value )
         QCoreApplication::processEvents( QEventLoop::AllEvents );     
         QTest::qSleep( 50 );
     }
-
+    
     // Der Desktopanimation "Langsames ausblenden" entgegenwirken
-    QTest::qSleep( 1000 );
-
+    clearMask();
+    QRegion RegionWidget( x, y, width(), height() );
+    QRegion RegionSpace( x+1, y+1, width()-2, height()-2 );
+    QRegion RegionNeu = RegionWidget.subtracted( RegionSpace );
+    setMask( RegionNeu );
+    
+    close();
 }
 
 QvkCountdown::~QvkCountdown()
@@ -57,7 +63,6 @@ void QvkCountdown::updateTimer()
   {
     timer->stop();
     animationTimer->stop();
-    close();
   }
 }
 

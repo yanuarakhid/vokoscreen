@@ -255,7 +255,6 @@ void QvkRegionRecord::paintEvent( QPaintEvent *event )
 
   QRegion RegionLeftLine( borderLeft - frameWidth/2, borderTop, frameWidth, height() - borderTop - borderBottom );
   RegionWidget = RegionWidget.united( RegionLeftLine );
-
   
   // subtract the record Area
   QRegion RegionArea  ( borderLeft + frameWidth / 2,
@@ -264,7 +263,6 @@ void QvkRegionRecord::paintEvent( QPaintEvent *event )
                         height() - ( borderTop + frameWidth / 2 ) - ( borderBottom + frameWidth / 2 ) );
   RegionWidget = RegionWidget.subtracted( RegionArea );
 
-  
   setMask( RegionWidget );
 
   HandleTopLeft();
