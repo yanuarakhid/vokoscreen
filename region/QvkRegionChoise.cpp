@@ -521,6 +521,18 @@ void QvkRegionChoise::handlingFrameLock()
 {
   repaint();
   update();
+  
+  // Der Desktopanimation "Langsames ausblenden" entgegenwirken
+  clearMask();
+  QRegion RegionWidget( 0, 0, width(), height() );
+  QRegion RegionArea  ( borderLeft + frameWidth / 2,
+                        borderTop + frameWidth / 2,
+                        width() - ( borderLeft + frameWidth / 2 ) - ( borderRight + frameWidth / 2),
+                        height() - ( borderTop + frameWidth / 2 ) - ( borderBottom + frameWidth / 2) );
+
+  // subtract the record Area
+  QRegion RegionNew = RegionWidget.subtracted( RegionArea );
+  setMask( RegionNew );
 }
 
 

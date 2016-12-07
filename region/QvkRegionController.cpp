@@ -63,6 +63,8 @@ void QvkRegionController::lockFrame( bool status )
 {
   regionRecord->setRecordGeometry( getX(), getY(), getWidth(), getHeight() );
   
+  regionChoise->lockFrame( status );
+  
   if ( status == true )
   {
     regionChoise->hide();
@@ -73,6 +75,6 @@ void QvkRegionController::lockFrame( bool status )
     regionRecord->hide();
     regionChoise->show();
   }
-  regionChoise->lockFrame( status );
+  // regionChoise->lockFrame( status );
     
 }
