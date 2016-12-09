@@ -64,15 +64,6 @@ void QvkRegionRecord::setRecordGeometry( int x, int y, int width, int height )
 
 void QvkRegionRecord::HandleTopLeft()
 {
-  QColor color, arrow;
-  
-  color = Qt::red;
-  arrow = Qt::red;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
-  painter->setPen( QPen( Qt::black, penWidth ) );
-  
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, borderTop - radius + penHalf, 2 * radius, 2 * radius );
   int startAngle = 0 * 16;
   int spanAngle = 360 * 16;
@@ -82,15 +73,6 @@ void QvkRegionRecord::HandleTopLeft()
 
 void QvkRegionRecord::HandleTopMiddle()
 {
-  QColor color, arrow;
-  
-  color = Qt::red;
-  arrow = Qt::red;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
-  painter->setPen( QPen( Qt::black, penWidth ) );
-  
   QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, borderTop - radius + penHalf, 2 * radius, 2 * radius );
   int startAngle = 0 * 16;
   int spanAngle = 360 * 16;
@@ -100,34 +82,15 @@ void QvkRegionRecord::HandleTopMiddle()
 
 void QvkRegionRecord::HandleTopRight()
 {
-  QColor color, arrow;
-  
-  color = Qt::red;
-  arrow = Qt::red;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
-  painter->setPen( QPen( Qt::black, penWidth ) );
-
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, borderTop - radius + penHalf, 2 * radius, 2 * radius );
   int startAngle = 180 * 16;
   int spanAngle =  -360  * 16;
-  
   painter->drawPie( rectangle, startAngle, spanAngle );
 }
 
 
 void QvkRegionRecord::HandleRightMiddle()
 {
-  QColor color, arrow;
-  
-  color = Qt::red;
-  arrow = Qt::red;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
-  painter->setPen( QPen( Qt::black, penWidth ) );
-  
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius,  2 * radius, 2 * radius );
   int startAngle = 90 * 16;
   int spanAngle =  -360  * 16;
@@ -137,15 +100,6 @@ void QvkRegionRecord::HandleRightMiddle()
 
 void QvkRegionRecord::HandleBottomRight()
 {
-  QColor color, arrow;
-  
-  color = Qt::red;
-  arrow = Qt::red;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
-  painter->setPen( QPen( Qt::black, penWidth ) );
-  
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
   int startAngle = 90 * 16;
   int spanAngle =  -360  * 16;
@@ -155,15 +109,6 @@ void QvkRegionRecord::HandleBottomRight()
 
 void QvkRegionRecord::HandleBottomMiddle()
 {
-  QColor color, arrow;
-  
-  color = Qt::red;
-  arrow = Qt::red;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
-  painter->setPen( QPen( Qt::black, penWidth ) );
-
   QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
   int startAngle = 0 * 16;
   int spanAngle =  -360  * 16;
@@ -173,15 +118,6 @@ void QvkRegionRecord::HandleBottomMiddle()
 
 void QvkRegionRecord::HandleBottomLeft()
 {
-  QColor color, arrow;
-  
-  color = Qt::red;
-  arrow = Qt::red;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
-  painter->setPen( QPen( Qt::black, penWidth ) );
-
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
   int startAngle = 90 * 16;
   int spanAngle =  360  * 16;
@@ -191,15 +127,6 @@ void QvkRegionRecord::HandleBottomLeft()
 
 void QvkRegionRecord::HandleLeftMiddle()
 {
-  QColor color, arrow;
-  
-  color = Qt::red;
-  arrow = Qt::red;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
-  painter->setPen( QPen( Qt::black, penWidth ) );
-
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius, 2 * radius, 2 * radius );
   int startAngle = 90 * 16;
   int spanAngle =  360  * 16;
@@ -265,6 +192,9 @@ void QvkRegionRecord::paintEvent( QPaintEvent *event )
 
   setMask( RegionWidget );
 
+  QBrush brush( Qt::red, Qt::SolidPattern );
+  painter->setBrush( brush );
+  painter->setPen( QPen( Qt::black, penWidth ) );
   HandleTopLeft();
   HandleTopMiddle();
   HandleTopRight();
@@ -276,19 +206,12 @@ void QvkRegionRecord::paintEvent( QPaintEvent *event )
 
   // Blue Frame
   painter->setPen( QPen( Qt::blue, frameWidth ) );
-  
-  // Left Line
-  painter->drawLine( borderLeft, borderTop, borderLeft, height() - borderBottom );
-  
-  // Top Line
-  painter->drawLine( borderLeft, borderTop, width() - borderRight, borderTop );
-  
-  // Right Line
-  painter->drawLine( width() - borderRight, borderTop, width() - borderRight, height() - borderBottom );
-  
-  // Bottome Line
-  painter->drawLine( borderLeft, height() - borderBottom, width() - borderRight, height() - borderBottom );
 
+  painter->drawRect( borderLeft,
+		     borderTop, 
+		     width() - borderRight- borderRight,
+		     height() - borderTop - borderBottom);
+ 
   painter->end();
 
   event->accept();
