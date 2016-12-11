@@ -29,6 +29,22 @@ int main(int argc, char** argv)
 {
     QtSingleApplication app( "vokoscreen", argc, argv);
 
+    QStringList arguments = QApplication::instance()->arguments();
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+      if ( arguments[ i ] == "--help" )
+      {
+         qDebug() << "Usage: vokoscreen [OPTIONS]";
+         qDebug( " " );
+         qDebug() << "Options:";
+         qDebug() << "  --help              Show this help message";
+	 qDebug( " " );
+	 return close( 0 );
+      }
+    }
+    
+    qDebug() << "[vokoscreen] For comanndline option take: vokoscreen --help";
+    
     if (app.isRunning())
     {
       QString msg = "vokoscreen can be started only once";
