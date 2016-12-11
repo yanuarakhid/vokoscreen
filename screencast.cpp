@@ -292,8 +292,16 @@ screencast::screencast()
     myUi.labelLanguageUrl->setOpenExternalLinks( true );
     myUi.labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
 
-    myUi.labelDonateUrl->setOpenExternalLinks( true );
-    myUi.labelDonateUrl->setText( "<a href='http://www.kohaupt-online.de/hp/spende.html'>" + tr( "Donate" ) + "</a>" );
+    if ( vkSettings.isVokoscreenWithLibs() == true )
+    {
+      myUi.labelDonateUrl->setOpenExternalLinks( true );
+      myUi.labelDonateUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
+    }
+    else
+    {
+      myUi.labelDonateUrl->setOpenExternalLinks( true );
+      myUi.labelDonateUrl->setText( "<a href='http://www.kohaupt-online.de/hp/spende.html'>" + tr( "Donate" ) + "</a>" );
+    }
     
     QIcon creditsIcon;
     creditsIcon.addFile( ":/pictures/community.png", QSize(), QIcon::Normal, QIcon::On );
