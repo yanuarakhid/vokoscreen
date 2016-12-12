@@ -543,10 +543,11 @@ screencast::screencast()
    connect( shortcutPause, SIGNAL( activated() ), this, SLOT( ShortcutPause() ) );
    shortcutPause->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
    
-   
+ 
    QvkAlsaWatcher * myAlsaWatcher = new QvkAlsaWatcher();
    connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( AlsaWatcherEvent( QStringList ) ) );
-    
+   connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( commandLineStart() ) );
+
    VideoFileSystemWatcher = new QFileSystemWatcher();
    VideoFileSystemWatcher->addPath( myUi.SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
@@ -572,12 +573,32 @@ screencast::screencast()
      }
    qDebug() << "[vokoscreen] ---End search devices---";
    qDebug( " " );
-}
+ }
 
 
 screencast::~screencast()
 { 
 }
+
+bool commandLine_Start = false;
+void screencast::commandLineStart( bool value )
+{
+  commandLine_Start = value;
+  qDebug() << "[vokoscreen] ---Begin commandLine_Start---";
+  qDebug() << "[vokoscreen] Start:" << value;
+  qDebug() << "[vokoscreen] ---End commandLine_Start---";
+  qDebug( " " );
+}
+
+void screencast::commandLineStart()
+{
+  if ( commandLine_Start == true )
+  {
+    commandLine_Start = false;
+    preRecord();
+  }
+}
+
 
 /*
 void screencast::setShortcutsOnOff( int value )

@@ -83,6 +83,7 @@ public:
     
     
 public slots:
+  void commandLineStart( bool value );
 
   
 private slots:
@@ -180,10 +181,11 @@ private slots:
 
   QString x264Lossless();
   
+  void commandLineStart();
+  
   // shortcutStart
   // void setShortcutsOnOff( int );
   // void shortcut_magnifier_Changed( int value );
-
   
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
@@ -251,8 +253,10 @@ private:
     
     QvkFormatsAndCodecs *formatsAndCodecs;
     QString getFfmpegVersionFullOutput();
-    
-    
+
+signals:
+
+  
 protected:
    void contextMenuEvent( QContextMenuEvent *event );
 

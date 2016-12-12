@@ -24,11 +24,12 @@
 #include <QLibraryInfo>
 #include <QtSingleApplication>
 
-
 int main(int argc, char** argv)
 {
     QtSingleApplication app( "vokoscreen", argc, argv);
 
+    bool commandLine_Start = false;
+    
     QStringList arguments = QApplication::instance()->arguments();
     for( int i = 1; i < arguments.count(); ++i )
     {
@@ -37,10 +38,23 @@ int main(int argc, char** argv)
          qDebug() << "Usage: vokoscreen [OPTIONS]";
          qDebug( " " );
          qDebug() << "Options:";
-         qDebug() << "  --help              Show this help message";
+         qDebug() << "  --help         Show this help message";
+	 qDebug() << "  --start        starts record";
 	 qDebug( " " );
 	 return close( 0 );
       }
+      
+      if ( arguments[ i ] == "--start" )
+      {
+	commandLine_Start = true;
+      }
+      
+      if ( arguments[ i ] == "--stop" )
+      {
+        if ( app.isRunning() )
+	  qDebug() << "vokoscreen beenden, aber wie? Evtl über DBus?";
+      }
+      
     }
     
     qDebug() << "[vokoscreen] For comanndline option take: vokoscreen --help";
@@ -67,7 +81,9 @@ int main(int argc, char** argv)
     
     screencast foo;
       app.setActivationWindow( &foo );
+      foo.commandLineStart( commandLine_Start );
     foo.show();
 
+    
     return app.exec();
 }
