@@ -20,11 +20,10 @@
 #include "QvkFormatsAndCodecs.h"
 #include "QvkCountdown.h"
 #include "QvkPulse.h"
-
 #include "QvkRegionController.h"
-
 #include <QClipboard>
 #include <QLibraryInfo>
+#include <QWidgetAction>
 
 using namespace std;
 
@@ -443,11 +442,6 @@ screencast::screencast()
    AudioOnOff();
    QvkPulse::pulseUnloadModule();
     
-   QAction *vokoscreenAction = new QAction( this );
-   vokoscreenAction->setIcon( QIcon( ":/pictures/systray.png" ) );
-   vokoscreenAction->setText( "vokoscreen" );
-   vokoscreenAction->setEnabled( true );
-   
    startAction = new QAction( this );
    startAction->setIcon( QIcon::fromTheme( "media-playback-start", QIcon( ":/pictures/start.png" ) ) );
    startAction->setText( tr( "Start" ) );
@@ -480,9 +474,19 @@ screencast::screencast()
    exitAction->setIcon( QIcon::fromTheme( "application-exit"  , QIcon( ":/pictures/systray-exit.png" ) ) );
    exitAction->setText( tr( "Exit" ) );
    exitAction->setData( "Exit" );
-   
-   SystemTrayMenu = new QMenu();
-   SystemTrayMenu->addAction( vokoscreenAction );
+
+   QWidgetAction *widgetAction = new QWidgetAction( this );
+   QFont font;
+   font.setBold( true );
+   QLabel *label = new QLabel();
+   label->setFont( font );
+   label->setMinimumHeight( 20 );
+   label->setAlignment( Qt::AlignCenter );
+   label->setText( "vokoscreen" );
+   widgetAction->setDefaultWidget( label );
+
+   SystemTrayMenu = new QMenu( this );
+   SystemTrayMenu->addAction( widgetAction );
    SystemTrayMenu->addSeparator();
    SystemTrayMenu->addAction( startAction );
    SystemTrayMenu->addAction( stopAction );
