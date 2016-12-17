@@ -22,12 +22,24 @@
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
-#include <QtSingleApplication>
+#include <QDBusConnection>
 
 int main(int argc, char** argv)
 {
-    QtSingleApplication app( "vokoscreen", argc, argv);
-
+    QApplication app(argc, argv);
+  
+    bool isRunning;
+    
+    // http://www.qtforum.de/viewtopic.php?t=5831&p=56811
+    if( QDBusConnection::sessionBus().registerService( "vokoscreen.running" ) )
+    {
+      isRunning = false;
+    }
+    else
+    {
+      isRunning = true; 
+    }
+    
     bool commandLine_Start = false;
     
     QStringList arguments = QApplication::instance()->arguments();
@@ -48,28 +60,16 @@ int main(int argc, char** argv)
       {
 	commandLine_Start = true;
       }
-      
+/*      
       if ( arguments[ i ] == "--stop" )
       {
-        if ( app.isRunning() )
+        if ( isRunning )
 	  qDebug() << "vokoscreen beenden, aber wie? Evtl über DBus?";
       }
-      
+*/      
     }
-    
+
     qDebug() << "[vokoscreen] For comanndline option take: vokoscreen --help";
-    
-    if (app.isRunning())
-    {
-      QString msg = "vokoscreen can be started only once";
-      qDebug() << "[vokoscreen]" << msg;
-      QMessageBox::StandardButton ret = QMessageBox::information( NULL,
-                             "Info",
-                             msg,
-                             QMessageBox::Close );
-      (void)ret;
-      return !app.sendMessage("aa");
-    }
     
     QTranslator * qtTranslator = new QTranslator();
     qtTranslator->load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
@@ -79,11 +79,20 @@ int main(int argc, char** argv)
     translator.load( "vokoscreen_" + QLocale::system().name(), ":/language" );
     app.installTranslator( &translator );
     
-    screencast foo;
-      app.setActivationWindow( &foo );
+    if( isRunning == false )
+    {
+      screencast foo;
       foo.commandLineStart( commandLine_Start );
-    foo.show();
-
-    
-    return app.exec();
+      foo.show();
+      return app.exec();
+    }
+    else
+    {
+      QString msg = "vokoscreen can be started only once";
+      QMessageBox::StandardButton ret = QMessageBox::information( NULL,
+                                                                  "Info",
+                                                                  msg,
+                                                                  QMessageBox::Close );
+      (void)ret;
+    }
 }

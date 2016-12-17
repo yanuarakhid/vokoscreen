@@ -60,9 +60,6 @@ QMAKE_CLEAN += $$TARGET */*~
 
 CONFIG += link_pkgconfig
 
-# QtSingleApplication
-include(QtSingleApplicationQt5/qtsingleapplication.pri)
-
 # libqxt
 include(libqxtQt5/libqxt.pri)
 
@@ -114,4 +111,4 @@ include(pulse/pulse.pri)
 # log
 include(log/log.pri)
 
-QT += core gui widgets x11extras network testlib
+QT += core gui widgets x11extras network testlib dbus
