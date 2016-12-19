@@ -475,6 +475,9 @@ screencast::screencast()
    exitAction->setText( tr( "Exit" ) );
    exitAction->setData( "Exit" );
 
+// Code ist für ein Menütitel bestimmt, läuft aber nicht auf opensuse 42.2. und Ubuntu 16.04
+// Funktioniert unter opensuse 13.2
+/*
    QWidgetAction *widgetAction = new QWidgetAction( this );
    QFont font;
    font.setBold( true );
@@ -484,10 +487,10 @@ screencast::screencast()
    label->setAlignment( Qt::AlignCenter );
    label->setText( "vokoscreen" );
    widgetAction->setDefaultWidget( label );
-
+*/
    SystemTrayMenu = new QMenu( this );
-   SystemTrayMenu->addAction( widgetAction );
-   SystemTrayMenu->addSeparator();
+//   SystemTrayMenu->addAction( widgetAction );
+//   SystemTrayMenu->addSeparator();
    SystemTrayMenu->addAction( startAction );
    SystemTrayMenu->addAction( stopAction );
    SystemTrayMenu->addAction( pauseAction );
