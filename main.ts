@@ -58,6 +58,17 @@
     </message>
 </context>
 <context>
+    <name>QObject</name>
+    <message>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>vokoscreen can be started only once</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
