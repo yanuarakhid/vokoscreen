@@ -26,7 +26,7 @@
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar configuraciones de Click</translation>
     </message>
 </context>
 <context>
