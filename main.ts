@@ -251,10 +251,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation type="unfinished"></translation>
     </message>
@@ -352,6 +348,10 @@
     </message>
     <message>
         <source>Reset all settings at next start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continue</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

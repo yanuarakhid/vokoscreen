@@ -56,6 +56,17 @@
     </message>
 </context>
 <context>
+    <name>QObject</name>
+    <message>
+        <source>Info</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>vokoscreen can be started only once</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
@@ -319,7 +330,7 @@
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>Sembunyikan jendela</translation>
     </message>
     <message>
         <source>Exit</source>

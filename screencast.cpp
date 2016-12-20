@@ -460,9 +460,9 @@ screencast::screencast()
    pauseAction->setEnabled( false );
    
    goAction = new QAction( this );
-   goAction->setIcon( QIcon::fromTheme( "media-skip-forward", QIcon( ":/pictures/go.png" ) ) );
-   goAction->setText( tr( "Go" ) );
-   goAction->setData( "Go" );
+   goAction->setIcon( QIcon::fromTheme( "media-playback-start", QIcon( ":/pictures/go.png" ) ) );
+   goAction->setText( tr( "Continue" ) );
+   goAction->setData( "Continue" );
    goAction->setEnabled( false );
    
    hideAction = new QAction( this );
@@ -1251,7 +1251,7 @@ void screencast::SystemTrayKontextMenue( QAction *action )
   if ( data == "Pause" )
     myUi.PauseButton->click();
   
-  if ( data == "Go" )
+  if ( data == "Continue" )
     myUi.PauseButton->click();
   
   if ( data == "Exit" )
@@ -2011,7 +2011,7 @@ void screencast::Pause()
     {
       shortcutStop->setEnabled( false );
       windowMoveTimer->stop();
-      myUi.PauseButton->setText( tr ( "Go" ) );
+      myUi.PauseButton->setText( tr ( "Continue" ) );
       SystemCall->terminate();
       SystemCall->waitForFinished();
       QvkPulse::pulseUnloadModule();
@@ -2041,7 +2041,7 @@ void screencast::Pause()
     {
       shortcutStop->setEnabled( false );
       windowMoveTimer->stop();
-      myUi.PauseButton->setText( tr ( "Go" ) );
+      myUi.PauseButton->setText( tr ( "Continue" ) );
       SystemCall->terminate();
       SystemCall->waitForFinished();
       QvkPulse::pulseUnloadModule();
