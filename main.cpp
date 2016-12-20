@@ -88,10 +88,9 @@ int main(int argc, char** argv)
     }
     else
     {
-      QString msg = "vokoscreen can be started only once";
       QMessageBox::StandardButton ret = QMessageBox::information( NULL,
-                                                                  "Info",
-                                                                  msg,
+                                                                  QObject::tr( "Info" ),
+                                                                  QObject::tr( "vokoscreen can be started only once" ),
                                                                   QMessageBox::Close );
       (void)ret;
     }
