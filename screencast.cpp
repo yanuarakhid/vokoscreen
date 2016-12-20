@@ -1940,6 +1940,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
     if ( ( myUi.VideocodecComboBox->currentText() == "gif" ) or ( myUi.VideoContainerComboBox->currentText() == "gif" ) )
     {
       myUi.PauseButton->setEnabled( false );
+      pauseAction->setEnabled( false );
     } 
 
 }
