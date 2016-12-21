@@ -2700,6 +2700,30 @@ void screencast::Stop()
     SystemCall->waitForFinished( 3000 );
   }
 
+  // Make sure the video is saved in one of the following three folders.
+  // Rank order:
+  // 1. Path set in vokoscreen GUI
+  // 2. Then system path from desktop
+  // 3. Then home
+  QString moviePath;
+  QDir dir_0( myUi.SaveVideoPathLineEdit->displayText() );
+  if ( dir_0.exists() )
+  {
+    moviePath = myUi.SaveVideoPathLineEdit->displayText();
+  }
+  else
+  {
+    QDir dir_1( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+    if ( dir_1.exists() )
+    {
+      moviePath = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+    }
+    else
+    {
+      moviePath = QStandardPaths::writableLocation( QStandardPaths::HomeLocation );
+    }
+  }
+  
   if ( ( pause == true ) and (  myUi.VideocodecComboBox->currentText() != "gif" ) )
   {
     QDir dir( PathTempLocation() );
@@ -2716,7 +2740,8 @@ void screencast::Stop()
       }
     file.close();
 
-    QString mergeString = myUi.RecorderLineEdit->displayText() + " -report -safe 0 -f concat -i " + mergeFile + " -c copy " + PathMoviesLocation() + QDir::separator() + nameInMoviesLocation;
+//    QString mergeString = myUi.RecorderLineEdit->displayText() + " -report -safe 0 -f concat -i " + mergeFile + " -c copy " + PathMoviesLocation() + QDir::separator() + nameInMoviesLocation;
+    QString mergeString = myUi.RecorderLineEdit->displayText() + " -report -safe 0 -f concat -i " + mergeFile + " -c copy " + moviePath + QDir::separator() + nameInMoviesLocation;
     SystemCall->start( mergeString );
     SystemCall->waitForFinished(8000);
 
@@ -2730,7 +2755,8 @@ void screencast::Stop()
    else    
   {
     QString FileInTemp = PathTempLocation() + QDir::separator() + nameInMoviesLocation;
-    QFile::copy ( FileInTemp, PathMoviesLocation() + QDir::separator() + nameInMoviesLocation );
+//    QFile::copy ( FileInTemp, PathMoviesLocation() + QDir::separator() + nameInMoviesLocation );
+    QFile::copy ( FileInTemp, moviePath + QDir::separator() + nameInMoviesLocation );
     QFile::remove ( FileInTemp );
   }
   
