@@ -59,11 +59,11 @@
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>Bilgi</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>vokoscreen aynı anda bir kez çalışır</translation>
     </message>
 </context>
 <context>
@@ -249,10 +249,6 @@
         <translation>Saniye başına fiili kare</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>Git</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>Ana Sayfa</translation>
     </message>
@@ -351,6 +347,10 @@
     <message>
         <source>Reset all settings at next start</source>
         <translation>Sonraki başlatmada tüm ayarları sıfırla</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Devam</translation>
     </message>
 </context>
 </TS>

@@ -249,10 +249,6 @@
         <translation>Képkockák száma másodpercenként</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>Indít</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>Weboldal</translation>
     </message>
@@ -351,6 +347,10 @@
     <message>
         <source>Reset all settings at next start</source>
         <translation>Az összes beállítás visszaállítása a következő indításkor</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

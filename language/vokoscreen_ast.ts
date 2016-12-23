@@ -249,10 +249,6 @@
         <translation>Cuadros per segundu d&apos;anguaño</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>DIr</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>Páxina d&apos;aniciu</translation>
     </message>
@@ -350,6 +346,10 @@
     </message>
     <message>
         <source>Reset all settings at next start</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Continue</source>
         <translation type="unfinished"/>
     </message>
 </context>

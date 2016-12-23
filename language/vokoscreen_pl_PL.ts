@@ -249,10 +249,6 @@
         <translation>Rzeczywisty klatkaż</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>Wznów</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>Strona domowa</translation>
     </message>
@@ -351,6 +347,10 @@
     <message>
         <source>Reset all settings at next start</source>
         <translation>Przywróć domyślne ustawienia przy następnym uruchomieniu</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

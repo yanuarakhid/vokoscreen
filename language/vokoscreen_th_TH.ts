@@ -249,10 +249,6 @@
         <translation>จำนวนเฟรมต่อวินาที</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>ไป</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>โฮมเพจ</translation>
     </message>
@@ -351,6 +347,10 @@
     <message>
         <source>Reset all settings at next start</source>
         <translation>ล้างการตั้งค่าเมื่อเริ่มใหม่</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

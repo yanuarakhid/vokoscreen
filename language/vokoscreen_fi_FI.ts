@@ -249,10 +249,6 @@
         <translation>Todellinen kuvanopeus</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>Mene</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>Kotisivu</translation>
     </message>
@@ -350,6 +346,10 @@
     </message>
     <message>
         <source>Reset all settings at next start</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Continue</source>
         <translation type="unfinished"/>
     </message>
 </context>

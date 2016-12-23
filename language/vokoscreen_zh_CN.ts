@@ -249,10 +249,6 @@
         <translation>实际的帧率</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>开始</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>网站</translation>
     </message>
@@ -350,6 +346,10 @@
     </message>
     <message>
         <source>Reset all settings at next start</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Continue</source>
         <translation type="unfinished"/>
     </message>
 </context>

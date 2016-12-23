@@ -249,10 +249,6 @@
         <translation>عدد المشاهد \ ثا الحالية</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>واصِل</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>صفحة البرنامج</translation>
     </message>
@@ -351,6 +347,10 @@
     <message>
         <source>Reset all settings at next start</source>
         <translation> ضبط الإعدادات الافتراضيه في المره القادمه</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

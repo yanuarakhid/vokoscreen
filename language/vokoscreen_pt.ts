@@ -249,10 +249,6 @@
         <translation>Frames reais por segundo</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>Avançar</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>Página Inicial</translation>
     </message>
@@ -351,6 +347,10 @@
     <message>
         <source>Reset all settings at next start</source>
         <translation>Redefinir todas as configurações no próximo início</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

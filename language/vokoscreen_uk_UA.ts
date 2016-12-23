@@ -249,10 +249,6 @@
         <translation>Фактична кількість кадрів в секунду</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>Перейти</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>Веб-сайт</translation>
     </message>
@@ -350,6 +346,10 @@
     </message>
     <message>
         <source>Reset all settings at next start</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Continue</source>
         <translation type="unfinished"/>
     </message>
 </context>

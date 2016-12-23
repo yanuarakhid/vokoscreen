@@ -59,11 +59,11 @@
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>Info</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen kann nur einmal gestartet werden</translation>
     </message>
 </context>
 <context>
@@ -249,10 +249,6 @@
         <translation>Aktuelle Framerate</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>Weiter</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>Webseite</translation>
     </message>
@@ -351,6 +347,10 @@
     <message>
         <source>Reset all settings at next start</source>
         <translation>Alle Einstellungen beim nächsten Start zurücksetzen</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Weiter</translation>
     </message>
 </context>
 </TS>

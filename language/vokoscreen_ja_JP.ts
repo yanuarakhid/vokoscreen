@@ -249,10 +249,6 @@
         <translation>実フレームレート</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>再開</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>ホームページ</translation>
     </message>
@@ -350,6 +346,10 @@
     </message>
     <message>
         <source>Reset all settings at next start</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Continue</source>
         <translation type="unfinished"/>
     </message>
 </context>

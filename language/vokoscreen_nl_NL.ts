@@ -249,10 +249,6 @@
         <translation>Actueel aantal frames per seconde</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>Start</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>Startpagina</translation>
     </message>
@@ -351,6 +347,10 @@
     <message>
         <source>Reset all settings at next start</source>
         <translation>Alle instellingen herstellen bij opnieuw opstarten</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

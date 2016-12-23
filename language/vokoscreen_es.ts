@@ -249,10 +249,6 @@
         <translation>Cuadros por segundo actuales</translation>
     </message>
     <message>
-        <source>Go</source>
-        <translation>Ir</translation>
-    </message>
-    <message>
         <source>Homepage</source>
         <translation>Sitio web</translation>
     </message>
@@ -351,6 +347,10 @@
     <message>
         <source>Reset all settings at next start</source>
         <translation>Restablecer toda la configuración en el siguiente inicio</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>
