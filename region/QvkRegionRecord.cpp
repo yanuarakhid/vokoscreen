@@ -18,6 +18,8 @@
 
 #include "QvkRegionRecord.h" 
 
+#include <QBitmap>
+
 QvkRegionRecord::QvkRegionRecord()
 {
   
@@ -47,7 +49,8 @@ QvkRegionRecord::QvkRegionRecord()
   penWidth = 2;
   penHalf = penWidth / 2;
 
-  hide();
+  //hide();
+  show();
 }
 
 
@@ -66,7 +69,7 @@ void QvkRegionRecord::HandleTopLeft()
 {
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, borderTop - radius + penHalf, 2 * radius, 2 * radius );
   int startAngle = 0 * 16;
-  int spanAngle = 360 * 16;
+  int spanAngle = 270 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
 }
 
@@ -74,8 +77,8 @@ void QvkRegionRecord::HandleTopLeft()
 void QvkRegionRecord::HandleTopMiddle()
 {
   QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, borderTop - radius + penHalf, 2 * radius, 2 * radius );
-  int startAngle = 0 * 16;
-  int spanAngle = 360 * 16;
+  int startAngle = 180 * 16;
+  int spanAngle = -180 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
 }
 
@@ -84,7 +87,7 @@ void QvkRegionRecord::HandleTopRight()
 {
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, borderTop - radius + penHalf, 2 * radius, 2 * radius );
   int startAngle = 180 * 16;
-  int spanAngle =  -360  * 16;
+  int spanAngle = -270 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
 }
 
@@ -93,7 +96,7 @@ void QvkRegionRecord::HandleRightMiddle()
 {
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius,  2 * radius, 2 * radius );
   int startAngle = 90 * 16;
-  int spanAngle =  -360  * 16;
+  int spanAngle = -180 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle ); 
 }
 
@@ -102,7 +105,7 @@ void QvkRegionRecord::HandleBottomRight()
 {
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
   int startAngle = 90 * 16;
-  int spanAngle =  -360  * 16;
+  int spanAngle = -270 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
 }
 
@@ -110,8 +113,8 @@ void QvkRegionRecord::HandleBottomRight()
 void QvkRegionRecord::HandleBottomMiddle()
 {
   QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
-  int startAngle = 0 * 16;
-  int spanAngle =  -360  * 16;
+  int startAngle = -180 * 16;
+  int spanAngle = 180 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
 }
 
@@ -120,7 +123,7 @@ void QvkRegionRecord::HandleBottomLeft()
 {
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
   int startAngle = 90 * 16;
-  int spanAngle =  360  * 16;
+  int spanAngle = 270 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
 }
 
@@ -129,90 +132,43 @@ void QvkRegionRecord::HandleLeftMiddle()
 {
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius, 2 * radius, 2 * radius );
   int startAngle = 90 * 16;
-  int spanAngle =  360  * 16;
+  int spanAngle =  180 * 16;
   painter->drawPie( rectangle, startAngle, spanAngle );
 }
 
 
-void QvkRegionRecord::paintEvent( QPaintEvent *event ) 
+void QvkRegionRecord::paintEvent(QPaintEvent *event) 
 {
-  (void)event;
-  painter->begin( this );
-  painter->setRenderHints( QPainter::Antialiasing, true );
-
-  clearMask();
-
-  // Aufruf von QRegion = x,y,w,h
-  QRegion RegionWidget( 0, 0, width(), height() );
-  RegionWidget = RegionWidget.subtracted( RegionWidget );
+  QPixmap pixmap( width(), height() );
+  pixmap.fill( Qt::transparent );
+   
+  painter->begin( &pixmap );
+    painter->setRenderHints( QPainter::Antialiasing, true );
+    painter->setBrush( QBrush( Qt::red, Qt::SolidPattern ) );
+    painter->setPen( QPen( Qt::black, penWidth ) );
+    HandleTopLeft();
+    HandleTopMiddle();
+    HandleTopRight();
+    HandleRightMiddle();
+    HandleBottomRight();
+    HandleBottomMiddle();
+    HandleBottomLeft();
+    HandleLeftMiddle();
   
-  QRegion RegionHandleTopLeft( borderLeft - radius, borderTop - radius, 2*radius + penWidth, 2*radius + penWidth);
-  RegionWidget = RegionWidget.united( RegionHandleTopLeft );
-  
-  QRegion RegionHandleTopMiddle( ( width() - borderLeft - borderRight ) / 2 - penHalf, borderTop - radius, 2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleTopMiddle );
-  
-  QRegion RegionHandleTopRight( width() - borderRight - radius - penWidth, borderTop - radius, 2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleTopRight );
-  
-  QRegion RegionHandleRightMiddle( width() - borderRight - radius - penHalf, ( height() - borderTop - borderBottom ) / 2 - penHalf,  2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleRightMiddle );
-  
-  QRegion RegionHandleRightBottom( width() - borderRight - radius - penWidth, height() - borderBottom - radius - penWidth, 2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleRightBottom );
-  
-  QRegion RegionHandleBottomMiddle( ( width() - borderLeft - borderRight ) / 2 - penHalf, height() - borderBottom - radius - penHalf, 2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleBottomMiddle );
-  
-  QRegion RegionHandleBottomLeft( borderLeft - radius, height() - borderBottom - radius - penWidth, 2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleBottomLeft );
-  
-  QRegion RegionHandleLeftMiddle( borderLeft - radius, ( height() - borderTop - borderBottom ) / 2 - penHalf, 2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleLeftMiddle );
-  
-  // Aufruf von QRegion = x,y,w,h
-  QRegion RegionTopLine( borderLeft - frameWidth, borderTop - frameWidth/2, width() - borderLeft - borderRight - penWidth, frameWidth );
-  RegionWidget = RegionWidget.united( RegionTopLine );
-  
-  QRegion RegionRightLine(  width() - borderRight - frameWidth/2, borderTop - frameWidth/2, frameWidth, height() - borderBottom );
-  RegionWidget = RegionWidget.united( RegionRightLine );
-  
-  QRegion RegionBottomLine( borderLeft, height() - borderBottom - frameWidth/2, width() - borderRight, frameWidth );
-  RegionWidget = RegionWidget.united( RegionBottomLine );
-
-  QRegion RegionLeftLine( borderLeft - frameWidth/2, borderTop, frameWidth, height() - borderTop - borderBottom );
-  RegionWidget = RegionWidget.united( RegionLeftLine );
-  
-  // subtract the record Area
-  QRegion RegionArea  ( borderLeft + frameWidth / 2,
-                        borderTop + frameWidth / 2,
-                        width() - ( borderLeft + frameWidth / 2 ) - ( borderRight + frameWidth / 2 ),
-                        height() - ( borderTop + frameWidth / 2 ) - ( borderBottom + frameWidth / 2 ) );
-  RegionWidget = RegionWidget.subtracted( RegionArea );
-
-  setMask( RegionWidget );
-
-  QBrush brush( Qt::red, Qt::SolidPattern );
-  painter->setBrush( brush );
-  painter->setPen( QPen( Qt::black, penWidth ) );
-  HandleTopLeft();
-  HandleTopMiddle();
-  HandleTopRight();
-  HandleRightMiddle();
-  HandleBottomRight();
-  HandleBottomMiddle();
-  HandleBottomLeft();
-  HandleLeftMiddle();
-
-  // Blue Frame
-  painter->setPen( QPen( Qt::blue, frameWidth ) );
-
-  painter->drawRect( borderLeft,
-		     borderTop, 
-		     width() - borderRight- borderRight,
-		     height() - borderTop - borderBottom);
- 
+    // Blue Frame
+    painter->setPen( QPen( Qt::blue, frameWidth ) );
+    painter->setBrush( QBrush( Qt::transparent, Qt::SolidPattern ) );
+    painter->drawRect( borderLeft,
+  		     borderTop, 
+  		     width() - borderRight- borderRight,
+  		     height() - borderTop - borderBottom);
   painter->end();
+
+  painter->begin( this);
+    painter->drawPixmap( QPoint( 0, 0 ), pixmap );
+  painter->end();
+  
+  setMask( pixmap.mask() ); //Extracts a bitmap mask from the pixmaps alpha channel.
 
   event->accept();
 }

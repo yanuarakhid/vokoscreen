@@ -29,9 +29,11 @@
 #include <QDesktopWidget>
 #include <QDialog>
 
+#include <QLabel>
+
 #include "QvkSettings.h"
 
-class QvkRegionRecord : public QWidget
+class QvkRegionRecord : public QLabel //QWidget
 { 
 Q_OBJECT
 public:
@@ -72,9 +74,9 @@ private slots:
 
 
 protected:
-  void paintEvent( QPaintEvent *event );
   QPainter * painter;
-  
+    void paintEvent(QPaintEvent *);
+
 private:
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
 
