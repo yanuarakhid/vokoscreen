@@ -49,7 +49,6 @@ QvkRegionRecord::QvkRegionRecord()
   penWidth = 2;
   penHalf = penWidth / 2;
 
-  //hide();
   show();
 }
 
@@ -159,9 +158,9 @@ void QvkRegionRecord::paintEvent(QPaintEvent *event)
     painter->setPen( QPen( Qt::blue, frameWidth ) );
     painter->setBrush( QBrush( Qt::transparent, Qt::SolidPattern ) );
     painter->drawRect( borderLeft,
-  		     borderTop, 
-  		     width() - borderRight- borderRight,
-  		     height() - borderTop - borderBottom);
+                       borderTop, 
+                       width() - borderRight- borderRight,
+                       height() - borderTop - borderBottom );
   painter->end();
 
   painter->begin( this);

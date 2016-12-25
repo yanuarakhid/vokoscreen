@@ -16,8 +16,9 @@
  * Boston, MA  02110-1301 USA 
  */
 
-#include <QTest>
 #include "QvkRegionChoise.h"
+#include <QTest>
+#include <QBitmap>
 
 QvkRegionChoise::QvkRegionChoise()
 {
@@ -68,13 +69,10 @@ QvkRegionChoise::~QvkRegionChoise()
 
 void QvkRegionChoise::HandleTopLeft()
 {
-  QColor color, arrow;
+  QColor color = Qt::green;
+  QColor arrow = Qt::black;
   
-  color = Qt::green;
-  arrow = Qt::black;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
+  painter->setBrush( QBrush( color, Qt::SolidPattern ) );
   painter->setPen( QPen( Qt::black, penWidth ) );
   
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, borderTop - radius + penHalf, 2 * radius, 2 * radius );
@@ -98,13 +96,10 @@ void QvkRegionChoise::HandleTopLeft()
 
 void QvkRegionChoise::HandleTopMiddle()
 {
-  QColor color, arrow;
+  QColor color = Qt::green;
+  QColor arrow = Qt::black;
   
-  color = Qt::green;
-  arrow = Qt::black;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
+  painter->setBrush( QBrush( color, Qt::SolidPattern ) );
   painter->setPen( QPen( Qt::black, penWidth ) );
   
   QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, borderTop - radius + penHalf, 2 * radius, 2 * radius );
@@ -124,13 +119,10 @@ void QvkRegionChoise::HandleTopMiddle()
 
 void QvkRegionChoise::HandleTopRight()
 {
-  QColor color, arrow;
+  QColor color = Qt::green;
+  QColor arrow = Qt::black;
   
-  color = Qt::green;
-  arrow = Qt::black;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
+  painter->setBrush( QBrush( color, Qt::SolidPattern ) );
   painter->setPen( QPen( Qt::black, penWidth ) );
 
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, borderTop - radius + penHalf, 2 * radius, 2 * radius );
@@ -160,13 +152,10 @@ void QvkRegionChoise::HandleTopRight()
 
 void QvkRegionChoise::HandleRightMiddle()
 {
-  QColor color, arrow;
+  QColor color = Qt::green;
+  QColor arrow = Qt::black;
   
-  color = Qt::green;
-  arrow = Qt::black;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
+  painter->setBrush( QBrush ( color, Qt::SolidPattern ) );
   painter->setPen( QPen( Qt::black, penWidth ) );
   
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius,  2 * radius, 2 * radius );
@@ -193,13 +182,10 @@ void QvkRegionChoise::HandleRightMiddle()
 
 void QvkRegionChoise::HandleBottomRight()
 {
-  QColor color, arrow;
+  QColor color = Qt::green;
+  QColor arrow = Qt::black;
   
-  color = Qt::green;
-  arrow = Qt::black;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
+  painter->setBrush( QBrush ( color, Qt::SolidPattern ) );
   painter->setPen( QPen( Qt::black, penWidth ) );
   
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
@@ -228,13 +214,10 @@ void QvkRegionChoise::HandleBottomRight()
 
 void QvkRegionChoise::HandleBottomMiddle()
 {
-  QColor color, arrow;
+  QColor color = Qt::green;
+  QColor arrow = Qt::black;
   
-  color = Qt::green;
-  arrow = Qt::black;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
+  painter->setBrush( QBrush( color, Qt::SolidPattern ) );
   painter->setPen( QPen( Qt::black, penWidth ) );
 
   QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
@@ -261,13 +244,10 @@ void QvkRegionChoise::HandleBottomMiddle()
 
 void QvkRegionChoise::HandleBottomLeft()
 {
-  QColor color, arrow;
+  QColor color = Qt::green;
+  QColor arrow = Qt::black;
   
-  color = Qt::green;
-  arrow = Qt::black;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
+  painter->setBrush( QBrush( color, Qt::SolidPattern ) );
   painter->setPen( QPen( Qt::black, penWidth ) );
 
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
@@ -296,13 +276,10 @@ void QvkRegionChoise::HandleBottomLeft()
 
 void QvkRegionChoise::HandleLeftMiddle()
 {
-  QColor color, arrow;
+  QColor color = Qt::green;
+  QColor arrow = Qt::black;
   
-  color = Qt::green;
-  arrow = Qt::black;
-  
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
+  painter->setBrush( QBrush( color, Qt::SolidPattern ) );
   painter->setPen( QPen( Qt::black, penWidth ) );
 
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius, 2 * radius, 2 * radius );
@@ -329,13 +306,10 @@ void QvkRegionChoise::HandleLeftMiddle()
 
 void QvkRegionChoise::HandleMiddle()
 {
-  QColor color, arrow;
-  
-  color = Qt::green;
-  arrow = Qt::black;
+  QColor color = Qt::green;
+  QColor arrow = Qt::black;
 
-  QBrush brush( color, Qt::SolidPattern );
-  painter->setBrush( brush );
+  painter->setBrush( QBrush( color, Qt::SolidPattern ) );
   painter->setPen( QPen( Qt::black, penWidth ) );
   
   QRect rect( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, 
@@ -417,8 +391,7 @@ void QvkRegionChoise::printSize()
 	        pixelWidth + 10,
 	        16 + 10 );
   
-  QBrush brush( Qt::yellow, Qt::SolidPattern );
-  painter->setBrush( brush );
+  painter->setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
   painter->setPen( QPen( Qt::black, penWidth ) );  
 
   painter->drawRoundedRect( rect, 7, 7 );
@@ -447,86 +420,40 @@ QRect QvkRegionChoise::getPrintSizeRectForMask()
 
 void QvkRegionChoise::paintEvent( QPaintEvent *event ) 
 {
-  //(void)event;
-  painter->begin( this );
-  painter->setRenderHints( QPainter::Antialiasing, true );
-  clearMask();
+  QPixmap pixmap( width(), height() );
+  pixmap.fill( Qt::transparent );
+   
+  painter->begin( &pixmap );
+    painter->setRenderHints( QPainter::Antialiasing, true );
+    painter->setBrush( QBrush( Qt::red, Qt::SolidPattern ) );
+    painter->setPen( QPen( Qt::black, penWidth ) );
+    HandleTopLeft();
+    HandleTopMiddle();
+    HandleTopRight();
+    HandleRightMiddle();
+    HandleBottomRight();
+    HandleBottomMiddle();
+    HandleBottomLeft();
+    HandleLeftMiddle();
+    printSize();
+    HandleMiddle();
 
-  printSize();
-  HandleMiddle();
-
-  // Aufruf von QRegion = x,y,w,h
-  QRegion RegionWidget( 0, 0, width(), height() );
-  RegionWidget = RegionWidget.subtracted( RegionWidget );
-  
-  QRegion RegionHandleTopLeft( borderLeft - radius, borderTop - radius, 2*radius + penWidth, 2*radius + penWidth);
-  RegionWidget = RegionWidget.united( RegionHandleTopLeft );
-  
-  QRegion RegionHandleTopMiddle( ( width() - borderLeft - borderRight ) / 2 - penHalf, borderTop - radius, 2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleTopMiddle );
-  
-  QRegion RegionHandleTopRight( width() - borderRight - radius - penWidth, borderTop - radius, 2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleTopRight );
-  
-  QRegion RegionHandleRightMiddle( width() - borderRight - radius - penWidth, ( height() - borderTop - borderBottom )/2 - penHalf,  2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleRightMiddle );
-  
-  QRegion RegionHandleRightBottom( width() - borderRight - radius - penWidth, height() - borderBottom - radius - penWidth, 2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleRightBottom );
-  
-  QRegion RegionHandleBottomMiddle( ( width() - borderLeft - borderRight ) / 2 - penHalf, height() - borderBottom - radius - penWidth, 2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleBottomMiddle );
-  
-  QRegion RegionHandleBottomLeft( borderLeft - radius, height() - borderBottom - radius - penWidth, 2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleBottomLeft );
-  
-  QRegion RegionHandleLeftMiddle( borderLeft - radius, ( height() - borderTop - borderBottom ) / 2 - penHalf, 2*radius + penWidth, 2*radius + penWidth );
-  RegionWidget = RegionWidget.united( RegionHandleLeftMiddle );
-  
-  // Aufruf von QRegion = x,y,w,h
-  QRegion RegionTopLine( borderLeft - frameWidth, borderTop - frameWidth/2, width() - borderLeft - borderRight - penWidth, frameWidth );
-  RegionWidget = RegionWidget.united( RegionTopLine );
-  
-  QRegion RegionRightLine(  width() - borderRight - frameWidth/2, borderTop - frameWidth/2, frameWidth, height() - borderBottom );
-  RegionWidget = RegionWidget.united( RegionRightLine );
-  
-  QRegion RegionBottomLine( borderLeft, height() - borderBottom - frameWidth/2, width() - borderRight, frameWidth );
-  RegionWidget = RegionWidget.united( RegionBottomLine );
-
-  QRegion RegionLeftLine( borderLeft - frameWidth/2, borderTop, frameWidth, height() - borderTop - borderBottom );
-  RegionWidget = RegionWidget.united( RegionLeftLine );
-
-  RegionWidget = RegionWidget.united( getPrintSizeRectForMask() );
-  
-  RegionWidget = RegionWidget.united( getHandleMiddleForMask() );
-  
-  setMask( RegionWidget );
-
-  HandleTopLeft();
-  HandleTopMiddle();
-  HandleTopRight();
-  HandleRightMiddle();
-  HandleBottomRight();
-  HandleBottomMiddle();
-  HandleBottomLeft();
-  HandleLeftMiddle();
-
-  // Blue Frame
-  painter->setPen( QPen( Qt::blue, frameWidth ) );
-  
-  // Left Line
-  painter->drawLine( borderLeft, borderTop, borderLeft, height() - borderBottom );
-  
-  // Top Line
-  painter->drawLine( borderLeft, borderTop, width() - borderRight, borderTop );
-  
-  // Right Line
-  painter->drawLine( width() - borderRight, borderTop, width() - borderRight, height() - borderBottom );
-  
-  // Bottome Line
-  painter->drawLine( borderLeft, height() - borderBottom, width() - borderRight, height() - borderBottom );
-
+    // Blue Frame
+    QPen pen( Qt::blue, frameWidth );
+    pen.setJoinStyle( Qt::MiterJoin );
+    painter->setPen( pen );
+    painter->setBrush( QBrush( Qt::transparent, Qt::SolidPattern ) );
+    painter->drawRect( borderLeft,
+                       borderTop, 
+                       width() - borderRight- borderRight,
+                       height() - borderTop - borderBottom );
   painter->end();
+
+  painter->begin( this);
+    painter->drawPixmap( QPoint( 0, 0 ), pixmap );
+  painter->end();
+  
+  setMask( pixmap.mask() ); //Extracts a bitmap mask from the pixmaps alpha channel.
 
   event->accept();
 }

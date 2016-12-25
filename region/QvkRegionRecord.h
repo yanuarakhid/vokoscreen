@@ -33,7 +33,7 @@
 
 #include "QvkSettings.h"
 
-class QvkRegionRecord : public QLabel //QWidget
+class QvkRegionRecord : public QLabel
 { 
 Q_OBJECT
 public:

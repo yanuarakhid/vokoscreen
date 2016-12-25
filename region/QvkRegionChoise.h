@@ -20,14 +20,11 @@
 #define regionChoise_H
 
 #include <QPainter>
-#include <QDebug>
 #include <QRegion>
 #include <QCursor>
 #include <QPainterPath>
 #include <QMouseEvent>
-#include <QApplication>
 #include <QDesktopWidget>
-#include <QDialog>
 
 #include "QvkSettings.h"
 
