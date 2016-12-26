@@ -59,6 +59,7 @@ QvkRegionChoise::QvkRegionChoise()
                vkSettings.getAreaWidth() + borderLeft + borderRight + frameWidth,
                vkSettings.getAreaHeight() + borderTop + borderBottom + frameWidth
              );
+  show();
 }
 
 
