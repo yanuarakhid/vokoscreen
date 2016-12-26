@@ -2580,34 +2580,24 @@ void screencast::record()
   QString myVcodec = myUi.VideocodecComboBox->currentText();
   if ( myVcodec == "libx264" )
   {
-    // Number of pixels must be divisible by two
-    int intRecordX = getRecordWidth().toInt();
-    if ( ( intRecordX % 2 ) == 1 )
-      setRecordWidth( QString().number( --intRecordX ) );
-
-    // Number of pixels must be divisible by two
-    int intRecordY = getRecordHeight().toInt();
-    if ( ( intRecordY % 2 ) == 1 )
-      setRecordHeight( QString().number( --intRecordY ) );
-    
     myVcodec = "libx264 -preset veryfast";
   }  
 
   // https://trac.ffmpeg.org/wiki/Encode/H.265
   if ( myVcodec == "libx265" )
   {
-    // Number of pixels must be divisible by two
-    int intRecordX = getRecordWidth().toInt();
-    if ( ( intRecordX % 2 ) == 1 )
-      setRecordWidth( QString().number( --intRecordX ) );
-
-    // Number of pixels must be divisible by two
-    int intRecordY = getRecordHeight().toInt();
-    if ( ( intRecordY % 2 ) == 1 )
-      setRecordHeight( QString().number( --intRecordY ) );
-    
     myVcodec = "libx265 -preset ultrafast -qp 0";//-x265-params crf=20";
   }  
+  
+  // Number of pixels must be divisible by two
+  int intRecordX = getRecordWidth().toInt();
+  if ( ( intRecordX % 2 ) == 1 )
+    setRecordWidth( QString().number( --intRecordX ) );
+
+  // Number of pixels must be divisible by two
+  int intRecordY = getRecordHeight().toInt();
+  if ( ( intRecordY % 2 ) == 1 )
+    setRecordHeight( QString().number( --intRecordY ) );
   
   nameInMoviesLocation = NameInMoviesLocation();
 
