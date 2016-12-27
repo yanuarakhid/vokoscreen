@@ -400,8 +400,6 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
    
   painter->begin( &pixmap );
     painter->setRenderHints( QPainter::Antialiasing, true );
-    painter->setBrush( QBrush( Qt::red, Qt::SolidPattern ) );
-    painter->setPen( QPen( Qt::black, penWidth ) );
     HandleTopLeft();
     HandleTopMiddle();
     HandleTopRight();
