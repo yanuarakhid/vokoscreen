@@ -361,19 +361,6 @@ void QvkRegionChoise::HandleMiddle()
   rect.setTop( rect.top() - 2 );
   rect.setWidth( rect.width() + 2 );
   rect.setHeight( rect.height() + 2 );
-  setHandleMiddleForMask( rect );
-}
-
-
-void QvkRegionChoise::setHandleMiddleForMask( QRect rec )
-{
-  HandleMiddleForMask = rec;
-}
-
-
-QRect QvkRegionChoise::getHandleMiddleForMask()
-{
-  return HandleMiddleForMask;
 }
 
 
@@ -403,19 +390,6 @@ void QvkRegionChoise::printSize()
   rect.setTop( rect.top() - 2 );
   rect.setWidth( rect.width() + 2 );
   rect.setHeight( rect.height() + 2 );
-  setPrintSizeRectForMask( rect );
-}
-
-
-void QvkRegionChoise::setPrintSizeRectForMask( QRect rec )
-{
-  printSizeRectForMask = rec;
-}
-
-
-QRect QvkRegionChoise::getPrintSizeRectForMask()
-{
-  return printSizeRectForMask;
 }
 
 
