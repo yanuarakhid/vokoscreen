@@ -77,10 +77,8 @@ void QvkRegionChoise::HandleTopLeft()
   painter->setPen( QPen( Qt::black, penWidth ) );
   
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, borderTop - radius + penHalf, 2 * radius, 2 * radius );
-  int startAngle = 0 * 16;
-  int spanAngle = 360 * 16;
-  painter->drawPie( rectangle, startAngle, spanAngle );
-
+  painter->drawEllipse( rectangle );
+  
   // Begin Pfeil zeichnen
   double h = 2 * radius / 3;
   painter->setPen( QPen( arrow, 2 ) );
@@ -104,9 +102,7 @@ void QvkRegionChoise::HandleTopMiddle()
   painter->setPen( QPen( Qt::black, penWidth ) );
   
   QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, borderTop - radius + penHalf, 2 * radius, 2 * radius );
-  int startAngle = 0 * 16;
-  int spanAngle = 360 * 16;
-  painter->drawPie( rectangle, startAngle, spanAngle );
+  painter->drawEllipse( rectangle );
   painter->setPen( QPen( arrow, 2 ) );
   QPainterPath painterPath;
   painterPath.moveTo( ( width() - borderLeft - borderRight ) / 2 + borderLeft,     borderTop );
@@ -127,10 +123,7 @@ void QvkRegionChoise::HandleTopRight()
   painter->setPen( QPen( Qt::black, penWidth ) );
 
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, borderTop - radius + penHalf, 2 * radius, 2 * radius );
-  int startAngle = 180 * 16;
-  int spanAngle =  -360  * 16;
-  
-  painter->drawPie( rectangle, startAngle, spanAngle );
+  painter->drawEllipse( rectangle );
 
   // Begin Pfeil zeichnen
   double h = 2 * radius / 3;
@@ -160,9 +153,7 @@ void QvkRegionChoise::HandleRightMiddle()
   painter->setPen( QPen( Qt::black, penWidth ) );
   
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius,  2 * radius, 2 * radius );
-  int startAngle = 90 * 16;
-  int spanAngle =  -360  * 16;
-  painter->drawPie( rectangle, startAngle, spanAngle ); 
+  painter->drawEllipse( rectangle );
   
    // Begin Pfeil zeichnen
   painter->setPen( QPen( arrow, 2 ) );
@@ -190,9 +181,7 @@ void QvkRegionChoise::HandleBottomRight()
   painter->setPen( QPen( Qt::black, penWidth ) );
   
   QRectF rectangle = QRectF( width() - borderRight - radius - penHalf, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
-  int startAngle = 90 * 16;
-  int spanAngle =  -360  * 16;
-  painter->drawPie( rectangle, startAngle, spanAngle );
+  painter->drawEllipse( rectangle );
   
   // Begin Pfeil zeichnen
   double h = 2 * radius / 3;
@@ -222,9 +211,7 @@ void QvkRegionChoise::HandleBottomMiddle()
   painter->setPen( QPen( Qt::black, penWidth ) );
 
   QRectF rectangle = QRectF( ( width() - borderLeft - borderRight ) / 2 + borderLeft - radius, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
-  int startAngle = 0 * 16;
-  int spanAngle =  -360  * 16;
-  painter->drawPie( rectangle, startAngle, spanAngle );
+  painter->drawEllipse( rectangle );
   
   // Begin Pfeil zeichnen
   painter->setPen( QPen( arrow, 2 ) );
@@ -252,9 +239,7 @@ void QvkRegionChoise::HandleBottomLeft()
   painter->setPen( QPen( Qt::black, penWidth ) );
 
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, height() - borderBottom - radius - penHalf, 2 * radius, 2 * radius );
-  int startAngle = 90 * 16;
-  int spanAngle =  360  * 16;
-  painter->drawPie( rectangle, startAngle, spanAngle );
+  painter->drawEllipse( rectangle );
 
   // Begin Pfeil zeichnen
   painter->setPen( QPen( arrow, 2 ) );
@@ -284,9 +269,7 @@ void QvkRegionChoise::HandleLeftMiddle()
   painter->setPen( QPen( Qt::black, penWidth ) );
 
   QRectF rectangle = QRectF( borderLeft - radius + penHalf, ( height() - borderTop - borderBottom ) / 2 + borderTop - radius, 2 * radius, 2 * radius );
-  int startAngle = 90 * 16;
-  int spanAngle =  360  * 16;
-  painter->drawPie( rectangle, startAngle, spanAngle );
+  painter->drawEllipse( rectangle );
   
   // Begin Pfeil zeichnen
   painter->setPen( QPen( arrow, 2 ) );
