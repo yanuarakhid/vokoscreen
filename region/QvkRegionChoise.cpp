@@ -20,6 +20,8 @@
 #include <QTest>
 #include <QBitmap>
 
+#include <QPropertyAnimation>
+
 QvkRegionChoise::QvkRegionChoise()
 {
   vkSettings.readAll();
@@ -949,133 +951,124 @@ void QvkRegionChoise::mouseReleaseEvent( QMouseEvent * event )
 
 void QvkRegionChoise::mouseDoubleClickEvent( QMouseEvent * event )
 {
-  // Hint:
-  // 1. Without slow motion, hide() and show() must have under Ubuntu 16.04 otherwise glitch
-  // 2. With slow motion, repaint must have otherwise glitch
-  // 3. return wird gebraucht da ansonsten evtl. auch mal "Middle" aufgerufen wird
-  
-  // Am besten ist es wenn alle Knöpfe slow motion sind, dann werden keine ungereimtheiten unter opensuse und Ubuntu beobachtet.
-  
-  int sleep = 8;
-  int slowMotionWay = 100;
+  int time = 1000;
   QDesktopWidget *desk = QApplication::desktop();
   
   if ( handleUnderMouse == TopLeft )
   {
-    setGeometry( 0 - radius - frameWidth / 2,
-		 0 - radius - frameWidth / 2,
-		 geometry().x() + geometry().width() + radius + frameWidth / 2,
-		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
-    show();
-    event->accept();  
+    QPropertyAnimation *animation = new QPropertyAnimation( this, "geometry");
+    animation->setDuration( time );
+    animation->setStartValue( QRect( getX(), getY(), width()         , height() ) );
+    animation->setEndValue(   QRect( 0 - radius - frameWidth / 2,
+				     0 - radius - frameWidth / 2,
+				     geometry().x() + geometry().width() + radius + frameWidth / 2,
+				     geometry().y() + geometry().height() + radius + frameWidth / 2
+				   ) );
+    animation->start();    
     return;
   }
   
   if ( handleUnderMouse == TopMiddle )
   {
-    setGeometry( geometry().x(),
-		 0 - radius - frameWidth / 2,
-		 geometry().width(),
-		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
-    show();
-    event->accept();  
+    QPropertyAnimation *animation = new QPropertyAnimation( this, "geometry");
+    animation->setDuration( time );
+    animation->setStartValue( QRect( getX(), getY(), width(), height() ) );
+    animation->setEndValue(   QRect( geometry().x(),
+				     0 - radius - frameWidth / 2,
+				     geometry().width(),
+				     geometry().y() + geometry().height() + radius + frameWidth / 2  ) );
+    animation->start();    
     return;
   }
 
   if ( handleUnderMouse == TopRight )
   {
-    setGeometry( geometry().x(),
-		 0 - radius - frameWidth / 2,
-		 desk->width() - geometry().x() + radius + frameWidth / 2,
-		 geometry().y() + geometry().height() + radius + frameWidth / 2 );
-    show();
-    event->accept();  
+    QPropertyAnimation *animation = new QPropertyAnimation( this, "geometry");
+    animation->setDuration( time );
+    animation->setStartValue( QRect( getX(), getY(), width(), height() ) );
+    animation->setEndValue(   QRect( geometry().x(),
+				     0 - radius - frameWidth / 2,
+				     desk->width() - geometry().x() + radius + frameWidth / 2,
+				     geometry().y() + geometry().height() + radius + frameWidth / 2 ) );
+    animation->start();    
     return;
   }
     
   if ( handleUnderMouse == RightMiddle )
   {
-    setGeometry( geometry().x(),
-                 geometry().y(),
-                 desk->width() - geometry().x() + radius + frameWidth / 2 - slowMotionWay,
-                 geometry().height() );
-    
-    int width = this->width();
-    for (int i = width; i <= desk->width() - geometry().x() + radius + frameWidth / 2; i+=1)
-    {
-      setGeometry( geometry().x(),
-                   geometry().y(),
-                   i,
-                   geometry().height() );
-      repaint();
-      QTest::qSleep( sleep );
-    }
-    event->accept();  
+    QPropertyAnimation *animation = new QPropertyAnimation( this, "geometry");
+    animation->setDuration( time );
+    animation->setStartValue( QRect( getX(), getY(), width(), height() ) );
+    animation->setEndValue(   QRect( geometry().x(),
+				     geometry().y(),
+				     desk->width() - geometry().x() + radius + frameWidth / 2,
+				     geometry().height() ) );
+    animation->start();    
     return;
   }
     
   if ( handleUnderMouse == BottomRight )
   {
-    setGeometry( geometry().x(),
-                 geometry().y(),
-		 desk->width() - geometry().x() + radius + frameWidth / 2,
-		 desk->height() - geometry().y() + radius + frameWidth / 2 );
-    show();
-    event->accept();  
+    QPropertyAnimation *animation = new QPropertyAnimation( this, "geometry");
+    animation->setDuration( time );
+    animation->setStartValue( QRect( getX(), getY(), width(), height() ) );
+    animation->setEndValue(   QRect( geometry().x(),
+				     geometry().y(),
+				     desk->width() - geometry().x() + radius + frameWidth / 2,
+				     desk->height() - geometry().y() + radius + frameWidth / 2 ) );
+    animation->start();    
     return;
   }
   
   if ( handleUnderMouse == BottomMiddle )
   {
-    setGeometry( geometry().x(),
-                 geometry().y(),
- 		 geometry().width(),
-		 desk->height() - geometry().y() + radius + frameWidth / 2 );
-    show();
-    event->accept();  
+    QPropertyAnimation *animation = new QPropertyAnimation( this, "geometry");
+    animation->setDuration( time );
+    animation->setStartValue( QRect( getX(), getY(), width(), height() ) );
+    animation->setEndValue(   QRect( geometry().x(),
+				     geometry().y(),
+				     geometry().width(),
+				     desk->height() - geometry().y() + radius + frameWidth / 2 ) );
+    animation->start();    
     return;
   }
   
   if ( handleUnderMouse == BottomLeft )
   {
-    setGeometry( 0 - radius - frameWidth / 2,
-                 geometry().y(),
-		 geometry().x() + geometry().width() + radius + frameWidth / 2,
-		 desk->height() - geometry().y() + radius + frameWidth / 2 );
-    show();
-    event->accept();  
+    QPropertyAnimation *animation = new QPropertyAnimation( this, "geometry");
+    animation->setDuration( time );
+    animation->setStartValue( QRect( getX(), getY(), width(), height() ) );
+    animation->setEndValue(   QRect(  0 - radius - frameWidth / 2,
+				     geometry().y(),
+				     geometry().x() + geometry().width() + radius + frameWidth / 2,
+				     desk->height() - geometry().y() + radius + frameWidth / 2 ) );
+    animation->start();    
     return;
   }
 
   if ( handleUnderMouse == LeftMiddle )
   {
-    setGeometry( 0 - radius - frameWidth / 2 + slowMotionWay,
-                 geometry().y(),
-		 geometry().x() + geometry().width() + radius + frameWidth / 2 - slowMotionWay,
-		 geometry().height() );
-    
-    int x = this->x();
-    int width = this->width();
-    for ( int i = x; i >= 0 - radius - frameWidth / 2; i-- )
-    {
-      setGeometry( i,
-                   geometry().y(),
-                   x-i + width,
-                   geometry().height() );
-      repaint();
-      QTest::qSleep( sleep );
-    }
-    event->accept();  
+    QPropertyAnimation *animation = new QPropertyAnimation( this, "geometry");
+    animation->setDuration( time );
+    animation->setStartValue( QRect( getX(), getY(), width(), height() ) );
+    animation->setEndValue(   QRect( 0 - radius - frameWidth / 2,
+				     geometry().y(),
+				     geometry().x() + geometry().width() + radius + frameWidth / 2,
+				     geometry().height() ) );
+    animation->start();    
     return;
   }
   
   if ( handleUnderMouse == Middle )
   {
-    setGeometry( 0 - radius - frameWidth / 2,
-                 0 - radius - frameWidth / 2,
-		 desk->width() + 2 * radius + frameWidth,
-		 desk->height() + 2 * radius + frameWidth );
-    show();
+    QPropertyAnimation *animation = new QPropertyAnimation( this, "geometry");
+    animation->setDuration( time );
+    animation->setStartValue( QRect( getX(), getY(), width()      , height() ) );
+    animation->setEndValue(   QRect( 0 - radius - frameWidth / 2,
+				     0 - radius - frameWidth / 2,
+				     desk->width() + 2 * radius + frameWidth,
+				     desk->height() + 2 * radius + frameWidth ) );
+    animation->start();    
   }
 
   event->accept();  
