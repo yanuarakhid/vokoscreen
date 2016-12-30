@@ -83,11 +83,11 @@ protected:
   void mouseReleaseEvent ( QMouseEvent * event );
   void mouseDoubleClickEvent( QMouseEvent *event);
   void paintEvent( QPaintEvent *event );
-  QPainter * painter;
-  
   
 private:
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
+
+  QPainter * painter;
 
   int radius;
   int penWidth;
@@ -112,6 +112,10 @@ private:
   QRect HandleMiddleForMask;
   
   QvkSettings vkSettings;
-  
+
+  int old_X;
+  int old_Y;
+  int old_width;
+  int old_height;
 };
 #endif
