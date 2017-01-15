@@ -17,9 +17,11 @@
  */
 
 #include "QvkRegionChoise.h"
+
 #include <QTest>
 #include <QBitmap>
 #include <QPropertyAnimation>
+#include <QDialogButtonBox>
 
 QvkRegionChoise::QvkRegionChoise()
 {
@@ -384,6 +386,38 @@ void QvkRegionChoise::printSize()
 }
 
 
+void QvkRegionChoise::printSettingsButton()
+{
+  QString widthHeigtSize = tr( "Area Settings" );
+  
+  QFont font;
+  font.setPointSize( 14 );
+  painter->setFont( font );
+  
+  QFontMetrics fontMetrics( font );
+  int pixelWidth = fontMetrics.width( widthHeigtSize );
+  QRect rect( ( width() - borderLeft - borderRight ) / 2 + borderLeft - pixelWidth / 2 - 5,
+	      ( height() - borderTop - borderBottom ) / 2 + borderTop + 2 * radius,
+	        pixelWidth + 10,
+	        16 + 10 );
+  
+  rect_SettingsButton = rect;
+  
+  painter->setBrush( QBrush( Qt::lightGray, Qt::SolidPattern ) );
+  painter->setPen( QPen( Qt::black, penWidth ) );  
+
+  painter->drawRoundedRect( rect, 7, 7 );
+
+  painter->drawText( rect, Qt::AlignCenter, widthHeigtSize );
+  
+  rect.setLeft( rect.left() - 2 );
+  rect.setTop( rect.top() - 2 );
+  rect.setWidth( rect.width() + 2 );
+  rect.setHeight( rect.height() + 2 );
+
+}
+
+
 void QvkRegionChoise::paintEvent( QPaintEvent *event ) 
 {
   QPixmap pixmap( width(), height() );
@@ -401,6 +435,7 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
     HandleLeftMiddle();
     printSize();
     HandleMiddle();
+    printSettingsButton();
 
     // Blue Frame
     QPen pen( Qt::blue, frameWidth );
@@ -529,6 +564,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
     case BottomLeft  : moveBottomLeft( event );   break;
     case LeftMiddle  : moveLeftMiddle( event );   break;
     case Middle      : moveMiddle( event );       break;
+    case Settings    : break;
     return;
   }
  
@@ -619,6 +655,15 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
   {
     setCursor( Qt::SizeAllCursor );
     handleUnderMouse = Middle;
+    return;
+  }
+  
+  // Settings Button
+  QRegion region( rect_SettingsButton );
+  if ( region.contains( event->pos() ) == true )
+  {
+    setCursor( Qt::ArrowCursor );
+    handleUnderMouse = Settings;
     return;
   }
   
@@ -916,6 +961,43 @@ void QvkRegionChoise::moveMiddle( QMouseEvent *event )
 }
 
 
+void QvkRegionChoise::pressSettingButton( QMouseEvent *event )
+{
+    (void)event;
+    areaSettingDialog = new QDialog;
+    areaSettingDialog->setModal( true );
+    myUiDialog.setupUi( areaSettingDialog );
+
+    myUiDialog.area_X_SpinBox->setValue( x()+penWidth+borderLeft);
+    myUiDialog.area_Y_SpinBox->setValue( y()+penWidth+borderTop );
+    myUiDialog.area_Width_SpinBox->setValue( getWidth() );
+    myUiDialog.area_Height_SpinBox->setValue( getHeight() );
+
+    connect( myUiDialog.area_OK_Button, SIGNAL( clicked() ), this, SLOT( dialog_OK_Pressed() ) );
+    connect( myUiDialog.area_Cancel_Button, SIGNAL( clicked() ), areaSettingDialog, SLOT( close() ) );
+    
+    areaSettingDialog->show();
+}
+
+
+void QvkRegionChoise::dialog_OK_Pressed()
+{
+    int time = 1000;
+    QPropertyAnimation *animation = new QPropertyAnimation( this, "geometry");
+    animation->setDuration( time );
+    QRect rect( getX(), getY(), width(), height() );
+    animation->setStartValue( rect );
+    animation->setEndValue( QRect( myUiDialog.area_X_SpinBox->value() - borderLeft - frameWidth/2,
+                                   myUiDialog.area_Y_SpinBox->value() - borderTop - frameWidth/2,
+                                   myUiDialog.area_Width_SpinBox->value() + 2*borderLeft + frameWidth,
+                                   myUiDialog.area_Height_SpinBox->value() + 2*borderLeft + frameWidth
+                                 ) );
+    animation->start();
+  
+    areaSettingDialog->close();
+}
+
+
 void QvkRegionChoise::mousePressEvent( QMouseEvent *event )
 {
   // Position bei klick im Fenster festhalten
@@ -941,6 +1023,7 @@ void QvkRegionChoise::mousePressEvent( QMouseEvent *event )
     case BottomLeft  : handlePressed = BottomLeft;   break;
     case LeftMiddle  : handlePressed = LeftMiddle;   break;
     case Middle      : handlePressed = Middle;       break;
+    case Settings    : pressSettingButton( event );  break;
   }
   
   event->accept();  

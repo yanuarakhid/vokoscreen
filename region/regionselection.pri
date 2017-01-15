@@ -7,4 +7,5 @@ HEADERS     += $$PWD/QvkRegionChoise.h \
 SOURCES     += $$PWD/QvkRegionChoise.cpp \
                $$PWD/QvkRegionRecord.cpp \
                $$PWD/QvkRegionController.cpp
-               
+
+FORMS       += $$PWD/settings.ui

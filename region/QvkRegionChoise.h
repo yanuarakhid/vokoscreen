@@ -25,8 +25,10 @@
 #include <QPainterPath>
 #include <QMouseEvent>
 #include <QDesktopWidget>
+#include <QDialogButtonBox>
 
 #include "QvkSettings.h"
+#include "ui_settings.h"
 
 class QvkRegionChoise : public QWidget
 { 
@@ -63,7 +65,8 @@ private slots:
   void moveBottomLeft  ( QMouseEvent *event );
   void moveLeftMiddle  ( QMouseEvent *event );
   void moveMiddle      ( QMouseEvent *event );
-
+  void pressSettingButton( QMouseEvent *event );
+  
   void HandleTopLeft();
   void HandleTopMiddle();
   void HandleTopRight();
@@ -75,7 +78,10 @@ private slots:
   void HandleMiddle();
 
   void printSize();
+  void printSettingsButton();
  
+  void dialog_OK_Pressed();
+
 
 protected:
   void mouseMoveEvent( QMouseEvent *event );
@@ -85,10 +91,12 @@ protected:
   void paintEvent( QPaintEvent *event );
   
 private:
-  enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
+  enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle, Settings };
 
   QPainter * painter;
-
+  
+  QRect rect_SettingsButton;
+  
   int radius;
   int penWidth;
   int penHalf;
@@ -117,5 +125,9 @@ private:
   int old_Y;
   int old_width;
   int old_height;
+  
+  Ui_AreaSettingsDialog myUiDialog;
+  QDialog *areaSettingDialog;
+  
 };
 #endif

@@ -673,8 +673,8 @@ void screencast::currentFormatChanged( const QString value )
    
    // https://trac.ffmpeg.org/wiki/Encode/VP8
    // /usr/bin/ffmpeg -y -report  -threads 4 -f x11grab -draw_mouse 1 -framerate 25 -video_size 1680x1050 -i :0+0,0 -pix_fmt yuv420p -c:v libvpx -quality realtime -vpre libvpx-720p  -s 1680x1050 -f webm vokoscreen-2016-05-27_08-32-31.webm
-   //QStringList WEBM_videoCodecList = ( QStringList() << "libvpx-vp9" );
-   //QStringList WEBM_AudioCodecList = ( QStringList() << "vorbis" );
+   QStringList WEBM_videoCodecList = ( QStringList() << "libvpx" );
+   QStringList WEBM_AudioCodecList = ( QStringList() << "vorbis" );
    
   
   if ( value == "mkv" )
@@ -701,13 +701,13 @@ void screencast::currentFormatChanged( const QString value )
     searchAudioCodec( MOV_AudioCodecList );
   }
   
-  /*
+  
   if ( value == "webm" )
   {
     searchVideoCodec( WEBM_videoCodecList );
     searchAudioCodec( WEBM_AudioCodecList );
   }
-  */
+  
 }
 
 void screencast::searchAudioCodec( QStringList audioCodecList )
@@ -769,8 +769,8 @@ void screencast::SearchFormats()
 {
    qDebug() << "[vokoscreen] ---Begin search formats---";
    myUi.VideoContainerComboBox->clear();
-   QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" << "mov");
-   QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" << "mov");
+   QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" << "mov" << "webm" );
+   QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" << "mov" << "webm");
    for ( int i = 0; i < formatList.count(); i++ )
    {
      if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
@@ -2676,6 +2676,10 @@ void screencast::startRecord( QString RecordPathName )
   SystemCall->start( ffmpegString + RecordPathName );
 
   beginTime  = QDateTime::currentDateTime();
+/*    foreach (QWidget *widget, QApplication::topLevelWidgets()) {
+            qDebug() << widget->title();
+    }
+    */
 }
 
 
