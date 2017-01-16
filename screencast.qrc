@@ -1,11 +1,11 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
-<file>pictures/areaX.png</file>
-<file>pictures/areaY.png</file>
-<file>pictures/areaWidth.png</file>
-<file>pictures/areaHeight.png</file>
 <file>pictures/about.png</file>
 <file>pictures/alsa.png</file>
+<file>pictures/areaHeight.png</file>
+<file>pictures/areaWidth.png</file>
+<file>pictures/areaX.png</file>
+<file>pictures/areaY.png</file>
 <file>pictures/community.png</file>
 <file>pictures/cursor.png</file>
 <file>pictures/farbeimer-gelb.png</file>
