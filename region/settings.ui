@@ -64,7 +64,7 @@
          <item>
           <widget class="QLabel" name="areaLabelWidth">
            <property name="text">
-            <string/>
+            <string notr="true"/>
            </property>
           </widget>
          </item>

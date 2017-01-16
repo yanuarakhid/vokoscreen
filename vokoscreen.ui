@@ -215,7 +215,7 @@
               <item>
                <widget class="QToolButton" name="areaResetButton">
                 <property name="text">
-                 <string/>
+                 <string notr="true"/>
                 </property>
                </widget>
               </item>
