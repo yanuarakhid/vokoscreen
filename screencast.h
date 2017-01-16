@@ -108,6 +108,8 @@ private slots:
   void WindowMinimized();
   void saveSettings();
 
+  void areaReset();
+
   void setRecordWidth( QString value );
   QString getRecordWidth();
   void setRecordHeight( QString value );

@@ -69,6 +69,19 @@ QvkRegionChoise::QvkRegionChoise()
   old_width = width();
   old_height = height();
 
+  areaSettingDialog = new QDialog;
+  areaSettingDialog->setModal( true );
+  myUiDialog.setupUi( areaSettingDialog );
+
+  QImage *imageX = new QImage( ":/pictures/areaX.png" );
+  myUiDialog.areaLabelX->setPixmap( QPixmap::fromImage( *imageX, Qt::AutoColor));
+  QImage *imageY = new QImage( ":/pictures/areaY.png" );
+  myUiDialog.areaLabelY->setPixmap( QPixmap::fromImage( *imageY, Qt::AutoColor));
+  QImage *imageWidth = new QImage( ":/pictures/areaWidth.png" );
+  myUiDialog.areaLabelWidth->setPixmap( QPixmap::fromImage( *imageWidth, Qt::AutoColor));
+  QImage *imageHeight = new QImage( ":/pictures/areaHeight.png" );
+  myUiDialog.areaLabelHeight->setPixmap( QPixmap::fromImage( *imageHeight, Qt::AutoColor));
+
   show();
 }
 
@@ -964,9 +977,6 @@ void QvkRegionChoise::moveMiddle( QMouseEvent *event )
 void QvkRegionChoise::pressSettingButton( QMouseEvent *event )
 {
     (void)event;
-    areaSettingDialog = new QDialog;
-    areaSettingDialog->setModal( true );
-    myUiDialog.setupUi( areaSettingDialog );
 
     myUiDialog.area_X_SpinBox->setValue( x()+penWidth+borderLeft);
     myUiDialog.area_Y_SpinBox->setValue( y()+penWidth+borderTop );
@@ -976,9 +986,22 @@ void QvkRegionChoise::pressSettingButton( QMouseEvent *event )
     connect( myUiDialog.area_OK_Button, SIGNAL( clicked() ), this, SLOT( dialog_OK_Pressed() ) );
     connect( myUiDialog.area_Cancel_Button, SIGNAL( clicked() ), areaSettingDialog, SLOT( close() ) );
     
+    //connect( myUiDialog.area_X_SpinBox, SIGNAL( valueChanged( int ) ), this, SLOT( area_X_SpinBox_valueChanged( int ) ) );
+    
     areaSettingDialog->show();
 }
 
+/*
+void QvkRegionChoise::area_X_SpinBox_valueChanged( int value )
+{
+  QDesktopWidget *desk = QApplication::desktop();
+  
+  qDebug() << "***************************" << value;
+  if ( ( value + getWidth() + frameWidth + borderLeft + borderRight ) > desk->width() )
+    myUiDialog.area_Width_SpinBox->setValue( 200 );
+  
+}
+*/
 
 void QvkRegionChoise::dialog_OK_Pressed()
 {

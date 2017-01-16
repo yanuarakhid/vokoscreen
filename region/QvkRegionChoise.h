@@ -82,6 +82,8 @@ private slots:
  
   void dialog_OK_Pressed();
 
+  //void area_X_SpinBox_valueChanged( int value );
+
 
 protected:
   void mouseMoveEvent( QMouseEvent *event );

@@ -86,7 +86,8 @@ screencast::screencast()
     connect( myUi.FullScreenRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
     connect( myUi.WindowRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
     connect( myUi.AreaRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
-    
+    myUi.areaResetButton->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+
     QDesktopWidget *desk = QApplication::desktop();
     myScreenCountChanged( desk->screenCount() );
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( myScreenCountChanged(int) ) );
@@ -432,6 +433,8 @@ screencast::screencast()
     connect( myUi.FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( myUi.WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     myregionselection = new QvkRegionController();
+    connect( myUi.areaResetButton,       SIGNAL( clicked() ), this, SLOT( areaReset() ) );
+
 
     // Clean vokoscreen temp
     QDir dir( PathTempLocation() );
@@ -585,6 +588,23 @@ screencast::screencast()
 
 screencast::~screencast()
 { 
+}
+
+void screencast::areaReset()
+{
+    myregionselection->close();
+    delete myregionselection;
+    
+    QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
+    
+    settings.beginGroup( "Area" );
+      settings.setValue( "X", 200 );
+      settings.setValue( "Y", 200 );
+      settings.setValue( "Width", 200 );
+      settings.setValue( "Height", 200 );
+    settings.endGroup();
+
+   myregionselection = new QvkRegionController();
 }
 
 bool commandLine_Start = false;
@@ -1038,10 +1058,14 @@ void screencast::ShortcutPause()
 void screencast::AreaOnOff()
 {
   if ( myUi.FullScreenRadioButton->isChecked() or myUi.WindowRadioButton->isChecked() )
+  {
     myregionselection->close();
+     myUi.areaResetButton->setEnabled( false );
+  }
 
   if ( myUi.AreaRadioButton->isChecked() )
   {
+    myUi.areaResetButton->setEnabled( true );
     myregionselection->close();
     myregionselection->show();
   }
@@ -1801,6 +1825,8 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       myUi.FullScreenRadioButton->setEnabled( false );
       myUi.WindowRadioButton->setEnabled( false );
       myUi.AreaRadioButton->setEnabled( false );
+      if ( myUi.AreaRadioButton-> isChecked() ) 
+           myUi.areaResetButton->setEnabled( false );
       clickedScreenSize();
 
       myUi.TabWidgetAudioFrame->setEnabled(false);
@@ -1825,6 +1851,8 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       myUi.FullScreenRadioButton->setEnabled( true );
       myUi.WindowRadioButton->setEnabled( true );
       myUi.AreaRadioButton->setEnabled( true );
+      if ( myUi.AreaRadioButton-> isChecked() ) 
+           myUi.areaResetButton->setEnabled( true );
       clickedScreenSize();
 
       myUi.TabWidgetAudioFrame->setEnabled(true);
@@ -1854,6 +1882,8 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       myUi.FullScreenRadioButton->setEnabled( false );
       myUi.WindowRadioButton->setEnabled( false );
       myUi.AreaRadioButton->setEnabled( false );
+      if ( myUi.AreaRadioButton-> isChecked() ) 
+           myUi.areaResetButton->setEnabled( false );
       clickedScreenSize();
       
       myUi.TabWidgetAudioFrame->setEnabled(false);
@@ -1879,6 +1909,8 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       myUi.FullScreenRadioButton->setEnabled( false );
       myUi.WindowRadioButton->setEnabled( false );
       myUi.AreaRadioButton->setEnabled( false );
+      if ( myUi.AreaRadioButton-> isChecked() ) 
+           myUi.areaResetButton->setEnabled( false );
       clickedScreenSize();
       
       myUi.TabWidgetAudioFrame->setEnabled(false);
@@ -1903,6 +1935,8 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       myUi.FullScreenRadioButton->setEnabled( true );
       myUi.WindowRadioButton->setEnabled( true );
       myUi.AreaRadioButton->setEnabled( true );
+      if ( myUi.AreaRadioButton-> isChecked() ) 
+           myUi.areaResetButton->setEnabled( true );
       clickedScreenSize()      ;
       
       myUi.TabWidgetAudioFrame->setEnabled(true);
