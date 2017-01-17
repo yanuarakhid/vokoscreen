@@ -276,6 +276,10 @@
  <tabstops>
   <tabstop>area_X_SpinBox</tabstop>
   <tabstop>area_Y_SpinBox</tabstop>
+  <tabstop>area_Width_SpinBox</tabstop>
+  <tabstop>area_Height_SpinBox</tabstop>
+  <tabstop>area_OK_Button</tabstop>
+  <tabstop>area_Cancel_Button</tabstop>
  </tabstops>
  <resources/>
  <connections/>
