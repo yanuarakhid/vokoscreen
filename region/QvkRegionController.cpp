@@ -19,6 +19,13 @@ QvkRegionController::~QvkRegionController()
 {
 }
 
+void QvkRegionController::hide() // neu
+{
+  regionChoise->hide();
+}
+
+
+
 void QvkRegionController::show()
 {
   regionChoise->show();
@@ -69,11 +76,13 @@ void QvkRegionController::lockFrame( bool status )
   {
     regionChoise->hide();
     regionRecord->show();
+    qDebug() << "QvkRegionController::lockFrame( bool status ) 0";
   }
   else
   {
     regionRecord->hide();
     regionChoise->show();
+    qDebug() << "QvkRegionController::lockFrame( bool status ) 1";
   }
   // regionChoise->lockFrame( status );
     

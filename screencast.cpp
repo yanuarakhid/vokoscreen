@@ -428,12 +428,13 @@ screencast::screencast()
     windowMoveTimer = new QTimer( this );
     connect( windowMoveTimer, SIGNAL( timeout() ), this, SLOT( windowMove() ) );
 
+    myregionselection = new QvkRegionController();
+    connect( myUi.areaResetButton,       SIGNAL( clicked() ), this, SLOT( areaReset() ) );
+    
     // Area ein-ausblenden wenn Radiobutton immer wieder angecklickt wird
     connect( myUi.AreaRadioButton,       SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( myUi.FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( myUi.WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
-    myregionselection = new QvkRegionController();
-    connect( myUi.areaResetButton,       SIGNAL( clicked() ), this, SLOT( areaReset() ) );
 
 
     // Clean vokoscreen temp
@@ -605,6 +606,7 @@ void screencast::areaReset()
     settings.endGroup();
 
    myregionselection = new QvkRegionController();
+   qDebug() << "areaReset()";
 }
 
 bool commandLine_Start = false;
@@ -1059,15 +1061,18 @@ void screencast::AreaOnOff()
 {
   if ( myUi.FullScreenRadioButton->isChecked() or myUi.WindowRadioButton->isChecked() )
   {
-    myregionselection->close();
-     myUi.areaResetButton->setEnabled( false );
+    //myregionselection->close(); old
+    myregionselection->hide();
+    myUi.areaResetButton->setEnabled( false );
+    qDebug() << "AreaOnOff() 0";
   }
 
   if ( myUi.AreaRadioButton->isChecked() )
   {
     myUi.areaResetButton->setEnabled( true );
-    myregionselection->close();
+    //myregionselection->close();
     myregionselection->show();
+    qDebug() << "AreaOnOff() 1";
   }
 }
 
