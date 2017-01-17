@@ -606,7 +606,6 @@ void screencast::areaReset()
     settings.endGroup();
 
    myregionselection = new QvkRegionController();
-   qDebug() << "areaReset()";
 }
 
 bool commandLine_Start = false;
@@ -1061,18 +1060,14 @@ void screencast::AreaOnOff()
 {
   if ( myUi.FullScreenRadioButton->isChecked() or myUi.WindowRadioButton->isChecked() )
   {
-    //myregionselection->close(); old
     myregionselection->hide();
     myUi.areaResetButton->setEnabled( false );
-    qDebug() << "AreaOnOff() 0";
   }
 
   if ( myUi.AreaRadioButton->isChecked() )
   {
     myUi.areaResetButton->setEnabled( true );
-    //myregionselection->close();
     myregionselection->show();
-    qDebug() << "AreaOnOff() 1";
   }
 }
 

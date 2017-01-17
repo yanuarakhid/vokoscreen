@@ -26,7 +26,7 @@ public:
 
    void show();
    void close();
-   void hide(); // neu
+   void hide();
 
    
 signals:
