@@ -261,6 +261,7 @@ signals:
   
 protected:
    void contextMenuEvent( QContextMenuEvent *event );
+   void showEvent(QShowEvent *event);
 
 };
 

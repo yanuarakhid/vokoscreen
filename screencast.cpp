@@ -369,7 +369,7 @@ screencast::screencast()
       
     myUi.WindowRadioButton->setChecked( vkSettings.getWindowSelect() );
       
-    myUi.AreaRadioButton->setChecked( vkSettings.getAreaSelect() );
+//myUi.AreaRadioButton->setChecked( vkSettings.getAreaSelect() );
 
     if ( vkSettings.getVideoPath() > "" )
         myUi.SaveVideoPathLineEdit->setText( vkSettings.getVideoPath() );
@@ -584,12 +584,23 @@ screencast::screencast()
      }
    qDebug() << "[vokoscreen] ---End search devices---";
    qDebug( " " );
+   
  }
 
 
 screencast::~screencast()
 { 
 }
+
+
+void screencast::showEvent(QShowEvent *event)
+{
+   (void)event;
+   // Unter Plasma5 wird Area erst angezeigt wenn GUI vollständig aufgebaut ist, daher muß es im showEvent stehen
+   if ( vkSettings.getAreaSelect() == true )
+      myUi.AreaRadioButton->click();
+}
+
 
 void screencast::areaReset()
 {
@@ -607,6 +618,7 @@ void screencast::areaReset()
 
    myregionselection = new QvkRegionController();
 }
+
 
 bool commandLine_Start = false;
 void screencast::commandLineStart( bool value )
