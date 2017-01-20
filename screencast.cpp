@@ -351,14 +351,12 @@ screencast::screencast()
     myUi.AudioOnOffCheckbox->setCheckState( Qt::CheckState( vkSettings.getAudioOnOff() ) );
     AudioOff( Qt::CheckState( vkSettings.getAudioOnOff() ) );
 
-//    myUi.AlsaRadioButton->setChecked( vkSettings.getAlsaSelect() );
     if ( vkSettings.getAlsaSelect() == true )
     {
        myUi.AlsaRadioButton->setChecked( true ) ;
        clickedAudioAlsa( true );
     }
 
-    //myUi.PulseDeviceRadioButton->setChecked( vkSettings.getPulseSelect() );
     if ( vkSettings.getPulseSelect() == true )
     {
        myUi.PulseDeviceRadioButton->setChecked( true ) ;
@@ -366,11 +364,9 @@ screencast::screencast()
     }
     
     myUi.FullScreenRadioButton->setChecked( vkSettings.getFullScreenSelect() );
-      
     myUi.WindowRadioButton->setChecked( vkSettings.getWindowSelect() );
-      
-//myUi.AreaRadioButton->setChecked( vkSettings.getAreaSelect() );
-
+    // Hint: AreaaRadioButton steht in screencast::showEvent(QShowEvent *event)
+    
     if ( vkSettings.getVideoPath() > "" )
         myUi.SaveVideoPathLineEdit->setText( vkSettings.getVideoPath() );
     else
