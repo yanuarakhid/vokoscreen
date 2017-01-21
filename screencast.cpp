@@ -600,19 +600,7 @@ void screencast::showEvent(QShowEvent *event)
 
 void screencast::areaReset()
 {
-    myregionselection->close();
-    delete myregionselection;
-    
-    QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
-    
-    settings.beginGroup( "Area" );
-      settings.setValue( "X", 200 );
-      settings.setValue( "Y", 200 );
-      settings.setValue( "Width", 200 );
-      settings.setValue( "Height", 200 );
-    settings.endGroup();
-
-   myregionselection = new QvkRegionController();
+    myregionselection->regionChoise->areaReset();
 }
 
 

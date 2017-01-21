@@ -91,6 +91,17 @@ QvkRegionChoise::~QvkRegionChoise()
 }
 
 
+void QvkRegionChoise::areaReset()
+{
+  setGeometry( 200,
+               200,
+               200 + borderLeft + borderRight + frameWidth,
+               200 + borderTop + borderBottom + frameWidth
+             );
+}
+
+
+
 void QvkRegionChoise::HandleTopLeft()
 {
   QColor color = Qt::green;

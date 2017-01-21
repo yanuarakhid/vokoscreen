@@ -28,6 +28,8 @@ public:
    void close();
    void hide();
 
+   QvkRegionChoise *regionChoise;
+   QvkRegionRecord *regionRecord;
    
 signals:
 
@@ -39,8 +41,6 @@ public slots:
   
   
 private:
-  QvkRegionChoise *regionChoise;
-  QvkRegionRecord *regionRecord;
   
   
 protected:  

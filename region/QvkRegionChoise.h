@@ -46,6 +46,7 @@ public:
   int borderRight;
   int borderBottom;
   int frameWidth;
+
   
 public slots:
   int getX();
@@ -54,7 +55,9 @@ public slots:
   int getWidth();
   int getXRecordArea();
   int getYRecordArea();
-
+  void areaReset();
+  
+  
 private slots:
   void moveTopLeft     ( QMouseEvent *event );
   void moveTopMiddle   ( QMouseEvent *event );
@@ -91,6 +94,7 @@ protected:
   void mouseReleaseEvent ( QMouseEvent * event );
   void mouseDoubleClickEvent( QMouseEvent *event);
   void paintEvent( QPaintEvent *event );
+  
   
 private:
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle, Settings };
