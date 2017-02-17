@@ -626,12 +626,12 @@ void screencast::addVokoscreenExtensions()
     }
     else
     {
-      qDebug() << "[vokoscreen]" << "Extension found but not loaded" << library->errorString();
+      qDebug() << "[vokoscreen]" << "Library found but not loaded" << library->errorString();
     }
   }
   else
   {
-    qDebug() << "[vokoscreen] No extension found";
+    qDebug() << "[vokoscreen] No library for extension found";
   }
 
   qDebug( " " );
