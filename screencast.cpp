@@ -24,6 +24,7 @@
 #include <QClipboard>
 #include <QLibraryInfo>
 #include <QWidgetAction>
+#include <QLibrary>
 
 using namespace std;
 
@@ -581,12 +582,61 @@ screencast::screencast()
    qDebug() << "[vokoscreen] ---End search devices---";
    qDebug( " " );
    
+   addVokoscreenExtensions();
+
  }
 
 
 screencast::~screencast()
 { 
 }
+
+
+void screencast::addVokoscreenExtensions()
+{
+  QString vokoscreenExtensionsPath = QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) + QDir::separator() + "vokoscreen_extensions" + QDir::separator();
+  qDebug() << "[vokoscreen] ExtensionsPath:" << vokoscreenExtensionsPath;
+
+  QDir libDir( vokoscreenExtensionsPath );
+  QStringList filter = QStringList()  << "*.so.*";
+  QStringList libStringList = libDir.entryList( filter, QDir::Files | QDir::NoSymLinks );
+
+  // Testen ob eine lib im Ordner ist
+  if ( !libStringList.empty() )
+  {
+
+    QLibrary *library = new QLibrary( vokoscreenExtensionsPath + libStringList[ 0 ] );
+
+    if ( library->load() )
+    {
+      qDebug() << "[vokoscreen]" << libStringList[ 0 ] << "Library has been loaded";
+
+      typedef QWidget*(*CreateWidgetFunction)( QWidget *parent, Ui_screencast GUI );
+      CreateWidgetFunction cwf = ( CreateWidgetFunction )library->resolve( "vokoscreen_extensions" );
+
+      if ( cwf )
+      {
+        cwf( this, myUi );
+        qDebug() << "[vokoscreen]" << "Extension was loaded";
+      }
+      else
+      {
+        qDebug() << "[vokoscreen]" << "Extension can not be displayed from the loaded library";
+      }
+    }
+    else
+    {
+      qDebug() << "[vokoscreen]" << "Extension found but not loaded" << library->errorString();
+    }
+  }
+  else
+  {
+    qDebug() << "[vokoscreen] No extension found";
+  }
+
+  qDebug( " " );
+}
+
 
 
 void screencast::showEvent(QShowEvent *event)

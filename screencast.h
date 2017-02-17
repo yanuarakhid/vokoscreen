@@ -87,6 +87,8 @@ public slots:
 
   
 private slots:
+  void addVokoscreenExtensions();
+    
   void closeEvent( QCloseEvent * event );
   
   void addLogVokoscreen( QString value );
