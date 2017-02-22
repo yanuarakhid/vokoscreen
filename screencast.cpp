@@ -407,8 +407,6 @@ screencast::screencast()
       
     move( vkSettings.getX(),vkSettings.getY() );
 
-    myUi.tabWidget->setCurrentIndex( vkSettings.getTab() );
-      
     if( Qt::CheckState( vkSettings.getMagnifierOnOff() ) == Qt::Checked )
       myUi.MagnifierCheckBox->click();
    
@@ -583,6 +581,7 @@ screencast::screencast()
    qDebug( " " );
    
    addVokoscreenExtensions();
+   myUi.tabWidget->setCurrentIndex( vkSettings.getTab() );
 
  }
 
