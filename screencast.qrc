@@ -1,5 +1,6 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
+<file>pictures/extension.png</file>
 <file>pictures/about.png</file>
 <file>pictures/alsa.png</file>
 <file>pictures/areaHeight.png</file>

@@ -267,8 +267,13 @@ screencast::screencast()
     myUi.toolbutton_shortcut_magnifier_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.toolbutton_shortcut_webcam_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
 */
+
+    // Tab 6 Extensions
+    myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "applications-other", QIcon( ":/pictures/extension.png" ) ) );
+    
+
     // Tab 7 About *********************************************************
-    myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
+    myUi.tabWidget->setTabIcon( 6, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
     myUi.labelOpensuseBetaUrl->setOpenExternalLinks( true );
     myUi.labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Developer Homepage" ) + "</a>" );
     
