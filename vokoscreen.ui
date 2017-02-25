@@ -47,7 +47,7 @@
          </sizepolicy>
         </property>
         <property name="currentIndex">
-         <number>5</number>
+         <number>0</number>
         </property>
         <property name="iconSize">
          <size>
@@ -78,7 +78,7 @@
             <item row="0" column="0">
              <widget class="QRadioButton" name="FullScreenRadioButton">
               <property name="text">
-               <string>Fu&amp;llscreen</string>
+               <string>Fullscreen</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -315,8 +315,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>448</width>
-                 <height>169</height>
+                 <width>446</width>
+                 <height>154</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -373,7 +373,7 @@
               <item>
                <widget class="QRadioButton" name="AlsaRadioButton">
                 <property name="text">
-                 <string>A&amp;lsa</string>
+                 <string>Alsa</string>
                 </property>
                </widget>
               </item>
@@ -899,8 +899,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>589</width>
-               <height>239</height>
+               <width>583</width>
+               <height>220</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_18">
