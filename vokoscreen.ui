@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>627</width>
-    <height>351</height>
+    <height>325</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -890,7 +890,26 @@
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_20">
           <item>
+           <widget class="QLabel" name="label_2">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Extensions</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QScrollArea" name="scrollArea_2">
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
             <property name="widgetResizable">
              <bool>true</bool>
             </property>
@@ -899,8 +918,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>583</width>
-               <height>220</height>
+               <width>585</width>
+               <height>198</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_18">
