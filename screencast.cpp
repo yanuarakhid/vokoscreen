@@ -539,19 +539,19 @@ screencast::screencast()
    
    shortcutMagnifier = new QxtGlobalShortcut( this );
    connect( shortcutMagnifier, SIGNAL( activated() ), myUi.MagnifierCheckBox, SLOT( click() ) );
-   //shortcutMagnifier->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
+   shortcutMagnifier->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
 
    shortcutStart = new QxtGlobalShortcut( this );
-   connect( shortcutStart, SIGNAL( activated() ), this, SLOT( preRecord() ) );
+   connect( shortcutStart, SIGNAL( activated() ), myUi.recordButton, SLOT( click() ) );
    shortcutStart->setShortcut( QKeySequence( "Ctrl+Shift+F10" ) );
    
    shortcutStop = new QxtGlobalShortcut( this );
-   connect( shortcutStop, SIGNAL( activated() ), this, SLOT( Stop() ) );
+   connect( shortcutStop, SIGNAL( activated() ), myUi.StopButton, SLOT( click() ) );
    shortcutStop->setShortcut( QKeySequence( "Ctrl+Shift+F11" ) );
    shortcutStop->setEnabled( false );
    
    shortcutPause = new QxtGlobalShortcut( this );
-   connect( shortcutPause, SIGNAL( activated() ), this, SLOT( ShortcutPause() ) );
+   connect( shortcutPause, SIGNAL( activated() ), myUi.PauseButton, SLOT( click() ) );
    shortcutPause->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
    
  
