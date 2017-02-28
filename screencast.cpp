@@ -548,7 +548,7 @@ screencast::screencast()
    shortcutStop = new QxtGlobalShortcut( this );
    connect( shortcutStop, SIGNAL( activated() ), myUi.StopButton, SLOT( click() ) );
    shortcutStop->setShortcut( QKeySequence( "Ctrl+Shift+F11" ) );
-   shortcutStop->setEnabled( false );
+   //shortcutStop->setEnabled( false );
    
    shortcutPause = new QxtGlobalShortcut( this );
    connect( shortcutPause, SIGNAL( activated() ), myUi.PauseButton, SLOT( click() ) );
@@ -1100,11 +1100,13 @@ void screencast::uncheckMagnifier()
     myUi.MagnifierCheckBox->click();
 }
 
+// wird anscheinend nicht benötigt 28.02.2017
+/*
 void screencast::ShortcutPause()
 {
   myUi.PauseButton->click();
 }
-
+*/
 
 void screencast::AreaOnOff()
 {
@@ -2093,7 +2095,7 @@ void screencast::Pause()
     pause = true;
     if ( myUi.PauseButton->isChecked() )
     {
-      shortcutStop->setEnabled( false );
+      //shortcutStop->setEnabled( false );
       windowMoveTimer->stop();
       myUi.PauseButton->setText( tr ( "Continue" ) );
       SystemCall->terminate();
@@ -2111,7 +2113,7 @@ void screencast::Pause()
         return;
       }
       Countdown();
-      shortcutStop->setEnabled( true );
+      //shortcutStop->setEnabled( true );
       myUi.PauseButton->setText( tr( "Pause" ) );
       startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation() );
     }
@@ -2123,7 +2125,7 @@ void screencast::Pause()
     pause = true;
     if ( myUi.PauseButton->isChecked() )
     {
-      shortcutStop->setEnabled( false );
+      //shortcutStop->setEnabled( false );
       windowMoveTimer->stop();
       myUi.PauseButton->setText( tr ( "Continue" ) );
       SystemCall->terminate();
@@ -2141,7 +2143,7 @@ void screencast::Pause()
         return;
       }
       Countdown();
-      shortcutStop->setEnabled( true );
+      //shortcutStop->setEnabled( true );
       myUi.PauseButton->setText( tr( "Pause" ) );
       newMovedXYcoordinates();
       startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation() );
@@ -2567,8 +2569,8 @@ QString screencast::x264Lossless()
 void screencast::record()
 {
   Countdown();
-  shortcutStart->setEnabled( false );
-  shortcutStop->setEnabled( true );
+  //shortcutStart->setEnabled( false );
+  //shortcutStop->setEnabled( true );
   if ( myUi.MinimizedCheckBox->checkState() == Qt::Checked )
   {
     WindowMinimized();
@@ -2769,8 +2771,8 @@ void screencast::startRecord( QString RecordPathName )
 
 void screencast::Stop()
 {
-  shortcutStart->setEnabled( true );
-  shortcutStop->setEnabled( false );
+  //shortcutStart->setEnabled( true );
+  //shortcutStop->setEnabled( false );
 
   if ( SystemCall->state() == QProcess::Running )
   {

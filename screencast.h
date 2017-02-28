@@ -177,7 +177,7 @@ private slots:
   void readyReadStandardError();
   void stateChanged( QProcess::ProcessState newState );
   
-  void ShortcutPause();
+  //void ShortcutPause();
   
   void SystemTrayKontextMenue( QAction *action );
   
