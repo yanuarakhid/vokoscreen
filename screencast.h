@@ -84,6 +84,7 @@ public:
     
 public slots:
   void commandLineStart( bool value );
+  void stateChangedshortcutsOnOff( int );
 
   
 private slots:

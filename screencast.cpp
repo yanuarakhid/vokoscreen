@@ -223,6 +223,7 @@ screencast::screencast()
     myUi.AudiocodecStandardButton->setToolTip( tr( "Default" ) );
     connect( myUi.AudiocodecStandardButton, SIGNAL( clicked() ), SLOT( setAudiocodecStandardComboBox() ) );
 
+    
     // Tab 4 Miscellaneous options **************************************************
     myUi.tabWidget->setTabIcon( 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
     
@@ -247,6 +248,8 @@ screencast::screencast()
     myUi.SystrayCheckBox->setCheckState( Qt::Checked );
     connect( myUi.SystrayCheckBox, SIGNAL( stateChanged( int ) ), SLOT( stateChangedSystray( int ) ) );
 
+    connect( myUi.shortcutCheckBox, SIGNAL( stateChanged( int ) ), this, SLOT( stateChangedshortcutsOnOff( int ) ) );
+    
     
     // Tab 5 Webcam *******************************************************
     myUi.tabWidget->setTabIcon( 4, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
@@ -641,6 +644,27 @@ void screencast::addVokoscreenExtensions()
   qDebug( " " );
 }
 
+
+void screencast::stateChangedshortcutsOnOff( int state )
+{
+  if ( state == Qt::Checked )
+  {
+    shortcutWebcam->setEnabled( true );
+    shortcutMagnifier->setEnabled( true );
+    shortcutStart->setEnabled( true );
+    shortcutStop->setEnabled( true );
+    shortcutPause->setEnabled( true );
+  }
+    
+  if ( state == Qt::Unchecked )
+  {
+    shortcutWebcam->setEnabled( false );
+    shortcutMagnifier->setEnabled( false );
+    shortcutStart->setEnabled( false );
+    shortcutStop->setEnabled( false );
+    shortcutPause->setEnabled( false );
+  }
+}
 
 
 void screencast::showEvent(QShowEvent *event)
