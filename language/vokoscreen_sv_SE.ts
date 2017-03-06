@@ -23,6 +23,21 @@
     </message>
 </context>
 <context>
+    <name>AreaSettingsDialog</name>
+    <message>
+        <source>Area Settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
@@ -81,6 +96,10 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Area Settings</source>
         <translation type="unfinished"/>
     </message>
 </context>

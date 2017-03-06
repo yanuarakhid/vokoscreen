@@ -23,10 +23,25 @@
     </message>
 </context>
 <context>
+    <name>AreaSettingsDialog</name>
+    <message>
+        <source>Area Settings</source>
+        <translation>Επιλογές Περιοχής</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>Εντάξει</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Άκυρο</translation>
+    </message>
+</context>
+<context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation type="unfinished"/>
+        <translation>Εμφάνιση επιλογών κλικαρίσματος</translation>
     </message>
 </context>
 <context>
@@ -59,11 +74,11 @@
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>Πληροφορίες</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>Το Vokoscreen μπορεί να ξεκινήσει μόνο μία φορά</translation>
     </message>
 </context>
 <context>
@@ -81,7 +96,11 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>Κάντε διπλί κλικ για μεγιστοποίηση</translation>
+    </message>
+    <message>
+        <source>Area Settings</source>
+        <translation>Επιλογές Περιοχής</translation>
     </message>
 </context>
 <context>
@@ -326,31 +345,31 @@
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>Απόκρυψη παραθύρου</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Έξοδος</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation type="unfinished"/>
+        <translation>Εμφάνιση παραθύρου</translation>
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation>Μη-απωλεστικό</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation type="unfinished"/>
+        <translation>Το Vokoscreen ξεκινά ελαχιστοποιημένο</translation>
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation>Επαναφορά ρυθμίσεων στην επόμενη εκκίνηση</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"/>
+        <translation>Επόμενο</translation>
     </message>
 </context>
 </TS>

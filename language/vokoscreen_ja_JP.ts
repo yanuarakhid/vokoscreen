@@ -23,10 +23,25 @@
     </message>
 </context>
 <context>
+    <name>AreaSettingsDialog</name>
+    <message>
+        <source>Area Settings</source>
+        <translation>設定範囲</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>承諾</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>キャンセル</translation>
+    </message>
+</context>
+<context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation>クリック設定の表示</translation>
+        <translation>設定をクリックで表示する</translation>
     </message>
 </context>
 <context>
@@ -59,11 +74,11 @@
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>情報</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>vokoscreenは一度だけ起動できます</translation>
     </message>
 </context>
 <context>
@@ -82,6 +97,10 @@
     <message>
         <source>double-click to maximize</source>
         <translation>ダブルクリックで最大化</translation>
+    </message>
+    <message>
+        <source>Area Settings</source>
+        <translation>設定範囲</translation>
     </message>
 </context>
 <context>
@@ -162,7 +181,7 @@
     </message>
     <message>
         <source>Default</source>
-        <translation>規定</translation>
+        <translation>デフォルト</translation>
     </message>
     <message>
         <source>Codec</source>
@@ -238,7 +257,7 @@
     </message>
     <message>
         <source>Send Video</source>
-        <translation>ビデオをメール送信</translation>
+        <translation>ビデオを送信</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
@@ -338,7 +357,7 @@
     </message>
     <message>
         <source>Lossless</source>
-        <translation>ロス無し</translation>
+        <translation>損失無し</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
@@ -346,11 +365,11 @@
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation>次に起動した時に設定を全てリセットする</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"/>
+        <translation>持続する</translation>
     </message>
 </context>
 </TS>

@@ -373,5 +373,13 @@
         <source>Continue</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Extensions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No extensions installed</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

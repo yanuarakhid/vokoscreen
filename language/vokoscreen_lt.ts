@@ -1,175 +1,175 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="lt" version="2.1">
 <context>
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>O dispositivo está ocupado</translation>
+        <translation>Įrenginys yra užimtas</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Nome</translation>
+        <translation>Pavadinimas</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Desconhecido</translation>
+        <translation>Nežinoma</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation>Dispositivo</translation>
+        <translation>Įrenginys</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation>Usado por</translation>
+        <translation>Naudoja</translation>
     </message>
 </context>
 <context>
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation>Definições de Área</translation>
+        <translation>Srities nustatymai</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation>Gerai</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation>Atsisakyti</translation>
     </message>
 </context>
 <context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation>Mostrar opções de clique</translation>
+        <translation>Spustelėjimo rodymo nustatymai</translation>
     </message>
 </context>
 <context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Enviar o último Video</translation>
+        <translation>Siųsti paštu paskiausią vaizdo įrašą</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Enviar vídeos selecionados</translation>
+        <translation>Siųsti paštu vieną ar daugiau pasirinktų vaizdo įrašų</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Enviar</translation>
+        <translation>Siųsti</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation>Atsisakyti</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>Por favor instale um videoplayer</translation>
+        <translation>Prašome įsidiegti vaizdo grotuvą</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation>Info</translation>
+        <translation>Informacija</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation>O vokoscreen só pode ser iniciado uma vez</translation>
+        <translation>vokoscreen vienu metu gali būti paleista tik vieną kartą</translation>
     </message>
 </context>
 <context>
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Você encontra o vídeo como anexo</translation>
+        <translation>Vaizdo įrašus rasite prieduose</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Selecione um ou mais ficheiros</translation>
+        <translation>Pasirinkite vieną ar daugiau failų</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation>duplo clique para maximizimar</translation>
+        <translation>dvikartis spustelėjimas, norint išskleisti</translation>
     </message>
     <message>
         <source>Area Settings</source>
-        <translation>Definições de Área</translation>
+        <translation>Srities nustatymai</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation>Margem</translation>
+        <translation>Rėmelis</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Fechar</translation>
+        <translation>Užverti</translation>
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation>Mostrar sobre o ecrã inteiro</translation>
+        <translation>Rodyti virš viso ekrano</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation>Clique direito para o menu</translation>
+        <translation>Dešinysis spustelėjimas, norint atverti meniu</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation>Definido pelo utilizador</translation>
+        <translation>Naudotojo apibrėžta</translation>
     </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>Dispositivo ocupado</translation>
+        <translation>Įrenginys yra užimtas</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Nome</translation>
+        <translation>Pavadinimas</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation>Dispositivo</translation>
+        <translation>Įrenginys</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation>Usado por</translation>
+        <translation>Naudoja</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Desconhecido</translation>
+        <translation>Nežinoma</translation>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Ecrã inteiro</translation>
+        <translation>Visas ekranas</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Janela</translation>
+        <translation>Langas</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Sritis</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliação</translation>
+        <translation>Didinimas</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Áudio</translation>
+        <translation>Garsas</translation>
     </message>
     <message>
         <source>Alsa</source>
@@ -181,195 +181,195 @@
     </message>
     <message>
         <source>Default</source>
-        <translation>Defeito</translation>
+        <translation>Pagal numatymą</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Codec</translation>
+        <translation>Kodekas</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Não gravar o cursor do rato</translation>
+        <translation>Neįrašinėti pelės žymeklio</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Caminho do Video </translation>
+        <translation>Vaizdo įrašo kelias</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Leitor</translation>
+        <translation>Grotuvas</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Vokoscreen minimiza quando a gravação começar</translation>
+        <translation>Prasidėjus įrašinėjimui, vokoscreen bus suskleista</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Começar</translation>
+        <translation>Pradėti</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>Stabdyti</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pristabdyti</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Tocar</translation>
+        <translation>Groti</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Enviar</translation>
+        <translation>Siųsti</translation>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Tempo de gravação</translation>
+        <translation>Įrašinėjimo laikas</translation>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>Tamanho em KB</translation>
+        <translation>Dydis, KB</translation>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Gravar com tamanho de ecrã</translation>
+        <translation>Įrašomo ekrano dydis</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formato</translation>
+        <translation>Formatas</translation>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Definições de fps</translation>
+        <translation>Nustatymų kadr./s</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Abrir Directorio</translation>
+        <translation>Atverti katalogą</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Contagem</translation>
+        <translation>Atvirkštinis skaičiavimas</translation>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Tocar o último Video</translation>
+        <translation>Groti paskiausią vaizdo įrašą</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>Enviar Video</translation>
+        <translation>Siųsti vaizdo įrašą</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecione um ou mais dispositivos</translation>
+        <translation>Pasirinkite vieną ar daugiau įrenginių</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Frames reais por segundo</translation>
+        <translation>Faktinių kadrų per sekundę</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Página Inicial</translation>
+        <translation>Svetainė</translation>
     </message>
     <message>
         <source>Support</source>
-        <translation>Suporte</translation>
+        <translation>Palaikymas</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation>Desenvolvedor</translation>
+        <translation>Kūrėjas</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Kadrai</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doar</translation>
+        <translation>Paaukoti</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Traduções</translation>
+        <translation>Vertimai</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Código fonte</translation>
+        <translation>Pirminis kodas</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostrar no systray</translation>
+        <translation>Rodyti sistemos dėkle</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation>Nova versão disponível</translation>
+        <translation>Yra prieinama nauja versija</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Codec de Video</translation>
+        <translation>Vaizdo kodekas</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Codec de Som</translation>
+        <translation>Garso kodekas</translation>
     </message>
     <message>
         <source>Webcam</source>
-        <translation>Câmara Web</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation>Selecionar a câmara web</translation>
+        <translation>Pasirinkite kamerą</translation>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation>Espelhado</translation>
+        <translation>Veidrodinis</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation>Exibir</translation>
+        <translation>Ekranas</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation>Todas as exibições</translation>
+        <translation>Visi ekranai</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation>Página Pessoal do Desenvolvedor</translation>
+        <translation>Kūrėjo svetainė</translation>
     </message>
     <message>
         <source>Recorder</source>
-        <translation>Gravador</translation>
+        <translation>Rašytuvas</translation>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation>Selecionar o gravador</translation>
+        <translation>Pasirinkite rašytuvą</translation>
     </message>
     <message>
         <source>Hide window</source>
-        <translation>Esconder a janela</translation>
+        <translation>Slėpti langą</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Sair</translation>
+        <translation>Išeiti</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation>Mostrar a janela</translation>
+        <translation>Rodyti langą</translation>
     </message>
     <message>
         <source>Lossless</source>
-        <translation>Sem perda</translation>
+        <translation>Nenuostolingasis</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation>Vokoscreen inicia minimizado</translation>
+        <translation>Vokoscreen pasileidžia suskleista</translation>
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation>Redefinir todas as configurações no próximo início</translation>
+        <translation>Kito paleidimo metu atstatyti visus nustatymus</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Tęsti</translation>
     </message>
 </context>
 </TS>

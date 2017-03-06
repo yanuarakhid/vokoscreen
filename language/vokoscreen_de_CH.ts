@@ -23,6 +23,21 @@
     </message>
 </context>
 <context>
+    <name>AreaSettingsDialog</name>
+    <message>
+        <source>Area Settings</source>
+        <translation>Bereichseinstellungen</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Abbruch</translation>
+    </message>
+</context>
+<context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
@@ -59,11 +74,11 @@
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>Info</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen kann nur einmal gestartet werden</translation>
     </message>
 </context>
 <context>
@@ -82,6 +97,10 @@
     <message>
         <source>double-click to maximize</source>
         <translation>Doppelklick zum Maximieren</translation>
+    </message>
+    <message>
+        <source>Area Settings</source>
+        <translation>Bereichseinstellungen</translation>
     </message>
 </context>
 <context>
@@ -346,11 +365,11 @@
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation>Alle Einstellungen beim nächsten Start zurücksetzen</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"/>
+        <translation>Weiter</translation>
     </message>
 </context>
 </TS>

@@ -23,6 +23,21 @@
     </message>
 </context>
 <context>
+    <name>AreaSettingsDialog</name>
+    <message>
+        <source>Area Settings</source>
+        <translation>Alan Ayarları</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>TAMAM</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Vazgeç</translation>
+    </message>
+</context>
+<context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
@@ -82,6 +97,10 @@
     <message>
         <source>double-click to maximize</source>
         <translation>çift-tıkla büyüt</translation>
+    </message>
+    <message>
+        <source>Area Settings</source>
+        <translation>Alan Ayarları</translation>
     </message>
 </context>
 <context>

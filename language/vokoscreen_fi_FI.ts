@@ -23,10 +23,25 @@
     </message>
 </context>
 <context>
+    <name>AreaSettingsDialog</name>
+    <message>
+        <source>Area Settings</source>
+        <translation>Alue asetukset</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Peruuta</translation>
+    </message>
+</context>
+<context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation type="unfinished"/>
+        <translation>Näytä klikkaus asetukset</translation>
     </message>
 </context>
 <context>
@@ -59,11 +74,11 @@
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>Tiedot</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen voi käynnistyä vain kerran</translation>
     </message>
 </context>
 <context>
@@ -81,7 +96,11 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>Kaksoisklikkaa maksimoimiseksi</translation>
+    </message>
+    <message>
+        <source>Area Settings</source>
+        <translation>Alue asetukset</translation>
     </message>
 </context>
 <context>
@@ -100,11 +119,11 @@
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>Oikealla painikkeella valikkoon</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjän määrittelemä</translation>
     </message>
 </context>
 <context>
@@ -318,39 +337,39 @@
     </message>
     <message>
         <source>Recorder</source>
-        <translation type="unfinished"/>
+        <translation>Tallennin</translation>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation type="unfinished"/>
+        <translation>Valitse tallennin</translation>
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>Piilota ikkuna</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Poistu</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation type="unfinished"/>
+        <translation>Näytä ikkuna</translation>
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation>Häviötön</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen käynnistyy pienennettynä</translation>
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation>Nollaa kaikki asetukset seuraavassa käynnistyksessä</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"/>
+        <translation>Jatka</translation>
     </message>
 </context>
 </TS>

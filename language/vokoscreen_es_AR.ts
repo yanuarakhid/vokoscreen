@@ -23,6 +23,21 @@
     </message>
 </context>
 <context>
+    <name>AreaSettingsDialog</name>
+    <message>
+        <source>Area Settings</source>
+        <translation>Configuración del área</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>Ok</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Cancelar</translation>
+    </message>
+</context>
+<context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
@@ -82,6 +97,10 @@
     <message>
         <source>double-click to maximize</source>
         <translation>doble click para maximizar</translation>
+    </message>
+    <message>
+        <source>Area Settings</source>
+        <translation>Configuración del área</translation>
     </message>
 </context>
 <context>
@@ -214,7 +233,7 @@
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation type="unfinished"/>
+        <translation>Grabando tamaño de la pantalla</translation>
     </message>
     <message>
         <source>Format</source>

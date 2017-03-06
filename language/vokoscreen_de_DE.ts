@@ -23,6 +23,21 @@
     </message>
 </context>
 <context>
+    <name>AreaSettingsDialog</name>
+    <message>
+        <source>Area Settings</source>
+        <translation>Bereichseinstellungen</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Abbrechen</translation>
+    </message>
+</context>
+<context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
@@ -33,11 +48,11 @@
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Sende letzte Aufnahme</translation>
+        <translation>Letztes Video per E-Mail senden</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Ein oder mehrere Videos versenden</translation>
+        <translation>Ein oder mehrere ausgewählte Videos per E-Mail senden</translation>
     </message>
     <message>
         <source>Send</source>
@@ -45,14 +60,14 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Abbruch</translation>
+        <translation>Abbrechen</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>Bitte einen Videoplayer installieren</translation>
+        <translation>Bitte einen Videoabspieler installieren</translation>
     </message>
 </context>
 <context>
@@ -81,7 +96,11 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation>Maximieren durch Doppelklick</translation>
+        <translation>Doppelklick zum Maximieren</translation>
+    </message>
+    <message>
+        <source>Area Settings</source>
+        <translation>Bereichseinstellungen</translation>
     </message>
 </context>
 <context>
@@ -92,7 +111,7 @@
     </message>
     <message>
         <source>Close</source>
-        <translation>Schliessen</translation>
+        <translation>Schließen</translation>
     </message>
     <message>
         <source>Show over fullscreen</source>
@@ -246,7 +265,7 @@
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Aktuelle Framerate</translation>
+        <translation>Tatsächliche Bilder pro Sekunde</translation>
     </message>
     <message>
         <source>Homepage</source>
@@ -254,7 +273,7 @@
     </message>
     <message>
         <source>Support</source>
-        <translation>Support</translation>
+        <translation>Unterstützung</translation>
     </message>
     <message>
         <source>Developer</source>
@@ -262,11 +281,11 @@
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Bilder</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Spende</translation>
+        <translation>Spenden</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -278,7 +297,7 @@
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Im Systray anzeigen</translation>
+        <translation>Im Benachrichtigungsfeld anzeigen</translation>
     </message>
     <message>
         <source>New version available</source>
@@ -314,7 +333,7 @@
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation>Entwickler homepage</translation>
+        <translation>Entwicklerwebseite</translation>
     </message>
     <message>
         <source>Recorder</source>
@@ -338,7 +357,7 @@
     </message>
     <message>
         <source>Lossless</source>
-        <translation>verlustfrei</translation>
+        <translation>Verlustfrei</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>

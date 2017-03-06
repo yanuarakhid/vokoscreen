@@ -1,6 +1,5 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
-<file>pictures/extension.png</file>
 <file>pictures/about.png</file>
 <file>pictures/alsa.png</file>
 <file>pictures/areaHeight.png</file>
@@ -9,6 +8,7 @@
 <file>pictures/areaY.png</file>
 <file>pictures/community.png</file>
 <file>pictures/cursor.png</file>
+<file>pictures/extension.png</file>
 <file>pictures/farbeimer-gelb.png</file>
 <file>pictures/farbeimer-gruen.png</file>
 <file>pictures/farbeimer-rot.png</file>
@@ -60,6 +60,7 @@
 <file>language/vokoscreen_it_CH.qm</file>
 <file>language/vokoscreen_it_IT.qm</file>
 <file>language/vokoscreen_ja_JP.qm</file>
+<file>language/vokoscreen_lt.qm</file>
 <file>language/vokoscreen_nb.qm</file>
 <file>language/vokoscreen_nl_NL.qm</file>
 <file>language/vokoscreen_no.qm</file>
