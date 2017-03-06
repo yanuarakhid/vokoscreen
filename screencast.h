@@ -258,6 +258,9 @@ private:
     
     QvkFormatsAndCodecs *formatsAndCodecs;
     QString getFfmpegVersionFullOutput();
+    
+    void makeAndSetValidIcon( int index );
+
 
 signals:
 

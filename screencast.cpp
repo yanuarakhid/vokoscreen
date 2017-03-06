@@ -70,7 +70,7 @@ screencast::screencast()
     QvkAlsaDevice inBox;
     qDebug() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
     qDebug() << "[vokoscreen] current icon-theme:" << QIcon::themeName();
-    qDebug() << "[vokoscreen] Qt-PluginsPath:     " << QLibraryInfo::location(QLibraryInfo::PluginsPath);
+    qDebug() << "[vokoscreen] Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
     qDebug() << "[vokoscreen] Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
     qDebug() << "[vokoscreen] Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
     
@@ -83,6 +83,7 @@ screencast::screencast()
 
     // Tab 1 Screen options ***************************************************
     myUi.tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
+    makeAndSetValidIcon( 0 );
 
     connect( myUi.FullScreenRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
     connect( myUi.WindowRadioButton, SIGNAL( clicked() ), SLOT( clickedScreenSize() ) );
@@ -181,6 +182,8 @@ screencast::screencast()
     
     // Tab 2 Audio options ****************************************
     myUi.tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
+    makeAndSetValidIcon( 1 );
+
     connect( myUi.AudioOnOffCheckbox,  SIGNAL( stateChanged( int ) ), SLOT( stateChangedAudio( int ) ) );
     connect( myUi.AudioOnOffCheckbox,  SIGNAL( stateChanged( int ) ), SLOT( AudioOff( int ) ) );
     
@@ -203,7 +206,8 @@ screencast::screencast()
     
     // Tab 3 Video options **************************************************
     myUi.tabWidget->setTabIcon( 2, QIcon::fromTheme( "applications-multimedia", QIcon( ":/pictures/videooptionen.png" ) ) );
-    
+    makeAndSetValidIcon( 2 );
+
     connect( myUi.VideocodecComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
 
     connect( myUi.VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ),          this, SLOT( currentIndexChangedFormat( int ) ) );
@@ -226,6 +230,7 @@ screencast::screencast()
     
     // Tab 4 Miscellaneous options **************************************************
     myUi.tabWidget->setTabIcon( 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
+    makeAndSetValidIcon( 3 );
     
     connect( myUi.SaveVideoPathPushButton, SIGNAL(clicked() ), SLOT( saveVideoPath() ) );
 
@@ -253,6 +258,7 @@ screencast::screencast()
     
     // Tab 5 Webcam *******************************************************
     myUi.tabWidget->setTabIcon( 4, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
+    makeAndSetValidIcon( 4 );
     myUi.webcamCheckBox->setToolTip( "CTRL+SHIFT+F8" );
     myUi.webcamComboBox->setToolTip( tr ( "Select webcam" ) );
     myUi.mirrorCheckBox->setText( tr( "Mirrored" ) );
@@ -273,10 +279,12 @@ screencast::screencast()
 
     // Tab 6 Extensions
     myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "applications-other", QIcon( ":/pictures/extension.png" ) ) );
+    makeAndSetValidIcon( 5 );
     
 
     // Tab 7 About *********************************************************
     myUi.tabWidget->setTabIcon( 6, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
+    makeAndSetValidIcon( 6 );
     myUi.labelOpensuseBetaUrl->setOpenExternalLinks( true );
     myUi.labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Developer Homepage" ) + "</a>" );
     
@@ -1334,7 +1342,20 @@ void screencast::AudioOff( int state )
   }
   else{
     myUi.tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
+    makeAndSetValidIcon( 1 );
   }
+}
+
+/*
+ * In der run version werden die svg icons versetzt nach unten dargestellt.
+ * Dies soll das berichtigen.
+ */
+void screencast::makeAndSetValidIcon( int index )
+{
+  QIcon myIcon = myUi.tabWidget->tabIcon( index );
+  QSize size = myUi.tabWidget->iconSize();
+  QPixmap workPixmap( myIcon.pixmap( size ) );
+  myUi.tabWidget->setTabIcon( index, QIcon( workPixmap ) );
 }
 
 
