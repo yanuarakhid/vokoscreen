@@ -599,6 +599,13 @@ screencast::screencast()
    addVokoscreenExtensions();
    myUi.tabWidget->setCurrentIndex( vkSettings.getTab() );
 
+  // workDirectory setzen damit die links in about funktionieren.
+  QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
+  QFileInfo settingsPath( settings.fileName() );
+  QFile file( settingsPath.absolutePath() );
+  QString workDirectory = file.fileName();
+  QDir Dir( "" );
+  Dir.setCurrent( workDirectory );  
  }
 
 
