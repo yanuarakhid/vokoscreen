@@ -268,15 +268,7 @@ screencast::screencast()
 						myUi.radioButtonRightMiddle, myUi.radioButtonBottomMiddle, myUi.radioButtonLeftMiddle );
     (void)webcamController;
 
-    // Tab 6 shortcuts *****************************************************
-/*    myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "preferences-desktop-keyboard", QIcon( ":/pictures/shortkeys.png" ) ) );
-    myUi.toolbutton_shortcut_start_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
-    myUi.toolbutton_shortcut_stop_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
-    myUi.toolbutton_shortcut_pause_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
-    myUi.toolbutton_shortcut_magnifier_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
-    myUi.toolbutton_shortcut_webcam_standard->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
-*/
-
+    
     // Tab 6 Extensions
     myUi.tabWidget->setTabIcon( 5, QIcon::fromTheme( "applications-other", QIcon( ":/pictures/extension.png" ) ) );
     makeAndSetValidIcon( 5 );
@@ -490,22 +482,7 @@ screencast::screencast()
    exitAction->setText( tr( "Exit" ) );
    exitAction->setData( "Exit" );
 
-// Code ist für ein Menütitel bestimmt, läuft aber nicht auf opensuse 42.2. und Ubuntu 16.04
-// Funktioniert unter opensuse 13.2
-/*
-   QWidgetAction *widgetAction = new QWidgetAction( this );
-   QFont font;
-   font.setBold( true );
-   QLabel *label = new QLabel();
-   label->setFont( font );
-   label->setMinimumHeight( 20 );
-   label->setAlignment( Qt::AlignCenter );
-   label->setText( "vokoscreen" );
-   widgetAction->setDefaultWidget( label );
-*/
    SystemTrayMenu = new QMenu( this );
-//   SystemTrayMenu->addAction( widgetAction );
-//   SystemTrayMenu->addSeparator();
    SystemTrayMenu->addAction( startAction );
    SystemTrayMenu->addAction( stopAction );
    SystemTrayMenu->addAction( pauseAction );
@@ -522,27 +499,6 @@ screencast::screencast()
    SystemTrayIcon->show();
    myUi.SystrayCheckBox->setCheckState( Qt::CheckState( vkSettings.getSystray() ) );
  
-   // shortcuts
-   
-   // enable/disable all shortcuts
-/*   connect( myUi.checkBoxShortcuts, SIGNAL( stateChanged( int ) ), this, SLOT( setShortcutsOnOff( int ) ) );
-
-   QStringList shortcut_ABC_Stringlist;
-   shortcut_ABC_Stringlist << "";	
-   for( int i = 0; i < 26; ++i )
-   {
-      shortcut_ABC_Stringlist << QString( 'A' + i );
-   }
-   shortcut_ABC_Stringlist << "F1" << "F2" << "F3" << "F4" << "F5" << "F6" << "F7" << "F8" << "F9" << "F10" << "F11" << "F12";
-
-   myUi.shortcut_magnifier_ABC->addItems( shortcut_ABC_Stringlist );
-   connect( myUi.shortcut_magnifier_CTRL,  SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
-   connect( myUi.shortcut_magnifier_SHIFT, SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
-   connect( myUi.shortcut_magnifier_ALT,   SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
-   connect( myUi.shortcut_magnifier_META,  SIGNAL( stateChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
-   connect( myUi.shortcut_magnifier_ABC,   SIGNAL( currentIndexChanged( int ) ), this, SLOT( shortcut_magnifier_Changed( int ) ) );
-*/
-   // *******
 
    shortcutWebcam = new QxtGlobalShortcut( this );
    connect( shortcutWebcam, SIGNAL( activated() ), myUi.webcamCheckBox, SLOT( click() ) );
@@ -559,7 +515,6 @@ screencast::screencast()
    shortcutStop = new QxtGlobalShortcut( this );
    connect( shortcutStop, SIGNAL( activated() ), myUi.StopButton, SLOT( click() ) );
    shortcutStop->setShortcut( QKeySequence( "Ctrl+Shift+F11" ) );
-   //shortcutStop->setEnabled( false );
    
    shortcutPause = new QxtGlobalShortcut( this );
    connect( shortcutPause, SIGNAL( activated() ), myUi.PauseButton, SLOT( click() ) );
@@ -716,52 +671,6 @@ void screencast::commandLineStart()
   }
 }
 
-
-/*
-void screencast::setShortcutsOnOff( int value )
-{
-  if ( value == Qt::Checked )
-    myUi.shortcutWidget->setEnabled( true );
-
-  if ( value == Qt::Unchecked )
-   myUi.shortcutWidget->setEnabled( false );
-}
-
-
-void screencast::shortcut_magnifier_Changed( int value )
-{
-  (void) value;
-  QString shortcut;
-  
-  if ( myUi.shortcut_magnifier_CTRL->checkState() == Qt::Checked )
-    shortcut = "Ctrl";
-  
-  if ( myUi.shortcut_magnifier_SHIFT->checkState() == Qt::Checked )
-    shortcut = shortcut + "+Shift";
-    
-  if ( myUi.shortcut_magnifier_ALT->checkState() == Qt::Checked )
-    shortcut = shortcut + "+Alt";
-  
-  if ( myUi.shortcut_magnifier_META->checkState() == Qt::Checked )
-    shortcut = shortcut + "+Meta";
-  
-  shortcut = shortcut + "+" + myUi.shortcut_magnifier_ABC->currentText();
-
-  if ( shortcut.startsWith( "+" ) )
-    shortcut.remove( 0, 1 );
-
-  if ( shortcut.endsWith( "+" ) )
-    shortcut.remove( shortcut.length() - 1, 1 );
-  
-  shortcutMagnifier->setDisabled();
-  shortcutMagnifier->setShortcut( QKeySequence( shortcut ) );
-  shortcutMagnifier->setEnabled();
-
-  myUi.MagnifierCheckBox->setToolTip( shortcut );
-  
- qDebug() << "[vokoscreen] set shortcut" << shortcut;
-}
-*/
 
 void screencast::currentFormatChanged( const QString value )
 {
@@ -1059,8 +968,6 @@ void screencast::saveSettings()
   settings.beginGroup( "ShowKey" );
     settings.setValue(  "OnOff", myUi.ShowkeyCheckBox->checkState() );
   settings.endGroup();
-  
-  
 }
 
 
@@ -1139,13 +1046,6 @@ void screencast::uncheckMagnifier()
     myUi.MagnifierCheckBox->click();
 }
 
-// wird anscheinend nicht benötigt 28.02.2017
-/*
-void screencast::ShortcutPause()
-{
-  myUi.PauseButton->click();
-}
-*/
 
 void screencast::AreaOnOff()
 {
@@ -1175,7 +1075,6 @@ void screencast::searchExternalPrograms()
   else
      qDebug() << "[vokoscreen]" << "Search ffmpeg     ..... not found. Please install ffmpeg";
 
-// https://wiki.qt.io/Get-OS-name-in-Qt  
 #ifdef Q_OS_LINUX
   if ( searchProgramm("pactl") )
      qDebug() << "[vokoscreen]" << "Search pactl      ..... found Version:" << getPactlVersion();
@@ -1798,15 +1697,15 @@ void screencast::searchGIFPlayer()
     qDebug() << "[vokoscreen]" << "---Begin search GIFplayer---";
     QStringList GIFList = QStringList()  << "firefox"
                                          << "mpv"
-					 << "chromium"
-					 << "konqueror";
+                                         << "chromium"
+                                         << "konqueror";
     for ( int x = 0; x < GIFList.size(); ++x )
     {
       if ( searchProgramm( GIFList[ x ] ) == true )
       {
         qDebug() << "[vokoscreen]" << "Find GIFplayer :" << GIFList[ x ];
-	myUi.GIFplayerComboBox->addItem( GIFList.at( x ), GIFList.at( x ) );
-      }	
+        myUi.GIFplayerComboBox->addItem( GIFList.at( x ), GIFList.at( x ) );
+      }
     }
     qDebug() << "[vokoscreen]" << "---End search GIFplayer---";
     qDebug( " " );
@@ -1829,9 +1728,9 @@ void screencast::searchVideoPlayer()
                                             << "smplayer2"
                                             << "dragon"
                                             << "banshee"
-					    << "openshot"
-					    << "kdenlive"
-					    << "mpv";
+                                            << "openshot"
+                                            << "kdenlive"
+                                            << "mpv";
 
     QString playerName;
     QString resultString( qgetenv( "PATH" ) );
@@ -1845,11 +1744,11 @@ void screencast::searchVideoPlayer()
          if ( QFile::exists( playerName ) )
          {
            qDebug() << "[vokoscreen]" << "Find Videoplayer :" << playerName;
-	   QFileInfo playProg( playerName );
-	   if ( playProg.fileName() == "kdenlive" )
-	     playerName = playerName + " -i";
+           QFileInfo playProg( playerName );
+           if ( playProg.fileName() == "kdenlive" )
+             playerName = playerName + " -i";
 
-	   myUi.VideoplayerComboBox->addItem( playerList.at( x ), playerName );
+           myUi.VideoplayerComboBox->addItem( playerList.at( x ), playerName );
            break;
          }
        }
@@ -1940,10 +1839,10 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       if ( myUi.SystrayCheckBox->checkState() == Qt::Checked )
       {
         SystemTrayIcon->setIcon( QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray-record" ) ) );
-	startAction->setEnabled( false );
-	stopAction->setEnabled( true );
-	pauseAction->setEnabled( true );
-	goAction->setEnabled( false );
+        startAction->setEnabled( false );
+        stopAction->setEnabled( true );
+        pauseAction->setEnabled( true );
+        goAction->setEnabled( false );
       } 
     }
   
@@ -1967,14 +1866,14 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       if ( myUi.SystrayCheckBox->checkState() == Qt::Checked )
       {
         SystemTrayIcon->setIcon( QIcon(":/pictures/systray.png" ) );
-	startAction->setEnabled( true );
-	stopAction->setEnabled( false );
-	pauseAction->setEnabled( false );
-	goAction->setEnabled( false );
+        startAction->setEnabled( true );
+        stopAction->setEnabled( false );
+        pauseAction->setEnabled( false );
+        goAction->setEnabled( false );
       }
       
       if ( myUi.MagnifierCheckBox->isChecked() )
-	myUi.MagnifierCheckBox->click();
+        myUi.MagnifierCheckBox->click();
     }
     
     if ((newState == QProcess::NotRunning) and (pause == true) and ( myUi.PauseButton->isChecked() ))
@@ -1996,11 +1895,11 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
 
       if ( myUi.SystrayCheckBox->checkState() == Qt::Checked )
       {
-	SystemTrayIcon->setIcon( QIcon::fromTheme( "media-playback-pause", QIcon( ":/pictures/pause.png" ) ) );
-	startAction->setEnabled( false );
-	stopAction->setEnabled( false );
-	pauseAction->setEnabled( false );
-	goAction->setEnabled( true );
+        SystemTrayIcon->setIcon( QIcon::fromTheme( "media-playback-pause", QIcon( ":/pictures/pause.png" ) ) );
+        startAction->setEnabled( false );
+        stopAction->setEnabled( false );
+        pauseAction->setEnabled( false );
+        goAction->setEnabled( true );
       } 
     }
 
@@ -2024,10 +1923,10 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       if ( myUi.SystrayCheckBox->checkState() == Qt::Checked )
       {
         SystemTrayIcon->setIcon( QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray-record" ) ) );
-	startAction->setEnabled( false );
-	stopAction->setEnabled( true );
-	pauseAction->setEnabled( true );
-	goAction->setEnabled( false );
+        startAction->setEnabled( false );
+        stopAction->setEnabled( true );
+        pauseAction->setEnabled( true );
+        goAction->setEnabled( false );
       } 
     } 
       
@@ -2050,10 +1949,10 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       if ( myUi.SystrayCheckBox->checkState() == Qt::Checked )
       {
         SystemTrayIcon->setIcon( QIcon(":/pictures/systray.png" ) );
-	startAction->setEnabled( true );
-	stopAction->setEnabled( false );
-	pauseAction->setEnabled( false );
-	goAction->setEnabled( false );
+        startAction->setEnabled( true );
+        stopAction->setEnabled( false );
+        pauseAction->setEnabled( false );
+        goAction->setEnabled( false );
       } 
     }
        
@@ -2147,37 +2046,6 @@ void screencast::Pause()
     pause = true;
     if ( myUi.PauseButton->isChecked() )
     {
-      //shortcutStop->setEnabled( false );
-      windowMoveTimer->stop();
-      myUi.PauseButton->setText( tr ( "Continue" ) );
-      SystemCall->terminate();
-      SystemCall->waitForFinished();
-      QvkPulse::pulseUnloadModule();
-    }
-    else
-    {
-      QVariant aa = myUi.AlsaHwComboBox->itemData( myUi.AlsaHwComboBox->currentIndex() );
-      QvkAlsaDevice *inBox = AlsaCardList.at( aa.toInt() );
-      if ( inBox->isbusy() and myUi.AlsaRadioButton->isChecked() )
-      {
-        inBox->busyDialog( inBox->getAlsaHw(), inBox->getPurAlsaName() );
-	myUi.PauseButton->click();
-        return;
-      }
-      Countdown();
-      //shortcutStop->setEnabled( true );
-      myUi.PauseButton->setText( tr( "Pause" ) );
-      startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation() );
-    }
-  }
-  
-  
-  if ( myUi.WindowRadioButton->isChecked() )
-  {
-    pause = true;
-    if ( myUi.PauseButton->isChecked() )
-    {
-      //shortcutStop->setEnabled( false );
       windowMoveTimer->stop();
       myUi.PauseButton->setText( tr ( "Continue" ) );
       SystemCall->terminate();
@@ -2195,7 +2063,34 @@ void screencast::Pause()
         return;
       }
       Countdown();
-      //shortcutStop->setEnabled( true );
+      myUi.PauseButton->setText( tr( "Pause" ) );
+      startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation() );
+    }
+  }
+  
+  
+  if ( myUi.WindowRadioButton->isChecked() )
+  {
+    pause = true;
+    if ( myUi.PauseButton->isChecked() )
+    {
+      windowMoveTimer->stop();
+      myUi.PauseButton->setText( tr ( "Continue" ) );
+      SystemCall->terminate();
+      SystemCall->waitForFinished();
+      QvkPulse::pulseUnloadModule();
+    }
+    else
+    {
+      QVariant aa = myUi.AlsaHwComboBox->itemData( myUi.AlsaHwComboBox->currentIndex() );
+      QvkAlsaDevice *inBox = AlsaCardList.at( aa.toInt() );
+      if ( inBox->isbusy() and myUi.AlsaRadioButton->isChecked() )
+      {
+        inBox->busyDialog( inBox->getAlsaHw(), inBox->getPurAlsaName() );
+        myUi.PauseButton->click();
+        return;
+      }
+      Countdown();
       myUi.PauseButton->setText( tr( "Pause" ) );
       newMovedXYcoordinates();
       startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation() );
@@ -2222,7 +2117,7 @@ void screencast::play()
   // --------------------------
   
   if ( myUi.MagnifierCheckBox->isChecked() )
-	myUi.MagnifierCheckBox->click();
+    myUi.MagnifierCheckBox->click();
   
   if ( myUi.VideoplayerComboBox->count() == 0 )
   {
@@ -2263,37 +2158,10 @@ void screencast::play()
   playerAndPath.append( "\"" );
   qDebug() << "[vokoscreen] play video: " << playerAndPath;
 
-  // Dieser Part ist das Original
-/*  SystemCall->startDetached( playerAndPath );
-  SystemCall->close();
-*/
-  // Problem mit vlc und Qt5 "vokoscreen-with-libs"
-  // Test:
-  // Kopiere /usr/bin/vlc nach .
-  // mit qt.conf startet vlc nicht, ohne qt.conf startet vlc.
-
-  // Erster Part zum testen wo der Fehler liegt unter "vokoscreen-with-libs"
-  // Beim Auruf von VLC wird dieser nicht gestartet, er kann den plugin Pfad zu xcb nicht finden
-  // Siehe Ausgabe von qDebug()
   SystemCall->start( playerAndPath );
   SystemCall->waitForFinished( 3000 );
   QString output = SystemCall->readAllStandardError();
   qDebug() << output;
-
-/*
-  // Zweiter Part zum testen wo der Fehler liegt unter "vokoscreen-with-libs"
-  SystemCall->start( "strace /usr/bin/vlc" );
-  SystemCall->waitForFinished( 3000 );
-  QString output = SystemCall->readAllStandardError();
-  qDebug() << output;
-*/
-/*
-  // Dritter Part zum testen wo der Fehler liegt unter "vokoscreen-with-libs"
-  SystemCall->start( "env" );
-  SystemCall->waitForFinished( 3000 );
-  QString output = SystemCall->readAllStandardOutput();
-  qDebug() << output;
-*/
 }
 
 
@@ -2621,8 +2489,6 @@ QString screencast::x264Lossless()
 void screencast::record()
 {
   Countdown();
-  //shortcutStart->setEnabled( false );
-  //shortcutStop->setEnabled( true );
   if ( myUi.MinimizedCheckBox->checkState() == Qt::Checked )
   {
     WindowMinimized();
@@ -2814,18 +2680,11 @@ void screencast::startRecord( QString RecordPathName )
   SystemCall->start( ffmpegString + RecordPathName );
 
   beginTime  = QDateTime::currentDateTime();
-/*    foreach (QWidget *widget, QApplication::topLevelWidgets()) {
-            qDebug() << widget->title();
-    }
-    */
 }
 
 
 void screencast::Stop()
 {
-  //shortcutStart->setEnabled( true );
-  //shortcutStop->setEnabled( false );
-
   if ( SystemCall->state() == QProcess::Running )
   {
     SystemCall->terminate();
@@ -2872,7 +2731,6 @@ void screencast::Stop()
       }
     file.close();
 
-//    QString mergeString = myUi.RecorderLineEdit->displayText() + " -report -safe 0 -f concat -i " + mergeFile + " -c copy " + PathMoviesLocation() + QDir::separator() + nameInMoviesLocation;
     QString mergeString = myUi.RecorderLineEdit->displayText() + " -report -safe 0 -f concat -i " + mergeFile + " -c copy " + moviePath + QDir::separator() + nameInMoviesLocation;
     SystemCall->start( mergeString );
     SystemCall->waitForFinished(8000);
@@ -2887,7 +2745,6 @@ void screencast::Stop()
    else    
   {
     QString FileInTemp = PathTempLocation() + QDir::separator() + nameInMoviesLocation;
-//    QFile::copy ( FileInTemp, PathMoviesLocation() + QDir::separator() + nameInMoviesLocation );
     QFile::copy ( FileInTemp, moviePath + QDir::separator() + nameInMoviesLocation );
     QFile::remove ( FileInTemp );
   }
