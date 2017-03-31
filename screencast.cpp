@@ -677,10 +677,10 @@ void screencast::currentFormatChanged( const QString value )
    /*
     * Jedes Format kann nur mit bestimmte Codecs umgehen
     */
-   QStringList MKV_videoCodecList = ( QStringList() << "libx264" << "mpeg4" << "huffyuv");
+   QStringList MKV_videoCodecList = ( QStringList() << "libx264" << "libx265" << "mpeg4" << "huffyuv");
    QStringList MKV_AudioCodecLIst = ( QStringList() << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac" );
    
-   QStringList MP4_videoCodecList = ( QStringList() << "libx264" << "mpeg4");
+   QStringList MP4_videoCodecList = ( QStringList() << "libx264" << "libx265" << "mpeg4");
    QStringList MP4_AudioCodecList = ( QStringList() << "libmp3lame" << "libvorbis" << "libvo_aacenc" << "aac");
 
    // https://de.wikipedia.org/wiki/QuickTime
@@ -2590,7 +2590,7 @@ void screencast::record()
   // https://trac.ffmpeg.org/wiki/Encode/H.265
   if ( myVcodec == "libx265" )
   {
-    myVcodec = "libx265 -preset ultrafast -qp 0";//-x265-params crf=20";
+    myVcodec = "libx265 -preset veryfast -x265-params crf=20";
   }  
   
   // Number of pixels must be divisible by two
