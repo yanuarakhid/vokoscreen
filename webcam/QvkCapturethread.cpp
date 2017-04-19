@@ -94,9 +94,9 @@ void CaptureThread::run() {
                   emit newPicture( myImage ); 
 
 		free(asil);
-		if (delay>0) {
-			this->msleep(delay);
-		}
+//		if (delay>0) {
+//			this->msleep(delay);
+//		}
 		xioctl(fd, VIDIOC_QBUF, &buf);
 		di++;
 		mutex.unlock();
@@ -210,12 +210,12 @@ int CaptureThread::start( QString device )
 	dev_name = device;
 	width    = 640;
 	height   = 480;
-	fps      = 25;
+//	fps      = 25;
 	
-	if ( fps > 0 )
-          delay = 1000/fps;
-	else 
-	  delay = 0;
+//	if ( fps > 0 )
+//          delay = 1000/fps;
+//	else 
+//	  delay = 0;
 
 	// open webcam device node
 	fd = v4l2_open(dev_name.toStdString().c_str(), O_RDWR | O_NONBLOCK, 0);
