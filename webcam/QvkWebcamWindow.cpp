@@ -7,9 +7,17 @@ QvkWebcamWindow::QvkWebcamWindow()
   // Es werden die Abmaße des Bildes in der conf abgespeichert, also ohne Rahmen
   
   vkSettings.readAll();
-  
-  setWindowTitle( "vokoscreen webcam");
+
   setToolTip( tr( "Right click for menu" ) );
+
+  if ( vkSettings.isVokoscreenWithLibs() == true )
+  {
+    setWindowTitle( vkSettings.getProgName() + " " + "webcam" + " " + vkSettings.getVersion() + " " + "RUN-Version");
+  }
+  else
+  {
+    setWindowTitle( vkSettings.getProgName() + " " + "webcam" + " " + vkSettings.getVersion() );
+  }
 
   QIcon icon;
   icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
