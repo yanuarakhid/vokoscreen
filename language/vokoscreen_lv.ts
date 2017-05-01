@@ -1,25 +1,25 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ast" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="lv" version="2.1">
 <context>
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>El preséu ta ocupáu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Name</source>
-        <translation>Nome</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Desconocíu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Device</source>
-        <translation>Preséu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Used by</source>
-        <translation>Usáu por</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -48,26 +48,26 @@
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Dunviar per corréu&apos;l vidéu caberu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Dunviar per corréu ún o más videos esbillaos</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send</source>
-        <translation>Dunviar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Encaboxar</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>Por favor, instala un reproductor de videu</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -85,11 +85,11 @@
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Alcuentres el vidéu como axuntu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Esbilla unu o más ficheros</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -107,241 +107,241 @@
     <name>QvkWebcamWindow</name>
     <message>
         <source>Border</source>
-        <translation>Berbesu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close</source>
-        <translation>Zarrar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation>Amosar sobro pantalla completa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation>Clic drechu pal menú</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>User-defined</source>
-        <translation>Definíu pol usuariu</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>WebcamBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>El preséu ta ocupáu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Name</source>
-        <translation>Nome</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Device</source>
-        <translation>Preséu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Used by</source>
-        <translation>Usáu por</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Desconocíu</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Window</source>
-        <translation>Ventana</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Area</source>
-        <translation>Fastera</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lente</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Audiu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Alsa</source>
-        <translation>ALSA</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pulse</source>
-        <translation>Pulse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Default</source>
-        <translation>Por defeutu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Codec</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Nun grabar el mur</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Camín del vidéu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Player</source>
-        <translation>Reproductor</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Vokoscreen minimizáu cuando la grabación entame</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Start</source>
-        <translation>Entamar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Aparar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Posar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send</source>
-        <translation>Dunviar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Tiempu de grabación</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Size in KB</source>
-        <translation>Grandor en KB</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Grandor de pantalla al grabar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formatu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Axustar FPS</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Abrir direutoriu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Cuenta atrás</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>Reproducir el vidéu caberu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>Dunviar vidéu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Esbilla ún o más preseos</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Cuadros per segundu d&apos;anguaño</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Páxina d&apos;aniciu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Support</source>
-        <translation>Sofitu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Developer</source>
-        <translation>Desendolcador</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Tornes</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Códigu fonte</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Amosar na bandexa&apos;l sistema</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>New version available</source>
-        <translation>Versión nueva disponible</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Codec vidéu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Codec soníu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Webcam</source>
-        <translation>Cámara web</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select webcam</source>
-        <translation>Esbillar cámara web</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mirrored</source>
-        <translation>Espeyáu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Display</source>
-        <translation>Pantalla</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>All Displays</source>
-        <translation>Toles pantalles</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation>Páxina web del desendolcador</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recorder</source>
-        <translation>Grabador</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation>Esbilar grabador</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hide window</source>

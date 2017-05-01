@@ -371,5 +371,13 @@
         <source>Continue</source>
         <translation>Devam</translation>
     </message>
+    <message>
+        <source>Extensions</source>
+        <translation>Eklentiler</translation>
+    </message>
+    <message>
+        <source>No extensions installed</source>
+        <translation>Yüklü eklenti yok</translation>
+    </message>
 </context>
 </TS>

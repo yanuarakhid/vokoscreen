@@ -41,7 +41,7 @@
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation>Mostra els ajustaments dels clic</translation>
+        <translation>Mostra els ajustaments dels clics</translation>
     </message>
 </context>
 <context>
@@ -370,6 +370,14 @@
     <message>
         <source>Continue</source>
         <translation>Continua</translation>
+    </message>
+    <message>
+        <source>Extensions</source>
+        <translation>Extensions</translation>
+    </message>
+    <message>
+        <source>No extensions installed</source>
+        <translation>No hi ha instal·lada cap extensió</translation>
     </message>
 </context>
 </TS>

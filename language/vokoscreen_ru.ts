@@ -26,22 +26,22 @@
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки области</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished"/>
+        <translation>ОК</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Отменить</translation>
     </message>
 </context>
 <context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation type="unfinished"/>
+        <translation>Показать Кнопку Параметры</translation>
     </message>
 </context>
 <context>
@@ -74,11 +74,11 @@
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>Информация</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>vovoscreen может быть запущена только одна одновременно</translation>
     </message>
 </context>
 <context>
@@ -96,11 +96,11 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>двойной клик мышью чтобы развернуть</translation>
     </message>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки Области</translation>
     </message>
 </context>
 <context>
@@ -345,31 +345,39 @@
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>Скрыть окно</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Выход</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation type="unfinished"/>
+        <translation>Показать окно</translation>
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation>Без потерь</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen запущен свернутым</translation>
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation>Сбросить все настройки при следующем запуске</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"/>
+        <translation>Продолжить</translation>
+    </message>
+    <message>
+        <source>Extensions</source>
+        <translation>Расширения</translation>
+    </message>
+    <message>
+        <source>No extensions installed</source>
+        <translation>Расширений не установлено</translation>
     </message>
 </context>
 </TS>

@@ -371,5 +371,13 @@
         <source>Continue</source>
         <translation>Tęsti</translation>
     </message>
+    <message>
+        <source>Extensions</source>
+        <translation>Plėtiniai</translation>
+    </message>
+    <message>
+        <source>No extensions installed</source>
+        <translation>Nėra įdiegtų plėtinių</translation>
+    </message>
 </context>
 </TS>

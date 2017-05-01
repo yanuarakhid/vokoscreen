@@ -371,5 +371,13 @@
         <source>Continue</source>
         <translation>واصل</translation>
     </message>
+    <message>
+        <source>Extensions</source>
+        <translation>ملحقات</translation>
+    </message>
+    <message>
+        <source>No extensions installed</source>
+        <translation>لا ملحقات مثبتة</translation>
+    </message>
 </context>
 </TS>

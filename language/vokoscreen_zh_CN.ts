@@ -26,15 +26,15 @@
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>区域设置</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished"/>
+        <translation>确认</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
@@ -74,11 +74,11 @@
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>信息</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>只能启动一个vokoscreen</translation>
     </message>
 </context>
 <context>
@@ -96,11 +96,11 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>双击至最大化</translation>
     </message>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>区域设置</translation>
     </message>
 </context>
 <context>
@@ -361,15 +361,23 @@
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation type="unfinished"/>
+        <translation>最小化模式启动Vokoscreen</translation>
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation>下次启动时重置所有设置</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"/>
+        <translation>继续</translation>
+    </message>
+    <message>
+        <source>Extensions</source>
+        <translation>插件</translation>
+    </message>
+    <message>
+        <source>No extensions installed</source>
+        <translation>未安装任何插件</translation>
     </message>
 </context>
 </TS>

@@ -371,5 +371,13 @@
         <source>Continue</source>
         <translation>Continuar</translation>
     </message>
+    <message>
+        <source>Extensions</source>
+        <translation>Extensiones</translation>
+    </message>
+    <message>
+        <source>No extensions installed</source>
+        <translation>No hay extensiones instaladas</translation>
+    </message>
 </context>
 </TS>
