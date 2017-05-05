@@ -30,11 +30,11 @@
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished"/>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuler</translation>
     </message>
 </context>
 <context>
@@ -74,11 +74,11 @@
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>Information</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen ne peut être démarré qu&apos;une seule fois</translation>
     </message>
 </context>
 <context>
@@ -361,23 +361,23 @@
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation type="unfinished"/>
+        <translation>Démarrer vokoscreen minimisé</translation>
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation>Réinitialiser tous les paramètres au prochain démarrage</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"/>
+        <translation>Continuer</translation>
     </message>
     <message>
         <source>Extensions</source>
-        <translation type="unfinished"/>
+        <translation>Extensions</translation>
     </message>
     <message>
         <source>No extensions installed</source>
-        <translation type="unfinished"/>
+        <translation>Aucune extension installée</translation>
     </message>
 </context>
 </TS>
