@@ -36,6 +36,7 @@ using namespace std;
     myLog->outputMessage( type, context, msg );
   }
 
+
 screencast::screencast()
 {
     vkSettings.readAll();
@@ -158,7 +159,7 @@ screencast::screencast()
     statusBarLabelCodec->setToolTip( tr( "Codec" ) );
     
     statusBarLabelFormat = new QLabel();
-    statusBarLabelFormat->setText( myUi.VideoFormatComboBox->currentText() );
+    statusBarLabelFormat->setText( myUi.VideoContainerComboBox->currentText() );
     statusBarLabelFormat->setToolTip( tr( "Format" ) );
 
     statusBarLabelAudio = new QLabel();
@@ -210,8 +211,8 @@ screencast::screencast()
 
     connect( myUi.VideocodecComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
 
-    connect( myUi.VideoFormatComboBox, SIGNAL( currentIndexChanged( int ) ),          this, SLOT( currentIndexChangedFormat( int ) ) );
-    connect( myUi.VideoFormatComboBox, SIGNAL( currentTextChanged( const QString ) ), this, SLOT( currentFormatChanged( const QString  ) ) );
+    connect( myUi.VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ),          this, SLOT( currentIndexChangedFormat( int ) ) );
+    connect( myUi.VideoContainerComboBox, SIGNAL( currentTextChanged( const QString ) ), this, SLOT( currentFormatChanged( const QString  ) ) );
 
     myUi.FrameStandardButton->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.FrameStandardButton->setToolTip( tr( "Default" ) );
@@ -439,12 +440,6 @@ screencast::screencast()
     connect( myUi.FullScreenRadioButton, SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
     connect( myUi.WindowRadioButton,     SIGNAL( clicked() ), SLOT( AreaOnOff() ) );
 
-
-    // Clean vokoscreen temp
-    QDir dir( PathTempLocation() );
-    QStringList stringList = dir.entryList( QDir::Files, QDir::Time | QDir::Reversed );
-    for ( int i = 0; i < stringList.size(); ++i )
-      dir.remove( PathTempLocation().append( QDir::separator() ).append( stringList.at( i ) ) );
     
    AudioOnOff();
    QvkPulse::pulseUnloadModule();
@@ -569,6 +564,26 @@ screencast::~screencast()
 }
 
 
+void screencast::debugCommandInvocation(const QString &description, const QString &program,
+                                        const QStringList &arguments, const QString &suffix) {
+	QDebug debug(qDebug());
+	
+	debug.noquote();
+	debug << "[vokoscreen]" << (description + ":");
+	
+	debug.quote();
+	debug << program;
+	for(QString argument : arguments) {
+		debug << argument;
+	}
+	
+	debug.noquote();
+	if(suffix.length() > 0) {
+		debug << suffix;
+	}
+}
+
+
 void screencast::addVokoscreenExtensions()
 {
   QString vokoscreenExtensionsPath = QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) + QDir::separator() + "vokoscreen_extensions" + QDir::separator();
@@ -678,10 +693,10 @@ void screencast::currentFormatChanged( const QString value )
     * Jedes Format kann nur mit bestimmte Codecs umgehen
     */
    QStringList MKV_videoCodecList = ( QStringList() << "libx264" << "libx265" << "mpeg4" << "huffyuv");
-   QStringList MKV_AudioCodecLIst = ( QStringList() << "libvorbis" << "libmp3lame" << "pcm_s16le" << "aac" );
+   QStringList MKV_AudioCodecLIst = ( QStringList() << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac" );
    
    QStringList MP4_videoCodecList = ( QStringList() << "libx264" << "libx265" << "mpeg4");
-   QStringList MP4_AudioCodecList = ( QStringList() << "libvorbis" << "libmp3lame" <<  "aac");
+   QStringList MP4_AudioCodecList = ( QStringList() << "libmp3lame" << "libvorbis" << "libvo_aacenc" << "aac");
 
    // https://de.wikipedia.org/wiki/QuickTime
    QStringList MOV_videoCodecList = ( QStringList() << "libx264" << "mpeg4" );
@@ -787,7 +802,7 @@ void screencast::searchVideoCodec( QStringList videoCodecList )
 void screencast::SearchFormats()
 {
    qDebug() << "[vokoscreen] ---Begin search formats---";
-   myUi.VideoFormatComboBox->clear();
+   myUi.VideoContainerComboBox->clear();
    QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" << "mov" );
    QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" << "mov" );
    for ( int i = 0; i < formatList.count(); i++ )
@@ -795,17 +810,17 @@ void screencast::SearchFormats()
      if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
      {
        qDebug() << "[vokoscreen] find Format" << formatList[ i ];
-       myUi.VideoFormatComboBox->addItem( formatList[ i ], userDataList[ i ] );
+       myUi.VideoContainerComboBox->addItem( formatList[ i ], userDataList[ i ] );
      }
      else
        qDebug() << "[vokoscreen] not found Format" << formatList[ i ];
    }
    // Fallback
-   int x = myUi.VideoFormatComboBox->findText( vkSettings.getVideoContainer() );
+   int x = myUi.VideoContainerComboBox->findText( vkSettings.getVideoContainer() );
    if ( x == -1 )
-      myUi.VideoFormatComboBox->setCurrentIndex( 0 );
+      myUi.VideoContainerComboBox->setCurrentIndex( 0 );
    else
-      myUi.VideoFormatComboBox->setCurrentIndex( x );
+      myUi.VideoContainerComboBox->setCurrentIndex( x );
    qDebug() << "[vokoscreen] ---End search formats---";
    qDebug( " " );
 }
@@ -917,7 +932,7 @@ void screencast::saveSettings()
     settings.setValue( "Videocodec", myUi.VideocodecComboBox->currentText() );
     settings.setValue( "X264Lossless", myUi.x264LosslessCheckBox->checkState() );
     settings.setValue( "Audiocodec", myUi.AudiocodecComboBox->currentText() );
-    settings.setValue( "Format", myUi.VideoFormatComboBox->currentText() );
+    settings.setValue( "Format", myUi.VideoContainerComboBox->currentText() );
     settings.setValue( "HideMouse", myUi.HideMouseCheckbox->checkState() );    
   settings.endGroup();
   
@@ -1138,7 +1153,7 @@ bool screencast::searchProgramm( QString ProgName )
 QString screencast::getFfmpegVersion()
 {
   QProcess Process;
-  Process.start( vkSettings.getRecorder() + " -version");
+  Process.start(vkSettings.getRecorder(), QStringList("-version"));
   Process.waitForFinished();
   QString ffmpegversion = Process.readAllStandardOutput();
   Process.close();
@@ -1158,7 +1173,7 @@ QString screencast::getFfmpegVersion()
 QString screencast::getFfmpegVersionFullOutput()
 {
   QProcess Process;
-  Process.start( myUi.RecorderLineEdit->displayText() + " -version");
+  Process.start(myUi.RecorderLineEdit->displayText(), QStringList("-version"));
   Process.waitForFinished();
   QString ffmpegversion = Process.readAllStandardOutput();
   Process.close();
@@ -1169,7 +1184,7 @@ QString screencast::getFfmpegVersionFullOutput()
 QString screencast::getPactlVersion()
 {
   QProcess Process;
-  Process.start("pactl --version");
+  Process.start("pactl", QStringList("--version"));
   Process.waitForFinished();
   QString pactlVersion = Process.readAllStandardOutput();
   Process.close();
@@ -1188,7 +1203,7 @@ QString screencast::getPactlVersion()
 QString screencast::getXdgemailVersion()
 {
   QProcess Process;
-  Process.start("xdg-email --version");
+  Process.start("xdg-email", QStringList("--version"));
   Process.waitForFinished();
   QString xdgemailVersion = Process.readAllStandardOutput();
   Process.close();
@@ -1207,7 +1222,7 @@ QString screencast::getXdgemailVersion()
 QString screencast::getLsofVersion()
 {
   QProcess Process;
-  Process.start("lsof -v");
+  Process.start("lsof", QStringList("-v"));
   Process.waitForFinished();
   QString lsofVersion = Process.readAllStandardError();
   Process.close();
@@ -1424,7 +1439,7 @@ void screencast::windowMove()
       newMovedXYcoordinates();
       myUi.PauseButton->setChecked( false );  
       myUi.PauseButton->setText( tr ( "Pause" ) );
-      startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation() );
+      startRecord((PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation()), deltaXMove, deltaYMove);
       return;
     }
   }
@@ -1454,19 +1469,6 @@ void screencast::newMovedXYcoordinates()
       int yy = y.toInt();
       if ( yy < 0 )
         y = "0";
-      
-      QStringList result = ffmpegString.split( DISPLAY );
-      QString str1 = result[ 0 ];
-      QString str2 = result[ 1 ];
-      result.clear();
-      result = str2.split( " " );
-      result[ 0 ] = DISPLAY + "+" + x + "," + y;
-      
-      str2 = "";
-
-      for ( int i = 0; i < result.count(); i++ )
-        str2.append( result.at( i ) + " " );
-      ffmpegString = str1 + str2.trimmed() + " ";
       
       deltaXMove = x;
       deltaYMove = y; 
@@ -1576,8 +1578,8 @@ void screencast::currentIndexChangedCodec( int index )
 void screencast::currentIndexChangedFormat( int index )
 {
   (void)index;
-  statusBarLabelFormat->setText( myUi.VideoFormatComboBox->currentText() );
-  if ( myUi.VideoFormatComboBox->currentText() == "gif" )
+  statusBarLabelFormat->setText( myUi.VideoContainerComboBox->currentText() );
+  if ( myUi.VideoContainerComboBox->currentText() == "gif" )
   {
     myUi.GIFplayerComboBox->show();
     myUi.VideoplayerComboBox->hide();
@@ -1669,7 +1671,7 @@ void screencast::clickedScreenSize()
 void screencast::setVideocodecStandardComboBox()
 {
   myUi.VideocodecComboBox->setCurrentIndex( myUi.VideocodecComboBox->findText( "libx264", Qt::MatchExactly ) );
-  myUi.VideoFormatComboBox->setCurrentIndex( myUi.VideoFormatComboBox->findText( "mkv", Qt::MatchExactly ) );
+  myUi.VideoContainerComboBox->setCurrentIndex( myUi.VideoContainerComboBox->findText( "mkv", Qt::MatchExactly ) );
   myUi.x264LosslessCheckBox->setChecked( false );
 }
 
@@ -1679,7 +1681,7 @@ void screencast::setVideocodecStandardComboBox()
  */
 void screencast::setAudiocodecStandardComboBox()
 {
-  myUi.AudiocodecComboBox ->setCurrentIndex( myUi.AudiocodecComboBox->findText( "libvorbis", Qt::MatchExactly )  );
+  myUi.AudiocodecComboBox ->setCurrentIndex( myUi.AudiocodecComboBox->findText( "libmp3lame", Qt::MatchExactly )  );
 }
 
 
@@ -1958,13 +1960,13 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
        
     if ( newState == QProcess::Running )
     {
-      qDebug() << "[vokoscreen]" << myUi.RecorderLineEdit->displayText() << "is running and is ready for reading and writing";
+      qDebug() << "[vokoscreen]" << ffmpegProgram << "is running and is ready for reading and writing";
       qDebug( " " );
     }
    
     if ( newState == QProcess::NotRunning )
     {
-      qDebug() << "[vokoscreen]" << myUi.RecorderLineEdit->displayText() << "is not running";
+      qDebug() << "[vokoscreen]" << ffmpegProgram << "is not running";
       qDebug( " " );
 
       //Enables the customarea rectangle again. (Is diabled in record() )
@@ -1974,7 +1976,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       }
     }
 
-    if ( ( myUi.VideocodecComboBox->currentText() == "gif" ) or ( myUi.VideoFormatComboBox->currentText() == "gif" ) )
+    if ( ( myUi.VideocodecComboBox->currentText() == "gif" ) or ( myUi.VideoContainerComboBox->currentText() == "gif" ) )
     {
       myUi.PauseButton->setEnabled( false );
       pauseAction->setEnabled( false );
@@ -2015,7 +2017,7 @@ void screencast::error( QProcess::ProcessError error )
     for ( int i = 0; i < stringList.count(); ++i )
       QFile::copy( workDirectory + QDir::separator() + stringList[ i ], workDirectory + QDir::separator() + "crashed" + QDir::separator() + stringList[ i ]);
     
-    QString crashedtext = "[vokoscreen] " + myUi.RecorderLineEdit->displayText() + " is crashed on ";
+    QString crashedtext = "[vokoscreen] " + ffmpegProgram + " is crashed on ";
     QDateTime dateTime = QDateTime::currentDateTime();
     QString time = dateTime.toString( "hh:mm" );
     QString day = dateTime.toString( "dddd" );
@@ -2064,7 +2066,7 @@ void screencast::Pause()
       }
       Countdown();
       myUi.PauseButton->setText( tr( "Pause" ) );
-      startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation() );
+      startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation(), deltaX, deltaY );
     }
   }
   
@@ -2093,7 +2095,7 @@ void screencast::Pause()
       Countdown();
       myUi.PauseButton->setText( tr( "Pause" ) );
       newMovedXYcoordinates();
-      startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation() );
+      startRecord( PathTempLocation() + QDir::separator() + newPauseNameInTmpLocation(), deltaXMove, deltaYMove );
       windowMoveTimer->start();
     }
   }
@@ -2149,16 +2151,10 @@ void screencast::play()
   }
     
   QProcess *SystemCall = new QProcess();
-  QString playerAndPath = player;
-  playerAndPath.append( " " );
-  playerAndPath.append( "\"" );
-  playerAndPath.append( PathMoviesLocation() );
-  playerAndPath.append( QDir::separator() );
-  playerAndPath.append( List.at( 0 ) );
-  playerAndPath.append( "\"" );
-  qDebug() << "[vokoscreen] play video: " << playerAndPath;
+  QString path = PathMoviesLocation() + QDir::separator() + List.at(0);
+  qDebug() << "[vokoscreen] play video: " << player << path;
 
-  SystemCall->start( playerAndPath );
+  SystemCall->start(player, QStringList(path));
   SystemCall->waitForFinished( 3000 );
   QString output = SystemCall->readAllStandardError();
   qDebug() << output;
@@ -2296,15 +2292,14 @@ void screencast::send()
 
 QString screencast::PathTempLocation()
 {
-  QString tmpName = vkSettings.getProgName() + "-" + qgetenv( "USER" );  
+  QString tmpName = "." + vkSettings.getProgName() + "-recording";  
 
-  QString tempPathProg = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + QDir::separator() + tmpName;
+  QString tempPathProg = moviePath + QDir::separator() + tmpName;
   
   QDir dirTempPathProg( tempPathProg );
   if ( not dirTempPathProg.exists() )
   {
-      QString tempPath = QStandardPaths::writableLocation( QStandardPaths::TempLocation );
-      QDir dirTempPath( tempPath );
+      QDir dirTempPath( moviePath );
       dirTempPath.mkdir( tmpName );
   }
   return tempPathProg;  
@@ -2316,7 +2311,7 @@ QString screencast::PathTempLocation()
  */
 QString screencast::NameInMoviesLocation()
 {
-  return "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + myUi.VideoFormatComboBox->currentText();
+  return "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + myUi.VideoContainerComboBox->currentText();
 }
 
 
@@ -2326,7 +2321,7 @@ QString screencast::NameInMoviesLocation()
 QString screencast::newPauseNameInTmpLocation()
 {
   QString myFilename = "screencast-pause";
-  QString myFilenameExtension = "." + myUi.VideoFormatComboBox->currentText();
+  QString myFilenameExtension = "." + myUi.VideoContainerComboBox->currentText();
   QString myName = PathTempLocation() + QDir::separator() + myFilename + myFilenameExtension;
 
   QFile *myFile = new QFile( myName );
@@ -2353,9 +2348,9 @@ QString screencast::getPauseNameInTmpLocation()
   return pauseName;
 }
 
-QString screencast::myAlsa()
+QStringList screencast::myAlsa()
 {
-  QString value;
+  QStringList value;
   if ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked )
   {
     if ( myUi.AlsaRadioButton->isChecked() )  
@@ -2363,74 +2358,74 @@ QString screencast::myAlsa()
       QVariant aa = myUi.AlsaHwComboBox->itemData( myUi.AlsaHwComboBox->currentIndex() );
       QvkAlsaDevice *inBox = AlsaCardList.at( aa.toInt() );
       if ( myUi.AlsaHwComboBox->currentIndex() > -1 )
-        value = "-f alsa -ac " + inBox->getChannel() + " -i " + inBox->getAlsaHw() + " ";
-      else
-        value = "";
+      {
+        value << "-f"  << "alsa";
+        value << "-ac" << inBox->getChannel();
+        value << "-i"  << inBox->getAlsaHw();
+      }
     }
-    
-    if ( myUi.PulseDeviceRadioButton->isChecked() )      
+    else if ( myUi.PulseDeviceRadioButton->isChecked() )      
     {
       QCheckBox *box;
       int counter = 0;
       QList<QCheckBox *> listQFrame = myUi.scrollAreaWidgetContents->findChildren<QCheckBox *>();
       
       if ( listQFrame.count() > 0 )
+      {
         for ( int i = 0; i < listQFrame.count(); i++ )
         {
           box = listQFrame.at( i );
-          if ( box->checkState() == Qt::Checked  )
+          if (box->checkState() == Qt::Checked)
+          {
             counter++;
+          }
         }
 
         if (counter > 1)
         { 
-          value = "-f pulse -i vokoscreenMix.monitor";
+          value << "-f" << "pulse";
+          value << "-i" << "vokoscreenMix.monitor";
         }
         else if ( counter > 0 )
         {
           for ( int i = 0; i < listQFrame.count(); i++ )
           {
             box = listQFrame.at( i );
-            if ( box->checkState() == Qt::Checked  )
-              value = "-f pulse -name vokoscreen -i " + box->accessibleName();
+            if (box->checkState() == Qt::Checked)
+            {
+              value << "-f" << "pulse";
+              value << "-name" << "vokoscreen";
+              value << "-i" << box->accessibleName();
+            }
           }
         }
+      }
     }
   }
-  else
-      value = "";
 
   return value;
 }
 
 
-QString screencast::myAcodec()
+QStringList screencast::myAcodec()
 {
+  QStringList result;
   if ( ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( myUi.AlsaRadioButton->isChecked() ) and ( myUi.AlsaHwComboBox->currentText() > "" ) )
   {
     if ( myUi.AudiocodecComboBox->itemData( myUi.AudiocodecComboBox->currentIndex() ) == true )
-     return "-c:a " + myUi.AudiocodecComboBox->currentText() + " -strict experimental";
+      result << "-c:a" << myUi.AudiocodecComboBox->currentText() << "-strict" << "experimental";
     else
-     return "-c:a " + myUi.AudiocodecComboBox->currentText();
+      result << "-c:a" << myUi.AudiocodecComboBox->currentText();
   }
   if ( ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) and ( myUi.PulseDeviceRadioButton->isChecked() ) and ( QvkPulse::myPulseDevice( myUi.scrollAreaWidgetContents ) > "" ) )
   {
     if ( myUi.AudiocodecComboBox->itemData( myUi.AudiocodecComboBox->currentIndex() ) == true )
-     return "-c:a " + myUi.AudiocodecComboBox->currentText() + " -strict experimental";
+      result << "-c:a" << myUi.AudiocodecComboBox->currentText() << "-strict" << "experimental";
     else
-     return "-c:a " + myUi.AudiocodecComboBox->currentText();
+      result << "-c:a" << myUi.AudiocodecComboBox->currentText();
   }
 
-  return "";
-}
-
-
-QString screencast::noMouse()
-{
-  if ( myUi.HideMouseCheckbox->checkState() == Qt::Checked  )
-    return "-draw_mouse 0";
-  else
-    return "-draw_mouse 1";
+  return result;
 }
 
 
@@ -2474,18 +2469,6 @@ void screencast::Countdown()
   } 
 }
 
-QString screencast::x264Lossless()
-{
-   if ( myUi.x264LosslessCheckBox->isChecked() == true )
-   {
-     return "-qp 0";
-   }
-   else
-   {
-     return ""; 
-   }
-}
-
 void screencast::record()
 {
   Countdown();
@@ -2496,8 +2479,8 @@ void screencast::record()
     hideAction->setData( "NoHide" );
   }
 
-  QString deltaX = "0";
-  QString deltaY = "0";
+  deltaX = "0";
+  deltaY = "0";
   
   if ( myUi.WindowRadioButton->isChecked() and ( firststartWininfo == false) )
   {
@@ -2554,6 +2537,8 @@ void screencast::record()
 
     qDebug() << "[vokoscreen]" << "recording area";
   }
+  
+  ffmpegProgram = myUi.RecorderLineEdit->displayText();
  
   // set working directory for writing and delete the ffmpegLog from Profil directory
   QSettings settings( vkSettings.getProgName(), vkSettings.getProgName() );
@@ -2570,133 +2555,12 @@ void screencast::record()
   QFile FfmpegFile;
   for (int i = 0; i < List.size(); ++i)
      FfmpegFile.remove( List.at(i) );
-
-  // evtl. müßte hier erst mal nachgeschaut werden ob Temp leer ist.
-  // Clean vokoscreen temp 
-  QDir dir( PathTempLocation() );
-  QStringList stringList = dir.entryList( QDir::Files, QDir::Time | QDir::Reversed );
-  for ( int i = 0; i < stringList.size(); ++i )
-     dir.remove( PathTempLocation().append(QDir::separator() ).append(stringList.at( i ) ) );
-
-  // framerate
-  QString framerate = "-framerate " + QString().number( myUi.FrameSpinBox->value() );
-
-  QString myVcodec = myUi.VideocodecComboBox->currentText();
-  if ( myVcodec == "libx264" )
-  {
-    myVcodec = "libx264 -preset veryfast";
-  }  
-
-  // https://trac.ffmpeg.org/wiki/Encode/H.265
-  if ( myVcodec == "libx265" )
-  {
-    myVcodec = "libx265 -preset veryfast -x265-params crf=20";
-  }  
   
-  // Number of pixels must be divisible by two
-  int intRecordX = getRecordWidth().toInt();
-  if ( ( intRecordX % 2 ) == 1 )
-    setRecordWidth( QString().number( --intRecordX ) );
-
-  // Number of pixels must be divisible by two
-  int intRecordY = getRecordHeight().toInt();
-  if ( ( intRecordY % 2 ) == 1 )
-    setRecordHeight( QString().number( --intRecordY ) );
-  
-  nameInMoviesLocation = NameInMoviesLocation();
-
-  ffmpegString = myUi.RecorderLineEdit->displayText() + " "
-               + "-report" + " "
-               + "-f x11grab" + " "
-               + noMouse() + " "
-               + framerate + " "
-               + "-video_size" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
-               + "-i " + DISPLAY + "+" + deltaX + "," + deltaY + " "
-               + myAlsa() + " "
-               + "-pix_fmt yuv420p" + " "
-               + "-c:v" + " " + myVcodec + " "
-               + x264Lossless() + " "
-               + myAcodec() + " "
-               + "-q:v 1" + " "
-               + "-s" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
-               + "-f" + " " + myUi.VideoFormatComboBox->itemData( myUi.VideoFormatComboBox->currentIndex() ).toString() + " ";
-  
-  startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
-}
-
-
-void screencast::startRecord( QString RecordPathName )
-{
-  qDebug() << "[vokoscreen]"<< "Executive command :" << ffmpegString + RecordPathName;
-  qDebug( " " );
-  
-  if ( myUi.PulseDeviceRadioButton->isChecked() )
-  {
-    QProcess Process;
-    QString value = QvkPulse::myPulseDevice( myUi.scrollAreaWidgetContents );
-    if ( value == "vokoscreenMix.monitor" )
-    {
-      Process.start("pactl load-module module-null-sink sink_name=vokoscreenMix");
-      Process.waitForFinished( 3000 );
-      QString modulNumber = Process.readAllStandardOutput();
-      Process.close();
-      qDebug();
-      qDebug() << "[vokoscreen] ---Begin Pulse loade module---";
-      modulNumber.replace("\n", "");    
-      qDebug() << "[vokoscreen] pactl load-module module-null-sink sink_name=vokoscreenMix " << modulNumber;
-    
-      QList<QCheckBox *> listQFrame = myUi.scrollAreaWidgetContents->findChildren<QCheckBox *>();
-      QCheckBox *box;
-      QList<int> integerList;
-      for ( int i = 0; i < listQFrame.count(); i++ )
-      {
-        box = listQFrame.at( i );
-        if ( box->checkState() == Qt::Checked  )
-          integerList.append( i );
-      }
-      
-      for ( int i = 0; i < integerList.count(); i++ )
-      {
-        box = listQFrame[ integerList[ i ] ];
-        Process.start("pactl load-module module-loopback source=" + box->accessibleName() + " sink=vokoscreenMix");
-        Process.waitForFinished( 3000 );
-        QString modulNumber = Process.readAllStandardOutput();
-        modulNumber.replace("\n", "");
-        Process.close();
-        qDebug() << "[vokoscreen] pactl load-module module-loopback source=" << box->accessibleName() << "sink=vokoscreenMix number" << modulNumber;
-      }
-      qDebug() << "[vokoscreen] ---End Pulse loade module---";
-      qDebug( " " );
-    }
-  
-    if ( value > "" )
-    {
-      QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-      env.insert( "PULSE_SOURCE", value );
-      SystemCall->setProcessEnvironment( env );
-    }
-  }
-
-  SystemCall->start( ffmpegString + RecordPathName );
-
-  beginTime  = QDateTime::currentDateTime();
-}
-
-
-void screencast::Stop()
-{
-  if ( SystemCall->state() == QProcess::Running )
-  {
-    SystemCall->terminate();
-    SystemCall->waitForFinished( 3000 );
-  }
-
   // Make sure the video is saved in one of the following three folders.
   // Rank order:
   // 1. Path set in vokoscreen GUI
   // 2. Then system path from desktop
   // 3. Then home
-  QString moviePath;
   QDir dir_0( myUi.SaveVideoPathLineEdit->displayText() );
   if ( dir_0.exists() )
   {
@@ -2715,6 +2579,140 @@ void screencast::Stop()
     }
   }
   
+  nameInMoviesLocation = NameInMoviesLocation();
+
+  // evtl. müßte hier erst mal nachgeschaut werden ob Temp leer ist.
+  // Clean vokoscreen temp 
+  QDir dir( PathTempLocation() );
+  QStringList stringList = dir.entryList( QDir::Files, QDir::Time | QDir::Reversed );
+  for ( int i = 0; i < stringList.size(); ++i )
+     dir.remove( PathTempLocation().append(QDir::separator() ).append(stringList.at( i ) ) );
+
+  // framerate
+  QString framerate = "-framerate " + QString().number( myUi.FrameSpinBox->value() );
+
+  QString videoCodec = myUi.VideocodecComboBox->currentText();
+  QStringList videoFlags;
+  if ( videoCodec == "libx264" )
+  {
+    videoFlags << "-preset" << "veryfast";
+  }  
+
+  // https://trac.ffmpeg.org/wiki/Encode/H.265
+  if ( videoCodec == "libx265" )
+  {
+    videoFlags << "-preset" << "veryfast";
+    videoFlags << "-x265-params" << "crf=20";
+  }  
+  
+  // Number of pixels must be divisible by two
+  int intRecordX = getRecordWidth().toInt();
+  if ( ( intRecordX % 2 ) == 1 )
+    setRecordWidth( QString().number( --intRecordX ) );
+
+  // Number of pixels must be divisible by two
+  int intRecordY = getRecordHeight().toInt();
+  if ( ( intRecordY % 2 ) == 1 )
+    setRecordHeight( QString().number( --intRecordY ) );
+  
+  ffmpegInputArguments.clear();
+  ffmpegInputArguments << "-report";
+  ffmpegInputArguments << "-f" << "x11grab";
+  ffmpegInputArguments << "-draw_mouse" << ((myUi.HideMouseCheckbox->checkState() == Qt::Checked) ? "0" : "1");
+  ffmpegInputArguments << "-framerate" << QString().number(myUi.FrameSpinBox->value());
+  ffmpegInputArguments << "-video_size" << (getRecordWidth() + "x" + getRecordHeight());
+  
+  ffmpegOutputArguments.clear();
+  ffmpegOutputArguments << myAlsa();
+  ffmpegOutputArguments << "-pix_fmt" << "yuv420p";
+  ffmpegOutputArguments << "-c:v" << videoCodec << videoFlags;
+  if(myUi.x264LosslessCheckBox->isChecked())
+  {
+  	ffmpegOutputArguments << "-qp" << "0";
+  }
+  ffmpegOutputArguments << myAcodec();
+  ffmpegOutputArguments << "-q:v" << "1";
+  ffmpegOutputArguments << "-s" << (getRecordWidth() + "x" + getRecordHeight());
+  ffmpegOutputArguments << "-f" << myUi.VideoContainerComboBox->itemData(myUi.VideoContainerComboBox->currentIndex()).toString();
+  
+  startRecord((PathTempLocation() + QDir::separator() + nameInMoviesLocation), deltaX, deltaY);
+}
+
+
+void screencast::startRecord(QString RecordPathName, QString x, QString y)
+{
+  
+  if ( myUi.PulseDeviceRadioButton->isChecked() )
+  {
+    QProcess Process;
+    QString value = QvkPulse::myPulseDevice( myUi.scrollAreaWidgetContents );
+    if ( value == "vokoscreenMix.monitor" )
+    {
+      Process.start("pactl", QStringList() << "load-module" << "module-null-sink" << "sink_name=vokoscreenMix");
+      Process.waitForFinished( 3000 );
+      QString modulNumber = Process.readAllStandardOutput();
+      Process.close();
+      qDebug();
+      qDebug() << "[vokoscreen] ---Begin Pulse loade module---";
+      modulNumber.replace("\n", "");
+      debugCommandInvocation("Pulse Command", Process.program(), Process.arguments(), "→ " + modulNumber);
+    
+      QList<QCheckBox *> listQFrame = myUi.scrollAreaWidgetContents->findChildren<QCheckBox *>();
+      QCheckBox *box;
+      QList<int> integerList;
+      for ( int i = 0; i < listQFrame.count(); i++ )
+      {
+        box = listQFrame.at( i );
+        if ( box->checkState() == Qt::Checked  )
+          integerList.append( i );
+      }
+      
+      for ( int i = 0; i < integerList.count(); i++ )
+      {
+        box = listQFrame[ integerList[ i ] ];
+        Process.start("pactl", QStringList() << "load-module" << "module-loopback" << ("source=" + box->accessibleName()) << "sink=vokoscreenMix");
+        Process.waitForFinished( 3000 );
+        QString modulNumber = Process.readAllStandardOutput();
+        modulNumber.replace("\n", "");
+        Process.close();
+        debugCommandInvocation("Pulse Command", Process.program(), Process.arguments(), "→ " + modulNumber);
+      }
+      qDebug() << "[vokoscreen] ---End Pulse loade module---";
+      qDebug( " " );
+    }
+  
+    if ( value > "" )
+    {
+      QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+      env.insert( "PULSE_SOURCE", value );
+      SystemCall->setProcessEnvironment( env );
+    }
+  }
+
+  // Add invocation paramters that may be different after pausing
+  QStringList arguments;
+  arguments << ffmpegInputArguments;
+  arguments << "-i" << (DISPLAY + "+" + x + "," + y);
+  arguments << ffmpegOutputArguments;
+  arguments << RecordPathName;
+
+  debugCommandInvocation("Executing command", ffmpegProgram, arguments);
+  qDebug( " " );
+
+  SystemCall->start(ffmpegProgram, arguments);
+
+  beginTime  = QDateTime::currentDateTime();
+}
+
+
+void screencast::Stop()
+{
+  if ( SystemCall->state() == QProcess::Running )
+  {
+    SystemCall->terminate();
+    SystemCall->waitForFinished( 3000 );
+  }
+  
   if ( ( pause == true ) and (  myUi.VideocodecComboBox->currentText() != "gif" ) )
   {
     QDir dir( PathTempLocation() );
@@ -2725,14 +2723,21 @@ void screencast::Stop()
       QString videoFiles;
       for ( int i = 0; i < stringList.size(); ++i )
       {
-        videoFiles.append( "file " ).append( PathTempLocation() ).append( QDir::separator() ).append( stringList[ i ] ).append( "\n" );
+        QString filepath = PathTempLocation() + QDir::separator() + stringList[i];
+        videoFiles.append( "file " ).append("'" + filepath.replace("'", "\\'") + "'").append( "\n" );
         file.write( videoFiles.toLatin1() );
         videoFiles = "";
       }
     file.close();
 
-    QString mergeString = myUi.RecorderLineEdit->displayText() + " -report -safe 0 -f concat -i " + mergeFile + " -c copy " + moviePath + QDir::separator() + nameInMoviesLocation;
-    SystemCall->start( mergeString );
+	QStringList mergeArguments;
+	mergeArguments << "-report";
+	mergeArguments << "-safe" << "0";
+	mergeArguments << "-f" << "concat";
+	mergeArguments << "-i" << mergeFile;
+	mergeArguments << "-c" << "copy";
+	mergeArguments << (moviePath + QDir::separator() + nameInMoviesLocation);
+    SystemCall->start(ffmpegProgram, mergeArguments);
     SystemCall->waitForFinished(8000);
 
     for ( int i = 0; i < stringList.size(); ++i )
@@ -2740,7 +2745,7 @@ void screencast::Stop()
 
     file.remove();
 
-    qDebug() << "[vokoscreen]" << "Mergestring :" << mergeString;
+	debugCommandInvocation("Mergestring", ffmpegProgram, mergeArguments);
    }
    else    
   {

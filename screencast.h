@@ -70,10 +70,15 @@ public:
   screencast();
   virtual ~screencast();
   QProcess *SystemCall;
+  QString deltaX;
+  QString deltaY;
   QString deltaXMove;
   QString deltaYMove;
   QString nameInMoviesLocation;
-  QString ffmpegString;
+  QString moviePath;
+  QString ffmpegProgram;
+  QStringList ffmpegInputArguments;
+  QStringList ffmpegOutputArguments;
   bool firststartWininfo;
   
 public:
@@ -110,6 +115,8 @@ private slots:
   void AudioOnOff();
   void WindowMinimized();
   void saveSettings();
+  void debugCommandInvocation(const QString &description, const QString &program,
+                              const QStringList &arguments, const QString &suffix=QString());
 
   void areaReset();
 
@@ -161,14 +168,13 @@ private slots:
   QString newPauseNameInTmpLocation();
   QString getPauseNameInTmpLocation();
   void setPauseNameInTmpLocation( QString value );
-  QString myAlsa();
-  QString myAcodec();
-  QString noMouse();
+  QStringList myAlsa();
+  QStringList myAcodec();
   void AreaOnOff();
   void preRecord();
   void Countdown();
   void record();
-  void startRecord( QString RecordPathName );
+  void startRecord(QString RecordPathName, QString x, QString Y);
   void Stop();
   void Pause();
   void play();
@@ -183,8 +189,6 @@ private slots:
   void SystemTrayKontextMenue( QAction *action );
   
   void copyToClipboard();
-
-  QString x264Lossless();
   
   void commandLineStart();
   

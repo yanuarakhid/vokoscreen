@@ -47,7 +47,7 @@
          </sizepolicy>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <property name="iconSize">
          <size>
@@ -315,8 +315,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>375</width>
-                 <height>152</height>
+                 <width>20</width>
+                 <height>16</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -435,7 +435,7 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QComboBox" name="VideoFormatComboBox"/>
+             <widget class="QComboBox" name="VideoContainerComboBox"/>
             </item>
             <item row="1" column="9">
              <widget class="QToolButton" name="VideocodecStandardButton">
@@ -924,8 +924,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>514</width>
-               <height>196</height>
+               <width>162</width>
+               <height>38</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_18">
