@@ -32,7 +32,7 @@ void QvkSettings::readAll()
       int reset = settings.value( "Reset", 0 ).toUInt();
       if ( reset == 2 )
       {
-	settings.clear();
+        settings.clear();
       }
     settings.endGroup();
     
@@ -69,12 +69,12 @@ void QvkSettings::readAll()
       QFile file;
       if ( file.exists( qApp->applicationDirPath().append( "/bin/ffmpeg" ) ) == true )
       {
-	vokoscreenWithLibs = true;
+        vokoscreenWithLibs = true;
         Recorder = qApp->applicationDirPath().append( "/bin/ffmpeg" );
       }
       else
       {
-	vokoscreenWithLibs = false;
+        vokoscreenWithLibs = false;
         Recorder = settings.value( "Recorder", "ffmpeg" ).toString();
       }
     settings.endGroup();
@@ -86,12 +86,12 @@ void QvkSettings::readAll()
       Frames = settings.value( "Frames", 25 ).toInt();
       if ( ( Frames == 0 ) or ( Frames > 200 ) )
       {
-	Frames = 25;
+        Frames = 25;
       }
       
       VideoCodec = settings.value( "Videocodec", "libx264" ).toString();
       x264Lossless = settings.value( "X264Lossless", 0 ).toInt();
-      AudioCodec = settings.value( "Audiocodec", "libmp3lame" ).toString();
+      AudioCodec = settings.value( "Audiocodec", "libvorbis" ).toString();
       VideoContainer = settings.value( "Format", "mkv" ).toString();
       HideMouse = settings.value( "HideMouse").toUInt();
     settings.endGroup();

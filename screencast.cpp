@@ -678,10 +678,10 @@ void screencast::currentFormatChanged( const QString value )
     * Jedes Format kann nur mit bestimmte Codecs umgehen
     */
    QStringList MKV_videoCodecList = ( QStringList() << "libx264" << "libx265" << "mpeg4" << "huffyuv");
-   QStringList MKV_AudioCodecLIst = ( QStringList() << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac" );
+   QStringList MKV_AudioCodecLIst = ( QStringList() << "libvorbis" << "libmp3lame" << "pcm_s16le" << "aac" );
    
    QStringList MP4_videoCodecList = ( QStringList() << "libx264" << "libx265" << "mpeg4");
-   QStringList MP4_AudioCodecList = ( QStringList() << "libmp3lame" << "libvorbis" << "libvo_aacenc" << "aac");
+   QStringList MP4_AudioCodecList = ( QStringList() << "libvorbis" << "libmp3lame" <<  "aac");
 
    // https://de.wikipedia.org/wiki/QuickTime
    QStringList MOV_videoCodecList = ( QStringList() << "libx264" << "mpeg4" );
@@ -1679,7 +1679,7 @@ void screencast::setVideocodecStandardComboBox()
  */
 void screencast::setAudiocodecStandardComboBox()
 {
-  myUi.AudiocodecComboBox ->setCurrentIndex( myUi.AudiocodecComboBox->findText( "libmp3lame", Qt::MatchExactly )  );
+  myUi.AudiocodecComboBox ->setCurrentIndex( myUi.AudiocodecComboBox->findText( "libvorbis", Qt::MatchExactly )  );
 }
 
 
