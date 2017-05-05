@@ -158,7 +158,7 @@ screencast::screencast()
     statusBarLabelCodec->setToolTip( tr( "Codec" ) );
     
     statusBarLabelFormat = new QLabel();
-    statusBarLabelFormat->setText( myUi.VideoContainerComboBox->currentText() );
+    statusBarLabelFormat->setText( myUi.VideoFormatComboBox->currentText() );
     statusBarLabelFormat->setToolTip( tr( "Format" ) );
 
     statusBarLabelAudio = new QLabel();
@@ -210,8 +210,8 @@ screencast::screencast()
 
     connect( myUi.VideocodecComboBox, SIGNAL( currentIndexChanged( int ) ), SLOT( currentIndexChangedCodec( int ) ) );
 
-    connect( myUi.VideoContainerComboBox, SIGNAL( currentIndexChanged( int ) ),          this, SLOT( currentIndexChangedFormat( int ) ) );
-    connect( myUi.VideoContainerComboBox, SIGNAL( currentTextChanged( const QString ) ), this, SLOT( currentFormatChanged( const QString  ) ) );
+    connect( myUi.VideoFormatComboBox, SIGNAL( currentIndexChanged( int ) ),          this, SLOT( currentIndexChangedFormat( int ) ) );
+    connect( myUi.VideoFormatComboBox, SIGNAL( currentTextChanged( const QString ) ), this, SLOT( currentFormatChanged( const QString  ) ) );
 
     myUi.FrameStandardButton->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     myUi.FrameStandardButton->setToolTip( tr( "Default" ) );
@@ -787,7 +787,7 @@ void screencast::searchVideoCodec( QStringList videoCodecList )
 void screencast::SearchFormats()
 {
    qDebug() << "[vokoscreen] ---Begin search formats---";
-   myUi.VideoContainerComboBox->clear();
+   myUi.VideoFormatComboBox->clear();
    QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" << "mov" );
    QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" << "mov" );
    for ( int i = 0; i < formatList.count(); i++ )
@@ -795,17 +795,17 @@ void screencast::SearchFormats()
      if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
      {
        qDebug() << "[vokoscreen] find Format" << formatList[ i ];
-       myUi.VideoContainerComboBox->addItem( formatList[ i ], userDataList[ i ] );
+       myUi.VideoFormatComboBox->addItem( formatList[ i ], userDataList[ i ] );
      }
      else
        qDebug() << "[vokoscreen] not found Format" << formatList[ i ];
    }
    // Fallback
-   int x = myUi.VideoContainerComboBox->findText( vkSettings.getVideoContainer() );
+   int x = myUi.VideoFormatComboBox->findText( vkSettings.getVideoContainer() );
    if ( x == -1 )
-      myUi.VideoContainerComboBox->setCurrentIndex( 0 );
+      myUi.VideoFormatComboBox->setCurrentIndex( 0 );
    else
-      myUi.VideoContainerComboBox->setCurrentIndex( x );
+      myUi.VideoFormatComboBox->setCurrentIndex( x );
    qDebug() << "[vokoscreen] ---End search formats---";
    qDebug( " " );
 }
@@ -917,7 +917,7 @@ void screencast::saveSettings()
     settings.setValue( "Videocodec", myUi.VideocodecComboBox->currentText() );
     settings.setValue( "X264Lossless", myUi.x264LosslessCheckBox->checkState() );
     settings.setValue( "Audiocodec", myUi.AudiocodecComboBox->currentText() );
-    settings.setValue( "Format", myUi.VideoContainerComboBox->currentText() );
+    settings.setValue( "Format", myUi.VideoFormatComboBox->currentText() );
     settings.setValue( "HideMouse", myUi.HideMouseCheckbox->checkState() );    
   settings.endGroup();
   
@@ -1576,8 +1576,8 @@ void screencast::currentIndexChangedCodec( int index )
 void screencast::currentIndexChangedFormat( int index )
 {
   (void)index;
-  statusBarLabelFormat->setText( myUi.VideoContainerComboBox->currentText() );
-  if ( myUi.VideoContainerComboBox->currentText() == "gif" )
+  statusBarLabelFormat->setText( myUi.VideoFormatComboBox->currentText() );
+  if ( myUi.VideoFormatComboBox->currentText() == "gif" )
   {
     myUi.GIFplayerComboBox->show();
     myUi.VideoplayerComboBox->hide();
@@ -1669,7 +1669,7 @@ void screencast::clickedScreenSize()
 void screencast::setVideocodecStandardComboBox()
 {
   myUi.VideocodecComboBox->setCurrentIndex( myUi.VideocodecComboBox->findText( "libx264", Qt::MatchExactly ) );
-  myUi.VideoContainerComboBox->setCurrentIndex( myUi.VideoContainerComboBox->findText( "mkv", Qt::MatchExactly ) );
+  myUi.VideoFormatComboBox->setCurrentIndex( myUi.VideoFormatComboBox->findText( "mkv", Qt::MatchExactly ) );
   myUi.x264LosslessCheckBox->setChecked( false );
 }
 
@@ -1974,7 +1974,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       }
     }
 
-    if ( ( myUi.VideocodecComboBox->currentText() == "gif" ) or ( myUi.VideoContainerComboBox->currentText() == "gif" ) )
+    if ( ( myUi.VideocodecComboBox->currentText() == "gif" ) or ( myUi.VideoFormatComboBox->currentText() == "gif" ) )
     {
       myUi.PauseButton->setEnabled( false );
       pauseAction->setEnabled( false );
@@ -2316,7 +2316,7 @@ QString screencast::PathTempLocation()
  */
 QString screencast::NameInMoviesLocation()
 {
-  return "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + myUi.VideoContainerComboBox->currentText();
+  return "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + myUi.VideoFormatComboBox->currentText();
 }
 
 
@@ -2326,7 +2326,7 @@ QString screencast::NameInMoviesLocation()
 QString screencast::newPauseNameInTmpLocation()
 {
   QString myFilename = "screencast-pause";
-  QString myFilenameExtension = "." + myUi.VideoContainerComboBox->currentText();
+  QString myFilenameExtension = "." + myUi.VideoFormatComboBox->currentText();
   QString myName = PathTempLocation() + QDir::separator() + myFilename + myFilenameExtension;
 
   QFile *myFile = new QFile( myName );
@@ -2619,7 +2619,7 @@ void screencast::record()
                + myAcodec() + " "
                + "-q:v 1" + " "
                + "-s" + " " + getRecordWidth() + "x" + getRecordHeight() + " "
-               + "-f" + " " + myUi.VideoContainerComboBox->itemData( myUi.VideoContainerComboBox->currentIndex() ).toString() + " ";
+               + "-f" + " " + myUi.VideoFormatComboBox->itemData( myUi.VideoFormatComboBox->currentIndex() ).toString() + " ";
   
   startRecord( PathTempLocation() + QDir::separator() + nameInMoviesLocation );
 }
