@@ -563,9 +563,9 @@ screencast::~screencast()
 { 
 }
 
-
+/*
 void screencast::debugCommandInvocation(const QString &description, const QString &program,
-                                        const QStringList &arguments, const QString &suffix) {
+                                        const QStringList arguments, const QString &suffix){
 	QDebug debug(qDebug());
 	
 	debug.noquote();
@@ -581,6 +581,26 @@ void screencast::debugCommandInvocation(const QString &description, const QStrin
 	if(suffix.length() > 0) {
 		debug << suffix;
 	}
+}
+*/
+
+// range-based ‘for’ loops are not allowed in C++98 mode
+
+void screencast::debugCommandInvocation(const QString &description, const QString &program,
+                                        const QStringList arguments, const QString &suffix)
+{
+    QString value = "[vokoscreen] " + description + ": " + program;
+    for( int i = 0; i < arguments.count(); i++ )
+    {
+       value = value.append( " " );
+       value = value.append( arguments[i] );
+    }
+
+    if( suffix.length() > 0 )
+    {
+       value = value + suffix;
+    }
+    qDebug().noquote() << value;
 }
 
 
@@ -2655,7 +2675,7 @@ void screencast::startRecord(QString RecordPathName, QString x, QString y)
       qDebug();
       qDebug() << "[vokoscreen] ---Begin Pulse loade module---";
       modulNumber.replace("\n", "");
-      debugCommandInvocation("Pulse Command", Process.program(), Process.arguments(), "→ " + modulNumber);
+      debugCommandInvocation("Pulse Command", Process.program(), Process.arguments(), " number: " + modulNumber);
     
       QList<QCheckBox *> listQFrame = myUi.scrollAreaWidgetContents->findChildren<QCheckBox *>();
       QCheckBox *box;
@@ -2675,7 +2695,7 @@ void screencast::startRecord(QString RecordPathName, QString x, QString y)
         QString modulNumber = Process.readAllStandardOutput();
         modulNumber.replace("\n", "");
         Process.close();
-        debugCommandInvocation("Pulse Command", Process.program(), Process.arguments(), "→ " + modulNumber);
+        debugCommandInvocation("Pulse Command", Process.program(), Process.arguments(), " number: " + modulNumber);
       }
       qDebug() << "[vokoscreen] ---End Pulse loade module---";
       qDebug( " " );
@@ -2745,7 +2765,7 @@ void screencast::Stop()
 
     file.remove();
 
-	debugCommandInvocation("Mergestring", ffmpegProgram, mergeArguments);
+    debugCommandInvocation("Mergestring", ffmpegProgram, mergeArguments);
    }
    else    
   {

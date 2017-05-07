@@ -116,7 +116,7 @@ private slots:
   void WindowMinimized();
   void saveSettings();
   void debugCommandInvocation(const QString &description, const QString &program,
-                              const QStringList &arguments, const QString &suffix=QString());
+			      const QStringList arguments, const QString &suffix=QString());
 
   void areaReset();
 
