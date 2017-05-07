@@ -3,7 +3,7 @@
     <name>AlsaBusyDialog</name>
     <message>
         <source>Device is busy</source>
-        <translation>Aygıt meşgul</translation>
+        <translation>Maalesef Aygıt Meşgul</translation>
     </message>
     <message>
         <source>Name</source>
@@ -11,7 +11,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Blinmeyen</translation>
+        <translation>Bilinmeyen</translation>
     </message>
     <message>
         <source>Device</source>
@@ -34,21 +34,21 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Vazgeç</translation>
+        <translation>Vazgeç Ağabey</translation>
     </message>
 </context>
 <context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation>Ayarları Göster</translation>
+        <translation>Ayarları Göstereyim.</translation>
     </message>
 </context>
 <context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Son videoyu postala</translation>
+        <translation>Son videoyu postala gitsin.</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
@@ -60,14 +60,14 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation>İptal</translation>
+        <translation>İptal Edeyim.</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>Lütfen video oynacısı kurun</translation>
+        <translation>Lütfen video oynatıcısı kurun</translation>
     </message>
 </context>
 <context>
@@ -78,7 +78,7 @@
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation>vokoscreen aynı anda bir kez çalışır</translation>
+        <translation>Maalesef!vokoscreen aynı anda bir kez çalışır</translation>
     </message>
 </context>
 <context>
@@ -293,7 +293,7 @@
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Kaynak kodu</translation>
+        <translation>Kaynak kodunu göster reyiz.</translation>
     </message>
     <message>
         <source>Show in systray</source>
