@@ -94,7 +94,8 @@ public slots:
   
 private slots:
   void addVokoscreenExtensions();
-    
+  void extensionLoadpushButtonClicked();
+
   void closeEvent( QCloseEvent * event );
   
   void addLogVokoscreen( QString value );

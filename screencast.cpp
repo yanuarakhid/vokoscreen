@@ -547,6 +547,7 @@ screencast::screencast()
    qDebug( " " );
    
    addVokoscreenExtensions();
+   connect( myUi.extensionLoadpushButton, SIGNAL( clicked() ), this, SLOT( extensionLoadpushButtonClicked() ) );
    myUi.tabWidget->setCurrentIndex( vkSettings.getTab() );
 
   // workDirectory setzen damit die links in about funktionieren.
@@ -561,6 +562,34 @@ screencast::screencast()
 
 screencast::~screencast()
 { 
+}
+
+void screencast::extensionLoadpushButtonClicked()
+{
+    QString path = QStandardPaths::writableLocation( QStandardPaths::DownloadLocation );
+
+    QFileDialog dialog( this );
+    dialog.setNameFilter( "Extensions(*.tar.gz)" );
+    dialog.setDirectory( path );
+    dialog.exec();
+
+    QStringList extensionsFile = dialog.selectedFiles();
+
+    if ( not extensionsFile.empty() )
+    {
+       qDebug() << "[vokoscreen] Load Extensionfile:" << extensionsFile[0];
+
+       QString prog = "tar";
+
+       QStringList arguments = QStringList() << "xfvz"<< extensionsFile[0] << "-C" << QStandardPaths::writableLocation( QStandardPaths::HomeLocation );
+
+       QProcess Process;
+       Process.start( prog, arguments );
+       Process.waitForFinished( 3000 );
+       Process.close();
+       qDebug() << "[vokoscreen] Extract Extensionfile with:" << prog << "arguments:" << arguments;
+       addVokoscreenExtensions();
+    }
 }
 
 /*
@@ -630,6 +659,7 @@ void screencast::addVokoscreenExtensions()
       {
         cwf( this, myUi );
         qDebug() << "[vokoscreen]" << "Extension was loaded";
+        myUi.extensionLoadpushButton->hide();
       }
       else
       {
