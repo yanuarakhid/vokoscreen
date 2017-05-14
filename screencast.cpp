@@ -2201,6 +2201,7 @@ void screencast::play()
   }
     
   QProcess *SystemCall = new QProcess();
+  SystemCall->systemEnvironment();
   QString path = PathMoviesLocation() + QDir::separator() + List.at(0);
   qDebug() << "[vokoscreen] play video: " << player << path;
 
