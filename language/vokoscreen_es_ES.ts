@@ -11,11 +11,11 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Desconocido</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Dispositivo</translation>
     </message>
     <message>
         <source>Used by</source>
@@ -34,7 +34,7 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Cancelar</translation>
     </message>
 </context>
 <context>
@@ -60,7 +60,7 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>cancelar</translation>
     </message>
 </context>
 <context>
@@ -96,7 +96,7 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>Doble click para ampliar</translation>
     </message>
     <message>
         <source>Area Settings</source>
@@ -138,7 +138,7 @@
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Dispositivo</translation>
     </message>
     <message>
         <source>Used by</source>
@@ -146,7 +146,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Desconocido</translation>
     </message>
 </context>
 <context>
@@ -273,11 +273,11 @@
     </message>
     <message>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>Soporte</translation>
     </message>
     <message>
         <source>Developer</source>
-        <translation type="unfinished"/>
+        <translation>Desarrollador</translation>
     </message>
     <message>
         <source>Frames</source>
@@ -301,7 +301,7 @@
     </message>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>Nueva versión disponible</translation>
     </message>
     <message>
         <source>Videocodec</source>
@@ -317,7 +317,7 @@
     </message>
     <message>
         <source>Select webcam</source>
-        <translation type="unfinished"/>
+        <translation>seleccionar webcam</translation>
     </message>
     <message>
         <source>Mirrored</source>
@@ -345,15 +345,15 @@
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>Ocultar ventana</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>salir</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar ventana</translation>
     </message>
     <message>
         <source>Lossless</source>
@@ -369,15 +369,15 @@
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"/>
+        <translation>continuar</translation>
     </message>
     <message>
         <source>Extensions</source>
-        <translation type="unfinished"/>
+        <translation>Extensiones</translation>
     </message>
     <message>
         <source>No extensions installed</source>
-        <translation type="unfinished"/>
+        <translation>No hay extensiones instaladas</translation>
     </message>
 </context>
 </TS>

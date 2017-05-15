@@ -381,5 +381,9 @@
         <source>No extensions installed</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Load</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

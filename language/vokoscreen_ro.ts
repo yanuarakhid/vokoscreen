@@ -7,41 +7,41 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Nume</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Necunoscut</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Dispozitiv</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Folosit de</translation>
     </message>
 </context>
 <context>
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>Domeniul stări</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished"/>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Anulează</translation>
     </message>
 </context>
 <context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation type="unfinished"/>
+        <translation>Arată setările clic</translation>
     </message>
 </context>
 <context>
@@ -60,25 +60,25 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Anulează</translation>
     </message>
 </context>
 <context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation type="unfinished"/>
+        <translation>Instalează un plazer video</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>Informație</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen poate fi pornit doar o singură dată</translation>
     </message>
 </context>
 <context>
@@ -96,11 +96,11 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>Dublu clic pentru a mari</translation>
     </message>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>Domeniul stări</translation>
     </message>
 </context>
 <context>
@@ -115,15 +115,15 @@
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Arată pe tot ecranul</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation type="unfinished"/>
+        <translation>Clic dreapta pentru meniu</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation type="unfinished"/>
+        <translation>Utilizatorul- determinat</translation>
     </message>
 </context>
 <context>
@@ -134,19 +134,19 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Nume</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Dispozitiv</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Folosit de</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Necunoscut</translation>
     </message>
 </context>
 <context>
@@ -321,15 +321,15 @@
     </message>
     <message>
         <source>Mirrored</source>
-        <translation type="unfinished"/>
+        <translation>Reflectat</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="unfinished"/>
+        <translation>Monitor</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
+        <translation>Toate monitoarele</translation>
     </message>
     <message>
         <source>Developer Homepage</source>
@@ -337,47 +337,47 @@
     </message>
     <message>
         <source>Recorder</source>
-        <translation type="unfinished"/>
+        <translation>Înrgistrator</translation>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation type="unfinished"/>
+        <translation>Alege înregistratoru</translation>
     </message>
     <message>
         <source>Hide window</source>
-        <translation type="unfinished"/>
+        <translation>Ascunde fereastra</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Ieșire</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation type="unfinished"/>
+        <translation>Arata fereastra</translation>
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation>Fără pierdere</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen începe minimizat</translation>
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation>Resetează toate setările la startarea umătoare</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"/>
+        <translation>Continuă</translation>
     </message>
     <message>
         <source>Extensions</source>
-        <translation type="unfinished"/>
+        <translation>Extinderi</translation>
     </message>
     <message>
         <source>No extensions installed</source>
-        <translation type="unfinished"/>
+        <translation>Alte extinderi nu sunt instalate</translation>
     </message>
 </context>
 </TS>
