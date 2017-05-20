@@ -2193,6 +2193,17 @@ void screencast::play()
   QString path = PathMoviesLocation() + QDir::separator() + List.at(0);
   qDebug() << "[vokoscreen] play video: " << player << path;
 
+  // Qt Programms(vlc, etc.) need the System-Qt if vokoscreenRUN runs
+  // and the vokoscreenRUN environmen must remove
+  if ( vkSettings.isVokoscreenWithLibs() == true )
+  {
+    QProcessEnvironment environment = QProcessEnvironment::systemEnvironment();
+    environment.remove( "QT_PLUGIN_PATH" );
+    environment.remove( "QT_QPA_PLATFORM_PLUGIN_PATH" );
+    environment.remove( "LD_LIBRARY_PATH" );
+    SystemCall->setProcessEnvironment ( environment );
+  }
+  
   SystemCall->start( player, QStringList(path), QIODevice::ReadWrite );
   SystemCall->waitForFinished( 3000 );
   QString output = SystemCall->readAllStandardError();
