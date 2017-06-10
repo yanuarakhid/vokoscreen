@@ -258,7 +258,7 @@ screencast::screencast()
     
     
     // Tab 5 Webcam *******************************************************
-    myUi.tabWidget->setTabIcon( 4, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
+    myUi.tabWidget->setTabIcon( 4, QIcon::fromTheme( "vkcamera-web", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIcon( 4 );
     myUi.webcamCheckBox->setToolTip( "CTRL+SHIFT+F8" );
     myUi.webcamComboBox->setToolTip( tr ( "Select webcam" ) );
