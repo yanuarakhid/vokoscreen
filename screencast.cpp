@@ -592,28 +592,6 @@ void screencast::extensionLoadpushButtonClicked()
     }
 }
 
-/*
-void screencast::debugCommandInvocation(const QString &description, const QString &program,
-                                        const QStringList arguments, const QString &suffix){
-	QDebug debug(qDebug());
-	
-	debug.noquote();
-	debug << "[vokoscreen]" << (description + ":");
-	
-	debug.quote();
-	debug << program;
-	for(QString argument : arguments) {
-		debug << argument;
-	}
-	
-	debug.noquote();
-	if(suffix.length() > 0) {
-		debug << suffix;
-	}
-}
-*/
-
-// range-based ‘for’ loops are not allowed in C++98 mode
 
 void screencast::debugCommandInvocation(const QString &description, const QString &program,
                                         const QStringList arguments, const QString &suffix)
@@ -756,9 +734,8 @@ void screencast::currentFormatChanged( const QString value )
    QStringList GIF_AudioCodecList = ( QStringList() << "" );
    
    // https://trac.ffmpeg.org/wiki/Encode/VP8
-   // /usr/bin/ffmpeg -y -report  -threads 4 -f x11grab -draw_mouse 1 -framerate 25 -video_size 1680x1050 -i :0+0,0 -pix_fmt yuv420p -c:v libvpx -quality realtime -vpre libvpx-720p  -s 1680x1050 -f webm vokoscreen-2016-05-27_08-32-31.webm
    QStringList WEBM_videoCodecList = ( QStringList() << "libvpx" );
-   QStringList WEBM_AudioCodecList = ( QStringList() << "libvorbis" );
+   QStringList WEBM_AudioCodecList = ( QStringList() << "libvorbis" << "libopus");
    
   
   if ( value == "mkv" )
@@ -1140,33 +1117,20 @@ void screencast::searchExternalPrograms()
   else
      qDebug() << "[vokoscreen]" << "Search ffmpeg     ..... not found. Please install ffmpeg";
 
-#ifdef Q_OS_LINUX
   if ( searchProgramm("pactl") )
      qDebug() << "[vokoscreen]" << "Search pactl      ..... found Version:" << getPactlVersion();
   else
      qDebug() << "[vokoscreen]" << "Search pactl      ..... pactl not found, this is an pulseaudio-utils tool. Please install pulseaudio-utils";
-#endif 
-#ifdef Q_OS_WIN
-#endif  
-  
-#ifdef Q_OS_LINUX
+
   if ( searchProgramm("xdg-email") )
      qDebug() << "[vokoscreen]" << "Search xdg-email  ..... found Version:" << getXdgemailVersion();
   else
      qDebug() << "[vokoscreen]" << "Search xdg-email  ..... xdg-email not found, this is an xdg-utils tool. Please install xdg-utils";
-#endif  
-#ifdef Q_OS_WIN
-#endif  
-  
-#ifdef Q_OS_LINUX
+
   if ( searchProgramm("lsof") )
      qDebug() << "[vokoscreen]" << "Search lsof       ..... found Version:" << getLsofVersion();
   else
      qDebug() << "[vokoscreen]" << "Search lsof       ..... lsof not found. Please install lsof";
-#endif  
-#ifdef Q_OS_WIN
-#endif  
-  
   
   qDebug() << "[vokoscreen]" << "---End search external tools---";
   qDebug( " " );
