@@ -1731,7 +1731,7 @@ void screencast::setVideocodecStandardComboBox()
  */
 void screencast::setAudiocodecStandardComboBox()
 {
-  myUi.AudiocodecComboBox ->setCurrentIndex( myUi.AudiocodecComboBox->findText( "libmp3lame", Qt::MatchExactly )  );
+  myUi.AudiocodecComboBox ->setCurrentIndex( myUi.AudiocodecComboBox->findText( "libvorbis", Qt::MatchExactly )  );
 }
 
 
