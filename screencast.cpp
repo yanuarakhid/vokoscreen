@@ -853,8 +853,8 @@ void screencast::SearchFormats()
 {
    qDebug() << "[vokoscreen] ---Begin search formats---";
    myUi.VideoContainerComboBox->clear();
-   QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" << "mov" << "webm" );
-   QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" << "mov" << "webm" );
+   QStringList formatList   = ( QStringList() << "mkv"      << "webm" << "mp4" << "gif" << "mov" );
+   QStringList userDataList = ( QStringList() << "matroska" << "webm" << "mp4" << "gif" << "mov" );
    for ( int i = 0; i < formatList.count(); i++ )
    {
      if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
