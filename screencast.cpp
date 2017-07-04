@@ -757,8 +757,8 @@ void screencast::currentFormatChanged( const QString value )
    
    // https://trac.ffmpeg.org/wiki/Encode/VP8
    // /usr/bin/ffmpeg -y -report  -threads 4 -f x11grab -draw_mouse 1 -framerate 25 -video_size 1680x1050 -i :0+0,0 -pix_fmt yuv420p -c:v libvpx -quality realtime -vpre libvpx-720p  -s 1680x1050 -f webm vokoscreen-2016-05-27_08-32-31.webm
-   //QStringList WEBM_videoCodecList = ( QStringList() << "libvpx" );
-   //QStringList WEBM_AudioCodecList = ( QStringList() << "vorbis" );
+   QStringList WEBM_videoCodecList = ( QStringList() << "libvpx" );
+   QStringList WEBM_AudioCodecList = ( QStringList() << "libvorbis" );
    
   
   if ( value == "mkv" )
@@ -785,13 +785,13 @@ void screencast::currentFormatChanged( const QString value )
     searchAudioCodec( MOV_AudioCodecList );
   }
   
-/*  
+  
   if ( value == "webm" )
   {
     searchVideoCodec( WEBM_videoCodecList );
     searchAudioCodec( WEBM_AudioCodecList );
   }
-*/  
+  
 }
 
 void screencast::searchAudioCodec( QStringList audioCodecList )
@@ -853,8 +853,8 @@ void screencast::SearchFormats()
 {
    qDebug() << "[vokoscreen] ---Begin search formats---";
    myUi.VideoContainerComboBox->clear();
-   QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" << "mov" );
-   QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" << "mov" );
+   QStringList formatList   = ( QStringList() << "mkv"      << "mp4" << "gif" << "mov" << "webm" );
+   QStringList userDataList = ( QStringList() << "matroska" << "mp4" << "gif" << "mov" << "webm" );
    for ( int i = 0; i < formatList.count(); i++ )
    {
      if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
@@ -2653,7 +2653,15 @@ void screencast::record()
   {
     videoFlags << "-preset" << "veryfast";
     videoFlags << "-x265-params" << "crf=20";
-  }  
+  }
+  
+  if ( videoCodec == "libvpx" )
+  {
+    videoFlags << "-quality" << "realtime"; ;
+    videoFlags << "-g" << "10000";
+    videoFlags << "-b:v" << "2M";
+  }
+  
   
   // Number of pixels must be divisible by two
   int intRecordX = getRecordWidth().toInt();
@@ -2684,7 +2692,8 @@ void screencast::record()
   ffmpegOutputArguments << "-q:v" << "1";
   ffmpegOutputArguments << "-s" << (getRecordWidth() + "x" + getRecordHeight());
   ffmpegOutputArguments << "-f" << myUi.VideoContainerComboBox->itemData(myUi.VideoContainerComboBox->currentIndex()).toString();
-  
+  ffmpegOutputArguments << "-threads" << "4";
+
   startRecord((PathTempLocation() + QDir::separator() + nameInMoviesLocation), deltaX, deltaY);
 }
 
