@@ -720,10 +720,10 @@ void screencast::currentFormatChanged( const QString value )
    /*
     * Jedes Format kann nur mit bestimmte Codecs umgehen
     */
-   QStringList MKV_videoCodecList = ( QStringList() << "libx264" << "libx265" << "mpeg4" << "huffyuv");
+   QStringList MKV_videoCodecList = ( QStringList() << "libx264" << "libx264rgb" << "libx265" << "mpeg4" << "huffyuv");
    QStringList MKV_AudioCodecLIst = ( QStringList() << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac" );
    
-   QStringList MP4_videoCodecList = ( QStringList() << "libx264" << "libx265" << "mpeg4");
+   QStringList MP4_videoCodecList = ( QStringList() << "libx264" << "libx264rgb" << "libx265" << "mpeg4");
    QStringList MP4_AudioCodecList = ( QStringList() << "libmp3lame" << "libvorbis" << "libvo_aacenc" << "aac");
 
    // https://de.wikipedia.org/wiki/QuickTime
@@ -1575,7 +1575,7 @@ void screencast::currentIndexChangedCodec( int index )
   (void)index;
   statusBarLabelCodec->setText( myUi.VideocodecComboBox->currentText() );
 
-  if ( myUi.VideocodecComboBox->currentText() == "libx264" )
+  if ( myUi.VideocodecComboBox->currentText() == "libx264" || myUi.VideocodecComboBox->currentText() == "libx264rgb" )
   {
      myUi.x264LosslessCheckBox->setEnabled( true );
   }
@@ -2607,10 +2607,10 @@ void screencast::record()
 
   QString videoCodec = myUi.VideocodecComboBox->currentText();
   QStringList videoFlags;
-  if ( videoCodec == "libx264" )
+  if ( videoCodec == "libx264" || videoCodec == "libx264rgb" )
   {
     videoFlags << "-preset" << "veryfast";
-  }  
+  }
 
   // https://trac.ffmpeg.org/wiki/Encode/H.265
   if ( videoCodec == "libx265" )
@@ -2646,7 +2646,12 @@ void screencast::record()
   
   ffmpegOutputArguments.clear();
   ffmpegOutputArguments << myAlsa();
-  ffmpegOutputArguments << "-pix_fmt" << "yuv420p";
+  if ( videoCodec == "libx264rgb" )
+  {
+    ffmpegOutputArguments << "-pix_fmt" << "rgb24";
+  } else {
+    ffmpegOutputArguments << "-pix_fmt" << "yuv420p";
+  }
   ffmpegOutputArguments << "-c:v" << videoCodec << videoFlags;
   if(myUi.x264LosslessCheckBox->isChecked())
   {
