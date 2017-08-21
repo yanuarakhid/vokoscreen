@@ -70,7 +70,7 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     QvkAlsaDevice inBox;
     qDebug() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
-    qDebug() << "[vokoscreen] current icon-theme:" << QIcon::themeName();
+    qDebug() << "[vokoscreen] rurrent icon-theme:"  << QIcon::themeName();
     qDebug() << "[vokoscreen] Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
     qDebug() << "[vokoscreen] Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
     qDebug() << "[vokoscreen] Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
@@ -98,17 +98,22 @@ screencast::screencast()
 
     // Give the Display :0 or :1 etc.
     qDebug() << "[vokoscreen]" << "---Begin Environment---";
-    DISPLAY = qgetenv( "DISPLAY" );
-    qDebug() << "[vokoscreen] runs on DISPLAY" << DISPLAY;
     
-    WAYLAND_DISPLAY = qgetenv( "WAYLAND_DISPLAY" );
-    qDebug() << "[vokoscreen] WAYLAND_DISPLAY is" << WAYLAND_DISPLAY;
+      WAYLAND_DISPLAY = qgetenv( "WAYLAND_DISPLAY" );
+      qDebug() << "[vokoscreen] WAYLAND_DISPLAY is" << WAYLAND_DISPLAY;
     
-    XDG_RUNTIME_DIR = qgetenv( "XDG_RUNTIME_DIR" );
-    if ( QFile::exists( XDG_RUNTIME_DIR.append("/wayland-0") ) )
-       qDebug() << "[vokoscreen] is a Wayland session";
-    else
-       qDebug() << "[vokoscreen] is a X11 session";
+      XDG_RUNTIME_DIR = qgetenv( "XDG_RUNTIME_DIR" );
+      if ( QFile::exists( XDG_RUNTIME_DIR.append("/wayland-0") ) )
+      { 
+         qDebug() << "[vokoscreen] Is a Wayland session";
+      }
+      else
+      {
+         qDebug() << "[vokoscreen] Is a X11 session";
+      }
+      
+      DISPLAY = qgetenv( "DISPLAY" );
+      qDebug() << "[vokoscreen] Runs on DISPLAY" << DISPLAY;
     
     qDebug() << "[vokoscreen]" << "---End Environment---";
     qDebug( " " );
