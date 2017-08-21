@@ -100,9 +100,19 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "---Begin Environment---";
     DISPLAY = qgetenv( "DISPLAY" );
     qDebug() << "[vokoscreen] runs on DISPLAY" << DISPLAY;
+    
+    WAYLAND_DISPLAY = qgetenv( "WAYLAND_DISPLAY" );
+    qDebug() << "[vokoscreen] WAYLAND_DISPLAY is" << WAYLAND_DISPLAY;
+    
+    XDG_RUNTIME_DIR = qgetenv( "XDG_RUNTIME_DIR" );
+    if ( QFile::exists( XDG_RUNTIME_DIR.append("/wayland-0") ) )
+       qDebug() << "[vokoscreen] is a Wayland session";
+    else
+       qDebug() << "[vokoscreen] is a X11 session";
+    
     qDebug() << "[vokoscreen]" << "---End Environment---";
     qDebug( " " );
-
+    
     myUi.MagnifierCheckBox->setToolTip( "CTRL+SHIFT+F9" );
     connect( myUi.MagnifierCheckBox, SIGNAL( clicked() ), SLOT( showMagnifier() ) );
     magnifier = new QvkMagnifier();

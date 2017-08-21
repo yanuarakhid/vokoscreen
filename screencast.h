@@ -204,7 +204,9 @@ private slots:
     
 private:
     QString DISPLAY;
-  
+    QString WAYLAND_DISPLAY;
+    QString XDG_RUNTIME_DIR;
+    
     QvkSettings vkSettings;
     Ui_screencast  myUi;
     int oldMainWindowHeight;
