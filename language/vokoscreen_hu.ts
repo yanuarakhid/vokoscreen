@@ -26,15 +26,15 @@
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>Területi beállítások</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished"/>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Mégse</translation>
     </message>
 </context>
 <context>
@@ -74,11 +74,11 @@
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>Info</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>A Vokoscreen csak egyszer indítható el</translation>
     </message>
 </context>
 <context>
@@ -100,7 +100,7 @@
     </message>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>Területi beállítások</translation>
     </message>
 </context>
 <context>
@@ -333,7 +333,7 @@
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation>Fejlesztői honlap</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recorder</source>
@@ -369,15 +369,19 @@
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"/>
+        <translation>Tovább</translation>
     </message>
     <message>
         <source>Extensions</source>
-        <translation type="unfinished"/>
+        <translation>Bővítmények</translation>
     </message>
     <message>
         <source>No extensions installed</source>
-        <translation type="unfinished"/>
+        <translation>Nincs telepített bővítmény</translation>
+    </message>
+    <message>
+        <source>Load</source>
+        <translation>Betöltés</translation>
     </message>
 </context>
 </TS>

@@ -41,7 +41,7 @@
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation>Mostrar opções de clique</translation>
+        <translation>Mostrar Opções de Clique</translation>
     </message>
 </context>
 <context>
@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Enviar vídeos selecionados</translation>
+        <translation>Enviar os vídeos seleccionados</translation>
     </message>
     <message>
         <source>Send</source>
@@ -85,22 +85,22 @@
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>Você encontra o vídeo como anexo</translation>
+        <translation>Você encontra o Vídeo como anexo</translation>
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>Selecione um ou mais ficheiros</translation>
+        <translation>Seleccione um ou mais ficheiros</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation>duplo clique para maximizimar</translation>
+        <translation>duplo clique para maximizar</translation>
     </message>
     <message>
         <source>Area Settings</source>
-        <translation>Definições de Área</translation>
+        <translation>Configurações de Área</translation>
     </message>
 </context>
 <context>
@@ -241,11 +241,11 @@
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Definições de fps</translation>
+        <translation>Configurações de fps</translation>
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Abrir Directorio</translation>
+        <translation>Abrir Directório</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -261,7 +261,7 @@
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecione um ou mais dispositivos</translation>
+        <translation>Seleccione um ou mais dispositivos</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
@@ -317,7 +317,7 @@
     </message>
     <message>
         <source>Select webcam</source>
-        <translation>Selecionar a câmara web</translation>
+        <translation>Seleccionar a câmara web</translation>
     </message>
     <message>
         <source>Mirrored</source>
@@ -341,7 +341,7 @@
     </message>
     <message>
         <source>Select recorder</source>
-        <translation>Selecionar o gravador</translation>
+        <translation>Seleccionar o gravador</translation>
     </message>
     <message>
         <source>Hide window</source>
@@ -378,6 +378,10 @@
     <message>
         <source>No extensions installed</source>
         <translation>Não há extensões instaladas</translation>
+    </message>
+    <message>
+        <source>Load</source>
+        <translation>Carregar</translation>
     </message>
 </context>
 </TS>

@@ -379,5 +379,9 @@
         <source>No extensions installed</source>
         <translation>未安装任何插件</translation>
     </message>
+    <message>
+        <source>Load</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 </TS>

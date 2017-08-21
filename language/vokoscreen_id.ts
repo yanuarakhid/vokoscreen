@@ -26,22 +26,22 @@
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>Pengaturan Area</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished"/>
+        <translation>Ok</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Batal</translation>
     </message>
 </context>
 <context>
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation type="unfinished"/>
+        <translation>Tampilan Pengaturan Klik</translation>
     </message>
 </context>
 <context>
@@ -74,7 +74,7 @@
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>Info</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
@@ -96,11 +96,11 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>klik 2x untuk maximize</translation>
     </message>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>Pengaturan Area</translation>
     </message>
 </context>
 <context>
@@ -349,11 +349,11 @@
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Keluar</translation>
     </message>
     <message>
         <source>Show window</source>
-        <translation type="unfinished"/>
+        <translation>Tampilkan jendela</translation>
     </message>
     <message>
         <source>Lossless</source>
@@ -365,18 +365,22 @@
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation>Reset semua pengaturan pada permulaan selanjutnya</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"/>
+        <translation>Lanjut</translation>
     </message>
     <message>
         <source>Extensions</source>
-        <translation type="unfinished"/>
+        <translation>Tambahan</translation>
     </message>
     <message>
         <source>No extensions installed</source>
+        <translation>Tidak ada tambahan terinstal</translation>
+    </message>
+    <message>
+        <source>Load</source>
         <translation type="unfinished"/>
     </message>
 </context>

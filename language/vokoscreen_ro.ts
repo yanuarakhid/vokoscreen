@@ -379,5 +379,9 @@
         <source>No extensions installed</source>
         <translation>Alte extinderi nu sunt instalate</translation>
     </message>
+    <message>
+        <source>Load</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 </TS>

@@ -379,5 +379,9 @@
         <source>No extensions installed</source>
         <translation>Расширений не установлено</translation>
     </message>
+    <message>
+        <source>Load</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 </TS>

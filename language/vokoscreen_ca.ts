@@ -379,5 +379,9 @@
         <source>No extensions installed</source>
         <translation>No hi ha instal·lada cap extensió</translation>
     </message>
+    <message>
+        <source>Load</source>
+        <translation>Carrega</translation>
+    </message>
 </context>
 </TS>

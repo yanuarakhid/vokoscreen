@@ -26,7 +26,7 @@
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation>Alue asetukset</translation>
+        <translation>Alueasetukset</translation>
     </message>
     <message>
         <source>OK</source>
@@ -41,7 +41,7 @@
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation>Näytä klikkaus asetukset</translation>
+        <translation>Näytä klikkausasetukset</translation>
     </message>
 </context>
 <context>
@@ -100,7 +100,7 @@
     </message>
     <message>
         <source>Area Settings</source>
-        <translation>Alue asetukset</translation>
+        <translation>Alueasetukset</translation>
     </message>
 </context>
 <context>
@@ -373,11 +373,15 @@
     </message>
     <message>
         <source>Extensions</source>
-        <translation type="unfinished"/>
+        <translation>Lisäosat</translation>
     </message>
     <message>
         <source>No extensions installed</source>
-        <translation type="unfinished"/>
+        <translation>Ei lisäosia asennettuna</translation>
+    </message>
+    <message>
+        <source>Load</source>
+        <translation>Lataa</translation>
     </message>
 </context>
 </TS>

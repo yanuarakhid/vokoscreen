@@ -720,7 +720,7 @@ void screencast::currentFormatChanged( const QString value )
    /*
     * Jedes Format kann nur mit bestimmte Codecs umgehen
     */
-   QStringList MKV_videoCodecList = ( QStringList() << "libx264" << "libx264rgb" << "libx265" << "mpeg4" << "huffyuv");
+   QStringList MKV_videoCodecList = ( QStringList() << "libx264" << "libx264rgb" << "libx265" << "mpeg4" << "huffyuv" << "libvpx");
    QStringList MKV_AudioCodecLIst = ( QStringList() << "libmp3lame" << "libvorbis" << "pcm_s16le" << "libvo_aacenc" << "aac" );
    
    QStringList MP4_videoCodecList = ( QStringList() << "libx264" << "libx264rgb" << "libx265" << "mpeg4");

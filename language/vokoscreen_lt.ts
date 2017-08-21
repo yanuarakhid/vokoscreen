@@ -379,5 +379,9 @@
         <source>No extensions installed</source>
         <translation>Nėra įdiegtų plėtinių</translation>
     </message>
+    <message>
+        <source>Load</source>
+        <translation>Įkelti</translation>
+    </message>
 </context>
 </TS>

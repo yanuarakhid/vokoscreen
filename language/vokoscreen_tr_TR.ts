@@ -379,5 +379,9 @@
         <source>No extensions installed</source>
         <translation>Yüklü eklenti yok</translation>
     </message>
+    <message>
+        <source>Load</source>
+        <translation>Yükle</translation>
+    </message>
 </context>
 </TS>
