@@ -71,7 +71,7 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     QvkAlsaDevice inBox;
     qDebug() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
-    qDebug() << "[vokoscreen] rurrent icon-theme:"  << QIcon::themeName();
+    qDebug() << "[vokoscreen] current icon-theme: " << QIcon::themeName();
     qDebug() << "[vokoscreen] Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
     qDebug() << "[vokoscreen] Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
     qDebug() << "[vokoscreen] Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
