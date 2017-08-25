@@ -270,8 +270,14 @@ screencast::screencast()
     myUi.SystrayCheckBox->setCheckState( Qt::Checked );
     connect( myUi.SystrayCheckBox, SIGNAL( stateChanged( int ) ), SLOT( stateChangedSystray( int ) ) );
 
-    connect( myUi.shortcutCheckBox, SIGNAL( stateChanged( int ) ), this, SLOT( stateChangedshortcutsOnOff( int ) ) );
-    
+    if ( QGuiApplication::platformName() == "xcb" )
+    {
+      connect( myUi.shortcutCheckBox, SIGNAL( stateChanged( int ) ), this, SLOT( stateChangedshortcutsOnOff( int ) ) );
+    }
+    else
+    {
+      myUi.shortcutCheckBox->hide();
+    }
     
     // Tab 5 Webcam *******************************************************
     myUi.tabWidget->setTabIcon( 4, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
