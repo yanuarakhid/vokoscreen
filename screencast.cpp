@@ -67,6 +67,7 @@ screencast::screencast()
     qDebug() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
     qDebug() << "[vokoscreen]" << "Qt version: " << qVersion();
     qDebug() << "[vokoscreen]" << "Operating system:" << QSysInfo::prettyProductName();
+    qDebug() << "[vokoscreen]" << "Platform:" << QGuiApplication::platformName();
     qDebug() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     QvkAlsaDevice inBox;
     qDebug() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
@@ -508,28 +509,29 @@ screencast::screencast()
    SystemTrayIcon->setToolTip( "vokoscreen" );
    SystemTrayIcon->show();
    myUi.SystrayCheckBox->setCheckState( Qt::CheckState( vkSettings.getSystray() ) );
- 
 
-   shortcutWebcam = new QxtGlobalShortcut( this );
-   connect( shortcutWebcam, SIGNAL( activated() ), myUi.webcamCheckBox, SLOT( click() ) );
-   shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
-   
-   shortcutMagnifier = new QxtGlobalShortcut( this );
-   connect( shortcutMagnifier, SIGNAL( activated() ), myUi.MagnifierCheckBox, SLOT( click() ) );
-   shortcutMagnifier->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
+   if ( QGuiApplication::platformName() == "xcb" )
+   {
+     shortcutWebcam = new QxtGlobalShortcut( this );
+     connect( shortcutWebcam, SIGNAL( activated() ), myUi.webcamCheckBox, SLOT( click() ) );
+     shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
+  
+     shortcutMagnifier = new QxtGlobalShortcut( this );
+     connect( shortcutMagnifier, SIGNAL( activated() ), myUi.MagnifierCheckBox, SLOT( click() ) );
+     shortcutMagnifier->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
 
-   shortcutStart = new QxtGlobalShortcut( this );
-   connect( shortcutStart, SIGNAL( activated() ), myUi.recordButton, SLOT( click() ) );
-   shortcutStart->setShortcut( QKeySequence( "Ctrl+Shift+F10" ) );
+     shortcutStart = new QxtGlobalShortcut( this );
+     connect( shortcutStart, SIGNAL( activated() ), myUi.recordButton, SLOT( click() ) );
+     shortcutStart->setShortcut( QKeySequence( "Ctrl+Shift+F10" ) );
    
-   shortcutStop = new QxtGlobalShortcut( this );
-   connect( shortcutStop, SIGNAL( activated() ), myUi.StopButton, SLOT( click() ) );
-   shortcutStop->setShortcut( QKeySequence( "Ctrl+Shift+F11" ) );
+     shortcutStop = new QxtGlobalShortcut( this );
+     connect( shortcutStop, SIGNAL( activated() ), myUi.StopButton, SLOT( click() ) );
+     shortcutStop->setShortcut( QKeySequence( "Ctrl+Shift+F11" ) );
    
-   shortcutPause = new QxtGlobalShortcut( this );
-   connect( shortcutPause, SIGNAL( activated() ), myUi.PauseButton, SLOT( click() ) );
-   shortcutPause->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
-   
+     shortcutPause = new QxtGlobalShortcut( this );
+     connect( shortcutPause, SIGNAL( activated() ), myUi.PauseButton, SLOT( click() ) );
+     shortcutPause->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
+   }   
  
    QvkAlsaWatcher * myAlsaWatcher = new QvkAlsaWatcher();
    connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( AlsaWatcherEvent( QStringList ) ) );
