@@ -1,5 +1,5 @@
 **GUI**  
-For transparent effects in the area, counter, and showclick, a switched-on compositer is needed, otherwise the surfaces appear in black.
+For transparent effects in the area, countdown, and showclick, a switched-on compositer is needed, otherwise the surfaces appear in black.
 
 **Translat**  
 Please translate only at Transifex, it is very easy.  
