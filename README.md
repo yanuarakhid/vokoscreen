@@ -1,3 +1,6 @@
+**GUI**
+For transparent effects in the area, counter, and showclick, a switched-on compositer is needed, otherwise the surfaces appear in black.
+
 **Translat**  
 Please translate only at Transifex, it is very easy.  
 https://www.transifex.com/vkohaupt/vokoscreen/
