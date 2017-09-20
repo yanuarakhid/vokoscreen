@@ -2421,6 +2421,7 @@ QStringList screencast::myAlsa()
         if (counter > 1)
         { 
           value << "-f" << "pulse";
+          value << "-name" << "vokoscreen";
           value << "-i" << "vokoscreenMix.monitor";
         }
         else if ( counter > 0 )
@@ -2699,7 +2700,7 @@ void screencast::startRecord(QString RecordPathName, QString x, QString y)
     QString value = QvkPulse::myPulseDevice( myUi.scrollAreaWidgetContents );
     if ( value == "vokoscreenMix.monitor" )
     {
-      Process.start("pactl", QStringList() << "load-module" << "module-null-sink" << "sink_name=vokoscreenMix");
+      Process.start("pactl", QStringList() << "load-module" << "module-null-sink" << "sink_properties=\'device.description=\"vokoscreenMix\"\'" << "sink_name=vokoscreenMix");
       Process.waitForFinished( 3000 );
       QString modulNumber = Process.readAllStandardOutput();
       Process.close();
