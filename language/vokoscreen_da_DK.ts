@@ -67,7 +67,7 @@
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>Installér en videoafspiller</translation>
+        <translation>Venligst installér en videoafspiller</translation>
     </message>
 </context>
 <context>
@@ -153,7 +153,7 @@
     <name>screencast</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Hele skærmen</translation>
+        <translation>Fuldskærm</translation>
     </message>
     <message>
         <source>Window</source>
@@ -373,15 +373,15 @@
     </message>
     <message>
         <source>Extensions</source>
-        <translation type="unfinished"/>
+        <translation>Tilføjelser</translation>
     </message>
     <message>
         <source>No extensions installed</source>
-        <translation type="unfinished"/>
+        <translation>Ingen tilføjelser installeret</translation>
     </message>
     <message>
         <source>Load</source>
-        <translation type="unfinished"/>
+        <translation>Indlæs</translation>
     </message>
 </context>
 </TS>

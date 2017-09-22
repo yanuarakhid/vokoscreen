@@ -78,7 +78,7 @@
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>لايمكن فتح أكثر من نافذة للبرنامج</translation>
     </message>
 </context>
 <context>
@@ -381,7 +381,7 @@
     </message>
     <message>
         <source>Load</source>
-        <translation type="unfinished"/>
+        <translation>حمل</translation>
     </message>
 </context>
 </TS>
