@@ -2401,7 +2401,8 @@ QStringList screencast::myAlsa()
         value << "-i"  << inBox->getAlsaHw();
       }
     }
-    else if ( myUi.PulseDeviceRadioButton->isChecked() )      
+        
+    if ( myUi.PulseDeviceRadioButton->isChecked() )      
     {
       QCheckBox *box;
       int counter = 0;
@@ -2424,7 +2425,8 @@ QStringList screencast::myAlsa()
           value << "-name" << "vokoscreen";
           value << "-i" << "vokoscreenMix.monitor";
         }
-        else if ( counter > 0 )
+        
+        if ( counter == 1 )
         {
           for ( int i = 0; i < listQFrame.count(); i++ )
           {
