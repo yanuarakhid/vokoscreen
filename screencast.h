@@ -191,7 +191,7 @@ private slots:
   
   void copyToClipboard();
   
-  void commandLineStart();
+  //void commandLineStart();
   
   // shortcutStart
   // void setShortcutsOnOff( int );
@@ -268,6 +268,7 @@ private:
     
     void makeAndSetValidIcon( int index );
 
+    QvkAlsaWatcher *myAlsaWatcher;
 
 signals:
 
