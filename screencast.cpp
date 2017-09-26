@@ -541,6 +541,8 @@ screencast::screencast()
  
    QvkAlsaWatcher * myAlsaWatcher = new QvkAlsaWatcher();
    connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( AlsaWatcherEvent( QStringList ) ) );
+   
+   // Nach dem alle Audiogeräte gefunden wurden wird der commandLine gestartet
    connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( commandLineStart() ) );
 
    VideoFileSystemWatcher = new QFileSystemWatcher();
