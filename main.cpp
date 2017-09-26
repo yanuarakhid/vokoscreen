@@ -63,7 +63,9 @@ int main(int argc, char** argv)
 /*      
       if ( arguments[ i ] == "--stop" and ( isRunning == true  ) )
       {
-          qDebug() << "vokoscreen beenden, aber wie? Evtl über DBus?";
+       // http://doc.qt.io/qt-5/qdbusmessage.html#createSignal
+       QDBusMessage QDBusMessage::createSignal(const QString &path, const QString &interface, const QString &name)
+       qDebug() << "vokoscreen beenden, aber wie? Evtl über DBus?";
           // siehe auch qdbusviewer
       }
 */      
