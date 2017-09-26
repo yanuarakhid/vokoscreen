@@ -51,20 +51,20 @@ int main(int argc, char** argv)
          qDebug( " " );
          qDebug() << "Options:";
          qDebug() << "  --help         Show this help message";
-	 qDebug() << "  --start        starts record";
-	 qDebug( " " );
-	 return close( 0 );
+         qDebug() << "  --start        starts record";
+         qDebug( " " );
+         return close( 0 );
       }
       
       if ( arguments[ i ] == "--start" )
       {
-	commandLine_Start = true;
+         commandLine_Start = true;
       }
 /*      
       if ( arguments[ i ] == "--stop" )
       {
         if ( isRunning )
-	  qDebug() << "vokoscreen beenden, aber wie? Evtl über DBus?";
+          qDebug() << "vokoscreen beenden, aber wie? Evtl über DBus?";
       }
 */      
     }
