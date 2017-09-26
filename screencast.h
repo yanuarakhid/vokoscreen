@@ -191,6 +191,8 @@ private slots:
   
   void copyToClipboard();
   
+  void commandLineStart();
+  
   // shortcutStart
   // void setShortcutsOnOff( int );
   // void shortcut_magnifier_Changed( int value );

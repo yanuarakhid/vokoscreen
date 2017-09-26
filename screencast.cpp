@@ -541,6 +541,7 @@ screencast::screencast()
  
    QvkAlsaWatcher * myAlsaWatcher = new QvkAlsaWatcher();
    connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( AlsaWatcherEvent( QStringList ) ) );
+   connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( commandLineStart() ) );
 
    VideoFileSystemWatcher = new QFileSystemWatcher();
    VideoFileSystemWatcher->addPath( myUi.SaveVideoPathLineEdit->displayText() );
@@ -725,13 +726,15 @@ void screencast::commandLineStart( bool value )
   qDebug() << "[vokoscreen] Start:" << value;
   qDebug() << "[vokoscreen] ---End commandLine_Start---";
   qDebug( " " );
+}
 
+void screencast::commandLineStart()
+{
   if ( commandLine_Start == true )
   {
     commandLine_Start = false;
     preRecord();
   }
-  
 }
 
 
