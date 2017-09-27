@@ -17,6 +17,7 @@
  */
 
 #include "screencast.h"
+#include "vokoscreen_adaptor.h"
 
 #include <QDebug>
 #include <QTranslator>
@@ -24,14 +25,14 @@
 #include <QLibraryInfo>
 #include <QDBusConnection>
 
+
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
-  
+ 
     bool isRunning;
-    
-    // http://www.qtforum.de/viewtopic.php?t=5831&p=56811
-    if( QDBusConnection::sessionBus().registerService( "vokoscreen.running" ) )
+
+    if( QDBusConnection::sessionBus().registerService( "org.vokoscreen.screencast" ) )
     {
       isRunning = false;
     }
@@ -40,35 +41,20 @@ int main(int argc, char** argv)
       isRunning = true; 
     }
     
-    bool commandLine_Start = false;
-    
     QStringList arguments = QApplication::instance()->arguments();
     for( int i = 1; i < arguments.count(); ++i )
     {
-      if ( arguments[ i ] == "--help" )
+      if ( arguments[ 1 ] == "--help" )
       {
          qDebug() << "Usage: vokoscreen [OPTIONS]";
          qDebug( " " );
          qDebug() << "Options:";
-         qDebug() << "  --help         Show this help message";
-         qDebug() << "  --record       starts record";
+         qDebug() << "  --help              show this help message";
+         qDebug() << "  --startrecord       starts a recording";
+         qDebug() << "  --stoprecord        stops record";
          qDebug( " " );
          return close( 0 );
       }
-      
-      if ( arguments[ i ] == "--record" )
-      {
-         commandLine_Start = true;
-      }
-/*      
-      if ( arguments[ i ] == "--stop" and ( isRunning == true  ) )
-      {
-       // http://doc.qt.io/qt-5/qdbusmessage.html#createSignal
-       QDBusMessage QDBusMessage::createSignal(const QString &path, const QString &interface, const QString &name)
-       qDebug() << "vokoscreen beenden, aber wie? Evtl über DBus?";
-          // siehe auch qdbusviewer
-      }
-*/      
     }
 
     qDebug() << "[vokoscreen] For comanndline option take: vokoscreen --help";
@@ -81,11 +67,61 @@ int main(int argc, char** argv)
     translator.load( "vokoscreen_" + QLocale::system().name(), ":/language" );
     app.installTranslator( &translator );
     
-    if( isRunning == false )
+
+    // startrecord
+    for( int i = 1; i < arguments.count(); ++i )
     {
-      screencast foo;
-      foo.commandLineStart( commandLine_Start );
-      foo.show();
+      if ( (isRunning == false) and ( arguments[ 1 ] == "--startrecord" ) )
+      {
+        screencast *foo = new screencast();
+        
+        new VokoscreenInterfaceAdaptor(foo);
+        QDBusConnection dbusConnection = QDBusConnection::sessionBus();
+        dbusConnection.registerObject("/record", foo);
+        dbusConnection.registerService("org.vokoscreen.screencast");
+  
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        dbus_iface.call("preRecord");
+   
+        foo->show();
+        return app.exec();
+      }
+    }
+    
+    // stoprecord
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+      if ( (isRunning == true) and ( arguments[ 1 ] == "--stoprecord" ) )
+      {
+        screencast *foo = new screencast();
+  
+        new VokoscreenInterfaceAdaptor(foo);
+        QDBusConnection dbusConnection = QDBusConnection::sessionBus();
+        dbusConnection.registerObject("/record", foo);
+        dbusConnection.registerService("org.vokoscreen.screencast");
+  
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        dbus_iface.call("Stop");
+        goto test;
+      }
+    }
+    
+    if ( isRunning == false )
+    {
+      //foo->commandLineStart( commandLine_Start );
+      screencast *foo = new screencast();
+      
+      // Folgende aufrufe registrieren die Slots
+      new VokoscreenInterfaceAdaptor(foo);
+      QDBusConnection dbusConnection = QDBusConnection::sessionBus();
+      dbusConnection.registerObject("/record", foo);
+      dbusConnection.registerService("org.vokoscreen.screencast");
+      
+      foo->show();
       return app.exec();
     }
     else
@@ -96,4 +132,6 @@ int main(int argc, char** argv)
                                                                   QMessageBox::Close );
       (void)ret;
     }
+    
+    test:{}
 }
