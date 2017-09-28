@@ -197,6 +197,10 @@ private slots:
   // void setShortcutsOnOff( int );
   // void shortcut_magnifier_Changed( int value );
   
+  void setAudioOff();
+  
+  
+  
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
 #endif

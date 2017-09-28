@@ -4,5 +4,6 @@
 	<interface name="org.vokoscreen.screencast.vokoscreenInterface">
 		<method name="preRecord"/>
 		<method name="Stop"/>
+        <method name="setAudioOff"/>
 	</interface>
 </node>

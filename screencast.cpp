@@ -1284,6 +1284,15 @@ QString screencast::getLsofVersion()
   return lsofVersion;
 }
 
+// With comandline options audio will disable, with Audio vokoscreen crached
+void screencast::setAudioOff()
+{
+   if ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked )
+   {
+       myUi.AudioOnOffCheckbox->click();
+   }
+}
+
 
 /*
  * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
