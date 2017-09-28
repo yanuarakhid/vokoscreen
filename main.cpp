@@ -48,7 +48,7 @@ int main(int argc, char** argv)
       {
          qDebug() << "Usage: vokoscreen [OPTIONS]";
          qDebug( " " );
-         qDebug() << "Hint: with options Audio is disable";
+         //qDebug() << "Hint: with options Audio is disable";
          qDebug( " " );
          qDebug() << "Options:";
          qDebug() << "  --help              show this help message";
@@ -86,7 +86,7 @@ int main(int argc, char** argv)
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
         
-        dbus_iface.call("setAudioOff");
+        //dbus_iface.call("setAudioOff");
         dbus_iface.call("preRecord");
    
         foo->show();
@@ -129,7 +129,7 @@ int main(int argc, char** argv)
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        dbus_iface.call("setAudioOff");
+        //dbus_iface.call("setAudioOff");
         dbus_iface.call("preRecord");
         goto test;
       }
