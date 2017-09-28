@@ -30,6 +30,7 @@ qrc_*.cpp
 Makefile
 *-build-*
 ui_*.h
+*_adaptor.*
 
 # Linux/Unixes
 .*
