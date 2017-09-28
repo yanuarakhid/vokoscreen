@@ -1,9 +1,9 @@
 <!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
-	"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+    "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
 <node name="/org/vokoscreen/screencast/commandline">
-	<interface name="org.vokoscreen.screencast.vokoscreenInterface">
-		<method name="preRecord"/>
-		<method name="Stop"/>
-        <method name="setAudioOff"/>
-	</interface>
+    <interface name="org.vokoscreen.screencast.vokoscreenInterface">
+       <method name="preRecord"/>
+       <method name="Stop"/>
+       <method name="setAudioOff"/>
+    </interface>
 </node>
