@@ -99,13 +99,6 @@ int main(int argc, char** argv)
     {
       if ( (isRunning == true) and ( arguments[ 1 ] == "--stoprecord" ) )
       {
-        screencast *foo = new screencast();
-  
-        new VokoscreenInterfaceAdaptor(foo);
-        QDBusConnection dbusConnection = QDBusConnection::sessionBus();
-        dbusConnection.registerObject("/record", foo);
-        dbusConnection.registerService("org.vokoscreen.screencast");
-  
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
@@ -119,13 +112,6 @@ int main(int argc, char** argv)
     {
       if ( (isRunning == true) and ( arguments[ 1 ] == "--startrecord" ) )
       {
-        screencast *foo = new screencast();
-  
-        new VokoscreenInterfaceAdaptor(foo);
-        QDBusConnection dbusConnection = QDBusConnection::sessionBus();
-        dbusConnection.registerObject("/record", foo);
-        dbusConnection.registerService("org.vokoscreen.screencast");
-  
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
