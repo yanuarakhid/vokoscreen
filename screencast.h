@@ -93,6 +93,12 @@ public slots:
 
   
 private slots:
+  // Only for commandline
+  void startrecord();
+  void stoprecord();
+  void setAudioOff();
+  void setAudioOn();
+
   void addVokoscreenExtensions();
   void extensionLoadpushButtonClicked();
 
@@ -197,8 +203,7 @@ private slots:
   // void setShortcutsOnOff( int );
   // void shortcut_magnifier_Changed( int value );
   
-  void setAudioOff();
-  
+
   
   
 #ifndef NO_NEW_VERSION_CHECK

@@ -2,8 +2,9 @@
     "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
 <node name="/org/vokoscreen/screencast/commandline">
     <interface name="org.vokoscreen.screencast.vokoscreenInterface">
-       <method name="preRecord"/>
-       <method name="Stop"/>
+       <method name="startrecord"/>
+       <method name="stoprecord"/>
        <method name="setAudioOff"/>
+       <method name="setAudioOn"/>
     </interface>
 </node>

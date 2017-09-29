@@ -1284,13 +1284,35 @@ QString screencast::getLsofVersion()
   return lsofVersion;
 }
 
-// With comandline options audio will disable, with Audio vokoscreen crached
+// Only for commandline
 void screencast::setAudioOff()
 {
    if ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked )
    {
        myUi.AudioOnOffCheckbox->click();
    }
+}
+
+// Only for commandline
+void screencast::setAudioOn()
+{
+   if ( myUi.AudioOnOffCheckbox->checkState() == Qt::Unchecked )
+   {
+       myUi.AudioOnOffCheckbox->click();
+   }
+}
+
+// Only for commandline
+void screencast::startrecord()
+{
+   myUi.recordButton->click();
+}
+
+
+// Only for commandline
+void screencast::stoprecord()
+{
+   myUi.StopButton->click(); 
 }
 
 

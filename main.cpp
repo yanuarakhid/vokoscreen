@@ -87,7 +87,7 @@ int main(int argc, char** argv)
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
         
         //dbus_iface.call("setAudioOff");
-        dbus_iface.call("preRecord");
+        dbus_iface.call("startrecord");
    
         foo->show();
         return app.exec();
@@ -102,7 +102,7 @@ int main(int argc, char** argv)
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        dbus_iface.call("Stop");
+        dbus_iface.call("stoprecord");
         goto test;
       }
     }
@@ -116,7 +116,7 @@ int main(int argc, char** argv)
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
         //dbus_iface.call("setAudioOff");
-        dbus_iface.call("preRecord");
+        dbus_iface.call("startrecord");
         goto test;
       }
     }
