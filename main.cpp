@@ -25,7 +25,6 @@
 #include <QLibraryInfo>
 #include <QDBusConnection>
 
-
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
@@ -126,13 +125,13 @@ int main(int argc, char** argv)
     {
       //foo->commandLineStart( commandLine_Start );
       screencast *foo = new screencast();
-      
+
       // Folgende aufrufe registrieren die Slots
       new VokoscreenInterfaceAdaptor(foo);
       QDBusConnection dbusConnection = QDBusConnection::sessionBus();
       dbusConnection.registerObject("/record", foo);
       dbusConnection.registerService("org.vokoscreen.screencast");
-      
+
       foo->show();
       return app.exec();
     }
