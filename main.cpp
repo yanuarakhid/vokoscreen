@@ -83,7 +83,7 @@ int main(int argc, char** argv)
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
         
-        //dbus_iface.call("setAudioOff");
+        dbus_iface.call("setAudioOff");
         dbus_iface.call("startrecord");
    
         foo->show();
@@ -112,7 +112,7 @@ int main(int argc, char** argv)
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        //dbus_iface.call("setAudioOff");
+        dbus_iface.call("setAudioOff");
         dbus_iface.call("startrecord");
         goto test;
       }
@@ -121,7 +121,6 @@ int main(int argc, char** argv)
     // normal start
     if ( isRunning == false )
     {
-      //foo->commandLineStart( commandLine_Start );
       screencast *foo = new screencast();
 
       // Folgende aufrufe registrieren die Slots
