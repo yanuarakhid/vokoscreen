@@ -97,6 +97,7 @@ private slots:
   void stoprecord();
   void setAudioOff();
   void setAudioOn();
+  void quit();
 
   void addVokoscreenExtensions();
   void extensionLoadpushButtonClicked();

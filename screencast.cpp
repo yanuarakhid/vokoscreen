@@ -1289,6 +1289,11 @@ void screencast::setAudioOn()
    }
 }
 
+// Only for commandline and dbus
+void screencast::quit()
+{
+   close();
+}
 
 
 /*

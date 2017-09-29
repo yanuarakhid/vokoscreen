@@ -6,5 +6,6 @@
        <method name="stoprecord"/>
        <method name="setAudioOff"/>
        <method name="setAudioOn"/>
+       <method name="quit"/>
     </interface>
 </node>

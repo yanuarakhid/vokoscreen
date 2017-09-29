@@ -43,14 +43,17 @@ int main(int argc, char** argv)
     QStringList arguments = QApplication::instance()->arguments();
     for( int i = 1; i < arguments.count(); ++i )
     {
-      if ( arguments[ 1 ] == "--help" )
+      if ( ( arguments[ 1 ] == "--help" ) or
+           ( arguments[ 1 ] == "-h"     ) or
+           ( arguments[ 1 ] == "-?"     ) )
       {
-         qDebug() << "Usage: vokoscreen [OPTIONS]";
+         qDebug() << "Usage: vokoscreen [OPTION]";
          qDebug( " " );
          qDebug() << "Options:";
          qDebug() << "  --help              show this help message";
          qDebug() << "  --startrecord       starts a recording";
          qDebug() << "  --stoprecord        stops record";
+         qDebug() << "  --quit              close vokoscreen";
          qDebug( " " );
          return close( 0 );
       }
@@ -66,7 +69,6 @@ int main(int argc, char** argv)
     translator.load( "vokoscreen_" + QLocale::system().name(), ":/language" );
     app.installTranslator( &translator );
     
-
     // startrecord
     for( int i = 1; i < arguments.count(); ++i )
     {
@@ -90,7 +92,7 @@ int main(int argc, char** argv)
         return app.exec();
       }
     }
-    
+
     // stoprecord
     for( int i = 1; i < arguments.count(); ++i )
     {
@@ -103,7 +105,21 @@ int main(int argc, char** argv)
         goto test;
       }
     }
-    
+
+    // quit
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+      if ( (isRunning == true) and ( arguments[ 1 ] == "--quit" ) )
+      {
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        dbus_iface.call("quit");
+        goto test;
+      }
+    }
+
+
     // if running and argument is --startrecord
     for( int i = 1; i < arguments.count(); ++i )
     {
@@ -116,7 +132,7 @@ int main(int argc, char** argv)
         goto test;
       }
     }
-    
+
     // normal start
     if ( isRunning == false )
     {
