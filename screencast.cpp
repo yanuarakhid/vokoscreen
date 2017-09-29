@@ -542,9 +542,6 @@ screencast::screencast()
    myAlsaWatcher = new QvkAlsaWatcher();
    connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( AlsaWatcherEvent( QStringList ) ) );
    
-   // Nach dem alle Audiogeräte gefunden wurden wird der commandLine gestartet
-   //connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( commandLineStart() ) );
-
    VideoFileSystemWatcher = new QFileSystemWatcher();
    VideoFileSystemWatcher->addPath( myUi.SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
@@ -719,32 +716,6 @@ void screencast::areaReset()
     myregionselection->regionChoise->areaReset();
 }
 
-
-//bool commandLine_Start = false;
-void screencast::commandLineStart( bool value )
-{
-  //  commandLine_Start = value;
-  qDebug() << "[vokoscreen] ---Begin commandLine_Start---";
-  qDebug() << "[vokoscreen] Start:" << value;
-  qDebug() << "[vokoscreen] ---End commandLine_Start---";
-  qDebug( " " );
-  
-  if ( value == true )
-  {
-    connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( preRecord() ) );
-  }
-}
-
-/*
-void screencast::commandLineStart()
-{
-  if ( commandLine_Start == true )
-  {
-    commandLine_Start = false;
-    preRecord();
-  }
-}
-*/
 
 void screencast::currentFormatChanged( const QString value )
 {
@@ -1284,7 +1255,22 @@ QString screencast::getLsofVersion()
   return lsofVersion;
 }
 
-// Only for commandline
+
+// Only for commandline and dbus
+void screencast::startrecord()
+{
+   myUi.recordButton->click();
+}
+
+
+// Only for commandline and dbus
+void screencast::stoprecord()
+{
+   myUi.StopButton->click(); 
+}
+
+
+// Only for commandline and dbus
 void screencast::setAudioOff()
 {
    if ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked )
@@ -1293,7 +1279,8 @@ void screencast::setAudioOff()
    }
 }
 
-// Only for commandline
+
+// Only for commandline and dbus
 void screencast::setAudioOn()
 {
    if ( myUi.AudioOnOffCheckbox->checkState() == Qt::Unchecked )
@@ -1302,18 +1289,6 @@ void screencast::setAudioOn()
    }
 }
 
-// Only for commandline
-void screencast::startrecord()
-{
-   myUi.recordButton->click();
-}
-
-
-// Only for commandline
-void screencast::stoprecord()
-{
-   myUi.StopButton->click(); 
-}
 
 
 /*

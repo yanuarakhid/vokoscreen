@@ -88,12 +88,11 @@ public:
     
     
 public slots:
-  void commandLineStart( bool value );
   void stateChangedshortcutsOnOff( int );
 
   
 private slots:
-  // Only for commandline
+  // Only for commandline and dbus
   void startrecord();
   void stoprecord();
   void setAudioOff();
@@ -196,8 +195,6 @@ private slots:
   void SystemTrayKontextMenue( QAction *action );
   
   void copyToClipboard();
-  
-  //void commandLineStart();
   
   // shortcutStart
   // void setShortcutsOnOff( int );

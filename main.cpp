@@ -47,8 +47,6 @@ int main(int argc, char** argv)
       {
          qDebug() << "Usage: vokoscreen [OPTIONS]";
          qDebug( " " );
-         //qDebug() << "Hint: with options Audio is disable";
-         qDebug( " " );
          qDebug() << "Options:";
          qDebug() << "  --help              show this help message";
          qDebug() << "  --startrecord       starts a recording";
