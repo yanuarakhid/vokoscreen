@@ -97,6 +97,8 @@ private slots:
   void stoprecord();
   void setAudioOff();
   void setAudioOn();
+  void setWebcamOn();
+  void setWebcamOff();
   void quit();
 
   void addVokoscreenExtensions();

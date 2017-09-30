@@ -1290,6 +1290,24 @@ void screencast::setAudioOn()
 }
 
 // Only for commandline and dbus
+void screencast::setWebcamOn()
+{
+    if ( myUi.webcamCheckBox->checkState() == Qt::Unchecked )
+    {
+        myUi.webcamCheckBox->click();
+    }
+}
+
+// Only for commandline and dbus
+void screencast::setWebcamOff()
+{
+    if ( myUi.webcamCheckBox->checkState() == Qt::Checked  )
+    {
+        myUi.webcamCheckBox->click();
+    }
+}
+
+// Only for commandline and dbus
 void screencast::quit()
 {
    close();

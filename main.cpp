@@ -52,7 +52,7 @@ int main(int argc, char** argv)
          qDebug( " " );
          qDebug() << "Hint:";
          qDebug() << "  Only one option is accepted per call.";
-         qDebug() << "  The options delivered no useful return-values.";
+         qDebug() << "  The options delivered to time no useful return-values.";
          qDebug( " " );
          qDebug() << "Options:";
          qDebug() << "  --help              Show this help message";
@@ -62,6 +62,8 @@ int main(int argc, char** argv)
          qDebug() << "  --stoprecord        Stops record";
          qDebug() << "  --setAudioOn        Enable Audio";
          qDebug() << "  --setAudioOff       Disable Audio";
+         qDebug() << "  --setWebcamOn       Enable Webcam";
+         qDebug() << "  --setWebcamOff      Disable Webcam";
          qDebug() << "  --quit              Close vokoscreen";
          qDebug( " " );
          return close( 0 );
@@ -155,6 +157,32 @@ int main(int argc, char** argv)
       }
     }
 
+    // if running and argument is --setAudioOff
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+      if ( (isRunning == true) and ( arguments[ 1 ] == "--setWebcamOn" ) )
+      {
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        dbus_iface.call("setWebcamOn");
+        goto test;
+      }
+    }
+    
+    // if running and argument is --setAudioOff
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+      if ( (isRunning == true) and ( arguments[ 1 ] == "--setWebcamOff" ) )
+      {
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        dbus_iface.call("setWebcamOff");
+        goto test;
+      }
+    }
+    
     // if running and argument is --setAudioOn
     for( int i = 1; i < arguments.count(); ++i )
     {
