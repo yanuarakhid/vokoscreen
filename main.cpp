@@ -29,7 +29,7 @@ int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
  
-    bool isRunning;
+    bool isRunning = false;
 
     if( QDBusConnection::sessionBus().registerService( "org.vokoscreen.screencast" ) )
     {
@@ -50,9 +50,11 @@ int main(int argc, char** argv)
          qDebug() << "Usage: vokoscreen [OPTION]";
          qDebug( " " );
          qDebug() << "Options:";
-         qDebug() << "  --help              show this help message";
-         qDebug() << "  --startrecord       starts a recording";
-         qDebug() << "  --stoprecord        stops record";
+         qDebug() << "  --help              Show this help message";
+         qDebug() << "  --startrecord       Starts a recording";
+         qDebug() << "                             If vokoscreen not running and you starts";
+         qDebug() << "                             with this option, audio will disable.";
+         qDebug() << "  --stoprecord        Stops record";
          qDebug() << "  --quit              close vokoscreen";
          qDebug( " " );
          return close( 0 );
@@ -80,7 +82,7 @@ int main(int argc, char** argv)
         QDBusConnection dbusConnection = QDBusConnection::sessionBus();
         dbusConnection.registerObject("/record", foo);
         dbusConnection.registerService("org.vokoscreen.screencast");
-  
+
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
