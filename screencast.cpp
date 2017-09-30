@@ -1288,6 +1288,13 @@ void screencast::setArea()
 }
 
 // Only for commandline and dbus
+void screencast::setAreaReset()
+{
+   myUi.areaResetButton->click();
+}
+
+
+// Only for commandline and dbus
 void screencast::setAudioOff()
 {
    if ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked )

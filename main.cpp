@@ -63,6 +63,7 @@ int main(int argc, char** argv)
          qDebug() << "  --setFullScreen     Enable record for Fullscreen";
          qDebug() << "  --setWindow         Enable record for Window";
          qDebug() << "  --setArea           Enable record for Area";
+         qDebug() << "  --setAreaReset      Reset size and position";
          qDebug() << "  --setAudioOn        Enable Audio";
          qDebug() << "  --setAudioOff       Disable Audio";
          qDebug() << "  --setWebcamOn       Enable Webcam";
@@ -171,7 +172,20 @@ int main(int argc, char** argv)
         goto test;
       }
     }
-    
+
+    // if running and argument is --setAreaReset
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+      if ( (isRunning == true) and ( arguments[ 1 ] == "--setAreaReset" ) )
+      {
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        dbus_iface.call("setAreaReset");
+        goto test;
+      }
+    }
+
     // if running and argument is --setAudioOff
     for( int i = 1; i < arguments.count(); ++i )
     {

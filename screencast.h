@@ -98,6 +98,7 @@ private slots:
   void setFullScreen();
   void setWindow();
   void setArea();
+  void setAreaReset();
   void setAudioOff();
   void setAudioOn();
   void setWebcamOn();
