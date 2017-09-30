@@ -60,6 +60,9 @@ int main(int argc, char** argv)
          qDebug() << "                             If vokoscreen not running and starts";
          qDebug() << "                             with this option, audio will disable.";
          qDebug() << "  --stoprecord        Stops record";
+         qDebug() << "  --setFullScreen     Enable record for Fullscreen";
+         qDebug() << "  --setWindow         Enable record for Window";
+         qDebug() << "  --setArea           Enable record for Area";
          qDebug() << "  --setAudioOn        Enable Audio";
          qDebug() << "  --setAudioOff       Disable Audio";
          qDebug() << "  --setWebcamOn       Enable Webcam";
@@ -130,6 +133,45 @@ int main(int argc, char** argv)
       }
     }
 
+    // if running and argument is --setFullScreen
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+      if ( (isRunning == true) and ( arguments[ 1 ] == "--setFullScreen" ) )
+      {
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        dbus_iface.call("setFullScreen");
+        goto test;
+      }
+    }
+    
+    // if running and argument is --setWindow
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+      if ( (isRunning == true) and ( arguments[ 1 ] == "--setWindow" ) )
+      {
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        dbus_iface.call("setWindow");
+        goto test;
+      }
+    }
+
+    // if running and argument is --setArea
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+      if ( (isRunning == true) and ( arguments[ 1 ] == "--setArea" ) )
+      {
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        dbus_iface.call("setArea");
+        goto test;
+      }
+    }
+    
     // if running and argument is --setAudioOff
     for( int i = 1; i < arguments.count(); ++i )
     {

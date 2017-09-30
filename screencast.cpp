@@ -1269,6 +1269,23 @@ void screencast::stoprecord()
    myUi.StopButton->click(); 
 }
 
+// Only for commandline and dbus
+void screencast::setFullScreen()
+{
+   myUi.FullScreenRadioButton->click();
+}
+
+// Only for commandline and dbus
+void screencast::setWindow()
+{
+   myUi.WindowRadioButton->click();   
+}
+
+// Only for commandline and dbus
+void screencast::setArea()
+{
+   myUi.AreaRadioButton->click();   
+}
 
 // Only for commandline and dbus
 void screencast::setAudioOff()

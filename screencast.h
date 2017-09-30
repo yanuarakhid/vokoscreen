@@ -95,6 +95,9 @@ private slots:
   // Only for commandline and dbus
   void startrecord();
   void stoprecord();
+  void setFullScreen();
+  void setWindow();
+  void setArea();
   void setAudioOff();
   void setAudioOn();
   void setWebcamOn();
