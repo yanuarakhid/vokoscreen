@@ -47,15 +47,22 @@ int main(int argc, char** argv)
            ( arguments[ 1 ] == "-h"     ) or
            ( arguments[ 1 ] == "-?"     ) )
       {
+         qDebug( " " );
          qDebug() << "Usage: vokoscreen [OPTION]";
+         qDebug( " " );
+         qDebug() << "Hint:";
+         qDebug() << "  Only one option is accepted per call.";
+         qDebug() << "  It delivered no useful return-values.";
          qDebug( " " );
          qDebug() << "Options:";
          qDebug() << "  --help              Show this help message";
          qDebug() << "  --startrecord       Starts a recording";
-         qDebug() << "                             If vokoscreen not running and you starts";
+         qDebug() << "                             If vokoscreen not running and starts";
          qDebug() << "                             with this option, audio will disable.";
          qDebug() << "  --stoprecord        Stops record";
-         qDebug() << "  --quit              close vokoscreen";
+         qDebug() << "  --setAudioOn        Enable Audio";
+         qDebug() << "  --setAudioOff       Disable Audio";
+         qDebug() << "  --quit              Close vokoscreen";
          qDebug( " " );
          return close( 0 );
       }
@@ -135,6 +142,34 @@ int main(int argc, char** argv)
       }
     }
 
+    // if running and argument is --setAudioOff
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+      if ( (isRunning == true) and ( arguments[ 1 ] == "--setAudioOff" ) )
+      {
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        dbus_iface.call("setAudioOff");
+        goto test;
+      }
+    }
+
+    // if running and argument is --setAudioOn
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+      if ( (isRunning == true) and ( arguments[ 1 ] == "--setAudioOn" ) )
+      {
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        dbus_iface.call("setAudioOn");
+        goto test;
+      }
+    }
+
+    
+    
     // normal start
     if ( isRunning == false )
     {
