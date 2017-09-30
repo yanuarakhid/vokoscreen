@@ -52,7 +52,7 @@ int main(int argc, char** argv)
          qDebug( " " );
          qDebug() << "Hint:";
          qDebug() << "  Only one option is accepted per call.";
-         qDebug() << "  It delivered no useful return-values.";
+         qDebug() << "  The options delivered no useful return-values.";
          qDebug( " " );
          qDebug() << "Options:";
          qDebug() << "  --help              Show this help message";
