@@ -88,22 +88,22 @@ public:
     
     
 public slots:
-  void stateChangedshortcutsOnOff( int );
+    // Only for commandline and dbus
+    int startrecord();
+    int stoprecord();
+    void setFullScreen();
+    void setWindow();
+    void setArea();
+    void setAreaReset();
+    void setAudioOff();
+    void setAudioOn();
+    void setWebcamOn();
+    void setWebcamOff();
+    void quit();
 
+    void stateChangedshortcutsOnOff( int );
   
 private slots:
-  // Only for commandline and dbus
-  void startrecord();
-  void stoprecord();
-  void setFullScreen();
-  void setWindow();
-  void setArea();
-  void setAreaReset();
-  void setAudioOff();
-  void setAudioOn();
-  void setWebcamOn();
-  void setWebcamOff();
-  void quit();
 
   void addVokoscreenExtensions();
   void extensionLoadpushButtonClicked();

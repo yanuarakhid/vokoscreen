@@ -538,10 +538,10 @@ screencast::screencast()
      connect( shortcutPause, SIGNAL( activated() ), myUi.PauseButton, SLOT( click() ) );
      shortcutPause->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
    }   
- 
+
    myAlsaWatcher = new QvkAlsaWatcher();
    connect( myAlsaWatcher, SIGNAL( changed( QStringList ) ), this, SLOT( AlsaWatcherEvent( QStringList ) ) );
-   
+
    VideoFileSystemWatcher = new QFileSystemWatcher();
    VideoFileSystemWatcher->addPath( myUi.SaveVideoPathLineEdit->displayText() );
    connect( VideoFileSystemWatcher, SIGNAL( directoryChanged( const QString& ) ), this, SLOT( myVideoFileSystemWatcher( const QString ) ) );
@@ -1257,16 +1257,32 @@ QString screencast::getLsofVersion()
 
 
 // Only for commandline and dbus
-void screencast::startrecord()
+int screencast::startrecord()
 {
-   myUi.recordButton->click();
+   if ( myUi.recordButton->isEnabled() == true )
+   {
+     myUi.recordButton->click();
+     return 0;
+   }
+   else
+   {
+     return 1;
+   }
 }
 
 
 // Only for commandline and dbus
-void screencast::stoprecord()
+int screencast::stoprecord()
 {
-   myUi.StopButton->click(); 
+   if ( myUi.StopButton->isEnabled() == true )
+   {
+     myUi.StopButton->click();
+     return 0;
+   }
+   else
+   {
+     return 1;
+   }
 }
 
 // Only for commandline and dbus

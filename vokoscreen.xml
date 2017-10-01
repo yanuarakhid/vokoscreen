@@ -2,8 +2,14 @@
     "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
 <node>
     <interface name="org.vokoscreen.screencast.vokoscreenInterface">
-       <method name="startrecord"/>
-       <method name="stoprecord"/>
+       <method name="startrecord">
+          <arg name="text" type="i" direction="out"/>
+       </method>
+
+       <method name="stoprecord">
+          <arg name="text" type="i" direction="out"/>
+       </method>
+
        <method name="setFullScreen"/>
        <method name="setWindow"/>
        <method name="setArea"/>
@@ -13,5 +19,6 @@
        <method name="setWebcamOn"/>
        <method name="setWebcamOff"/>
        <method name="quit"/>
+       <signal name="allLoad"/>
     </interface>
 </node>
