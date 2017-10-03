@@ -2,6 +2,7 @@
     "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
 <node>
     <interface name="org.vokoscreen.screencast.vokoscreenInterface">
+
        <method name="startrecord">
           <arg name="text" type="i" direction="out"/>
        </method>
@@ -10,15 +11,45 @@
           <arg name="text" type="i" direction="out"/>
        </method>
 
-       <method name="setFullScreen"/>
-       <method name="setWindow"/>
-       <method name="setArea"/>
-       <method name="setAreaReset"/>
-       <method name="setAudioOn"/>
-       <method name="setAudioOff"/>
-       <method name="setWebcamOn"/>
-       <method name="setWebcamOff"/>
-       <method name="quit"/>
-       <signal name="allLoad"/>
+       <method name="setFullScreen">
+          <arg name="text" type="i" direction="out"/>
+       </method>
+
+       <method name="setWindow">
+          <arg name="text" type="i" direction="out"/>
+       </method>
+
+       <method name="setArea">
+          <arg name="text" type="i" direction="out"/>
+       </method>
+
+       <method name="setAreaReset">
+          <arg name="text" type="i" direction="out"/>
+       </method>
+
+       <method name="setAudioOn">
+          <arg name="text" type="i" direction="out"/>
+       </method>
+
+       <method name="setAudioOff">
+          <arg name="text" type="i" direction="out"/>
+       </method>
+
+       <method name="setWebcamOn">
+          <arg name="text" type="i" direction="out"/>
+       </method>
+
+       <method name="setWebcamOff">
+          <arg name="text" type="i" direction="out"/>
+       </method>
+
+       <method name="isVokoscreenLoaded">
+          <arg name="text" type="i" direction="out"/>
+       </method>
+       
+       <method name="quit">
+       </method>
+
     </interface>
 </node>
+<!-- https://codebeautify.org/xmlvalidator -->

@@ -37,7 +37,18 @@ int main(int argc, char** argv)
     }
     else
     {
-      isRunning = true; 
+      isRunning = true;
+      int x = 0;
+      QDBusReply<int> reply;
+      do {
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        reply = dbus_iface.call( "isVokoscreenLoaded" );
+        QTest::qSleep( 50 );
+        qDebug() << x++ << reply.value();
+      } while( reply.value() > 0 );
+
     }
     
     QStringList arguments = QApplication::instance()->arguments();
@@ -70,10 +81,25 @@ int main(int argc, char** argv)
          qDebug() << "  --setWebcamOff      Disable Webcam";
          qDebug() << "  --quit              Close vokoscreen";
          qDebug( " " );
-         return close( 0 );
+         return 0;
       }
     }
-
+/*
+    // if running and argument is --isVokoscreenLoaded
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+      if ( (isRunning == true) and ( arguments[ 1 ] == "--isVokoscreenLoaded" ) )
+      {
+        qDebug() << "1111111111111111111111   --isVokoscreenLoaded";
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
+        QDBusReply<int> reply = dbus_iface.call( "isVokoscreenLoaded" );
+        qDebug() << "2222222222222222222222" << reply.value();
+        return reply.value();
+      }
+    }
+*/
     qDebug() << "[vokoscreen] For comanndline option take: vokoscreen --help";
     
     QTranslator * qtTranslator = new QTranslator();
@@ -142,8 +168,8 @@ int main(int argc, char** argv)
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        dbus_iface.call("setFullScreen");
-        goto test;
+        QDBusReply<int> reply = dbus_iface.call("setFullScreen");
+        return reply.value();
       }
     }
     
@@ -155,8 +181,8 @@ int main(int argc, char** argv)
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        dbus_iface.call("setWindow");
-        goto test;
+        QDBusReply<int> reply = dbus_iface.call("setWindow");
+        return reply.value();
       }
     }
 
@@ -168,8 +194,8 @@ int main(int argc, char** argv)
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        dbus_iface.call("setArea");
-        goto test;
+        QDBusReply<int> reply = dbus_iface.call("setArea");
+        return reply.value();
       }
     }
 
@@ -181,8 +207,8 @@ int main(int argc, char** argv)
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        dbus_iface.call("setAreaReset");
-        goto test;
+        QDBusReply<int> reply = dbus_iface.call("setAreaReset");
+        return reply.value();
       }
     }
 
@@ -194,8 +220,8 @@ int main(int argc, char** argv)
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        dbus_iface.call("setAudioOff");
-        goto test;
+        QDBusReply<int> reply = dbus_iface.call("setAudioOff");
+        return reply.value();
       }
     }
     
@@ -207,8 +233,8 @@ int main(int argc, char** argv)
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        dbus_iface.call("setAudioOn");
-        goto test;
+        QDBusReply<int> reply = dbus_iface.call("setAudioOn");
+        return reply.value();
       }
     }
 
@@ -220,8 +246,8 @@ int main(int argc, char** argv)
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        dbus_iface.call("setWebcamOn");
-        goto test;
+        QDBusReply<int> reply = dbus_iface.call("setWebcamOn");
+        return reply.value();
       }
     }
     
@@ -233,8 +259,8 @@ int main(int argc, char** argv)
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        dbus_iface.call("setWebcamOff");
-        goto test;
+        QDBusReply<int> reply = dbus_iface.call("setWebcamOff");
+        return reply.value();
       }
     }
     
@@ -273,6 +299,8 @@ int main(int argc, char** argv)
                                                                   QMessageBox::Close );
       (void)ret;
     }
+
+    qDebug() << "********** Diese Zeile sollte nie erscheinen **********";
     
     test:{}
 }

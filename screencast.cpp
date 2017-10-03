@@ -39,6 +39,8 @@ using namespace std;
 
 screencast::screencast()
 {
+    vokoscreenLoaded = 1;
+    
     vkSettings.readAll();
     
     myUi.setupUi( this );
@@ -1255,6 +1257,11 @@ QString screencast::getLsofVersion()
   return lsofVersion;
 }
 
+// Only for commandline and dbus
+int screencast::isVokoscreenLoaded()
+{
+  return vokoscreenLoaded;   
+}
 
 // Only for commandline and dbus
 int screencast::startrecord()
@@ -1269,7 +1276,6 @@ int screencast::startrecord()
      return 1;
    }
 }
-
 
 // Only for commandline and dbus
 int screencast::stoprecord()
@@ -1286,21 +1292,45 @@ int screencast::stoprecord()
 }
 
 // Only for commandline and dbus
-void screencast::setFullScreen()
+int screencast::setFullScreen()
 {
-   myUi.FullScreenRadioButton->click();
+    if ( ( myUi.FullScreenRadioButton->isEnabled() == true ) and ( myUi.FullScreenRadioButton->isChecked() == false ) )
+    {
+      myUi.FullScreenRadioButton->click();
+      return 0;
+    }
+    else
+    {
+      return 1;
+    }
 }
 
 // Only for commandline and dbus
-void screencast::setWindow()
+int screencast::setWindow()
 {
-   myUi.WindowRadioButton->click();   
+   if ( ( myUi.WindowRadioButton->isChecked() == false ) and ( myUi.WindowRadioButton->isChecked() == false ) )
+   {
+     myUi.WindowRadioButton->click();
+     return 0;
+   }
+   else
+   {
+     return 1;
+   }
 }
 
 // Only for commandline and dbus
-void screencast::setArea()
+int screencast::setArea()
 {
-   myUi.AreaRadioButton->click();   
+   if ( ( myUi.AreaRadioButton->isChecked() == false ) and ( myUi.AreaRadioButton->isChecked() == false ) )
+   {
+     myUi.AreaRadioButton->click();
+     return 0;
+   }
+   else
+   {
+     return 1;
+   }
 }
 
 // Only for commandline and dbus
@@ -1308,7 +1338,6 @@ void screencast::setAreaReset()
 {
    myUi.areaResetButton->click();
 }
-
 
 // Only for commandline and dbus
 void screencast::setAudioOff()
@@ -1318,7 +1347,6 @@ void screencast::setAudioOff()
        myUi.AudioOnOffCheckbox->click();
    }
 }
-
 
 // Only for commandline and dbus
 void screencast::setAudioOn()
@@ -1330,27 +1358,37 @@ void screencast::setAudioOn()
 }
 
 // Only for commandline and dbus
-void screencast::setWebcamOn()
+int screencast::setWebcamOn()
 {
     if ( myUi.webcamCheckBox->checkState() == Qt::Unchecked )
     {
         myUi.webcamCheckBox->click();
+        return 0;
+    }
+    else
+    {
+        return 1;
     }
 }
 
 // Only for commandline and dbus
-void screencast::setWebcamOff()
+int screencast::setWebcamOff()
 {
     if ( myUi.webcamCheckBox->checkState() == Qt::Checked  )
     {
         myUi.webcamCheckBox->click();
+        return 0;
+    }
+    else
+    {
+        return 1;
     }
 }
 
 // Only for commandline and dbus
 void screencast::quit()
 {
-   close();
+   this->close();
 }
 
 
@@ -1518,6 +1556,8 @@ void screencast::PulseMultipleChoice()
 
   qDebug() << "[vokoscreen]" << "---End search PulseAudio Capture Devices---";
   qDebug( " " );
+  
+  vokoscreenLoaded = 0;
 }
 
 #include <X11/Xlib.h>
