@@ -25,6 +25,15 @@
 #include <QLibraryInfo>
 #include <QDBusConnection>
 
+void runningWithArguments( QStringList arguments, int &returnValue )
+{
+   QDBusConnection bus = QDBusConnection::sessionBus();
+   QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                             "org.vokoscreen.screencast.vokoscreenInterface", bus);
+   QDBusReply<int> reply = dbus_iface.call( arguments[1].replace(0,2,""));
+   returnValue = reply.value();
+}
+
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
@@ -109,7 +118,7 @@ int main(int argc, char** argv)
     QTranslator translator;
     translator.load( "vokoscreen_" + QLocale::system().name(), ":/language" );
     app.installTranslator( &translator );
-    
+
     // if not running and argument is --startrecord
     for( int i = 1; i < arguments.count(); ++i )
     {
@@ -134,6 +143,41 @@ int main(int argc, char** argv)
       }
     }
 
+    int returnValue = 0;
+    if ( ( isRunning == true ) and ( arguments.count() > 1 ) )
+    {
+      if( arguments[1] == "--startrecord") {
+          runningWithArguments( arguments, returnValue );
+          return returnValue;
+      } else if( arguments[1] == "--stoprecord") {
+          runningWithArguments( arguments, returnValue );
+          return returnValue;
+      }  else if( arguments[1] == "--setFullScreen") {
+          runningWithArguments( arguments, returnValue );
+          return returnValue;
+      }  else if( arguments[1] == "--setWindow") {
+          runningWithArguments( arguments, returnValue );
+          return returnValue;
+      }  else if( arguments[1] == "--setArea") {
+          runningWithArguments( arguments, returnValue );
+          return returnValue;
+      }  else if( arguments[1] == "--setAreaReset") {
+          runningWithArguments( arguments, returnValue );
+          return returnValue;
+      }  else if( arguments[1] == "--setAudioOn") {
+          runningWithArguments( arguments, returnValue );
+          return returnValue;
+      }  else if( arguments[1] == "--setAudioOff") {
+          runningWithArguments( arguments, returnValue );
+          return returnValue;
+      }  else {
+          qDebug() << "[vokoscreen]" << "option" << arguments[1] << "not available";
+          return 0;
+      }
+    }
+
+
+/*
     // if running and argument is --startrecord
     for( int i = 1; i < arguments.count(); ++i )
     {
@@ -237,7 +281,7 @@ int main(int argc, char** argv)
         return reply.value();
       }
     }
-
+*/
     // if running and argument is --setWebcamOn
     for( int i = 1; i < arguments.count(); ++i )
     {

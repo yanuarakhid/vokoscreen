@@ -1308,7 +1308,7 @@ int screencast::setFullScreen()
 // Only for commandline and dbus
 int screencast::setWindow()
 {
-   if ( ( myUi.WindowRadioButton->isChecked() == false ) and ( myUi.WindowRadioButton->isChecked() == false ) )
+   if ( ( myUi.WindowRadioButton->isEnabled() == true ) and ( myUi.WindowRadioButton->isChecked() == false ) )
    {
      myUi.WindowRadioButton->click();
      return 0;
@@ -1322,7 +1322,7 @@ int screencast::setWindow()
 // Only for commandline and dbus
 int screencast::setArea()
 {
-   if ( ( myUi.AreaRadioButton->isChecked() == false ) and ( myUi.AreaRadioButton->isChecked() == false ) )
+   if ( ( myUi.AreaRadioButton->isEnabled() == true ) and ( myUi.AreaRadioButton->isChecked() == false ) )
    {
      myUi.AreaRadioButton->click();
      return 0;
@@ -1334,26 +1334,46 @@ int screencast::setArea()
 }
 
 // Only for commandline and dbus
-void screencast::setAreaReset()
+int screencast::setAreaReset()
 {
-   myUi.areaResetButton->click();
-}
-
-// Only for commandline and dbus
-void screencast::setAudioOff()
-{
-   if ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked )
+   if ( myUi.areaResetButton->isEnabled() == true )
    {
-       myUi.AudioOnOffCheckbox->click();
+      myUi.areaResetButton->click();
+      return 0;
+   }
+   else
+   {
+      return 1;
    }
 }
 
 // Only for commandline and dbus
-void screencast::setAudioOn()
+int screencast::setAudioOn()
 {
-   if ( myUi.AudioOnOffCheckbox->checkState() == Qt::Unchecked )
+   if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Unchecked ) )
    {
        myUi.AudioOnOffCheckbox->click();
+       return 0;
+   }
+   else
+   {
+       return 1;
+   }
+}
+
+// Only for commandline and dbus
+int screencast::setAudioOff()
+{
+   if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) )
+   {
+qDebug() << "******************************************************";
+       myUi.AudioOnOffCheckbox->click();
+       return 0;
+   }
+   else
+   {
+       qDebug() << "********************11111111111111111111111111111111";
+       return 1;
    }
 }
 

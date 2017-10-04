@@ -95,9 +95,9 @@ public slots:
     int setFullScreen();
     int setWindow();
     int setArea();
-    void setAreaReset();
-    void setAudioOff();
-    void setAudioOn();
+    int setAreaReset();
+    int setAudioOff();
+    int setAudioOn();
     int setWebcamOn();
     int setWebcamOff();
     void quit();
