@@ -72,12 +72,14 @@ int main(int argc, char** argv)
          qDebug( " " );
          qDebug() << "Hint:";
          qDebug() << "  Only one option is accepted per call.";
+         qDebug() << "  returnvalue: 0=ok, 1=faild";
          qDebug( " " );
          qDebug() << "Options:";
          qDebug() << "  --help              Show this help message";
          qDebug() << "  --startrecord       Starts a recording";
          qDebug() << "                             If vokoscreen not running and starts";
          qDebug() << "                             with this option, audio will disable.";
+         qDebug() << "  For the following options, vokoscreen must be running";
          qDebug() << "  --stoprecord        Stops record";
          qDebug() << "  --setFullScreen     Enable record for Fullscreen";
          qDebug() << "  --setWindow         Enable record for Window";
