@@ -169,157 +169,21 @@ int main(int argc, char** argv)
       }  else if( arguments[1] == "--setAudioOff") {
           runningWithArguments( arguments, returnValue );
           return returnValue;
+      }  else if( arguments[1] == "--setWebcamOn") {
+          runningWithArguments( arguments, returnValue );
+          return returnValue;
+      }  else if( arguments[1] == "--setWebcamOff") {
+          runningWithArguments( arguments, returnValue );
+          return returnValue;
+      }  else if( arguments[1] == "--quit") {
+          runningWithArguments( arguments, returnValue );
+          return returnValue;
       }  else {
           qDebug() << "[vokoscreen]" << "option" << arguments[1] << "not available";
           return 0;
       }
     }
 
-
-/*
-    // if running and argument is --startrecord
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( (isRunning == true) and ( arguments[ 1 ] == "--startrecord" ) )
-      {
-        QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
-                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        QDBusReply<int> reply = dbus_iface.call("startrecord");
-        return reply.value();
-      }
-    }
-
-    // if running and argument is --stoprecord
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( (isRunning == true) and ( arguments[ 1 ] == "--stoprecord" ) )
-      {
-        QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
-                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        QDBusReply<int> reply = dbus_iface.call( "stoprecord" );
-        return reply.value();
-      }
-    }
-
-    // if running and argument is --setFullScreen
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( (isRunning == true) and ( arguments[ 1 ] == "--setFullScreen" ) )
-      {
-        QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
-                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        QDBusReply<int> reply = dbus_iface.call("setFullScreen");
-        return reply.value();
-      }
-    }
-    
-    // if running and argument is --setWindow
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( (isRunning == true) and ( arguments[ 1 ] == "--setWindow" ) )
-      {
-        QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
-                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        QDBusReply<int> reply = dbus_iface.call("setWindow");
-        return reply.value();
-      }
-    }
-
-    // if running and argument is --setArea
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( (isRunning == true) and ( arguments[ 1 ] == "--setArea" ) )
-      {
-        QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
-                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        QDBusReply<int> reply = dbus_iface.call("setArea");
-        return reply.value();
-      }
-    }
-
-    // if running and argument is --setAreaReset
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( (isRunning == true) and ( arguments[ 1 ] == "--setAreaReset" ) )
-      {
-        QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
-                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        QDBusReply<int> reply = dbus_iface.call("setAreaReset");
-        return reply.value();
-      }
-    }
-
-    // if running and argument is --setAudioOff
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( (isRunning == true) and ( arguments[ 1 ] == "--setAudioOff" ) )
-      {
-        QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
-                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        QDBusReply<int> reply = dbus_iface.call("setAudioOff");
-        return reply.value();
-      }
-    }
-    
-    // if running and argument is --setAudioOn
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( (isRunning == true) and ( arguments[ 1 ] == "--setAudioOn" ) )
-      {
-        QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
-                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        QDBusReply<int> reply = dbus_iface.call("setAudioOn");
-        return reply.value();
-      }
-    }
-*/
-    // if running and argument is --setWebcamOn
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( (isRunning == true) and ( arguments[ 1 ] == "--setWebcamOn" ) )
-      {
-        QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
-                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        QDBusReply<int> reply = dbus_iface.call("setWebcamOn");
-        return reply.value();
-      }
-    }
-    
-    // if running and argument is --setWebcamOff
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( (isRunning == true) and ( arguments[ 1 ] == "--setWebcamOff" ) )
-      {
-        QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
-                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        QDBusReply<int> reply = dbus_iface.call("setWebcamOff");
-        return reply.value();
-      }
-    }
-    
-    // if running and argument is --quit
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( (isRunning == true) and ( arguments[ 1 ] == "--quit" ) )
-      {
-        QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
-                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        dbus_iface.call("quit");
-        goto test;
-      }
-    }
-    
     // normal start without argument
     if ( isRunning == false )
     {
@@ -344,6 +208,4 @@ int main(int argc, char** argv)
     }
 
     qDebug() << "********** Diese Zeile sollte nie erscheinen **********";
-    
-    test:{}
 }
