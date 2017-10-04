@@ -72,7 +72,6 @@ int main(int argc, char** argv)
          qDebug( " " );
          qDebug() << "Hint:";
          qDebug() << "  Only one option is accepted per call.";
-         qDebug() << "  The options delivered to time no useful return-values.";
          qDebug( " " );
          qDebug() << "Options:";
          qDebug() << "  --help              Show this help message";
