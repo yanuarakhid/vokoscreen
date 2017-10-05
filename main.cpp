@@ -40,7 +40,6 @@ void runningWithArguments_2( QStringList arguments, int arg1, int &returnValue )
    QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                              "org.vokoscreen.screencast.vokoscreenInterface", bus);
    QDBusReply<int> reply = dbus_iface.call( arguments[1].replace(0,2,""), arg1 );
-   qDebug() << "+++++++++++++++++++++++++++" << arguments << arg1;
    returnValue = reply.value();
 }
 
