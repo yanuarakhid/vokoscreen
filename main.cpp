@@ -34,6 +34,16 @@ void runningWithArguments( QStringList arguments, int &returnValue )
    returnValue = reply.value();
 }
 
+void runningWithArguments_2( QStringList arguments, int arg1, int &returnValue )
+{
+   QDBusConnection bus = QDBusConnection::sessionBus();
+   QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
+                             "org.vokoscreen.screencast.vokoscreenInterface", bus);
+   QDBusReply<int> reply = dbus_iface.call( arguments[1].replace(0,2,""), arg1 );
+   qDebug() << "+++++++++++++++++++++++++++" << arguments << arg1;
+   returnValue = reply.value();
+}
+
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
@@ -75,21 +85,22 @@ int main(int argc, char** argv)
          qDebug() << "  return value: 0=ok, 1=faild";
          qDebug( " " );
          qDebug() << "Options:";
-         qDebug() << "  --help              Show this help message";
-         qDebug() << "  --startrecord       Starts a recording";
+         qDebug() << "  --help                Show this help message";
+         qDebug() << "  --startrecord         Starts a recording";
          qDebug() << "                             If vokoscreen not running and starts";
          qDebug() << "                             with this option, audio will disable.";
          qDebug() << "  For the following options, vokoscreen must be running";
-         qDebug() << "  --stoprecord        Stops record";
-         qDebug() << "  --setFullScreen     Enable record for Fullscreen";
-         qDebug() << "  --setWindow         Enable record for Window";
-         qDebug() << "  --setArea           Enable record for Area";
-         qDebug() << "  --setAreaReset      Reset size and position";
-         qDebug() << "  --setAudioOn        Enable Audio";
-         qDebug() << "  --setAudioOff       Disable Audio";
-         qDebug() << "  --setWebcamOn       Enable Webcam";
-         qDebug() << "  --setWebcamOff      Disable Webcam";
-         qDebug() << "  --quit              Close vokoscreen";
+         qDebug() << "  --stoprecord          Stops record";
+         qDebug() << "  --setFullScreen       Enable record for Fullscreen";
+         qDebug() << "  --setWindow           Enable record for Window";
+         qDebug() << "  --setArea             Enable record for Area";
+         qDebug() << "  --setAreaReset        Reset size and position";
+         qDebug() << "  --setCountDown 0-99   Set Value Countdown";
+         qDebug() << "  --setAudioOn          Enable Audio";
+         qDebug() << "  --setAudioOff         Disable Audio";
+         qDebug() << "  --setWebcamOn         Enable Webcam";
+         qDebug() << "  --setWebcamOff        Disable Webcam";
+         qDebug() << "  --quit                Close vokoscreen";
          qDebug( " " );
          return 0;
       }
@@ -110,7 +121,6 @@ int main(int argc, char** argv)
       }
     }
 */
-    qDebug() << "[vokoscreen] For comanndline option take: vokoscreen --help";
     
     QTranslator * qtTranslator = new QTranslator();
     qtTranslator->load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
@@ -176,6 +186,9 @@ int main(int argc, char** argv)
           return returnValue;
       }  else if( arguments[1] == "--setWebcamOff") {
           runningWithArguments( arguments, returnValue );
+          return returnValue;
+      }  else  if( arguments[1] == "--setCountDown") {
+          runningWithArguments_2( arguments, 3, returnValue );
           return returnValue;
       }  else if( arguments[1] == "--quit") {
           runningWithArguments( arguments, returnValue );

@@ -100,6 +100,7 @@ public slots:
     int setAudioOn();
     int setWebcamOn();
     int setWebcamOff();
+    int setCountDown( int value );
     void quit();
     int isVokoscreenLoaded();
     

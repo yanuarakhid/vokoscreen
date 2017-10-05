@@ -1366,13 +1366,11 @@ int screencast::setAudioOff()
 {
    if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) )
    {
-qDebug() << "******************************************************";
        myUi.AudioOnOffCheckbox->click();
        return 0;
    }
    else
    {
-       qDebug() << "********************11111111111111111111111111111111";
        return 1;
    }
 }
@@ -1403,6 +1401,13 @@ int screencast::setWebcamOff()
     {
         return 1;
     }
+}
+
+// Only for commandline and dbus
+int screencast::setCountDown( int value )
+{
+    myUi.CountdownSpinBox->setValue( value );
+    return 0;
 }
 
 // Only for commandline and dbus

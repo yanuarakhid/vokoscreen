@@ -47,6 +47,11 @@
           <arg name="text" type="i" direction="out"/>
        </method>
        
+       <method name="setCountDown">
+          <arg name="text" type="i" direction="out"/>
+          <arg name="value" type="i" direction="in"/>
+       </method>
+
        <method name="quit">
        </method>
 
