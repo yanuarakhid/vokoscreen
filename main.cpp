@@ -18,12 +18,9 @@
 
 #include "screencast.h"
 #include "vokoscreen_adaptor.h"
-#include "QvkSettings.h"
 
 #include <QDebug>
 #include <QTranslator>
-#include <QLocale>
-#include <QLibraryInfo>
 #include <QDBusConnection>
 #include <QCommandLineOption>
 
@@ -146,7 +143,7 @@ int main(int argc, char** argv)
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
 
-        // Warten bis die Audiogeräte geladen sind
+        // Wait until the audio devices are loaded
         QDBusReply<int> reply;
         do {
           reply = dbus_iface.call( "isVokoscreenLoaded" );
@@ -211,7 +208,7 @@ int main(int argc, char** argv)
     {
       screencast *foo = new screencast();
 
-      // Folgende aufrufe registrieren die Slots
+      // The following calls register the slots
       new VokoscreenInterfaceAdaptor(foo);
       QDBusConnection dbusConnection = QDBusConnection::sessionBus();
       dbusConnection.registerObject("/record", foo);
@@ -229,5 +226,5 @@ int main(int argc, char** argv)
       (void)ret;
     }
 
-    qDebug() << "********** Diese Zeile sollte nur nach der MessageBox erscheinen **********";
+    qDebug() << "********** This line should appear only after the message box **********";
 }
