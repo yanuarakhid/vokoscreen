@@ -10,7 +10,7 @@ QvkAlsaWatcher::QvkAlsaWatcher()
     AlsaCardCounter = -1;
     QTimer *timer = new QTimer( this );
     connect( timer, SIGNAL( timeout() ), this, SLOT( AlsaWatcherTimer() ) );
-    timer->start();
+    timer->start(500);
 }
 
 
