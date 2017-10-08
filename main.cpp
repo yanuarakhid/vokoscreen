@@ -18,35 +18,37 @@
 
 #include "screencast.h"
 #include "vokoscreen_adaptor.h"
+#include "QvkSettings.h"
 
 #include <QDebug>
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QDBusConnection>
+#include <QCommandLineOption>
 
-void runningWithArguments( QStringList arguments, int &returnValue )
+void runningWithArguments( QString argument, int &returnValue )
 {
    QDBusConnection bus = QDBusConnection::sessionBus();
    QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                              "org.vokoscreen.screencast.vokoscreenInterface", bus);
-   QDBusReply<int> reply = dbus_iface.call( arguments[1].replace(0,2,""));
+   QDBusReply<int> reply = dbus_iface.call( argument );
    returnValue = reply.value();
 }
 
-void runningWithArguments_2( QStringList arguments, int arg1, int &returnValue )
+void runningWithArguments_2( QString argument, int arg1, int &returnValue )
 {
    QDBusConnection bus = QDBusConnection::sessionBus();
    QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                              "org.vokoscreen.screencast.vokoscreenInterface", bus);
-   QDBusReply<int> reply = dbus_iface.call( arguments[1].replace(0,2,""), arg1 );
+   QDBusReply<int> reply = dbus_iface.call( argument, arg1 );
    returnValue = reply.value();
 }
 
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
- 
+
     bool isRunning = false;
 
     if( QDBusConnection::sessionBus().registerService( "org.vokoscreen.screencast" ) )
@@ -56,70 +58,66 @@ int main(int argc, char** argv)
     else
     {
       isRunning = true;
-      int x = 0;
       QDBusReply<int> reply;
       do {
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
         reply = dbus_iface.call( "isVokoscreenLoaded" );
-        QTest::qSleep( 50 );
-        qDebug() << x++ << reply.value();
+        int waitTime = 10;
+        QTest::qSleep( waitTime );
+        if ( reply == 1 )
+          qDebug() << "[vokoscreen] return value is" << reply.value() << "wait" << waitTime << "ms";
+        else
+          qDebug() << "[vokoscreen] return value is" << reply.value() << "vokoscreen completely loaded";
       } while( reply.value() > 0 );
+    }
 
-    }
-    
-    QStringList arguments = QApplication::instance()->arguments();
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( ( arguments[ 1 ] == "--help" ) or
-           ( arguments[ 1 ] == "-h"     ) or
-           ( arguments[ 1 ] == "-?"     ) )
-      {
-         qDebug( " " );
-         qDebug() << "Usage: vokoscreen [OPTION]";
-         qDebug( " " );
-         qDebug() << "Hint:";
-         qDebug() << "  Only one option is accepted per call.";
-         qDebug() << "  return value: 0=ok, 1=faild";
-         qDebug( " " );
-         qDebug() << "Options:";
-         qDebug() << "  --help                Show this help message";
-         qDebug() << "  --startrecord         Starts a recording";
-         qDebug() << "                             If vokoscreen not running and starts";
-         qDebug() << "                             with this option, audio will disable.";
-         qDebug() << "  For the following options, vokoscreen must be running";
-         qDebug() << "  --stoprecord          Stops record";
-         qDebug() << "  --setFullScreen       Enable record for Fullscreen";
-         qDebug() << "  --setWindow           Enable record for Window";
-         qDebug() << "  --setArea             Enable record for Area";
-         qDebug() << "  --setAreaReset        Reset size and position";
-         qDebug() << "  --setCountDown 0-99   Set Value Countdown";
-         qDebug() << "  --setAudioOn          Enable Audio";
-         qDebug() << "  --setAudioOff         Disable Audio";
-         qDebug() << "  --setWebcamOn         Enable Webcam";
-         qDebug() << "  --setWebcamOff        Disable Webcam";
-         qDebug() << "  --quit                Close vokoscreen";
-         qDebug( " " );
-         return 0;
-      }
-    }
-/*
-    // if running and argument is --isVokoscreenLoaded
-    for( int i = 1; i < arguments.count(); ++i )
-    {
-      if ( (isRunning == true) and ( arguments[ 1 ] == "--isVokoscreenLoaded" ) )
-      {
-        qDebug() << "1111111111111111111111   --isVokoscreenLoaded";
-        QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
-                                  "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        QDBusReply<int> reply = dbus_iface.call( "isVokoscreenLoaded" );
-        qDebug() << "2222222222222222222222" << reply.value();
-        return reply.value();
-      }
-    }
-*/
+    QvkSettings vkSettings;
+    vkSettings.readAll();
+    QCoreApplication::setApplicationVersion( vkSettings.getVersion() );
+    QCommandLineParser parser;
+    parser.addHelpOption();
+    parser.addVersionOption();
+    parser.setApplicationDescription( "Only one option is accepted per call. Return value: 0=ok, 1=faild" );
+
+    QCommandLineOption startrecord( "startrecord", "Starts a recording. If vokoscreen not running and starts with this option, audio will disable." );
+    parser.addOption( startrecord );
+
+    QCommandLineOption stoprecord( "stoprecord", "Stop the record" );
+    parser.addOption( stoprecord );
+
+    QCommandLineOption setFullScreen( "setFullScreen", "Enable record for fullscreen" );
+    parser.addOption( setFullScreen );
+
+    QCommandLineOption setWindow( "setWindow", "Enable record for window" );
+    parser.addOption( setWindow );
+
+    QCommandLineOption setArea( "setArea", "Enable record for area" );
+    parser.addOption( setArea );
+
+    QCommandLineOption setAreaReset( "setAreaReset", "Reset size and position" );
+    parser.addOption( setAreaReset );
+
+    QCommandLineOption setCountDown( "setCountDown", "Sets value for countdown", "0-99", "0" );
+    parser.addOption( setCountDown );
+
+    QCommandLineOption setAudioOn( "setAudioOn", "Enable audio" );
+    parser.addOption( setAudioOn );
+
+    QCommandLineOption setAudioOff( "setAudioOff", "Disable audio" );
+    parser.addOption( setAudioOff );
+
+    QCommandLineOption setWebcamOn( "setWebcamOn", "Enable webcam" );
+    parser.addOption( setWebcamOn );
+
+    QCommandLineOption setWebcamOff( "setWebcamOff", "Disable webcam" );
+    parser.addOption( setWebcamOff );
+
+    QCommandLineOption quit( "quit", "Close vokoscreen" );
+    parser.addOption( quit );
+
+    parser.process(app);
     
     QTranslator * qtTranslator = new QTranslator();
     qtTranslator->load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
@@ -129,73 +127,83 @@ int main(int argc, char** argv)
     translator.load( "vokoscreen_" + QLocale::system().name(), ":/language" );
     app.installTranslator( &translator );
 
+    QStringList arguments = QApplication::instance()->arguments();
+
     // if not running and argument is --startrecord
-    for( int i = 1; i < arguments.count(); ++i )
+    if ( ( isRunning == false ) and ( arguments.count() > 1 ) )
     {
       if ( (isRunning == false) and ( arguments[ 1 ] == "--startrecord" ) )
       {
         screencast *foo = new screencast();
+        foo->show();
 
         new VokoscreenInterfaceAdaptor(foo);
         QDBusConnection dbusConnection = QDBusConnection::sessionBus();
         dbusConnection.registerObject("/record", foo);
         dbusConnection.registerService("org.vokoscreen.screencast");
-
+  
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
-        
-        dbus_iface.call("setAudioOff");
+
+        // Warten bis die Audiogeräte geladen sind
+        QDBusReply<int> reply;
+        do {
+          reply = dbus_iface.call( "isVokoscreenLoaded" );
+          int waitTime = 10;
+          QTest::qSleep( waitTime );
+          QCoreApplication::processEvents( QEventLoop::AllEvents );
+          if ( reply == 1 )
+            qDebug() << "[vokoscreen] return value is" << reply.value() << "wait" << waitTime << "ms";
+          else
+            qDebug() << "[vokoscreen] return value is" << reply.value() << "vokoscreen completely loaded";
+        } while( reply.value() > 0 );
+        qDebug( " " );
+
         dbus_iface.call("startrecord");
-   
-        foo->show();
         return app.exec();
       }
     }
-
-    int returnValue = 0;
+     
     if ( ( isRunning == true ) and ( arguments.count() > 1 ) )
     {
-      if( arguments[1] == "--startrecord") {
-          runningWithArguments( arguments, returnValue );
-          return returnValue;
-      } else if( arguments[1] == "--stoprecord") {
-          runningWithArguments( arguments, returnValue );
-          return returnValue;
-      }  else if( arguments[1] == "--setFullScreen") {
-          runningWithArguments( arguments, returnValue );
-          return returnValue;
-      }  else if( arguments[1] == "--setWindow") {
-          runningWithArguments( arguments, returnValue );
-          return returnValue;
-      }  else if( arguments[1] == "--setArea") {
-          runningWithArguments( arguments, returnValue );
-          return returnValue;
-      }  else if( arguments[1] == "--setAreaReset") {
-          runningWithArguments( arguments, returnValue );
-          return returnValue;
-      }  else if( arguments[1] == "--setAudioOn") {
-          runningWithArguments( arguments, returnValue );
-          return returnValue;
-      }  else if( arguments[1] == "--setAudioOff") {
-          runningWithArguments( arguments, returnValue );
-          return returnValue;
-      }  else if( arguments[1] == "--setWebcamOn") {
-          runningWithArguments( arguments, returnValue );
-          return returnValue;
-      }  else if( arguments[1] == "--setWebcamOff") {
-          runningWithArguments( arguments, returnValue );
-          return returnValue;
-      }  else  if( arguments[1] == "--setCountDown") {
-          runningWithArguments_2( arguments, 3, returnValue );
-          return returnValue;
-      }  else if( arguments[1] == "--quit") {
-          runningWithArguments( arguments, returnValue );
-          return returnValue;
-      }  else {
-          qDebug() << "[vokoscreen]" << "option" << arguments[1] << "not available";
-          return 0;
-      }
+      int returnValue = 0;
+      if ( parser.isSet( startrecord ) ) {
+          runningWithArguments( startrecord.names().at(0), returnValue );
+          return returnValue; }
+      if ( parser.isSet( stoprecord ) ) {
+          runningWithArguments( stoprecord.names().at(0), returnValue );
+          return returnValue; }
+      if ( parser.isSet( setFullScreen ) ) {
+          runningWithArguments( setFullScreen.names().at(0), returnValue );
+          return returnValue; }
+      if ( parser.isSet( setWindow ) ) {
+          runningWithArguments( setWindow.names().at(0), returnValue );
+          return returnValue; }
+      if ( parser.isSet( setArea ) ) {
+          runningWithArguments( setArea.names().at(0), returnValue );
+          return returnValue; }
+      if ( parser.isSet( setAreaReset ) ) {
+          runningWithArguments( setAreaReset.names().at(0), returnValue );
+          return returnValue; }
+      if ( parser.isSet( setAudioOn ) ) {
+          runningWithArguments( setAudioOn.names().at(0), returnValue );
+          return returnValue; }
+      if ( parser.isSet( setAudioOff ) ) {
+          runningWithArguments( setAudioOff.names().at(0), returnValue );
+          return returnValue; }
+      if ( parser.isSet( setWebcamOn ) ) {
+          runningWithArguments( setWebcamOn.names().at(0), returnValue );
+          return returnValue; }
+      if ( parser.isSet( setWebcamOff ) ) {
+          runningWithArguments( setWebcamOff.names().at(0), returnValue );
+          return returnValue; }
+      if ( parser.isSet( setCountDown ) ) {
+          runningWithArguments_2( setCountDown.names().at(0), parser.value( setCountDown ).toInt(), returnValue );
+          return returnValue; }
+      if ( parser.isSet( quit ) ) {
+          runningWithArguments( quit.names().at(0), returnValue );
+          return returnValue; }
     }
 
     // normal start without argument
@@ -221,5 +229,5 @@ int main(int argc, char** argv)
       (void)ret;
     }
 
-    qDebug() << "********** Diese Zeile sollte nie erscheinen **********";
+    qDebug() << "********** Diese Zeile sollte nur nach der MessageBox erscheinen **********";
 }
