@@ -111,6 +111,6 @@ include(pulse/pulse.pri)
 # log
 include(log/log.pri)
 
-QT += core gui widgets x11extras network testlib dbus
+QT += core gui widgets x11extras network testlib dbus multimedia multimediawidgets
 
 DBUS_ADAPTORS += vokoscreen.xml

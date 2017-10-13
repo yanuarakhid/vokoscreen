@@ -901,11 +901,16 @@ void screencast::closeEvent( QCloseEvent * event )
   Stop();
   saveSettings();
   if ( myUi.pointerCheckBox->checkState() == Qt::Checked )
+  {
     myUi.pointerCheckBox->click();
+  }
   myregionselection->close();
   magnifier->close();
-  webcamController->webcamCloseEvent();
-  SystemTrayIcon->hide();  
+  if ( myUi.webcamCheckBox->checkState() == Qt::Checked )
+  {
+    myUi.webcamCheckBox->click();
+  }
+ SystemTrayIcon->hide();
 }
 
 
