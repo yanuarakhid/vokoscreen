@@ -138,7 +138,7 @@ int main(int argc, char** argv)
         QDBusConnection dbusConnection = QDBusConnection::sessionBus();
         dbusConnection.registerObject("/record", foo);
         dbusConnection.registerService("org.vokoscreen.screencast");
-  
+
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface dbus_iface("org.vokoscreen.screencast", "/record",
                                   "org.vokoscreen.screencast.vokoscreenInterface", bus);
