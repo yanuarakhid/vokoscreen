@@ -94,9 +94,6 @@ void CaptureThread::run() {
                   emit newPicture( myImage ); 
 
 		free(asil);
-//		if (delay>0) {
-//			this->msleep(delay);
-//		}
 		xioctl(fd, VIDIOC_QBUF, &buf);
 		di++;
 		mutex.unlock();
@@ -138,7 +135,6 @@ QString CaptureThread::getNameFromDevice( QString device )
 
 	if ( -1 != v4l2_ioctl( fd,VIDIOC_QUERYCAP, dummy ) )
 	{
-		//printf( "[vokoscreen] v4l2 device info [%s]\n", dev_name.toStdString().c_str() );
 		qDebug() << "[vokoscreen] v4l2 device info " << dev_name.toStdString().c_str();
 		qDebug( " " );
 	} else
@@ -175,8 +171,7 @@ bool CaptureThread::busy( QString device )
           quit();
 	}
 
-	//CLEAR( fmt );
-	struct v4l2_format fmt;// neu
+    struct v4l2_format fmt;
 	fmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
 	fmt.fmt.pix.width       = 640;
 	fmt.fmt.pix.height      = 480;
@@ -210,16 +205,7 @@ int CaptureThread::start( QString device )
 	dev_name = device;
 	width    = 640;
 	height   = 480;
-//	fps      = 25;
-	
-//	if ( fps > 0 )
-//          delay = 1000/fps;
-//	else 
-//	  delay = 0;
-
-	// open webcam device node
 	fd = v4l2_open(dev_name.toStdString().c_str(), O_RDWR | O_NONBLOCK, 0);
-//	fd = v4l2_open( dev_name.toStdString().c_str(), O_RDONLY, 0 );
 
 	if (fd < 0) {
 		qDebug() << "[vokoscreen] CaptureThread::start cannot open device";
@@ -239,7 +225,6 @@ int CaptureThread::start( QString device )
 		quit();
 		return 1;
 	}
-	//emit startedCapture(fmt.fmt.pix.width, fmt.fmt.pix.height);
 
 	v4lconvert_data = v4lconvert_create(fd);
 	if (v4lconvert_data == NULL)
