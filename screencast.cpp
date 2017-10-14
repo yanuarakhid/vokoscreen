@@ -288,9 +288,10 @@ screencast::screencast()
     myUi.webcamComboBox->setToolTip( tr ( "Select webcam" ) );
     myUi.mirrorCheckBox->setText( tr( "Mirrored" ) );
     myUi.rotateDial->setWrapping ( true );
-    webcamController = new QvkWebcamController( myUi.webcamCheckBox, myUi.webcamComboBox, myUi.mirrorCheckBox, 
-						myUi.dialFrame, myUi.rotateDial, myUi.radioButtonTopMiddle,
-						myUi.radioButtonRightMiddle, myUi.radioButtonBottomMiddle, myUi.radioButtonLeftMiddle );
+//    webcamController = new QvkWebcamController( myUi.webcamCheckBox, myUi.webcamComboBox, myUi.mirrorCheckBox,
+//						myUi.dialFrame, myUi.rotateDial, myUi.radioButtonTopMiddle,
+//						myUi.radioButtonRightMiddle, myUi.radioButtonBottomMiddle, myUi.radioButtonLeftMiddle );
+    webcamController = new QvkWebcamController( myUi );
     (void)webcamController;
 
     

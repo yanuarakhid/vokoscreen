@@ -19,14 +19,17 @@
 #include <QProcess>
 #include <QTimer>
 
+#include "ui_vokoscreen.h"
+
 class QvkWebcamController : public QObject
 {
     Q_OBJECT
 
 public:
-   QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox, 
-					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle, QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle );
-  
+//   QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox,
+//					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle, QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle );
+   QvkWebcamController(Ui_screencast value);
+
   virtual ~QvkWebcamController();
   
   QStringList webcamList;
@@ -55,7 +58,7 @@ private slots:
   
 private:
   QvkSettings vkSettings;
-  QFrame *rotateFrame;
+  /*QFrame *rotateFrame;
   QCheckBox *checkBox;
   QComboBox *comboBox;
   QCheckBox *mirrorCheckBox;
@@ -63,11 +66,11 @@ private:
   QRadioButton *radioButtonTopMiddle;
   QRadioButton *radioButtonRightMiddle;
   QRadioButton *radioButtonBottomMiddle;
-  QRadioButton *radioButtonLeftMiddle;
+  QRadioButton *radioButtonLeftMiddle; */
   QvkWebcamWatcher * myWebcamWatcher;
   CaptureThread *captureThread;
   bool mirrored;
-
+  Ui_screencast myUi;
 
 protected:
   

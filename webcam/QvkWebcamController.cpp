@@ -2,58 +2,60 @@
 
 #include <QTest>
 
-QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox, 
-					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle,
-					  QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle )
+//QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox,
+//					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle,
+//					  QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle )
+QvkWebcamController::QvkWebcamController( Ui_screencast value )
 {
   vkSettings.readAll();
+
+  myUi = value;
+  //checkBox = myCheckBox;
+  myUi.webcamCheckBox->setEnabled( false );
+  connect( myUi.webcamCheckBox, SIGNAL( clicked( bool ) ), this, SLOT( setWebcamOnOff( bool ) ) );
   
-  checkBox = myCheckBox;
-  checkBox->setEnabled( false );
-  connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( setWebcamOnOff( bool ) ) );
+  //rotateFrame = myRotateFrame;
   
-  rotateFrame = myRotateFrame;
-  
-  comboBox = myComboBox;
+  //comboBox = myComboBox;
   
   mirrored = false;
-  mirrorCheckBox = myMirrorCheckBox;
+  //mirrorCheckBox = myMirrorCheckBox;
   
-  if ( checkBox->checkState() == Qt::Unchecked )
+  if ( myUi.webcamCheckBox->checkState() == Qt::Unchecked )
   {
-    mirrorCheckBox->setEnabled( false );
-    rotateFrame->setEnabled( false );
+    myUi.mirrorCheckBox->setEnabled( false );
+    myUi.dialFrame->setEnabled( false );
   }
   else
   {
-    mirrorCheckBox->setEnabled( true );
-    rotateFrame->setEnabled( false );
+    myUi.mirrorCheckBox->setEnabled( true );
+    myUi.dialFrame->setEnabled( false );
   }
-  connect( mirrorCheckBox, SIGNAL( clicked( bool ) ), this, SLOT( setMirrorOnOff( bool ) ) );
+  connect( myUi.mirrorCheckBox, SIGNAL( clicked( bool ) ), this, SLOT( setMirrorOnOff( bool ) ) );
   if ( vkSettings.getWebcamMirrored() == Qt::Checked )
   {
-    mirrorCheckBox->setEnabled( true );
-    mirrorCheckBox->click();
-    mirrorCheckBox->setEnabled( false );
+    myUi.mirrorCheckBox->setEnabled( true );
+    myUi.mirrorCheckBox->click();
+    myUi.mirrorCheckBox->setEnabled( false );
   }
 
-  rotateDial = myRotateDial;
-  rotateDial->setMinimum( 0 );
-  rotateDial->setMaximum ( 360 );
-  rotateDial->setValue( 0 );
-  connect( rotateDial, SIGNAL( sliderPressed () ), this, SLOT( rotateDialclicked() ) );
+  //rotateDial = myRotateDial;
+  myUi.rotateDial->setMinimum( 0 );
+  myUi.rotateDial->setMaximum ( 360 );
+  myUi.rotateDial->setValue( 0 );
+  connect( myUi.rotateDial, SIGNAL( sliderPressed () ), this, SLOT( rotateDialclicked() ) );
   
-  radioButtonTopMiddle = myRadioButtonTopMiddle;
-  radioButtonTopMiddle->setChecked( vkSettings.getWebcamButtonTopMiddle() );
+//  radioButtonTopMiddle = myRadioButtonTopMiddle;
+  myUi.radioButtonTopMiddle->setChecked( vkSettings.getWebcamButtonTopMiddle() );
   
-  radioButtonRightMiddle = myRadioButtonRightMiddle;
-  radioButtonRightMiddle->setChecked( vkSettings.getWebcamButtonRightMiddle() );
+  //radioButtonRightMiddle = myRadioButtonRightMiddle;
+  myUi.radioButtonRightMiddle->setChecked( vkSettings.getWebcamButtonRightMiddle() );
   
-  radioButtonBottomMiddle = myRadioButtonBottomMiddle;
-  radioButtonBottomMiddle->setChecked( vkSettings.getWebcamButtonBottomMiddle() );
+  //radioButtonBottomMiddle = myRadioButtonBottomMiddle;
+  myUi.radioButtonBottomMiddle->setChecked( vkSettings.getWebcamButtonBottomMiddle() );
   
-  radioButtonLeftMiddle = myRadioButtonLeftMiddle;
-  radioButtonLeftMiddle->setChecked( vkSettings.getWebcamButtonLeftMiddle() );
+  //radioButtonLeftMiddle = myRadioButtonLeftMiddle;
+  myUi.radioButtonLeftMiddle->setChecked( vkSettings.getWebcamButtonLeftMiddle() );
   
   captureThread = new CaptureThread();
   connect( captureThread, SIGNAL( newPicture( QImage ) ), this, SLOT( setNewImage( QImage ) ) );
@@ -82,35 +84,35 @@ QvkWebcamController::~QvkWebcamController( void )
 
 void QvkWebcamController::checkBox_OnOff()
 {
-  checkBox->click();
+  myUi.webcamCheckBox->click();
   QCoreApplication::processEvents( QEventLoop::AllEvents );     
   webcamWindow->setVisibleOverFullscreen();
-  checkBox->click();
-  checkBox->setChecked( Qt::Checked );
+  myUi.webcamCheckBox->click();
+  myUi.webcamCheckBox->setChecked( Qt::Checked );
 }
 
 void QvkWebcamController::rotateDialclicked()
 {
   // Diese drei Befehle müssen sein damit der Radiobutton unchecked ist
-  radioButtonTopMiddle->setCheckable( false );
-  radioButtonTopMiddle->setChecked( false );
-  radioButtonTopMiddle->setCheckable ( true );
-  radioButtonTopMiddle->update();
+  myUi.radioButtonTopMiddle->setCheckable( false );
+  myUi.radioButtonTopMiddle->setChecked( false );
+  myUi.radioButtonTopMiddle->setCheckable ( true );
+  myUi.radioButtonTopMiddle->update();
   
-  radioButtonRightMiddle->setCheckable ( false );
-  radioButtonRightMiddle->setChecked( false );
-  radioButtonRightMiddle->setCheckable ( true );
-  radioButtonRightMiddle->update();
+  myUi.radioButtonRightMiddle->setCheckable ( false );
+  myUi.radioButtonRightMiddle->setChecked( false );
+  myUi.radioButtonRightMiddle->setCheckable ( true );
+  myUi.radioButtonRightMiddle->update();
   
-  radioButtonBottomMiddle->setCheckable ( false );
-  radioButtonBottomMiddle->setChecked( false );
-  radioButtonBottomMiddle->setCheckable ( true );
-  radioButtonBottomMiddle->update();
+  myUi.radioButtonBottomMiddle->setCheckable ( false );
+  myUi.radioButtonBottomMiddle->setChecked( false );
+  myUi.radioButtonBottomMiddle->setCheckable ( true );
+  myUi.radioButtonBottomMiddle->update();
   
-  radioButtonLeftMiddle->setCheckable ( false );
-  radioButtonLeftMiddle->setChecked( false );
-  radioButtonLeftMiddle->setCheckable ( true );
-  radioButtonLeftMiddle->update();  
+  myUi.radioButtonLeftMiddle->setCheckable ( false );
+  myUi.radioButtonLeftMiddle->setChecked( false );
+  myUi.radioButtonLeftMiddle->setCheckable ( true );
+  myUi.radioButtonLeftMiddle->update();
 }
 
 
@@ -120,10 +122,10 @@ void QvkWebcamController::rotateDialclicked()
  */
 void QvkWebcamController::webcamCloseEvent()
 {
-  checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
-  comboBox->setEnabled( true );
-  mirrorCheckBox->setEnabled( false );
-  rotateFrame->setEnabled( false );
+  myUi.webcamCheckBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
+  myUi.webcamComboBox->setEnabled( true );
+  myUi.mirrorCheckBox->setEnabled( false );
+  myUi.dialFrame->setEnabled( false );
   
   if ( captureThread->running )
     captureThread->stop();
@@ -152,7 +154,7 @@ void QvkWebcamController::setWebcamOnOff( bool value )
     return;
   }
 
-  QString index = comboBox->currentText().left( 2 ).right( 1 );
+  QString index = myUi.webcamComboBox->currentText().left( 2 ).right( 1 );
   QProcess Process;
   Process.start( "lsof /dev/video" + index );
   Process.waitForFinished();
@@ -172,19 +174,19 @@ void QvkWebcamController::setWebcamOnOff( bool value )
       }
     }
     
-    QvkWebcamBusyDialog *WebcamBusyDialog = new QvkWebcamBusyDialog( comboBox->currentText().remove( 0, 4 ), "/dev/video" + index, usedBy );
+    QvkWebcamBusyDialog *WebcamBusyDialog = new QvkWebcamBusyDialog( myUi.webcamComboBox->currentText().remove( 0, 4 ), "/dev/video" + index, usedBy );
     (void) WebcamBusyDialog;
   
-    qDebug() << "[vokoscreen] webcam device /dev/video" + index + " " + comboBox->currentText().remove( 0, 4 ) + " is busy by " + usedBy;
-    checkBox->setChecked( Qt::Unchecked );
+    qDebug() << "[vokoscreen] webcam device /dev/video" + index + " " + myUi.webcamComboBox->currentText().remove( 0, 4 ) + " is busy by " + usedBy;
+    myUi.webcamCheckBox->setChecked( Qt::Unchecked );
     return;
   }
   
   if ( value == true )    
   {
-    comboBox->setEnabled( false );
-    mirrorCheckBox->setEnabled( true );
-    rotateFrame->setEnabled( true );
+    myUi.webcamComboBox->setEnabled( false );
+    myUi.mirrorCheckBox->setEnabled( true );
+    myUi.dialFrame->setEnabled( true );
     webcamWindow->show();
     webcamWindow->currentDevice = "/dev/video" + index;
     captureThread->start( "/dev/video" + index );
@@ -197,21 +199,21 @@ void QvkWebcamController::setNewImage( QImage image )
   if ( mirrored == true )
     image = image.mirrored ( true, false );
 
-  if (radioButtonLeftMiddle->isChecked() == true )
-      rotateDial->setValue( 90 );
+  if (myUi.radioButtonLeftMiddle->isChecked() == true )
+    myUi.rotateDial->setValue( 90 );
   
-  if ( radioButtonTopMiddle->isChecked() == true )
-    rotateDial->setValue( 180 );
+  if ( myUi.radioButtonTopMiddle->isChecked() == true )
+    myUi.rotateDial->setValue( 180 );
 
-  if ( radioButtonRightMiddle->isChecked() == true )
-    rotateDial->setValue( 270 );
+  if ( myUi.radioButtonRightMiddle->isChecked() == true )
+    myUi.rotateDial->setValue( 270 );
   
-  if ( radioButtonBottomMiddle->isChecked() == true )
-    rotateDial->setValue( 360 );
+  if ( myUi.radioButtonBottomMiddle->isChecked() == true )
+    myUi.rotateDial->setValue( 360 );
 
 
   QTransform transform;
-  transform.rotate( rotateDial->value() );
+  transform.rotate( myUi.rotateDial->value() );
   QImage transformedImage = image.transformed( transform );
 
   // Passt Bild beim resizen des Fensters an
@@ -263,21 +265,21 @@ void QvkWebcamController::webcams()
  */
 void QvkWebcamController::webcamChangedEvent( QStringList deviceList )
 {
-  comboBox->clear();
+  myUi.webcamComboBox->clear();
   for( int x = 0; x < myWebcamWatcher->getWebcamCount(); x++ )
-    comboBox->addItem( "[" + deviceList[x].right( 1 ) + "]" + " " + captureThread->getNameFromDevice( "/dev/video" + deviceList[x].right( 1 ) ) );
+    myUi.webcamComboBox->addItem( "[" + deviceList[x].right( 1 ) + "]" + " " + captureThread->getNameFromDevice( "/dev/video" + deviceList[x].right( 1 ) ) );
 
   if ( deviceList.empty() )
   {
-    checkBox->setEnabled( false );
-    checkBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
-    comboBox->setEnabled( false );
+    myUi.webcamCheckBox->setEnabled( false );
+    myUi.webcamCheckBox->setCheckState( Qt::CheckState( Qt::Unchecked ) );
+    myUi.webcamComboBox->setEnabled( false );
   }
   
   if ( not deviceList.empty() )
   {
-    checkBox->setEnabled( true );
-    comboBox->setEnabled( true );
+    myUi.webcamCheckBox->setEnabled( true );
+    myUi.webcamComboBox->setEnabled( true );
   }
 }
 
