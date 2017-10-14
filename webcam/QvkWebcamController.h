@@ -26,8 +26,6 @@ class QvkWebcamController : public QObject
     Q_OBJECT
 
 public:
-//   QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox,
-//					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle, QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle );
    QvkWebcamController(Ui_screencast value);
 
   virtual ~QvkWebcamController();
@@ -58,15 +56,6 @@ private slots:
   
 private:
   QvkSettings vkSettings;
-  /*QFrame *rotateFrame;
-  QCheckBox *checkBox;
-  QComboBox *comboBox;
-  QCheckBox *mirrorCheckBox;
-  QDial *rotateDial;
-  QRadioButton *radioButtonTopMiddle;
-  QRadioButton *radioButtonRightMiddle;
-  QRadioButton *radioButtonBottomMiddle;
-  QRadioButton *radioButtonLeftMiddle; */
   QvkWebcamWatcher * myWebcamWatcher;
   CaptureThread *captureThread;
   bool mirrored;

@@ -1,25 +1,14 @@
 #include "QvkWebcamController.h" 
 
-#include <QTest>
-
-//QvkWebcamController::QvkWebcamController( QCheckBox *myCheckBox, QComboBox *myComboBox, QCheckBox *myMirrorCheckBox,
-//					  QFrame *myRotateFrame ,QDial *myRotateDial, QRadioButton *myRadioButtonTopMiddle,
-//					  QRadioButton *myRadioButtonRightMiddle, QRadioButton *myRadioButtonBottomMiddle, QRadioButton *myRadioButtonLeftMiddle )
 QvkWebcamController::QvkWebcamController( Ui_screencast value )
 {
   vkSettings.readAll();
 
   myUi = value;
-  //checkBox = myCheckBox;
   myUi.webcamCheckBox->setEnabled( false );
   connect( myUi.webcamCheckBox, SIGNAL( clicked( bool ) ), this, SLOT( setWebcamOnOff( bool ) ) );
   
-  //rotateFrame = myRotateFrame;
-  
-  //comboBox = myComboBox;
-  
   mirrored = false;
-  //mirrorCheckBox = myMirrorCheckBox;
   
   if ( myUi.webcamCheckBox->checkState() == Qt::Unchecked )
   {
@@ -39,22 +28,17 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
     myUi.mirrorCheckBox->setEnabled( false );
   }
 
-  //rotateDial = myRotateDial;
   myUi.rotateDial->setMinimum( 0 );
   myUi.rotateDial->setMaximum ( 360 );
   myUi.rotateDial->setValue( 0 );
   connect( myUi.rotateDial, SIGNAL( sliderPressed () ), this, SLOT( rotateDialclicked() ) );
   
-//  radioButtonTopMiddle = myRadioButtonTopMiddle;
   myUi.radioButtonTopMiddle->setChecked( vkSettings.getWebcamButtonTopMiddle() );
   
-  //radioButtonRightMiddle = myRadioButtonRightMiddle;
   myUi.radioButtonRightMiddle->setChecked( vkSettings.getWebcamButtonRightMiddle() );
   
-  //radioButtonBottomMiddle = myRadioButtonBottomMiddle;
   myUi.radioButtonBottomMiddle->setChecked( vkSettings.getWebcamButtonBottomMiddle() );
   
-  //radioButtonLeftMiddle = myRadioButtonLeftMiddle;
   myUi.radioButtonLeftMiddle->setChecked( vkSettings.getWebcamButtonLeftMiddle() );
   
   captureThread = new CaptureThread();
@@ -67,7 +51,7 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
   
   webcamWindow = new QvkWebcamWindow();
   connect( webcamWindow, SIGNAL( setOverScreen() ), this, SLOT( checkBox_OnOff() ) );
-  connect( webcamWindow, SIGNAL( closeWebcamWindow() ), SLOT( webcamCloseEvent() ) );
+  connect( webcamWindow, SIGNAL( closeWebcamWindow() ), this, SLOT( webcamCloseEvent() ) );
 
   connect( myWebcamWatcher, SIGNAL( readWebcamNames( QStringList ) ), this, SLOT( readWebcams( QStringList ) ) );
   
