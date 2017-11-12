@@ -1895,10 +1895,9 @@ void screencast::searchGIFPlayer()
     qDebug( " " );
 }
 
-
 void screencast::searchVideoPlayer()
 {
-    myUi.VideoplayerComboBox->insertItem( -1 , "Standard system player" );
+    myUi.VideoplayerComboBox->insertItem( -1 , QIcon( ":/pictures/videooptionen.png" ), "Standard system player" );
 
     qDebug() << "[vokoscreen]" << "---Begin search Videoplayer---";
     QStringList playerList = QStringList()  << "vlc"
@@ -1931,11 +1930,16 @@ void screencast::searchVideoPlayer()
          if ( QFile::exists( playerName ) )
          {
            qDebug() << "[vokoscreen]" << "Find Videoplayer :" << playerName;
-           QFileInfo playProg( playerName );
+           QFileInfo playProg;
+           playProg.setFile( playerName );
            if ( playProg.fileName() == "kdenlive" )
              playerName = playerName + " -i";
 
-           myUi.VideoplayerComboBox->addItem( playerList.at( x ), playerName );
+           myUi.VideoplayerComboBox->addItem( QIcon::fromTheme( playerList.at( x ),
+                                              QIcon( ":/pictures/videooptionen.png" ) ),
+                                              playerList.at( x ),
+                                              playerName );
+
            break;
          }
        }
