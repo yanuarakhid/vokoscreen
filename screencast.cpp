@@ -1898,6 +1898,8 @@ void screencast::searchGIFPlayer()
 
 void screencast::searchVideoPlayer()
 {
+    myUi.VideoplayerComboBox->insertItem( -1 , "Standard system player" );
+
     qDebug() << "[vokoscreen]" << "---Begin search Videoplayer---";
     QStringList playerList = QStringList()  << "vlc"
                                             << "kaffeine"
@@ -1938,6 +1940,7 @@ void screencast::searchVideoPlayer()
          }
        }
      }
+          
     qDebug() << "[vokoscreen]" << "---End search Videoplayer---";
     qDebug( " " );
 }
@@ -2292,17 +2295,33 @@ void screencast::play()
 {
   if ( myUi.MagnifierCheckBox->isChecked() )
     myUi.MagnifierCheckBox->click();
-  
-  if ( myUi.VideoplayerComboBox->count() == 0 )
+
+
+  if ( myUi.VideoplayerComboBox->currentText() == "Standard system player" )
   {
-    QDialog *newDialog = new QDialog;
-    newDialog->setModal( true );
-    Ui_NoPlayerDialog myUiDialog;
-    myUiDialog.setupUi( newDialog );
-    newDialog->show();
+    qDebug() << "[vokoscreen] play video with standard system player";
+    QDir Dira( myUi.SaveVideoPathLineEdit->text() );
+    QStringList filters;
+    filters << "vokoscreen*";
+    QStringList List = Dira.entryList( filters, QDir::Files, QDir::Time );
+
+    QString string;
+    string.append( "file:///" );
+    string.append( myUi.SaveVideoPathLineEdit->text() );
+    string.append( QDir::separator() );
+    string.append( List.at( 0 ) );
+    bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
+    if ( b == false )
+    {
+      QDialog *newDialog = new QDialog;
+      newDialog->setModal( true );
+      Ui_NoPlayerDialog myUiDialog;
+      myUiDialog.setupUi( newDialog );
+      newDialog->show();
+    }
     return;
   }
-  
+
   QDir Dira( PathMoviesLocation() );
   QStringList filters;
   filters << "vokoscreen*";
