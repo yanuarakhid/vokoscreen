@@ -1883,12 +1883,16 @@ void screencast::searchGIFPlayer()
                                          << "mpv"
                                          << "chromium"
                                          << "konqueror";
+
     for ( int x = 0; x < GIFList.size(); ++x )
     {
       if ( searchProgramm( GIFList[ x ] ) == true )
       {
         qDebug() << "[vokoscreen]" << "Find GIFplayer :" << GIFList[ x ];
-        myUi.GIFplayerComboBox->addItem( GIFList.at( x ), GIFList.at( x ) );
+        myUi.GIFplayerComboBox->addItem( QIcon::fromTheme( GIFList.at( x ),
+                                         QIcon( ":/pictures/videooptionen.png" ) ),
+                                         GIFList.at( x ),
+                                         GIFList.at( x ) );
       }
     }
     qDebug() << "[vokoscreen]" << "---End search GIFplayer---";
@@ -1935,10 +1939,10 @@ void screencast::searchVideoPlayer()
            if ( playProg.fileName() == "kdenlive" )
              playerName = playerName + " -i";
 
-           myUi.VideoplayerComboBox->addItem( QIcon::fromTheme( playerList.at( x ),
-                                              QIcon( ":/pictures/videooptionen.png" ) ),
-                                              playerList.at( x ),
-                                              playerName );
+             myUi.VideoplayerComboBox->addItem( QIcon::fromTheme( playerList.at( x ),
+                                                QIcon( ":/pictures/videooptionen.png" ) ),
+                                                playerList.at( x ),
+                                                playerName );
 
            break;
          }
@@ -2301,7 +2305,7 @@ void screencast::play()
     myUi.MagnifierCheckBox->click();
 
 
-  if ( myUi.VideoplayerComboBox->currentText() == "Standard system player" )
+  if ( myUi.VideoplayerComboBox->currentText() == "Standard system player")
   {
     qDebug() << "[vokoscreen] play video with standard system player";
     QDir Dira( myUi.SaveVideoPathLineEdit->text() );
