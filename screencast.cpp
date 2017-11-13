@@ -861,13 +861,6 @@ void screencast::SearchFormats()
       myUi.VideoContainerComboBox->setCurrentIndex( x );
    qDebug() << "[vokoscreen] ---End search formats---";
    qDebug( " " );
-   
-   
-   QMimeDatabase mimeDatabase;
-   QMimeType mimetype;
-   mimetype = mimeDatabase.mimeTypeForName( "video/x-matroska" );
-   qDebug() << mimetype.iconName();
-   
 }
 
 
