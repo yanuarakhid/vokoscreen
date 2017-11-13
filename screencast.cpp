@@ -2305,31 +2305,6 @@ void screencast::play()
     myUi.MagnifierCheckBox->click();
 
 
-  if ( myUi.VideoplayerComboBox->currentText() == "Standard system player")
-  {
-    qDebug() << "[vokoscreen] play video with standard system player";
-    QDir Dira( myUi.SaveVideoPathLineEdit->text() );
-    QStringList filters;
-    filters << "vokoscreen*";
-    QStringList List = Dira.entryList( filters, QDir::Files, QDir::Time );
-
-    QString string;
-    string.append( "file:///" );
-    string.append( myUi.SaveVideoPathLineEdit->text() );
-    string.append( QDir::separator() );
-    string.append( List.at( 0 ) );
-    bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
-    if ( b == false )
-    {
-      QDialog *newDialog = new QDialog;
-      newDialog->setModal( true );
-      Ui_NoPlayerDialog myUiDialog;
-      myUiDialog.setupUi( newDialog );
-      newDialog->show();
-    }
-    return;
-  }
-
   QDir Dira( PathMoviesLocation() );
   QStringList filters;
   filters << "vokoscreen*";
@@ -2344,6 +2319,30 @@ void screencast::play()
   }
   else
   {
+    if ( myUi.VideoplayerComboBox->currentText() == "Standard system player")
+    {
+      qDebug() << "[vokoscreen] play video with standard system player";
+      QDir Dira( myUi.SaveVideoPathLineEdit->text() );
+      QStringList filters;
+      filters << "vokoscreen*";
+      QStringList List = Dira.entryList( filters, QDir::Files, QDir::Time );
+    
+      QString string;
+      string.append( "file:///" );
+      string.append( myUi.SaveVideoPathLineEdit->text() );
+      string.append( QDir::separator() );
+      string.append( List.at( 0 ) );
+      bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
+      if ( b == false )
+      {
+        QDialog *newDialog = new QDialog;
+        newDialog->setModal( true );
+        Ui_NoPlayerDialog myUiDialog;
+        myUiDialog.setupUi( newDialog );
+        newDialog->show();
+      }
+      return;
+    }
     QVariant aa = myUi.VideoplayerComboBox->itemData( myUi.VideoplayerComboBox->currentIndex() ); // get userdata from ComboBox
     player = aa.toString();
     player = player.replace( "\n", "" ); 
