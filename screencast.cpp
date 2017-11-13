@@ -827,19 +827,28 @@ void screencast::searchVideoCodec( QStringList videoCodecList )
    qDebug( " " );
 }
 
-
+#include <QMimeDatabase>
+#include <QMimeType>
 void screencast::SearchFormats()
 {
    qDebug() << "[vokoscreen] ---Begin search formats---";
    myUi.VideoContainerComboBox->clear();
    QStringList formatList   = ( QStringList() << "mkv"      << "webm" << "mp4" << "gif" << "mov" );
    QStringList userDataList = ( QStringList() << "matroska" << "webm" << "mp4" << "gif" << "mov" );
+   QStringList mimeTypeList = ( QStringList() << "video/x-matroska"
+                                              << "video/webm"
+                                              << "video/mp4"
+                                              << "image/gif"
+                                              << "video/mp4" );
    for ( int i = 0; i < formatList.count(); i++ )
    {
      if ( formatsAndCodecs->isFormatAvailable( userDataList[ i ] ) == true )
      {
        qDebug() << "[vokoscreen] find Format" << formatList[ i ];
-       myUi.VideoContainerComboBox->addItem( formatList[ i ], userDataList[ i ] );
+       QMimeDatabase mimeDatabase;
+       QMimeType mimetype;
+       mimetype = mimeDatabase.mimeTypeForName( mimeTypeList[ i ] );
+       myUi.VideoContainerComboBox->addItem( QIcon::fromTheme( mimetype.iconName(), QIcon( ":/pictures/videooptionen.png" ) ), formatList[ i ], userDataList[ i ] );
      }
      else
        qDebug() << "[vokoscreen] not found Format" << formatList[ i ];
@@ -852,6 +861,13 @@ void screencast::SearchFormats()
       myUi.VideoContainerComboBox->setCurrentIndex( x );
    qDebug() << "[vokoscreen] ---End search formats---";
    qDebug( " " );
+   
+   
+   QMimeDatabase mimeDatabase;
+   QMimeType mimetype;
+   mimetype = mimeDatabase.mimeTypeForName( "video/x-matroska" );
+   qDebug() << mimetype.iconName();
+   
 }
 
 
