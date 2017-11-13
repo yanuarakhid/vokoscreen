@@ -333,7 +333,7 @@
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Fejlesztői honlap</translation>
     </message>
     <message>
         <source>Recorder</source>

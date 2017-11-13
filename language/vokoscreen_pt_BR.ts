@@ -67,18 +67,18 @@
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>Instale o reprodutor de vídeo</translation>
+        <translation>Favor instalar um reprodutor de vídeo</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation>Informacoes</translation>
+        <translation>Informações</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation>Vokoscreen so pode ser iniciado uma unica vez</translation>
+        <translation>Vokoscreen só pode ser iniciado uma única vez</translation>
     </message>
 </context>
 <context>
@@ -100,7 +100,7 @@
     </message>
     <message>
         <source>Area Settings</source>
-        <translation>Configurações de area</translation>
+        <translation>Configurações de área</translation>
     </message>
 </context>
 <context>
@@ -381,7 +381,7 @@
     </message>
     <message>
         <source>Load</source>
-        <translation type="unfinished"/>
+        <translation>Carregar</translation>
     </message>
 </context>
 </TS>
