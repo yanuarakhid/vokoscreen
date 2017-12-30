@@ -1,5 +1,5 @@
 Requires:
-  - Qt5 >= 5.4
+  - Qt5 >= 5.7
   - alsa
   - libX11
   - libv4l2
