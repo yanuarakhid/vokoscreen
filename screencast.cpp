@@ -730,7 +730,7 @@ void screencast::currentFormatChanged( const QString value )
    QStringList MP4_AudioCodecList = ( QStringList() << "libmp3lame" << "mp2" << "aac");
 
    // https://de.wikipedia.org/wiki/QuickTime
-   QStringList MOV_videoCodecList = ( QStringList() << "libx264" << "mpeg4" );
+   QStringList MOV_videoCodecList = ( QStringList() << "libx264" << "libx265" << "mpeg4" );
    QStringList MOV_AudioCodecList = ( QStringList() << "alac" << "aac" << "libmp3lame" );
    
    QStringList GIF_videoCodecList = ( QStringList() << "gif" );
