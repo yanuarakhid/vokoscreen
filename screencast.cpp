@@ -2824,7 +2824,6 @@ void screencast::record()
   if ( videoCodec == "libx265" )
   {
     videoFlags << "-preset" << "veryfast";
-    videoFlags << "-x265-params" << "crf=20";
   }
   
   if ( videoCodec == "libvpx" )
