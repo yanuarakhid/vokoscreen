@@ -1,17 +1,21 @@
 #include "QvkWebcamWatcher.h" 
 
-using namespace std;
+#include <QCameraInfo>
+#include <QTimer>
 
-/**
- * Die Metohoden werden nur aufgerufen wenn sich in /dev/ was geändert hat
- */
+using namespace std;
 
 QvkWebcamWatcher::QvkWebcamWatcher()
 {
-  webcamCount = 0;
-  QFileSystemWatcher * fileSystemWatcher = new QFileSystemWatcher();
-  fileSystemWatcher->addPath( "/dev/" );
-  connect( fileSystemWatcher, SIGNAL( directoryChanged( QString ) ), this, SLOT( myfileSystemWatcher( QString ) ) );
+    oldcount = 0;
+    descriptionList.clear();
+    deviceNameList.clear();
+    oldDescriptionList.clear();
+    oldDeviceNameList.clear();
+
+    QTimer *timer = new QTimer(this);
+    connect( timer, SIGNAL( timeout() ), this, SLOT( detectCameras() ) );
+    timer->start(1000);
 }
 
 
@@ -20,79 +24,76 @@ QvkWebcamWatcher::~QvkWebcamWatcher()
 }
 
 
-int QvkWebcamWatcher::getWebcamCount()
+void QvkWebcamWatcher::getAllCameraDescription()
 {
-  return webcamCount;
+    qDebug() << "[vokoscreen]" << "---Begin search cameras---";
+    oldDescriptionList = descriptionList;
+    oldDeviceNameList = deviceNameList;
+    descriptionList.clear();
+    deviceNameList.clear();
+
+    QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
+    foreach ( const QCameraInfo &cameraInfo, cameras )
+    {
+      if ( cameraInfo.description() != "screen-capture-recorder" )
+      {
+        qDebug() << "[vokoscreen]" << cameraInfo.description() << cameraInfo.deviceName();
+        descriptionList << cameraInfo.description();
+        deviceNameList << cameraInfo.deviceName();
+      }
+    }
+    qDebug() << "[vokoscreen]" << "---End search cameras---";
+    qDebug(" ");
+    emit webcamDescription( descriptionList, deviceNameList );
 }
 
-
-/**
- * Return added devices
- */
-QStringList QvkWebcamWatcher::addedDevices()
-{
-  QStringList addedList;
-  int x;
-  for ( x = 0; x < deviceList.count(); x++ )
-    if ( not oldDeviceList.contains( deviceList[ x ] ) )
-      addedList << deviceList[ x ];
-
-  return addedList;
-}
-
-
-/**
+/*
  * Return removed device
  */
-QString QvkWebcamWatcher::removedDevice()
+QString QvkWebcamWatcher::removedDeviceName( QStringList mydeviceNameList, QStringList myoldDeviceNameList )
 {
   QStringList removedList;
   int x;
-  for ( x = 0; x < oldDeviceList.count(); x++ )
+  for ( x = 0; x < myoldDeviceNameList.count(); x++ )
   {
-    removedList = deviceList.filter( oldDeviceList[ x ] );
+    removedList = mydeviceNameList.filter( myoldDeviceNameList[ x ] );
     if ( removedList.empty() )
       break;
   }
-  
-  return oldDeviceList[ x ];
+  return myoldDeviceNameList[ x ];
 }
 
-
-void QvkWebcamWatcher::myfileSystemWatcher( QString path )
+/*
+ * Is called periodically by the timer
+ */
+void QvkWebcamWatcher::detectCameras()
 {
-  QDir dir( path );
-  QStringList filters;
-  filters << "video*";
-  deviceList = dir.entryList( filters, QDir::System, QDir::Time );
-  deviceList.sort();
-  
-  // removed device
-  if ( deviceList.count() <  webcamCount )
+    int newcount = QCameraInfo::availableCameras().count();
+
+    QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
+    foreach ( const QCameraInfo &cameraInfo, cameras )
+    {
+      if ( cameraInfo.description() == "screen-capture-recorder" )
+      {
+        newcount--;
+      }
+    }
+
+  if ( newcount > oldcount )
   {
-    qDebug() << "[vokoscreen] removed device" << removedDevice();
-    qDebug() << "[vokoscreen] connected devices" <<  deviceList;
-    qDebug( " " );
-    
-    webcamCount = deviceList.count();
-    emit changed( deviceList );
-    emit removed( deviceList, removedDevice() );
+     getAllCameraDescription();
+     oldcount = newcount;
+     return;
   }
 
-  // added device
-  if ( deviceList.count() >  webcamCount )
+  if ( newcount < oldcount )
   {
-    qDebug() << "[vokoscreen] added device" << addedDevices();
-    qDebug() << "[vokoscreen] connected devices" <<  deviceList;
-    qDebug( " " );
-    
-    webcamCount = deviceList.count();
-    emit changed( deviceList );
-    emit added( deviceList, addedDevices() );
-    emit readWebcamNames( deviceList );
+     getAllCameraDescription();
+     oldcount = newcount;
+
+     // detected which camera was removed
+     QString cameraDevice = removedDeviceName( deviceNameList , oldDeviceNameList );
+     emit removedCamera( cameraDevice );
+     return;
   }
-  
-  if ( oldDeviceList.count() != deviceList.count() )
-    oldDeviceList = deviceList;
-  
 }

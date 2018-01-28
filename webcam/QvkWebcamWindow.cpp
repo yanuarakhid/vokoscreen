@@ -7,24 +7,17 @@ QvkWebcamWindow::QvkWebcamWindow()
   // Es werden die Abmaße des Bildes in der conf abgespeichert, also ohne Rahmen
   
   vkSettings.readAll();
-
   setToolTip( tr( "Right click for menu" ) );
+  
+  setWindowTitle( vkSettings.getProgName() + " " + "webcam" + " " + vkSettings.getVersion() );
 
-  if ( vkSettings.isVokoscreenWithLibs() == true )
-  {
-    setWindowTitle( vkSettings.getProgName() + " " + "webcam" + " " + vkSettings.getVersion() + " " + "RUN-Version");
-  }
-  else
-  {
-    setWindowTitle( vkSettings.getProgName() + " " + "webcam" + " " + vkSettings.getVersion() );
-  }
+  setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint);
+  setStyleSheet( "background-color: black;" );
 
   QIcon icon;
   icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
-  QvkWebcamWindow::setWindowIcon( icon );    
-  
-  setStyleSheet( "background-color: black;" );
-  
+  QvkWebcamWindow::setWindowIcon( icon );
+
   webcamLabel = new QLabel( this );
   webcamLabel->setAlignment( Qt::AlignCenter );
   webcamLabel->show();
@@ -45,33 +38,15 @@ QvkWebcamWindow::QvkWebcamWindow()
   actionUserDefined->setCheckable( true );
   connect( actionUserDefined, SIGNAL( triggered() ), this, SLOT( setActionUserDefined() ) );
 
-  actionBorder = new QAction( tr ( "Border" ), this );
-  actionBorder->setCheckable( true );
-  connect( actionBorder, SIGNAL( triggered() ), this, SLOT( setBorder() ) );
-
-  actionVisibleOverFullscreen = new QAction( tr ( "Show over fullscreen" ), this );
-  actionVisibleOverFullscreen->setCheckable( true );
-  connect( actionVisibleOverFullscreen, SIGNAL( triggered() ), this, SLOT( setVisibleOverFullscreen_New() ) );
+  actionFrame = new QAction( tr( "Frameless" ), this );
+  actionFrame->setCheckable( true );
+  connect( actionFrame, SIGNAL( triggered() ), this, SLOT( setFrameless() ) );
 
   actionClose = new QAction( tr ( "Close" ), this );
   connect( actionClose, SIGNAL( triggered() ), this, SLOT( closeMenue() ) );
 
   setGeometry( vkSettings.getWebcamX(), vkSettings.getWebcamY(), vkSettings.getWebcamWidth(), vkSettings.getWebcamHeight() );
 
-  if ( vkSettings.getWebcamBorder() == true )
-  {
-    setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
-    actionBorder->setChecked( true );
-    setValueBorder( vkSettings.getWebcamBorder() );
-  }
-  
-  if ( vkSettings.getWebcamBorder() == false )
-  {
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-    actionBorder->setChecked( false ); 
-    setValueBorder( vkSettings.getWebcamBorder() );
-  } 
-  
   if ( ( vkSettings.getWebcamWidth() == 160 ) and ( vkSettings.getWebcamHeight() == 120 ) )
   {
     set160x120();
@@ -86,38 +61,10 @@ QvkWebcamWindow::QvkWebcamWindow()
               {
                 setActionUserDefined();
               }
-              
-  if ( vkSettings.getWebcamOverFullScreen() == true )
-  {
-    actionVisibleOverFullscreen->setChecked( true );
-    setOverFullScreen( true );
-    setVisibleOverFullscreen();
-  }
-  else
-  {
-    actionVisibleOverFullscreen->setChecked( false );
-    setOverFullScreen( false );
-  }
 }
 
 QvkWebcamWindow::~QvkWebcamWindow()
 {
-}
-
-void QvkWebcamWindow::setVisibleOverFullscreen_New()
-{
-  emit setOverScreen();
-}
-
-
-void QvkWebcamWindow::setValueBorder( bool value )
-{
-  border = value; 
-}
-
-bool QvkWebcamWindow::getValueBorder()
-{
-  return border; 
 }
 
 int QvkWebcamWindow::getValueX()
@@ -140,17 +87,6 @@ int QvkWebcamWindow::getValueHeight()
   return height();
 }
 
-void QvkWebcamWindow::setOverFullScreen( bool value )
-{
-  overFullScreen = value;
-}
-
-bool QvkWebcamWindow::getOverFullScreen()
-{
-  return overFullScreen;
-}
-
-
 /**
  *  closeEvent wird ausgelößt wenn das webcamfenster geschloßen wird
  */
@@ -170,8 +106,7 @@ void QvkWebcamWindow::contextMenuEvent( QContextMenuEvent *event )
      menu.addAction( action640x480 );
      menu.addAction( actionUserDefined );
      menu.addSeparator();
-     menu.addAction( actionBorder );
-     menu.addAction( actionVisibleOverFullscreen );
+     menu.addAction( actionFrame );
      menu.addSeparator();
      menu.addAction( actionClose );
      menu.exec( event->globalPos() );
@@ -219,7 +154,7 @@ void QvkWebcamWindow::set640x480()
   if ( isMaximized() )
     showNormal();
   
-  setGeometry( geometry().x(), geometry().y(), 640, 480 );
+  setGeometry( geometry().x(), geometry().y(), 639, 479 ); // Bei 640x480 stützt das Fenster ab evtl. wegen Viewfinder der auf 640x480 gesetzt ist
   action160x120->setChecked( false );
   action320x240->setChecked( false );
   action640x480->setChecked( true );
@@ -238,44 +173,20 @@ void QvkWebcamWindow::setActionUserDefined()
 }
 
 
-void QvkWebcamWindow::setBorder()
+void QvkWebcamWindow::setFrameless()
 {
-  if ( actionBorder->isChecked() )
+  if ( actionFrame->isChecked() == true )
   {
-    setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
-    actionVisibleOverFullscreen->setChecked( false );
-    setOverFullScreen( false );
-    setValueBorder( true );
+    hide();
+      setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+      setValueBorder( true );
     show();
   }
   else
   {
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-    setOverFullScreen( false );
-    setValueBorder( false );
-    show();
-  }
-}
-
-
-void QvkWebcamWindow::setVisibleOverFullscreen()
-{
-  if ( actionVisibleOverFullscreen->isChecked() )
-  {
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint );
-    actionBorder->setChecked( false );
-    setOverFullScreen( true );
-    setValueBorder( false );
-    activateWindow();
-    show();
-  }
-  else
-  {
-    setWindowFlags( Qt::WindowTitleHint | Qt::WindowStaysOnTopHint );
-    actionBorder->setChecked( true );
-    setOverFullScreen( false );
-    setValueBorder( true );
-    activateWindow();
+    hide();
+      setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint);
+      setValueBorder( false );
     show();
   }
 }
@@ -301,4 +212,16 @@ void QvkWebcamWindow::resizeEvent ( QResizeEvent *)
             {
               setActionUserDefined();
             }
+}
+
+
+void QvkWebcamWindow::setValueBorder( bool value )
+{
+  border = value;
+}
+
+
+bool QvkWebcamWindow::getValueBorder()
+{
+  return border;
 }

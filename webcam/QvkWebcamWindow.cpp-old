@@ -1,0 +1,26 @@
+#include "QvkWebcamWindow.h" 
+#include <QDebug>
+#include <QStylePainter>
+#include <QStyleOptionButton>
+
+using namespace std;
+
+QvkWebcamWindow::QvkWebcamWindow()
+{
+  setWindowTitle( "vokoscreen Camera");
+}
+
+
+QvkWebcamWindow::~QvkWebcamWindow()
+{
+}
+
+void QvkWebcamWindow::closeEvent( QCloseEvent * event )
+{
+  (void)event;
+  emit closeWebcamWindow();
+}
+
+void QvkWebcamWindow::paintEvent(QPaintEvent *event)
+{
+}

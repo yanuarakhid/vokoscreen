@@ -1,0 +1,35 @@
+#ifndef QvkWebcamWindow_H 
+#define QvkWebcamWindow_H
+
+#include <QMainWindow>
+#include <QVideoWidget>
+
+class QvkWebcamWindow : public QVideoWidget
+{
+    Q_OBJECT
+    
+public:
+    QvkWebcamWindow();
+    virtual ~QvkWebcamWindow();
+
+
+private:
+
+
+public slots:
+
+    
+private slots:
+
+  
+protected:
+    void closeEvent( QCloseEvent * event );
+    void paintEvent(QPaintEvent *event);
+
+    
+signals:
+    void closeWebcamWindow();
+
+};
+
+#endif

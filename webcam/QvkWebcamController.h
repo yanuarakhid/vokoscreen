@@ -1,25 +1,12 @@
 #ifndef QvkWebcamController_H 
 #define QvkWebcamController_H
 
-#include "QvkWebcamWatcher.h"
-#include "QvkCapturethread.h"
-#include "QvkWebcamWatcher.h"
 #include "QvkWebcamWindow.h"
-#include "QvkWebcamBusyDialog.h"
+#include "QvkVideoSurface.h"
 #include "QvkSettings.h"
-
-#include <QCheckBox>
-#include <QComboBox>
-#include <QDebug>
-#include <QMessageBox>
-#include <QMainWindow>
-#include <QLabel>
-#include <QDial>
-#include <QRadioButton>
-#include <QProcess>
-#include <QTimer>
-
 #include "ui_vokoscreen.h"
+
+#include <QCamera>
 
 class QvkWebcamController : public QObject
 {
@@ -27,43 +14,41 @@ class QvkWebcamController : public QObject
 
 public:
    QvkWebcamController(Ui_screencast value);
+   virtual ~QvkWebcamController();
+   QvkWebcamWindow *webcamWindow;
 
-  virtual ~QvkWebcamController();
-  
-  QStringList webcamList;
- 
-  QvkWebcamWindow *webcamWindow;
-  
   
 public slots:
-  void webcamCloseEvent();
+   void displayWebcam( QByteArray device );
 
-  
+
 private slots:
-  void webcamChangedEvent( QStringList deviceList );
-  void webcamAddedEvent( QStringList deviceList, QStringList addedDevices );
-  void webcamRemovedEvent( QStringList deviceList, QString removedDevice );
-  void setWebcamOnOff( bool value );
-  
+  void myStatusChanged(QCamera::Status status );
+  void myStateChanged( QCamera::State state );
+  void webcamOnOff( int value );
+  void addToComboBox(QStringList description, QStringList device );
+  void ifCameraRemovedCloseWindow(QString value);
+  void setActiveCamera( QString value );
+  QString getActiveCamera();
+  void test(QCamera::Error value);
   void setNewImage( QImage image );
   void setMirrorOnOff( bool value );
   void rotateDialclicked();
-  
-  void readWebcams( QStringList );
-  void webcams();
-  void checkBox_OnOff();
 
   
 private:
+  QCamera *camera;
+  QString aktivCamera;
+  QvkVideoSurface *videoSurface;
   QvkSettings vkSettings;
-  QvkWebcamWatcher * myWebcamWatcher;
-  CaptureThread *captureThread;
   bool mirrored;
   Ui_screencast myUi;
 
 protected:
   
-  
+signals:
+  void closeWebcamWindow();
+
 };
 
 #endif

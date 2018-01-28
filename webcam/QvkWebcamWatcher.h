@@ -2,9 +2,7 @@
 #define QvkWebcamWatcher_H
 
 #include <QStringList>
-#include <QDir>
-#include <QFileSystemWatcher>
-#include <QDebug>
+#include <QObject>
 
 class QvkWebcamWatcher: public QObject
 {
@@ -17,30 +15,28 @@ public:
 
 
 public slots:
-  void myfileSystemWatcher( QString path );
-  int getWebcamCount();
+  void getAllCameraDescription();
+  void detectCameras();
 
   
 private slots:
-  QStringList addedDevices();
-  QString removedDevice();
+  QString removedDeviceName(QStringList mydeviceNameList, QStringList myoldDeviceNameList );
 
   
 signals:
-  void changed( QStringList deviceList );
-  void removed( QStringList deviceList, QString removedDevice );
-  void added( QStringList deviceList, QStringList stringList );
-
-  void readWebcamNames( QStringList deviceList );
-  
+  void webcamDescription( QStringList description, QStringList deviceName );
+  void removedCamera( QString value );
   
 protected:  
 
   
 private:
-  QStringList deviceList;
-  QStringList oldDeviceList;
-  int webcamCount;
+  int oldcount;
+  QStringList descriptionList;
+  QStringList deviceNameList;
+  QStringList oldDescriptionList;
+  QStringList oldDeviceNameList;
+
 
 };
 
