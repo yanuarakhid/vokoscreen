@@ -1046,7 +1046,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="labelMail">
+               <widget class="QLabel" name="labelLanguageUrl">
                 <property name="text">
                  <string notr="true">TextLabel</string>
                 </property>
@@ -1180,7 +1180,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="labelLanguageUrl">
+               <widget class="QLabel" name="labelDonateUrl">
                 <property name="text">
                  <string notr="true">TextLabel</string>
                 </property>
@@ -1217,13 +1217,6 @@
                </size>
               </property>
              </spacer>
-            </item>
-            <item>
-             <widget class="QLabel" name="labelDonateUrl">
-              <property name="text">
-               <string notr="true">TextLabel</string>
-              </property>
-             </widget>
             </item>
             <item>
              <spacer name="horizontalSpacer_9">

@@ -305,11 +305,11 @@ screencast::screencast()
     myUi.labelWebSite->setOpenExternalLinks( true );
     myUi.labelWebSite->setText( homepage );
     
-    QString email = "<a href ='mailto:vkohaupt@freenet.de?subject=vokoscreen ";
+/*    QString email = "<a href ='mailto:vkohaupt@freenet.de?subject=vokoscreen ";
     email = email.append( vkSettings.getVersion() ).append( "'" ).append( ">" + tr( "Support" ) + "</a>" );
     myUi.labelMail->setOpenExternalLinks( true );
     myUi.labelMail->setText( email );
-
+*/
     QString Sourcecode = "<a href='https://github.com/vkohaupt/vokoscreen'>" + tr( "Sourcecode" ) + "</a>";
     myUi.labelSourcecodeUrl->setOpenExternalLinks( true );
     myUi.labelSourcecodeUrl->setText( Sourcecode );
