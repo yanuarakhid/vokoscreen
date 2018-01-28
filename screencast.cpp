@@ -300,23 +300,16 @@ screencast::screencast()
     // Tab 7 About *********************************************************
     myUi.tabWidget->setTabIcon( 6, QIcon::fromTheme( "dialog-information", QIcon( ":/pictures/about.png" ) ) );
     makeAndSetValidIcon( 6 );
-    myUi.labelOpensuseBetaUrl->setOpenExternalLinks( true );
-    myUi.labelOpensuseBetaUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Developer Homepage" ) + "</a>" );
     
-    QString homepage = "<a href='http://www.kohaupt-online.de/hp'>" + tr( "Homepage" ) + "</a>";
+    QString homepage = "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>";
     myUi.labelWebSite->setOpenExternalLinks( true );
     myUi.labelWebSite->setText( homepage );
     
-    QString email = "<a href='mailto:tux@kohaupt-online.de?subject=vokoscreen ";
+    QString email = "<a href ='mailto:vkohaupt@freenet.de?subject=vokoscreen ";
     email = email.append( vkSettings.getVersion() ).append( "'" ).append( ">" + tr( "Support" ) + "</a>" );
     myUi.labelMail->setOpenExternalLinks( true );
     myUi.labelMail->setText( email );
 
-    QString emaildeveloper = "<a href ='mailto:vkohaupt@freenet.de?subject=vokoscreen ";
-    emaildeveloper = emaildeveloper.append( vkSettings.getVersion() ).append( "'" ).append( ">" + tr( "Developer" ) + "</a>" );
-    myUi.labelDeveLoperMail->setOpenExternalLinks( true );
-    myUi.labelDeveLoperMail->setText( emaildeveloper );
-    
     QString Sourcecode = "<a href='https://github.com/vkohaupt/vokoscreen'>" + tr( "Sourcecode" ) + "</a>";
     myUi.labelSourcecodeUrl->setOpenExternalLinks( true );
     myUi.labelSourcecodeUrl->setText( Sourcecode );
@@ -324,22 +317,14 @@ screencast::screencast()
     myUi.labelLanguageUrl->setOpenExternalLinks( true );
     myUi.labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
 
-    if ( vkSettings.isVokoscreenWithLibs() == true )
-    {
-      myUi.labelDonateUrl->setOpenExternalLinks( true );
-      myUi.labelDonateUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
-    }
-    else
-    {
-      myUi.labelDonateUrl->setOpenExternalLinks( true );
-      myUi.labelDonateUrl->setText( "<a href='http://www.kohaupt-online.de/hp/spende.html'>" + tr( "Donate" ) + "</a>" );
-    }
-    
+    myUi.labelDonateUrl->setOpenExternalLinks( true );
+    myUi.labelDonateUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
+
     QIcon creditsIcon;
     creditsIcon.addFile( ":/pictures/community.png", QSize(), QIcon::Normal, QIcon::On );
     myUi.creditsQPushButton->setIcon( creditsIcon );
     connect( myUi.creditsQPushButton, SIGNAL( clicked() ), SLOT( showCredits() ) );
-    
+
     
     // Start Stop Pause etc. Buttons
     myUi.recordButton->setToolTip( "CTRL+SHIFT+F10" );

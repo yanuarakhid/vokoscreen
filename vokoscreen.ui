@@ -47,7 +47,7 @@
          </sizepolicy>
         </property>
         <property name="currentIndex">
-         <number>5</number>
+         <number>0</number>
         </property>
         <property name="iconSize">
          <size>
@@ -1120,13 +1120,6 @@
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="labelOpensuseBetaUrl">
-                <property name="text">
-                 <string notr="true">TextLabel</string>
-                </property>
-               </widget>
-              </item>
-              <item>
                <spacer name="horizontalSpacer_22">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
@@ -1155,13 +1148,6 @@
                  </size>
                 </property>
                </spacer>
-              </item>
-              <item>
-               <widget class="QLabel" name="labelDeveLoperMail">
-                <property name="text">
-                 <string notr="true">TextLabel</string>
-                </property>
-               </widget>
               </item>
               <item>
                <spacer name="horizontalSpacer_17">
