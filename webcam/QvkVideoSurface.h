@@ -1,7 +1,6 @@
 #ifndef QvkVideoSurface_H
 #define QvkVideoSurface_H
 
-#include <QDebug>
 #include <QAbstractVideoSurface>
 
 class QvkVideoSurface: public QAbstractVideoSurface

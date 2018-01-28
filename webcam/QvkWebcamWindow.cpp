@@ -1,7 +1,5 @@
 #include "QvkWebcamWindow.h" 
 
-using namespace std;
-
 QvkWebcamWindow::QvkWebcamWindow()
 {
   // Es werden die Abmaße des Bildes in der conf abgespeichert, also ohne Rahmen

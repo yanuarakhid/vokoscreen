@@ -72,8 +72,6 @@ include(send/send.pri)
 
 # webcam
 include(webcam/webcam.pri)
-PKGCONFIG += libv4l2
-PKGCONFIG += libv4lconvert
 
 # settings
 include(settings/settings.pri)

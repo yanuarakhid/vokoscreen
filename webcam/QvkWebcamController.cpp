@@ -3,11 +3,8 @@
 #include "QvkWebcamWatcher.h"
 #include "QvkVideoSurface.h"
 
-#include <QDebug>
 #include <QCameraInfo>
-
-#include <QMediaObject>
-#include <QStorageInfo>
+#include <QCameraViewfinder>
 
 // http://doc.qt.io/qt-5/qgraphicsscene.html#addWidget
 
@@ -85,7 +82,6 @@ QvkWebcamController::~QvkWebcamController()
 
 void QvkWebcamController::setNewImage( QImage image )
 {
-
   if ( mirrored == true )
     image = image.mirrored ( true, false );
 
@@ -238,30 +234,11 @@ void QvkWebcamController::addToComboBox( QStringList description, QStringList de
 
 }
 
-#include <QCameraViewfinder>
-#include <QCameraImageCapture>
 // http://doc.qt.io/qt-5/qmultimedia.html#AvailabilityStatus-enum
 void QvkWebcamController::displayWebcam( QByteArray device )
 {
     camera = new QCamera( device );
 
-    // Laut https://bugreports.qt.io/browse/QTBUG-50598 soll es ab 5.9.0 funktionieren
-    QCameraImageProcessing *imageProcessing = camera->imageProcessing();
-    if ( imageProcessing->isAvailable() )
-    {
-       qDebug() << "brightness" << imageProcessing->brightness();
-       imageProcessing->sharpeningLevel();
-       qDebug() << "sharpeningLevel" << imageProcessing->sharpeningLevel();
-
-       qDebug() << "[vokoscreen] ImageProcessing verfügbar";
-       if ( imageProcessing->isWhiteBalanceModeSupported( QCameraImageProcessing::WhiteBalanceVendor ) )
-           qDebug() << "[vokoscreen] isWhiteBalanceModeSupported verfügbar";
-       else
-           qDebug() << "[vokoscreen] isWhiteBalanceModeSupported nicht verfügbar";
-
-    }
-
-    connect( camera, SIGNAL( error( QCamera::Error ) ) , this, SLOT( test( QCamera::Error) ) );// funktioniert nicht
     connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( myStatusChanged( QCamera::Status ) ) );
     connect( camera, SIGNAL( stateChanged( QCamera::State   ) ), this, SLOT( myStateChanged( QCamera::State ) )  );
 
@@ -277,17 +254,6 @@ void QvkWebcamController::displayWebcam( QByteArray device )
     webcamWindow->show();
 
     camera->start();
-/*
-    QCameraImageCapture *imageCapture = new QCameraImageCapture(camera);
-    QList<QSize> resolutions = imageCapture->supportedResolutions();
-    qDebug() << resolutions;
-*/
-}
-
-
-void QvkWebcamController::test( QCamera::Error value )
-{
-    qDebug() << "Fehler:" << value;
 }
 
 

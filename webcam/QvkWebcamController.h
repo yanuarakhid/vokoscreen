@@ -30,7 +30,6 @@ private slots:
   void ifCameraRemovedCloseWindow(QString value);
   void setActiveCamera( QString value );
   QString getActiveCamera();
-  void test(QCamera::Error value);
   void setNewImage( QImage image );
   void setMirrorOnOff( bool value );
   void rotateDialclicked();
