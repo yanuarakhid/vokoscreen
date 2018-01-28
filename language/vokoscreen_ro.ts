@@ -269,7 +269,7 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Pagină web</translation>
+        <translation>Pagina de pornire</translation>
     </message>
     <message>
         <source>Support</source>
@@ -277,7 +277,7 @@
     </message>
     <message>
         <source>Developer</source>
-        <translation>Dezvoltator</translation>
+        <translation>Dezvoltător</translation>
     </message>
     <message>
         <source>Frames</source>
@@ -333,7 +333,7 @@
     </message>
     <message>
         <source>Developer Homepage</source>
-        <translation type="unfinished"/>
+        <translation>Pagina de pornire a Dezvoltătorului</translation>
     </message>
     <message>
         <source>Recorder</source>
@@ -381,7 +381,7 @@
     </message>
     <message>
         <source>Load</source>
-        <translation type="unfinished"/>
+        <translation>Sarcină</translation>
     </message>
 </context>
 </TS>

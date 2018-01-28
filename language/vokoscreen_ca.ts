@@ -241,7 +241,7 @@
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Ajustaments dels fps</translation>
+        <translation>Ajustaments dels FPS</translation>
     </message>
     <message>
         <source>Open Directory</source>

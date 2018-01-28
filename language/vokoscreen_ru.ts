@@ -381,7 +381,7 @@
     </message>
     <message>
         <source>Load</source>
-        <translation type="unfinished"/>
+        <translation>Нагрузка</translation>
     </message>
 </context>
 </TS>

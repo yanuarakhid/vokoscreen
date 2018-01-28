@@ -26,7 +26,7 @@
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>Paramètres de zone</translation>
     </message>
     <message>
         <source>OK</source>
@@ -100,7 +100,7 @@
     </message>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>Paramètres de zone</translation>
     </message>
 </context>
 <context>
@@ -381,7 +381,7 @@
     </message>
     <message>
         <source>Load</source>
-        <translation type="unfinished"/>
+        <translation>Charge</translation>
     </message>
 </context>
 </TS>
