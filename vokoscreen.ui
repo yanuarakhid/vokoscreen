@@ -315,8 +315,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>375</width>
-                 <height>152</height>
+                 <width>20</width>
+                 <height>16</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -678,13 +678,6 @@
                <enum>QLayout::SetDefaultConstraint</enum>
               </property>
               <item>
-               <widget class="QCheckBox" name="mirrorCheckBox">
-                <property name="text">
-                 <string>Mirrored</string>
-                </property>
-               </widget>
-              </item>
-              <item>
                <layout class="QVBoxLayout" name="verticalLayout_8">
                 <item>
                  <widget class="QFrame" name="dialFrame">
@@ -867,6 +860,31 @@
                     </layout>
                    </item>
                   </layout>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_17">
+                <item>
+                 <widget class="QCheckBox" name="mirrorCheckBox">
+                  <property name="text">
+                   <string>Mirrored</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="grayCheckBox">
+                  <property name="text">
+                   <string>Gray</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="invertCheckBox">
+                  <property name="text">
+                   <string>Invert</string>
+                  </property>
                  </widget>
                 </item>
                </layout>
