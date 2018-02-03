@@ -272,14 +272,6 @@
         <translation>Αρχική</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Υποστήριξη</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Προγραμματιστής</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Καρέ</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>&apos;Ολες οι </translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Αρχική σελίδα προγραμματιστή</translation>
     </message>
     <message>
         <source>Recorder</source>

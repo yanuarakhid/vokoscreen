@@ -272,14 +272,6 @@
         <translation>Kotisivu</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Tuki</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Kehittäjä</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Ruutuja</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Kaikki näytöt</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Kehittäjän kotisivu</translation>
     </message>
     <message>
         <source>Recorder</source>

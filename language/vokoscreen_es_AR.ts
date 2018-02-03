@@ -272,14 +272,6 @@
         <translation>Sitio web</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Asistencia</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Desarrollador</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Fotogramas</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Todas las pantallas</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Página del desarrollador</translation>
     </message>
     <message>
         <source>Recorder</source>

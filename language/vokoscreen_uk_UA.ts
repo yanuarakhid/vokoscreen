@@ -272,14 +272,6 @@
         <translation>Веб-сайт</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Підримка</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Розробник</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Кадри</translation>
     </message>
@@ -329,10 +321,6 @@
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
         <translation type="unfinished"/>
     </message>
     <message>

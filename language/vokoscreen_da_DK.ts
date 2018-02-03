@@ -272,14 +272,6 @@
         <translation>Hjemmeside</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Support</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Udvikler</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Billeder</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Alle skærme</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Udvikler hjemmeside</translation>
     </message>
     <message>
         <source>Recorder</source>

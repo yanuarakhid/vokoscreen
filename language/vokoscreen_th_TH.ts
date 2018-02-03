@@ -272,14 +272,6 @@
         <translation>โฮมเพจ</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>ซัพพอร์ต</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>ผู้พัฒนา</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>เฟรม</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>หน้าจอทั้งหมด</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>โฮมเพจผู้พัฒนา</translation>
     </message>
     <message>
         <source>Recorder</source>

@@ -108,15 +108,7 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Border</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show over fullscreen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -125,6 +117,10 @@
     </message>
     <message>
         <source>User-defined</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frameless</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -371,6 +367,14 @@
     </message>
     <message>
         <source>Load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invert</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

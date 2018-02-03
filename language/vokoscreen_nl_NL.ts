@@ -272,14 +272,6 @@
         <translation>Startpagina</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Ondersteuning</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Ontwikkelaar</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Frames</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Alle schermen</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Homepage van de ontwikkelaar</translation>
     </message>
     <message>
         <source>Recorder</source>

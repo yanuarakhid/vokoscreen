@@ -272,14 +272,6 @@
         <translation>官方網頁</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>使用支援</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>軟體開發者</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>影格率</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>顯示所有</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>開發者官方網頁</translation>
     </message>
     <message>
         <source>Recorder</source>

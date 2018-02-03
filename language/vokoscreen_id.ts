@@ -272,14 +272,6 @@
         <translation>Halaman muka</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Dukungan</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Pengembang</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Frame</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Semua Layar</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Halaman muka Pengembang</translation>
     </message>
     <message>
         <source>Recorder</source>

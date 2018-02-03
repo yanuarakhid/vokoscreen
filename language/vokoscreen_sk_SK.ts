@@ -272,14 +272,6 @@
         <translation>Domovská stránka</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Podpora</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Vývojár</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Snímky</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Všetky obrazovky</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Domovská stránka vývojárov</translation>
     </message>
     <message>
         <source>Recorder</source>

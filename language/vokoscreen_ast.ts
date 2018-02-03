@@ -272,14 +272,6 @@
         <translation>Páxina d&apos;aniciu</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Sofitu</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Desendolcador</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Frames</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Toles pantalles</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Páxina web del desendolcador</translation>
     </message>
     <message>
         <source>Recorder</source>

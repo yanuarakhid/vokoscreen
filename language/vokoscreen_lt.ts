@@ -272,14 +272,6 @@
         <translation>Svetainė</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Palaikymas</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Kūrėjas</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Kadrai</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Visi ekranai</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Kūrėjo svetainė</translation>
     </message>
     <message>
         <source>Recorder</source>

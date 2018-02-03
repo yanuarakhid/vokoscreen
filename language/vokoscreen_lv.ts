@@ -272,14 +272,6 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Support</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Frames</source>
         <translation type="unfinished"/>
     </message>
@@ -329,10 +321,6 @@
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
         <translation type="unfinished"/>
     </message>
     <message>

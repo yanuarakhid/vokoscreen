@@ -272,14 +272,6 @@
         <translation>Веб-сайт</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Поддержка</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Разработчик</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Кадры</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Все экраны</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Веб-сайт разработчика</translation>
     </message>
     <message>
         <source>Recorder</source>

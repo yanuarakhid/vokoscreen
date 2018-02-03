@@ -272,14 +272,6 @@
         <translation>Lloc web</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Assistència</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Desenvolupador</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Fotogrames</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Totes les pantalles</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Lloc web del desenvolupador</translation>
     </message>
     <message>
         <source>Recorder</source>

@@ -272,14 +272,6 @@
         <translation>Hemsida</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Stöd</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Utvecklare</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Ramar</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>alla skärmar</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Utvecklare Hemsida</translation>
     </message>
     <message>
         <source>Recorder</source>

@@ -272,14 +272,6 @@
         <translation>Faqja e projektit</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Mbështetja</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Zhvilluesi</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Fotogramët</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Të gjitha ekranet</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Faqja e zhvilluesit</translation>
     </message>
     <message>
         <source>Recorder</source>

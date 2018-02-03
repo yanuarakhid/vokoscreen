@@ -272,14 +272,6 @@
         <translation>Pagina de pornire</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Suport</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Dezvoltător</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Cadre</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Toate monitoarele</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Pagina de pornire a Dezvoltătorului</translation>
     </message>
     <message>
         <source>Recorder</source>

@@ -272,14 +272,6 @@
         <translation>Trang chủ</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Hỗ trợ</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Nhà phát triển</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Khung ảnh</translation>
     </message>
@@ -329,10 +321,6 @@
     </message>
     <message>
         <source>All Displays</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
         <translation type="unfinished"/>
     </message>
     <message>

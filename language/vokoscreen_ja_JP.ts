@@ -272,14 +272,6 @@
         <translation>ホームページ</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>サポート</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>開発者</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>フレーム</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>すべてのディスプレイ</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>開発者ホームページ</translation>
     </message>
     <message>
         <source>Recorder</source>

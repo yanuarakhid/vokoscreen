@@ -272,14 +272,6 @@
         <translation>Weboldal</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Támogatás</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Fejlesztés</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Képkocka</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Összes képernyő</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Fejlesztői honlap</translation>
     </message>
     <message>
         <source>Recorder</source>

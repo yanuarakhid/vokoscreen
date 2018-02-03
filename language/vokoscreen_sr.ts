@@ -272,14 +272,6 @@
         <translation>Почетна</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Подршка</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Програмер</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Фрејмови</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Сви прикази</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Почетна програмера</translation>
     </message>
     <message>
         <source>Recorder</source>

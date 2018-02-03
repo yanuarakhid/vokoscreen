@@ -272,14 +272,6 @@
         <translation>صفحة البرنامج</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>الدعم</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>المطور</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>المشاهد</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>جميع الشاشات</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>صفحة المطوّر</translation>
     </message>
     <message>
         <source>Recorder</source>

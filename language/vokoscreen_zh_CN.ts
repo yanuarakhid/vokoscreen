@@ -272,14 +272,6 @@
         <translation>网站</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>支持</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>开发者</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>帧率</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>显示所有</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>开发者网站</translation>
     </message>
     <message>
         <source>Recorder</source>

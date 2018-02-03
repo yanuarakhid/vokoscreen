@@ -272,14 +272,6 @@
         <translation>صفحه‌ی اصلی</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>پشتیبانی</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>توسعه دهنده</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>فریم‌ها</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>تمام نمایش‌ها</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>صفحه‌ی اصلیِ توسعه دهنده</translation>
     </message>
     <message>
         <source>Recorder</source>

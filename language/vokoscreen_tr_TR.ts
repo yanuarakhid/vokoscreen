@@ -272,14 +272,6 @@
         <translation>Ana Sayfa</translation>
     </message>
     <message>
-        <source>Support</source>
-        <translation>Destek</translation>
-    </message>
-    <message>
-        <source>Developer</source>
-        <translation>Geliştirici</translation>
-    </message>
-    <message>
         <source>Frames</source>
         <translation>Çerçeveler</translation>
     </message>
@@ -330,10 +322,6 @@
     <message>
         <source>All Displays</source>
         <translation>Tüm Görüntüler</translation>
-    </message>
-    <message>
-        <source>Developer Homepage</source>
-        <translation>Geliştirici Anasayfası</translation>
     </message>
     <message>
         <source>Recorder</source>
