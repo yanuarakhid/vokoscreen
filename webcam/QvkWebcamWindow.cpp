@@ -187,26 +187,6 @@ void QvkWebcamWindow::setActionUserDefined()
   actionUserDefined->setVisible ( true );
 }
 
-/*
-void QvkWebcamWindow::setBorder()
-{
-  qDebug() << actionFrame->isChecked() << "22222222222222222222222222222";
-  if ( actionFrame->isChecked() == true )
-  {
-    hide();
-      setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-      setValueBorder( true );
-    show();
-  }
-  else
-  {
-    hide();
-      setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint);
-      setValueBorder( false );
-    show();
-  }
-}
-*/
 
 void QvkWebcamWindow::setBorder( bool value )
 {
@@ -225,7 +205,6 @@ void QvkWebcamWindow::setBorder( bool value )
     show();
   }
 }
-
 
 
 void QvkWebcamWindow::resizeEvent ( QResizeEvent *)

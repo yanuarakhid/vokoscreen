@@ -6,14 +6,8 @@
 #include <QCameraInfo>
 #include <QCameraViewfinder>
 
-// http://doc.qt.io/qt-5/qgraphicsscene.html#addWidget
-
 // Hint:
 // /usr/local/Qt-5.5.0/bin/qmake GST_VERSION=1.0
-
-
-// Für Zugriff auf die camera Bilder
-// http://www.qtcentre.org/threads/57090-How-could-I-get-the-image-buffer-of-QCamera
 
 QvkWebcamController::QvkWebcamController( Ui_screencast value )
 {
