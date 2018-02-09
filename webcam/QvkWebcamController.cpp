@@ -38,6 +38,9 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
 
   myUi.radioButtonLeftMiddle->setChecked( vkSettings.getWebcamButtonLeftMiddle() );
 
+  myUi.grayCheckBox->setChecked( vkSettings.getWebcamGray() );
+  myUi.invertCheckBox->setChecked( vkSettings.getWebcamInvert() );
+
   webcamWindow = new QvkWebcamWindow();
 
   mirrored = false;
@@ -72,13 +75,26 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
 
   QvkWebcamWatcher *webcamWatcher = new QvkWebcamWatcher();
   connect( webcamWatcher, SIGNAL( webcamDescription( QStringList, QStringList ) ), this, SLOT( addToComboBox( QStringList, QStringList ) ) );
-  connect( webcamWatcher, SIGNAL( removedCamera( QString ) ), this, SLOT( ifCameraRemovedCloseWindow( QString ) ) );
+  connect( webcamWatcher, SIGNAL( removedCamera( QString ) ), this, SLOT( ifCameraRemovedCloseWindow( QString ) ) );  
+
+  // If all webcams complete read, then read setting for show or not show
+  connect( webcamWatcher, SIGNAL( webcamDescription( QStringList, QStringList ) ), this, SLOT( setCheckboxWebcamFromSettings() ) );
 }
 
 
 QvkWebcamController::~QvkWebcamController()
 {
 }
+
+
+void QvkWebcamController::setCheckboxWebcamFromSettings()
+{
+  if ( Qt::CheckState( vkSettings.getWebcamOnOff() ) == Qt::Checked )
+  {
+    myUi.webcamCheckBox->click();
+  }
+}    
+
 
 void QvkWebcamController::setNewImage( QImage image )
 {
@@ -250,7 +266,6 @@ void QvkWebcamController::displayWebcam( QByteArray device )
 
     camera->setViewfinder( videoSurface );
 
-    webcamWindow->setGeometry( 800, 400, 320, 240 );
     webcamWindow->show();
 
     camera->start();

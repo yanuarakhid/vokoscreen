@@ -412,10 +412,7 @@ screencast::screencast()
     statusBarLabelFpsSettings->setText( QString::number( myUi.FrameSpinBox->value() ) );
 
     myUi.HideMouseCheckbox->setCheckState( Qt::CheckState( vkSettings.getHideMouse()) );
-           
-    if ( Qt::CheckState( vkSettings.getWebcamOnOff() ) == Qt::Checked )
-      myUi.webcamCheckBox->click();
-      
+
     move( vkSettings.getX(),vkSettings.getY() );
 
     if( Qt::CheckState( vkSettings.getMagnifierOnOff() ) == Qt::Checked )
@@ -988,6 +985,10 @@ void screencast::saveSettings()
     settings.setValue( "Height", webcamController->webcamWindow->getValueHeight() );
     settings.setValue( "Border", webcamController->webcamWindow->getValueBorder() );
     //settings.setValue( "OverFullScreen", webcamController->webcamWindow->getOverFullScreen() );
+    settings.setValue( "Gray", myUi.grayCheckBox->isChecked() );
+    settings.setValue( "Invert", myUi.invertCheckBox->isChecked() );
+
+
   settings.endGroup();
   
   settings.beginGroup( "Magnifier" );

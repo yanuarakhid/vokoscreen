@@ -44,7 +44,7 @@ private slots:
     void set320x240();
     void set640x480();
     void setActionUserDefined();
-    void setFrameless();
+    void setBorder(bool value);
     void closeMenue();
     void setValueBorder( bool value );
 

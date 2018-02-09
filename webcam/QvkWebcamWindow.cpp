@@ -6,7 +6,7 @@ QvkWebcamWindow::QvkWebcamWindow()
   
   vkSettings.readAll();
   setToolTip( tr( "Right click for menu" ) );
-  
+
   setWindowTitle( vkSettings.getProgName() + " " + "webcam" + " " + vkSettings.getVersion() );
 
   setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint);
@@ -36,14 +36,30 @@ QvkWebcamWindow::QvkWebcamWindow()
   actionUserDefined->setCheckable( true );
   connect( actionUserDefined, SIGNAL( triggered() ), this, SLOT( setActionUserDefined() ) );
 
-  actionFrame = new QAction( tr( "Frameless" ), this );
+  actionFrame = new QAction( tr( "Border" ), this );
   actionFrame->setCheckable( true );
-  connect( actionFrame, SIGNAL( triggered() ), this, SLOT( setFrameless() ) );
+  connect( actionFrame, SIGNAL( triggered( bool ) ), this, SLOT( setBorder( bool ) ) );
 
   actionClose = new QAction( tr ( "Close" ), this );
   connect( actionClose, SIGNAL( triggered() ), this, SLOT( closeMenue() ) );
 
-  setGeometry( vkSettings.getWebcamX(), vkSettings.getWebcamY(), vkSettings.getWebcamWidth(), vkSettings.getWebcamHeight() );
+  setGeometry( vkSettings.getWebcamX(),
+               vkSettings.getWebcamY(),
+               vkSettings.getWebcamWidth(),
+               vkSettings.getWebcamHeight() );
+
+  if ( vkSettings.getWebcamBorder() == true  )
+  {
+      setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint);
+      actionFrame->setChecked( true );
+      setValueBorder( true );
+  }
+  else
+  {
+      setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+      actionFrame->setChecked( false );
+      setValueBorder( false );
+  }
 
   if ( ( vkSettings.getWebcamWidth() == 160 ) and ( vkSettings.getWebcamHeight() == 120 ) )
   {
@@ -60,6 +76,7 @@ QvkWebcamWindow::QvkWebcamWindow()
                 setActionUserDefined();
               }
 }
+
 
 QvkWebcamWindow::~QvkWebcamWindow()
 {
@@ -170,9 +187,10 @@ void QvkWebcamWindow::setActionUserDefined()
   actionUserDefined->setVisible ( true );
 }
 
-
-void QvkWebcamWindow::setFrameless()
+/*
+void QvkWebcamWindow::setBorder()
 {
+  qDebug() << actionFrame->isChecked() << "22222222222222222222222222222";
   if ( actionFrame->isChecked() == true )
   {
     hide();
@@ -188,6 +206,26 @@ void QvkWebcamWindow::setFrameless()
     show();
   }
 }
+*/
+
+void QvkWebcamWindow::setBorder( bool value )
+{
+  if ( value == false )
+  {
+    hide();
+      setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+      setValueBorder( false );
+    show();
+  }
+  else
+  {
+    hide();
+      setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint);
+      setValueBorder( true );
+    show();
+  }
+}
+
 
 
 void QvkWebcamWindow::resizeEvent ( QResizeEvent *)

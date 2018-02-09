@@ -112,26 +112,28 @@ void QvkSettings::readAll()
 
     settings.beginGroup( "Webcam" );
         webcamOnOff = settings.value( "OnOff", 0 ).toUInt();
-	webcamX = settings.value( "X", 400 ).toUInt();
-	webcamY = settings.value( "Y", 400 ).toUInt();
-	webcamWidth = settings.value( "Width", 320 ).toUInt();
-	webcamHeight = settings.value( "Height", 240 ).toUInt();
+        webcamX = settings.value( "X", 400 ).toUInt();
+        webcamY = settings.value( "Y", 400 ).toUInt();
+        webcamWidth = settings.value( "Width", 320 ).toUInt();
+        webcamHeight = settings.value( "Height", 240 ).toUInt();
         webcamMirrored = settings.value( "Mirrored", 0 ).toInt();
-	webcamBorder = settings.value( "Border", true ).toBool();
-	webcamOverFullScreen = settings.value( "OverFullScreen", false ).toBool();
-	webcamButtonTopMiddle = settings.value( "Top", false ).toBool();
+        webcamBorder = settings.value( "Border", true ).toBool();
+        webcamOverFullScreen = settings.value( "OverFullScreen", false ).toBool();
+        webcamButtonTopMiddle = settings.value( "Top", false ).toBool();
         webcamButtonRightMiddle = settings.value( "Right", false ).toBool();
         webcamButtonBottomMiddle = settings.value( "Bottom", false ).toBool();
-	webcamButtonLeftMiddle = settings.value( "Left", false ).toBool();
-	if ( ( getWebcamButtonTopMiddle() == false ) and ( getWebcamButtonRightMiddle() == false ) and ( getWebcamButtonLeftMiddle() == false ) )
-	{
-	  webcamButtonBottomMiddle = true;
-	}
+        webcamButtonLeftMiddle = settings.value( "Left", false ).toBool();
+        if ( ( getWebcamButtonTopMiddle() == false ) and ( getWebcamButtonRightMiddle() == false ) and ( getWebcamButtonLeftMiddle() == false ) )
+        {
+           webcamButtonBottomMiddle = true;
+        }
+        webcamGray = settings.value( "Gray", false ).toBool();
+        webcamInvert = settings.value( "Invert", false ).toBool();
     settings.endGroup();
     
     settings.beginGroup( "Magnifier" );
         magnifierOnOff = settings.value( "OnOff", 0 ).toUInt();
-	magnifierFormValue = settings.value( "FormValue", 2 ).toUInt();
+        magnifierFormValue = settings.value( "FormValue", 2 ).toUInt();
     settings.endGroup();
     
     settings.beginGroup( "ShowClick" );
@@ -333,6 +335,16 @@ int QvkSettings::getWebcamWidth()
 int QvkSettings::getWebcamMirrored()
 {
   return webcamMirrored;
+}
+
+bool QvkSettings::getWebcamGray()
+{
+  return webcamGray;
+}
+
+bool QvkSettings::getWebcamInvert()
+{
+  return webcamInvert;
 }
 
 bool QvkSettings::getWebcamBorder()

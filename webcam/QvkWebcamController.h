@@ -33,6 +33,7 @@ private slots:
   void setNewImage( QImage image );
   void setMirrorOnOff( bool value );
   void rotateDialclicked();
+  void setCheckboxWebcamFromSettings();
 
   
 private:

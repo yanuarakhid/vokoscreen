@@ -67,6 +67,8 @@ public:
   int getWebcamHeight();
   int getWebcamWidth();
   int getWebcamMirrored();
+  bool getWebcamGray();
+  bool getWebcamInvert();
   bool getWebcamBorder();
   bool getWebcamOverFullScreen();
   bool getWebcamButtonTopMiddle();
@@ -149,6 +151,8 @@ private:
   int webcamHeight;
   int webcamWidth;
   int webcamMirrored;
+  bool webcamGray;
+  bool webcamInvert;
   bool webcamBorder;
   bool webcamOverFullScreen;
   bool webcamButtonTopMiddle;
