@@ -23,7 +23,8 @@ public:
     QAction *action320x240;
     QAction *action640x480;
     QAction *actionUserDefined;
-    QAction *actionFrame;
+    QAction *actionBorder;
+    QAction *actionVisibleOverFullscreen;
     QAction *actionClose;
     QMenu menu;
 
@@ -31,6 +32,8 @@ public:
 private:
     QvkSettings vkSettings;
     bool border;
+    bool overFullScreen;
+
 
 public slots:
     int getValueX();
@@ -38,6 +41,10 @@ public slots:
     int getValueWidth();
     int getValueHeight();
     bool getValueBorder();
+    bool getOverFullScreen();
+
+    void visibleOverFullscreen();
+    void overFullScreenSetWindowFlags();
 
 private slots:
     void set160x120();
@@ -47,6 +54,8 @@ private slots:
     void setBorder(bool value);
     void closeMenue();
     void setValueBorder( bool value );
+    void setOverFullScreen( bool value );
+
 
 protected:
     void closeEvent( QCloseEvent * event );
@@ -55,7 +64,7 @@ protected:
     
 signals:
     void closeWebcamWindow();
-    void enterEventWebcamWindow();
+    //void enterEventWebcamWindow();
     void setOverScreen();
 };
 

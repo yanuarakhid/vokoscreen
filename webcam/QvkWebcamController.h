@@ -25,7 +25,7 @@ public slots:
 private slots:
   void myStatusChanged(QCamera::Status status );
   void myStateChanged( QCamera::State state );
-  void webcamOnOff( int value );
+  void webcamOnOff(int value );
   void addToComboBox(QStringList description, QStringList device );
   void ifCameraRemovedCloseWindow(QString value);
   void setActiveCamera( QString value );
@@ -34,6 +34,7 @@ private slots:
   void setMirrorOnOff( bool value );
   void rotateDialclicked();
   void setCheckboxWebcamFromSettings();
+  void overFullScreenWebcamCheckBox_OnOff();
 
   
 private:

@@ -61,8 +61,9 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
     myUi.mirrorCheckBox->setEnabled( false );
   }
 
-  connect( myUi.webcamCheckBox, SIGNAL( stateChanged( int ) ), this, SLOT( webcamOnOff( int ) ) );
+  connect( myUi.webcamCheckBox, SIGNAL( stateChanged(int) ), this, SLOT( webcamOnOff( int ) ) );
   connect( webcamWindow, SIGNAL( closeWebcamWindow() ), myUi.webcamCheckBox, SLOT( toggle() )  );
+  connect( webcamWindow, SIGNAL( setOverScreen() ), this, SLOT( overFullScreenWebcamCheckBox_OnOff() ) );
 
   videoSurface = new QvkVideoSurface( this );
   connect( videoSurface, SIGNAL( newPicture( QImage ) ), this, SLOT( setNewImage( QImage ) ) );
@@ -87,7 +88,48 @@ void QvkWebcamController::setCheckboxWebcamFromSettings()
   {
     myUi.webcamCheckBox->click();
   }
-}    
+}
+
+
+void QvkWebcamController::overFullScreenWebcamCheckBox_OnOff()
+{
+  myUi.webcamCheckBox->click();
+    QCoreApplication::processEvents( QEventLoop::AllEvents );
+    webcamWindow->overFullScreenSetWindowFlags();
+  myUi.webcamCheckBox->click();
+}
+
+
+void QvkWebcamController::webcamOnOff( int value )
+{
+  if ( value == Qt::Checked )
+  {
+    myUi.webcamComboBox->setEnabled( false );
+    myUi.mirrorCheckBox->setEnabled( true );
+    myUi.dialFrame->setEnabled( true );
+    myUi.grayCheckBox->setEnabled( true );
+    myUi.invertCheckBox->setEnabled( true );
+
+    // save the active camera to a flag
+    setActiveCamera( myUi.webcamComboBox->currentData().toString() );
+
+    QByteArray device = myUi.webcamComboBox->currentData().toByteArray();
+    displayWebcam( device );
+  }
+
+  if ( value == Qt::Unchecked )
+  {
+    camera->unload();
+    camera->stop();
+    webcamWindow->hide();
+    delete camera;
+    myUi.webcamComboBox->setEnabled( true );
+    myUi.mirrorCheckBox->setEnabled( false );
+    myUi.dialFrame->setEnabled( false );
+    myUi.grayCheckBox->setEnabled( false );
+    myUi.invertCheckBox->setEnabled( false );
+  }
+}
 
 
 void QvkWebcamController::setNewImage( QImage image )
@@ -186,38 +228,6 @@ void QvkWebcamController::setActiveCamera( QString value )
 QString QvkWebcamController::getActiveCamera()
 {
     return aktivCamera;
-}
-
-
-void QvkWebcamController::webcamOnOff( int value )
-{
-  if ( value == Qt::Checked)
-  {
-    myUi.webcamComboBox->setEnabled( false );
-    myUi.mirrorCheckBox->setEnabled( true );
-    myUi.dialFrame->setEnabled( true );
-    myUi.grayCheckBox->setEnabled( true );
-    myUi.invertCheckBox->setEnabled( true );
-
-    // save the active camera to a flag
-    setActiveCamera( myUi.webcamComboBox->currentData().toString() );
-
-    QByteArray device = myUi.webcamComboBox->currentData().toByteArray();
-    displayWebcam( device );
-  }
-
-  if ( value == Qt::Unchecked )
-  {
-    camera->unload();
-    camera->stop();
-    webcamWindow->hide();
-    delete camera;
-    myUi.webcamComboBox->setEnabled( true );
-    myUi.mirrorCheckBox->setEnabled( false );
-    myUi.dialFrame->setEnabled( false );
-    myUi.grayCheckBox->setEnabled( false );
-    myUi.invertCheckBox->setEnabled( false );
-  }
 }
 
 
