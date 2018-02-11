@@ -41,7 +41,7 @@ QvkWebcamWindow::QvkWebcamWindow():border(true),
   actionBorder->setCheckable( true );
   connect( actionBorder, SIGNAL( triggered( bool ) ), this, SLOT( setBorder( bool ) ) );
 
-#ifdef Q_OS_LINUX
+#ifndef Q_OS_WIN
   actionVisibleOverFullscreen = new QAction( tr ( "Show over fullscreen" ), this );
   actionVisibleOverFullscreen->setCheckable( true );
   connect( actionVisibleOverFullscreen, SIGNAL( triggered() ), this, SLOT( visibleOverFullscreen() ) );
@@ -109,15 +109,22 @@ int QvkWebcamWindow::getValueHeight()
   return height();
 }
 
+
+#ifndef Q_OS_WIN
 void QvkWebcamWindow::setOverFullScreen( bool value )
 {
   overFullScreen = value;
 }
+#endif
 
+
+#ifndef Q_OS_WIN
 bool QvkWebcamWindow::getOverFullScreen()
 {
   return overFullScreen;
 }
+#endif
+
 
 /**
  *  closeEvent wird ausgelößt wenn das webcamfenster geschloßen wird
@@ -139,7 +146,9 @@ void QvkWebcamWindow::contextMenuEvent( QContextMenuEvent *event )
      menu.addAction( actionUserDefined );
      menu.addSeparator();
      menu.addAction( actionBorder );
+#ifndef Q_OS_WIN
      menu.addAction( actionVisibleOverFullscreen );
+#endif
      menu.addSeparator();
      menu.addAction( actionClose );
      menu.exec( event->globalPos() );
@@ -212,8 +221,10 @@ void QvkWebcamWindow::setBorder( bool value )
   {
     hide();
       setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+#ifndef Q_OS_WIN
       actionVisibleOverFullscreen->setChecked( false );
       setOverFullScreen( false );
+#endif
       setValueBorder( false );
     show();
   }
@@ -221,22 +232,25 @@ void QvkWebcamWindow::setBorder( bool value )
   {
     hide();
       setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint);
+#ifndef Q_OS_WIN
       actionVisibleOverFullscreen->setChecked( false );
       setOverFullScreen( false );
+#endif
       setValueBorder( true );
     show();
   }
 }
 
-
+#ifndef Q_OS_WIN
 void QvkWebcamWindow::visibleOverFullscreen()
 {
     actionBorder->setChecked( false );
     emit setOverScreen();
 }
+#endif
 
 
-#ifdef Q_OS_LINUX
+#ifndef Q_OS_WIN
 // Wird von QvkWebcamController::overFullScreenCheckBox_OnOff() aufgerufen
 void QvkWebcamWindow::overFullScreenSetWindowFlags()
 {

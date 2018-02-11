@@ -63,8 +63,9 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
 
   connect( myUi.webcamCheckBox, SIGNAL( stateChanged(int) ), this, SLOT( webcamOnOff( int ) ) );
   connect( webcamWindow, SIGNAL( closeWebcamWindow() ), myUi.webcamCheckBox, SLOT( toggle() )  );
+#ifndef Q_OS_WIN
   connect( webcamWindow, SIGNAL( setOverScreen() ), this, SLOT( overFullScreenWebcamCheckBox_OnOff() ) );
-
+#endif
   videoSurface = new QvkVideoSurface( this );
   connect( videoSurface, SIGNAL( newPicture( QImage ) ), this, SLOT( setNewImage( QImage ) ) );
 
@@ -90,7 +91,7 @@ void QvkWebcamController::setCheckboxWebcamFromSettings()
   }
 }
 
-
+#ifndef Q_OS_WIN
 void QvkWebcamController::overFullScreenWebcamCheckBox_OnOff()
 {
   myUi.webcamCheckBox->click();
@@ -98,7 +99,7 @@ void QvkWebcamController::overFullScreenWebcamCheckBox_OnOff()
     webcamWindow->overFullScreenSetWindowFlags();
   myUi.webcamCheckBox->click();
 }
-
+#endif
 
 void QvkWebcamController::webcamOnOff( int value )
 {
