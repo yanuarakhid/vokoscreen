@@ -34,8 +34,9 @@ private slots:
   void setMirrorOnOff( bool value );
   void rotateDialclicked();
   void setCheckboxWebcamFromSettings();
+#ifdef Q_OS_LINUX
   void overFullScreenWebcamCheckBox_OnOff();
-
+#endif
   
 private:
   QCamera *camera;
