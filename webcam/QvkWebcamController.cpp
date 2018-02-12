@@ -304,7 +304,7 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
                                         }// 4
       case QCamera::StandbyStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 5
       case QCamera::StartingStatus    : { qDebug() << "[vokoscreen]" << status;
-                                          msgInWebcamWindow( tr( "Wait a second \n or is Camera busy?" ) );
+                                          msgInWebcamWindow( tr( "Wait a second or is Camera busy?" ) );
                                           break;
                                         }// 6
       case QCamera::StoppingStatus    : { qDebug() << "[vokoscreen]" << status; break; }// 7

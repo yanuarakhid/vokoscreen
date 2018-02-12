@@ -8,6 +8,7 @@ QvkMsgInWebcamWindow::QvkMsgInWebcamWindow( QObject *parent, QWidget *webcamWind
       setParent( webcamWindow );
       setStyleSheet( "background-color: lightgray;" );
       setGeometry( 0, 0, webcamWindow->width(), webcamWindow->height() );
+      setWordWrap( true );
       setAlignment( Qt::AlignCenter );
       QFont font;
       font.setPointSize( 14 );
