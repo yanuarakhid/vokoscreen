@@ -323,7 +323,7 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
                                         }// 4
       case QCamera::StandbyStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 5
       case QCamera::StartingStatus    : { qDebug() << "[vokoscreen]" << status;
-                                          msgInWebcamWindow( tr( "No pictures or camera in use?" ) );
+                                          msgInWebcamWindow( tr( "No pictures \n Camera busy?" ) );
                                           break;
                                         }// 6
       case QCamera::StoppingStatus    : { qDebug() << "[vokoscreen]" << status; break; }// 7

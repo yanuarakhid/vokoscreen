@@ -13,7 +13,7 @@ QvkMsgInWebcamWindow::QvkMsgInWebcamWindow( QObject *parent, QWidget *webcamWind
       font.setPointSize( 14 );
       setFont( font );
       setText( value );
-      this->show();
+      show();
 }
 
 
