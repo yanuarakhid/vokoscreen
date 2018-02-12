@@ -41,6 +41,7 @@ ui_*.h
 # vokoscreen
 language/*.qm
 vokoscreen
+*.tar.gz
 
 # ffmpeg
 *.log
