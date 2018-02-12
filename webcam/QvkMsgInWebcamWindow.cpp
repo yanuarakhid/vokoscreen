@@ -4,8 +4,9 @@ QvkMsgInWebcamWindow::QvkMsgInWebcamWindow( QObject *parent, QWidget *webcamWind
 {
       connect( parent, SIGNAL( webcamBusy() ), this, SLOT( close() ) );
       connect( webcamWindow, SIGNAL( webcamWindoResize( QSize ) ), this, SLOT( setNewSize( QSize ) ) );
+
       setParent( webcamWindow );
-      setStyleSheet( "background-color: gray;" );
+      setStyleSheet( "background-color: lightgray;" );
       setGeometry( 0, 0, webcamWindow->width(), webcamWindow->height() );
       setAlignment( Qt::AlignCenter );
       QFont font;
