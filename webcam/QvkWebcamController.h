@@ -37,8 +37,6 @@ private slots:
 #ifndef Q_OS_WIN
   void overFullScreenWebcamCheckBox_OnOff();
 #endif
-
-  void processFrame( QVideoFrame value );
   void msgInWebcamWindow(QString value );
 
 
@@ -49,8 +47,6 @@ private:
   QvkSettings vkSettings;
   bool mirrored;
   Ui_screencast myUi;
-
-  int processFrameCounter;
 
 
 protected:

@@ -261,7 +261,7 @@ void QvkWebcamController::addToComboBox( QStringList description, QStringList de
 // http://doc.qt.io/qt-5/qmultimedia.html#AvailabilityStatus-enum
 void QvkWebcamController::displayWebcam( QByteArray device )
 {
-    processFrameCounter = 0;
+    //processFrameCounter = 0;
 
     camera = new QCamera( device );
 
@@ -276,26 +276,9 @@ void QvkWebcamController::displayWebcam( QByteArray device )
 
     camera->setViewfinder( videoSurface );
 
-    QVideoProbe *probe = new QVideoProbe;
-    connect( probe, SIGNAL( videoFrameProbed( QVideoFrame ) ), this, SLOT( processFrame( QVideoFrame ) ) );
-    probe->setSource( camera );
-
     webcamWindow->show();
 
     camera->start();
-}
-
-
-void QvkWebcamController::processFrame( QVideoFrame value )
-{
-    (void)value;
-    processFrameCounter++;
-    if ( processFrameCounter < 3 )
-    {}
-    else
-    {
-        emit webcamBusy();
-    }
 }
 
 
@@ -323,11 +306,13 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
                                         }// 4
       case QCamera::StandbyStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 5
       case QCamera::StartingStatus    : { qDebug() << "[vokoscreen]" << status;
-                                          msgInWebcamWindow( tr( "No pictures \n Camera busy?" ) );
+                                          msgInWebcamWindow( tr( "Camera busy?" ) );
                                           break;
                                         }// 6
       case QCamera::StoppingStatus    : { qDebug() << "[vokoscreen]" << status; break; }// 7
-      case QCamera::ActiveStatus      : { qDebug() << "[vokoscreen]" << status; break; }// 8
+      case QCamera::ActiveStatus      : { qDebug() << "[vokoscreen]" << status;
+                                          emit webcamBusy();
+                                          break; }// 8
     }
 }
 
