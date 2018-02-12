@@ -261,8 +261,6 @@ void QvkWebcamController::addToComboBox( QStringList description, QStringList de
 // http://doc.qt.io/qt-5/qmultimedia.html#AvailabilityStatus-enum
 void QvkWebcamController::displayWebcam( QByteArray device )
 {
-    //processFrameCounter = 0;
-
     camera = new QCamera( device );
 
     connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( myStatusChanged( QCamera::Status ) ) );
@@ -306,7 +304,7 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
                                         }// 4
       case QCamera::StandbyStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 5
       case QCamera::StartingStatus    : { qDebug() << "[vokoscreen]" << status;
-                                          msgInWebcamWindow( tr( "Camera busy?" ) );
+                                          msgInWebcamWindow( tr( "Wait a second \n or is Camera busy?" ) );
                                           break;
                                         }// 6
       case QCamera::StoppingStatus    : { qDebug() << "[vokoscreen]" << status; break; }// 7
