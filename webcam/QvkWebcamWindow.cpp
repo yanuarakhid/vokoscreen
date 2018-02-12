@@ -174,6 +174,7 @@ void QvkWebcamWindow::set160x120()
   action640x480->setChecked( false );
   actionUserDefined->setChecked( false );
   actionUserDefined->setVisible ( false );
+  emit webcamWindoResize( QSize( 160, 120 ) );
 }
 
 
@@ -188,6 +189,7 @@ void QvkWebcamWindow::set320x240()
   action640x480->setChecked( false );
   actionUserDefined->setChecked( false );
   actionUserDefined->setVisible ( false );
+  emit webcamWindoResize( QSize( 320, 240 ) );
 }
 
 
@@ -202,6 +204,7 @@ void QvkWebcamWindow::set640x480()
   action640x480->setChecked( true );
   actionUserDefined->setChecked( false );
   actionUserDefined->setVisible ( false );
+  emit webcamWindoResize( QSize( 640, 480 ) );
 }
 
 
@@ -272,7 +275,7 @@ void QvkWebcamWindow::overFullScreenSetWindowFlags()
 #endif
 
 
-void QvkWebcamWindow::resizeEvent ( QResizeEvent *)
+void QvkWebcamWindow::resizeEvent ( QResizeEvent *event )
 {
   webcamLabel->setGeometry( 0, 0, width(), height() );
 
@@ -292,6 +295,7 @@ void QvkWebcamWindow::resizeEvent ( QResizeEvent *)
             {
               setActionUserDefined();
             }
+  emit webcamWindoResize( event->size() );
 }
 
 

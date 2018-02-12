@@ -38,6 +38,9 @@ private slots:
   void overFullScreenWebcamCheckBox_OnOff();
 #endif
 
+  void processFrame( QVideoFrame value );
+  void msgInWebcamWindow(QString value );
+
 
 private:
   QCamera *camera;
@@ -47,10 +50,14 @@ private:
   bool mirrored;
   Ui_screencast myUi;
 
+  int processFrameCounter;
+
+
 protected:
   
 signals:
   void closeWebcamWindow();
+  void webcamBusy();
 
 };
 

@@ -4,11 +4,10 @@ DEPENDPATH      += $$PWD
 HEADERS += $$PWD/QvkWebcamController.h \
            $$PWD/QvkWebcamWindow.h \
            $$PWD/QvkWebcamWatcher.h \
-           $$PWD/QvkVideoSurface.h
-           
+           $$PWD/QvkVideoSurface.h \
+           $$PWD/QvkMsgInWebcamWindow.h
            
 SOURCES += $$PWD/QvkWebcamController.cpp \
            $$PWD/QvkWebcamWindow.cpp \
-           $$PWD/QvkWebcamWatcher.cpp
-          
-FORMS += $$PWD/QvkWebcamBusyDialog.ui          
+           $$PWD/QvkWebcamWatcher.cpp \
+           $$PWD/QvkMsgInWebcamWindow.cpp

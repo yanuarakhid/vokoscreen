@@ -2,9 +2,11 @@
 #include "QvkWebcamWindow.h"
 #include "QvkWebcamWatcher.h"
 #include "QvkVideoSurface.h"
+#include "QvkMsgInWebcamWindow.h"
 
 #include <QCameraInfo>
 #include <QCameraViewfinder>
+#include <QVideoProbe>
 
 // Hint:
 // /usr/local/Qt-5.5.0/bin/qmake GST_VERSION=1.0
@@ -255,9 +257,12 @@ void QvkWebcamController::addToComboBox( QStringList description, QStringList de
 
 }
 
+
 // http://doc.qt.io/qt-5/qmultimedia.html#AvailabilityStatus-enum
 void QvkWebcamController::displayWebcam( QByteArray device )
 {
+    processFrameCounter = 0;
+
     camera = new QCamera( device );
 
     connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( myStatusChanged( QCamera::Status ) ) );
@@ -271,9 +276,33 @@ void QvkWebcamController::displayWebcam( QByteArray device )
 
     camera->setViewfinder( videoSurface );
 
+    QVideoProbe *probe = new QVideoProbe;
+    connect( probe, SIGNAL( videoFrameProbed( QVideoFrame ) ), this, SLOT( processFrame( QVideoFrame ) ) );
+    probe->setSource( camera );
+
     webcamWindow->show();
 
     camera->start();
+}
+
+
+void QvkWebcamController::processFrame( QVideoFrame value )
+{
+    (void)value;
+    processFrameCounter++;
+    if ( processFrameCounter < 3 )
+    {}
+    else
+    {
+        emit webcamBusy();
+    }
+}
+
+
+void QvkWebcamController::msgInWebcamWindow( QString value )
+{
+   QvkMsgInWebcamWindow *msgInWebcamWindow = new QvkMsgInWebcamWindow( this, webcamWindow, value );
+   connect( this, SIGNAL( webcamBusy() ), msgInWebcamWindow, SLOT( close() ) );
 }
 
 
@@ -283,15 +312,25 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
     {
       case QCamera::UnavailableStatus : { qDebug() << "[vokoscreen]" << status; break; }// 0
       case QCamera::UnloadedStatus    : { qDebug() << "[vokoscreen]" << status; break; }// 1
-      case QCamera::LoadingStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 2
+      case QCamera::LoadingStatus     : { qDebug() << "[vokoscreen]" << status;
+                                          msgInWebcamWindow( tr( "Camera is loading" ) );
+                                          break;
+                                        }// 2
       case QCamera::UnloadingStatus   : { qDebug() << "[vokoscreen]" << status; break; }// 3
-      case QCamera::LoadedStatus      : { qDebug() << "[vokoscreen]" << status; break; }// 4
+      case QCamera::LoadedStatus      : { qDebug() << "[vokoscreen]" << status;
+                                          msgInWebcamWindow( tr( "Camera is loaded" ) );
+                                          break;
+                                        }// 4
       case QCamera::StandbyStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 5
-      case QCamera::StartingStatus    : { qDebug() << "[vokoscreen]" << status; break; }// 6
+      case QCamera::StartingStatus    : { qDebug() << "[vokoscreen]" << status;
+                                          msgInWebcamWindow( tr( "No pictures or camera in use?" ) );
+                                          break;
+                                        }// 6
       case QCamera::StoppingStatus    : { qDebug() << "[vokoscreen]" << status; break; }// 7
       case QCamera::ActiveStatus      : { qDebug() << "[vokoscreen]" << status; break; }// 8
     }
 }
+
 
 void QvkWebcamController::myStateChanged( QCamera::State state )
 {

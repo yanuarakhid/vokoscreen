@@ -27,6 +27,10 @@ void QvkLog::outputMessage(QtMsgType type, const QMessageLogContext &context, co
         fprintf( stderr, "%s \n", localMsg.constData() );
         txt += localMsg.constData();
         break;
+    case QtInfoMsg:
+        fprintf( stderr, "Critical: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function );
+        txt += localMsg.constData();
+        break;
     case QtWarningMsg:
         fprintf( stderr, "Warning: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function );
         txt += localMsg.constData();

@@ -64,10 +64,11 @@ private slots:
 protected:
     void closeEvent( QCloseEvent * event );
     void contextMenuEvent( QContextMenuEvent *event );
-    void resizeEvent ( QResizeEvent * );
+    void resizeEvent (QResizeEvent * event);
     
 signals:
     void closeWebcamWindow();
+    void webcamWindoResize( QSize size );
 #ifndef Q_OS_WIN
     void setOverScreen();
 #endif
