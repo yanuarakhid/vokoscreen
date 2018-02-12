@@ -5,6 +5,7 @@
 #include "QvkVideoSurface.h"
 #include "QvkSettings.h"
 #include "ui_vokoscreen.h"
+#include "QvkMsgInWebcamWindow.h"
 
 #include <QCamera>
 
@@ -16,6 +17,7 @@ public:
    QvkWebcamController(Ui_screencast value);
    virtual ~QvkWebcamController();
    QvkWebcamWindow *webcamWindow;
+   QvkMsgInWebcamWindow *msgInWebcamWindow;
 
   
 public slots:
@@ -37,8 +39,6 @@ private slots:
 #ifndef Q_OS_WIN
   void overFullScreenWebcamCheckBox_OnOff();
 #endif
-  void msgInWebcamWindow(QString value );
-
 
 private:
   QCamera *camera;

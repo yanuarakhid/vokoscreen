@@ -1,6 +1,6 @@
 #include "QvkMsgInWebcamWindow.h" 
 
-QvkMsgInWebcamWindow::QvkMsgInWebcamWindow( QObject *parent, QWidget *webcamWindow, QString value )
+QvkMsgInWebcamWindow::QvkMsgInWebcamWindow( QObject *parent, QWidget *webcamWindow )
 {
       connect( parent, SIGNAL( webcamBusy() ), this, SLOT( close() ) );
       connect( webcamWindow, SIGNAL( webcamWindoResize( QSize ) ), this, SLOT( setNewSize( QSize ) ) );
@@ -13,13 +13,18 @@ QvkMsgInWebcamWindow::QvkMsgInWebcamWindow( QObject *parent, QWidget *webcamWind
       QFont font;
       font.setPointSize( 14 );
       setFont( font );
-      setText( value );
-      show();
 }
 
 
 QvkMsgInWebcamWindow::~QvkMsgInWebcamWindow()
 {
+}
+
+
+void QvkMsgInWebcamWindow::setMsg( QString value )
+{
+    setText( value );
+    show();
 }
 
 

@@ -11,15 +11,16 @@ class QvkMsgInWebcamWindow: public QLabel
 Q_OBJECT
 
 public:
-  QvkMsgInWebcamWindow( QObject *parent, QWidget *webcamWindow, QString value );
+  QvkMsgInWebcamWindow( QObject *parent, QWidget *webcamWindow );
   virtual ~QvkMsgInWebcamWindow();
 
 
 public slots:
+  void setMsg( QString value );
 
   
 private slots:
-  void setNewSize(QSize size);
+  void setNewSize( QSize size );
 
   
 signals:
