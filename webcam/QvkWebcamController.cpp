@@ -8,9 +8,6 @@
 #include <QCameraViewfinder>
 #include <QVideoProbe>
 
-// Hint:
-// /usr/local/Qt-5.5.0/bin/qmake GST_VERSION=1.0
-
 QvkWebcamController::QvkWebcamController( Ui_screencast value )
 {
   vkSettings.readAll();
