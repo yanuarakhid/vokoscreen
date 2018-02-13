@@ -260,6 +260,7 @@ void QvkWebcamController::addToComboBox( QStringList description, QStringList de
 void QvkWebcamController::displayWebcam( QByteArray device )
 {
     camera = new QCamera( device );
+    //camera->setCaptureMode( QCamera::CaptureViewfinder );
 
     connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( myStatusChanged( QCamera::Status ) ) );
     connect( camera, SIGNAL( stateChanged( QCamera::State   ) ), this, SLOT( myStateChanged( QCamera::State ) )  );
@@ -291,6 +292,24 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
       case QCamera::UnloadingStatus   : { qDebug() << "[vokoscreen]" << status; break; }// 3
       case QCamera::LoadedStatus      : { qDebug() << "[vokoscreen]" << status;
                                           msgInWebcamWindow->setMsg( tr( "Camera is loaded" ) );
+                                          qDebug() << "";
+
+                                          QCameraViewfinderSettings settings;
+                                          QList<QSize> resolution = camera->supportedViewfinderResolutions( settings );
+                                          qDebug() << "[vokoscreen] camera resolutions" << resolution;
+                                          qDebug() << "";
+
+                                          QList<QVideoFrame::PixelFormat> pixelFormat = camera->supportedViewfinderPixelFormats( settings );
+                                          qDebug() << "[vokoscreen] camera pixelformats" << pixelFormat;
+                                          qDebug() << "";
+
+                                          QList<QCamera::FrameRateRange> frameRateRange = camera->supportedViewfinderFrameRateRanges( settings );
+                                          for ( int i = 0; i < frameRateRange.count(); i++ )
+                                          {
+                                              qDebug() << "[vokoscreen] camera frameRateRange" << frameRateRange[i].minimumFrameRate << frameRateRange[i].maximumFrameRate;
+                                          }
+                                          qDebug() << "";
+
                                           break;
                                         }// 4
       case QCamera::StandbyStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 5
