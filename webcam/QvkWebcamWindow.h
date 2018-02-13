@@ -19,9 +19,11 @@ public:
     QString currentDevice;
     QLabel *webcamLabel;
 
+    QAction *actionLabelWindowSize;
     QAction *action160x120;
     QAction *action320x240;
     QAction *action640x480;
+    QAction *actionLabelOptions;
     QAction *actionUserDefined;
     QAction *actionBorder;
 #ifndef Q_OS_WIN

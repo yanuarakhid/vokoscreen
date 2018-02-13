@@ -21,6 +21,9 @@ QvkWebcamWindow::QvkWebcamWindow():border(true),
   webcamLabel->setAlignment( Qt::AlignCenter );
   webcamLabel->show();
  
+  actionLabelWindowSize = new QAction( tr( "Windowsize" ) );
+  actionLabelWindowSize->setEnabled( false );
+
   action160x120 = new QAction( "160 x 120", this );
   action160x120->setCheckable( true );
   connect( action160x120, SIGNAL( triggered() ), this, SLOT( set160x120() ) );
@@ -36,6 +39,9 @@ QvkWebcamWindow::QvkWebcamWindow():border(true),
   actionUserDefined = new QAction( tr( "User-defined" ), this );
   actionUserDefined->setCheckable( true );
   connect( actionUserDefined, SIGNAL( triggered() ), this, SLOT( setActionUserDefined() ) );
+
+  actionLabelOptions = new QAction( tr( "Options" ) );
+  actionLabelOptions->setEnabled( false );
 
   actionBorder = new QAction( tr( "Border" ), this );
   actionBorder->setCheckable( true );
@@ -140,11 +146,13 @@ void QvkWebcamWindow::closeEvent( QCloseEvent * event )
  */
 void QvkWebcamWindow::contextMenuEvent( QContextMenuEvent *event )
 {
+     menu.addAction( actionLabelWindowSize );
      menu.addAction( action160x120 );
      menu.addAction( action320x240 );
      menu.addAction( action640x480 );
      menu.addAction( actionUserDefined );
      menu.addSeparator();
+     menu.addAction( actionLabelOptions );
      menu.addAction( actionBorder );
 #ifndef Q_OS_WIN
      menu.addAction( actionVisibleOverFullscreen );
