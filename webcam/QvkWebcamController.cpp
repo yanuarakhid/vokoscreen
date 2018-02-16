@@ -358,6 +358,12 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
           stringlist.append( wh );
       }
       myUi.resolutionComboBox->addItems(stringlist);
+
+      int index = myUi.resolutionComboBox->findText( "320x240" );
+      if ( index == -1 )
+         myUi.resolutionComboBox->setCurrentIndex( 0 );
+      else
+          myUi.resolutionComboBox->setCurrentIndex( index );
       // End load
 
       qDebug() << "[vokoscreen] ---End search camera parameters and checkbox is disabled---";
