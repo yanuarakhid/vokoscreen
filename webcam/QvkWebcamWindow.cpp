@@ -21,7 +21,7 @@ QvkWebcamWindow::QvkWebcamWindow():border(true),
   webcamLabel->setAlignment( Qt::AlignCenter );
   webcamLabel->show();
  
-  actionLabelWindowSize = new QAction( tr( "Windowsize" ) );
+  actionLabelWindowSize = new QAction( tr( "Windowsize" ), this );
   actionLabelWindowSize->setEnabled( false );
 
   action160x120 = new QAction( "160 x 120", this );
@@ -40,7 +40,7 @@ QvkWebcamWindow::QvkWebcamWindow():border(true),
   actionUserDefined->setCheckable( true );
   connect( actionUserDefined, SIGNAL( triggered() ), this, SLOT( setActionUserDefined() ) );
 
-  actionLabelOptions = new QAction( tr( "Options" ) );
+  actionLabelOptions = new QAction( tr( "Options" ), this );
   actionLabelOptions->setEnabled( false );
 
   actionBorder = new QAction( tr( "Border" ), this );

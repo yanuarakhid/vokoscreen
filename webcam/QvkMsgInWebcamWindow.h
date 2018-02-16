@@ -3,7 +3,6 @@
 
 #include "QvkWebcamWindow.h"
 
-#include <QLabel>
 
 class QvkMsgInWebcamWindow: public QLabel
 {
