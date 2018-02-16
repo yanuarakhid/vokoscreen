@@ -78,6 +78,8 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
 
   connect( myUi.webcamComboBox, SIGNAL( currentIndexChanged( int ) ), this, SLOT( resolution( int ) )  );
 
+  connect( myUi.resolutionComboBox, SIGNAL( currentIndexChanged( int ) ), this, SLOT( showNewResolutionInWebcamWindow( int ) ) );
+
 }
 
 
@@ -88,8 +90,11 @@ QvkWebcamController::~QvkWebcamController()
 
 void QvkWebcamController::resolution( int index )
 {
+    (void)index;
     myUi.webcamCheckBox->setEnabled( false );
+    QCoreApplication::processEvents( QEventLoop::AllEvents );
     myUi.webcamComboBox->setEnabled( false );
+    QCoreApplication::processEvents( QEventLoop::AllEvents );
     myUi.resolutionComboBox->setEnabled( false );
     QCoreApplication::processEvents( QEventLoop::AllEvents );
     camera = new QCamera( myUi.webcamComboBox->currentData().toByteArray() );
@@ -104,6 +109,22 @@ void QvkWebcamController::resolution( int index )
     delete camera;
 #endif
 }
+
+
+void QvkWebcamController::showNewResolutionInWebcamWindow( int index )
+{
+    (void)index;
+  if ( myUi.webcamCheckBox->checkState() == Qt::Checked )
+  {
+    myUi.resolutionComboBox->setEnabled( false );
+      QCoreApplication::processEvents( QEventLoop::AllEvents );
+      myUi.webcamCheckBox->click();
+      myUi.webcamCheckBox->click();
+    myUi.resolutionComboBox->setEnabled( true );
+  }
+}
+
+
 
 /*
 void QvkWebcamController::setCheckboxWebcamFromSettings()
@@ -129,6 +150,7 @@ void QvkWebcamController::overFullScreenWebcamCheckBox_OnOff()
 }
 #endif
 
+
 void QvkWebcamController::webcamOnOff( int value )
 {
   if ( value == Qt::Checked )
@@ -143,7 +165,27 @@ void QvkWebcamController::webcamOnOff( int value )
     setActiveCamera( myUi.webcamComboBox->currentData().toString() );
 
     QByteArray device = myUi.webcamComboBox->currentData().toByteArray();
-    displayWebcam( device );
+    camera = new QCamera( device );
+    camera->setCaptureMode( QCamera::CaptureViewfinder );
+
+    connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( myStatusChanged( QCamera::Status ) ) );
+    connect( camera, SIGNAL( stateChanged( QCamera::State   ) ), this, SLOT( myStateChanged( QCamera::State ) )  );
+
+    QStringList list = myUi.resolutionComboBox->currentText().split( "x" );
+    QString w = list.at(0);
+    QString h = list.at(1);
+    QCameraViewfinderSettings viewfinderSettings;
+    viewfinderSettings.setResolution( w.toInt(), h.toInt() );
+    viewfinderSettings.setMinimumFrameRate( 0.0 );
+    viewfinderSettings.setMaximumFrameRate( 0.0 );
+    camera->setViewfinderSettings( viewfinderSettings );
+
+    camera->setViewfinder( videoSurface );
+
+    webcamWindow->show();
+
+    camera->start();
+    //displayWebcam( device );
   }
 
   if ( value == Qt::Unchecked )
@@ -283,7 +325,7 @@ void QvkWebcamController::addToComboBox( QStringList description, QStringList de
 
 }
 
-
+/*
 // http://doc.qt.io/qt-5/qmultimedia.html#AvailabilityStatus-enum
 void QvkWebcamController::displayWebcam( QByteArray device )
 {
@@ -308,7 +350,7 @@ void QvkWebcamController::displayWebcam( QByteArray device )
 
     camera->start();
 }
-
+*/
 
 void QvkWebcamController::myStatusChanged( QCamera::Status status )
 {
@@ -359,7 +401,7 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
       }
       myUi.resolutionComboBox->addItems(stringlist);
 
-      int index = myUi.resolutionComboBox->findText( "320x240" );
+      int index = myUi.resolutionComboBox->findText( "640x480" );
       if ( index == -1 )
          myUi.resolutionComboBox->setCurrentIndex( 0 );
       else

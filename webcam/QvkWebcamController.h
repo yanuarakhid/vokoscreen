@@ -21,7 +21,7 @@ public:
 
   
 public slots:
-   void displayWebcam( QByteArray device );
+   //void displayWebcam( QByteArray device );
 
 
 private slots:
@@ -40,7 +40,7 @@ private slots:
   void overFullScreenWebcamCheckBox_OnOff();
 #endif
   void resolution(int index );
-
+  void showNewResolutionInWebcamWindow( int index );
 
 private:
   QCamera *camera;
