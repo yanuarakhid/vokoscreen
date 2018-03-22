@@ -16,21 +16,29 @@ FORMS += vokoscreen.ui
 # Um der Fehlermeldung entgegenzuwirken das keine *.qm Dateien vorhanden sind wird lrelease als Systemaufruf vorher aufgerufen.
 # Das Script/Macro siehe weiter unten "# language packages" muß weiter bestehen bleiben damit "make clean" die *.qm Dateien löscht.
 
-system(lrelease-qt5 language/vokoscreen_*.ts)
+isEmpty(QMAKE_LRELEASE) {
+  # Try invocation path of qmake for lrelease
+  # NOTE: Usually from Qt Unified Installer
+  win32: QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\lrelease.exe
+    else: QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
+    
+  # As a last resort try to use lrelease from PATH
+  # NOTE: Usually from a distro package
+  unix:!exists($$QMAKE_LRELEASE) {
+    QMAKE_LRELEASE = lrelease-qt5
+  }
+}    
+
+system($$QMAKE_LRELEASE language/vokoscreen_*.ts)
 
 RESOURCES += screencast.qrc
                         
 TRANSLATIONS = $$files(language/vokoscreen_*.ts)
 
 # language packages
-
 !isEmpty(TRANSLATIONS) {
-  isEmpty(QMAKE_LRELEASE) {
-    win32: QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\lrelease.exe
-      else: QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease-qt5
-  }
   isEmpty(TS_DIR):TS_DIR = language
-  TSQM.name = lrelease-qt5 ${QMAKE_FILE_IN}
+  TSQM.name = $$QMAKE_LRELEASE ${QMAKE_FILE_IN}
   TSQM.input = TRANSLATIONS
   TSQM.output = $$TS_DIR/${QMAKE_FILE_BASE}.qm
   TSQM.commands = $$QMAKE_LRELEASE ${QMAKE_FILE_IN}
