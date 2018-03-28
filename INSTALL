@@ -17,7 +17,6 @@ BuildRequires:
   - libqt5-linguist
   - alsa-devel
   - libX11-devel
-  - libv4l-devel
   
 Compile:
   - get sources
