@@ -183,8 +183,6 @@ private slots:
   QString PathTempLocation();
   QString NameInMoviesLocation();
   QString newPauseNameInTmpLocation();
-  //QString getPauseNameInTmpLocation();
-  //void setPauseNameInTmpLocation( QString value );
   QStringList myAlsa();
   QStringList myAcodec();
   void AreaOnOff();
