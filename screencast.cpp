@@ -2533,20 +2533,9 @@ QString screencast::newPauseNameInTmpLocation()
     myName = myFile->fileName();
   } while ( myFile->exists() );
 
-  setPauseNameInTmpLocation( myFilename + "-" + QString().number( x ) + myFilenameExtension );
-  
   return myFilename + "-" + QString().number( x ) + myFilenameExtension;
 }
 
-void screencast::setPauseNameInTmpLocation( QString value )
-{
-  pauseName = value;
-}
-
-QString screencast::getPauseNameInTmpLocation()
-{
-  return pauseName;
-}
 
 QStringList screencast::myAlsa()
 {
