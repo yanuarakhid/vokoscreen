@@ -2448,7 +2448,7 @@ void screencast::selectRecorder()
 
 void screencast::showHomepage()
 {
-   QDesktopServices::openUrl( QUrl( "http://www.kohaupt-online.de/hp", QUrl::StrictMode ) );
+   QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html", QUrl::StrictMode ) );
 }
 
 
