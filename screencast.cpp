@@ -2489,20 +2489,42 @@ void screencast::send()
 }
 
 
-
 QString screencast::PathTempLocation()
 {
-  QString tmpName = "." + vkSettings.getProgName() + "-recording";  
+    // Make sure the video is saved in one of the following three folders.
+    // Rank order:
+    // 1. Path set in vokoscreen GUI
+    // 2. Then system path from desktop
+    // 3. Then home
+    QDir dir_0( myUi.SaveVideoPathLineEdit->displayText() );
+    if ( dir_0.exists() )
+    {
+        moviePath = myUi.SaveVideoPathLineEdit->displayText();
+    }
+    else
+    {
+        QDir dir_1( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+        if ( dir_1.exists() )
+        {
+            moviePath = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+        }
+        else
+        {
+            moviePath = QStandardPaths::writableLocation( QStandardPaths::HomeLocation );
+        }
+    }
 
-  QString tempPathProg = moviePath + QDir::separator() + tmpName;
-  
-  QDir dirTempPathProg( tempPathProg );
-  if ( not dirTempPathProg.exists() )
-  {
-      QDir dirTempPath( moviePath );
-      dirTempPath.mkdir( tmpName );
-  }
-  return tempPathProg;  
+    QString tmpName = "." + vkSettings.getProgName() + "-recording";
+
+    QString tempPathProg = moviePath + QDir::separator() + tmpName;
+
+    QDir dirTempPathProg( tempPathProg );
+    if ( not dirTempPathProg.exists() )
+    {
+        QDir dirTempPath( moviePath );
+        dirTempPath.mkdir( tmpName );
+    }
+    return tempPathProg;
 }
 
 
@@ -2747,7 +2769,7 @@ void screencast::record()
   QFile FfmpegFile;
   for (int i = 0; i < List.size(); ++i)
      FfmpegFile.remove( List.at(i) );
-  
+/*
   // Make sure the video is saved in one of the following three folders.
   // Rank order:
   // 1. Path set in vokoscreen GUI
@@ -2770,7 +2792,7 @@ void screencast::record()
       moviePath = QStandardPaths::writableLocation( QStandardPaths::HomeLocation );
     }
   }
-  
+*/
   nameInMoviesLocation = NameInMoviesLocation();
 
   // evtl. müßte hier erst mal nachgeschaut werden ob Temp leer ist.
@@ -2912,60 +2934,60 @@ void screencast::startRecord(QString RecordPathName, QString x, QString y)
 
 void screencast::Stop()
 {
-  if ( SystemCall->state() == QProcess::Running )
-  {
-    SystemCall->terminate();
-    SystemCall->waitForFinished( 3000 );
-  }
-  
-  if ( ( pause == true ) and (  myUi.VideocodecComboBox->currentText() != "gif" ) )
-  {
-    QDir dir( PathTempLocation() );
-    QStringList stringList = dir.entryList(QDir::Files, QDir::Time | QDir::Reversed);
-    QString mergeFile = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + QDir::separator() + "mergeFile.txt";
-    QFile file( mergeFile );
-    file.open( QIODevice::WriteOnly | QIODevice::Text );
-      QString videoFiles;
-      for ( int i = 0; i < stringList.size(); ++i )
-      {
-        QString filepath = PathTempLocation() + QDir::separator() + stringList[i];
-        videoFiles.append( "file " ).append("'" + filepath.replace("'", "\\'") + "'").append( "\n" );
-        file.write( videoFiles.toLatin1() );
-        videoFiles = "";
-      }
-    file.close();
+    if ( SystemCall->state() == QProcess::Running )
+    {
+        SystemCall->terminate();
+        SystemCall->waitForFinished( 3000 );
+    }
 
-	QStringList mergeArguments;
-	mergeArguments << "-report";
-	mergeArguments << "-safe" << "0";
-	mergeArguments << "-f" << "concat";
-	mergeArguments << "-i" << mergeFile;
-	mergeArguments << "-c" << "copy";
-	mergeArguments << (moviePath + QDir::separator() + nameInMoviesLocation);
-    SystemCall->start(ffmpegProgram, mergeArguments);
-    SystemCall->waitForFinished(8000);
+    if ( ( pause == true ) and (  myUi.VideocodecComboBox->currentText() != "gif" ) )
+    {
+        QDir dir( PathTempLocation() );
+        QStringList stringList = dir.entryList(QDir::Files, QDir::Time | QDir::Reversed);
+        QString mergeFile = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + QDir::separator() + "mergeFile.txt";
+        QFile file( mergeFile );
+        file.open( QIODevice::WriteOnly | QIODevice::Text );
+        QString videoFiles;
+        for ( int i = 0; i < stringList.size(); ++i )
+        {
+            QString filepath = PathTempLocation() + QDir::separator() + stringList[i];
+            videoFiles.append( "file " ).append("'" + filepath.replace("'", "\\'") + "'").append( "\n" );
+            file.write( videoFiles.toLatin1() );
+            videoFiles = "";
+        }
+        file.close();
 
-    for ( int i = 0; i < stringList.size(); ++i )
-      dir.remove( PathTempLocation().append( QDir::separator() ).append( stringList.at( i ) ) );
+        QStringList mergeArguments;
+        mergeArguments << "-report";
+        mergeArguments << "-safe" << "0";
+        mergeArguments << "-f" << "concat";
+        mergeArguments << "-i" << mergeFile;
+        mergeArguments << "-c" << "copy";
+        mergeArguments << (moviePath + QDir::separator() + nameInMoviesLocation);
+        SystemCall->start(ffmpegProgram, mergeArguments);
+        SystemCall->waitForFinished(8000);
 
-    file.remove();
+        for ( int i = 0; i < stringList.size(); ++i )
+            dir.remove( PathTempLocation().append( QDir::separator() ).append( stringList.at( i ) ) );
 
-    debugCommandInvocation("Mergestring", ffmpegProgram, mergeArguments);
-   }
-   else    
-  {
-    QString FileInTemp = PathTempLocation() + QDir::separator() + nameInMoviesLocation;
-    QFile::copy ( FileInTemp, moviePath + QDir::separator() + nameInMoviesLocation );
-    QFile::remove ( FileInTemp );
-  }
-  
-  QDir dir_1;
-  dir_1.rmdir( PathTempLocation() );
-  
-  pause = false;
-  windowMoveTimer->stop();
-  firststartWininfo = false;
+        file.remove();
 
-  QvkPulse::pulseUnloadModule();
-  
+        debugCommandInvocation("Mergestring", ffmpegProgram, mergeArguments);
+    }
+    else
+    {
+        QString FileInTemp = PathTempLocation() + QDir::separator() + nameInMoviesLocation;
+        QFile::copy ( FileInTemp, moviePath + QDir::separator() + nameInMoviesLocation );
+        QFile::remove ( FileInTemp );
+    }
+
+    QDir dir_1;
+    dir_1.rmdir( PathTempLocation() );
+
+    pause = false;
+    windowMoveTimer->stop();
+    firststartWininfo = false;
+
+    QvkPulse::pulseUnloadModule();
+
 }
