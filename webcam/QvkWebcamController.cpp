@@ -308,8 +308,6 @@ void QvkWebcamController::addToComboBox( QStringList description, QStringList de
 
     if ( device.count()  > 0  )
     {
-      myUi.webcamCheckBox->setEnabled( true );
-      myUi.webcamComboBox->setEnabled( true );
       for ( int i = 0; i < description.count(); i++ )
       {
         QString descript =  description[i];
