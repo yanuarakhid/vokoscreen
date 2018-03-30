@@ -984,11 +984,9 @@ void screencast::saveSettings()
     settings.setValue( "Width", webcamController->webcamWindow->getValueWidth() );
     settings.setValue( "Height", webcamController->webcamWindow->getValueHeight() );
     settings.setValue( "Border", webcamController->webcamWindow->getValueBorder() );
-    //settings.setValue( "OverFullScreen", webcamController->webcamWindow->getOverFullScreen() );
+    settings.setValue( "OverFullScreen", webcamController->webcamWindow->getOverFullScreen() );
     settings.setValue( "Gray", myUi.grayCheckBox->isChecked() );
     settings.setValue( "Invert", myUi.invertCheckBox->isChecked() );
-
-
   settings.endGroup();
   
   settings.beginGroup( "Magnifier" );
