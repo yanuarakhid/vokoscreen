@@ -27,6 +27,8 @@ int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
 
+    bool isRunning;
+
     QTranslator * qtTranslator = new QTranslator();
     qtTranslator->load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
     app.installTranslator( qtTranslator );
@@ -42,6 +44,18 @@ int main(int argc, char** argv)
     dbusConnection.registerObject("/GUI", foo);
     if ( dbusConnection.registerService("org.vokoscreen.screencast") )
     {
+        isRunning = false;
+    }
+    else
+    {
+        isRunning = true;
+    }
+
+
+    if( isRunning == false )
+    {
+        foo->show();
+        return app.exec();
     }
     else
     {
@@ -51,7 +65,4 @@ int main(int argc, char** argv)
                                                                     QMessageBox::Close );
         (void)ret;
     }
-
-    foo->show();
-    return app.exec();
 }
