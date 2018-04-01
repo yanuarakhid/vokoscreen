@@ -1411,6 +1411,20 @@ int screencast::setCountDown( int value )
 }
 
 // Only for dbus
+int screencast::setTab( int value )
+{
+    if ( value < myUi.tabWidget->count() )
+    {
+      myUi.tabWidget->setCurrentIndex( value );
+      return 0;
+    }
+    else
+    {
+      return 1;
+    }
+}
+
+// Only for dbus
 void screencast::quit()
 {
    this->close();

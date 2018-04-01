@@ -103,7 +103,8 @@ public slots:
     int setCountDown( int value );
     void quit();
     QString isVokoscreenLoaded();
-    
+    int setTab( int value );
+
     void stateChangedshortcutsOnOff( int );
   
     

@@ -11,6 +11,11 @@
           <arg name="text" type="i" direction="out"/>
        </method>
 
+       <method name="setTab">
+          <arg name="text" type="i" direction="out"/>
+          <arg name="value" type="i" direction="in"/>
+       </method>
+
        <method name="setFullScreen">
           <arg name="text" type="i" direction="out"/>
        </method>
