@@ -42,8 +42,6 @@ int main(int argc, char** argv)
     dbusConnection.registerObject("/GUI", foo);
     if ( dbusConnection.registerService("org.vokoscreen.screencast") )
     {
-        foo->show();
-        return app.exec();
     }
     else
     {
@@ -53,4 +51,7 @@ int main(int argc, char** argv)
                                                                     QMessageBox::Close );
         (void)ret;
     }
+
+    foo->show();
+    return app.exec();
 }
