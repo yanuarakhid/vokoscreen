@@ -56,6 +56,7 @@ protected:
 signals:
   void closeWebcamWindow();
   void webcamBusy();
+  void vokoscreenFinishLoaded();
 
 };
 

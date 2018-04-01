@@ -39,7 +39,7 @@ using namespace std;
 
 screencast::screencast()
 {
-    vokoscreenLoaded = 1;
+    //vokoscreenLoaded = 1;
     
     vkSettings.readAll();
     
@@ -289,7 +289,8 @@ screencast::screencast()
     myUi.mirrorCheckBox->setText( tr( "Mirrored" ) );
     myUi.rotateDial->setWrapping ( true );
     webcamController = new QvkWebcamController( myUi );
-    (void)webcamController;
+    connect( webcamController, SIGNAL( vokoscreenFinishLoaded() ), this, SLOT( vokoscreenFinishLoaded() ) );
+    //(void)webcamController;
 
     
     // Tab 6 Extensions
@@ -562,6 +563,13 @@ screencast::screencast()
 screencast::~screencast()
 { 
 }
+
+
+void screencast::vokoscreenFinishLoaded()
+{
+    vokoscreenLoaded = "0";
+}
+
 
 void screencast::extensionLoadpushButtonClicked()
 {
@@ -1250,7 +1258,7 @@ QString screencast::getLsofVersion()
 }
 
 // Only for dbus
-int screencast::isVokoscreenLoaded()
+QString screencast::isVokoscreenLoaded()
 {
   return vokoscreenLoaded;   
 }
@@ -1574,7 +1582,7 @@ void screencast::PulseMultipleChoice()
   qDebug() << "[vokoscreen]" << "---End search PulseAudio Capture Devices---";
   qDebug( " " );
   
-  vokoscreenLoaded = 0;
+  // vokoscreenLoaded = 0;
 }
 
 #include <X11/Xlib.h>

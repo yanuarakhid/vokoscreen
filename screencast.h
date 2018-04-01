@@ -80,7 +80,7 @@ public:
   QStringList ffmpegInputArguments;
   QStringList ffmpegOutputArguments;
   bool firststartWininfo;
-  int vokoscreenLoaded;
+  QString vokoscreenLoaded;
   
 public:
 #ifndef NO_NEW_VERSION_CHECK
@@ -89,7 +89,7 @@ public:
     
     
 public slots:
-    // Only for commandline and dbus
+    // Only for dbus
     int startrecord();
     int stoprecord();
     int setFullScreen();
@@ -102,7 +102,7 @@ public slots:
     int setWebcamOff();
     int setCountDown( int value );
     void quit();
-    int isVokoscreenLoaded();
+    QString isVokoscreenLoaded();
     
     void stateChangedshortcutsOnOff( int );
   
@@ -209,9 +209,8 @@ private slots:
   // void setShortcutsOnOff( int );
   // void shortcut_magnifier_Changed( int value );
   
+  void vokoscreenFinishLoaded();
 
-  
-  
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
 #endif

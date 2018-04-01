@@ -386,6 +386,8 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
         qDebug() << "[vokoscreen] ---End search camera parameters and checkbox is disabled---";
         qDebug();
 
+        emit vokoscreenFinishLoaded();
+
         /*
       QList<QVideoFrame::PixelFormat> pixelFormat = camera->supportedViewfinderPixelFormats( settings );
       qDebug() << "[vokoscreen] camera pixelformats" << pixelFormat;
