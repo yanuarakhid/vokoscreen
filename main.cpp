@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 
     new VokoscreenInterfaceAdaptor(foo);
     QDBusConnection dbusConnection = QDBusConnection::sessionBus();
-    dbusConnection.registerObject("/record", foo);
+    dbusConnection.registerObject("/GUI", foo);
     if ( dbusConnection.registerService("org.vokoscreen.screencast") )
     {
         foo->show();

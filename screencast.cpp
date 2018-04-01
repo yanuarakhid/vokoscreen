@@ -1249,13 +1249,13 @@ QString screencast::getLsofVersion()
   return lsofVersion;
 }
 
-// Only for commandline and dbus
+// Only for dbus
 int screencast::isVokoscreenLoaded()
 {
   return vokoscreenLoaded;   
 }
 
-// Only for commandline and dbus
+// Only for dbus
 int screencast::startrecord()
 {
    if ( myUi.recordButton->isEnabled() == true )
@@ -1269,7 +1269,7 @@ int screencast::startrecord()
    }
 }
 
-// Only for commandline and dbus
+// Only for dbus
 int screencast::stoprecord()
 {
    if ( myUi.StopButton->isEnabled() == true )
@@ -1283,7 +1283,7 @@ int screencast::stoprecord()
    }
 }
 
-// Only for commandline and dbus
+// Only for dbus
 int screencast::setFullScreen()
 {
     if ( ( myUi.FullScreenRadioButton->isEnabled() == true ) and ( myUi.FullScreenRadioButton->isChecked() == false ) )
@@ -1297,7 +1297,7 @@ int screencast::setFullScreen()
     }
 }
 
-// Only for commandline and dbus
+// Only for dbus
 int screencast::setWindow()
 {
    if ( ( myUi.WindowRadioButton->isEnabled() == true ) and ( myUi.WindowRadioButton->isChecked() == false ) )
@@ -1311,7 +1311,7 @@ int screencast::setWindow()
    }
 }
 
-// Only for commandline and dbus
+// Only for dbus
 int screencast::setArea()
 {
    if ( ( myUi.AreaRadioButton->isEnabled() == true ) and ( myUi.AreaRadioButton->isChecked() == false ) )
@@ -1325,7 +1325,7 @@ int screencast::setArea()
    }
 }
 
-// Only for commandline and dbus
+// Only for dbus
 int screencast::setAreaReset()
 {
    if ( myUi.areaResetButton->isEnabled() == true )
@@ -1339,7 +1339,7 @@ int screencast::setAreaReset()
    }
 }
 
-// Only for commandline and dbus
+// Only for dbus
 int screencast::setAudioOn()
 {
    if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Unchecked ) )
@@ -1353,7 +1353,7 @@ int screencast::setAudioOn()
    }
 }
 
-// Only for commandline and dbus
+// Only for dbus
 int screencast::setAudioOff()
 {
    if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) )
@@ -1367,7 +1367,7 @@ int screencast::setAudioOff()
    }
 }
 
-// Only for commandline and dbus
+// Only for dbus
 int screencast::setWebcamOn()
 {
     if ( myUi.webcamCheckBox->checkState() == Qt::Unchecked )
@@ -1381,7 +1381,7 @@ int screencast::setWebcamOn()
     }
 }
 
-// Only for commandline and dbus
+// Only for dbus
 int screencast::setWebcamOff()
 {
     if ( myUi.webcamCheckBox->checkState() == Qt::Checked  )
@@ -1395,14 +1395,14 @@ int screencast::setWebcamOff()
     }
 }
 
-// Only for commandline and dbus
+// Only for dbus
 int screencast::setCountDown( int value )
 {
     myUi.CountdownSpinBox->setValue( value );
     return 0;
 }
 
-// Only for commandline and dbus
+// Only for dbus
 void screencast::quit()
 {
    this->close();

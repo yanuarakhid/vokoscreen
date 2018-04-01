@@ -1,7 +1,7 @@
 <!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
     "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
 <node>
-    <interface name="org.vokoscreen.screencast.vokoscreenInterface">
+    <interface name="org.vokoscreenInterface">
 
        <method name="startrecord">
           <arg name="text" type="i" direction="out"/>
