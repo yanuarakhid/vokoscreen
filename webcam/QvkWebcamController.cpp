@@ -62,7 +62,7 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
     }
 
     connect( myUi.webcamCheckBox, SIGNAL( stateChanged(int) ), this, SLOT( webcamOnOff( int ) ) );
-    connect( webcamWindow, SIGNAL( closeWebcamWindow() ), myUi.webcamCheckBox, SLOT( toggle() )  );
+    connect( webcamWindow, SIGNAL( closeWebcamWindow() ), myUi.webcamCheckBox, SLOT( click() )  );
 #ifndef Q_OS_WIN
     connect( webcamWindow, SIGNAL( setOverScreen() ), this, SLOT( overFullScreenWebcamCheckBox_OnOff() ) );
 #endif
@@ -72,6 +72,7 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
     QvkWebcamWatcher *webcamWatcher = new QvkWebcamWatcher();
     connect( webcamWatcher, SIGNAL( webcamDescription( QStringList, QStringList ) ), this, SLOT( addToComboBox( QStringList, QStringList ) ) );
     connect( webcamWatcher, SIGNAL( removedCamera( QString ) ), this, SLOT( ifCameraRemovedCloseWindow( QString ) ) );
+    connect( webcamWatcher, SIGNAL( vokoscreenFinishLoaded() ), this, SLOT( allFinshLoaded() ) );
 
     // If all webcams complete read, then read setting for show or not show
     //connect( webcamWatcher, SIGNAL( webcamDescription( QStringList, QStringList ) ), this, SLOT( setCheckboxWebcamFromSettings() ) );
@@ -88,6 +89,12 @@ QvkWebcamController::~QvkWebcamController()
 }
 
 
+void QvkWebcamController::allFinshLoaded()
+{
+    emit vokoscreenFinishLoaded();
+}
+
+
 void QvkWebcamController::resolution( int index )
 {
     (void)index;
@@ -96,6 +103,7 @@ void QvkWebcamController::resolution( int index )
     myUi.webcamComboBox->setEnabled( false );
     QCoreApplication::processEvents( QEventLoop::AllEvents );
     myUi.resolutionComboBox->setEnabled( false );
+    myUi.resolutionComboBox->clear();
     QCoreApplication::processEvents( QEventLoop::AllEvents );
     camera = new QCamera( myUi.webcamComboBox->currentData().toByteArray() );
     connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( myStatusChanged( QCamera::Status ) ) );
@@ -317,11 +325,13 @@ void QvkWebcamController::addToComboBox( QStringList description, QStringList de
             if ( !descript.contains( "@device:pnp" ) ) // Geräte mit dieser Beschreibung aussortieren
                 myUi.webcamComboBox->addItem( description[i], device[i] );
         }
+        myUi.resolutionLabel->setEnabled( true );
     }
     else
     {
         myUi.webcamCheckBox->setEnabled( false );
         myUi.webcamComboBox->setEnabled( false );
+        myUi.resolutionLabel->setEnabled( false );
     }
 
 }
@@ -386,7 +396,7 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
         qDebug() << "[vokoscreen] ---End search camera parameters and checkbox is disabled---";
         qDebug();
 
-        emit vokoscreenFinishLoaded();
+        allFinshLoaded();
 
         /*
       QList<QVideoFrame::PixelFormat> pixelFormat = camera->supportedViewfinderPixelFormats( settings );
@@ -401,7 +411,6 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
       qDebug() << "";
 */
     }
-
 }
 
 

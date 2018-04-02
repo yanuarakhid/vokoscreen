@@ -1,7 +1,11 @@
 <!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
     "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
 <node>
-    <interface name="org.vokoscreenInterface">
+    <interface name="org.vokoscreen.gui">
+        
+       <method name="isVokoscreenLoaded">
+          <arg name="text" type="s" direction="out"/>
+       </method>
 
        <method name="startrecord">
           <arg name="text" type="i" direction="out"/>
@@ -40,18 +44,14 @@
           <arg name="text" type="i" direction="out"/>
        </method>
 
-       <method name="setWebcamOn">
-          <arg name="text" type="i" direction="out"/>
-       </method>
-
        <method name="setWebcamOff">
           <arg name="text" type="i" direction="out"/>
        </method>
 
-       <method name="isVokoscreenLoaded">
-          <arg name="text" type="s" direction="out"/>
+        <method name="setWebcamOn">
+          <arg name="text" type="i" direction="out"/>
        </method>
-       
+
        <method name="setCountDown">
           <arg name="text" type="i" direction="out"/>
           <arg name="value" type="i" direction="in"/>
@@ -59,7 +59,7 @@
 
        <method name="quit">
        </method>
-
+       
     </interface>
 </node>
 <!-- https://codebeautify.org/xmlvalidator -->

@@ -117,6 +117,10 @@ include(pulse/pulse.pri)
 # log
 include(log/log.pri)
 
+# dbus
+include(dbus/dbus.pri)
+
 QT += core gui widgets x11extras network testlib dbus multimedia multimediawidgets
 
-DBUS_ADAPTORS += vokoscreen.xml
+#DBUS_ADAPTORS += vokoscreenMain.xml
+DBUS_ADAPTORS += vokoscreenQvKDbus.xml

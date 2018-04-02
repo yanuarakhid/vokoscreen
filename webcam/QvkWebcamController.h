@@ -41,6 +41,7 @@ private slots:
 #endif
   void resolution(int index );
   void showNewResolutionInWebcamWindow( int index );
+  void allFinshLoaded();
 
 private:
   QCamera *camera;

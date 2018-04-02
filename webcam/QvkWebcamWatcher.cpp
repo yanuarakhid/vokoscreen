@@ -70,6 +70,9 @@ void QvkWebcamWatcher::detectCameras()
 {
     int newcount = QCameraInfo::availableCameras().count();
 
+    if ( newcount == 0 )
+        emit vokoscreenFinishLoaded();
+
     QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
     foreach ( const QCameraInfo &cameraInfo, cameras )
     {

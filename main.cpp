@@ -17,11 +17,12 @@
  */
 
 #include "screencast.h"
-#include "vokoscreen_adaptor.h"
+//#include "vokoscreenmain_adaptor.h"
 
 #include <QDebug>
 #include <QTranslator>
 #include <QDBusConnection>
+#include <QLibraryInfo>
 
 int main(int argc, char** argv)
 {
@@ -38,11 +39,13 @@ int main(int argc, char** argv)
     app.installTranslator( &translator );
 
     screencast *foo = new screencast();
-
-    new VokoscreenInterfaceAdaptor(foo);
+/*
+    new MainAdaptor(foo);
     QDBusConnection dbusConnection = QDBusConnection::sessionBus();
-    dbusConnection.registerObject("/GUI", foo);
+    dbusConnection.registerObject("/main", foo);
     if ( dbusConnection.registerService("org.vokoscreen.screencast") )
+*/
+    if( QDBusConnection::sessionBus().registerService( "org.vokoscreen.screencast" ) )
     {
         isRunning = false;
     }

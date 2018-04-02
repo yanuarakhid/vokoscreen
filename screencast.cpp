@@ -21,6 +21,9 @@
 #include "QvkCountdown.h"
 #include "QvkPulse.h"
 #include "QvkRegionController.h"
+#include "QvkDbus.h"
+
+
 #include <QClipboard>
 #include <QLibraryInfo>
 #include <QWidgetAction>
@@ -39,13 +42,14 @@ using namespace std;
 
 screencast::screencast()
 {
-    //vokoscreenLoaded = 1;
-    
     vkSettings.readAll();
     
     myUi.setupUi( this );
     myUi.ListWidgetLogVokoscreen->setVisible( false );
 
+    QvkDbus *dbus = new QvkDbus( myUi );
+    connect( dbus, SIGNAL( close() ), this, SLOT( close() ) );
+    
     myLog = new QvkLog();
     qInstallMessageHandler( myMessageOutput );
     connect( myLog, SIGNAL( newLogText( QString ) ), this, SLOT( addLogVokoscreen( QString ) ) );
@@ -289,8 +293,8 @@ screencast::screencast()
     myUi.mirrorCheckBox->setText( tr( "Mirrored" ) );
     myUi.rotateDial->setWrapping ( true );
     webcamController = new QvkWebcamController( myUi );
-    connect( webcamController, SIGNAL( vokoscreenFinishLoaded() ), this, SLOT( vokoscreenFinishLoaded() ) );
-    //(void)webcamController;
+//    connect( webcamController, SIGNAL( vokoscreenFinishLoaded() ), this, SLOT( vokoscreenFinishLoaded() ) );
+    connect( webcamController, SIGNAL( vokoscreenFinishLoaded() ), dbus, SLOT( vokoscreenFinishLoaded() ) );
 
     
     // Tab 6 Extensions
@@ -564,12 +568,18 @@ screencast::~screencast()
 { 
 }
 
-
+/*
 void screencast::vokoscreenFinishLoaded()
 {
     vokoscreenLoaded = "0";
 }
 
+// Only for dbus
+QString screencast::isVokoscreenLoaded()
+{
+  return vokoscreenLoaded;
+}
+*/
 
 void screencast::extensionLoadpushButtonClicked()
 {
@@ -1257,179 +1267,6 @@ QString screencast::getLsofVersion()
   return lsofVersion;
 }
 
-// Only for dbus
-QString screencast::isVokoscreenLoaded()
-{
-  return vokoscreenLoaded;   
-}
-
-// Only for dbus
-int screencast::startrecord()
-{
-   if ( myUi.recordButton->isEnabled() == true )
-   {
-     myUi.recordButton->click();
-     return 0;
-   }
-   else
-   {
-     return 1;
-   }
-}
-
-// Only for dbus
-int screencast::stoprecord()
-{
-   if ( myUi.StopButton->isEnabled() == true )
-   {
-     myUi.StopButton->click();
-     return 0;
-   }
-   else
-   {
-     return 1;
-   }
-}
-
-// Only for dbus
-int screencast::setFullScreen()
-{
-    if ( ( myUi.FullScreenRadioButton->isEnabled() == true ) and ( myUi.FullScreenRadioButton->isChecked() == false ) )
-    {
-      myUi.FullScreenRadioButton->click();
-      return 0;
-    }
-    else
-    {
-      return 1;
-    }
-}
-
-// Only for dbus
-int screencast::setWindow()
-{
-   if ( ( myUi.WindowRadioButton->isEnabled() == true ) and ( myUi.WindowRadioButton->isChecked() == false ) )
-   {
-     myUi.WindowRadioButton->click();
-     return 0;
-   }
-   else
-   {
-     return 1;
-   }
-}
-
-// Only for dbus
-int screencast::setArea()
-{
-   if ( ( myUi.AreaRadioButton->isEnabled() == true ) and ( myUi.AreaRadioButton->isChecked() == false ) )
-   {
-     myUi.AreaRadioButton->click();
-     return 0;
-   }
-   else
-   {
-     return 1;
-   }
-}
-
-// Only for dbus
-int screencast::setAreaReset()
-{
-   if ( myUi.areaResetButton->isEnabled() == true )
-   {
-      myUi.areaResetButton->click();
-      return 0;
-   }
-   else
-   {
-      return 1;
-   }
-}
-
-// Only for dbus
-int screencast::setAudioOn()
-{
-   if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Unchecked ) )
-   {
-       myUi.AudioOnOffCheckbox->click();
-       return 0;
-   }
-   else
-   {
-       return 1;
-   }
-}
-
-// Only for dbus
-int screencast::setAudioOff()
-{
-   if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) )
-   {
-       myUi.AudioOnOffCheckbox->click();
-       return 0;
-   }
-   else
-   {
-       return 1;
-   }
-}
-
-// Only for dbus
-int screencast::setWebcamOn()
-{
-    if ( myUi.webcamCheckBox->checkState() == Qt::Unchecked )
-    {
-        myUi.webcamCheckBox->click();
-        return 0;
-    }
-    else
-    {
-        return 1;
-    }
-}
-
-// Only for dbus
-int screencast::setWebcamOff()
-{
-    if ( myUi.webcamCheckBox->checkState() == Qt::Checked  )
-    {
-        myUi.webcamCheckBox->click();
-        return 0;
-    }
-    else
-    {
-        return 1;
-    }
-}
-
-// Only for dbus
-int screencast::setCountDown( int value )
-{
-    myUi.CountdownSpinBox->setValue( value );
-    return 0;
-}
-
-// Only for dbus
-int screencast::setTab( int value )
-{
-    if ( value < myUi.tabWidget->count() )
-    {
-      myUi.tabWidget->setCurrentIndex( value );
-      return 0;
-    }
-    else
-    {
-      return 1;
-    }
-}
-
-// Only for dbus
-void screencast::quit()
-{
-   this->close();
-}
-
 
 /*
  * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
@@ -1595,8 +1432,6 @@ void screencast::PulseMultipleChoice()
 
   qDebug() << "[vokoscreen]" << "---End search PulseAudio Capture Devices---";
   qDebug( " " );
-  
-  // vokoscreenLoaded = 0;
 }
 
 #include <X11/Xlib.h>
