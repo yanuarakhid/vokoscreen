@@ -19,7 +19,7 @@ public slots:
   
 private slots: 
     void vokoscreenFinishLoaded();
-    QString isVokoscreenLoaded();
+    int isVokoscreenLoaded();
     int startrecord();
     int stoprecord();
     int setFullScreen();
@@ -43,7 +43,7 @@ protected:
   
 private:
   Ui_screencast myUi;
-  QString vokoscreenLoaded;
+  int vokoscreenLoaded = 1;
     
 };
 

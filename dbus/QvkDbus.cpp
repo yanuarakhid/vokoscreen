@@ -18,11 +18,11 @@ QvkDbus::~QvkDbus()
 
 void QvkDbus::vokoscreenFinishLoaded()
 {
-    vokoscreenLoaded = "0";
+    vokoscreenLoaded = 0;
 }
 
 
-QString QvkDbus::isVokoscreenLoaded()
+int QvkDbus::isVokoscreenLoaded()
 {
   return vokoscreenLoaded;
 }

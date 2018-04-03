@@ -1,38 +1,57 @@
 #!/bin/bash 
 
-# exsample qdbus
-# qdbus org.vokoscreen.screencast /gui org.vokoscreen.gui.setWebcamOn
-
-# example with dbus-send, it is the same as qdbus but a other command
-# dbus-send --session --type=method_call --dest=org.vokoscreen.screencast /gui org.vokoscreen.gui.setWebcamOn
-
-
 # Please adjust path to vokoscreen
 # and start in background
 ./vokoscreen&
 
-
 # Now we have to wait until vokoscreen is fully loaded
-value=""
-while [ "$value" = "" ]
+value="1"
+while [ $value -eq "1" ]
 do
-  value=$(qdbus org.vokoscreen.screencast /gui org.vokoscreen.gui.isVokoscreenLoaded)
-  echo "vokoscreen is not finish loaded, value = "$value
-  sleep 1
+   rc=$(dbus-send --type=method_call --print-reply --dest=org.vokoscreen.screencast /gui org.vokoscreen.gui.isVokoscreenLoaded)
+   rc=$(echo $rc | rev | cut -c 1)
+   if [ "$rc" = "0" ]; then
+     echo "[SCRIPT] vokoscreen has loaded everything return value $rc"
+     value="0"
+     sleep 1
+   else
+     echo "[SCRIPT] vokoscreen not finish loaded return value $rc"
+     sleep 1
+   fi
 done
 
+# Set Tab 0
+dbus-send --type=method_call --dest=org.vokoscreen.screencast /gui org.vokoscreen.gui.setTab int32:0
+sleep 3
+
+# Set Window
+dbus-send --type=method_call --dest=org.vokoscreen.screencast /gui org.vokoscreen.gui.setWindow
+sleep 3
+
+# Set Area
+dbus-send --type=method_call --dest=org.vokoscreen.screencast /gui org.vokoscreen.gui.setArea
+sleep 3
+
+# Set Fullscreen
+dbus-send --type=method_call --dest=org.vokoscreen.screencast /gui org.vokoscreen.gui.setFullScreen
+sleep 3
+
+# Set Tab 4 webcam
+dbus-send --type=method_call --dest=org.vokoscreen.screencast /gui org.vokoscreen.gui.setTab int32:4
+sleep 3
 
 # Start webcam
-qdbus org.vokoscreen.screencast /gui org.vokoscreen.gui.setWebcamOn
-
-
-# Show webcam 5 second
-sleep 5
-
+dbus-send --type=method_call --dest=org.vokoscreen.screencast /gui org.vokoscreen.gui.setWebcamOn
+# Show webcam 10 second
+sleep 10
 
 # Now we close the webcam
-qdbus org.vokoscreen.screencast /gui org.vokoscreen.gui.setWebcamOff
-
+dbus-send --type=method_call --dest=org.vokoscreen.screencast /gui org.vokoscreen.gui.setWebcamOff
+sleep 5
 
 # show all method
-qdbus org.vokoscreen.screencast /gui  | grep vokoscreen
+dbus-send --type=method_call --dest=org.vokoscreen.screencast /gui  | grep vokoscreen
+
+# quit vokoscreen
+dbus-send --type=method_call --dest=org.vokoscreen.screencast /gui org.vokoscreen.gui.quit
+
