@@ -20,6 +20,7 @@ public slots:
 private slots: 
     void vokoscreenFinishLoaded();
     int isVokoscreenLoaded();
+    QString showAllMethode();
     int startrecord();
     int stoprecord();
     int setFullScreen();

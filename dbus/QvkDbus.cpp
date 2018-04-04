@@ -16,9 +16,43 @@ QvkDbus::~QvkDbus()
 {  
 }
 
+
+QString QvkDbus::showAllMethode()
+{
+    QStringList functions;
+    for (int n = 0; n < staticMetaObject.methodCount(); n++) {
+        functions.append(QString::fromLocal8Bit(staticMetaObject.method(n).name()));
+
+        int index = functions.indexOf("destroyed");
+        functions.removeAt( index );
+
+        index = functions.indexOf("objectNameChanged");
+        functions.removeAt( index );
+
+        index = functions.indexOf("deleteLater");
+        functions.removeAt( index );
+
+        index = functions.indexOf("_q_reregisterTimers");
+        functions.removeAt( index );
+
+        index = functions.indexOf("vokoscreenFinishLoaded");
+        functions.removeAt( index );
+    }
+
+    qDebug() << "[vokoscreen] ---Begin DBus method--- ";
+    QString string = functions.join( " " );
+    qDebug().noquote() << string;
+    qDebug() << "[vokoscreen] ---End DBus method--- ";
+    qDebug(" ");
+
+    return string;
+}
+
+
 void QvkDbus::vokoscreenFinishLoaded()
 {
     vokoscreenLoaded = 0;
+    showAllMethode();
 }
 
 
