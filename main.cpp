@@ -17,12 +17,14 @@
  */
 
 #include "screencast.h"
-//#include "vokoscreenmain_adaptor.h"
 
 #include <QDebug>
 #include <QTranslator>
 #include <QDBusConnection>
 #include <QLibraryInfo>
+
+#include <QDBusInterface>
+#include <QDBusReply>
 
 int main(int argc, char** argv)
 {
@@ -47,6 +49,18 @@ int main(int argc, char** argv)
         isRunning = true;
     }
 
+
+    QDBusConnection bus = QDBusConnection::sessionBus();
+    QDBusInterface dbus_iface("org.vokoscreen.screencast", "/gui",
+                              "org.vokoscreen.gui", bus);
+    if ( ( isRunning == true ) and ( QApplication::instance()->arguments().count() > 1 ) )
+    {
+        QDBusReply<QString> reply = dbus_iface.call( QApplication::instance()->arguments().at( 1 ) );
+        qDebug().noquote() << reply;
+        goto stop;
+    }
+
+
     if( isRunning == false )
     {
         screencast *foo = new screencast();
@@ -61,4 +75,6 @@ int main(int argc, char** argv)
                                                                     QMessageBox::Close );
         (void)ret;
     }
+
+    stop:{}
 }

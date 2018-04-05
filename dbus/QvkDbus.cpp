@@ -177,30 +177,30 @@ int QvkDbus::setAudioOff()
 }
 
 
-int QvkDbus::setWebcamOn()
+QString QvkDbus::setWebcamOn()
 {
     if ( myUi.webcamCheckBox->checkState() == Qt::Unchecked )
     {
         myUi.webcamCheckBox->click();
-        return 0;
+        return "0";
     }
     else
     {
-        return 1;
+        return "1";
     }
 }
 
 
-int QvkDbus::setWebcamOff()
+QString QvkDbus::setWebcamOff()
 {
     if ( myUi.webcamCheckBox->checkState() == Qt::Checked  )
     {
         myUi.webcamCheckBox->click();
-        return 0;
+        return "0";
     }
     else
     {
-        return 1;
+        return "1";
     }
 }
 

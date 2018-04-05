@@ -29,8 +29,8 @@ private slots:
     int setAreaReset();
     int setAudioOff();
     int setAudioOn();
-    int setWebcamOn();
-    int setWebcamOff();
+    QString setWebcamOn();
+    QString setWebcamOff();
     int setCountDown( int value );
     int setTab( int value );
     void quit();
