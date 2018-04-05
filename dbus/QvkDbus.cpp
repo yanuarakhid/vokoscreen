@@ -41,7 +41,7 @@ QString QvkDbus::showAllMethode()
 
     qDebug() << "[vokoscreen] ---Begin DBus method--- ";
     QString string = functions.join( " " );
-    qDebug().noquote() << string;
+    qDebug().noquote() << "[vokoscreen] methods:" << string;
     qDebug() << "[vokoscreen] ---End DBus method--- ";
     qDebug(" ");
 

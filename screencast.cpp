@@ -69,18 +69,18 @@ screencast::screencast()
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     screencast::setWindowIcon( icon );    
 
-    qDebug() << "[vokoscreen]" << "Version:" << vkSettings.getVersion();
-    qDebug() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
-    qDebug() << "[vokoscreen]" << "Qt version: " << qVersion();
-    qDebug() << "[vokoscreen]" << "Operating system:" << QSysInfo::prettyProductName();
-    qDebug() << "[vokoscreen]" << "Platform:" << QGuiApplication::platformName();
-    qDebug() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
+    qDebug().noquote() << "[vokoscreen]" << "Version:" << vkSettings.getVersion();
+    qDebug().noquote() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
+    qDebug().noquote() << "[vokoscreen]" << "Qt version:" << qVersion();
+    qDebug().noquote() << "[vokoscreen]" << "Operating system:" << QSysInfo::prettyProductName();
+    qDebug().noquote() << "[vokoscreen]" << "Platform:" << QGuiApplication::platformName();
+    qDebug().noquote() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     QvkAlsaDevice inBox;
-    qDebug() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
-    qDebug() << "[vokoscreen] current icon-theme: " << QIcon::themeName();
-    qDebug() << "[vokoscreen] Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
-    qDebug() << "[vokoscreen] Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
-    qDebug() << "[vokoscreen] Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
+    qDebug().noquote() << "[vokoscreen]" << "asoundlib version:" << inBox.getAlsaVersion();
+    qDebug().noquote() << "[vokoscreen] current icon-theme: " << QIcon::themeName();
+    qDebug().noquote() << "[vokoscreen] Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
+    qDebug().noquote() << "[vokoscreen] Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
+    qDebug().noquote() << "[vokoscreen] Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
     
     qDebug( " " );
 
@@ -1080,7 +1080,7 @@ void screencast::myScreenCountChanged( int newCount )
       QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).width() * screen->devicePixelRatio() ); // devicePixelRatio() for Retina Displays
       QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).height() * screen->devicePixelRatio() );
       myUi.ScreenComboBox->addItem( tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i-1 );
-      qDebug() << "[vokoscreen]" << "Display " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY;
+      qDebug().noquote() << "[vokoscreen]" << "Display " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY;
     }
     myUi.ScreenComboBox->addItem( tr( "All Displays" ), -1 );    
     qDebug() << "[vokoscreen]" << "---End search Screen---";
