@@ -42,12 +42,10 @@ QString QvkDbus::showAllMethode()
         functions.removeAt( index );
 
         int value = staticMetaObject.method(n).parameterCount();
-        QByteArray byteArray;
-        byteArray.setNum( value );
 
         if ( ( value == 1 ) and ( !functions.empty() ) )
         {
-           functions.replace( functions.count()-1, QString::fromLocal8Bit(staticMetaObject.method(n).name()).append( " int" ) );
+           functions.replace( functions.count()-1, QString::fromLocal8Bit( staticMetaObject.method(n).name()).append( " int" ) );
         }
     }
 

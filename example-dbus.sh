@@ -30,7 +30,7 @@ done
 
 # Show all methods supported by vokoscreen
 rc=$(dbus-send --type=method_call --print-reply --dest=org.vokoscreen.screencast /gui org.vokoscreen.gui.showAllMethode)
-#rc=$(echo $rc | cut -d "\"" -f 2)
+rc=$(echo $rc | cut -d "\"" -f 2)
 echo $rc
 
 exit
