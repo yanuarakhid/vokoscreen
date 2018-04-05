@@ -1,6 +1,8 @@
 #include "QvkDbus.h"
 #include "vokoscreenqvkdbus_adaptor.h"
 
+#include <QStringList>
+
 QvkDbus::QvkDbus( Ui_screencast value )
 {
     myUi = value;
@@ -21,7 +23,8 @@ QString QvkDbus::showAllMethode()
 {
     QStringList functions;
     for (int n = 0; n < staticMetaObject.methodCount(); n++) {
-        functions.append(QString::fromLocal8Bit(staticMetaObject.method(n).name()));
+
+        functions.append(QString::fromLocal8Bit(staticMetaObject.method(n).name() ) );
 
         int index = functions.indexOf("destroyed");
         functions.removeAt( index );
@@ -37,10 +40,21 @@ QString QvkDbus::showAllMethode()
 
         index = functions.indexOf("vokoscreenFinishLoaded");
         functions.removeAt( index );
+
+        int value = staticMetaObject.method(n).parameterCount();
+        QByteArray byteArray;
+        byteArray.setNum( value );
+
+        if ( ( value == 1 ) and ( !functions.empty() ) )
+        {
+           functions.replace( functions.count()-1, QString::fromLocal8Bit(staticMetaObject.method(n).name()).append( " int" ) );
+        }
     }
 
+    functions.sort();
+
     qDebug() << "[vokoscreen] ---Begin DBus method--- ";
-    QString string = functions.join( " " );
+    QString string = functions.join( ", " );
     qDebug().noquote() << "[vokoscreen] methods:" << string;
     qDebug() << "[vokoscreen] ---End DBus method--- ";
     qDebug(" ");
@@ -90,7 +104,7 @@ int QvkDbus::stoprecord()
 }
 
 
-int QvkDbus::setFullScreen()
+int QvkDbus::FullScreen()
 {
     if ( ( myUi.FullScreenRadioButton->isEnabled() == true ) and ( myUi.FullScreenRadioButton->isChecked() == false ) )
     {
@@ -104,7 +118,7 @@ int QvkDbus::setFullScreen()
 }
 
 
-int QvkDbus::setWindow()
+int QvkDbus::Window()
 {
    if ( ( myUi.WindowRadioButton->isEnabled() == true ) and ( myUi.WindowRadioButton->isChecked() == false ) )
    {
@@ -119,7 +133,7 @@ int QvkDbus::setWindow()
 
 
 
-int QvkDbus::setArea()
+int QvkDbus::Area()
 {
    if ( ( myUi.AreaRadioButton->isEnabled() == true ) and ( myUi.AreaRadioButton->isChecked() == false ) )
    {
@@ -133,7 +147,7 @@ int QvkDbus::setArea()
 }
 
 
-int QvkDbus::setAreaReset()
+int QvkDbus::AreaReset()
 {
    if ( myUi.areaResetButton->isEnabled() == true )
    {
@@ -147,7 +161,7 @@ int QvkDbus::setAreaReset()
 }
 
 
-int QvkDbus::setAudioOn()
+int QvkDbus::AudioOn()
 {
    if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) ) //and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Unchecked ) )
    {
@@ -162,7 +176,7 @@ int QvkDbus::setAudioOn()
 }
 
 
-int QvkDbus::setAudioOff()
+int QvkDbus::AudioOff()
 {
    if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) ) //and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) )
    {
@@ -177,7 +191,7 @@ int QvkDbus::setAudioOff()
 }
 
 
-QString QvkDbus::setWebcamOn()
+QString QvkDbus::WebcamOn()
 {
     if ( myUi.webcamCheckBox->checkState() == Qt::Unchecked )
     {
@@ -191,7 +205,7 @@ QString QvkDbus::setWebcamOn()
 }
 
 
-QString QvkDbus::setWebcamOff()
+QString QvkDbus::WebcamOff()
 {
     if ( myUi.webcamCheckBox->checkState() == Qt::Checked  )
     {
@@ -205,23 +219,24 @@ QString QvkDbus::setWebcamOff()
 }
 
 
-int QvkDbus::setCountDown( int value )
+QString QvkDbus::CountDown( QString value )
 {
-    myUi.CountdownSpinBox->setValue( value );
-    return 0;
+    myUi.CountdownSpinBox->setValue( value.toInt() );
+    return "0";
 }
 
 
-int QvkDbus::setTab( int value )
+QString QvkDbus::Tab( QString value )
 {
-    if ( value < myUi.tabWidget->count() )
+
+    if ( value.toInt() < myUi.tabWidget->count() )
     {
-      myUi.tabWidget->setCurrentIndex( value );
-      return 0;
+      myUi.tabWidget->setCurrentIndex( value.toInt() - 1 );
+      return "0";
     }
     else
     {
-      return 1;
+      return "1";
     }
 }
 

@@ -50,13 +50,24 @@ int main(int argc, char** argv)
     }
 
 
+    // DBus option arguments
     QDBusConnection bus = QDBusConnection::sessionBus();
     QDBusInterface dbus_iface("org.vokoscreen.screencast", "/gui",
                               "org.vokoscreen.gui", bus);
     if ( ( isRunning == true ) and ( QApplication::instance()->arguments().count() > 1 ) )
     {
-        QDBusReply<QString> reply = dbus_iface.call( QApplication::instance()->arguments().at( 1 ) );
-        qDebug().noquote() << reply;
+        if ( QApplication::instance()->arguments().count() == 2 )
+        {
+            QDBusReply<QString> reply = dbus_iface.call( QApplication::instance()->arguments().at( 1 ) );
+            qDebug().noquote() << reply;
+        }
+
+        if ( QApplication::instance()->arguments().count() == 3 )
+        {
+            QDBusReply<QString> reply = dbus_iface.call( QApplication::instance()->arguments().at( 1 ),
+                                                         QApplication::instance()->arguments().at( 2 ));
+            qDebug().noquote() << reply;
+        }
         goto stop;
     }
 

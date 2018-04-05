@@ -23,16 +23,16 @@ private slots:
     QString showAllMethode();
     int startrecord();
     int stoprecord();
-    int setFullScreen();
-    int setWindow();
-    int setArea();
-    int setAreaReset();
-    int setAudioOff();
-    int setAudioOn();
-    QString setWebcamOn();
-    QString setWebcamOff();
-    int setCountDown( int value );
-    int setTab( int value );
+    int FullScreen();
+    int Window();
+    int Area();
+    int AreaReset();
+    int AudioOff();
+    int AudioOn();
+    QString WebcamOn();
+    QString WebcamOff();
+    QString CountDown(QString value );
+    QString Tab(QString value );
     void quit();
 
    

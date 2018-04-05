@@ -19,46 +19,46 @@
           <arg name="text" type="i" direction="out"/>
        </method>
 
-       <method name="setTab">
-          <arg name="text" type="i" direction="out"/>
-          <arg name="value" type="i" direction="in"/>
+       <method name="Tab">
+          <arg name="text" type="s" direction="out"/>
+          <arg name="value" type="s" direction="in"/>
        </method>
 
-       <method name="setFullScreen">
-          <arg name="text" type="i" direction="out"/>
-       </method>
-
-       <method name="setWindow">
+       <method name="FullScreen">
           <arg name="text" type="i" direction="out"/>
        </method>
 
-       <method name="setArea">
+       <method name="Window">
           <arg name="text" type="i" direction="out"/>
        </method>
 
-       <method name="setAreaReset">
+       <method name="Area">
           <arg name="text" type="i" direction="out"/>
        </method>
 
-       <method name="setAudioOn">
+       <method name="AreaReset">
           <arg name="text" type="i" direction="out"/>
        </method>
 
-       <method name="setAudioOff">
+       <method name="AudioOn">
           <arg name="text" type="i" direction="out"/>
        </method>
 
-       <method name="setWebcamOff">
+       <method name="AudioOff">
+          <arg name="text" type="i" direction="out"/>
+       </method>
+
+       <method name="WebcamOff">
           <arg name="text" type="s" direction="out"/>
        </method>
 
-        <method name="setWebcamOn">
+        <method name="WebcamOn">
           <arg name="text" type="s" direction="out"/>
        </method>
 
-       <method name="setCountDown">
-          <arg name="text" type="i" direction="out"/>
-          <arg name="value" type="i" direction="in"/>
+       <method name="CountDown">
+          <arg name="text" type="s" direction="out"/>
+          <arg name="value" type="s" direction="in"/>
        </method>
 
        <method name="quit">
