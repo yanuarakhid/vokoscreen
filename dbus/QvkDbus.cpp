@@ -1,7 +1,11 @@
 #include "QvkDbus.h"
 #include "vokoscreenqvkdbus_adaptor.h"
 
-#include <QStringList>
+
+QvkDbus::QvkDbus()
+{
+}
+
 
 QvkDbus::QvkDbus( Ui_screencast value )
 {
@@ -19,7 +23,7 @@ QvkDbus::~QvkDbus()
 }
 
 
-QString QvkDbus::showAllMethode()
+QString QvkDbus::showAllMethods()
 {
     QStringList functions;
     for (int n = 0; n < staticMetaObject.methodCount(); n++) {
@@ -49,13 +53,9 @@ QString QvkDbus::showAllMethode()
         }
     }
 
-    functions.sort();
+    functions.sort( Qt::CaseInsensitive );
 
-    qDebug() << "[vokoscreen] ---Begin DBus method--- ";
     QString string = functions.join( ", " );
-    qDebug().noquote() << "[vokoscreen] methods:" << string;
-    qDebug() << "[vokoscreen] ---End DBus method--- ";
-    qDebug(" ");
 
     return string;
 }
@@ -64,7 +64,12 @@ QString QvkDbus::showAllMethode()
 void QvkDbus::vokoscreenFinishLoaded()
 {
     vokoscreenLoaded = 0;
-    showAllMethode();
+
+    qDebug() << "[vokoscreen] ---Begin DBus methods--- ";
+    QString string = showAllMethods();
+    qDebug().noquote() << "[vokoscreen] methods:" << string;
+    qDebug() << "[vokoscreen] ---End DBus methods--- ";
+    qDebug(" ");
 }
 
 

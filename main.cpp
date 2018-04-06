@@ -17,18 +17,43 @@
  */
 
 #include "screencast.h"
+#include "QvkDbus.h"
+
 
 #include <QDebug>
 #include <QTranslator>
 #include <QDBusConnection>
 #include <QLibraryInfo>
-
 #include <QDBusInterface>
 #include <QDBusReply>
 
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
+
+    QStringList arguments = QApplication::instance()->arguments();
+    for( int i = 1; i < arguments.count(); ++i )
+    {
+        if ( ( arguments[ 1 ] == "--help" ) or
+             ( arguments[ 1 ] == "-h"     ) or
+             ( arguments[ 1 ] == "-?"     ) )
+        {
+            qDebug( " " );
+            qDebug() << "Usage: vokoscreen [method] [arg]";
+            qDebug( " " );
+            qDebug() << "Hint:";
+            qDebug() << "  vokoscreen must running, bevor call method.";
+            qDebug( " " );
+            qDebug( "Methods:" );
+            QvkDbus *vkDbus = new QvkDbus();
+            QString methods = vkDbus->showAllMethods();
+            qDebug().noquote() << "  " << methods;
+            qDebug( " " );
+
+            return close( 0 );
+        }
+    }
+
 
     bool isRunning = false;
 

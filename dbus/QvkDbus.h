@@ -11,16 +11,17 @@ class QvkDbus: public QObject
 Q_OBJECT
 
 public:
+  QvkDbus();
   QvkDbus( Ui_screencast value );
   virtual ~QvkDbus();
   
 public slots:
+  QString showAllMethods();
 
   
 private slots: 
     void vokoscreenFinishLoaded();
     int isVokoscreenLoaded();
-    QString showAllMethode();
     int startrecord();
     int stoprecord();
     int FullScreen();
