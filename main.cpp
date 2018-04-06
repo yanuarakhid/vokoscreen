@@ -46,8 +46,7 @@ int main(int argc, char** argv)
             qDebug( " " );
             qDebug( "Methods:" );
             QvkDbus *vkDbus = new QvkDbus();
-            QString methods = vkDbus->showAllMethods();
-            qDebug().noquote() << "  " << methods;
+            qDebug().noquote() << "  " << vkDbus->showAllMethods();
             qDebug( " " );
 
             return close( 0 );
