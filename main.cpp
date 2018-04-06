@@ -35,6 +35,7 @@ int main(int argc, char** argv)
     for( int i = 1; i < arguments.count(); ++i )
     {
         if ( ( arguments[ 1 ] == "--help" ) or
+             ( arguments[ 1 ] == "-help"  ) or
              ( arguments[ 1 ] == "-h"     ) or
              ( arguments[ 1 ] == "-?"     ) )
         {
