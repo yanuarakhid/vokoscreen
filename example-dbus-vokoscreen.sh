@@ -10,7 +10,7 @@
 
 # Normally vokoscreen have many output, in this script we want this not
 # and redirect with "> 1&>/dev/null". On end vokoscreen start with "&" in the background
-./vokoscreen > 1&>/dev/null &
+./vokoscreen &>/dev/null &
 
 
 # We wait min. 1 second until vokoscreen started and logged in to DBus.
