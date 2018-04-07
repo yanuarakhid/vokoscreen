@@ -4,10 +4,10 @@
     <interface name="org.vokoscreen.gui">
         
        <method name="isVokoscreenLoaded">
-          <arg name="text" type="i" direction="out"/>
+          <arg name="text" type="s" direction="out"/>
        </method>
 
-       <method name="showAllMethode">
+       <method name="showAllMethods">
           <arg name="text" type="s" direction="out"/>
        </method>
        

@@ -27,6 +27,8 @@
 #include <QDBusInterface>
 #include <QDBusReply>
 
+#include <QCoreApplication>
+
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
@@ -75,7 +77,16 @@ int main(int argc, char** argv)
     }
 
 
+    if ( ( isRunning == false ) and
+         ( QApplication::instance()->arguments().count() > 1 ) )
+    {
+        qDebug() << "Please start vokoscreen first, without a method.";
+        return close( 0 );
+    }
+
+
     // DBus option arguments
+    QDBusReply<QString> reply;
     QDBusConnection bus = QDBusConnection::sessionBus();
     QDBusInterface dbus_iface("org.vokoscreen.screencast", "/gui",
                               "org.vokoscreen.gui", bus);
@@ -83,16 +94,15 @@ int main(int argc, char** argv)
     {
         if ( QApplication::instance()->arguments().count() == 2 )
         {
-            QDBusReply<QString> reply = dbus_iface.call( QApplication::instance()->arguments().at( 1 ) );
-            qDebug().noquote() << reply;
+            reply = dbus_iface.call( QApplication::instance()->arguments().at( 1 ) );
         }
 
         if ( QApplication::instance()->arguments().count() == 3 )
         {
-            QDBusReply<QString> reply = dbus_iface.call( QApplication::instance()->arguments().at( 1 ),
-                                                         QApplication::instance()->arguments().at( 2 ));
-            qDebug().noquote() << reply;
+            reply = dbus_iface.call( QApplication::instance()->arguments().at( 1 ),
+                                     QApplication::instance()->arguments().at( 2 ));
         }
+        //qDebug().noquote() << reply.value();
         goto stop;
     }
 
@@ -112,5 +122,8 @@ int main(int argc, char** argv)
         (void)ret;
     }
 
-    stop:{}
+    stop:
+    {
+        return reply.value().toInt();
+    }
 }

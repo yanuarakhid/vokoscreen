@@ -45,6 +45,9 @@ QString QvkDbus::showAllMethods()
         index = functions.indexOf("vokoscreenFinishLoaded");
         functions.removeAt( index );
 
+        index = functions.indexOf("showAllMethods");
+        functions.removeAt( index );
+
         int value = staticMetaObject.method(n).parameterCount();
 
         if ( ( value == 1 ) and ( !functions.empty() ) )
@@ -63,7 +66,7 @@ QString QvkDbus::showAllMethods()
 
 void QvkDbus::vokoscreenFinishLoaded()
 {
-    vokoscreenLoaded = 0;
+    vokoscreenLoaded = "0";
 
     qDebug() << "[vokoscreen] ---Begin DBus methods--- ";
     QString string = showAllMethods();
@@ -73,7 +76,7 @@ void QvkDbus::vokoscreenFinishLoaded()
 }
 
 
-int QvkDbus::isVokoscreenLoaded()
+QString QvkDbus::isVokoscreenLoaded()
 {
   return vokoscreenLoaded;
 }
