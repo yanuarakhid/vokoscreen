@@ -45,8 +45,8 @@ QString QvkDbus::showAllMethods()
         index = functions.indexOf("vokoscreenFinishLoaded");
         functions.removeAt( index );
 
-        index = functions.indexOf("showAllMethods");
-        functions.removeAt( index );
+        //index = functions.indexOf("showAllMethods");
+        //functions.removeAt( index );
 
         int value = staticMetaObject.method(n).parameterCount();
 

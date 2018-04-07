@@ -28,6 +28,7 @@
 #include <QDBusReply>
 
 #include <QCoreApplication>
+#include <iostream>
 
 int main(int argc, char** argv)
 {
@@ -102,7 +103,12 @@ int main(int argc, char** argv)
             reply = dbus_iface.call( QApplication::instance()->arguments().at( 1 ),
                                      QApplication::instance()->arguments().at( 2 ));
         }
-        //qDebug().noquote() << reply.value();
+
+        // vokoscreens Ausgabe wird mit qDebug auf stderr ausgegeben
+        // std::cout gibt die Ausgabe auf stdout aus, und somit kann in einem script die Ausgabe
+        // in eine Variable geleitet werden.
+        std::cout << reply.value().toStdString() << std::endl;
+
         goto stop;
     }
 
@@ -122,8 +128,9 @@ int main(int argc, char** argv)
         (void)ret;
     }
 
+
     stop:
     {
-        return reply.value().toInt();
+        return 0;
     }
 }

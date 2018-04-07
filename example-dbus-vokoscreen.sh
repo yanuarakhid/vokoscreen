@@ -9,8 +9,8 @@
 # Please adjust path to vokoscreen
 
 # Normally vokoscreen have many output, in this script we want this not
-# and redirect with "> 1&>/dev/null". On end vokoscreen start with "&" in the background
-./vokoscreen &>/dev/null &
+# and redirect with "2>/dev/null". On end vokoscreen start with "&" in the background
+./vokoscreen 2>/dev/null &
 
 
 # We wait min. 1 second until vokoscreen started and logged in to DBus.
@@ -21,12 +21,11 @@ sleep 1
 # Now we wait to vokoscreen until it full loaded
 # Wy full loaded?
 # Vokoscreen search Audio, Video and other devices this takes time.
-value=1
-while [ $value -eq 1 ]
+value="1"
+while [ $value -eq "1" ]
 do
-   ./vokoscreen isVokoscreenLoaded
-   rc=$?
-   if [ $rc -eq 0 ]; then
+   rc=$(./vokoscreen isVokoscreenLoaded)
+   if [ "$rc" = "0" ]; then
      echo "[SCRIPT] vokoscreen has loaded everything"
      value=0
      sleep 1
