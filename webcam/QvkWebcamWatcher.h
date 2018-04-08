@@ -26,7 +26,7 @@ private slots:
 signals:
   void webcamDescription( QStringList description, QStringList deviceName );
   void removedCamera( QString value );
-  void vokoscreenFinishLoaded();
+  //void cameraFinishLoaded();
 
 protected:  
 

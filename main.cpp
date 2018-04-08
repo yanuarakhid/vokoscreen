@@ -18,6 +18,7 @@
 
 #include "screencast.h"
 #include "QvkDbus.h"
+#include <QvkAllLoaded.h>
 
 #include <QDebug>
 #include <QTranslator>
@@ -26,6 +27,8 @@
 #include <QDBusInterface>
 #include <QDBusReply>
 #include <iostream>
+
+bool cameraLoaded = false;
 
 int main(int argc, char** argv)
 {

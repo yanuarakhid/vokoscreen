@@ -1,5 +1,7 @@
 #include "QvkWebcamWatcher.h" 
 
+#include <QvkAllLoaded.h>
+
 #include <QCameraInfo>
 #include <QTimer>
 
@@ -71,7 +73,10 @@ void QvkWebcamWatcher::detectCameras()
     int newcount = QCameraInfo::availableCameras().count();
 
     if ( newcount == 0 )
-        emit vokoscreenFinishLoaded();
+    {
+        //emit cameraFinishLoaded();
+        cameraLoaded = true;
+    }
 
     QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
     foreach ( const QCameraInfo &cameraInfo, cameras )

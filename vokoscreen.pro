@@ -120,6 +120,9 @@ include(log/log.pri)
 # dbus
 include(dbus/dbus.pri)
 
+# allLoaded
+include(allLoaded/allLoaded.pri )
+
 QT += core gui widgets x11extras network testlib dbus multimedia multimediawidgets
 
 #DBUS_ADAPTORS += vokoscreenMain.xml

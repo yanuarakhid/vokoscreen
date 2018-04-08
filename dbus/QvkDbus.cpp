@@ -1,6 +1,6 @@
 #include "QvkDbus.h"
 #include "vokoscreenqvkdbus_adaptor.h"
-
+#include "QvkAllLoaded.h"
 
 QvkDbus::QvkDbus()
 {
@@ -63,7 +63,7 @@ QString QvkDbus::showAllMethods()
     return string;
 }
 
-
+/*
 void QvkDbus::vokoscreenFinishLoaded()
 {
     vokoscreenLoaded = "0";
@@ -74,11 +74,14 @@ void QvkDbus::vokoscreenFinishLoaded()
     qDebug() << "[vokoscreen] ---End DBus methods--- ";
     qDebug(" ");
 }
-
+*/
 
 QString QvkDbus::isVokoscreenLoaded()
 {
-  return vokoscreenLoaded;
+    if ( cameraLoaded == true )
+        return "0";
+    else
+        return "1";
 }
 
 
