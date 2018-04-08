@@ -13,10 +13,15 @@
 ./vokoscreen 2>/dev/null &
 
 
-# We wait min. 1 second until vokoscreen started and logged in to DBus.
+# We wait until vokoscreen started and logged in to DBus.
 # Normally this is very fast, but better we wait and have no error.
-sleep 1
-
+rc=$(/bin/ps -A | /usr/bin/grep vokoscreen)
+rc=$(echo $rc | rev | cut -c 1)
+while [ $rc = "" ]
+do
+   echo "[SCRIPT] vokoscreen not loaded"
+   sleep 1
+done
 
 # Now we wait to vokoscreen until it full loaded
 # Wy full loaded?
@@ -26,13 +31,18 @@ while [ $value -eq "1" ]
 do
    rc=$(./vokoscreen isVokoscreenLoaded)
    if [ "$rc" = "0" ]; then
-     echo "[SCRIPT] vokoscreen has loaded everything"
+     echo "[SCRIPT] vokoscreen has all devices loaded"
      value=0
      sleep 1
    else
-     echo "[SCRIPT] vokoscreen not finish loaded"
+     echo "[SCRIPT] vokoscreen has not devices finish loaded"
      sleep 1
    fi
 done
 
 # ********** Part 2 **********
+
+# If you want show all methods this can do
+
+./vokoscreen showAllMethods
+

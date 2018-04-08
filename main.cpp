@@ -19,20 +19,29 @@
 #include "screencast.h"
 #include "QvkDbus.h"
 
-
 #include <QDebug>
 #include <QTranslator>
 #include <QDBusConnection>
 #include <QLibraryInfo>
 #include <QDBusInterface>
 #include <QDBusReply>
-
-#include <QCoreApplication>
 #include <iostream>
 
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
+
+    bool isRunning = false;
+
+    if( QDBusConnection::sessionBus().registerService( "org.vokoscreen.screencast" ) )
+    {
+        isRunning = false;
+    }
+    else
+    {
+        isRunning = true;
+    }
+
 
     QStringList arguments = QApplication::instance()->arguments();
     for( int i = 1; i < arguments.count(); ++i )
@@ -52,37 +61,15 @@ int main(int argc, char** argv)
             QvkDbus *vkDbus = new QvkDbus();
             qDebug().noquote() << "  " << vkDbus->showAllMethods();
             qDebug( " " );
-
             return close( 0 );
         }
     }
-
-
-    bool isRunning = false;
-
-    QTranslator * qtTranslator = new QTranslator();
-    qtTranslator->load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
-    app.installTranslator( qtTranslator );
-
-    QTranslator translator;
-    translator.load( "vokoscreen_" + QLocale::system().name(), ":/language" );
-    app.installTranslator( &translator );
-
-    if( QDBusConnection::sessionBus().registerService( "org.vokoscreen.screencast" ) )
-    {
-        isRunning = false;
-    }
-    else
-    {
-        isRunning = true;
-    }
-
 
     if ( ( isRunning == false ) and
          ( QApplication::instance()->arguments().count() > 1 ) )
     {
         qDebug() << "Please start vokoscreen first, without a method.";
-        return close( 0 );
+        return 0;
     }
 
 
@@ -110,6 +97,17 @@ int main(int argc, char** argv)
         std::cout << reply.value().toStdString() << std::endl;
 
         goto stop;
+    }
+
+
+    {
+        QTranslator * qtTranslator = new QTranslator();
+        qtTranslator->load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+        app.installTranslator( qtTranslator );
+
+        QTranslator translator;
+        translator.load( "vokoscreen_" + QLocale::system().name(), ":/language" );
+        app.installTranslator( &translator );
     }
 
 
