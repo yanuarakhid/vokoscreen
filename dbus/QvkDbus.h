@@ -20,7 +20,6 @@ public slots:
 
   
 private slots: 
-    //void vokoscreenFinishLoaded();
     QString isVokoscreenLoaded();
     int startrecord();
     int stoprecord();
@@ -45,7 +44,6 @@ protected:
   
 private:
   Ui_screencast myUi;
-  QString vokoscreenLoaded = "1";
     
 };
 

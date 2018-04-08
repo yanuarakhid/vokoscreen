@@ -26,7 +26,6 @@ private slots:
 signals:
   void webcamDescription( QStringList description, QStringList deviceName );
   void removedCamera( QString value );
-  //void cameraFinishLoaded();
 
 protected:  
 

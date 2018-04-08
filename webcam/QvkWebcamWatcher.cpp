@@ -74,7 +74,6 @@ void QvkWebcamWatcher::detectCameras()
 
     if ( newcount == 0 )
     {
-        //emit cameraFinishLoaded();
         cameraLoaded = true;
     }
 

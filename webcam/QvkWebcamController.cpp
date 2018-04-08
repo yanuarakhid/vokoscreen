@@ -74,7 +74,6 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
     QvkWebcamWatcher *webcamWatcher = new QvkWebcamWatcher();
     connect( webcamWatcher, SIGNAL( webcamDescription( QStringList, QStringList ) ), this, SLOT( addToComboBox( QStringList, QStringList ) ) );
     connect( webcamWatcher, SIGNAL( removedCamera( QString ) ), this, SLOT( ifCameraRemovedCloseWindow( QString ) ) );
-//    connect( webcamWatcher, SIGNAL( vokoscreenFinishLoaded() ), this, SLOT( allFinshLoaded() ) );
 
     // If all webcams complete read, then read setting for show or not show
     //connect( webcamWatcher, SIGNAL( webcamDescription( QStringList, QStringList ) ), this, SLOT( setCheckboxWebcamFromSettings() ) );
@@ -90,12 +89,6 @@ QvkWebcamController::~QvkWebcamController()
 {
 }
 
-/*
-void QvkWebcamController::allFinshLoaded()
-{
-    emit vokoscreenFinishLoaded();
-}
-*/
 
 void QvkWebcamController::resolution( int index )
 {
@@ -398,7 +391,6 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
         qDebug() << "[vokoscreen] ---End search camera parameters and checkbox is disabled---";
         qDebug();
 
-        //allFinshLoaded();
         cameraLoaded = true;
 
         /*

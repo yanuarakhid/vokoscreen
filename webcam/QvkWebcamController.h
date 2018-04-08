@@ -41,7 +41,6 @@ private slots:
 #endif
   void resolution(int index );
   void showNewResolutionInWebcamWindow( int index );
-  //void allFinshLoaded();
 
 private:
   QCamera *camera;
@@ -57,7 +56,6 @@ protected:
 signals:
   void closeWebcamWindow();
   void webcamBusy();
-  //void vokoscreenFinishLoaded();
 
 };
 
