@@ -248,6 +248,48 @@ QString QvkDbus::CameraOff()
     }
 }
 
+QString QvkDbus::CameraAllNames()
+{
+    if ( myUi.webcamComboBox->isEnabled() == true )
+    {
+        QStringList stringList;
+        for ( int i = 0; i < myUi.webcamComboBox->count(); i++  )
+        {
+            stringList <<  myUi.webcamComboBox->itemText( i );
+        }
+        QString string = stringList.join( ", " );
+        return string;
+    }
+    else
+    {
+        return "1";
+    }
+}
+
+QString QvkDbus::CameraCount()
+{
+    return  QString::number( myUi.webcamComboBox->count() );
+}
+
+QString QvkDbus::CameraSetIndex( QString value )
+{
+  if ( myUi.webcamComboBox->isEnabled() == true )
+  {
+    if ( ( value.toInt() > 0 ) and ( value.toInt() <= myUi.webcamComboBox->count() ) )
+    {
+        myUi.webcamComboBox->setCurrentIndex( value.toInt()-1 );
+        return "0";
+    }
+    else
+    {
+        return "1";
+    }
+  }
+  else
+  {
+      return "1";
+  }
+}
 
 QString QvkDbus::CountDown( QString value )
 {

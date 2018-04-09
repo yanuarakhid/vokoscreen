@@ -69,9 +69,22 @@
           <arg name="text" type="s" direction="out"/>
        </method>
 
+       <method name="CameraAllNames">
+          <arg name="text" type="s" direction="out"/>
+       </method>
+
+       <method name="CameraCount">
+          <arg name="text" type="s" direction="out"/>
+       </method>
+
+       <method name="CameraSetIndex">
+          <arg name="text" type="s" direction="out"/>
+          <arg name="value" type="s" direction="in"/>
+       </method>
+
        <method name="quit">
        </method>
-       
+
     </interface>
 </node>
 <!-- https://codebeautify.org/xmlvalidator -->
