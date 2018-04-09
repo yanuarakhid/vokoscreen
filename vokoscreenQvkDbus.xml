@@ -12,11 +12,11 @@
        </method>
        
        <method name="startrecord">
-          <arg name="text" type="i" direction="out"/>
+          <arg name="text" type="s" direction="out"/>
        </method>
 
        <method name="stoprecord">
-          <arg name="text" type="i" direction="out"/>
+          <arg name="text" type="s" direction="out"/>
        </method>
 
        <method name="Tab">
@@ -54,11 +54,11 @@
        </method>
 
        <method name="AudioOn">
-          <arg name="text" type="i" direction="out"/>
+          <arg name="text" type="s" direction="out"/>
        </method>
 
        <method name="AudioOff">
-          <arg name="text" type="i" direction="out"/>
+          <arg name="text" type="s" direction="out"/>
        </method>
 
         <method name="WebcamOn">

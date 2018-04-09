@@ -21,8 +21,8 @@ public slots:
   
 private slots: 
     QString isVokoscreenLoaded();
-    int startrecord();
-    int stoprecord();
+    QString startrecord();
+    QString stoprecord();
     QString FullScreen();
     QString Window();
     QString Area();
@@ -31,8 +31,8 @@ private slots:
     QString MagnifierOff();
     QString CountDown(QString value );
 
-    int AudioOff();
-    int AudioOn();
+    QString AudioOff();
+    QString AudioOn();
 
     QString WebcamOn();
     QString WebcamOff();

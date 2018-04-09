@@ -70,30 +70,30 @@ QString QvkDbus::isVokoscreenLoaded()
 }
 
 
-int QvkDbus::startrecord()
+QString QvkDbus::startrecord()
 {
    if ( myUi.recordButton->isEnabled() == true )
    {
      myUi.recordButton->click();
-     return 0;
+     return "0";
    }
    else
    {
-     return 1;
+     return "1";
    }
 }
 
 
-int QvkDbus::stoprecord()
+QString QvkDbus::stoprecord()
 {
    if ( myUi.StopButton->isEnabled() == true )
    {
      myUi.StopButton->click();
-     return 0;
+     return "0";
    }
    else
    {
-     return 1;
+     return "1";
    }
 }
 
@@ -180,39 +180,37 @@ QString QvkDbus::MagnifierOff()
    }
 }
 
-int QvkDbus::AudioOn()
+QString QvkDbus::AudioOn()
 {
-   if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) ) //and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Unchecked ) )
+   if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Unchecked ) )
    {
-       myUi.AudioOnOffCheckbox->setCheckState(Qt::Unchecked);
        myUi.AudioOnOffCheckbox->click();
-       return 0;
+       return "0";
    }
    else
    {
-       return 1;
+       return "1";
    }
 }
 
 
-int QvkDbus::AudioOff()
+QString QvkDbus::AudioOff()
 {
-   if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) ) //and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) )
+   if ( ( myUi.AudioOnOffCheckbox->isEnabled() == true ) and ( myUi.AudioOnOffCheckbox->checkState() == Qt::Checked ) )
    {
-       myUi.AudioOnOffCheckbox->setCheckState(Qt::Checked);
        myUi.AudioOnOffCheckbox->click();
-       return 0;
+       return "0";
    }
    else
    {
-       return 1;
+       return "1";
    }
 }
 
 
 QString QvkDbus::WebcamOn()
 {
-    if ( myUi.webcamCheckBox->checkState() == Qt::Unchecked )
+    if ( ( myUi.webcamCheckBox->isEnabled() == true ) and ( myUi.webcamCheckBox->checkState() == Qt::Unchecked ) )
     {
         myUi.webcamCheckBox->click();
         return "0";
@@ -226,7 +224,7 @@ QString QvkDbus::WebcamOn()
 
 QString QvkDbus::WebcamOff()
 {
-    if ( myUi.webcamCheckBox->checkState() == Qt::Checked  )
+    if ( ( myUi.webcamCheckBox->isEnabled() == true ) and  ( myUi.webcamCheckBox->checkState() == Qt::Checked ) )
     {
         myUi.webcamCheckBox->click();
         return "0";
