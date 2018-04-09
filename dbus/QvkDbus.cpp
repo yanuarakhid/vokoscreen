@@ -154,6 +154,31 @@ int QvkDbus::AreaReset()
    }
 }
 
+QString QvkDbus::MagnifierOn()
+{
+   if ( ( myUi.MagnifierCheckBox->isEnabled() == true ) and ( myUi.MagnifierCheckBox->checkState() == Qt::Unchecked ) )
+   {
+      myUi.MagnifierCheckBox->click();
+      return "0";
+   }
+   else
+   {
+      return "1";
+   }
+}
+
+QString QvkDbus::MagnifierOff()
+{
+   if ( ( myUi.MagnifierCheckBox->isEnabled() == true ) and ( myUi.MagnifierCheckBox->checkState() == Qt::Checked ) )
+   {
+      myUi.MagnifierCheckBox->click();
+      return "0";
+   }
+   else
+   {
+      return "1";
+   }
+}
 
 int QvkDbus::AudioOn()
 {

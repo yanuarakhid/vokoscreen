@@ -27,12 +27,17 @@ private slots:
     int Window();
     int Area();
     int AreaReset();
+    QString MagnifierOn();
+    QString MagnifierOff();
+    QString CountDown(QString value );
+
     int AudioOff();
     int AudioOn();
+
     QString WebcamOn();
     QString WebcamOff();
-    QString CountDown(QString value );
     QString Tab(QString value );
+
     void quit();
 
    

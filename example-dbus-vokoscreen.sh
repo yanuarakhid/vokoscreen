@@ -47,3 +47,10 @@ done
 # If you want show all methods this can do
 ./vokoscreen showAllMethods
 
+./vokoscreen MagnifierOn
+sleep 3
+./vokoscreen MagnifierOff
+sleep 3
+./vokoscreen MagnifierOff
+sleep 3
+

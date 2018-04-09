@@ -40,6 +40,19 @@
           <arg name="text" type="i" direction="out"/>
        </method>
 
+       <method name="MagnifierOn">
+          <arg name="text" type="s" direction="out"/>
+       </method>
+
+       <method name="MagnifierOff">
+          <arg name="text" type="s" direction="out"/>
+       </method>
+       
+       <method name="CountDown">
+          <arg name="text" type="s" direction="out"/>
+          <arg name="value" type="s" direction="in"/>
+       </method>
+
        <method name="AudioOn">
           <arg name="text" type="i" direction="out"/>
        </method>
@@ -48,17 +61,12 @@
           <arg name="text" type="i" direction="out"/>
        </method>
 
-       <method name="WebcamOff">
-          <arg name="text" type="s" direction="out"/>
-       </method>
-
         <method name="WebcamOn">
           <arg name="text" type="s" direction="out"/>
        </method>
 
-       <method name="CountDown">
+       <method name="WebcamOff">
           <arg name="text" type="s" direction="out"/>
-          <arg name="value" type="s" direction="in"/>
        </method>
 
        <method name="quit">
