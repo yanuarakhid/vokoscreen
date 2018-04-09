@@ -34,8 +34,8 @@ private slots:
     QString AudioOff();
     QString AudioOn();
 
-    QString WebcamOn();
-    QString WebcamOff();
+    QString CameraOn();
+    QString CameraOff();
     QString Tab(QString value );
 
     void quit();

@@ -649,7 +649,7 @@
               <item>
                <widget class="QCheckBox" name="webcamCheckBox">
                 <property name="text">
-                 <string>Webcam</string>
+                 <string>Camera</string>
                 </property>
                </widget>
               </item>

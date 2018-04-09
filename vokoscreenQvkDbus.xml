@@ -61,11 +61,11 @@
           <arg name="text" type="s" direction="out"/>
        </method>
 
-        <method name="WebcamOn">
+        <method name="CameraOn">
           <arg name="text" type="s" direction="out"/>
        </method>
 
-       <method name="WebcamOff">
+       <method name="CameraOff">
           <arg name="text" type="s" direction="out"/>
        </method>
 

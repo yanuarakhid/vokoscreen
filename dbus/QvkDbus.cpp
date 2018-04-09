@@ -69,6 +69,19 @@ QString QvkDbus::isVokoscreenLoaded()
         return "1";
 }
 
+QString QvkDbus::Tab( QString value )
+{
+
+    if ( value.toInt() < myUi.tabWidget->count() )
+    {
+      myUi.tabWidget->setCurrentIndex( value.toInt() - 1 );
+      return "0";
+    }
+    else
+    {
+      return "1";
+    }
+}
 
 QString QvkDbus::startrecord()
 {
@@ -208,7 +221,7 @@ QString QvkDbus::AudioOff()
 }
 
 
-QString QvkDbus::WebcamOn()
+QString QvkDbus::CameraOn()
 {
     if ( ( myUi.webcamCheckBox->isEnabled() == true ) and ( myUi.webcamCheckBox->checkState() == Qt::Unchecked ) )
     {
@@ -222,7 +235,7 @@ QString QvkDbus::WebcamOn()
 }
 
 
-QString QvkDbus::WebcamOff()
+QString QvkDbus::CameraOff()
 {
     if ( ( myUi.webcamCheckBox->isEnabled() == true ) and  ( myUi.webcamCheckBox->checkState() == Qt::Checked ) )
     {
@@ -243,19 +256,6 @@ QString QvkDbus::CountDown( QString value )
 }
 
 
-QString QvkDbus::Tab( QString value )
-{
-
-    if ( value.toInt() < myUi.tabWidget->count() )
-    {
-      myUi.tabWidget->setCurrentIndex( value.toInt() - 1 );
-      return "0";
-    }
-    else
-    {
-      return "1";
-    }
-}
 
 
 void QvkDbus::quit()
