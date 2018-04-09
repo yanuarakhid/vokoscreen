@@ -83,6 +83,14 @@ int main(int argc, char** argv)
                               "org.vokoscreen.gui", bus);
     if ( ( isRunning == true ) and ( QApplication::instance()->arguments().count() > 1 ) )
     {
+        QvkDbus *vkDbus = new QvkDbus();
+        QString string = vkDbus->showAllMethods();
+        if ( string.contains( QApplication::instance()->arguments().at( 1 ) ) == false )
+        {
+            QString string = QApplication::instance()->arguments().at( 1 );
+            std::cout << "Error:" << " " << string.toStdString() << " " << "is not a method" << std::endl;
+        }
+
         if ( QApplication::instance()->arguments().count() == 2 )
         {
             reply = dbus_iface.call( QApplication::instance()->arguments().at( 1 ) );

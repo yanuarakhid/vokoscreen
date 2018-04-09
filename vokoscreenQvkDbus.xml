@@ -25,19 +25,19 @@
        </method>
 
        <method name="FullScreen">
-          <arg name="text" type="i" direction="out"/>
+          <arg name="text" type="s" direction="out"/>
        </method>
 
        <method name="Window">
-          <arg name="text" type="i" direction="out"/>
+          <arg name="text" type="s" direction="out"/>
        </method>
 
        <method name="Area">
-          <arg name="text" type="i" direction="out"/>
+          <arg name="text" type="s" direction="out"/>
        </method>
 
        <method name="AreaReset">
-          <arg name="text" type="i" direction="out"/>
+          <arg name="text" type="s" direction="out"/>
        </method>
 
        <method name="MagnifierOn">

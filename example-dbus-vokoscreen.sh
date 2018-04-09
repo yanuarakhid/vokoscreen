@@ -46,11 +46,17 @@ done
 
 # If you want show all methods this can do
 ./vokoscreen showAllMethods
-
-./vokoscreen MagnifierOn
+echo
+./vokoscreen magnifierOn
 sleep 3
 ./vokoscreen MagnifierOff
 sleep 3
-./vokoscreen MagnifierOff
+./vokoscreen Area
+sleep 6
+./vokoscreen AreaReset
+sleep 3
+./vokoscreen Window
+sleep 3
+./vokoscreen FullScreen
 sleep 3
 

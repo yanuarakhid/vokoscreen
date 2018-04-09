@@ -23,10 +23,10 @@ private slots:
     QString isVokoscreenLoaded();
     int startrecord();
     int stoprecord();
-    int FullScreen();
-    int Window();
-    int Area();
-    int AreaReset();
+    QString FullScreen();
+    QString Window();
+    QString Area();
+    QString AreaReset();
     QString MagnifierOn();
     QString MagnifierOff();
     QString CountDown(QString value );

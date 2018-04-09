@@ -98,59 +98,59 @@ int QvkDbus::stoprecord()
 }
 
 
-int QvkDbus::FullScreen()
+QString QvkDbus::FullScreen()
 {
     if ( ( myUi.FullScreenRadioButton->isEnabled() == true ) and ( myUi.FullScreenRadioButton->isChecked() == false ) )
     {
       myUi.FullScreenRadioButton->click();
-      return 0;
+      return "0";
     }
     else
     {
-      return 1;
+      return "1";
     }
 }
 
 
-int QvkDbus::Window()
+QString QvkDbus::Window()
 {
    if ( ( myUi.WindowRadioButton->isEnabled() == true ) and ( myUi.WindowRadioButton->isChecked() == false ) )
    {
      myUi.WindowRadioButton->click();
-     return 0;
+     return "0";
    }
    else
    {
-     return 1;
+     return "1";
    }
 }
 
 
 
-int QvkDbus::Area()
+QString QvkDbus::Area()
 {
    if ( ( myUi.AreaRadioButton->isEnabled() == true ) and ( myUi.AreaRadioButton->isChecked() == false ) )
    {
      myUi.AreaRadioButton->click();
-     return 0;
+     return "0";
    }
    else
    {
-     return 1;
+     return "1";
    }
 }
 
 
-int QvkDbus::AreaReset()
+QString QvkDbus::AreaReset()
 {
    if ( myUi.areaResetButton->isEnabled() == true )
    {
       myUi.areaResetButton->click();
-      return 0;
+      return "0";
    }
    else
    {
-      return 1;
+      return "1";
    }
 }
 
