@@ -568,18 +568,6 @@ screencast::~screencast()
 { 
 }
 
-/*
-void screencast::vokoscreenFinishLoaded()
-{
-    vokoscreenLoaded = "0";
-}
-
-// Only for dbus
-QString screencast::isVokoscreenLoaded()
-{
-  return vokoscreenLoaded;
-}
-*/
 
 void screencast::extensionLoadpushButtonClicked()
 {
@@ -627,7 +615,7 @@ void screencast::debugCommandInvocation(const QString &description, const QStrin
     qDebug().noquote() << value;
 }
 
-
+// https://wiki.qt.io/How_to_create_a_library_with_Qt_and_use_it_in_an_application
 void screencast::addVokoscreenExtensions()
 {
   QString vokoscreenExtensionsPath = QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) + QDir::separator() + "vokoscreen_extensions" + QDir::separator();
