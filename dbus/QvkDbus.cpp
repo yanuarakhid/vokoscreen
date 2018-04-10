@@ -42,9 +42,6 @@ QString QvkDbus::showAllMethods()
         index = functions.indexOf("_q_reregisterTimers");
         functions.removeAt( index );
 
-        index = functions.indexOf("vokoscreenFinishLoaded");
-        functions.removeAt( index );
-
         int value = staticMetaObject.method(n).parameterCount();
 
         if ( ( value == 1 ) and ( !functions.empty() ) )
@@ -273,22 +270,33 @@ QString QvkDbus::CameraCount()
 
 QString QvkDbus::CameraSetIndex( QString value )
 {
-  if ( myUi.webcamComboBox->isEnabled() == true )
-  {
-    if ( ( value.toInt() > 0 ) and ( value.toInt() <= myUi.webcamComboBox->count() ) )
+    if ( myUi.webcamComboBox->isEnabled() == true )
     {
-        myUi.webcamComboBox->setCurrentIndex( value.toInt()-1 );
-        return "0";
+        if ( ( value.toInt() > 0 ) and ( value.toInt() <= myUi.webcamComboBox->count() ) )
+        {
+            myUi.webcamComboBox->setCurrentIndex( value.toInt()-1 );
+            return "0";
+        }
+        else
+        {
+            return "1";
+        }
     }
     else
     {
         return "1";
     }
-  }
-  else
-  {
-      return "1";
-  }
+}
+
+QString QvkDbus::CameraResolutions()
+{
+    QStringList stringList;
+    for ( int i = 0; i < myUi.resolutionComboBox->count(); i++  )
+    {
+        stringList <<  myUi.resolutionComboBox->itemText( i );
+    }
+    QString string = stringList.join( ", " );
+    return string;
 }
 
 QString QvkDbus::CountDown( QString value )
@@ -296,9 +304,6 @@ QString QvkDbus::CountDown( QString value )
     myUi.CountdownSpinBox->setValue( value.toInt() );
     return "0";
 }
-
-
-
 
 void QvkDbus::quit()
 {

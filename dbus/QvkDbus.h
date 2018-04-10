@@ -39,6 +39,7 @@ private slots:
     QString CameraAllNames();
     QString CameraCount();
     QString CameraSetIndex( QString value );
+    QString CameraResolutions();
 
     QString Tab(QString value );
 

@@ -82,6 +82,10 @@
           <arg name="value" type="s" direction="in"/>
        </method>
 
+       <method name="CameraResolutions">
+          <arg name="text" type="s" direction="out"/>
+       </method>
+
        <method name="quit">
        </method>
 
