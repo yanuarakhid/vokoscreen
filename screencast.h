@@ -196,8 +196,6 @@ private slots:
   // shortcutStart
   // void setShortcutsOnOff( int );
   // void shortcut_magnifier_Changed( int value );
-  
-  //void vokoscreenFinishLoaded();
 
 #ifndef NO_NEW_VERSION_CHECK
     void buttonVersion();
