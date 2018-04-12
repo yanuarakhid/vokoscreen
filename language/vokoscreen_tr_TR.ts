@@ -106,16 +106,8 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Border</source>
-        <translation>Çerçeve</translation>
-    </message>
-    <message>
         <source>Close</source>
         <translation>Kapat</translation>
-    </message>
-    <message>
-        <source>Show over fullscreen</source>
-        <translation>Tam ekran üzerinde göster</translation>
     </message>
     <message>
         <source>Right click for menu</source>
@@ -124,6 +116,10 @@
     <message>
         <source>User-defined</source>
         <translation>Kullanıcı tanımlı</translation>
+    </message>
+    <message>
+        <source>Frameless</source>
+        <translation>Çerçevesiz</translation>
     </message>
 </context>
 <context>
@@ -370,6 +366,14 @@
     <message>
         <source>Load</source>
         <translation>Yükle</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Gri</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation>Ters çevir</translation>
     </message>
 </context>
 </TS>

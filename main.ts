@@ -66,6 +66,21 @@
     </message>
 </context>
 <context>
+    <name>MainWindow</name>
+    <message>
+        <source>MainWindow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CheckBox</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
@@ -106,6 +121,21 @@
     </message>
 </context>
 <context>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>Camera is loading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Camera is loaded</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wait a second or Camera is busy?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Close</source>
@@ -120,30 +150,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Frameless</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>WebcamBusyDialog</name>
-    <message>
-        <source>Device is busy</source>
+        <source>Windowsize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Name</source>
+        <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Device</source>
+        <source>Border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Used by</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unknown</source>
+        <source>Show over fullscreen</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -302,10 +321,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Webcam</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select webcam</source>
         <translation type="unfinished"></translation>
     </message>
@@ -375,6 +390,14 @@
     </message>
     <message>
         <source>Invert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resolution</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

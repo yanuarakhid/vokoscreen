@@ -7,34 +7,34 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Název</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Neznámý</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Zařízení</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Použivá se</translation>
     </message>
 </context>
 <context>
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>Nastavení oblasti</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished"/>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Zrušit</translation>
     </message>
 </context>
 <context>
@@ -60,7 +60,7 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Zrušit</translation>
     </message>
 </context>
 <context>
@@ -100,22 +100,14 @@
     </message>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>Nastavení oblasti</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Border</source>
-        <translation>Ohraničení</translation>
-    </message>
-    <message>
         <source>Close</source>
         <translation>Zavřít</translation>
-    </message>
-    <message>
-        <source>Show over fullscreen</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Right click for menu</source>
@@ -123,6 +115,10 @@
     </message>
     <message>
         <source>User-defined</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Frameless</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -134,19 +130,19 @@
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Název</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Zařízení</translation>
     </message>
     <message>
         <source>Used by</source>
-        <translation type="unfinished"/>
+        <translation>Použivá se</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Neznámý</translation>
     </message>
 </context>
 <context>
@@ -369,6 +365,14 @@
     </message>
     <message>
         <source>Load</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Invert</source>
         <translation type="unfinished"/>
     </message>
 </context>

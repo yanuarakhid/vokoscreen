@@ -78,7 +78,7 @@
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>vokoscreen hanya dapat berjalan sekali</translation>
     </message>
 </context>
 <context>
@@ -106,16 +106,8 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Border</source>
-        <translation>Batas</translation>
-    </message>
-    <message>
         <source>Close</source>
         <translation>Tutup</translation>
-    </message>
-    <message>
-        <source>Show over fullscreen</source>
-        <translation>Tampilkan dengan layar penuh</translation>
     </message>
     <message>
         <source>Right click for menu</source>
@@ -124,6 +116,10 @@
     <message>
         <source>User-defined</source>
         <translation>Ditentukan pengguna</translation>
+    </message>
+    <message>
+        <source>Frameless</source>
+        <translation>Tanpa bingkai</translation>
     </message>
 </context>
 <context>
@@ -345,11 +341,11 @@
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation>Tanpa loss</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen berjalan secara minimal</translation>
     </message>
     <message>
         <source>Reset all settings at next start</source>
@@ -369,7 +365,15 @@
     </message>
     <message>
         <source>Load</source>
-        <translation type="unfinished"/>
+        <translation>Memuat</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Abu - abu</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation>Balikan</translation>
     </message>
 </context>
 </TS>

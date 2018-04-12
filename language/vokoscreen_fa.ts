@@ -26,15 +26,15 @@
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>تنظیمات ناحیه</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished"/>
+        <translation>باشه</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>لغو</translation>
     </message>
 </context>
 <context>
@@ -67,18 +67,18 @@
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>لطفا یک نرم افزار پخش کننده ویدئو نصب کنید</translation>
+        <translation>لطفاً یک نرم‌افزار پخش‌کنندهٔ ویدئو نصب کنید</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation type="unfinished"/>
+        <translation>اطلاعات</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen فقط یک بار می‌تواند شروع بشود</translation>
     </message>
 </context>
 <context>
@@ -89,33 +89,25 @@
     </message>
     <message>
         <source>Select one or more files</source>
-        <translation>یک یا چند پرنده را انتخاب کن</translation>
+        <translation>انتخاب کردن یک یا چند پر,نده</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation type="unfinished"/>
+        <translation>برای حداکثر کردن صفحه دوبار کلیک کنید</translation>
     </message>
     <message>
         <source>Area Settings</source>
-        <translation type="unfinished"/>
+        <translation>تنظیمات ناحیه</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Border</source>
-        <translation>حاشیه</translation>
-    </message>
-    <message>
         <source>Close</source>
         <translation>بستن</translation>
-    </message>
-    <message>
-        <source>Show over fullscreen</source>
-        <translation>تمام صفحه نمایش بده</translation>
     </message>
     <message>
         <source>Right click for menu</source>
@@ -124,6 +116,10 @@
     <message>
         <source>User-defined</source>
         <translation>تعریف شده توسط کاربر</translation>
+    </message>
+    <message>
+        <source>Frameless</source>
+        <translation>بدون قاب</translation>
     </message>
 </context>
 <context>
@@ -177,7 +173,7 @@
     </message>
     <message>
         <source>Pulse</source>
-        <translation>ضربان</translation>
+        <translation>پالس</translation>
     </message>
     <message>
         <source>Default</source>
@@ -233,7 +229,7 @@
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>ظبط اندازه صفحه نمایش</translation>
+        <translation>ضبط اندازهٔ صفحه نمایش</translation>
     </message>
     <message>
         <source>Format</source>
@@ -245,7 +241,7 @@
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>فهرست راهنما را باز کن</translation>
+        <translation>باز کردن شاخه</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -253,23 +249,23 @@
     </message>
     <message>
         <source>Play last Video</source>
-        <translation>آخرین ویدئو را نمایش بده</translation>
+        <translation>پخش آخرین ویدئو</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation>ویدئو را ارسال کن</translation>
+        <translation>ارسال ویدئو</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>یکی یا چندتا وسیله را انتخاب کن</translation>
+        <translation>انتخاب یک یا چند وسیله</translation>
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>فریم در ثانیه‌ی واقعی</translation>
+        <translation>فریم در ثانیهٔ واقعی</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>صفحه‌ی اصلی</translation>
+        <translation>صفحهٔ اصلی</translation>
     </message>
     <message>
         <source>Frames</source>
@@ -293,7 +289,7 @@
     </message>
     <message>
         <source>New version available</source>
-        <translation>نسخه‌ی جدید در دسترس است</translation>
+        <translation>نسخهٔ جدید در دسترس است</translation>
     </message>
     <message>
         <source>Videocodec</source>
@@ -309,7 +305,7 @@
     </message>
     <message>
         <source>Select webcam</source>
-        <translation>وبکم را انتخاب کن</translation>
+        <translation>انتخاب وبکم</translation>
     </message>
     <message>
         <source>Mirrored</source>
@@ -325,11 +321,11 @@
     </message>
     <message>
         <source>Recorder</source>
-        <translation>ضبط کننده</translation>
+        <translation>ضبط‌کننده</translation>
     </message>
     <message>
         <source>Select recorder</source>
-        <translation>ظبط کننده را انتخاب کن</translation>
+        <translation>انتخاب ضبط‌کننده</translation>
     </message>
     <message>
         <source>Hide window</source>
@@ -345,31 +341,39 @@
     </message>
     <message>
         <source>Lossless</source>
-        <translation type="unfinished"/>
+        <translation>بی‌ضرر</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation type="unfinished"/>
+        <translation>Vokoscreen کوچک شده آغاز به کار می‌کند</translation>
     </message>
     <message>
         <source>Reset all settings at next start</source>
-        <translation type="unfinished"/>
+        <translation>بازنشانی تمام تنظیمات در شروع بعدی</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"/>
+        <translation>ادامه دادن</translation>
     </message>
     <message>
         <source>Extensions</source>
-        <translation type="unfinished"/>
+        <translation>افزونه‌ها</translation>
     </message>
     <message>
         <source>No extensions installed</source>
-        <translation type="unfinished"/>
+        <translation>هیچ افزونه‌ای نصب نشده است</translation>
     </message>
     <message>
         <source>Load</source>
-        <translation type="unfinished"/>
+        <translation>بار کردن</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>خاکستری</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation>معکوس کردن</translation>
     </message>
 </context>
 </TS>

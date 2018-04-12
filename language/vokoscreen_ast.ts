@@ -106,16 +106,8 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Border</source>
-        <translation>Berbesu</translation>
-    </message>
-    <message>
         <source>Close</source>
         <translation>Zarrar</translation>
-    </message>
-    <message>
-        <source>Show over fullscreen</source>
-        <translation>Amosar sobro pantalla completa</translation>
     </message>
     <message>
         <source>Right click for menu</source>
@@ -124,6 +116,10 @@
     <message>
         <source>User-defined</source>
         <translation>Definíu pol usuariu</translation>
+    </message>
+    <message>
+        <source>Frameless</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -369,6 +365,14 @@
     </message>
     <message>
         <source>Load</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Invert</source>
         <translation type="unfinished"/>
     </message>
 </context>

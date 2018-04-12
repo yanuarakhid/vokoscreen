@@ -106,16 +106,8 @@
 <context>
     <name>QvkWebcamWindow</name>
     <message>
-        <source>Border</source>
-        <translation>Rėmelis</translation>
-    </message>
-    <message>
         <source>Close</source>
         <translation>Užverti</translation>
-    </message>
-    <message>
-        <source>Show over fullscreen</source>
-        <translation>Rodyti virš viso ekrano</translation>
     </message>
     <message>
         <source>Right click for menu</source>
@@ -124,6 +116,10 @@
     <message>
         <source>User-defined</source>
         <translation>Naudotojo apibrėžta</translation>
+    </message>
+    <message>
+        <source>Frameless</source>
+        <translation>Be rėmelio</translation>
     </message>
 </context>
 <context>
@@ -370,6 +366,14 @@
     <message>
         <source>Load</source>
         <translation>Įkelti</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Pilka</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation>Invertuoti</translation>
     </message>
 </context>
 </TS>
