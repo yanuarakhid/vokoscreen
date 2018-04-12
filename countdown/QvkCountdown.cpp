@@ -1,10 +1,6 @@
 #include "QvkCountdown.h"
 #include <QDesktopWidget>
-#include <QApplication>
-#include <QFrame>
-#include <QLabel>
 #include <QTest>
-#include <QDebug>
 #include <QTimer>
 
 QvkCountdown::QvkCountdown( int value )
