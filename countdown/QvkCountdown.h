@@ -1,10 +1,8 @@
 #ifndef QvkCountdown_H 
 #define QvkCountdown_H
 
-//#include <QObject>
 #include <QWidget>
 #include <QPainter>
-//#include <QLabel>
 
 class QvkCountdown: public QWidget
 {
