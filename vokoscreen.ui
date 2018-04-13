@@ -52,8 +52,11 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="toolTip">
+         <string notr="true"/>
+        </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>5</number>
         </property>
         <property name="iconSize">
          <size>
@@ -940,7 +943,7 @@
         </widget>
         <widget class="QWidget" name="tab_4">
          <attribute name="title">
-          <string/>
+          <string notr="true"/>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_20">
           <item>

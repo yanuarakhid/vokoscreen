@@ -46,7 +46,7 @@
            <enum>QFrame::NoFrame</enum>
           </property>
           <property name="text">
-           <string/>
+           <string notr="true"/>
           </property>
           <property name="pixmap">
            <pixmap resource="../screencast.qrc">:/pictures/farbeimer-gruen.png</pixmap>
@@ -65,7 +65,7 @@
            </size>
           </property>
           <property name="text">
-           <string/>
+           <string notr="true"/>
           </property>
           <property name="pixmap">
            <pixmap resource="../screencast.qrc">:/pictures/farbeimer-gelb.png</pixmap>
@@ -84,7 +84,7 @@
            </size>
           </property>
           <property name="text">
-           <string/>
+           <string notr="true"/>
           </property>
           <property name="pixmap">
            <pixmap resource="../screencast.qrc">:/pictures/farbeimer-rot.png</pixmap>
@@ -125,63 +125,63 @@
        <item row="3" column="2">
         <widget class="QPushButton" name="pushButton_gray">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="0" column="2">
         <widget class="QPushButton" name="pushButton_cyan">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="0" column="0">
         <widget class="QPushButton" name="pushButton_white">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="2" column="0">
         <widget class="QPushButton" name="pushButton_green">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="0" column="3">
         <widget class="QPushButton" name="pushButton_darkCyan">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="2" column="3">
         <widget class="QPushButton" name="pushButton_darkYellow">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="3" column="3">
         <widget class="QPushButton" name="pushButton_darkGray">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="3" column="1">
         <widget class="QPushButton" name="pushButton_darkBlue">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="1" column="2">
         <widget class="QPushButton" name="pushButton_magenta">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
@@ -191,49 +191,49 @@
           <bool>false</bool>
          </property>
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
         <widget class="QPushButton" name="pushButton_darkRed">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="2" column="1">
         <widget class="QPushButton" name="pushButton_darkGreen">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="2" column="2">
         <widget class="QPushButton" name="pushButton_yellow">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="1" column="3">
         <widget class="QPushButton" name="pushButton_darkMagenta">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="1" column="0">
         <widget class="QPushButton" name="pushButton_red">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
        <item row="3" column="0">
         <widget class="QPushButton" name="pushButton_blue">
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
@@ -248,6 +248,9 @@
            <width>0</width>
            <height>110</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
         </widget>
        </item>
@@ -266,8 +269,11 @@
            <height>13</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
          <property name="pixmap">
           <pixmap resource="../screencast.qrc">:/pictures/cursor.png</pixmap>
@@ -279,6 +285,9 @@
        </item>
        <item>
         <widget class="QSlider" name="horizontalSliderCircle">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="minimum">
           <number>40</number>
          </property>
@@ -311,8 +320,11 @@
            <height>13</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
          <property name="pixmap">
           <pixmap resource="../screencast.qrc">:/pictures/transparenz.png</pixmap>
@@ -324,6 +336,9 @@
        </item>
        <item>
         <widget class="QSlider" name="horizontalSliderOpacity">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="minimum">
           <number>1</number>
          </property>
@@ -370,8 +385,11 @@
              <height>0</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string notr="true"/>
+           </property>
            <property name="text">
-            <string/>
+            <string notr="true"/>
            </property>
            <property name="pixmap">
             <pixmap resource="../screencast.qrc">:/pictures/sandglass.png</pixmap>
@@ -386,6 +404,9 @@
          </item>
          <item>
           <widget class="QSlider" name="horizontalSliderShowtime">
+           <property name="toolTip">
+            <string notr="true"/>
+           </property>
            <property name="minimum">
             <number>1</number>
            </property>
@@ -414,8 +435,11 @@
            <height>40</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
          <property name="pixmap">
           <pixmap resource="../screencast.qrc">:/pictures/radiant.png</pixmap>
@@ -427,8 +451,11 @@
        </item>
        <item>
         <widget class="QCheckBox" name="checkBoxRadiant">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
@@ -480,6 +507,9 @@
        </item>
        <item>
         <widget class="QDialogButtonBox" name="buttonBox">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="standardButtons">
           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::RestoreDefaults</set>
          </property>

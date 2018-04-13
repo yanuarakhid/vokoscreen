@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>451</width>
-    <height>170</height>
+    <height>178</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -76,7 +76,7 @@
           <item>
            <widget class="QLabel" name="label_Picture">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
             <property name="pixmap">
              <pixmap resource="../screencast.qrc">:/pictures/microbusy.png</pixmap>
