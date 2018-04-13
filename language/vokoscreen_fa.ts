@@ -64,6 +64,21 @@
     </message>
 </context>
 <context>
+    <name>MainWindow</name>
+    <message>
+        <source>MainWindow</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>CheckBox</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
@@ -104,6 +119,21 @@
     </message>
 </context>
 <context>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>Camera is loading</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Camera is loaded</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Wait a second or Camera is busy?</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Close</source>
@@ -118,31 +148,20 @@
         <translation>تعریف شده توسط کاربر</translation>
     </message>
     <message>
-        <source>Frameless</source>
-        <translation>بدون قاب</translation>
-    </message>
-</context>
-<context>
-    <name>WebcamBusyDialog</name>
-    <message>
-        <source>Device is busy</source>
-        <translation>دستگاه مشفول است</translation>
+        <source>Windowsize</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Name</source>
-        <translation>نام</translation>
+        <source>Options</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Device</source>
-        <translation>دستگاه</translation>
+        <source>Border</source>
+        <translation>حاشیه</translation>
     </message>
     <message>
-        <source>Used by</source>
-        <translation>در حال استفاده توسط</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>ناشناخته</translation>
+        <source>Show over fullscreen</source>
+        <translation>تمام صفحه نمایش بده</translation>
     </message>
 </context>
 <context>
@@ -300,10 +319,6 @@
         <translation>کُدِک صوتی</translation>
     </message>
     <message>
-        <source>Webcam</source>
-        <translation>وبکم</translation>
-    </message>
-    <message>
         <source>Select webcam</source>
         <translation>انتخاب وبکم</translation>
     </message>
@@ -374,6 +389,14 @@
     <message>
         <source>Invert</source>
         <translation>معکوس کردن</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Resolution</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

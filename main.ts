@@ -66,21 +66,6 @@
     </message>
 </context>
 <context>
-    <name>MainWindow</name>
-    <message>
-        <source>MainWindow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CheckBox</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>

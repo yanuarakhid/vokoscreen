@@ -64,6 +64,21 @@
     </message>
 </context>
 <context>
+    <name>MainWindow</name>
+    <message>
+        <source>MainWindow</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>CheckBox</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
@@ -104,6 +119,21 @@
     </message>
 </context>
 <context>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>Camera is loading</source>
+        <translation>Kamera įkeliama</translation>
+    </message>
+    <message>
+        <source>Camera is loaded</source>
+        <translation>Kamera įkeliamas</translation>
+    </message>
+    <message>
+        <source>Wait a second or Camera is busy?</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Close</source>
@@ -118,31 +148,20 @@
         <translation>Naudotojo apibrėžta</translation>
     </message>
     <message>
-        <source>Frameless</source>
-        <translation>Be rėmelio</translation>
-    </message>
-</context>
-<context>
-    <name>WebcamBusyDialog</name>
-    <message>
-        <source>Device is busy</source>
-        <translation>Įrenginys yra užimtas</translation>
+        <source>Windowsize</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Name</source>
-        <translation>Pavadinimas</translation>
+        <source>Options</source>
+        <translation>Parametrai</translation>
     </message>
     <message>
-        <source>Device</source>
-        <translation>Įrenginys</translation>
+        <source>Border</source>
+        <translation>Rėmelis</translation>
     </message>
     <message>
-        <source>Used by</source>
-        <translation>Naudoja</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Nežinoma</translation>
+        <source>Show over fullscreen</source>
+        <translation>Rodyti virš viso ekrano</translation>
     </message>
 </context>
 <context>
@@ -300,10 +319,6 @@
         <translation>Garso kodekas</translation>
     </message>
     <message>
-        <source>Webcam</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
         <source>Select webcam</source>
         <translation>Pasirinkite kamerą</translation>
     </message>
@@ -374,6 +389,14 @@
     <message>
         <source>Invert</source>
         <translation>Invertuoti</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+    <message>
+        <source>Resolution</source>
+        <translation>Raiška</translation>
     </message>
 </context>
 </TS>

@@ -64,6 +64,21 @@
     </message>
 </context>
 <context>
+    <name>MainWindow</name>
+    <message>
+        <source>MainWindow</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>CheckBox</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
@@ -104,6 +119,21 @@
     </message>
 </context>
 <context>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>Camera is loading</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Camera is loaded</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Wait a second or Camera is busy?</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Close</source>
@@ -118,31 +148,20 @@
         <translation>Ditentukan pengguna</translation>
     </message>
     <message>
-        <source>Frameless</source>
-        <translation>Tanpa bingkai</translation>
-    </message>
-</context>
-<context>
-    <name>WebcamBusyDialog</name>
-    <message>
-        <source>Device is busy</source>
-        <translation>Perangkat sedang sibuk</translation>
+        <source>Windowsize</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Name</source>
-        <translation>Nama</translation>
+        <source>Options</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Device</source>
-        <translation>Perangkat</translation>
+        <source>Border</source>
+        <translation>Batas</translation>
     </message>
     <message>
-        <source>Used by</source>
-        <translation>Digunakan oleh</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Tidak diketahui</translation>
+        <source>Show over fullscreen</source>
+        <translation>Tampilkan dengan layar penuh</translation>
     </message>
 </context>
 <context>
@@ -300,10 +319,6 @@
         <translation>Kodekaudio</translation>
     </message>
     <message>
-        <source>Webcam</source>
-        <translation>Webcam</translation>
-    </message>
-    <message>
         <source>Select webcam</source>
         <translation>Pilih webcam</translation>
     </message>
@@ -374,6 +389,14 @@
     <message>
         <source>Invert</source>
         <translation>Balikan</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Resolution</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

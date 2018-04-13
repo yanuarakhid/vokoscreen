@@ -64,6 +64,21 @@
     </message>
 </context>
 <context>
+    <name>MainWindow</name>
+    <message>
+        <source>MainWindow</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>CheckBox</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
@@ -104,6 +119,21 @@
     </message>
 </context>
 <context>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>Camera is loading</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Camera is loaded</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Wait a second or Camera is busy?</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Close</source>
@@ -118,31 +148,20 @@
         <translation>Definíu pol usuariu</translation>
     </message>
     <message>
-        <source>Frameless</source>
+        <source>Windowsize</source>
         <translation type="unfinished"/>
     </message>
-</context>
-<context>
-    <name>WebcamBusyDialog</name>
     <message>
-        <source>Device is busy</source>
-        <translation>El preséu ta ocupáu</translation>
+        <source>Options</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Name</source>
-        <translation>Nome</translation>
+        <source>Border</source>
+        <translation>Berbesu</translation>
     </message>
     <message>
-        <source>Device</source>
-        <translation>Preséu</translation>
-    </message>
-    <message>
-        <source>Used by</source>
-        <translation>Usáu por</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Desconocíu</translation>
+        <source>Show over fullscreen</source>
+        <translation>Amosar sobro pantalla completa</translation>
     </message>
 </context>
 <context>
@@ -300,10 +319,6 @@
         <translation>Codec soníu</translation>
     </message>
     <message>
-        <source>Webcam</source>
-        <translation>Cámara web</translation>
-    </message>
-    <message>
         <source>Select webcam</source>
         <translation>Esbillar cámara web</translation>
     </message>
@@ -373,6 +388,14 @@
     </message>
     <message>
         <source>Invert</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Resolution</source>
         <translation type="unfinished"/>
     </message>
 </context>

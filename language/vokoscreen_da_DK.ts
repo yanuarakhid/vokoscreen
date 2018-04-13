@@ -64,6 +64,21 @@
     </message>
 </context>
 <context>
+    <name>MainWindow</name>
+    <message>
+        <source>MainWindow</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>CheckBox</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
@@ -104,6 +119,21 @@
     </message>
 </context>
 <context>
+    <name>QvkWebcamController</name>
+    <message>
+        <source>Camera is loading</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Camera is loaded</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Wait a second or Camera is busy?</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Close</source>
@@ -118,31 +148,20 @@
         <translation>Brugerdefineret</translation>
     </message>
     <message>
-        <source>Frameless</source>
+        <source>Windowsize</source>
         <translation type="unfinished"/>
     </message>
-</context>
-<context>
-    <name>WebcamBusyDialog</name>
     <message>
-        <source>Device is busy</source>
-        <translation>Enheden er optaget</translation>
+        <source>Options</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Name</source>
-        <translation>Navn</translation>
+        <source>Border</source>
+        <translation>Ramme</translation>
     </message>
     <message>
-        <source>Device</source>
-        <translation>Enhed</translation>
-    </message>
-    <message>
-        <source>Used by</source>
-        <translation>Brugt af</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Ukendt</translation>
+        <source>Show over fullscreen</source>
+        <translation>Vis over fuldskærm</translation>
     </message>
 </context>
 <context>
@@ -300,10 +319,6 @@
         <translation>Audio-codec</translation>
     </message>
     <message>
-        <source>Webcam</source>
-        <translation>Webcam</translation>
-    </message>
-    <message>
         <source>Select webcam</source>
         <translation>Vælg webkamera</translation>
     </message>
@@ -373,6 +388,14 @@
     </message>
     <message>
         <source>Invert</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Resolution</source>
         <translation type="unfinished"/>
     </message>
 </context>
