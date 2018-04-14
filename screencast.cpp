@@ -569,6 +569,30 @@ screencast::~screencast()
 }
 
 
+/**
+ * Wird beim beenden von vokoscreen aufgerufen
+ */
+void screencast::closeEvent( QCloseEvent * event )
+{
+  (void)event;
+  Stop();
+  saveSettings();
+  if ( myUi.pointerCheckBox->checkState() == Qt::Checked )
+  {
+    myUi.pointerCheckBox->click();
+  }
+  myregionselection->close();
+  magnifier->close();
+  if ( myUi.webcamCheckBox->checkState() == Qt::Checked )
+  {
+    myUi.webcamCheckBox->click();
+  }
+ SystemTrayIcon->hide();
+
+ delete myUi.AudiocodecLabel;
+}
+
+
 void screencast::extensionLoadpushButtonClicked()
 {
     QString path = QStandardPaths::writableLocation( QStandardPaths::DownloadLocation );
@@ -880,28 +904,6 @@ void screencast::copyToClipboard()
 void screencast::WindowMinimized()
 {
   setWindowState( Qt::WindowMinimized );
-}
-
-
-/**
- * Wird beim beenden von vokoscreen aufgerufen
- */
-void screencast::closeEvent( QCloseEvent * event )
-{
-  (void)event;
-  Stop();
-  saveSettings();
-  if ( myUi.pointerCheckBox->checkState() == Qt::Checked )
-  {
-    myUi.pointerCheckBox->click();
-  }
-  myregionselection->close();
-  magnifier->close();
-  if ( myUi.webcamCheckBox->checkState() == Qt::Checked )
-  {
-    myUi.webcamCheckBox->click();
-  }
- SystemTrayIcon->hide();
 }
 
 
