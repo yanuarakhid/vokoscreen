@@ -279,6 +279,7 @@ screencast::screencast()
     if ( QGuiApplication::platformName() == "xcb" )
     {
       connect( myUi.shortcutCheckBox, SIGNAL( stateChanged( int ) ), this, SLOT( stateChangedshortcutsOnOff( int ) ) );
+      myUi.shortcutCheckBox->hide();
     }
     else
     {
