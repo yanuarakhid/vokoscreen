@@ -1,5 +1,6 @@
 Requires:
   - Qt5 >= 5.7
+  - gstreamer-plugins-bad
   - alsa
   - libX11
   - libv4l2
