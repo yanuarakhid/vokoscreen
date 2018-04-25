@@ -398,25 +398,26 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
         QList<QVideoFrame::PixelFormat> pixelFormat = camera->supportedViewfinderPixelFormats( settings );
         qDebug() << "[vokoscreen] camera pixelformats" << pixelFormat;
         qDebug() << "";
-
-        QList<QCamera::FrameRateRange> frameRateRange = camera->supportedViewfinderFrameRateRanges( settings );
-        for ( int i = 0; i < frameRateRange.count(); i++ )
-        {
-            qDebug() << "[vokoscreen] camera frameRateRange" << frameRateRange[i].minimumFrameRate << frameRateRange[i].maximumFrameRate;
-        }
-        qDebug() << "";
-
+*/
         QCameraViewfinderSettings mySettings;
         mySettings.setResolution( 640, 480 );
-
+        QList<QCamera::FrameRateRange> frameRateRange = camera->supportedViewfinderFrameRateRanges( mySettings );
+        qDebug() << frameRateRange.count();
+        for ( int i = 0; i < frameRateRange.count(); i++ )
+            qDebug() << "[vokoscreen] camera frameRateRange" << frameRateRange.at(i).minimumFrameRate << frameRateRange.at(i).maximumFrameRate;
+            //qDebug() << "[vokoscreen] camera frameRateRange" << frameRateRange.first().minimumFrameRate << frameRateRange.last().maximumFrameRate;
+        qDebug() << "";
+/*
+        QCameraViewfinderSettings mySettings;
+        mySettings.setResolution( 640, 480 );
         QList<QCameraViewfinderSettings> viewfinderSettings = camera->supportedViewfinderSettings( mySettings );
         for ( int i = 0; i < viewfinderSettings.count(); i++ )
         {
             qDebug() << "[vokoscreen] camera viewfinderSettings" << viewfinderSettings.at(i).maximumFrameRate();
         }
-*/
-        cameraLoaded = true;
 
+        cameraLoaded = true;
+*/
     }
 }
 
