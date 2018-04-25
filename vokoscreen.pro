@@ -125,5 +125,4 @@ include(allLoaded/allLoaded.pri )
 
 QT += core gui widgets x11extras network testlib dbus multimedia multimediawidgets
 
-#DBUS_ADAPTORS += vokoscreenMain.xml
 DBUS_ADAPTORS += vokoscreenQvKDbus.xml
