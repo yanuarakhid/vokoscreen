@@ -399,6 +399,7 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
         qDebug() << "[vokoscreen] camera pixelformats" << pixelFormat;
         qDebug() << "";
 */
+/*
         QCameraViewfinderSettings mySettings;
         mySettings.setResolution( 640, 480 );
         QList<QCamera::FrameRateRange> frameRateRange = camera->supportedViewfinderFrameRateRanges( mySettings );
@@ -407,6 +408,7 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
             qDebug() << "[vokoscreen] camera frameRateRange" << frameRateRange.at(i).minimumFrameRate << frameRateRange.at(i).maximumFrameRate;
             //qDebug() << "[vokoscreen] camera frameRateRange" << frameRateRange.first().minimumFrameRate << frameRateRange.last().maximumFrameRate;
         qDebug() << "";
+*/
 /*
         QCameraViewfinderSettings mySettings;
         mySettings.setResolution( 640, 480 );
