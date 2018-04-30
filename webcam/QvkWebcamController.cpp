@@ -25,13 +25,9 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
     connect( myUi.rotateDial, SIGNAL( sliderPressed () ), this, SLOT( rotateDialclicked() ) );
 
     myUi.radioButtonTopMiddle->setChecked( vkSettings.getWebcamButtonTopMiddle() );
-
     myUi.radioButtonRightMiddle->setChecked( vkSettings.getWebcamButtonRightMiddle() );
-
     myUi.radioButtonBottomMiddle->setChecked( vkSettings.getWebcamButtonBottomMiddle() );
-
     myUi.radioButtonLeftMiddle->setChecked( vkSettings.getWebcamButtonLeftMiddle() );
-
     myUi.grayCheckBox->setChecked( vkSettings.getWebcamGray() );
     myUi.invertCheckBox->setChecked( vkSettings.getWebcamInvert() );
 
@@ -63,7 +59,8 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
         myUi.mirrorCheckBox->setEnabled( false );
     }
 
-    connect( myUi.webcamCheckBox, SIGNAL( stateChanged(int) ), this, SLOT( webcamOnOff( int ) ) );
+    connect( myUi.webcamCheckBox, SIGNAL( clicked( bool ) ), this, SLOT( webcamOnOff( bool ) ) );
+
     connect( webcamWindow, SIGNAL( closeWebcamWindow() ), myUi.webcamCheckBox, SLOT( click() )  );
 #ifndef Q_OS_WIN
     connect( webcamWindow, SIGNAL( setOverScreen() ), this, SLOT( overFullScreenWebcamCheckBox_OnOff() ) );
@@ -75,11 +72,10 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
     connect( webcamWatcher, SIGNAL( webcamDescription( QStringList, QStringList ) ), this, SLOT( addToComboBox( QStringList, QStringList ) ) );
     connect( webcamWatcher, SIGNAL( removedCamera( QString ) ), this, SLOT( ifCameraRemovedCloseWindow( QString ) ) );
 
-    // If all webcams complete read, then read setting for show or not show
-    //connect( webcamWatcher, SIGNAL( webcamDescription( QStringList, QStringList ) ), this, SLOT( setCheckboxWebcamFromSettings() ) );
+    // If all webcams complete read, then read and stet setting for show or not show
+    connect( this, SIGNAL( vokoscreenFinishLoaded( bool ) ), this, SLOT( setCheckboxWebcamFromSettings( bool ) ) );
 
     connect( myUi.webcamComboBox, SIGNAL( currentIndexChanged( int ) ), this, SLOT( resolution( int ) )  );
-
     connect( myUi.resolutionComboBox, SIGNAL( currentIndexChanged( int ) ), this, SLOT( showNewResolutionInWebcamWindow( int ) ) );
 
 }
@@ -128,19 +124,17 @@ void QvkWebcamController::showNewResolutionInWebcamWindow( int index )
 }
 
 
-/*
-void QvkWebcamController::setCheckboxWebcamFromSettings()
+void QvkWebcamController::setCheckboxWebcamFromSettings( bool )
 {
-  while ( ( myUi.webcamComboBox->count() < 1 ) or ( myUi.resolutionComboBox->count() < 1 ) )
+/*  while ( ( myUi.webcamComboBox->count() < 1 ) or ( myUi.resolutionComboBox->count() < 1 ) )
   {
   }
-
+*/
   if ( Qt::CheckState( vkSettings.getWebcamOnOff() ) == Qt::Checked )
   {
       myUi.webcamCheckBox->click();
   }
 }
-*/
 
 
 #ifndef Q_OS_WIN
@@ -154,9 +148,9 @@ void QvkWebcamController::overFullScreenWebcamCheckBox_OnOff()
 #endif
 
 
-void QvkWebcamController::webcamOnOff( int value )
+void QvkWebcamController::webcamOnOff( bool value )
 {
-    if ( value == Qt::Checked )
+    if ( value == true )
     {
         myUi.webcamComboBox->setEnabled( false );
         myUi.mirrorCheckBox->setEnabled( true );
@@ -193,7 +187,7 @@ void QvkWebcamController::webcamOnOff( int value )
         camera->start();
     }
 
-    if ( value == Qt::Unchecked )
+    if ( value == false )
     {
         camera->unload();
         camera->stop();
@@ -393,6 +387,8 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
 
         qDebug() << "[vokoscreen] ---End search camera parameters and checkbox is disabled---";
         qDebug();
+
+        emit vokoscreenFinishLoaded( true );
 
 /*
         QList<QVideoFrame::PixelFormat> pixelFormat = camera->supportedViewfinderPixelFormats( settings );

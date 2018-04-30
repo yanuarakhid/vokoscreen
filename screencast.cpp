@@ -294,8 +294,7 @@ screencast::screencast()
     myUi.mirrorCheckBox->setText( tr( "Mirrored" ) );
     myUi.rotateDial->setWrapping ( true );
     webcamController = new QvkWebcamController( myUi );
-//    connect( webcamController, SIGNAL( vokoscreenFinishLoaded() ), this, SLOT( vokoscreenFinishLoaded() ) );
-    connect( webcamController, SIGNAL( vokoscreenFinishLoaded() ), dbus, SLOT( vokoscreenFinishLoaded() ) );
+    //connect( webcamController, SIGNAL( vokoscreenFinishLoaded() ), dbus, SLOT( vokoscreenFinishLoaded() ) );
 
     
     // Tab 6 Extensions
@@ -981,6 +980,9 @@ void screencast::saveSettings()
   settings.endGroup();
 
   settings.beginGroup( "Webcam" );
+    settings.setValue( "WebcamName", myUi.webcamComboBox->currentText() );
+    settings.setValue( "WebcamDevice", myUi.webcamComboBox->currentData() );
+    settings.setValue( "WebcamResolution", myUi.resolutionComboBox->currentText() );
     settings.setValue( "OnOff", myUi.webcamCheckBox->checkState() );
     settings.setValue( "Mirrored", myUi.mirrorCheckBox->checkState() );
     settings.setValue( "Rotate", myUi.rotateDial->value() );
@@ -1652,33 +1654,64 @@ void screencast::clickedScreenSize()
   if ( myUi.FullScreenRadioButton->isChecked() )
   {
     if ( SystemCall->state() == QProcess::Running )
+    {
       statusbarLabelScreenSize->setText( "F:" + getRecordWidth() + "x" + getRecordHeight() );
+    }
     else
+    {
       statusbarLabelScreenSize->setText( "F" );
+    }
     
     if ( ( SystemCall->state() == QProcess::Running ) or ( myUi.PauseButton->isChecked() ) )
+    {
       myUi.ScreenComboBox->setEnabled( false );
+    }
     else
+    {
       myUi.ScreenComboBox->setEnabled( true );
+    }
+
+    myUi.ShowkeyCheckBox->setEnabled( true );
+
   }
   
   if ( myUi.WindowRadioButton->isChecked() )
   {
     if ( SystemCall->state() == QProcess::Running )
+    {
       statusbarLabelScreenSize->setText( "W:" + getRecordWidth() + "x" + getRecordHeight() );
+    }
     else
+    {
       statusbarLabelScreenSize->setText( "W" );
-    
+    }
+
+    if ( myUi.ShowkeyCheckBox->isChecked() )
+    {
+        myUi.ShowkeyCheckBox->click();
+    }
+
+    myUi.ShowkeyCheckBox->setEnabled( false );
     myUi.ScreenComboBox->setEnabled( false );
   }
   
   if ( myUi.AreaRadioButton->isChecked() )
   {
     if ( SystemCall->state() == QProcess::Running )
+    {
       statusbarLabelScreenSize->setText( "A:" + getRecordWidth() + "x" + getRecordHeight() );
+    }
     else
+    {
       statusbarLabelScreenSize->setText( "A" );
-    
+    }
+
+    if ( myUi.ShowkeyCheckBox->isChecked() )
+    {
+        myUi.ShowkeyCheckBox->click();
+    }
+
+    myUi.ShowkeyCheckBox->setEnabled( false );
     myUi.ScreenComboBox->setEnabled( false );
   }
 }
@@ -1973,7 +2006,7 @@ void screencast::stateChanged ( QProcess::ProcessState newState )
       myUi.AreaRadioButton->setEnabled( true );
       if ( myUi.AreaRadioButton-> isChecked() ) 
            myUi.areaResetButton->setEnabled( true );
-      clickedScreenSize()      ;
+      clickedScreenSize();
       
       myUi.TabWidgetAudioFrame->setEnabled(true);
       myUi.tab_2->setEnabled(true);

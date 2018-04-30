@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>589</width>
-    <height>325</height>
+    <width>635</width>
+    <height>351</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -56,7 +56,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>4</number>
+         <number>0</number>
         </property>
         <property name="iconSize">
          <size>
@@ -87,7 +87,7 @@
             <item row="0" column="0">
              <widget class="QRadioButton" name="FullScreenRadioButton">
               <property name="text">
-               <string>Fullscreen</string>
+               <string>Fulls&amp;creen</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -97,7 +97,7 @@
             <item row="1" column="0">
              <widget class="QRadioButton" name="WindowRadioButton">
               <property name="text">
-               <string>Window</string>
+               <string>Wi&amp;ndow</string>
               </property>
              </widget>
             </item>
@@ -324,8 +324,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>408</width>
-                 <height>152</height>
+                 <width>456</width>
+                 <height>167</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1001,9 +1001,6 @@
           </item>
           <item>
            <widget class="QScrollArea" name="scrollArea_2">
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
             <property name="widgetResizable">
              <bool>true</bool>
             </property>
@@ -1012,8 +1009,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>547</width>
-               <height>186</height>
+               <width>597</width>
+               <height>195</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_18">
