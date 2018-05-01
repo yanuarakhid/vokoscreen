@@ -71,8 +71,9 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
     QvkWebcamWatcher *webcamWatcher = new QvkWebcamWatcher();
     connect( webcamWatcher, SIGNAL( webcamDescription( QStringList, QStringList ) ), this, SLOT( addToComboBox( QStringList, QStringList ) ) );
     connect( webcamWatcher, SIGNAL( removedCamera( QString ) ), this, SLOT( ifCameraRemovedCloseWindow( QString ) ) );
+    webcamWatcher->startStopCameraTimer( true );
 
-    // If all webcams complete read, then read and stet setting for show or not show
+    // If all webcams complete read, then read and set setting for show or not show
     connect( this, SIGNAL( vokoscreenFinishLoaded( bool ) ), this, SLOT( setCheckboxWebcamFromSettings( bool ) ) );
 
     connect( myUi.webcamComboBox, SIGNAL( currentIndexChanged( int ) ), this, SLOT( resolution( int ) )  );
@@ -103,6 +104,7 @@ void QvkWebcamController::resolution( int index )
     myUi.resolutionComboBox->setEnabled( true );
     myUi.webcamComboBox->setEnabled( true );
     myUi.webcamCheckBox->setEnabled( true );
+
 #ifdef Q_OS_WIN
     camera->unload();
     delete camera;
@@ -150,7 +152,7 @@ void QvkWebcamController::overFullScreenWebcamCheckBox_OnOff()
 
 void QvkWebcamController::webcamOnOff( bool value )
 {
-    if ( value == true )
+    if ( value == true  )
     {
         myUi.webcamComboBox->setEnabled( false );
         myUi.mirrorCheckBox->setEnabled( true );
@@ -388,6 +390,7 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
         qDebug() << "[vokoscreen] ---End search camera parameters and checkbox is disabled---";
         qDebug();
 
+        cameraLoaded = true;
         emit vokoscreenFinishLoaded( true );
 
 /*
@@ -414,7 +417,6 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
             qDebug() << "[vokoscreen] camera viewfinderSettings" << viewfinderSettings.at(i).maximumFrameRate();
         }
 
-        cameraLoaded = true;
 */
     }
 }

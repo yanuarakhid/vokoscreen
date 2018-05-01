@@ -3,6 +3,7 @@
 
 #include <QStringList>
 #include <QObject>
+#include <QTimer>
 
 class QvkWebcamWatcher: public QObject
 {
@@ -15,22 +16,25 @@ public:
 
 
 public slots:
-  void getAllCameraDescription();
-  void detectCameras();
+  void startStopCameraTimer( bool value );
 
   
 private slots:
-  QString removedDeviceName(QStringList mydeviceNameList, QStringList myoldDeviceNameList );
+  void getAllCameraDescription();
+  void detectCameras();
+  QString removedDeviceName( QStringList mydeviceNameList, QStringList myoldDeviceNameList );
 
   
 signals:
   void webcamDescription( QStringList description, QStringList deviceName );
   void removedCamera( QString value );
 
+
 protected:  
 
   
 private:
+  QTimer *timer;
   int oldcount;
   QStringList descriptionList;
   QStringList deviceNameList;

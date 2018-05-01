@@ -3,9 +3,8 @@
 #include <QvkAllLoaded.h>
 
 #include <QCameraInfo>
-#include <QTimer>
 
-using namespace std;
+//using namespace std;
 
 QvkWebcamWatcher::QvkWebcamWatcher()
 {
@@ -15,9 +14,8 @@ QvkWebcamWatcher::QvkWebcamWatcher()
     oldDescriptionList.clear();
     oldDeviceNameList.clear();
 
-    QTimer *timer = new QTimer(this);
+    timer = new QTimer(this);
     connect( timer, SIGNAL( timeout() ), this, SLOT( detectCameras() ) );
-    timer->start(1000);
 }
 
 
@@ -65,11 +63,27 @@ QString QvkWebcamWatcher::removedDeviceName( QStringList mydeviceNameList, QStri
   return myoldDeviceNameList[ x ];
 }
 
+
+void QvkWebcamWatcher::startStopCameraTimer( bool value )
+{
+    if ( value == true )
+    {
+        timer->start(1000);
+    }
+
+    if ( value == false )
+    {
+        timer->stop();
+    }
+}
+
+
 /*
  * Is called periodically by the timer
  */
 void QvkWebcamWatcher::detectCameras()
 {
+    timer->stop();
     int newcount = QCameraInfo::availableCameras().count();
 
     if ( newcount == 0 )
@@ -90,6 +104,7 @@ void QvkWebcamWatcher::detectCameras()
   {
      getAllCameraDescription();
      oldcount = newcount;
+     timer->start(1000);
      return;
   }
 
@@ -101,6 +116,7 @@ void QvkWebcamWatcher::detectCameras()
      // detected which camera was removed
      QString cameraDevice = removedDeviceName( deviceNameList , oldDeviceNameList );
      emit removedCamera( cameraDevice );
+     timer->start(1000);
      return;
   }
 }
