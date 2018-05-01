@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>635</width>
-    <height>351</height>
+    <height>325</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -702,6 +702,16 @@
                  </size>
                 </property>
                </spacer>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="CameraTimerOnOffCheckbox">
+                <property name="text">
+                 <string notr="true">CameraTimer</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>

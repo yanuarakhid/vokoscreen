@@ -1,10 +1,7 @@
 #include "QvkWebcamWatcher.h" 
-
-#include <QvkAllLoaded.h>
+#include "QvkAllLoaded.h"
 
 #include <QCameraInfo>
-
-//using namespace std;
 
 QvkWebcamWatcher::QvkWebcamWatcher()
 {
@@ -83,6 +80,7 @@ void QvkWebcamWatcher::startStopCameraTimer( bool value )
  */
 void QvkWebcamWatcher::detectCameras()
 {
+    qDebug() << "111111111111111111111111111111111111111111111 timer ist an";
     timer->stop();
     int newcount = QCameraInfo::availableCameras().count();
 
@@ -94,29 +92,31 @@ void QvkWebcamWatcher::detectCameras()
     QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
     foreach ( const QCameraInfo &cameraInfo, cameras )
     {
-      if ( cameraInfo.description() == "screen-capture-recorder" )
-      {
-        newcount--;
-      }
+        if ( cameraInfo.description() == "screen-capture-recorder" )
+        {
+            newcount--;
+        }
     }
 
-  if ( newcount > oldcount )
-  {
-     getAllCameraDescription();
-     oldcount = newcount;
-     timer->start(1000);
-     return;
-  }
+    if ( newcount > oldcount )
+    {
+        getAllCameraDescription();
+        oldcount = newcount;
+        timer->start(1000);
+        return;
+    }
 
-  if ( newcount < oldcount )
-  {
-     getAllCameraDescription();
-     oldcount = newcount;
+    if ( newcount < oldcount )
+    {
+        getAllCameraDescription();
+        oldcount = newcount;
 
-     // detected which camera was removed
-     QString cameraDevice = removedDeviceName( deviceNameList , oldDeviceNameList );
-     emit removedCamera( cameraDevice );
-     timer->start(1000);
-     return;
-  }
+        // detected which camera was removed
+        QString cameraDevice = removedDeviceName( deviceNameList , oldDeviceNameList );
+        emit removedCamera( cameraDevice );
+        timer->start(1000);
+        return;
+    }
+
+    timer->start(1000);
 }

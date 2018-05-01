@@ -79,6 +79,7 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
     connect( myUi.webcamComboBox, SIGNAL( currentIndexChanged( int ) ), this, SLOT( resolution( int ) )  );
     connect( myUi.resolutionComboBox, SIGNAL( currentIndexChanged( int ) ), this, SLOT( showNewResolutionInWebcamWindow( int ) ) );
 
+    connect( myUi.CameraTimerOnOffCheckbox, SIGNAL( clicked( bool ) ), webcamWatcher, SLOT( startStopCameraTimer( bool ) ) );
 }
 
 
@@ -152,7 +153,7 @@ void QvkWebcamController::overFullScreenWebcamCheckBox_OnOff()
 
 void QvkWebcamController::webcamOnOff( bool value )
 {
-    if ( value == true  )
+    if ( value == true )
     {
         myUi.webcamComboBox->setEnabled( false );
         myUi.mirrorCheckBox->setEnabled( true );
