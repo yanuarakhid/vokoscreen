@@ -73,12 +73,13 @@ QvkWebcamController::QvkWebcamController( Ui_screencast value )
     connect( webcamWatcher, SIGNAL( removedCamera( QString ) ), this, SLOT( ifCameraRemovedCloseWindow( QString ) ) );
     webcamWatcher->startStopCameraTimer( true );
 
+    // Zuerst die abgespeicherte webcam setzen **************** dies ist ein Testlauf
+    connect( this, SIGNAL( vokoscreenFinishLoaded( bool ) ), this, SLOT( setComboBoxWebcamNameFromSettings( bool ) ) );
     // If all webcams complete read, then read and set setting for show or not show
-    connect( this, SIGNAL( vokoscreenFinishLoaded( bool ) ), this, SLOT( setCheckboxWebcamFromSettings( bool ) ) );
+    //connect( this, SIGNAL( vokoscreenFinishLoaded( bool ) ), this, SLOT( setCheckboxWebcamFromSettings( bool ) ) );
 
     connect( myUi.webcamComboBox, SIGNAL( currentIndexChanged( int ) ), this, SLOT( resolution( int ) )  );
     connect( myUi.resolutionComboBox, SIGNAL( currentIndexChanged( int ) ), this, SLOT( showNewResolutionInWebcamWindow( int ) ) );
-
     connect( myUi.CameraTimerOnOffCheckbox, SIGNAL( clicked( bool ) ), webcamWatcher, SLOT( startStopCameraTimer( bool ) ) );
 }
 
@@ -124,6 +125,13 @@ void QvkWebcamController::showNewResolutionInWebcamWindow( int index )
         myUi.webcamCheckBox->click();
         myUi.resolutionComboBox->setEnabled( true );
     }
+}
+
+
+void QvkWebcamController::setComboBoxWebcamNameFromSettings( bool value )
+{
+    (void)value;
+    myUi.webcamComboBox->setCurrentText( vkSettings.getWebcamName() );
 }
 
 
@@ -391,8 +399,11 @@ void QvkWebcamController::myStatusChanged( QCamera::Status status )
         qDebug() << "[vokoscreen] ---End search camera parameters and checkbox is disabled---";
         qDebug();
 
-        cameraLoaded = true;
-        emit vokoscreenFinishLoaded( true );
+        if ( cameraLoaded == false )
+        {
+           cameraLoaded = true;
+           emit vokoscreenFinishLoaded( true );
+        }
 
 /*
         QList<QVideoFrame::PixelFormat> pixelFormat = camera->supportedViewfinderPixelFormats( settings );

@@ -61,6 +61,7 @@ public:
   int getAreaHeight();
   
   // webcam
+  QString getWebcamName();
   int getWebcamOnOff();
   int getWebcamX();
   int getWebcamY();
@@ -145,6 +146,7 @@ private:
   int AreaHeight;
 
   // webcam
+  QString webcamName;
   int webcamOnOff;
   int webcamX;
   int webcamY;

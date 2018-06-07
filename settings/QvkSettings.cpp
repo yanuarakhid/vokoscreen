@@ -111,6 +111,10 @@ void QvkSettings::readAll()
     settings.endGroup();
 
     settings.beginGroup( "Webcam" );
+        //settings.setValue( "WebcamName", myUi.webcamComboBox->currentText() );
+        webcamName = settings.value( "WebcamName" ).toString();
+        //settings.setValue( "WebcamDevice", myUi.webcamComboBox->currentData() );
+        //settings.setValue( "WebcamResolution", myUi.resolutionComboBox->currentText() );
         webcamOnOff = settings.value( "OnOff", 0 ).toUInt();
         webcamX = settings.value( "X", 400 ).toUInt();
         webcamY = settings.value( "Y", 400 ).toUInt();
@@ -307,6 +311,11 @@ int QvkSettings::getAreaHeight()
 }
 
 // Webcam
+QString QvkSettings::getWebcamName()
+{
+    return webcamName;
+}
+
 int QvkSettings::getWebcamOnOff()
 {
   return webcamOnOff; 

@@ -36,6 +36,7 @@ private slots:
   void setMirrorOnOff( bool value );
   void rotateDialclicked();
   void setCheckboxWebcamFromSettings(bool);
+  void setComboBoxWebcamNameFromSettings(bool value);
 #ifndef Q_OS_WIN
   void overFullScreenWebcamCheckBox_OnOff();
 #endif

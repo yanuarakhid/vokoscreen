@@ -80,7 +80,6 @@ void QvkWebcamWatcher::startStopCameraTimer( bool value )
  */
 void QvkWebcamWatcher::detectCameras()
 {
-    qDebug() << "111111111111111111111111111111111111111111111 timer ist an";
     timer->stop();
     int newcount = QCameraInfo::availableCameras().count();
 
