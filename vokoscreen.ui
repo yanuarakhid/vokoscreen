@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>635</width>
-    <height>325</height>
+    <height>351</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -56,7 +56,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>4</number>
         </property>
         <property name="iconSize">
          <size>
@@ -324,8 +324,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>454</width>
-                 <height>152</height>
+                 <width>462</width>
+                 <height>167</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1016,8 +1016,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>591</width>
-               <height>184</height>
+               <width>597</width>
+               <height>195</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_18">
