@@ -1,3 +1,5 @@
+**The development of vokoscreen was started again under the new name vokoscreenNG, see https://github.com/vkohaupt/vokoscreenNG. The project vokoscreen is therefore archived and will not be developed further.**
+
 **GUI**  
 For transparent effects in the area, countdown, and showclick, a switched-on compositer is needed, otherwise the surfaces appear in black.
 
